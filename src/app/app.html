@@ -1,0 +1,42 @@
+<main class="docs-shell">
+  <section class="hero">
+    <p class="eyebrow">Kikita UI Docs</p>
+    <h1>Production documentation for {{ packageName }}</h1>
+    <p class="lede">
+      This app is the future public documentation and consumer verification
+      surface for the Kikita Angular UI library.
+    </p>
+    <div class="actions">
+      <button kuiButton type="button">Get started</button>
+      <button kuiButton type="button" appearance="secondary">Components</button>
+    </div>
+  </section>
+
+  <section class="grid" aria-label="Documentation entry points">
+    <article kuiCard>
+      <span class="card-kicker">Foundations</span>
+      <h2>Tokens and themes</h2>
+      <p>
+        CSS variables, density, light and dark semantic tokens, and runtime
+        theming rules.
+      </p>
+    </article>
+
+    <article kuiCard>
+      <span class="card-kicker">Components</span>
+      <h2>API and examples</h2>
+      <p>
+        Directive-first Angular primitives with accessibility, states, and
+        import notes.
+      </p>
+    </article>
+
+    <article kuiCard>
+      <span class="card-kicker">Consumer gate</span>
+      <h2>Install verification</h2>
+      <kui-field label="Package" hint="Installed from GitHub Packages.">
+        <input kuiInput readonly value="@kikita-labs/ui@0.0.5" />
+      </kui-field>
+    </article>
+  </section>
+</main>

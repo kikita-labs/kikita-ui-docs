@@ -1,0 +1,2 @@
+minimumReleaseAgeExclude:
+  - '@kikita-labs/ui@0.0.5'

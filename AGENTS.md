@@ -1,0 +1,59 @@
+# AGENTS.md
+
+This repository contains Kikita UI Docs, the future public documentation and
+external consumer verification app for `@kikita-labs/ui`.
+
+## Rules
+
+- Angular 22+ only.
+- Keep all tracked content in English.
+- Consume `@kikita-labs/ui` as a package dependency, not by importing source from
+  the sibling `kikita-ui` repository.
+- Use Kikita UI primitives for docs UI wherever possible.
+- Do not invent component API. Check the installed package types and the sibling
+  Kikita UI docs before writing examples.
+- Keep examples practical and copy-pasteable.
+- Prefer native HTML semantics before ARIA.
+- Do not add broad visual polish that conflicts with the Kikita design system.
+
+## Source Of Truth
+
+The sibling library repository remains the implementation source of truth:
+
+```text
+C:\Users\Nikita\OneDrive\Desktop\workbench\kikita\kikita-ui
+```
+
+Use these files there before documenting a component:
+
+- `docs/<primitive>.md`
+- `docs/component-roadmap.md`
+- `docs/state-coverage.md`
+- `docs/component-checklist.md`
+- `.local-notes/claude-design/design system/<component>.dc.html`
+
+## Package Usage
+
+The current docs app consumes:
+
+```text
+@kikita-labs/ui@0.0.5
+```
+
+Styles are registered in `angular.json`:
+
+```json
+"node_modules/@kikita-labs/ui/styles/kikita-ui.css"
+```
+
+Do not replace this with a SCSS `@import` unless the package style export has
+been verified in a fresh Angular consumer app.
+
+## Next Work
+
+- Build real docs information architecture.
+- Add foundation pages for installation, theming, tokens, density, and
+  accessibility.
+- Add component docs pages from the library docs, keeping examples consumer-safe.
+- Add a small package smoke test route that proves the published package imports,
+  styles, and provider work outside the library workspace.
