@@ -1,0 +1,38 @@
+.docs-shell {
+  min-block-size: 100dvh;
+  background: var(--kui-color-bg);
+  color: var(--kui-color-text);
+}
+
+.docs-shell__body {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr) minmax(160px, 220px);
+  gap: clamp(20px, 4vw, 40px);
+  inline-size: min(1440px, 100%);
+  margin-inline: auto;
+  padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 32px);
+}
+
+.docs-shell__content {
+  min-inline-size: 0;
+}
+
+.docs-shell__content:focus {
+  outline: none;
+}
+
+@media (max-width: 1040px) {
+  .docs-shell__body {
+    grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  }
+
+  app-page-toc {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .docs-shell__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

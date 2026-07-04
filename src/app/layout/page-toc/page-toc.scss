@@ -1,0 +1,19 @@
+.page-toc {
+  position: sticky;
+  inset-block-start: var(--kui-space-6, 24px);
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  align-content: start;
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+
+.page-toc__label {
+  margin: 0;
+  color: var(--kui-color-text);
+  font-weight: 700;
+}
+
+.page-toc__empty {
+  margin: 0;
+}

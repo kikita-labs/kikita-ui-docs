@@ -1,0 +1,21 @@
+<header class="docs-header">
+  <a class="docs-header__brand" [routerLink]="homePath" aria-label="Kikita UI Docs home">
+    <span class="docs-header__mark" aria-hidden="true">K</span>
+    <span class="docs-header__title">Kikita UI</span>
+  </a>
+
+  <nav class="docs-header__nav" aria-label="Primary documentation">
+    @for (item of navigationItems; track item.path) {
+      <a
+        kuiButton
+        appearance="ghost"
+        size="sm"
+        [routerLink]="item.path"
+        routerLinkActive="docs-header__link--active"
+        [routerLinkActiveOptions]="activeOptions"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+</header>

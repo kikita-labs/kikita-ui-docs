@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { DocsShell } from './layout/shell/docs-shell';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [DocsShell],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
