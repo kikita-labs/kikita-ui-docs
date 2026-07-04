@@ -1,0 +1,17 @@
+.package-smoke-page {
+  display: grid;
+  gap: clamp(28px, 5vw, 48px);
+}
+
+.package-smoke-page__sample {
+  display: grid;
+  max-inline-size: 420px;
+  gap: var(--kui-space-4, 16px);
+  padding: var(--kui-space-5, 20px);
+}
+
+.package-smoke-page__sample-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-2, 8px);
+}

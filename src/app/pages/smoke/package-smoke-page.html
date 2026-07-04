@@ -1,0 +1,41 @@
+<article class="package-smoke-page">
+  <app-page-header
+    eyebrow="Consumer gate"
+    title="Package Smoke"
+    description="A small external-consumer surface that proves the published Kikita UI package imports, styles, and provider setup work in this Angular app."
+  />
+
+  <app-doc-section
+    title="Rendered package imports"
+    description="This preview uses public imports from @kikita-labs/ui and the stylesheet registered through angular.json."
+  >
+    <app-live-preview
+      title="Basic consumer form"
+      description="The field, input, badge, card, and button below all come from the published package."
+    >
+      <div kuiCard class="package-smoke-page__sample" appearance="sunken" size="lg">
+        <div class="package-smoke-page__sample-header">
+          <span kuiBadge appearance="success" size="sm">Package loaded</span>
+          <span kuiBadge appearance="info" size="sm">Styled scrollbar provider</span>
+        </div>
+
+        <kui-field label="Project" hint="Consumer-safe input from @kikita-labs/ui">
+          <input kuiInput value="kikita-ui-docs" aria-label="Project name" />
+        </kui-field>
+
+        <button kuiButton type="button" appearance="primary" size="md">Verified import</button>
+      </div>
+    </app-live-preview>
+  </app-doc-section>
+
+  <app-doc-section
+    title="Consumer API used here"
+    description="This page intentionally stays small and only references package symbols that are present in the installed public typings."
+  >
+    <app-api-table [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section title="Example source">
+    <app-code-tabs [tabs]="codeTabs" />
+  </app-doc-section>
+</article>

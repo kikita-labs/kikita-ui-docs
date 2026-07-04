@@ -1,0 +1,41 @@
+.api-table {
+  overflow-x: auto;
+  border: 1px solid var(--kui-color-border);
+  border-radius: 8px;
+  background: var(--kui-color-surface);
+}
+
+.api-table__table {
+  inline-size: 100%;
+  min-inline-size: 640px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-block-end: 1px solid var(--kui-color-border);
+  padding: var(--kui-space-3, 12px) var(--kui-space-4, 16px);
+  text-align: start;
+  vertical-align: top;
+}
+
+thead th {
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-text-sm-size, 13px);
+  font-weight: 700;
+}
+
+tbody th {
+  font-weight: 700;
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+  border-block-end: 0;
+}
+
+code {
+  color: var(--kui-color-text);
+  font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Consolas, monospace);
+  font-size: var(--kui-text-sm-size, 13px);
+}

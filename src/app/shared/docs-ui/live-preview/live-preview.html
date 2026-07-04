@@ -1,0 +1,13 @@
+<section kuiCard class="live-preview" appearance="surface" size="lg">
+  <header class="live-preview__header">
+    <p class="live-preview__eyebrow">Live preview</p>
+    <h3 class="live-preview__title">{{ title() }}</h3>
+    @if (description(); as previewDescription) {
+      <p class="live-preview__description">{{ previewDescription }}</p>
+    }
+  </header>
+
+  <div class="live-preview__surface">
+    <ng-content />
+  </div>
+</section>

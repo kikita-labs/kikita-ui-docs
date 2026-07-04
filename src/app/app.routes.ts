@@ -4,35 +4,32 @@ import {
   COMPONENTS_ROUTE_DRAFT,
   FOUNDATIONS_ROUTE_DRAFT,
   HOME_ROUTE_DRAFT,
-  SMOKE_ROUTE_DRAFT,
 } from './core/navigation/docs-route-drafts';
-import { DocsDraftPage } from './pages/draft/docs-draft-page';
-import { DocsNotFoundPage } from './pages/not-found/docs-not-found-page';
 
 export const routes: Routes = [
   {
     path: AppRoutePath.Home,
-    component: DocsDraftPage,
+    loadComponent: () => import('./pages/draft/docs-draft-page').then((m) => m.DocsDraftPage),
     data: HOME_ROUTE_DRAFT,
     pathMatch: 'full',
   },
   {
     path: AppRoutePath.Foundations,
-    component: DocsDraftPage,
+    loadComponent: () => import('./pages/draft/docs-draft-page').then((m) => m.DocsDraftPage),
     data: FOUNDATIONS_ROUTE_DRAFT,
   },
   {
     path: AppRoutePath.Components,
-    component: DocsDraftPage,
+    loadComponent: () => import('./pages/draft/docs-draft-page').then((m) => m.DocsDraftPage),
     data: COMPONENTS_ROUTE_DRAFT,
   },
   {
     path: AppRoutePath.Smoke,
-    component: DocsDraftPage,
-    data: SMOKE_ROUTE_DRAFT,
+    loadComponent: () => import('./pages/smoke/package-smoke-page').then((m) => m.PackageSmokePage),
   },
   {
     path: AppRoutePath.NotFound,
-    component: DocsNotFoundPage,
+    loadComponent: () =>
+      import('./pages/not-found/docs-not-found-page').then((m) => m.DocsNotFoundPage),
   },
 ];

@@ -1,0 +1,22 @@
+<div class="api-table" role="region" [attr.aria-label]="label()">
+  <table class="api-table__table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of rows(); track row.name) {
+        <tr>
+          <th scope="row">{{ row.name }}</th>
+          <td>
+            <code>{{ row.type }}</code>
+          </td>
+          <td>{{ row.description }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

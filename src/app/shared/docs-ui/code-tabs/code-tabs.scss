@@ -1,0 +1,27 @@
+.code-tabs {
+  overflow: hidden;
+  border: 1px solid var(--kui-color-border);
+  border-radius: 8px;
+  background: var(--kui-color-surface);
+}
+
+.code-tabs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-2, 8px);
+  border-block-end: 1px solid var(--kui-color-border);
+  padding: var(--kui-space-3, 12px);
+}
+
+.code-tabs__panel {
+  overflow-x: auto;
+  margin: 0;
+  padding: var(--kui-space-4, 16px);
+}
+
+code {
+  font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Consolas, monospace);
+  font-size: var(--kui-text-sm-size, 13px);
+  line-height: 1.6;
+  white-space: pre;
+}
