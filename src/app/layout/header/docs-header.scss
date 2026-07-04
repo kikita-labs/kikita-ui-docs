@@ -1,11 +1,16 @@
 .docs-header {
+  position: sticky;
+  z-index: 5;
+  inset-block-start: 0;
   display: flex;
   min-block-size: 64px;
   align-items: center;
   justify-content: space-between;
   gap: var(--kui-space-5, 20px);
   border-block-end: 1px solid var(--kui-color-border);
+  background: color-mix(in oklab, var(--kui-color-bg) 92%, transparent);
   padding-inline: clamp(16px, 4vw, 32px);
+  backdrop-filter: blur(16px);
 }
 
 .docs-header__brand {

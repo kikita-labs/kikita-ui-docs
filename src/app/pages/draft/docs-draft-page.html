@@ -1,5 +1,18 @@
-<app-draft-state
-  [eyebrow]="draft().eyebrow"
-  [title]="draft().title"
-  [description]="draft().description"
-/>
+<article class="docs-draft-page">
+  <app-page-header
+    [eyebrow]="draft().eyebrow"
+    [title]="draft().title"
+    [description]="draft().description"
+  />
+
+  <app-doc-section
+    title="Section status"
+    description="This page is intentionally wired into the docs shell before final content is written."
+  >
+    <app-draft-state
+      eyebrow="Draft"
+      title="Ready for documented content"
+      description="The route, navigation, layout, and shared docs primitives are in place. Final docs content will be added from verified package APIs."
+    />
+  </app-doc-section>
+</article>

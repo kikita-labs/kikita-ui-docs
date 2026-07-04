@@ -6,14 +6,17 @@
 
 .docs-shell__body {
   display: grid;
-  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr) minmax(160px, 220px);
+  grid-template-columns: minmax(200px, 248px) minmax(0, 1fr) minmax(172px, 220px);
   gap: clamp(20px, 4vw, 40px);
   inline-size: min(1440px, 100%);
   margin-inline: auto;
-  padding: clamp(20px, 4vw, 40px) clamp(16px, 4vw, 32px);
+  padding: clamp(28px, 4vw, 48px) clamp(16px, 4vw, 32px);
 }
 
 .docs-shell__content {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  align-content: start;
   min-inline-size: 0;
 }
 
@@ -23,7 +26,7 @@
 
 @media (max-width: 1040px) {
   .docs-shell__body {
-    grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+    grid-template-columns: minmax(200px, 248px) minmax(0, 1fr);
   }
 
   app-page-toc {

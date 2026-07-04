@@ -1,0 +1,38 @@
+.page-header {
+  display: grid;
+  max-inline-size: 820px;
+  gap: var(--kui-space-3, 12px);
+}
+
+.page-header__eyebrow,
+.page-header__title,
+.page-header__description {
+  margin: 0;
+}
+
+.page-header__eyebrow {
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-text-sm-size, 13px);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.page-header__title {
+  color: var(--kui-color-text);
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 0.95;
+}
+
+.page-header__description {
+  max-inline-size: 64ch;
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-text-lg-size, 18px);
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .page-header__title {
+    font-size: clamp(32px, 12vw, 44px);
+  }
+}

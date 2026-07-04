@@ -1,3 +1,8 @@
 :host {
   display: block;
 }
+
+.docs-draft-page {
+  display: grid;
+  gap: clamp(28px, 5vw, 48px);
+}

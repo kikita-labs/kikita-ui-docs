@@ -1,0 +1,12 @@
+<section class="doc-section" [attr.aria-labelledby]="headingId()">
+  <header class="doc-section__header">
+    <h2 class="doc-section__title" [id]="headingId()">{{ title() }}</h2>
+    @if (description(); as sectionDescription) {
+      <p class="doc-section__description">{{ sectionDescription }}</p>
+    }
+  </header>
+
+  <div class="doc-section__body">
+    <ng-content />
+  </div>
+</section>

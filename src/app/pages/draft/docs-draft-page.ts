@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { DocsRouteDraft } from '../../core/navigation/docs-route-draft';
 import { HOME_ROUTE_DRAFT } from '../../core/navigation/docs-route-drafts';
+import { DocSection } from '../../shared/docs-ui/doc-section/doc-section';
 import { DraftState } from '../../shared/docs-ui/draft-state/draft-state';
+import { PageHeader } from '../../shared/docs-ui/page-header/page-header';
 
 @Component({
   selector: 'app-docs-draft-page',
-  imports: [DraftState],
+  imports: [DocSection, DraftState, PageHeader],
   templateUrl: './docs-draft-page.html',
   styleUrl: './docs-draft-page.scss',
 })

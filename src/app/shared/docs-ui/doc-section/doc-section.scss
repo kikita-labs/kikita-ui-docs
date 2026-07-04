@@ -1,0 +1,31 @@
+.doc-section {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  max-inline-size: 820px;
+}
+
+.doc-section__header {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+}
+
+.doc-section__title,
+.doc-section__description {
+  margin: 0;
+}
+
+.doc-section__title {
+  color: var(--kui-color-text);
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.15;
+}
+
+.doc-section__description {
+  max-inline-size: 64ch;
+  color: var(--kui-color-text-muted);
+  line-height: 1.6;
+}
+
+.doc-section__body {
+  min-inline-size: 0;
+}

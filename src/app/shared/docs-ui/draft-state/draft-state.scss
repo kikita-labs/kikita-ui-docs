@@ -1,8 +1,8 @@
 .draft-state {
   display: grid;
-  max-inline-size: 760px;
-  gap: var(--kui-space-4, 16px);
-  padding: clamp(24px, 5vw, 48px);
+  gap: var(--kui-space-3, 12px);
+  border: 1px dashed var(--kui-color-border);
+  padding: clamp(20px, 4vw, 32px);
 }
 
 .draft-state__eyebrow,
@@ -17,8 +17,8 @@
 
 .draft-state__title {
   color: var(--kui-color-text);
-  font-size: clamp(32px, 5vw, 56px);
-  line-height: 1;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.2;
 }
 
 .draft-state__description {
