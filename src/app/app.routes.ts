@@ -6,7 +6,6 @@ import {
   DENSITY_ROUTE_DRAFT,
   FOUNDATIONS_ROUTE_DRAFT,
   HOME_ROUTE_DRAFT,
-  INSTALLATION_ROUTE_DRAFT,
   THEMING_ROUTE_DRAFT,
   TOKENS_ROUTE_DRAFT,
 } from './core/navigation/docs-route-drafts';
@@ -31,8 +30,10 @@ export const routes: Routes = [
       },
       {
         path: AppRoutePath.FoundationsInstallation,
-        loadComponent: loadDraftPage,
-        data: INSTALLATION_ROUTE_DRAFT,
+        loadComponent: () =>
+          import('./pages/foundations/installation/installation-page').then(
+            (m) => m.InstallationPage,
+          ),
       },
       {
         path: AppRoutePath.FoundationsTheming,

@@ -1,0 +1,35 @@
+<article class="installation-page">
+  <app-page-header
+    eyebrow="Foundation"
+    title="Installation"
+    description="Install Kikita UI from GitHub Packages, wire the published stylesheet through Angular CLI, and register the provider in the consumer app."
+  />
+
+  <app-doc-section
+    title="Package registry"
+    description="Kikita UI is currently published under the @kikita-labs scope on GitHub Packages."
+  >
+    <app-code-tabs [tabs]="registryTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    title="Angular CLI setup"
+    description="Use the package schematic when possible. It preserves existing style entries and configures the selected Angular project."
+  >
+    <app-code-tabs [tabs]="cliTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    title="Manual setup"
+    description="This docs app keeps the stylesheet in angular.json because that path is verified in a fresh Angular consumer build."
+  >
+    <app-code-tabs [tabs]="manualTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    title="Schematic options"
+    description="Use these options when a consumer app needs to control which parts of setup are written."
+  >
+    <app-api-table label="ng add options" [rows]="optionRows" />
+  </app-doc-section>
+</article>
