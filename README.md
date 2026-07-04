@@ -35,3 +35,8 @@ export has been verified in a fresh Angular consumer app.
 - package install smoke test
 - consumer integration gate before moving Kikita UI into real products
 - future home for polished docs pages, not raw playground/debug boards
+
+## Architecture
+
+Read `docs/architecture.md` before adding shell, shared docs UI, routes, or real
+documentation pages.
