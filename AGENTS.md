@@ -15,6 +15,30 @@ external consumer verification app for `@kikita-labs/ui`.
 - Keep examples practical and copy-pasteable.
 - Prefer native HTML semantics before ARIA.
 - Do not add broad visual polish that conflicts with the Kikita design system.
+- Angular state in this app is signals-only (Angular 22). Do not introduce NgRx or
+  other external state stores.
+
+## Angular MCP
+
+This repo has the `angular-cli` MCP server configured locally (see `.mcp.json`).
+For any question about current Angular 22+ APIs, CLI usage, or Angular best
+practices, query the MCP server first — do not guess and do not rely on local
+files/training data for Angular framework questions.
+
+Only fall back to local files/docs if the MCP server is connected but does not
+have the answer. If the MCP server is unavailable/not connected, stop and tell
+the user — do not silently fall back to local files instead.
+
+## Local Notes
+
+`.local-notes/` (gitignored, not tracked) holds planning docs for this repo:
+
+- `PLAN.md` — architecture, information architecture, and build-order plan for
+  the docs site.
+- `claude-design/briefs/design-brief.md` — brief handed to Claude Design for
+  the docs site concept.
+
+Read these before starting structural work on the docs app.
 
 ## Source Of Truth
 
