@@ -15,6 +15,23 @@
           <span class="sidebar-nav__link-label">{{ item.label }}</span>
           <span class="sidebar-nav__link-description">{{ item.description }}</span>
         </a>
+
+        @if (item.children?.length) {
+          <ul class="sidebar-nav__sublist">
+            @for (child of item.children; track child.path) {
+              <li>
+                <a
+                  class="sidebar-nav__sublink"
+                  [routerLink]="child.path"
+                  routerLinkActive="sidebar-nav__sublink--active"
+                  [routerLinkActiveOptions]="activeOptions"
+                >
+                  {{ child.label }}
+                </a>
+              </li>
+            }
+          </ul>
+        }
       </li>
     }
   </ul>
