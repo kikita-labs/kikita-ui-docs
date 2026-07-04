@@ -25,6 +25,13 @@ settings. For any question about current Angular 22+ APIs, CLI usage, or Angular
 best practices, query the MCP server first. Do not guess and do not rely on local
 files or training data for Angular framework questions.
 
+Use the MCP resource `instructions://best-practices` from
+`angularCliKikitaDocs` as the primary source for Angular best practices in
+Codex. The Angular CLI MCP `get_best_practices` and `search_documentation` tools
+may return `Unexpected response type` in Codex even while the server is healthy;
+in that case, use the readable MCP resource and the working `list_projects` /
+`run_target` tools.
+
 Only fall back to local files/docs if the MCP server is connected but does not
 have the answer. If the MCP server is unavailable or not connected, stop and
 tell the user. Do not silently fall back to local files instead.

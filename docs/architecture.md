@@ -72,7 +72,8 @@ not put docs content directly in `app.html`.
 
 - Use standalone Angular components only.
 - Keep non-trivial components split into `.ts`, `.html`, and `.scss` files.
-- Use `ChangeDetectionStrategy.OnPush` for docs shell and docs UI components.
+- Do not set `ChangeDetectionStrategy.OnPush` explicitly. Angular 22 uses
+  OnPush by default.
 - Use Angular signals for local state. Do not add NgRx or another external state
   store.
 - Use Kikita UI primitives for docs chrome wherever possible.
