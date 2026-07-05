@@ -1,24 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {
-  KuiButtonDirective,
-  KuiEmptyStateActionsDirective,
-  KuiEmptyStateComponent,
-  KuiEmptyStateIconDirective,
-} from '@kikita-labs/ui';
-import { PageHeader } from '../../shared/docs-ui/page-header/page-header';
+import { KuiButtonDirective } from '@kikita-labs/ui';
+import { DocsSearchStateService } from '../../core/search/docs-search-state.service';
 
 @Component({
   selector: 'app-docs-not-found-page',
-  imports: [
-    KuiButtonDirective,
-    KuiEmptyStateActionsDirective,
-    KuiEmptyStateComponent,
-    KuiEmptyStateIconDirective,
-    PageHeader,
-    RouterLink,
-  ],
+  imports: [KuiButtonDirective, RouterLink],
   templateUrl: './docs-not-found-page.html',
   styleUrl: './docs-not-found-page.scss',
 })
-export class DocsNotFoundPage {}
+export class DocsNotFoundPage {
+  protected readonly search = inject(DocsSearchStateService);
+}

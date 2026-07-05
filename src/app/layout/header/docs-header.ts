@@ -1,4 +1,4 @@
-import { Component, inject, input, output, signal } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import {
   KuiButtonDirective,
@@ -8,6 +8,7 @@ import {
 } from '@kikita-labs/ui';
 import { DOCS_HOME_PATH, DOCS_NAVIGATION_ITEMS } from '../../core/navigation/docs-navigation-items';
 import { DocsSearchIndexService } from '../../core/search/docs-search-index.service';
+import { DocsSearchStateService } from '../../core/search/docs-search-state.service';
 import { DocsThemeService } from '../../core/theme/docs-theme.service';
 
 @Component({
@@ -28,19 +29,19 @@ import { DocsThemeService } from '../../core/theme/docs-theme.service';
 export class DocsHeader {
   readonly menuOpen = input(false);
   readonly showMenuButton = input(false);
+  readonly minimal = input(false);
   readonly menuToggle = output<void>();
 
   private readonly router = inject(Router);
   protected readonly searchIndex = inject(DocsSearchIndexService);
+  protected readonly search = inject(DocsSearchStateService);
   protected readonly theme = inject(DocsThemeService);
   protected readonly homePath = DOCS_HOME_PATH;
   protected readonly navigationItems = DOCS_NAVIGATION_ITEMS;
   protected readonly activeOptions = { exact: true };
-  protected readonly searchOpen = signal(false);
-  protected readonly searchQuery = signal('');
 
   protected openSearch(): void {
-    this.searchOpen.set(true);
+    this.search.show();
   }
 
   protected navigateToCommand(command: KuiCommandItem): void {
@@ -50,8 +51,7 @@ export class DocsHeader {
       return;
     }
 
-    this.searchOpen.set(false);
-    this.searchQuery.set('');
+    this.search.reset();
     void this.router.navigateByUrl(path);
   }
 

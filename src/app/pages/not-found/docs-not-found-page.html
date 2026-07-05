@@ -1,27 +1,15 @@
 <article class="docs-not-found-page">
-  <app-page-header
-    eyebrow="Not found"
-    title="Page not found"
-    description="This route is not part of the docs information architecture."
-    status="404"
-  />
+  <div class="docs-not-found-page__content">
+    <p class="docs-not-found-page__code">404</p>
+    <h1>Page not found</h1>
+    <p>
+      The page you're looking for doesn't exist or has moved. Try searching, or head back to the
+      docs.
+    </p>
 
-  <kui-empty-state
-    context="no-results"
-    size="lg"
-    title="Nothing is documented here"
-    description="Return to a planned documentation section or browse the component catalog."
-  >
-    <span kuiEmptyStateIcon aria-hidden="true" class="docs-not-found-page__icon">
-      <svg viewBox="0 0 24 24" focusable="false">
-        <path d="M5 5h14v14H5z" />
-        <path d="M8 9h8M8 12h5M8 15h3" />
-      </svg>
-    </span>
-
-    <div kuiEmptyStateActions class="docs-not-found-page__actions">
-      <a kuiButton routerLink="/components">Browse components</a>
-      <a kuiButton appearance="outline" routerLink="/foundations/installation">Get started</a>
+    <div class="docs-not-found-page__actions">
+      <a kuiButton routerLink="/components">Back to Docs</a>
+      <button kuiButton type="button" appearance="outline" (click)="search.show()">Search</button>
     </div>
-  </kui-empty-state>
+  </div>
 </article>

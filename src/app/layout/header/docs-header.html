@@ -28,31 +28,33 @@
   </div>
 
   <div class="docs-header__actions">
-    <nav class="docs-header__nav" aria-label="Primary documentation">
-      @for (item of navigationItems; track item.path) {
-        <a
-          #primaryLink="routerLinkActive"
-          kuiButton
-          appearance="ghost"
-          size="sm"
-          [routerLink]="item.path"
-          routerLinkActive="docs-header__link--active"
-          [routerLinkActiveOptions]="activeOptions"
-          [attr.aria-current]="primaryLink.isActive ? 'page' : null"
-        >
-          {{ item.label }}
-        </a>
-      }
-    </nav>
+    @if (!minimal()) {
+      <nav class="docs-header__nav" aria-label="Primary documentation">
+        @for (item of navigationItems; track item.path) {
+          <a
+            #primaryLink="routerLinkActive"
+            kuiButton
+            appearance="ghost"
+            size="sm"
+            [routerLink]="item.path"
+            routerLinkActive="docs-header__link--active"
+            [routerLinkActiveOptions]="activeOptions"
+            [attr.aria-current]="primaryLink.isActive ? 'page' : null"
+          >
+            {{ item.label }}
+          </a>
+        }
+      </nav>
 
-    <button class="docs-header__search" type="button" (click)="openSearch()">
-      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-        <circle cx="7" cy="7" r="5" />
-        <path d="M11 11 14 14" />
-      </svg>
-      <span>Search</span>
-      <kbd>Ctrl K</kbd>
-    </button>
+      <button class="docs-header__search" type="button" (click)="openSearch()">
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <circle cx="7" cy="7" r="5" />
+          <path d="M11 11 14 14" />
+        </svg>
+        <span>Search</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+    }
 
     <button
       class="docs-header__theme-toggle"
@@ -79,8 +81,8 @@
   </div>
 
   <kui-command-palette
-    [(open)]="searchOpen"
-    [(query)]="searchQuery"
+    [(open)]="search.open"
+    [(query)]="search.query"
     [groups]="searchIndex.groups"
     label="Search documentation"
     placeholder="Search documentation"

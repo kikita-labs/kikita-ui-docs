@@ -17,6 +17,16 @@ export class DocsShell {
   private readonly currentUrl = signal(this.router.url);
 
   protected readonly isLanding = computed(() => this.currentUrl().split(/[?#]/)[0] === '/');
+  protected readonly isNotFound = computed(() => {
+    const path = this.currentUrl().split(/[?#]/)[0];
+
+    return (
+      path !== '/' &&
+      !path.startsWith('/foundations') &&
+      !path.startsWith('/components') &&
+      !path.startsWith('/smoke')
+    );
+  });
   protected readonly isNavigationOpen = signal(false);
 
   constructor() {
