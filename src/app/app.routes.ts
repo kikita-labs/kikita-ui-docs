@@ -6,8 +6,6 @@ import {
   DENSITY_ROUTE_DRAFT,
   FOUNDATIONS_ROUTE_DRAFT,
   HOME_ROUTE_DRAFT,
-  THEMING_ROUTE_DRAFT,
-  TOKENS_ROUTE_DRAFT,
 } from './core/navigation/docs-route-drafts';
 
 const loadDraftPage = () => import('./pages/draft/docs-draft-page').then((m) => m.DocsDraftPage);
@@ -37,13 +35,13 @@ export const routes: Routes = [
       },
       {
         path: AppRoutePath.FoundationsTheming,
-        loadComponent: loadDraftPage,
-        data: THEMING_ROUTE_DRAFT,
+        loadComponent: () =>
+          import('./pages/foundations/theming/theming-page').then((m) => m.ThemingPage),
       },
       {
         path: AppRoutePath.FoundationsTokens,
-        loadComponent: loadDraftPage,
-        data: TOKENS_ROUTE_DRAFT,
+        loadComponent: () =>
+          import('./pages/foundations/tokens/tokens-page').then((m) => m.TokensPage),
       },
       {
         path: AppRoutePath.FoundationsDensity,

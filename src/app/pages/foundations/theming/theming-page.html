@@ -1,0 +1,35 @@
+<article class="theming-page">
+  <app-page-header
+    eyebrow="Foundation"
+    title="Theming"
+    description="Kikita UI themes are generated from seed values into CSS variables. Runtime theming is exposed through the --kui-* custom property contract."
+  />
+
+  <app-doc-section
+    title="Runtime contract"
+    description="The public theming contract is CSS variables. The theme pipeline starts with seed tokens and ends in component-level tokens."
+  >
+    <app-code-tabs [tabs]="contractTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    title="Angular provider"
+    description="Use provideKikitaUi() for the default theme and optional root configuration."
+  >
+    <app-code-tabs [tabs]="providerTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    title="Custom seeds"
+    description="Seed values are the stable way to customize generated palettes and shared scales."
+  >
+    <app-code-tabs [tabs]="seedTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    title="Theme utilities"
+    description="These public functions can generate CSS variables for docs, visual tests, or non-Angular tooling."
+  >
+    <app-api-table [rows]="utilityRows" />
+  </app-doc-section>
+</article>

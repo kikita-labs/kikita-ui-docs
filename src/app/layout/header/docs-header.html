@@ -7,12 +7,14 @@
   <nav class="docs-header__nav" aria-label="Primary documentation">
     @for (item of navigationItems; track item.path) {
       <a
+        #primaryLink="routerLinkActive"
         kuiButton
         appearance="ghost"
         size="sm"
         [routerLink]="item.path"
         routerLinkActive="docs-header__link--active"
         [routerLinkActiveOptions]="activeOptions"
+        [attr.aria-current]="primaryLink.isActive ? 'page' : null"
       >
         {{ item.label }}
       </a>

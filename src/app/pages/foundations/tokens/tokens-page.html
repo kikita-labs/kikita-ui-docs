@@ -1,0 +1,28 @@
+<article class="tokens-page">
+  <app-page-header
+    eyebrow="Foundation"
+    title="Tokens"
+    description="Kikita UI exposes native CSS custom properties as the runtime theming contract. SCSS variables are not public API."
+  />
+
+  <app-doc-section
+    title="Token layers"
+    description="Public CSS variables use the --kui-* prefix and flow through predictable layers."
+  >
+    <app-code-tabs [tabs]="layerTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    title="Color seeds"
+    description="Required color seeds generate the palette and semantic token layers."
+  >
+    <app-api-table label="Color seed tokens" [rows]="seedRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    title="Common scales"
+    description="Radius and spacing scales are shared by component tokens and docs layout primitives."
+  >
+    <app-code-tabs [tabs]="scaleTabs" />
+  </app-doc-section>
+</article>

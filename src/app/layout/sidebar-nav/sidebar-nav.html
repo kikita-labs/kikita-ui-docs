@@ -7,10 +7,12 @@
     @for (item of navigationItems; track item.path) {
       <li>
         <a
+          #sectionLink="routerLinkActive"
           class="sidebar-nav__link"
           [routerLink]="item.path"
           routerLinkActive="sidebar-nav__link--active"
           [routerLinkActiveOptions]="activeOptions"
+          [attr.aria-current]="sectionLink.isActive ? 'page' : null"
         >
           <span class="sidebar-nav__link-label">{{ item.label }}</span>
           <span class="sidebar-nav__link-description">{{ item.description }}</span>
@@ -21,10 +23,12 @@
             @for (child of item.children; track child.path) {
               <li>
                 <a
+                  #sectionSublink="routerLinkActive"
                   class="sidebar-nav__sublink"
                   [routerLink]="child.path"
                   routerLinkActive="sidebar-nav__sublink--active"
                   [routerLinkActiveOptions]="activeOptions"
+                  [attr.aria-current]="sectionSublink.isActive ? 'page' : null"
                 >
                   {{ child.label }}
                 </a>
