@@ -1,0 +1,36 @@
+<article class="components-overview-page">
+  <app-page-header
+    eyebrow="Components"
+    title="Component overview"
+    description="Public Kikita UI primitives grouped by product use case. Detail pages will be added from verified package APIs and sibling source docs."
+  />
+
+  <div class="components-overview-page__categories">
+    @for (category of categories; track category.label) {
+      <section class="components-overview-page__category" [attr.aria-labelledby]="category.label">
+        <header class="components-overview-page__category-header">
+          <div>
+            <h2 [id]="category.label">{{ category.label }}</h2>
+            <p>{{ category.description }}</p>
+          </div>
+          <span kuiBadge appearance="neutral" size="sm"
+            >{{ category.components.length }} primitives</span
+          >
+        </header>
+
+        <div class="components-overview-page__grid">
+          @for (component of category.components; track component.name) {
+            <article kuiCard appearance="surface" class="components-overview-page__card">
+              <header>
+                <h3>{{ component.name }}</h3>
+                <span kuiBadge appearance="primary" size="sm">{{ component.status }}</span>
+              </header>
+              <code>{{ component.importName }}</code>
+              <p>{{ component.description }}</p>
+            </article>
+          }
+        </div>
+      </section>
+    }
+  </div>
+</article>

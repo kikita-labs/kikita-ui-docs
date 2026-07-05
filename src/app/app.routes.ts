@@ -1,9 +1,6 @@
 import { Routes } from '@angular/router';
 import { AppRoutePath } from './core/navigation/app-route-path';
-import {
-  COMPONENTS_ROUTE_DRAFT,
-  FOUNDATIONS_ROUTE_DRAFT,
-} from './core/navigation/docs-route-drafts';
+import { FOUNDATIONS_ROUTE_DRAFT } from './core/navigation/docs-route-drafts';
 
 const loadDraftPage = () => import('./pages/draft/docs-draft-page').then((m) => m.DocsDraftPage);
 
@@ -55,8 +52,8 @@ export const routes: Routes = [
   },
   {
     path: AppRoutePath.Components,
-    loadComponent: loadDraftPage,
-    data: COMPONENTS_ROUTE_DRAFT,
+    loadComponent: () =>
+      import('./pages/components/components-overview-page').then((m) => m.ComponentsOverviewPage),
   },
   {
     path: AppRoutePath.Smoke,

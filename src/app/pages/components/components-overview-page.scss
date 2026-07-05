@@ -1,0 +1,89 @@
+.components-overview-page {
+  display: grid;
+  gap: clamp(32px, 6vw, 56px);
+}
+
+.components-overview-page__categories {
+  display: grid;
+  gap: clamp(32px, 6vw, 56px);
+}
+
+.components-overview-page__category {
+  display: grid;
+  gap: var(--kui-space-5, 20px);
+}
+
+.components-overview-page__category-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--kui-space-4, 16px);
+  border-block-end: 1px solid var(--kui-color-border);
+  padding-block-end: var(--kui-space-4, 16px);
+}
+
+.components-overview-page__category-header h2,
+.components-overview-page__category-header p,
+.components-overview-page__card h3,
+.components-overview-page__card p {
+  margin: 0;
+}
+
+.components-overview-page__category-header h2 {
+  color: var(--kui-color-text);
+  font-size: var(--kui-text-xl-size, 22px);
+}
+
+.components-overview-page__category-header p {
+  max-inline-size: 56ch;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+  line-height: 1.6;
+}
+
+.components-overview-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--kui-space-4, 16px);
+}
+
+.components-overview-page__card {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+}
+
+.components-overview-page__card header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--kui-space-3, 12px);
+}
+
+.components-overview-page__card h3 {
+  color: var(--kui-color-text);
+  font-size: var(--kui-text-md-size, 15px);
+}
+
+.components-overview-page__card code {
+  overflow-wrap: anywhere;
+  color: var(--kui-color-primary-soft-text);
+  font-size: var(--kui-text-xs-size, 11px);
+}
+
+.components-overview-page__card p {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .components-overview-page__category-header,
+  .components-overview-page__card header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .components-overview-page__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
