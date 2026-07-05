@@ -1,9 +1,15 @@
 .sidebar-nav {
   position: sticky;
-  inset-block-start: var(--kui-space-6, 24px);
+  inset-block-start: calc(72px + var(--kui-space-6, 24px));
   display: grid;
   gap: var(--kui-space-3, 12px);
   align-content: start;
+  max-block-size: calc(100dvh - 72px - var(--kui-space-12, 48px));
+  overflow: auto;
+  border: 1px solid var(--kui-color-border);
+  border-radius: var(--kui-radius-lg, 10px);
+  background: color-mix(in oklab, var(--kui-color-surface) 92%, transparent);
+  padding: var(--kui-space-4, 16px);
 }
 
 .sidebar-nav__skip {
@@ -36,8 +42,9 @@
 .sidebar-nav__label {
   margin: 0;
   color: var(--kui-color-text-muted);
-  font-size: var(--kui-text-xs-size, 12px);
+  font-size: var(--kui-text-xs-size, 11px);
   font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
@@ -53,7 +60,7 @@
   display: grid;
   gap: var(--kui-space-1, 4px);
   border-radius: 8px;
-  padding: var(--kui-space-3, 12px);
+  padding: var(--kui-space-2, 8px) var(--kui-space-3, 12px);
   color: var(--kui-color-text-muted);
   text-decoration: none;
 }
@@ -63,6 +70,13 @@
 .sidebar-nav__link--active {
   background: var(--kui-color-surface);
   color: var(--kui-color-text);
+}
+
+.sidebar-nav__link--active,
+.sidebar-nav__sublink--active {
+  background: var(--kui-color-primary-soft-bg);
+  color: var(--kui-color-primary-soft-text);
+  font-weight: 600;
 }
 
 .sidebar-nav__link:focus-visible {
@@ -84,7 +98,7 @@
   display: grid;
   gap: var(--kui-space-1, 4px);
   margin: var(--kui-space-2, 8px) 0 0;
-  padding: 0 0 0 var(--kui-space-3, 12px);
+  padding: 0;
   list-style: none;
 }
 

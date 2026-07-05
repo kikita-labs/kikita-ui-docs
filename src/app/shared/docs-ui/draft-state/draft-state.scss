@@ -1,8 +1,12 @@
 .draft-state {
   display: grid;
   gap: var(--kui-space-3, 12px);
-  border: 1px dashed var(--kui-color-border);
-  padding: clamp(20px, 4vw, 32px);
+  max-inline-size: 520px;
+  justify-items: center;
+  border: 1px solid var(--kui-color-border);
+  margin-inline: auto;
+  padding: clamp(32px, 6vw, 56px);
+  text-align: center;
 }
 
 .draft-state__eyebrow,
@@ -12,7 +16,7 @@
 }
 
 .draft-state__eyebrow {
-  justify-self: start;
+  justify-self: center;
 }
 
 .draft-state__title {

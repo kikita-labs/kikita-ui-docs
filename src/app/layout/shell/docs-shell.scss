@@ -1,16 +1,16 @@
 .docs-shell {
   min-block-size: 100dvh;
-  background: var(--kui-color-bg);
+  background: var(--kui-color-surface-sunken);
   color: var(--kui-color-text);
 }
 
 .docs-shell__body {
   display: grid;
   grid-template-columns: minmax(200px, 248px) minmax(0, 1fr) minmax(172px, 220px);
-  gap: clamp(20px, 4vw, 40px);
+  gap: clamp(24px, 4vw, 48px);
   inline-size: min(1440px, 100%);
   margin-inline: auto;
-  padding: clamp(28px, 4vw, 48px) clamp(16px, 4vw, 32px);
+  padding: clamp(28px, 4vw, 48px) clamp(18px, 4vw, 48px);
 }
 
 .docs-shell__content {

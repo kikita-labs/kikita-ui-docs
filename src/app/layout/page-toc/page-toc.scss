@@ -1,11 +1,26 @@
+:host {
+  display: block;
+  min-inline-size: 0;
+}
+
+:host(.page-toc-host--empty) {
+  display: none;
+}
+
 .page-toc {
   position: sticky;
-  inset-block-start: var(--kui-space-6, 24px);
+  inset-block-start: calc(72px + var(--kui-space-6, 24px));
   display: grid;
   gap: var(--kui-space-2, 8px);
   align-content: start;
+  max-block-size: calc(100dvh - 72px - var(--kui-space-12, 48px));
+  overflow: auto;
+  border: 1px solid var(--kui-color-border);
+  border-radius: var(--kui-radius-lg, 10px);
+  background: color-mix(in oklab, var(--kui-color-surface) 92%, transparent);
   color: var(--kui-color-text-muted);
   font-size: var(--kui-text-sm-size, 13px);
+  padding: var(--kui-space-4, 16px);
 }
 
 .page-toc__label {
@@ -14,6 +29,22 @@
   font-weight: 700;
 }
 
-.page-toc__empty {
+.page-toc__list {
+  display: grid;
+  gap: var(--kui-space-1, 4px);
   margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-toc__link {
+  display: block;
+  border-inline-start: 2px solid var(--kui-color-border);
+  color: var(--kui-color-text-muted);
+  padding: var(--kui-space-1, 4px) 0 var(--kui-space-1, 4px) var(--kui-space-3, 12px);
+  text-decoration: none;
+}
+
+.page-toc__link:hover {
+  color: var(--kui-color-text);
 }

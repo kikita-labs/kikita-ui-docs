@@ -1,4 +1,15 @@
-<aside class="page-toc" aria-label="Page table of contents">
-  <p class="page-toc__label">On this page</p>
-  <p class="page-toc__empty">Section anchors will appear here.</p>
-</aside>
+@if (links().length) {
+  <aside class="page-toc" aria-label="Page table of contents">
+    <p class="page-toc__label">On this page</p>
+
+    <nav aria-label="Page sections">
+      <ul class="page-toc__list">
+        @for (link of links(); track link.id) {
+          <li>
+            <a class="page-toc__link" [href]="'#' + link.id">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </aside>
+}
