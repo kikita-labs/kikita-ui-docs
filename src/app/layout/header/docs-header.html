@@ -45,7 +45,7 @@
       }
     </nav>
 
-    <button class="docs-header__search" type="button" disabled>
+    <button class="docs-header__search" type="button" (click)="openSearch()">
       <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
         <circle cx="7" cy="7" r="5" />
         <path d="M11 11 14 14" />
@@ -77,4 +77,14 @@
       <span>{{ theme.currentLabel() }}</span>
     </button>
   </div>
+
+  <kui-command-palette
+    [(open)]="searchOpen"
+    [(query)]="searchQuery"
+    [groups]="searchIndex.groups"
+    label="Search documentation"
+    placeholder="Search documentation"
+    emptyText="No matching docs"
+    (selected)="navigateToCommand($event)"
+  />
 </header>

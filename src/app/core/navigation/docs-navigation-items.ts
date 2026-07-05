@@ -11,6 +11,7 @@ export const DOCS_PATHS = {
   foundationsDensity: `/${AppRoutePath.Foundations}/${AppRoutePath.FoundationsDensity}`,
   foundationsAccessibility: `/${AppRoutePath.Foundations}/${AppRoutePath.FoundationsAccessibility}`,
   components: `/${AppRoutePath.Components}`,
+  componentsButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsButton}`,
   smoke: `/${AppRoutePath.Smoke}`,
 } as const;
 
@@ -51,6 +52,13 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
     label: 'Components',
     path: DOCS_PATHS.components,
     description: 'Consumer-safe component documentation built from package APIs.',
+    children: [
+      {
+        label: 'Button',
+        path: DOCS_PATHS.componentsButton,
+        description: 'Native button and anchor styling directive.',
+      },
+    ],
   },
   {
     label: 'Package Smoke',
