@@ -13,6 +13,11 @@
   padding: clamp(28px, 4vw, 48px) clamp(18px, 4vw, 48px);
 }
 
+.docs-shell__body--landing {
+  grid-template-columns: minmax(0, 1fr);
+  max-inline-size: 1440px;
+}
+
 .docs-shell__content {
   display: grid;
   gap: var(--kui-space-6, 24px);

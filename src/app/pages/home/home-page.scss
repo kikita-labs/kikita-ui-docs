@@ -5,9 +5,10 @@
 
 .home-page__hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
   gap: clamp(32px, 6vw, 64px);
   align-items: center;
+  min-block-size: min(680px, calc(100dvh - 160px));
 }
 
 .home-page__hero-copy {
@@ -199,6 +200,7 @@
 }
 
 @media (max-width: 1040px) {
+  .home-page__hero,
   .home-page__install {
     grid-template-columns: minmax(0, 1fr);
   }
