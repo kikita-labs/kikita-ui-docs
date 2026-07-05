@@ -16,12 +16,23 @@
 .code-tabs__panel {
   overflow-x: auto;
   margin: 0;
-  padding: var(--kui-space-4, 16px);
 }
 
-code {
+.code-tabs__fallback,
+:host ::ng-deep .shiki {
+  margin: 0;
+  padding: var(--kui-space-4, 16px);
+  background: transparent !important;
+}
+
+.code-tabs__fallback code,
+:host ::ng-deep .shiki code {
   font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Consolas, monospace);
   font-size: var(--kui-text-sm-size, 13px);
   line-height: 1.6;
   white-space: pre;
+}
+
+:host ::ng-deep .shiki span {
+  font: inherit;
 }

@@ -18,11 +18,20 @@
   </div>
 
   @if (selectedTab(); as tab) {
-    <pre
+    <div
       class="code-tabs__panel"
       role="tabpanel"
       [id]="panelId(selectedIndex())"
       [attr.aria-labelledby]="tabId(selectedIndex())"
-    ><code [attr.data-language]="tab.language">{{ tab.code }}</code></pre>
+      [attr.aria-busy]="isHighlighting()"
+    >
+      @if (highlightedCode(); as html) {
+        <div class="code-tabs__highlight" [innerHTML]="html"></div>
+      } @else {
+        <pre
+          class="code-tabs__fallback"
+        ><code [attr.data-language]="tab.language">{{ tab.code }}</code></pre>
+      }
+    </div>
   }
 </div>
