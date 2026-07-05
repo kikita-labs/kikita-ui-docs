@@ -17,6 +17,7 @@ export class DocsShell {
   private readonly currentUrl = signal(this.router.url);
 
   protected readonly isLanding = computed(() => this.currentUrl().split(/[?#]/)[0] === '/');
+  protected readonly isNavigationOpen = signal(false);
 
   constructor() {
     this.router.events
@@ -26,6 +27,15 @@ export class DocsShell {
       )
       .subscribe((event) => {
         this.currentUrl.set(event.urlAfterRedirects);
+        this.isNavigationOpen.set(false);
       });
+  }
+
+  protected toggleNavigation(): void {
+    this.isNavigationOpen.update((open) => !open);
+  }
+
+  protected closeNavigation(): void {
+    this.isNavigationOpen.set(false);
   }
 }

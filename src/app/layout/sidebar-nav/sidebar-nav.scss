@@ -126,5 +126,9 @@
 @media (max-width: 760px) {
   .sidebar-nav {
     position: static;
+    max-block-size: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
   }
 }

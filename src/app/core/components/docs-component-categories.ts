@@ -1,4 +1,5 @@
 import { DocsComponentCategory } from './docs-component-category';
+import { AppRoutePath } from '../navigation/app-route-path';
 
 export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
   {
@@ -10,6 +11,7 @@ export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
         importName: 'KuiButtonDirective',
         status: 'available',
         description: 'Primary command primitive for buttons and links.',
+        routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsButton}`,
       },
       {
         name: 'Icon Button',

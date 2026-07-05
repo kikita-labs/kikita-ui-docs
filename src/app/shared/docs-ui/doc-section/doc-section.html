@@ -1,6 +1,54 @@
 <section class="doc-section" [attr.aria-labelledby]="headingId()">
   <header class="doc-section__header">
-    <h2 class="doc-section__title" [id]="headingId()">{{ title() }}</h2>
+    <div class="doc-section__heading-row">
+      <h2 class="doc-section__title" [id]="headingId()">
+        <a class="doc-section__heading-link" [href]="headingHref()">{{ title() }}</a>
+      </h2>
+
+      <button
+        kuiIconButton
+        class="doc-section__copy"
+        type="button"
+        appearance="ghost"
+        size="sm"
+        [attr.aria-label]="'Copy link to ' + title()"
+        (click)="copyHeadingLink()"
+      >
+        <svg aria-hidden="true" viewBox="0 0 16 16" focusable="false">
+          <path
+            d="M6.75 4.75h-2a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h4.5a2 2 0 0 0 2-2v-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+          />
+          <path
+            d="M7.25 8.75h2a2 2 0 0 0 2-2v-2"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+          />
+          <path
+            d="M9.25 2.75h2a2 2 0 0 1 2 2v2"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <span class="doc-section__copy-status" aria-live="polite">
+      @if (copied()) {
+        Link copied
+      }
+    </span>
+
     @if (description(); as sectionDescription) {
       <p class="doc-section__description">{{ sectionDescription }}</p>
     }

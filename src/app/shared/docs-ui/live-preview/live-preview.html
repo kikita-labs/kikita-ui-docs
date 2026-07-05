@@ -1,13 +1,39 @@
 <section kuiCard class="live-preview" appearance="surface" size="lg">
   <header class="live-preview__header">
-    <p class="live-preview__eyebrow">Live preview</p>
-    <h3 class="live-preview__title">{{ title() }}</h3>
-    @if (description(); as previewDescription) {
-      <p class="live-preview__description">{{ previewDescription }}</p>
-    }
+    <div>
+      <p class="live-preview__eyebrow">Live preview</p>
+      <h3 class="live-preview__title">{{ title() }}</h3>
+      @if (description(); as previewDescription) {
+        <p class="live-preview__description">{{ previewDescription }}</p>
+      }
+    </div>
+
+    <div class="live-preview__controls" aria-label="Preview options">
+      <kui-segmented
+        class="live-preview__control"
+        size="sm"
+        [selected]="theme()"
+        (selectedChange)="selectTheme($event)"
+      >
+        <button kuiSegment value="light">Light</button>
+        <button kuiSegment value="dark">Dark</button>
+      </kui-segmented>
+
+      <kui-segmented
+        class="live-preview__control"
+        size="sm"
+        [selected]="width()"
+        (selectedChange)="selectWidth($event)"
+      >
+        <button kuiSegment value="desktop">Desktop</button>
+        <button kuiSegment value="mobile">Mobile</button>
+      </kui-segmented>
+    </div>
   </header>
 
-  <div class="live-preview__surface">
-    <ng-content />
+  <div class="live-preview__stage">
+    <div class="live-preview__surface" [class]="surfaceClass()" [attr.data-kui-theme]="theme()">
+      <ng-content />
+    </div>
   </div>
 </section>

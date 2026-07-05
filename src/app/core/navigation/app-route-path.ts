@@ -7,6 +7,7 @@ export enum AppRoutePath {
   FoundationsDensity = 'density',
   FoundationsAccessibility = 'accessibility',
   Components = 'components',
+  ComponentsButton = 'button',
   Smoke = 'smoke',
   NotFound = '**',
 }

@@ -1,0 +1,72 @@
+<article class="button-page">
+  <app-page-header
+    eyebrow="Actions"
+    title="Button"
+    description="Directive for applying Kikita UI button styling to native button and anchor elements."
+    status="Stable"
+  />
+
+  <app-doc-section
+    anchor="import"
+    title="Import"
+    description="Import the public directive from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    title="Usage"
+    description="Use native button semantics for commands and anchor semantics for navigation."
+  >
+    <app-live-preview title="Basic buttons">
+      <app-basic-button-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="appearances"
+    title="Appearances"
+    description="Choose appearance from the public button appearance union."
+  >
+    <app-live-preview title="Appearance set">
+      <app-button-appearance-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="appearanceTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes-and-states"
+    title="Sizes and states"
+    description="Use the shared Kikita size scale and native disabled state."
+  >
+    <app-live-preview title="Size scale">
+      <app-button-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="api"
+    title="API"
+    description="Inputs verified against @kikita-labs/ui@0.0.5 public typings."
+  >
+    <app-api-table label="Button API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    title="Accessibility"
+    description="Button keeps native element behavior instead of replacing it with ARIA roles."
+  >
+    <ul class="button-page__notes">
+      <li>Use <code>&lt;button&gt;</code> for in-page commands and form actions.</li>
+      <li>Use <code>&lt;a&gt;</code> only for real navigation with an <code>href</code>.</li>
+      <li>Prefer visible text labels. Icon-only actions should use <code>kuiIconButton</code>.</li>
+      <li>
+        Disabled anchor buttons are removed from tab order and receive <code>aria-disabled</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -3,11 +3,25 @@
     eyebrow="Not found"
     title="Page not found"
     description="This route is not part of the docs information architecture."
+    status="404"
   />
 
-  <app-draft-state
-    eyebrow="404"
+  <kui-empty-state
+    context="no-results"
+    size="lg"
     title="Nothing is documented here"
-    description="Use the primary navigation to return to a planned documentation section."
-  />
+    description="Return to a planned documentation section or browse the component catalog."
+  >
+    <span kuiEmptyStateIcon aria-hidden="true" class="docs-not-found-page__icon">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M5 5h14v14H5z" />
+        <path d="M8 9h8M8 12h5M8 15h3" />
+      </svg>
+    </span>
+
+    <div kuiEmptyStateActions class="docs-not-found-page__actions">
+      <a kuiButton routerLink="/components">Browse components</a>
+      <a kuiButton appearance="outline" routerLink="/foundations/installation">Get started</a>
+    </div>
+  </kui-empty-state>
 </article>

@@ -20,17 +20,38 @@
 
         <div class="components-overview-page__grid">
           @for (component of category.components; track component.name) {
-            <article kuiCard appearance="surface" class="components-overview-page__card">
-              <header>
-                <h3>{{ component.name }}</h3>
-                <span kuiBadge appearance="primary" size="sm">{{ component.status }}</span>
-              </header>
-              <code>{{ component.importName }}</code>
-              <p>{{ component.description }}</p>
-            </article>
+            @if (component.routePath) {
+              <a
+                kuiCard
+                appearance="surface"
+                class="components-overview-page__card components-overview-page__card--link"
+                [routerLink]="component.routePath"
+              >
+                <ng-container
+                  [ngTemplateOutlet]="componentCard"
+                  [ngTemplateOutletContext]="{ component }"
+                />
+              </a>
+            } @else {
+              <article kuiCard appearance="surface" class="components-overview-page__card">
+                <ng-container
+                  [ngTemplateOutlet]="componentCard"
+                  [ngTemplateOutletContext]="{ component }"
+                />
+              </article>
+            }
           }
         </div>
       </section>
     }
   </div>
 </article>
+
+<ng-template #componentCard let-component="component">
+  <header>
+    <h3>{{ component.name }}</h3>
+    <span kuiBadge appearance="primary" size="sm">{{ component.status }}</span>
+  </header>
+  <code>{{ component.importName }}</code>
+  <p>{{ component.description }}</p>
+</ng-template>

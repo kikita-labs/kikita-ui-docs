@@ -6,3 +6,25 @@
   display: grid;
   gap: clamp(28px, 5vw, 48px);
 }
+
+.docs-not-found-page__icon {
+  display: inline-grid;
+  place-items: center;
+}
+
+.docs-not-found-page__icon svg {
+  inline-size: 32px;
+  block-size: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.docs-not-found-page__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}

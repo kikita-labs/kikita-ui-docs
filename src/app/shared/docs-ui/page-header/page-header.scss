@@ -10,6 +10,13 @@
   margin: 0;
 }
 
+.page-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-2, 8px);
+  align-items: center;
+}
+
 .page-header__eyebrow {
   color: var(--kui-color-text-muted);
   font-size: var(--kui-text-sm-size, 13px);

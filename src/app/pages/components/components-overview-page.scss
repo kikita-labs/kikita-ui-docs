@@ -50,6 +50,19 @@
 .components-overview-page__card {
   display: grid;
   gap: var(--kui-space-3, 12px);
+  color: inherit;
+  text-decoration: none;
+}
+
+.components-overview-page__card--link {
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.components-overview-page__card--link:hover {
+  border-color: var(--kui-color-primary-border);
+  transform: translateY(-1px);
 }
 
 .components-overview-page__card header {

@@ -52,8 +52,21 @@ export const routes: Routes = [
   },
   {
     path: AppRoutePath.Components,
-    loadComponent: () =>
-      import('./pages/components/components-overview-page').then((m) => m.ComponentsOverviewPage),
+    children: [
+      {
+        path: AppRoutePath.Home,
+        loadComponent: () =>
+          import('./pages/components/components-overview-page').then(
+            (m) => m.ComponentsOverviewPage,
+          ),
+        pathMatch: 'full',
+      },
+      {
+        path: AppRoutePath.ComponentsButton,
+        loadComponent: () =>
+          import('./pages/components/button/button-page').then((m) => m.ButtonPage),
+      },
+    ],
   },
   {
     path: AppRoutePath.Smoke,

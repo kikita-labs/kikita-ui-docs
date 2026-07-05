@@ -1,9 +1,23 @@
 <div class="docs-shell">
-  <app-docs-header />
+  <app-docs-header
+    [showMenuButton]="!isLanding()"
+    [menuOpen]="isNavigationOpen()"
+    (menuToggle)="toggleNavigation()"
+  />
 
   <div class="docs-shell__body" [class.docs-shell__body--landing]="isLanding()">
     @if (!isLanding()) {
-      <app-sidebar-nav />
+      <button
+        class="docs-shell__backdrop"
+        type="button"
+        aria-label="Close documentation navigation"
+        [class.docs-shell__backdrop--open]="isNavigationOpen()"
+        (click)="closeNavigation()"
+      ></button>
+
+      <aside class="docs-shell__sidebar" [class.docs-shell__sidebar--open]="isNavigationOpen()">
+        <app-sidebar-nav />
+      </aside>
     }
 
     <main class="docs-shell__content" id="main-content" tabindex="-1">

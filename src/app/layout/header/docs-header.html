@@ -1,12 +1,31 @@
 <header class="docs-header">
-  <a class="docs-header__brand" [routerLink]="homePath" aria-label="Kikita UI Docs home">
-    <span class="docs-header__mark" aria-hidden="true">
-      <svg viewBox="0 0 16 16" focusable="false">
-        <path d="M3 2v12M3 8l7-6M3 8l7 6" />
-      </svg>
-    </span>
-    <span class="docs-header__title">Kikita UI</span>
-  </a>
+  <div class="docs-header__start">
+    @if (showMenuButton()) {
+      <button
+        kuiIconButton
+        class="docs-header__menu"
+        type="button"
+        appearance="ghost"
+        size="sm"
+        aria-label="Toggle documentation navigation"
+        [attr.aria-expanded]="menuOpen()"
+        (click)="menuToggle.emit()"
+      >
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <path d="M3 4.5h10M3 8h10M3 11.5h10" />
+        </svg>
+      </button>
+    }
+
+    <a class="docs-header__brand" [routerLink]="homePath" aria-label="Kikita UI Docs home">
+      <span class="docs-header__mark" aria-hidden="true">
+        <svg viewBox="0 0 16 16" focusable="false">
+          <path d="M3 2v12M3 8l7-6M3 8l7 6" />
+        </svg>
+      </span>
+      <span class="docs-header__title">Kikita UI</span>
+    </a>
+  </div>
 
   <div class="docs-header__actions">
     <nav class="docs-header__nav" aria-label="Primary documentation">
