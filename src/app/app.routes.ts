@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
 import { AppRoutePath } from './core/navigation/app-route-path';
 import {
-  ACCESSIBILITY_ROUTE_DRAFT,
   COMPONENTS_ROUTE_DRAFT,
-  DENSITY_ROUTE_DRAFT,
   FOUNDATIONS_ROUTE_DRAFT,
   HOME_ROUTE_DRAFT,
 } from './core/navigation/docs-route-drafts';
@@ -45,13 +43,15 @@ export const routes: Routes = [
       },
       {
         path: AppRoutePath.FoundationsDensity,
-        loadComponent: loadDraftPage,
-        data: DENSITY_ROUTE_DRAFT,
+        loadComponent: () =>
+          import('./pages/foundations/density/density-page').then((m) => m.DensityPage),
       },
       {
         path: AppRoutePath.FoundationsAccessibility,
-        loadComponent: loadDraftPage,
-        data: ACCESSIBILITY_ROUTE_DRAFT,
+        loadComponent: () =>
+          import('./pages/foundations/accessibility/accessibility-page').then(
+            (m) => m.AccessibilityPage,
+          ),
       },
     ],
   },
