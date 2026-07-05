@@ -3,7 +3,6 @@ import { AppRoutePath } from './core/navigation/app-route-path';
 import {
   COMPONENTS_ROUTE_DRAFT,
   FOUNDATIONS_ROUTE_DRAFT,
-  HOME_ROUTE_DRAFT,
 } from './core/navigation/docs-route-drafts';
 
 const loadDraftPage = () => import('./pages/draft/docs-draft-page').then((m) => m.DocsDraftPage);
@@ -11,8 +10,7 @@ const loadDraftPage = () => import('./pages/draft/docs-draft-page').then((m) => 
 export const routes: Routes = [
   {
     path: AppRoutePath.Home,
-    loadComponent: loadDraftPage,
-    data: HOME_ROUTE_DRAFT,
+    loadComponent: () => import('./pages/home/home-page').then((m) => m.HomePage),
     pathMatch: 'full',
   },
   {

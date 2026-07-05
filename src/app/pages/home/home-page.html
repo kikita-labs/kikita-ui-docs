@@ -1,0 +1,97 @@
+<article class="home-page">
+  <section class="home-page__hero">
+    <div class="home-page__hero-copy">
+      <p kuiBadge appearance="primary" size="sm" class="home-page__eyebrow">Angular 22+ docs</p>
+      <h1>Interfaces that feel considered.</h1>
+      <p class="home-page__lead">
+        Kikita UI is a token-driven Angular component library with consumer-safe docs, runtime
+        theming, density controls, and accessibility review baked into the workflow.
+      </p>
+      <div class="home-page__actions">
+        <a kuiButton size="lg" [routerLink]="['/foundations/installation']">Get Started</a>
+        <a kuiButton appearance="outline" size="lg" [routerLink]="['/components']">
+          Browse Components
+        </a>
+      </div>
+    </div>
+
+    <div class="home-page__board" aria-label="Kikita UI component preview">
+      <section
+        kuiCard
+        appearance="elevated"
+        class="home-page__board-card home-page__board-card--profile"
+      >
+        <p class="home-page__board-label">Profile</p>
+        <div class="home-page__profile">
+          <span class="home-page__avatar" aria-hidden="true">MK</span>
+          <span>
+            <strong>Mira Kane</strong>
+            <span>Product design</span>
+          </span>
+        </div>
+        <span kuiBadge appearance="primary" size="sm">Pro plan</span>
+      </section>
+
+      <section
+        kuiCard
+        appearance="elevated"
+        class="home-page__board-card home-page__board-card--actions"
+      >
+        <p class="home-page__board-label">Actions</p>
+        <div class="home-page__button-row">
+          <button kuiButton size="sm">Solid</button>
+          <button kuiButton appearance="soft" size="sm">Soft</button>
+        </div>
+        <label class="home-page__setting">
+          <span>Email notifications</span>
+          <input kuiSwitch type="checkbox" checked aria-label="Email notifications" />
+        </label>
+      </section>
+
+      <section
+        kuiCard
+        appearance="elevated"
+        class="home-page__board-card home-page__board-card--progress"
+      >
+        <div class="home-page__progress-label">
+          <span>Sync progress</span>
+          <strong>72%</strong>
+        </div>
+        <div class="home-page__progress-track" aria-hidden="true">
+          <span></span>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section class="home-page__value-grid" aria-label="Why Kikita UI">
+    <article kuiCard appearance="surface" class="home-page__value">
+      <h2>Token architecture</h2>
+      <p>Seed, palette, semantic, and component tokens keep customization explicit.</p>
+    </article>
+    <article kuiCard appearance="surface" class="home-page__value">
+      <h2>Runtime density</h2>
+      <p>Compact, regular, and comfortable modes support different product surfaces.</p>
+    </article>
+    <article kuiCard appearance="surface" class="home-page__value">
+      <h2>Accessibility-first</h2>
+      <p>Docs separate automated smoke checks from real keyboard and AT review.</p>
+    </article>
+    <article kuiCard appearance="surface" class="home-page__value">
+      <h2>Angular-native</h2>
+      <p>Standalone components, lazy routes, and signal-first app architecture.</p>
+    </article>
+  </section>
+
+  <section class="home-page__install">
+    <div>
+      <p class="home-page__section-label">Install</p>
+      <h2>Use the published package like a real consumer.</h2>
+      <p>
+        The docs app imports from <code>@kikita-labs/ui</code> and keeps the stylesheet wired
+        through <code>angular.json</code>, matching the verified consumer setup.
+      </p>
+    </div>
+    <app-code-tabs [tabs]="installTabs" />
+  </section>
+</article>
