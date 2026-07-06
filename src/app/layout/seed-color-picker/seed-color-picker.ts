@@ -1,8 +1,10 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import {
   KuiButtonDirective,
   KuiColorInputDirective,
   KuiIconButtonDirective,
+  KuiPopoverComponent,
+  KuiPopoverForDirective,
 } from '@kikita-labs/ui';
 import {
   DOCS_DEFAULT_SEED_COLORS,
@@ -27,16 +29,18 @@ const SEED_COLOR_LABELS: Readonly<Record<DocsSeedColorName, string>> = {
 
 @Component({
   selector: 'app-seed-color-picker',
-  imports: [KuiButtonDirective, KuiColorInputDirective, KuiIconButtonDirective],
+  imports: [
+    KuiButtonDirective,
+    KuiColorInputDirective,
+    KuiIconButtonDirective,
+    KuiPopoverComponent,
+    KuiPopoverForDirective,
+  ],
   templateUrl: './seed-color-picker.html',
   styleUrl: './seed-color-picker.scss',
-  host: {
-    '(document:keydown)': 'handleDocumentKeydown($event)',
-  },
 })
 export class SeedColorPicker {
   protected readonly theme = inject(DocsThemeService);
-  protected readonly open = signal(false);
   protected readonly rows = computed<readonly SeedColorRow[]>(() => {
     const colors = this.theme.seedColors();
 
@@ -46,10 +50,6 @@ export class SeedColorPicker {
       value: colors[name],
     }));
   });
-
-  protected toggle(): void {
-    this.open.update((open) => !open);
-  }
 
   protected updateSeedColor(name: DocsSeedColorName, event: Event): void {
     const input = event.target;
@@ -63,11 +63,5 @@ export class SeedColorPicker {
 
   protected reset(): void {
     this.theme.resetSeedColors();
-  }
-
-  protected handleDocumentKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Escape') {
-      this.open.set(false);
-    }
   }
 }

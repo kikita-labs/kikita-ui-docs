@@ -24,40 +24,6 @@
   stroke: none;
 }
 
-.seed-color-picker__popover {
-  position: absolute;
-  z-index: 30;
-  inset-block-start: calc(100% + 10px);
-  inset-inline-end: 0;
-  inline-size: 280px;
-  border: 1px solid var(--kui-color-border);
-  border-radius: var(--kui-radius-lg, 12px);
-  background: var(--kui-color-surface-elevated);
-  box-shadow: var(--kui-shadow-lg, 0 24px 60px rgb(0 0 0 / 18%));
-  color: var(--kui-color-text);
-  padding: var(--kui-space-4, 16px);
-}
-
-.seed-color-picker__arrow {
-  position: absolute;
-  z-index: -1;
-  inset-block-start: -6px;
-  inset-inline-end: 14px;
-  inline-size: 10px;
-  block-size: 10px;
-  border-block-start: 1px solid var(--kui-color-border);
-  border-inline-start: 1px solid var(--kui-color-border);
-  background: var(--kui-color-surface-elevated);
-  transform: rotate(45deg);
-}
-
-.seed-color-picker__title {
-  margin-block-end: var(--kui-space-3, 12px);
-  color: var(--kui-color-text);
-  font-size: var(--kui-text-sm-size, 13px);
-  font-weight: 600;
-}
-
 .seed-color-picker__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

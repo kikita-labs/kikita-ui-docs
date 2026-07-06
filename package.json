@@ -22,7 +22,7 @@
     "@angular/forms": "^22.0.0",
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
-    "@kikita-labs/ui": "0.0.6",
+    "@kikita-labs/ui": "0.0.8",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
