@@ -29,6 +29,19 @@ describe('DocsThemeService', () => {
     expect(document.documentElement.dataset['kuiTheme']).toBe(DocsThemeMode.Dark);
   });
 
+  it('applies and persists seed colors', () => {
+    const service = TestBed.inject(DocsThemeService);
+
+    service.setSeedColor('primary', '#2563eb');
+    TestBed.tick();
+
+    const themeStyle = document.getElementById('kui-theme');
+
+    expect(service.seedColors().primary).toBe('#2563eb');
+    expect(window.localStorage.getItem('kikita-ui-docs.seed-colors')).toContain('#2563eb');
+    expect(themeStyle?.textContent).toContain('--kui-seed-primary');
+  });
+
   it('supports a document without matchMedia', () => {
     const testDocument = document.implementation.createHTMLDocument('test');
 

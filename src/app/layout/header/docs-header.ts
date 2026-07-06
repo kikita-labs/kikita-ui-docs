@@ -13,6 +13,7 @@ import { DOCS_HOME_PATH, DOCS_NAVIGATION_ITEMS } from '../../core/navigation/doc
 import { DocsSearchIndexService } from '../../core/search/docs-search-index.service';
 import { DocsSearchStateService } from '../../core/search/docs-search-state.service';
 import { DocsThemeService } from '../../core/theme/docs-theme.service';
+import { SeedColorPicker } from '../seed-color-picker/seed-color-picker';
 
 interface HeaderBreadcrumb {
   readonly label: string;
@@ -20,7 +21,13 @@ interface HeaderBreadcrumb {
 
 @Component({
   selector: 'app-docs-header',
-  imports: [KuiButtonDirective, KuiCommandPaletteComponent, KuiIconButtonDirective, RouterLink],
+  imports: [
+    KuiButtonDirective,
+    KuiCommandPaletteComponent,
+    KuiIconButtonDirective,
+    RouterLink,
+    SeedColorPicker,
+  ],
   templateUrl: './docs-header.html',
   styleUrl: './docs-header.scss',
   host: {

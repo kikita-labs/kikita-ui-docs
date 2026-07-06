@@ -1,2 +1,4 @@
 minimumReleaseAgeExclude:
+  - '@kikita-labs/ui'
   - '@kikita-labs/ui@0.0.5'
+  - '@kikita-labs/ui@0.0.6'

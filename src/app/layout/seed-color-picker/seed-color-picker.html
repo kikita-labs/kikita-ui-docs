@@ -1,0 +1,57 @@
+<button
+  kuiIconButton
+  class="seed-color-picker__button"
+  type="button"
+  appearance="outline"
+  size="sm"
+  aria-label="Seed colors"
+  [attr.aria-expanded]="open()"
+  (click)="toggle()"
+>
+  <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+    <circle cx="8" cy="8" r="6" />
+    <circle cx="6" cy="6.2" r="1.15" />
+    <circle cx="10.2" cy="6" r="1" />
+    <circle cx="10.6" cy="9.6" r="1" />
+    <circle cx="6.6" cy="10.2" r="1" />
+  </svg>
+</button>
+
+@if (open()) {
+  <div class="seed-color-picker__popover" role="dialog" aria-label="Seed tokens">
+    <div class="seed-color-picker__arrow"></div>
+    <div class="seed-color-picker__title">Seed tokens</div>
+
+    <div class="seed-color-picker__grid">
+      @for (row of rows(); track row.name) {
+        <label class="seed-color-picker__field">
+          <span class="seed-color-picker__label">{{ row.label }}</span>
+          <input
+            kuiColorInput
+            class="seed-color-picker__input"
+            size="sm"
+            spellcheck="false"
+            [value]="row.value"
+            [swatchLabel]="row.label + ' seed'"
+            (input)="updateSeedColor(row.name, $event)"
+          />
+        </label>
+      }
+    </div>
+
+    <button
+      kuiButton
+      class="seed-color-picker__reset"
+      type="button"
+      appearance="ghost"
+      size="xs"
+      (click)="reset()"
+    >
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1" />
+        <path d="M13.5 2.5v3.5H10" />
+      </svg>
+      Reset to defaults
+    </button>
+  </div>
+}
