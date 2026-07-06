@@ -1,0 +1,16 @@
+<div class="basic-menu-example">
+  <button kuiButton type="button" [kuiMenuFor]="actionsMenu">Actions</button>
+
+  <kui-menu #actionsMenu ariaLabel="Project actions">
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__label">Edit</span>
+    </button>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__label">Copy</span>
+    </button>
+    <hr kuiSeparator spacing="xs" />
+    <button type="button" kuiMenuItem appearance="destructive">
+      <span class="kui-menu-item__label">Delete</span>
+    </button>
+  </kui-menu>
+</div>

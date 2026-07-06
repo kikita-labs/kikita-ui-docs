@@ -1,33 +1,22 @@
 .draft-state {
-  display: grid;
+  min-block-size: min(520px, calc(100dvh - 190px));
+  place-content: center;
+  padding: clamp(48px, 10vw, 96px) var(--kui-space-4, 16px);
+}
+
+.draft-state svg {
+  inline-size: 34px;
+  block-size: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.draft-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--kui-space-3, 12px);
-  max-inline-size: 520px;
-  justify-items: center;
-  border: 1px solid var(--kui-color-border);
-  margin-inline: auto;
-  padding: clamp(32px, 6vw, 56px);
-  text-align: center;
-}
-
-.draft-state__eyebrow,
-.draft-state__title,
-.draft-state__description {
-  margin: 0;
-}
-
-.draft-state__eyebrow {
-  justify-self: center;
-}
-
-.draft-state__title {
-  color: var(--kui-color-text);
-  font-size: clamp(20px, 3vw, 28px);
-  line-height: 1.2;
-}
-
-.draft-state__description {
-  max-inline-size: 56ch;
-  color: var(--kui-color-text-muted);
-  font-size: var(--kui-text-lg-size, 18px);
-  line-height: 1.6;
 }

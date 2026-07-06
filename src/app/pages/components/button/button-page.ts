@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { ApiTableRow } from '../../../shared/docs-ui/api-table/api-table-row';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
+import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
 import { CodeTabs } from '../../../shared/docs-ui/code-tabs/code-tabs';
 import { DocSection } from '../../../shared/docs-ui/doc-section/doc-section';
 import { LivePreview } from '../../../shared/docs-ui/live-preview/live-preview';
 import { PageHeader } from '../../../shared/docs-ui/page-header/page-header';
 import { BasicButtonExample } from './examples/basic-button-example/basic-button-example';
+import { BUTTON_API_ROWS } from './button.api-schema';
 import { ButtonAppearanceExample } from './examples/button-appearance-example/button-appearance-example';
 import { ButtonSizeExample } from './examples/button-size-example/button-size-example';
 
@@ -26,6 +27,9 @@ import { ButtonSizeExample } from './examples/button-size-example/button-size-ex
   styleUrl: './button-page.scss',
 })
 export class ButtonPage {
+  protected readonly status = `Stable - @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION}`;
+  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
@@ -82,28 +86,5 @@ export class BasicButtonExample {}`,
     },
   ];
 
-  protected readonly apiRows: readonly ApiTableRow[] = [
-    {
-      name: 'appearance',
-      type: `'solid' | 'soft' | 'outline' | 'ghost' | 'danger' | 'primary' | 'secondary'`,
-      description:
-        'Visual treatment. primary and secondary are temporary aliases for solid and soft.',
-    },
-    {
-      name: 'size',
-      type: `'xs' | 'sm' | 'md' | 'lg'`,
-      description: 'Control height and spacing size.',
-    },
-    {
-      name: 'wrap',
-      type: 'boolean',
-      description: 'Allows long button text to wrap instead of truncating in narrow containers.',
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      description:
-        'Disables native button behavior. Anchor buttons receive aria-disabled and leave tab order.',
-    },
-  ];
+  protected readonly apiRows = BUTTON_API_ROWS;
 }

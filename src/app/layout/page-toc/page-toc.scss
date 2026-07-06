@@ -1,6 +1,8 @@
 :host {
   display: block;
   min-inline-size: 0;
+  min-block-size: calc(100dvh - 56px);
+  border-inline-start: 1px solid var(--kui-color-border);
 }
 
 :host(.page-toc-host--empty) {
@@ -9,42 +11,60 @@
 
 .page-toc {
   position: sticky;
-  inset-block-start: calc(72px + var(--kui-space-6, 24px));
+  inset-block-start: 56px;
   display: grid;
-  gap: var(--kui-space-2, 8px);
+  gap: 14px;
   align-content: start;
-  max-block-size: calc(100dvh - 72px - var(--kui-space-12, 48px));
+  max-block-size: calc(100dvh - 56px);
   overflow: auto;
-  border: 1px solid var(--kui-color-border);
-  border-radius: var(--kui-radius-lg, 10px);
-  background: color-mix(in oklab, var(--kui-color-surface) 92%, transparent);
+  background: transparent;
   color: var(--kui-color-text-muted);
-  font-size: var(--kui-text-sm-size, 13px);
-  padding: var(--kui-space-4, 16px);
+  padding: 32px 20px;
 }
 
 .page-toc__label {
   margin: 0;
-  color: var(--kui-color-text);
+  color: var(--kui-color-text-secondary);
+  font-size: 11px;
   font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .page-toc__list {
   display: grid;
-  gap: var(--kui-space-1, 4px);
+  gap: 0;
   margin: 0;
-  padding: 0;
+  border-inline-start: 1px solid var(--kui-color-border);
+  padding: 0 0 0 12px;
   list-style: none;
 }
 
 .page-toc__link {
+  position: relative;
   display: block;
-  border-inline-start: 2px solid var(--kui-color-border);
   color: var(--kui-color-text-muted);
-  padding: var(--kui-space-1, 4px) 0 var(--kui-space-1, 4px) var(--kui-space-3, 12px);
+  font-size: var(--kui-text-xs-size, 12px);
+  line-height: 1.4;
+  padding: 5px 0;
   text-decoration: none;
 }
 
 .page-toc__link:hover {
   color: var(--kui-color-text);
+}
+
+.page-toc__link--active {
+  color: var(--kui-color-text);
+  font-weight: 600;
+}
+
+.page-toc__link--active::before {
+  position: absolute;
+  inset-block: 4px;
+  inset-inline-start: -13px;
+  inline-size: 2px;
+  border-radius: 999px;
+  background: var(--kui-color-primary-fill);
+  content: '';
 }

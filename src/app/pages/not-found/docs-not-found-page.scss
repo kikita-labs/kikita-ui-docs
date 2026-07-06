@@ -6,10 +6,8 @@
   display: grid;
   min-block-size: calc(100dvh - 72px - 96px);
   place-items: center;
-  border: 1px solid var(--kui-color-border);
-  border-radius: var(--kui-radius-lg, 10px);
   background: var(--kui-color-bg);
-  padding: clamp(48px, 10vw, 120px) var(--kui-space-4, 16px);
+  padding: 130px var(--kui-space-4, 16px);
 }
 
 .docs-not-found-page__content {
@@ -21,22 +19,25 @@
 
 .docs-not-found-page__code {
   margin: 0;
-  color: color-mix(in oklab, var(--kui-color-text) 22%, transparent);
-  font-size: clamp(72px, 12vw, 104px);
+  color: var(--kui-color-border-strong);
+  font-size: 84px;
   font-weight: 800;
-  line-height: 0.85;
+  letter-spacing: -3px;
+  line-height: 1;
 }
 
 .docs-not-found-page h1 {
-  margin: var(--kui-space-4, 16px) 0 0;
+  margin: 18px 0 0;
   color: var(--kui-color-text);
-  font-size: clamp(24px, 4vw, 32px);
-  line-height: 1.15;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .docs-not-found-page p:not(.docs-not-found-page__code) {
-  margin: var(--kui-space-3, 12px) 0 0;
-  color: var(--kui-color-text-muted);
+  max-inline-size: 380px;
+  margin: var(--kui-space-2, 8px) 0 0;
+  color: var(--kui-color-text-secondary);
   line-height: 1.6;
 }
 
@@ -45,5 +46,14 @@
   flex-wrap: wrap;
   gap: var(--kui-space-3, 12px);
   justify-content: center;
-  margin-block-start: var(--kui-space-6, 24px);
+  margin-block-start: 28px;
+}
+
+.docs-not-found-page__actions svg {
+  inline-size: 14px;
+  block-size: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 1.5;
 }

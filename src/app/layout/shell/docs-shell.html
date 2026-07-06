@@ -1,5 +1,6 @@
 <div class="docs-shell">
   <app-docs-header
+    [landing]="isLanding()"
     [minimal]="isNotFound()"
     [showMenuButton]="!isLanding() && !isNotFound()"
     [menuOpen]="isNavigationOpen()"
@@ -21,7 +22,7 @@
       ></button>
 
       <aside class="docs-shell__sidebar" [class.docs-shell__sidebar--open]="isNavigationOpen()">
-        <app-sidebar-nav />
+        <app-sidebar-nav (closeNavigation)="closeNavigation()" />
       </aside>
     }
 

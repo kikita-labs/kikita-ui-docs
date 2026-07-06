@@ -1,6 +1,7 @@
 .button-page {
   display: grid;
   gap: clamp(32px, 6vw, 56px);
+  max-inline-size: 780px;
 }
 
 .button-page__notes {

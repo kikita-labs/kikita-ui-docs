@@ -1,5 +1,29 @@
-<section kuiCard class="draft-state" appearance="surface" size="lg">
-  <p kuiBadge class="draft-state__eyebrow" appearance="neutral" size="sm">{{ eyebrow() }}</p>
-  <h2 class="draft-state__title">{{ title() }}</h2>
-  <p class="draft-state__description">{{ description() }}</p>
-</section>
+<kui-empty-state
+  class="draft-state"
+  context="no-data"
+  size="lg"
+  [title]="title()"
+  [description]="description()"
+>
+  <svg kuiEmptyStateIcon viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M6 3h9l3 3v15H6z" />
+    <path d="M14 3v4h4" />
+    <path d="M9 13h5" />
+    <path d="M9 17h3" />
+  </svg>
+
+  <div kuiEmptyStateActions class="draft-state__actions">
+    <a
+      kuiButton
+      appearance="outline"
+      [href]="links.githubRepository"
+      target="_blank"
+      rel="noreferrer"
+    >
+      View on GitHub
+    </a>
+    <a kuiButton appearance="ghost" [href]="links.githubIssues" target="_blank" rel="noreferrer">
+      Get notified
+    </a>
+  </div>
+</kui-empty-state>

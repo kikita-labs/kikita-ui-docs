@@ -1,0 +1,69 @@
+<article class="icon-button-page">
+  <app-page-header
+    eyebrow="Actions"
+    title="Icon Button"
+    description="Square icon-only action control for native buttons and links."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    title="Import"
+    description="Use the icon button directive on native button or anchor elements. Pair it with kui-icon for package-backed icon rendering."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    title="Usage"
+    description="Icon-only controls must provide an accessible label on the host element."
+  >
+    <app-live-preview title="Icon button appearances">
+      <app-icon-button-appearance-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="usageTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="appearance"
+    title="Appearance"
+    description="Use appearance to match the command hierarchy and danger states."
+  >
+    <app-live-preview title="Appearance options">
+      <app-icon-button-appearance-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="appearanceTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="size"
+    title="Size"
+    description="Size maps to square control dimensions and should match nearby controls."
+  >
+    <app-live-preview title="Size options">
+      <app-icon-button-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+    <app-api-table label="Icon button API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    title="Accessibility"
+    description="The visual icon is decorative when the host already has a clear label."
+  >
+    <ul class="icon-button-page__notes">
+      <li>Add <code>aria-label</code> to every icon-only button or link.</li>
+      <li>Keep icons decorative with no <code>label</code> on <code>kui-icon</code>.</li>
+      <li>
+        Use native <code>disabled</code> for buttons and the directive-managed disabled state for
+        anchors.
+      </li>
+      <li>Prefer visible text buttons when the icon meaning is not widely understood.</li>
+    </ul>
+  </app-doc-section>
+</article>

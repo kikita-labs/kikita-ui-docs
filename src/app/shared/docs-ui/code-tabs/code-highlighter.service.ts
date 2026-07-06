@@ -1,12 +1,14 @@
 import { Service, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DocsThemeMode } from '../../../core/theme/docs-theme-mode';
 import { CodeTabLanguage } from './code-tab-language';
 
 interface ShikiHighlighter {
   codeToHtml(code: string, options: { lang: string; theme: string }): string;
 }
 
-const SHIKI_THEME = 'github-dark-default';
+const SHIKI_DARK_THEME = 'github-dark-default';
+const SHIKI_LIGHT_THEME = 'github-light';
 
 const SHIKI_LANGUAGE_BY_TAB: Record<CodeTabLanguage, string> = {
   bash: 'bash',
@@ -24,11 +26,15 @@ export class CodeHighlighterService {
   private readonly sanitizer = inject(DomSanitizer);
   private highlighterPromise: Promise<ShikiHighlighter> | null = null;
 
-  async highlight(code: string, language: CodeTabLanguage): Promise<SafeHtml> {
+  async highlight(
+    code: string,
+    language: CodeTabLanguage,
+    themeMode: DocsThemeMode,
+  ): Promise<SafeHtml> {
     const highlighter = await this.getHighlighter();
     const html = highlighter.codeToHtml(code, {
       lang: SHIKI_LANGUAGE_BY_TAB[language],
-      theme: SHIKI_THEME,
+      theme: themeMode === DocsThemeMode.Dark ? SHIKI_DARK_THEME : SHIKI_LIGHT_THEME,
     });
 
     return this.sanitizer.bypassSecurityTrustHtml(html);
@@ -41,11 +47,12 @@ export class CodeHighlighterService {
   }
 
   private async createHighlighter(): Promise<ShikiHighlighter> {
-    const [core, engine, theme, bash, css, html, json, markdown, scss, typescript] =
+    const [core, engine, darkTheme, lightTheme, bash, css, html, json, markdown, scss, typescript] =
       await Promise.all([
         import('shiki/core'),
         import('shiki/engine/javascript'),
         import('shiki/themes/github-dark-default.mjs'),
+        import('shiki/themes/github-light.mjs'),
         import('shiki/langs/bash.mjs'),
         import('shiki/langs/css.mjs'),
         import('shiki/langs/angular-html.mjs'),
@@ -66,7 +73,7 @@ export class CodeHighlighterService {
         scss.default,
         typescript.default,
       ],
-      themes: [theme.default],
+      themes: [darkTheme.default, lightTheme.default],
     });
   }
 }

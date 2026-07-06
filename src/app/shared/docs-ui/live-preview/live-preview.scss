@@ -1,69 +1,19 @@
 .live-preview {
-  display: grid;
-  gap: var(--kui-space-4, 16px);
-  padding: clamp(20px, 4vw, 32px);
-}
-
-.live-preview__header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: start;
-  justify-content: space-between;
-  gap: var(--kui-space-2, 8px);
-}
-
-.live-preview__eyebrow,
-.live-preview__title,
-.live-preview__description {
-  margin: 0;
-}
-
-.live-preview__eyebrow {
-  color: var(--kui-color-text-muted);
-  font-size: var(--kui-text-xs-size, 12px);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.live-preview__title {
-  color: var(--kui-color-text);
-  font-size: clamp(20px, 3vw, 28px);
-  line-height: 1.2;
-}
-
-.live-preview__description {
-  margin-block-start: var(--kui-space-2, 8px);
-  max-inline-size: 64ch;
-  color: var(--kui-color-text-muted);
-  line-height: 1.6;
-}
-
-.live-preview__controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--kui-space-2, 8px);
-  justify-content: end;
+  display: block;
+  overflow: hidden;
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+  padding: 0;
 }
 
 .live-preview__stage {
   display: grid;
   justify-items: center;
   overflow-x: auto;
-  border: 1px solid var(--kui-color-border);
-  border-radius: 8px;
-  background:
-    linear-gradient(
-      90deg,
-      color-mix(in oklch, var(--kui-color-border) 36%, transparent) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      color-mix(in oklch, var(--kui-color-border) 36%, transparent) 1px,
-      transparent 1px
-    ),
-    var(--kui-color-surface-sunken);
-  background-size: 24px 24px;
-  padding: var(--kui-space-3, 12px);
+  background-color: var(--kui-color-surface);
+  background-image: radial-gradient(var(--kui-color-border) 1px, transparent 1px);
+  background-size: 16px 16px;
+  padding: 32px;
 }
 
 .live-preview__surface {
@@ -72,21 +22,12 @@
   min-block-size: 180px;
   max-inline-size: 100%;
   align-items: center;
-  border: 1px solid var(--kui-color-border);
-  border-radius: 8px;
-  background: var(--kui-color-bg);
-  padding: clamp(16px, 4vw, 28px);
+  background: transparent;
+  padding: 0;
   color: var(--kui-color-text);
 }
 
 .live-preview__surface--mobile {
   inline-size: min(360px, 100%);
   min-block-size: 420px;
-}
-
-@media (max-width: 720px) {
-  .live-preview__header,
-  .live-preview__controls {
-    justify-content: start;
-  }
 }

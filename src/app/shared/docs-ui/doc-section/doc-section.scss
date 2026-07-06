@@ -1,7 +1,7 @@
 .doc-section {
   display: grid;
   gap: var(--kui-space-4, 16px);
-  max-inline-size: 820px;
+  max-inline-size: 780px;
 }
 
 .doc-section__header {
@@ -22,8 +22,9 @@
 
 .doc-section__title {
   color: var(--kui-color-text);
-  font-size: clamp(24px, 4vw, 32px);
-  line-height: 1.15;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 .doc-section__heading-link {
@@ -32,9 +33,8 @@
 }
 
 .doc-section__heading-link:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.16em;
+  background: var(--kui-color-surface-elevated);
+  border-radius: var(--kui-radius-sm, 6px);
 }
 
 .doc-section__copy {
@@ -62,8 +62,9 @@
 }
 
 .doc-section__description {
-  max-inline-size: 64ch;
-  color: var(--kui-color-text-muted);
+  max-inline-size: 600px;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
   line-height: 1.6;
 }
 

@@ -1,0 +1,63 @@
+<article class="select-page">
+  <app-page-header
+    eyebrow="Forms"
+    title="Select"
+    description="Readonly native input trigger backed by explicit dropdown and option primitives."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    title="Import"
+    description="Select composes field, dropdown, option, and the native input select directive."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    title="Usage"
+    description="Bind value with Angular signals and keep option markup explicit."
+  >
+    <app-live-preview title="Basic select">
+      <app-basic-select-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="multiple"
+    title="Multiple values"
+    description="Set multiple when the value is an array. Selected values render as field chips by default."
+  >
+    <app-live-preview title="Multiple select">
+      <app-multiple-select-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="multipleTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="provider-defaults"
+    title="Provider defaults"
+    description="Use provider defaults for app-wide select behavior. Local inputs still win."
+  >
+    <app-code-tabs [tabs]="providerTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+    <app-api-table label="Select API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    title="Accessibility"
+    description="Select keeps field wiring on kui-field and listbox semantics on dropdown options."
+  >
+    <ul class="select-page__notes">
+      <li>The trigger input uses combobox semantics and reflects dropdown expanded state.</li>
+      <li>Dropdown panel uses listbox semantics; each <code>kuiOption</code> is an option.</li>
+      <li>Use <code>kui-field</code> for label, hint, error, and described-by wiring.</li>
+      <li>Clear affordance is a native button with an accessible label.</li>
+    </ul>
+  </app-doc-section>
+</article>

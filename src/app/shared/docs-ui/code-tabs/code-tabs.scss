@@ -1,7 +1,10 @@
 .code-tabs {
   overflow: hidden;
   border: 1px solid var(--kui-color-border);
-  border-radius: 8px;
+  border-start-start-radius: var(--code-tabs-start-radius, 8px);
+  border-start-end-radius: var(--code-tabs-start-radius, 8px);
+  border-end-start-radius: 8px;
+  border-end-end-radius: 8px;
   background: var(--kui-color-surface);
 }
 

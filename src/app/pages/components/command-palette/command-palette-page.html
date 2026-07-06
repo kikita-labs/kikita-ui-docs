@@ -1,0 +1,52 @@
+<article class="command-palette-page">
+  <app-page-header
+    eyebrow="Actions"
+    title="Command Palette"
+    description="Keyboard-first command dialog with grouped, searchable actions."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    title="Import"
+    description="Command palette uses a component for the overlay and typed command group data."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    title="Usage"
+    description="Control open and query with signals, and run commands from the selected output."
+  >
+    <app-live-preview title="Basic command palette">
+      <app-basic-command-palette-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="usageTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="item-data"
+    title="Item data"
+    description="Items support metadata for rendering and keywords for search matching."
+  >
+    <app-code-tabs [tabs]="itemTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+    <app-api-table label="Command palette API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    title="Accessibility"
+    description="The palette uses modal dialog semantics, focus trapping, and listbox navigation."
+  >
+    <ul class="command-palette-page__notes">
+      <li>The search input exposes combobox and listbox relationships.</li>
+      <li>Arrow keys move the active option; <code>Enter</code> selects it.</li>
+      <li><code>Escape</code> closes the palette and restores focus.</li>
+      <li>Disabled commands are skipped by keyboard navigation and cannot be selected.</li>
+    </ul>
+  </app-doc-section>
+</article>

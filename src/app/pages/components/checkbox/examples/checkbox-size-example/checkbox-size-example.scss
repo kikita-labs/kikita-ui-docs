@@ -1,0 +1,12 @@
+.checkbox-size-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+
+.checkbox-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}

@@ -23,6 +23,25 @@ export class DocSection {
 
   protected readonly headingHref = computed(() => `#${this.headingId()}`);
 
+  protected scrollToHeading(event: MouseEvent): void {
+    event.preventDefault();
+
+    const target = this.document.getElementById(this.headingId());
+    const view = this.document.defaultView;
+
+    if (!target || !view) {
+      return;
+    }
+
+    const offset = 84;
+    const top = target.getBoundingClientRect().top + view.scrollY - offset;
+    const url = new URL(this.document.location.href);
+    url.hash = this.headingId();
+
+    view.history.pushState(null, '', url);
+    view.scrollTo({ top, behavior: 'smooth' });
+  }
+
   protected async copyHeadingLink(): Promise<void> {
     const url = new URL(this.document.location.href);
     url.hash = this.headingId();

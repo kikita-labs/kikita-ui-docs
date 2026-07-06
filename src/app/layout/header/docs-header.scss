@@ -2,15 +2,30 @@
   position: sticky;
   z-index: 5;
   inset-block-start: 0;
-  display: flex;
-  min-block-size: 72px;
+  display: grid;
+  grid-template-columns:
+    250px
+    minmax(0, 970px)
+    220px;
+  inline-size: min(1440px, 100%);
+  block-size: 56px;
+  align-content: center;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--kui-space-8, 32px);
-  border-block-end: 1px solid var(--kui-color-border);
-  background: color-mix(in oklab, var(--kui-color-bg) 94%, transparent);
-  padding-inline: clamp(18px, 4vw, 48px);
-  backdrop-filter: blur(16px);
+  gap: 0;
+  background:
+    linear-gradient(var(--kui-color-border), var(--kui-color-border)) 50% 100% / 100vw 1px no-repeat,
+    var(--kui-color-bg);
+  margin-inline: auto;
+  padding-block: 12px;
+  padding-inline: 0;
+}
+
+.docs-header--minimal {
+  min-block-size: 72px;
+}
+
+.docs-header--landing {
+  min-block-size: 72px;
 }
 
 .docs-header__brand {
@@ -23,13 +38,39 @@
 }
 
 .docs-header__start {
+  grid-column: 1 / 3;
   display: inline-flex;
   align-items: center;
-  gap: var(--kui-space-2, 8px);
+  gap: var(--kui-space-10, 40px);
+  min-inline-size: 0;
+  padding-inline-start: 24px;
 }
 
 .docs-header__menu {
   display: none;
+}
+
+.docs-header__breadcrumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+
+.docs-header__breadcrumbs svg {
+  inline-size: 12px;
+  block-size: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.docs-header__breadcrumb--current {
+  color: var(--kui-color-text);
+  font-weight: 600;
 }
 
 .docs-header__mark {
@@ -45,6 +86,7 @@
 .docs-header__mark svg,
 .docs-header__menu svg,
 .docs-header__search svg,
+.docs-header__resource-link svg,
 .docs-header__theme-toggle svg {
   inline-size: 15px;
   block-size: 15px;
@@ -61,26 +103,45 @@
 }
 
 .docs-header__actions {
+  grid-column: 3 / 4;
+  justify-self: end;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--kui-space-3, 12px);
+  gap: 10px;
+  padding-inline-end: 24px;
 }
 
 .docs-header__nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: var(--kui-space-1, 4px);
+  align-items: center;
+  gap: 28px;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
 }
 
-.docs-header__link--active {
-  color: var(--kui-color-primary-fill);
+.docs-header__nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.docs-header__nav a:hover,
+.docs-header__nav a:focus-visible {
+  color: var(--kui-color-text);
 }
 
 .docs-header__theme-toggle {
   flex: 0 0 auto;
+  inline-size: 32px;
+  min-inline-size: 32px;
+}
+
+.docs-header--landing .docs-header__resource-link,
+.docs-header--landing .docs-header__theme-toggle,
+.docs-header--minimal .docs-header__theme-toggle {
+  inline-size: 32px;
+  min-inline-size: 32px;
+  padding-inline: 0;
 }
 
 .docs-header__search {
@@ -110,22 +171,56 @@
 
 @media (max-width: 760px) {
   .docs-header {
-    min-block-size: 64px;
+    display: flex;
+    min-block-size: 54px;
     align-items: center;
-    flex-direction: row;
-    padding-block: var(--kui-space-4, 16px);
+    justify-content: space-between;
+    gap: var(--kui-space-3, 12px);
+    padding-block: 12px;
+    padding-inline: var(--kui-space-4, 16px);
+  }
+
+  .docs-header--minimal {
+    min-block-size: 72px;
+    padding-inline: var(--kui-space-4, 16px);
+  }
+
+  .docs-header--landing {
+    min-block-size: 64px;
+    padding-inline: var(--kui-space-4, 16px);
   }
 
   .docs-header__menu {
     display: inline-grid;
   }
 
-  .docs-header__actions,
-  .docs-header__nav {
-    justify-content: flex-start;
+  .docs-header__start {
+    flex: 1 1 auto;
+    gap: var(--kui-space-2, 8px);
+    padding-inline-start: 0;
   }
 
-  .docs-header__nav {
+  .docs-header__actions {
+    flex: 0 0 auto;
+    padding-inline-end: 0;
+  }
+
+  .docs-header__breadcrumbs {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .docs-header__nav,
+  .docs-header__resource-link {
+    display: none;
+  }
+
+  .docs-header__breadcrumbs span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .docs-header__breadcrumb--mobile-hidden {
     display: none;
   }
 

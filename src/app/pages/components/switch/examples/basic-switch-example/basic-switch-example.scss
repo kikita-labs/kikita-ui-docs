@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  inline-size: min(100%, 360px);
+}
+
+.switch-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}

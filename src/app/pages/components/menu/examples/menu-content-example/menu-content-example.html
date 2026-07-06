@@ -1,0 +1,21 @@
+<div class="menu-content-example">
+  <button kuiButton type="button" appearance="outline" [kuiMenuFor]="rowMenu">Row actions</button>
+
+  <kui-menu #rowMenu ariaLabel="Row actions" menuAlign="end" minWidth="220px">
+    <div kuiMenuHeader>Project</div>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__icon" aria-hidden="true">E</span>
+      <span class="kui-menu-item__label">Rename</span>
+      <span class="kui-menu-item__shortcut">F2</span>
+    </button>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__icon" aria-hidden="true">C</span>
+      <span class="kui-menu-item__label">Copy link</span>
+      <span class="kui-menu-item__shortcut">Ctrl C</span>
+    </button>
+    <hr kuiSeparator spacing="xs" />
+    <button type="button" kuiMenuItem disabled>
+      <span class="kui-menu-item__label">Archive</span>
+    </button>
+  </kui-menu>
+</div>

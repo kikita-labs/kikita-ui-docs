@@ -50,7 +50,13 @@
 <ng-template #componentCard let-component="component">
   <header>
     <h3>{{ component.name }}</h3>
-    <span kuiBadge appearance="primary" size="sm">{{ component.status }}</span>
+    <span
+      kuiBadge
+      [appearance]="component.status === 'docs-pending' ? 'warning' : 'primary'"
+      size="sm"
+    >
+      {{ statusLabel(component.status) }}
+    </span>
   </header>
   <code>{{ component.importName }}</code>
   <p>{{ component.description }}</p>

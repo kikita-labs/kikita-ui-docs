@@ -1,4 +1,8 @@
-<header class="docs-header">
+<header
+  class="docs-header"
+  [class.docs-header--landing]="landing()"
+  [class.docs-header--minimal]="minimal()"
+>
   <div class="docs-header__start">
     @if (showMenuButton()) {
       <button
@@ -17,35 +21,48 @@
       </button>
     }
 
-    <a class="docs-header__brand" [routerLink]="homePath" aria-label="Kikita UI Docs home">
-      <span class="docs-header__mark" aria-hidden="true">
-        <svg viewBox="0 0 16 16" focusable="false">
-          <path d="M3 2v12M3 8l7-6M3 8l7 6" />
-        </svg>
-      </span>
-      <span class="docs-header__title">Kikita UI</span>
-    </a>
+    @if (minimal() || landing()) {
+      <a class="docs-header__brand" [routerLink]="homePath" aria-label="Kikita UI Docs home">
+        <span class="docs-header__mark" aria-hidden="true">
+          <svg viewBox="0 0 16 16" focusable="false">
+            <path d="M3 2v12M3 8l7-6M3 8l7 6" />
+          </svg>
+        </span>
+        <span class="docs-header__title">Kikita UI</span>
+      </a>
+
+      @if (landing()) {
+        <nav class="docs-header__nav" aria-label="Primary documentation">
+          <a routerLink="/foundations/installation">Docs</a>
+          <a routerLink="/components">Components</a>
+          <a routerLink="/smoke">Resources</a>
+        </nav>
+      }
+    } @else {
+      <nav class="docs-header__breadcrumbs" aria-label="Breadcrumb">
+        @for (breadcrumb of breadcrumbs(); track breadcrumb.label; let last = $last) {
+          <span
+            [class.docs-header__breadcrumb--current]="last"
+            [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
+            >{{ breadcrumb.label }}</span
+          >
+          @if (!last) {
+            <svg
+              viewBox="0 0 12 12"
+              aria-hidden="true"
+              focusable="false"
+              [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
+            >
+              <path d="M4.5 3 7.5 6 4.5 9" />
+            </svg>
+          }
+        }
+      </nav>
+    }
   </div>
 
   <div class="docs-header__actions">
     @if (!minimal()) {
-      <nav class="docs-header__nav" aria-label="Primary documentation">
-        @for (item of navigationItems; track item.path) {
-          <a
-            #primaryLink="routerLinkActive"
-            kuiButton
-            appearance="ghost"
-            size="sm"
-            [routerLink]="item.path"
-            routerLinkActive="docs-header__link--active"
-            [routerLinkActiveOptions]="activeOptions"
-            [attr.aria-current]="primaryLink.isActive ? 'page' : null"
-          >
-            {{ item.label }}
-          </a>
-        }
-      </nav>
-
       <button class="docs-header__search" type="button" (click)="openSearch()">
         <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
           <circle cx="7" cy="7" r="5" />
@@ -58,7 +75,7 @@
 
     <button
       class="docs-header__theme-toggle"
-      kuiButton
+      kuiIconButton
       type="button"
       appearance="outline"
       size="sm"
@@ -76,8 +93,23 @@
           />
         }
       </svg>
-      <span>{{ theme.currentLabel() }}</span>
     </button>
+
+    @if (landing()) {
+      <a
+        class="docs-header__resource-link"
+        kuiButton
+        appearance="outline"
+        size="sm"
+        routerLink="/smoke"
+        aria-label="Open package smoke checks"
+      >
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" />
+          <path d="M5 6.5 3.2 8 5 9.5M11 6.5 12.8 8 11 9.5" />
+        </svg>
+      </a>
+    }
   </div>
 
   <kui-command-palette

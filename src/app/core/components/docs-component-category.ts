@@ -9,7 +9,7 @@ export interface DocsComponentSummary {
   readonly importName: string;
   readonly status: DocsComponentStatus;
   readonly description: string;
-  readonly routePath?: string;
+  readonly routePath: string;
 }
 
 export type DocsComponentStatus = 'available' | 'docs-pending';

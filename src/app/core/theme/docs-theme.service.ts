@@ -40,9 +40,8 @@ export class DocsThemeService {
       return storedMode;
     }
 
-    const prefersDark = this.document.defaultView?.matchMedia(
-      '(prefers-color-scheme: dark)',
-    ).matches;
+    const prefersDark =
+      this.document.defaultView?.matchMedia?.('(prefers-color-scheme: dark)').matches ?? false;
 
     return prefersDark ? DocsThemeMode.Dark : DocsThemeMode.Light;
   }

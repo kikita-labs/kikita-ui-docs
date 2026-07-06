@@ -1,0 +1,14 @@
+<div class="basic-command-palette-example">
+  <button kuiButton type="button" (click)="open.set(true)">Open command palette</button>
+
+  @if (selectedCommand(); as command) {
+    <p class="basic-command-palette-example__selection">Selected: {{ command }}</p>
+  }
+
+  <kui-command-palette
+    [(open)]="open"
+    [(query)]="query"
+    [groups]="groups"
+    (selected)="runCommand($event)"
+  />
+</div>

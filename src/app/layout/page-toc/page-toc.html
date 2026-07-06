@@ -6,7 +6,14 @@
       <ul class="page-toc__list">
         @for (link of links(); track link.id) {
           <li>
-            <a class="page-toc__link" [href]="'#' + link.id">{{ link.label }}</a>
+            <a
+              class="page-toc__link"
+              [class.page-toc__link--active]="activeLinkId() === link.id"
+              [href]="'#' + link.id"
+              [attr.aria-current]="activeLinkId() === link.id ? 'true' : null"
+              (click)="scrollToLink(link, $event)"
+              >{{ link.label }}</a
+            >
           </li>
         }
       </ul>

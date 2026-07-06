@@ -14,3 +14,39 @@ html {
 body {
   margin: 0;
 }
+
+.sidebar-nav__skip {
+  position: fixed;
+  z-index: 10;
+  inset-block-start: 12px;
+  inset-inline-start: 12px;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  border-radius: 8px;
+  clip-path: inset(50%);
+  color: var(--kui-color-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.sidebar-nav__skip:focus-visible {
+  inline-size: auto;
+  block-size: auto;
+  overflow: visible;
+  clip-path: none;
+  outline: 2px solid var(--kui-color-primary-fill);
+  outline-offset: 2px;
+  background: var(--kui-color-surface);
+  box-shadow: var(--kui-shadow-md);
+  padding: 8px 12px;
+}
+
+app-live-preview + app-code-tabs .code-tabs {
+  --code-tabs-start-radius: 0;
+}
+
+app-live-preview + app-code-tabs {
+  display: block;
+  margin-block-start: -1px;
+}

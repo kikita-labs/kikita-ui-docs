@@ -1,0 +1,11 @@
+.basic-command-palette-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-command-palette-example__selection {
+  margin: 0;
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-text-sm-size, 13px);
+}

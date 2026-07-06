@@ -8,6 +8,7 @@ import {
 } from '@kikita-labs/ui';
 import { ApiTableRow } from '../../shared/docs-ui/api-table/api-table-row';
 import { ApiTable } from '../../shared/docs-ui/api-table/api-table';
+import { KIKITA_UI_PACKAGE_VERSION } from '../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../shared/docs-ui/code-tabs/code-tab';
 import { CodeTabs } from '../../shared/docs-ui/code-tabs/code-tabs';
 import { DocSection } from '../../shared/docs-ui/doc-section/doc-section';
@@ -32,6 +33,8 @@ import { PageHeader } from '../../shared/docs-ui/page-header/page-header';
   styleUrl: './package-smoke-page.scss',
 })
 export class PackageSmokePage {
+  protected readonly packageVersion = `@kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION}`;
+
   protected readonly apiRows: readonly ApiTableRow[] = [
     {
       name: 'provideKikitaUi',

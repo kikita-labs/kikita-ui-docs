@@ -9,10 +9,6 @@
     title="Section status"
     description="This page is intentionally wired into the docs shell before final content is written."
   >
-    <app-draft-state
-      eyebrow="Draft"
-      title="Ready for documented content"
-      description="The route, navigation, layout, and shared docs primitives are in place. Final docs content will be added from verified package APIs."
-    />
+    <app-draft-state title="Docs coming soon" [description]="draft().description" />
   </app-doc-section>
 </article>

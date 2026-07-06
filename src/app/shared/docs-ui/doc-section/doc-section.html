@@ -2,7 +2,12 @@
   <header class="doc-section__header">
     <div class="doc-section__heading-row">
       <h2 class="doc-section__title" [id]="headingId()">
-        <a class="doc-section__heading-link" [href]="headingHref()">{{ title() }}</a>
+        <a
+          class="doc-section__heading-link"
+          [href]="headingHref()"
+          (click)="scrollToHeading($event)"
+          >{{ title() }}</a
+        >
       </h2>
 
       <button

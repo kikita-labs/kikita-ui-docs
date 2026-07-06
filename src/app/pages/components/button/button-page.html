@@ -3,7 +3,7 @@
     eyebrow="Actions"
     title="Button"
     description="Directive for applying Kikita UI button styling to native button and anchor elements."
-    status="Stable"
+    [status]="status"
   />
 
   <app-doc-section
@@ -47,11 +47,7 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section
-    anchor="api"
-    title="API"
-    description="Inputs verified against @kikita-labs/ui@0.0.5 public typings."
-  >
+  <app-doc-section anchor="api" title="API" [description]="apiDescription">
     <app-api-table label="Button API" [rows]="apiRows" />
   </app-doc-section>
 

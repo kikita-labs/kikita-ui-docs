@@ -1,0 +1,57 @@
+<article class="menu-page">
+  <app-page-header
+    eyebrow="Actions"
+    title="Menu"
+    description="Overlay action menu for commands such as edit, copy, archive, and delete."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    title="Import"
+    description="Menu composes a panel, trigger directive, menu items, headers, and separators."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    title="Usage"
+    description="Use menu for actions, not value selection. Use Select or Dropdown for picking values."
+  >
+    <app-live-preview title="Basic menu">
+      <app-basic-menu-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="content"
+    title="Content"
+    description="Headers, icons, shortcuts, disabled states, and destructive actions are projected item content."
+  >
+    <app-live-preview title="Menu content">
+      <app-menu-content-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="contentTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+    <app-api-table label="Menu API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    title="Accessibility"
+    description="Menu owns keyboard navigation while keeping triggers and items native."
+  >
+    <ul class="menu-page__notes">
+      <li>The panel uses <code>role="menu"</code>; items use <code>role="menuitem"</code>.</li>
+      <li>
+        <code>ArrowDown</code> and <code>ArrowUp</code> open from the trigger and focus items.
+      </li>
+      <li><code>Home</code>, <code>End</code>, and arrow keys move focus inside the menu.</li>
+      <li><code>Escape</code> closes the menu and returns focus to the trigger.</li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,16 @@
+<kui-field label="Roles" hint="Multiple mode renders selected values as chips">
+  <input
+    kuiSelect
+    multiple
+    [(value)]="roles"
+    [kuiLabelFn]="roleLabel"
+    [maxVisibleChips]="3"
+    placeholder="Select roles..."
+    [clearable]="true"
+  />
+  <kui-dropdown>
+    @for (role of roleOptions; track role.value) {
+      <div kuiOption [value]="role.value">{{ role.label }}</div>
+    }
+  </kui-dropdown>
+</kui-field>
