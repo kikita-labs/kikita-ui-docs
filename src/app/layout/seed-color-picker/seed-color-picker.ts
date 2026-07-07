@@ -6,6 +6,7 @@ import {
   KuiPopoverComponent,
   KuiPopoverForDirective,
 } from '@kikita-labs/ui';
+import { DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE } from '../../core/appearance/docs-button-appearance';
 import {
   DOCS_DEFAULT_SEED_COLORS,
   type DocsSeedColorName,
@@ -41,6 +42,7 @@ const SEED_COLOR_LABELS: Readonly<Record<DocsSeedColorName, string>> = {
 })
 export class SeedColorPicker {
   protected readonly theme = inject(DocsThemeService);
+  protected readonly outlineSecondaryAppearance = DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE;
   protected readonly rows = computed<readonly SeedColorRow[]>(() => {
     const colors = this.theme.seedColors();
 

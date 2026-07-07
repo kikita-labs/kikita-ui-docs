@@ -1,0 +1,28 @@
+@layer kui.components {
+  .kui-button[data-kui-appearance='outline-secondary'],
+  .kui-icon-button[data-kui-appearance='outline-secondary'] {
+    --kui-btn-outline-secondary-border: var(--kui-color-border);
+    --kui-btn-outline-secondary-bg: var(--kui-color-surface);
+    --kui-btn-outline-secondary-bg-hov: var(--kui-color-surface-elevated);
+    --kui-btn-outline-secondary-bg-act: var(--kui-color-surface-sunken);
+    --kui-btn-outline-secondary-fg: var(--kui-color-text-secondary);
+    --kui-btn-outline-secondary-fg-hov: var(--kui-color-text);
+
+    border-color: var(--kui-btn-outline-secondary-border);
+    background-color: var(--kui-btn-outline-secondary-bg);
+    color: var(--kui-btn-outline-secondary-fg);
+  }
+
+  .kui-button[data-kui-appearance='outline-secondary']:hover,
+  .kui-button[data-kui-appearance='outline-secondary']:active,
+  .kui-icon-button[data-kui-appearance='outline-secondary']:hover,
+  .kui-icon-button[data-kui-appearance='outline-secondary']:active {
+    background-color: var(--kui-btn-outline-secondary-bg-hov);
+    color: var(--kui-btn-outline-secondary-fg-hov);
+  }
+
+  .kui-button[data-kui-appearance='outline-secondary']:active,
+  .kui-icon-button[data-kui-appearance='outline-secondary']:active {
+    background-color: var(--kui-btn-outline-secondary-bg-act);
+  }
+}

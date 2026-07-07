@@ -12,12 +12,22 @@
   align-content: center;
   align-items: center;
   gap: 0;
-  background:
-    linear-gradient(var(--kui-color-border), var(--kui-color-border)) 50% 100% / 100vw 1px no-repeat,
-    var(--kui-color-bg);
+  background: var(--kui-color-bg);
   margin-inline: auto;
   padding-block: 12px;
   padding-inline: 0;
+}
+
+.docs-header::after {
+  content: '';
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 50%;
+  inline-size: 100vw;
+  block-size: 1px;
+  background: var(--kui-color-border);
+  pointer-events: none;
+  transform: translateX(-50%);
 }
 
 .docs-header--minimal {
@@ -86,7 +96,6 @@
 .docs-header__mark svg,
 .docs-header__menu svg,
 .docs-header__search svg,
-.docs-header__resource-link svg,
 .docs-header__theme-toggle svg {
   inline-size: 15px;
   block-size: 15px;
@@ -130,34 +139,8 @@
   color: var(--kui-color-text);
 }
 
-.docs-header__theme-toggle {
-  flex: 0 0 auto;
-  inline-size: 32px;
-  min-inline-size: 32px;
-}
-
-.docs-header--landing .docs-header__resource-link,
-.docs-header--landing .docs-header__theme-toggle,
-.docs-header--minimal .docs-header__theme-toggle {
-  inline-size: 32px;
-  min-inline-size: 32px;
-  padding-inline: 0;
-}
-
 .docs-header__search {
-  display: inline-flex;
-  min-block-size: 32px;
-  align-items: center;
-  gap: var(--kui-space-2, 8px);
-  border: 1px solid var(--kui-color-border);
-  border-radius: var(--kui-radius-md, 8px);
-  background: var(--kui-color-surface);
-  color: var(--kui-color-text-secondary);
-  cursor: pointer;
-  font: inherit;
-  font-size: var(--kui-text-sm-size, 13px);
-  opacity: 1;
-  padding-inline: var(--kui-space-3, 12px);
+  --kui-btn-gap: var(--kui-space-2, 8px);
 }
 
 .docs-header__search kbd {
@@ -186,7 +169,7 @@
   }
 
   .docs-header--landing {
-    min-block-size: 64px;
+    min-block-size: 60px;
     padding-inline: var(--kui-space-4, 16px);
   }
 
@@ -210,8 +193,7 @@
     white-space: nowrap;
   }
 
-  .docs-header__nav,
-  .docs-header__resource-link {
+  .docs-header__nav {
     display: none;
   }
 
@@ -226,14 +208,5 @@
 
   .docs-header__search {
     display: none;
-  }
-
-  .docs-header__theme-toggle span {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    inline-size: 1px;
-    block-size: 1px;
-    white-space: nowrap;
   }
 }

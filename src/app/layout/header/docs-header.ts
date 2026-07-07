@@ -8,6 +8,7 @@ import {
   type KuiCommandItem,
   KuiIconButtonDirective,
 } from '@kikita-labs/ui';
+import { DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE } from '../../core/appearance/docs-button-appearance';
 import { DOCS_COMPONENT_CATEGORIES } from '../../core/components/docs-component-categories';
 import { DOCS_HOME_PATH, DOCS_NAVIGATION_ITEMS } from '../../core/navigation/docs-navigation-items';
 import { DocsSearchIndexService } from '../../core/search/docs-search-index.service';
@@ -47,6 +48,7 @@ export class DocsHeader {
   protected readonly search = inject(DocsSearchStateService);
   protected readonly theme = inject(DocsThemeService);
   protected readonly homePath = DOCS_HOME_PATH;
+  protected readonly outlineSecondaryAppearance = DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE;
   protected readonly breadcrumbs = computed(() => this.getBreadcrumbs(this.currentUrl()));
 
   constructor() {
