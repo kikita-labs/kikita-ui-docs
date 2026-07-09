@@ -56,10 +56,13 @@
           @for (item of foundationItems; track item.path) {
             <li>
               <a
+                kuiButton
+                size="sm"
                 #foundationLink="routerLinkActive"
                 class="sidebar-nav__item"
+                [appearance]="foundationLink.isActive ? 'soft' : 'ghost'"
                 [routerLink]="item.path"
-                routerLinkActive="sidebar-nav__item--active"
+                routerLinkActive
                 [routerLinkActiveOptions]="activeOptions"
                 [attr.aria-current]="foundationLink.isActive ? 'page' : null"
               >
@@ -92,10 +95,13 @@
             @for (component of category.components; track component.name) {
               <li>
                 <a
+                  kuiButton
+                  size="sm"
                   #componentLink="routerLinkActive"
                   class="sidebar-nav__item"
+                  [appearance]="componentLink.isActive ? 'soft' : 'ghost'"
                   [routerLink]="component.routePath"
-                  routerLinkActive="sidebar-nav__item--active"
+                  routerLinkActive
                   [routerLinkActiveOptions]="activeOptions"
                   [attr.aria-current]="componentLink.isActive ? 'page' : null"
                 >
@@ -131,10 +137,13 @@
           @for (item of packageItems; track item.path) {
             <li>
               <a
+                kuiButton
+                size="sm"
                 #packageLink="routerLinkActive"
                 class="sidebar-nav__item"
+                [appearance]="packageLink.isActive ? 'soft' : 'ghost'"
                 [routerLink]="item.path"
-                routerLinkActive="sidebar-nav__item--active"
+                routerLinkActive
                 [routerLinkActiveOptions]="activeOptions"
                 [attr.aria-current]="packageLink.isActive ? 'page' : null"
               >
