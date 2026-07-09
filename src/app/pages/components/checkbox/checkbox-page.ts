@@ -32,6 +32,7 @@ export class CheckboxPage {
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
+      filename: 'checkbox.ts',
       language: 'ts',
       code: `import { KuiCheckboxDirective, KuiFieldComponent } from '@kikita-labs/ui';`,
     },

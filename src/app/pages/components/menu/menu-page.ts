@@ -32,6 +32,7 @@ export class MenuPage {
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
+      filename: 'menu.ts',
       language: 'ts',
       code: `import {
   KuiButtonDirective,

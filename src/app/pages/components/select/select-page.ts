@@ -32,6 +32,7 @@ export class SelectPage {
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
+      filename: 'select.ts',
       language: 'ts',
       code: `import {
   KuiDropdownComponent,

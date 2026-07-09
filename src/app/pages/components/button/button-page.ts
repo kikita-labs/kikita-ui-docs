@@ -33,6 +33,7 @@ export class ButtonPage {
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
+      filename: 'button.ts',
       language: 'ts',
       code: `import { KuiButtonDirective } from '@kikita-labs/ui';`,
     },

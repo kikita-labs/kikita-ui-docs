@@ -32,6 +32,7 @@ export class IconButtonPage {
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
+      filename: 'icon-button.ts',
       language: 'ts',
       code: `import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';`,
     },

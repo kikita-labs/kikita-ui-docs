@@ -23,6 +23,7 @@ export class CommandPalettePage {
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
+      filename: 'command-palette.ts',
       language: 'ts',
       code: `import {
   KuiButtonDirective,

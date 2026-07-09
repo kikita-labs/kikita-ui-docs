@@ -32,6 +32,7 @@ export class SwitchPage {
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
+      filename: 'switch.ts',
       language: 'ts',
       code: `import { KuiFieldComponent, KuiSwitchDirective } from '@kikita-labs/ui';`,
     },
