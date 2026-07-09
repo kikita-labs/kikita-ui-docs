@@ -10,14 +10,19 @@ import {
 } from '@kikita-labs/ui';
 import { DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE } from '../../core/appearance/docs-button-appearance';
 import { DOCS_COMPONENT_CATEGORIES } from '../../core/components/docs-component-categories';
-import { DOCS_HOME_PATH, DOCS_NAVIGATION_ITEMS } from '../../core/navigation/docs-navigation-items';
+import {
+  DOCS_HOME_PATH,
+  DOCS_NAVIGATION_ITEMS,
+  DOCS_PATHS,
+} from '../../core/navigation/docs-navigation-items';
 import { DocsSearchIndexService } from '../../core/search/docs-search-index.service';
 import { DocsSearchStateService } from '../../core/search/docs-search-state.service';
 import { DocsThemeService } from '../../core/theme/docs-theme.service';
-import { SeedColorPicker } from '../seed-color-picker/seed-color-picker';
+import { Theming } from '../theming/theming';
 
 interface HeaderBreadcrumb {
   readonly label: string;
+  readonly path?: string;
 }
 
 @Component({
@@ -27,7 +32,7 @@ interface HeaderBreadcrumb {
     KuiCommandPaletteComponent,
     KuiIconButtonDirective,
     RouterLink,
-    SeedColorPicker,
+    Theming,
   ],
   templateUrl: './docs-header.html',
   styleUrl: './docs-header.scss',
@@ -91,7 +96,11 @@ export class DocsHeader {
       ).find((item) => item.routePath === path);
 
       if (component) {
-        return [{ label: 'Components' }, { label: component.category }, { label: component.name }];
+        return [
+          { label: 'Components', path: DOCS_PATHS.components },
+          { label: component.category },
+          { label: component.name },
+        ];
       }
     }
 
@@ -103,7 +112,7 @@ export class DocsHeader {
       const child = item.children?.find((navigationChild) => navigationChild.path === path);
 
       if (child) {
-        return [{ label: item.label }, { label: child.label }];
+        return [{ label: item.label, path: item.path }, { label: child.label }];
       }
     }
 

@@ -2,16 +2,14 @@ import { Component, computed, inject } from '@angular/core';
 import {
   KuiButtonDirective,
   KuiColorInputDirective,
-  KuiIconButtonDirective,
-  KuiPopoverComponent,
-  KuiPopoverForDirective,
+  KuiFieldComponent,
+  KuiLabelDirective,
 } from '@kikita-labs/ui';
-import { DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE } from '../../core/appearance/docs-button-appearance';
 import {
   DOCS_DEFAULT_SEED_COLORS,
   type DocsSeedColorName,
   DocsThemeService,
-} from '../../core/theme/docs-theme.service';
+} from '../../../../core/theme/docs-theme.service';
 
 interface SeedColorRow {
   readonly name: DocsSeedColorName;
@@ -29,20 +27,13 @@ const SEED_COLOR_LABELS: Readonly<Record<DocsSeedColorName, string>> = {
 };
 
 @Component({
-  selector: 'app-seed-color-picker',
-  imports: [
-    KuiButtonDirective,
-    KuiColorInputDirective,
-    KuiIconButtonDirective,
-    KuiPopoverComponent,
-    KuiPopoverForDirective,
-  ],
-  templateUrl: './seed-color-picker.html',
-  styleUrl: './seed-color-picker.scss',
+  selector: 'app-seed-colors',
+  imports: [KuiButtonDirective, KuiColorInputDirective, KuiFieldComponent, KuiLabelDirective],
+  templateUrl: './seed-colors.html',
+  styleUrl: './seed-colors.scss',
 })
-export class SeedColorPicker {
+export class SeedColors {
   protected readonly theme = inject(DocsThemeService);
-  protected readonly outlineSecondaryAppearance = DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE;
   protected readonly rows = computed<readonly SeedColorRow[]>(() => {
     const colors = this.theme.seedColors();
 

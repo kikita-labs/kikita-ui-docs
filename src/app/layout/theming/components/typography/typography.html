@@ -1,0 +1,34 @@
+<div class="kui-popover-title">Typography</div>
+
+<div class="typography__group">
+  <kui-field>
+    <label kuiLabel class="typography__label">Code theme</label>
+    <input
+      kuiSelect
+      [value]="theme.codeThemeId()"
+      (valueChange)="setCodeThemeId($event)"
+      [kuiLabelFn]="codeThemeLabelFn"
+      [clearable]="false"
+    />
+    <kui-dropdown maxHeight="240px">
+      @for (option of codeThemeOptions(); track option.id) {
+        <div kuiOption [value]="option.id">{{ option.label }}</div>
+      }
+    </kui-dropdown>
+  </kui-field>
+</div>
+
+<button
+  kuiButton
+  class="typography__reset"
+  type="button"
+  appearance="ghost"
+  size="xs"
+  (click)="reset()"
+>
+  <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+    <path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1" />
+    <path d="M13.5 2.5v3.5H10" />
+  </svg>
+  Reset to defaults
+</button>

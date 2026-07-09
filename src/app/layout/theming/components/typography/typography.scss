@@ -1,0 +1,29 @@
+@use '../../../../shared/styles/mixins/caption-label' as *;
+
+:host {
+  display: block;
+}
+
+.typography__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-4, 16px);
+}
+
+.typography__label {
+  @include caption-label;
+}
+
+.typography__reset {
+  margin-block-start: var(--kui-space-4, 16px);
+}
+
+.typography__reset svg {
+  inline-size: 15px;
+  block-size: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}

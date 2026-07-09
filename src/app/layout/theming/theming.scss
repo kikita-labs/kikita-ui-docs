@@ -1,0 +1,25 @@
+:host {
+  position: relative;
+  display: inline-flex;
+}
+
+.theming__button svg {
+  inline-size: 15px;
+  block-size: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}
+
+.theming__button svg circle:not(:first-child) {
+  fill: currentColor;
+  stroke: none;
+}
+
+.theming__divider {
+  margin-block: var(--kui-space-4, 16px);
+  border: none;
+  border-block-start: 1px solid var(--kui-color-border);
+}

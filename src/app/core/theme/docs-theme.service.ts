@@ -1,8 +1,17 @@
 import { DOCUMENT, PLATFORM_ID, Service, computed, effect, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { DEFAULT_KUI_THEME, createKuiTheme, createKuiThemeStyleSheet } from '@kikita-labs/ui';
+import {
+  DOCS_CODE_THEME_OPTIONS,
+  DOCS_DEFAULT_CODE_THEME_ID_BY_MODE,
+  findDocsCodeThemeOption,
+} from './docs-code-theme';
 import { DocsThemeMode } from './docs-theme-mode';
-import { DOCS_SEED_COLORS_STORAGE_KEY, DOCS_THEME_STORAGE_KEY } from './docs-theme-storage-key';
+import {
+  DOCS_CODE_THEME_STORAGE_KEY,
+  DOCS_SEED_COLORS_STORAGE_KEY,
+  DOCS_THEME_STORAGE_KEY,
+} from './docs-theme-storage-key';
 
 const KUI_THEME_STYLE_ID = 'kui-theme';
 
@@ -17,6 +26,7 @@ export const DOCS_DEFAULT_SEED_COLORS = {
 
 export type DocsSeedColorName = keyof typeof DOCS_DEFAULT_SEED_COLORS;
 export type DocsSeedColors = Readonly<Record<DocsSeedColorName, string>>;
+export type DocsCodeThemeIdByMode = Readonly<Record<DocsThemeMode, string>>;
 
 @Service()
 export class DocsThemeService {
@@ -25,9 +35,12 @@ export class DocsThemeService {
   private readonly isBrowser = isPlatformBrowser(this.platformId);
   private readonly modeSignal = signal(this.readInitialMode());
   private readonly seedColorsSignal = signal<DocsSeedColors>(this.readInitialSeedColors());
+  private readonly codeThemeIdByModeSignal = signal(this.readInitialCodeThemeIdByMode());
 
   readonly mode = this.modeSignal.asReadonly();
   readonly seedColors = this.seedColorsSignal.asReadonly();
+  readonly codeThemeIdByMode = this.codeThemeIdByModeSignal.asReadonly();
+  readonly codeThemeId = computed(() => this.codeThemeIdByMode()[this.mode()]);
   readonly isDark = computed(() => this.mode() === DocsThemeMode.Dark);
   readonly toggleLabel = computed(() =>
     this.isDark() ? 'Switch to light theme' : 'Switch to dark theme',
@@ -41,6 +54,10 @@ export class DocsThemeService {
 
     effect(() => {
       this.applySeedColors(this.seedColors());
+    });
+
+    effect(() => {
+      this.applyCodeThemeIdByMode(this.codeThemeIdByMode());
     });
   }
 
@@ -65,6 +82,27 @@ export class DocsThemeService {
 
   resetSeedColors(): void {
     this.seedColorsSignal.set(DOCS_DEFAULT_SEED_COLORS);
+  }
+
+  setCodeThemeId(id: string): void {
+    const option = DOCS_CODE_THEME_OPTIONS.find((candidate) => candidate.id === id);
+
+    if (!option) {
+      return;
+    }
+
+    const mode = option.type === 'dark' ? DocsThemeMode.Dark : DocsThemeMode.Light;
+
+    this.codeThemeIdByModeSignal.update((byMode) => ({ ...byMode, [mode]: id }));
+  }
+
+  resetCodeThemeId(): void {
+    const mode = this.mode();
+
+    this.codeThemeIdByModeSignal.update((byMode) => ({
+      ...byMode,
+      [mode]: DOCS_DEFAULT_CODE_THEME_ID_BY_MODE[mode],
+    }));
   }
 
   private readInitialMode(): DocsThemeMode {
@@ -133,6 +171,65 @@ export class DocsThemeService {
     const storedSeedColors = this.readStoredSeedColors();
 
     return storedSeedColors ?? DOCS_DEFAULT_SEED_COLORS;
+  }
+
+  private readInitialCodeThemeIdByMode(): DocsCodeThemeIdByMode {
+    if (!this.isBrowser) {
+      return DOCS_DEFAULT_CODE_THEME_ID_BY_MODE;
+    }
+
+    try {
+      const storedValue = this.document.defaultView?.localStorage.getItem(
+        DOCS_CODE_THEME_STORAGE_KEY,
+      );
+
+      if (!storedValue) {
+        return DOCS_DEFAULT_CODE_THEME_ID_BY_MODE;
+      }
+
+      const parsedValue: unknown = JSON.parse(storedValue);
+
+      return {
+        [DocsThemeMode.Light]: this.resolveStoredCodeThemeId(parsedValue, DocsThemeMode.Light),
+        [DocsThemeMode.Dark]: this.resolveStoredCodeThemeId(parsedValue, DocsThemeMode.Dark),
+      };
+    } catch {
+      return DOCS_DEFAULT_CODE_THEME_ID_BY_MODE;
+    }
+  }
+
+  private resolveStoredCodeThemeId(parsedValue: unknown, mode: DocsThemeMode): string {
+    const fallback = DOCS_DEFAULT_CODE_THEME_ID_BY_MODE[mode];
+
+    if (typeof parsedValue !== 'object' || parsedValue === null) {
+      return fallback;
+    }
+
+    const storedId = (parsedValue as Record<string, unknown>)[mode];
+
+    if (typeof storedId !== 'string') {
+      return fallback;
+    }
+
+    const option = findDocsCodeThemeOption(storedId);
+    const expectedType = mode === DocsThemeMode.Dark ? 'dark' : 'light';
+
+    return option.id === storedId && option.type === expectedType ? storedId : fallback;
+  }
+
+  private applyCodeThemeIdByMode(byMode: DocsCodeThemeIdByMode): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
+    try {
+      this.document.defaultView?.localStorage.setItem(
+        DOCS_CODE_THEME_STORAGE_KEY,
+        JSON.stringify(byMode),
+      );
+    } catch {
+      return;
+    }
   }
 
   private readStoredMode(): string | null {

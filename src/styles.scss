@@ -53,7 +53,7 @@ app-live-preview + app-code-tabs {
   margin-block-start: -1px;
 }
 
-.kui-popover:has(.seed-color-picker__grid) {
+.kui-popover:has(.seed-colors__grid) {
   --kui-popover-min-width: 340px;
   --kui-popover-max-width: 340px;
 }

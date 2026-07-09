@@ -41,11 +41,20 @@
     } @else {
       <nav class="docs-header__breadcrumbs" aria-label="Breadcrumb">
         @for (breadcrumb of breadcrumbs(); track breadcrumb.label; let last = $last) {
-          <span
-            [class.docs-header__breadcrumb--current]="last"
-            [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
-            >{{ breadcrumb.label }}</span
-          >
+          @if (!last && breadcrumb.path) {
+            <a
+              [routerLink]="breadcrumb.path"
+              class="docs-header__breadcrumb-link"
+              [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
+              >{{ breadcrumb.label }}</a
+            >
+          } @else {
+            <span
+              [class.docs-header__breadcrumb--current]="last"
+              [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
+              >{{ breadcrumb.label }}</span
+            >
+          }
           @if (!last) {
             <svg
               viewBox="0 0 12 12"
@@ -80,7 +89,7 @@
       </button>
     }
 
-    <app-seed-color-picker />
+    <app-theming />
 
     <button
       class="docs-header__theme-toggle"

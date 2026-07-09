@@ -1,0 +1,33 @@
+@use '../../../../shared/styles/mixins/caption-label' as *;
+
+:host {
+  display: block;
+}
+
+.seed-colors__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--kui-space-3, 12px);
+}
+
+.seed-colors__label {
+  @include caption-label;
+}
+
+.seed-colors__input {
+  inline-size: 100%;
+}
+
+.seed-colors__reset {
+  margin-block-start: var(--kui-space-4, 16px);
+}
+
+.seed-colors__reset svg {
+  inline-size: 15px;
+  block-size: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.4;
+}

@@ -1,0 +1,33 @@
+<div class="kui-popover-title">Seed tokens</div>
+
+<div class="seed-colors__grid">
+  @for (row of rows(); track row.name) {
+    <kui-field>
+      <label kuiLabel class="seed-colors__label">{{ row.label }}</label>
+      <input
+        kuiColorInput
+        class="seed-colors__input"
+        size="sm"
+        spellcheck="false"
+        [value]="row.value"
+        [swatchLabel]="row.label + ' seed'"
+        (input)="updateSeedColor(row.name, $event)"
+      />
+    </kui-field>
+  }
+</div>
+
+<button
+  kuiButton
+  class="seed-colors__reset"
+  type="button"
+  appearance="ghost"
+  size="xs"
+  (click)="reset()"
+>
+  <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+    <path d="M13.5 8A5.5 5.5 0 1 1 11.9 4.1" />
+    <path d="M13.5 2.5v3.5H10" />
+  </svg>
+  Reset to defaults
+</button>
