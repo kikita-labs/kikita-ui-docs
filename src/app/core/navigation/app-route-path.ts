@@ -20,6 +20,7 @@ export enum AppRoutePath {
   ComponentsDrawer = 'drawer',
   ComponentsDropdown = 'dropdown',
   ComponentsEmptyState = 'empty-state',
+  ComponentsField = 'field',
   ComponentsGroup = 'group',
   ComponentsIconButton = 'icon-button',
   ComponentsInput = 'input',

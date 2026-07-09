@@ -108,6 +108,10 @@ export const routes: Routes = [
           import('./pages/components/icon-button/icon-button-page').then((m) => m.IconButtonPage),
       },
       {
+        path: AppRoutePath.ComponentsField,
+        loadComponent: () => import('./pages/components/field/field-page').then((m) => m.FieldPage),
+      },
+      {
         path: AppRoutePath.ComponentsInput,
         loadComponent: () => import('./pages/components/input/input-page').then((m) => m.InputPage),
       },

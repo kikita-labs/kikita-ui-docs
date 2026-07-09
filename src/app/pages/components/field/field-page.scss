@@ -1,0 +1,9 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.field-page {
+  @include doc-page-layout;
+}
+
+.field-page__notes {
+  @include doc-page-notes;
+}

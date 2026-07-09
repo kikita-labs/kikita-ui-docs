@@ -6,7 +6,7 @@ import { CodeTabs } from '../../../shared/docs-ui/code-tabs/code-tabs';
 import { DocSection } from '../../../shared/docs-ui/doc-section/doc-section';
 import { LivePreview } from '../../../shared/docs-ui/live-preview/live-preview';
 import { PageHeader } from '../../../shared/docs-ui/page-header/page-header';
-import { FIELD_API_ROWS, INPUT_API_ROWS } from './input.api-schema';
+import { INPUT_API_ROWS } from './input.api-schema';
 import { BasicInputExample } from './examples/basic-input-example/basic-input-example';
 import { InputGroupExample } from './examples/input-group-example/input-group-example';
 
@@ -27,15 +27,14 @@ import { InputGroupExample } from './examples/input-group-example/input-group-ex
 export class InputPage {
   protected readonly status = `Stable - @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION}`;
   protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
-  protected readonly fieldRows = FIELD_API_ROWS;
   protected readonly inputRows = INPUT_API_ROWS;
 
   protected readonly importTabs: readonly CodeTab[] = [
     {
       label: 'Import',
+      filename: 'input.ts',
       language: 'ts',
       code: `import {
-  KuiFieldComponent,
   KuiInputDirective,
   KuiInputGroupDirective,
 } from '@kikita-labs/ui';`,
@@ -46,23 +45,21 @@ export class InputPage {
     {
       label: 'HTML',
       language: 'html',
-      code: `<kui-field label="Email" hint="Use your work email">
-  <input kuiInput type="email" placeholder="mira@company.dev" />
-</kui-field>
-
-<kui-field label="Project" error="Project name is required" required>
-  <input kuiInput value="" />
-</kui-field>`,
+      filename: 'basic-input-example.html',
+      code: `<input kuiInput type="email" placeholder="mira@company.dev" />
+<input kuiInput value="kikita-ui" />
+<input kuiInput invalid value="Invalid value" />`,
     },
     {
       label: 'TS',
+      filename: 'basic-input-example.ts',
       language: 'ts',
       code: `import { Component } from '@angular/core';
-import { KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';
+import { KuiInputDirective } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-input-example',
-  imports: [KuiFieldComponent, KuiInputDirective],
+  imports: [KuiInputDirective],
   templateUrl: './basic-input-example.html',
   styleUrl: './basic-input-example.scss',
 })
@@ -73,6 +70,7 @@ export class BasicInputExample {}`,
   protected readonly groupTabs: readonly CodeTab[] = [
     {
       label: 'HTML',
+      filename: 'input-group-example.html',
       language: 'html',
       code: `<kui-field label="Project URL" hint="Affixes are visual field chrome.">
   <div class="kui-input-group">

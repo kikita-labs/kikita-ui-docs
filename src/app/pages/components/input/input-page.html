@@ -1,25 +1,25 @@
 <article class="input-page">
   <app-page-header
     eyebrow="Forms"
-    title="Input and Field"
-    description="Field wraps native controls with label, hint, error, required state, and ARIA wiring. Input keeps the control native and styles it through kuiInput."
+    heading="Input"
+    description="Input keeps the control native and applies Kikita UI styling through the kuiInput directive."
     [status]="status"
   />
 
   <app-doc-section
     anchor="import"
-    title="Import"
-    description="Import the public field and input primitives from the package entrypoint."
+    heading="Import"
+    description="Import the public input primitives from the package entrypoint."
   >
     <app-code-tabs [tabs]="importTabs" />
   </app-doc-section>
 
   <app-doc-section
     anchor="usage"
-    title="Usage"
-    description="Use kui-field as the default wrapper whenever a visible label, hint, error, or required marker is needed."
+    heading="Usage"
+    description="Use kuiInput on native input elements. Use Field only when the control needs label, hint, or error chrome."
   >
-    <app-live-preview title="Labeled inputs">
+    <app-live-preview previewLabel="Native inputs">
       <app-basic-input-example />
     </app-live-preview>
     <app-code-tabs [tabs]="basicTabs" />
@@ -27,33 +27,27 @@
 
   <app-doc-section
     anchor="input-group"
-    title="Input group"
+    heading="Input group"
     description="Use .kui-input-group for prefix text, suffix text, decorative icons, or trailing field actions around a native input."
   >
-    <app-live-preview title="Affix input">
+    <app-live-preview previewLabel="Affix input">
       <app-input-group-example />
     </app-live-preview>
     <app-code-tabs [tabs]="groupTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" title="API" [description]="apiDescription">
-    <div class="input-page__api">
-      <app-api-table label="Field API" [rows]="fieldRows" />
-      <app-api-table label="Input API" [rows]="inputRows" />
-    </div>
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Input API" [rows]="inputRows" />
   </app-doc-section>
 
   <app-doc-section
     anchor="accessibility"
-    title="Accessibility"
-    description="Keep field semantics native-first. Let kui-field wire ids and descriptions instead of duplicating ARIA by hand."
+    heading="Accessibility"
+    description="Keep native input semantics. Add labels through Field or native label elements."
   >
     <ul class="input-page__notes">
-      <li>Prefer a visible label through <code>label</code> or projected <code>kuiLabel</code>.</li>
-      <li>
-        Projected <code>kuiHint</code> and <code>kuiError</code> participate in
-        <code>aria-describedby</code>.
-      </li>
+      <li>Use a visible label through <code>kui-field</code> or a native <code>label</code>.</li>
+      <li>Use <code>invalid</code> only when the input is outside field error wiring.</li>
       <li>Decorative affix icons use <code>aria-hidden="true"</code>.</li>
       <li>Interactive field actions must be native buttons with accessible names.</li>
     </ul>

@@ -1,0 +1,46 @@
+<article class="field-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Field"
+    description="Field wraps native controls with label, hint, error, required state, and ARIA wiring."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public field primitive from the package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Use kui-field whenever a visible label, hint, error, or required marker is needed."
+  >
+    <app-live-preview previewLabel="Field states">
+      <app-basic-field-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="usageTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Field API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Keep field semantics native-first. Let kui-field wire ids and descriptions instead of duplicating ARIA by hand."
+  >
+    <ul class="field-page__notes">
+      <li>Prefer a visible label through <code>label</code> or projected <code>kuiLabel</code>.</li>
+      <li>
+        Projected <code>kuiHint</code> and <code>kuiError</code> participate in
+        <code>aria-describedby</code>.
+      </li>
+      <li>The field does not replace the native control role.</li>
+    </ul>
+  </app-doc-section>
+</article>

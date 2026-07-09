@@ -13,6 +13,7 @@ export const DOCS_PATHS = {
   components: `/${AppRoutePath.Components}`,
   componentsButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsButton}`,
   componentsCommandPalette: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsCommandPalette}`,
+  componentsField: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsField}`,
   componentsIconButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsIconButton}`,
   componentsInput: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsInput}`,
   componentsMenu: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsMenu}`,
@@ -69,9 +70,14 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         description: 'Square icon-only action control for buttons and links.',
       },
       {
-        label: 'Input and Field',
+        label: 'Field',
+        path: DOCS_PATHS.componentsField,
+        description: 'Label, hint, error, and ARIA wiring around native controls.',
+      },
+      {
+        label: 'Input',
         path: DOCS_PATHS.componentsInput,
-        description: 'Native input styling with label, hint, error, and ARIA wiring.',
+        description: 'Native input styling directive.',
       },
       {
         label: 'Menu',

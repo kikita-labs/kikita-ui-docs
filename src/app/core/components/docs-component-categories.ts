@@ -45,7 +45,7 @@ export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
         importName: 'KuiFieldComponent',
         status: 'available',
         description: 'Label, hint, error, and form-control composition.',
-        routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsInput}`,
+        routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsField}`,
       },
       {
         name: 'Input',
