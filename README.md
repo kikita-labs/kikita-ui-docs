@@ -26,7 +26,7 @@ export has been verified in a fresh Angular consumer app.
 ## Current Package
 
 ```text
-@kikita-labs/ui@0.0.5
+@kikita-labs/ui@0.1.0
 ```
 
 ## Role

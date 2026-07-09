@@ -74,9 +74,9 @@ export class BasicInputExample {}`,
       language: 'html',
       code: `<kui-field label="Project URL" hint="Affixes are visual field chrome.">
   <div class="kui-input-group">
-    <span class="kui-field-affix">https://</span>
+    <span kuiFieldAffix>https://</span>
     <input kuiInput aria-label="Project slug" value="kikita-ui" />
-    <span class="kui-field-affix">.dev</span>
+    <span kuiFieldAffix>.dev</span>
   </div>
 </kui-field>`,
     },

@@ -74,7 +74,7 @@ Use these files there before documenting a component:
 The current docs app consumes:
 
 ```text
-@kikita-labs/ui@0.0.5
+@kikita-labs/ui@0.1.0
 ```
 
 Styles are registered in `angular.json`:
