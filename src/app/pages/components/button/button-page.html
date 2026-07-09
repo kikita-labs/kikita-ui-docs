@@ -1,14 +1,14 @@
 <article class="button-page">
   <app-page-header
     eyebrow="Actions"
-    title="Button"
+    heading="Button"
     description="Directive for applying Kikita UI button styling to native button and anchor elements."
     [status]="status"
   />
 
   <app-doc-section
     anchor="import"
-    title="Import"
+    heading="Import"
     description="Import the public directive from the published package entrypoint."
   >
     <app-code-tabs [tabs]="importTabs" />
@@ -16,10 +16,10 @@
 
   <app-doc-section
     anchor="usage"
-    title="Usage"
+    heading="Usage"
     description="Use native button semantics for commands and anchor semantics for navigation."
   >
-    <app-live-preview title="Basic buttons">
+    <app-live-preview previewLabel="Basic buttons">
       <app-basic-button-example />
     </app-live-preview>
     <app-code-tabs [tabs]="basicTabs" />
@@ -27,10 +27,10 @@
 
   <app-doc-section
     anchor="appearances"
-    title="Appearances"
+    heading="Appearances"
     description="Choose appearance from the public button appearance union."
   >
-    <app-live-preview title="Appearance set">
+    <app-live-preview previewLabel="Appearance set">
       <app-button-appearance-example />
     </app-live-preview>
     <app-code-tabs [tabs]="appearanceTabs" />
@@ -38,22 +38,22 @@
 
   <app-doc-section
     anchor="sizes-and-states"
-    title="Sizes and states"
+    heading="Sizes and states"
     description="Use the shared Kikita size scale and native disabled state."
   >
-    <app-live-preview title="Size scale">
+    <app-live-preview previewLabel="Size scale">
       <app-button-size-example />
     </app-live-preview>
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
     <app-api-table label="Button API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
     anchor="accessibility"
-    title="Accessibility"
+    heading="Accessibility"
     description="Button keeps native element behavior instead of replacing it with ARIA roles."
   >
     <ul class="button-page__notes">

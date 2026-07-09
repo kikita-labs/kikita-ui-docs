@@ -9,7 +9,7 @@ import { KuiBadgeDirective } from '@kikita-labs/ui';
 })
 export class PageHeader {
   readonly eyebrow = input.required<string>();
-  readonly title = input.required<string>();
+  readonly heading = input.required<string>();
   readonly description = input.required<string>();
   readonly status = input<string>();
 }

@@ -1,17 +1,17 @@
 <article class="package-smoke-page">
   <app-page-header
     eyebrow="Consumer gate"
-    title="Package Smoke"
+    heading="Package Smoke"
     description="A small external-consumer surface that proves the published Kikita UI package imports, styles, and provider setup work in this Angular app."
     [status]="packageVersion"
   />
 
   <app-doc-section
-    title="Rendered package imports"
+    heading="Rendered package imports"
     description="This preview uses public imports from @kikita-labs/ui and the stylesheet registered through angular.json."
   >
     <app-live-preview
-      title="Basic consumer form"
+      previewLabel="Basic consumer form"
       description="The field, input, badge, card, and button below all come from the published package."
     >
       <div kuiCard class="package-smoke-page__sample" appearance="sunken" size="lg">
@@ -30,13 +30,13 @@
   </app-doc-section>
 
   <app-doc-section
-    title="Consumer API used here"
+    heading="Consumer API used here"
     description="This page intentionally stays small and only references package symbols that are present in the installed public typings."
   >
     <app-api-table [rows]="apiRows" />
   </app-doc-section>
 
-  <app-doc-section title="Example source">
+  <app-doc-section heading="Example source">
     <app-code-tabs [tabs]="codeTabs" />
   </app-doc-section>
 </article>

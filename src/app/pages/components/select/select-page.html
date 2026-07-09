@@ -1,14 +1,14 @@
 <article class="select-page">
   <app-page-header
     eyebrow="Forms"
-    title="Select"
+    heading="Select"
     description="Readonly native input trigger backed by explicit dropdown and option primitives."
     [status]="status"
   />
 
   <app-doc-section
     anchor="import"
-    title="Import"
+    heading="Import"
     description="Select composes field, dropdown, option, and the native input select directive."
   >
     <app-code-tabs [tabs]="importTabs" />
@@ -16,10 +16,10 @@
 
   <app-doc-section
     anchor="usage"
-    title="Usage"
+    heading="Usage"
     description="Bind value with Angular signals and keep option markup explicit."
   >
-    <app-live-preview title="Basic select">
+    <app-live-preview previewLabel="Basic select">
       <app-basic-select-example />
     </app-live-preview>
     <app-code-tabs [tabs]="basicTabs" />
@@ -27,10 +27,10 @@
 
   <app-doc-section
     anchor="multiple"
-    title="Multiple values"
+    heading="Multiple values"
     description="Set multiple when the value is an array. Selected values render as field chips by default."
   >
-    <app-live-preview title="Multiple select">
+    <app-live-preview previewLabel="Multiple select">
       <app-multiple-select-example />
     </app-live-preview>
     <app-code-tabs [tabs]="multipleTabs" />
@@ -38,19 +38,19 @@
 
   <app-doc-section
     anchor="provider-defaults"
-    title="Provider defaults"
+    heading="Provider defaults"
     description="Use provider defaults for app-wide select behavior. Local inputs still win."
   >
     <app-code-tabs [tabs]="providerTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
     <app-api-table label="Select API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
     anchor="accessibility"
-    title="Accessibility"
+    heading="Accessibility"
     description="Select keeps field wiring on kui-field and listbox semantics on dropdown options."
   >
     <ul class="select-page__notes">

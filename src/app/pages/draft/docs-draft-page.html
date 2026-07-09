@@ -1,14 +1,14 @@
 <article class="docs-draft-page">
   <app-page-header
     [eyebrow]="draft().eyebrow"
-    [title]="draft().title"
+    [heading]="draft().title"
     [description]="draft().description"
   />
 
   <app-doc-section
-    title="Section status"
+    heading="Section status"
     description="This page is intentionally wired into the docs shell before final content is written."
   >
-    <app-draft-state title="Docs coming soon" [description]="draft().description" />
+    <app-draft-state stateTitle="Docs coming soon" [description]="draft().description" />
   </app-doc-section>
 </article>

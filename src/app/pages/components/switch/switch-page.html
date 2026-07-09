@@ -1,14 +1,14 @@
 <article class="switch-page">
   <app-page-header
     eyebrow="Forms"
-    title="Switch"
+    heading="Switch"
     description="Native checkbox rendered as a switch while keeping native keyboard and form behavior."
     [status]="status"
   />
 
   <app-doc-section
     anchor="import"
-    title="Import"
+    heading="Import"
     description="Use the directive on native checkbox inputs and pair it with kui-field for field-level wiring."
   >
     <app-code-tabs [tabs]="importTabs" />
@@ -16,10 +16,10 @@
 
   <app-doc-section
     anchor="usage"
-    title="Usage"
+    heading="Usage"
     description="Keep native label text next to the switch and reserve switch for binary settings."
   >
-    <app-live-preview title="Basic switch">
+    <app-live-preview previewLabel="Basic switch">
       <app-basic-switch-example />
     </app-live-preview>
     <app-code-tabs [tabs]="basicTabs" />
@@ -27,22 +27,22 @@
 
   <app-doc-section
     anchor="sizes"
-    title="Sizes"
+    heading="Sizes"
     description="Use the same size scale as other Kikita form controls."
   >
-    <app-live-preview title="Switch sizes">
+    <app-live-preview previewLabel="Switch sizes">
       <app-switch-size-example />
     </app-live-preview>
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
     <app-api-table label="Switch API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
     anchor="accessibility"
-    title="Accessibility"
+    heading="Accessibility"
     description="Switch adds role=switch while keeping the native checkbox element."
   >
     <ul class="switch-page__notes">

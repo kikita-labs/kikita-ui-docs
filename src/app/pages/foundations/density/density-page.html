@@ -1,33 +1,33 @@
 <article class="density-page">
   <app-page-header
     eyebrow="Foundation"
-    title="Density"
+    heading="Density"
     description="Density controls the spacing feel of Kikita UI primitives without changing their semantic size or interaction model."
   />
 
   <app-doc-section
-    title="Density values"
+    heading="Density values"
     description="The published package exposes a typed KuiDensity union for compact, regular, and comfortable experiences."
   >
     <app-api-table label="Density values" [rows]="densityRows" />
   </app-doc-section>
 
   <app-doc-section
-    title="Global defaults"
+    heading="Global defaults"
     description="Set app-wide density through the Kikita provider. Keep docs examples on regular density unless the example is explicitly about density."
   >
     <app-code-tabs [tabs]="providerTabs" />
   </app-doc-section>
 
   <app-doc-section
-    title="Control recommendations"
+    heading="Control recommendations"
     description="These values come from the design-system spec and guide density-sensitive primitives."
   >
     <app-api-table label="Recommended control dimensions" [rows]="controlRows" />
   </app-doc-section>
 
   <app-doc-section
-    title="Component tokens"
+    heading="Component tokens"
     description="Density-sensitive components resolve variant tokens into the current component token values."
   >
     <app-code-tabs [tabs]="tokenTabs" />

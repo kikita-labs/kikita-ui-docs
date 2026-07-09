@@ -1,14 +1,14 @@
 <article class="checkbox-page">
   <app-page-header
     eyebrow="Forms"
-    title="Checkbox"
+    heading="Checkbox"
     description="Native checkbox styling with field ARIA wiring and invalid state integration."
     [status]="status"
   />
 
   <app-doc-section
     anchor="import"
-    title="Import"
+    heading="Import"
     description="Use the directive on native checkbox inputs and pair it with kui-field for label, hint, and error wiring."
   >
     <app-code-tabs [tabs]="importTabs" />
@@ -16,10 +16,10 @@
 
   <app-doc-section
     anchor="usage"
-    title="Usage"
+    heading="Usage"
     description="Keep a native label around the checkbox for option text."
   >
-    <app-live-preview title="Basic checkbox">
+    <app-live-preview previewLabel="Basic checkbox">
       <app-basic-checkbox-example />
     </app-live-preview>
     <app-code-tabs [tabs]="basicTabs" />
@@ -27,22 +27,22 @@
 
   <app-doc-section
     anchor="sizes"
-    title="Sizes"
+    heading="Sizes"
     description="Match checkbox size to surrounding field density and text scale."
   >
-    <app-live-preview title="Checkbox sizes">
+    <app-live-preview previewLabel="Checkbox sizes">
       <app-checkbox-size-example />
     </app-live-preview>
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
     <app-api-table label="Checkbox API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
     anchor="accessibility"
-    title="Accessibility"
+    heading="Accessibility"
     description="Checkbox keeps native input semantics and adds field-described state when used inside kui-field."
   >
     <ul class="checkbox-page__notes">

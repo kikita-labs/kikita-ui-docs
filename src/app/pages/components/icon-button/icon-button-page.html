@@ -1,14 +1,14 @@
 <article class="icon-button-page">
   <app-page-header
     eyebrow="Actions"
-    title="Icon Button"
+    heading="Icon Button"
     description="Square icon-only action control for native buttons and links."
     [status]="status"
   />
 
   <app-doc-section
     anchor="import"
-    title="Import"
+    heading="Import"
     description="Use the icon button directive on native button or anchor elements. Pair it with kui-icon for package-backed icon rendering."
   >
     <app-code-tabs [tabs]="importTabs" />
@@ -16,10 +16,10 @@
 
   <app-doc-section
     anchor="usage"
-    title="Usage"
+    heading="Usage"
     description="Icon-only controls must provide an accessible label on the host element."
   >
-    <app-live-preview title="Icon button appearances">
+    <app-live-preview previewLabel="Icon button appearances">
       <app-icon-button-appearance-example />
     </app-live-preview>
     <app-code-tabs [tabs]="usageTabs" />
@@ -27,10 +27,10 @@
 
   <app-doc-section
     anchor="appearance"
-    title="Appearance"
+    heading="Appearance"
     description="Use appearance to match the command hierarchy and danger states."
   >
-    <app-live-preview title="Appearance options">
+    <app-live-preview previewLabel="Appearance options">
       <app-icon-button-appearance-example />
     </app-live-preview>
     <app-code-tabs [tabs]="appearanceTabs" />
@@ -38,22 +38,22 @@
 
   <app-doc-section
     anchor="size"
-    title="Size"
+    heading="Size"
     description="Size maps to square control dimensions and should match nearby controls."
   >
-    <app-live-preview title="Size options">
+    <app-live-preview previewLabel="Size options">
       <app-icon-button-size-example />
     </app-live-preview>
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
     <app-api-table label="Icon button API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
     anchor="accessibility"
-    title="Accessibility"
+    heading="Accessibility"
     description="The visual icon is decorative when the host already has a clear label."
   >
     <ul class="icon-button-page__notes">

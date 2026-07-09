@@ -1,33 +1,33 @@
 <article class="accessibility-page">
   <app-page-header
     eyebrow="Foundation"
-    title="Accessibility"
+    heading="Accessibility"
     description="Kikita UI treats accessibility as a review process, not a single automated pass. Docs examples should preserve native semantics and expose real component states."
   />
 
   <app-doc-section
-    title="Baseline rules"
+    heading="Baseline rules"
     description="These requirements apply to primitives, docs examples, and consumer verification pages."
   >
     <app-api-table label="Accessibility baseline" [rows]="baselineRows" />
   </app-doc-section>
 
   <app-doc-section
-    title="Review levels"
+    heading="Review levels"
     description="A clean automated scan is only a smoke test. Do not mark a primitive fully audited without keyboard and assistive-technology review."
   >
     <app-api-table label="Review levels" [rows]="reviewRows" />
   </app-doc-section>
 
   <app-doc-section
-    title="Docs examples"
+    heading="Docs examples"
     description="Examples should use Kikita field wiring and native state attributes instead of compensating for broken markup with custom ARIA."
   >
     <app-code-tabs [tabs]="formTabs" />
   </app-doc-section>
 
   <app-doc-section
-    title="Coverage notes"
+    heading="Coverage notes"
     description="Record the actual level of review. Be explicit when only DOM smoke has run."
   >
     <app-code-tabs [tabs]="statusTabs" />

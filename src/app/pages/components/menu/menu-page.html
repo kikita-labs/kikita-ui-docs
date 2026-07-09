@@ -1,14 +1,14 @@
 <article class="menu-page">
   <app-page-header
     eyebrow="Actions"
-    title="Menu"
+    heading="Menu"
     description="Overlay action menu for commands such as edit, copy, archive, and delete."
     [status]="status"
   />
 
   <app-doc-section
     anchor="import"
-    title="Import"
+    heading="Import"
     description="Menu composes a panel, trigger directive, menu items, headers, and separators."
   >
     <app-code-tabs [tabs]="importTabs" />
@@ -16,10 +16,10 @@
 
   <app-doc-section
     anchor="usage"
-    title="Usage"
+    heading="Usage"
     description="Use menu for actions, not value selection. Use Select or Dropdown for picking values."
   >
-    <app-live-preview title="Basic menu">
+    <app-live-preview previewLabel="Basic menu">
       <app-basic-menu-example />
     </app-live-preview>
     <app-code-tabs [tabs]="basicTabs" />
@@ -27,22 +27,22 @@
 
   <app-doc-section
     anchor="content"
-    title="Content"
+    heading="Content"
     description="Headers, icons, shortcuts, disabled states, and destructive actions are projected item content."
   >
-    <app-live-preview title="Menu content">
+    <app-live-preview previewLabel="Menu content">
       <app-menu-content-example />
     </app-live-preview>
     <app-code-tabs [tabs]="contentTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" title="API" [description]="apiDescription">
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
     <app-api-table label="Menu API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
     anchor="accessibility"
-    title="Accessibility"
+    heading="Accessibility"
     description="Menu owns keyboard navigation while keeping triggers and items native."
   >
     <ul class="menu-page__notes">

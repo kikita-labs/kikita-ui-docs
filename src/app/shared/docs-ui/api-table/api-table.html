@@ -1,20 +1,20 @@
-<div class="api-table" role="region" [attr.aria-label]="label()">
-  <table class="api-table__table">
+<div role="region" [attr.aria-label]="label()">
+  <table kuiTable [data]="rows().slice()">
     <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Type</th>
-        <th scope="col">Description</th>
+      <tr kuiThGroup>
+        <th kuiTh>Name</th>
+        <th kuiTh>Type</th>
+        <th kuiTh>Description</th>
       </tr>
     </thead>
     <tbody>
       @for (row of rows(); track row.name) {
-        <tr>
-          <th scope="row">{{ row.name }}</th>
-          <td>
+        <tr kuiRow [value]="row">
+          <td kuiCell>{{ row.name }}</td>
+          <td kuiCell>
             <code>{{ row.type }}</code>
           </td>
-          <td>{{ row.description }}</td>
+          <td kuiCell>{{ row.description }}</td>
         </tr>
       }
     </tbody>

@@ -19,7 +19,7 @@ import { DOCS_EXTERNAL_LINKS } from '../../../core/navigation/docs-external-link
   styleUrl: './draft-state.scss',
 })
 export class DraftState {
-  readonly title = input.required<string>();
+  readonly stateTitle = input.required<string>();
   readonly description = input.required<string>();
 
   protected readonly links = DOCS_EXTERNAL_LINKS;

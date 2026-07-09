@@ -1,5 +1,5 @@
 import { Component, computed, input, signal } from '@angular/core';
-import { KuiCardDirective, type KuiThemeMode } from '@kikita-labs/ui';
+import { KuiCardDirective } from '@kikita-labs/ui';
 
 type LivePreviewWidth = 'desktop' | 'mobile';
 
@@ -10,10 +10,9 @@ type LivePreviewWidth = 'desktop' | 'mobile';
   styleUrl: './live-preview.scss',
 })
 export class LivePreview {
-  readonly title = input.required<string>();
+  readonly previewLabel = input.required<string>();
   readonly description = input<string>();
 
-  protected readonly theme = signal<KuiThemeMode>('light');
   protected readonly width = signal<LivePreviewWidth>('desktop');
 
   protected readonly surfaceClass = computed(() => ({

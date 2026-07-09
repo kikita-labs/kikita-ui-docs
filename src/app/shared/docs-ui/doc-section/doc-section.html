@@ -6,7 +6,7 @@
           class="doc-section__heading-link"
           [href]="headingHref()"
           (click)="scrollToHeading($event)"
-          >{{ title() }}</a
+          >{{ heading() }}</a
         >
       </h2>
 
@@ -16,7 +16,7 @@
         type="button"
         appearance="ghost"
         size="sm"
-        [attr.aria-label]="'Copy link to ' + title()"
+        [attr.aria-label]="'Copy link to ' + heading()"
         (click)="copyHeadingLink()"
       >
         <svg aria-hidden="true" viewBox="0 0 16 16" focusable="false">

@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, computed, inject, input, signal } from '@angular/core';
-import { KuiIconButtonDirective } from '@kikita-labs/ui';
+import { KuiIconButtonDirective, kuiToast } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-doc-section',
@@ -10,15 +10,16 @@ import { KuiIconButtonDirective } from '@kikita-labs/ui';
 })
 export class DocSection {
   private readonly document = inject(DOCUMENT);
+  private readonly toast = kuiToast();
 
-  readonly title = input.required<string>();
+  readonly heading = input.required<string>();
   readonly description = input<string>();
   readonly anchor = input<string>();
 
   protected readonly copied = signal(false);
 
   protected readonly headingId = computed(() =>
-    this.anchor() ? this.normalizeId(this.anchor() ?? '') : this.normalizeId(this.title()),
+    this.anchor() ? this.normalizeId(this.anchor() ?? '') : this.normalizeId(this.heading()),
   );
 
   protected readonly headingHref = computed(() => `#${this.headingId()}`);
@@ -49,6 +50,11 @@ export class DocSection {
     try {
       await navigator.clipboard.writeText(url.toString());
       this.copied.set(true);
+      this.toast.open({
+        title: 'Link copied',
+        message: `${this.heading()} link copied to clipboard.`,
+        appearance: 'success',
+      });
       window.setTimeout(() => this.copied.set(false), 1600);
     } catch {
       this.document.location.hash = this.headingId();
