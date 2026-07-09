@@ -1,0 +1,23 @@
+// Shared layout for component doc pages (`<name>-page.scss`): page-header +
+// doc-sections stacked with breathing room, capped to a readable line length.
+@mixin doc-page-layout {
+  display: grid;
+  max-inline-size: 780px;
+  gap: clamp(32px, 6vw, 56px);
+}
+
+// Shared "notes" bullet list used in Accessibility/API sections across doc pages.
+@mixin doc-page-notes {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  margin: 0;
+  padding-inline-start: 1.25rem;
+  color: var(--kui-color-text-secondary);
+  line-height: 1.6;
+
+  code {
+    color: var(--kui-color-primary-soft-text);
+    font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Consolas, monospace);
+    font-size: var(--kui-text-sm-size, 13px);
+  }
+}

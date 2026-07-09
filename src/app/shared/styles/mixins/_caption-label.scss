@@ -1,0 +1,7 @@
+// Small secondary-colored caption used above form controls in compact groups
+// (e.g. popover sections), independent of kui-field's own bold label style.
+@mixin caption-label {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-xs-size, 11px);
+  font-weight: 600;
+}

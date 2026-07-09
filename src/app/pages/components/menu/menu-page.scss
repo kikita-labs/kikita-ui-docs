@@ -1,20 +1,9 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
 .menu-page {
-  display: grid;
-  gap: clamp(32px, 6vw, 56px);
-  max-inline-size: 780px;
+  @include doc-page-layout;
 }
 
 .menu-page__notes {
-  display: grid;
-  gap: var(--kui-space-2, 8px);
-  margin: 0;
-  padding-inline-start: 1.25rem;
-  color: var(--kui-color-text-secondary);
-  line-height: 1.6;
-}
-
-.menu-page__notes code {
-  color: var(--kui-color-primary-soft-text);
-  font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Consolas, monospace);
-  font-size: var(--kui-text-sm-size, 13px);
+  @include doc-page-notes;
 }
