@@ -45,7 +45,6 @@ __screenshots__/
 Thumbs.db
 
 # Claude Code
-CLAUDE.md
 .claude/
 .mcp.json
 .local-notes/
