@@ -1,0 +1,26 @@
+<kui-field label="Plan" hint="Choose a billing plan">
+  <div role="radiogroup" class="radio-group" aria-label="Plan">
+    <label class="radio-option">
+      <input
+        kuiRadio
+        type="radio"
+        name="plan"
+        value="starter"
+        [checked]="plan() === 'starter'"
+        (change)="plan.set('starter')"
+      />
+      <span>Starter</span>
+    </label>
+    <label class="radio-option">
+      <input
+        kuiRadio
+        type="radio"
+        name="plan"
+        value="pro"
+        [checked]="plan() === 'pro'"
+        (change)="plan.set('pro')"
+      />
+      <span>Pro</span>
+    </label>
+  </div>
+</kui-field>

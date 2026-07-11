@@ -17,6 +17,7 @@ export const DOCS_PATHS = {
   componentsIconButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsIconButton}`,
   componentsInput: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsInput}`,
   componentsMenu: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsMenu}`,
+  componentsRadio: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsRadio}`,
   componentsSelect: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSelect}`,
   smoke: `/${AppRoutePath.Smoke}`,
 } as const;
@@ -88,6 +89,11 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         label: 'Command Palette',
         path: DOCS_PATHS.componentsCommandPalette,
         description: 'Keyboard-first searchable command dialog.',
+      },
+      {
+        label: 'Radio',
+        path: DOCS_PATHS.componentsRadio,
+        description: 'Native radio control styling for exclusive choices.',
       },
       {
         label: 'Select',

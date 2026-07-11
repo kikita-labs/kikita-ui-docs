@@ -1,0 +1,106 @@
+<article class="radio-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Radio"
+    description="Native radio styling with field ARIA wiring and exclusive-choice grouping."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Use the directive on native radio inputs and pair it with kui-field for group label, hint, and error wiring."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Share a native name across radio inputs to make the choice mutually exclusive. Keep a native label around each option."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="radio-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic radio group">
+      <app-basic-radio-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes"
+    heading="Sizes"
+    description="Match radio size to surrounding field density and text scale."
+  >
+    <app-live-preview previewLabel="Radio sizes">
+      <app-radio-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="disabled"
+    heading="Disabled"
+    description="Disable individual options inside a radio group with the native disabled attribute."
+  >
+    <app-live-preview previewLabel="Disabled radio option">
+      <app-radio-disabled-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="disabledTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="invalid"
+    heading="Invalid state"
+    description="Inside kui-field, setting error text marks projected radio inputs invalid automatically. Use the invalid input directly only when a radio is used outside a field."
+  >
+    <app-live-preview previewLabel="Invalid radio group">
+      <app-radio-invalid-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="invalidTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="signal-forms"
+    heading="Signal Forms"
+    description="Bind each native radio input with [formField] on an Angular Signal Forms field."
+  >
+    <app-code-tabs [tabs]="signalFormsTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Radio API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Radio keeps native input semantics and adds field-described state when used inside kui-field."
+  >
+    <ul class="radio-page__notes">
+      <li>Use a native <code>label</code> for each radio option's text.</li>
+      <li>
+        Share a native <code>name</code> across radio inputs in the same group so keyboard arrow
+        navigation and mutual exclusion work without extra scripting.
+      </li>
+      <li>
+        Wrap the group in a <code>role="radiogroup"</code> element with an accessible name (an
+        <code>aria-label</code> or a <code>kui-field</code> label) so assistive technology
+        announces the set.
+      </li>
+      <li>Use <code>kui-field</code> for group label, hint, error, and described-by wiring.</li>
+      <li>Use native checked and disabled states; do not replace the input with a custom role.</li>
+      <li>Use <code>invalid</code> only when the radio is outside a field error state.</li>
+    </ul>
+  </app-doc-section>
+</article>

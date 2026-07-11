@@ -142,6 +142,24 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/components/switch/switch-page').then((m) => m.SwitchPage),
       },
+      {
+        path: AppRoutePath.ComponentsRadio,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/radio/radio-page').then((m) => m.RadioPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/radio/playground/radio-playground-page').then(
+                (m) => m.RadioPlaygroundPage,
+              ),
+          },
+        ],
+      },
       ...componentDraftRoutes,
     ],
   },

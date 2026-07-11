@@ -1,0 +1,42 @@
+<article class="radio-playground-page">
+  <div class="radio-playground-page__header">
+    <h1>Radio &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Radio playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-field [label]="labelOf(playground.values())">
+      <div role="radiogroup" [attr.aria-label]="labelOf(playground.values())">
+        <label class="radio-playground-page__option">
+          <input
+            kuiRadio
+            type="radio"
+            name="playground-radio"
+            [size]="sizeOf(playground.values())"
+            [invalid]="invalidOf(playground.values())"
+            checked
+          />
+          <span>{{ firstOptionOf(playground.values()) }}</span>
+        </label>
+        <label class="radio-playground-page__option">
+          <input
+            kuiRadio
+            type="radio"
+            name="playground-radio"
+            [size]="sizeOf(playground.values())"
+            [invalid]="invalidOf(playground.values())"
+            [disabled]="disabledOf(playground.values())"
+          />
+          <span>{{ secondOptionOf(playground.values()) }}</span>
+        </label>
+      </div>
+    </kui-field>
+  </app-api-playground>
+
+  <app-api-table label="Radio API" [rows]="apiRows" />
+  <p class="radio-playground-page__note">{{ apiDescription }}</p>
+</article>

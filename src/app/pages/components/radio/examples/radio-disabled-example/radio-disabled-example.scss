@@ -1,0 +1,15 @@
+.radio-group {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+
+.radio-option--disabled {
+  color: var(--kui-color-text-secondary);
+}
