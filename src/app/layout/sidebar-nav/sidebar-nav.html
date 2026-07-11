@@ -15,7 +15,7 @@
       kuiIconButton
       class="sidebar-nav__close"
       type="button"
-      appearance="ghost"
+      shape="ghost"
       size="sm"
       aria-label="Close documentation navigation"
       (click)="closeNavigation.emit()"
@@ -60,7 +60,7 @@
                 size="sm"
                 #foundationLink="routerLinkActive"
                 class="sidebar-nav__item"
-                [appearance]="foundationLink.isActive ? 'soft' : 'ghost'"
+                [shape]="foundationLink.isActive ? 'soft' : 'ghost'"
                 [routerLink]="item.path"
                 routerLinkActive
                 [routerLinkActiveOptions]="activeOptions"
@@ -99,7 +99,7 @@
                   size="sm"
                   #componentLink="routerLinkActive"
                   class="sidebar-nav__item"
-                  [appearance]="componentLink.isActive ? 'soft' : 'ghost'"
+                  [shape]="componentLink.isActive ? 'soft' : 'ghost'"
                   [routerLink]="component.routePath"
                   routerLinkActive
                   [routerLinkActiveOptions]="activeOptions"
@@ -141,7 +141,7 @@
                 size="sm"
                 #packageLink="routerLinkActive"
                 class="sidebar-nav__item"
-                [appearance]="packageLink.isActive ? 'soft' : 'ghost'"
+                [shape]="packageLink.isActive ? 'soft' : 'ghost'"
                 [routerLink]="item.path"
                 routerLinkActive
                 [routerLinkActiveOptions]="activeOptions"
