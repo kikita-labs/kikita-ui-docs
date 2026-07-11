@@ -19,6 +19,18 @@
     heading="Usage"
     description="Keep a native label around the checkbox for option text."
   >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="checkbox-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
     <app-live-preview previewLabel="Basic checkbox">
       <app-basic-checkbox-example />
     </app-live-preview>
@@ -27,10 +39,10 @@
 
   <app-doc-section
     anchor="sizes"
-    heading="Sizes"
-    description="Match checkbox size to surrounding field density and text scale."
+    heading="Sizes and states"
+    description="Match checkbox size to surrounding field density and text scale; disabled and invalid follow native and field-driven state."
   >
-    <app-live-preview previewLabel="Checkbox sizes">
+    <app-live-preview previewLabel="Checkbox sizes and states">
       <app-checkbox-size-example />
     </app-live-preview>
     <app-code-tabs [tabs]="sizeTabs" />

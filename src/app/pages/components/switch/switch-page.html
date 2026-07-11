@@ -19,6 +19,18 @@
     heading="Usage"
     description="Keep native label text next to the switch and reserve switch for binary settings."
   >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="switch-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
     <app-live-preview previewLabel="Basic switch">
       <app-basic-switch-example />
     </app-live-preview>
@@ -46,10 +58,32 @@
     description="Switch adds role=switch while keeping the native checkbox element."
   >
     <ul class="switch-page__notes">
-      <li>Use a native <code>label</code> for the switch text.</li>
-      <li>Use <code>kui-field</code> for group label, hint, error, and described-by wiring.</li>
-      <li>Use switch only for immediate binary settings, not multi-choice selection.</li>
-      <li>Use native checked and disabled states; do not replace the input with a custom role.</li>
+      <li>
+        Render <code>kuiSwitch</code> on a native <code>input[type=checkbox]</code>; the directive
+        adds <code>role="switch"</code> while the element keeps native checkbox semantics, keyboard
+        support, and form participation.
+      </li>
+      <li>
+        Wrap the input in a native <code>label</code> so the switch text is the accessible name.
+      </li>
+      <li>
+        Space toggles the switch and Tab moves focus, matching native checkbox keyboard behavior;
+        the directive does not add custom key handling.
+      </li>
+      <li>
+        Use <code>kui-field</code> for group label, hint, error, and <code>aria-describedby</code>
+        wiring instead of building described-by attributes by hand.
+      </li>
+      <li>
+        Set the native <code>disabled</code> attribute to disable the control; use the directive's
+        <code>invalid</code> input to mark it invalid outside a <code>kui-field</code> error state.
+      </li>
+      <li>Use switch only for an immediate binary setting, not multi-choice selection.</li>
+      <li>
+        Per <code>../kikita-ui/docs/state-coverage.md</code>, Switch has local playground coverage
+        for off, on, hover, focus, invalid, disabled, sizes, and field wiring, but a dedicated
+        assistive-technology review has not been completed yet.
+      </li>
     </ul>
   </app-doc-section>
 </article>

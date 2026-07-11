@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { KuiButtonDirective } from '@kikita-labs/ui';
 import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
@@ -11,7 +13,16 @@ import { BasicFieldExample } from './examples/basic-field-example/basic-field-ex
 
 @Component({
   selector: 'app-field-page',
-  imports: [ApiTable, BasicFieldExample, CodeTabs, DocSection, LivePreview, PageHeader],
+  imports: [
+    ApiTable,
+    BasicFieldExample,
+    CodeTabs,
+    DocSection,
+    KuiButtonDirective,
+    LivePreview,
+    PageHeader,
+    RouterLink,
+  ],
   templateUrl: './field-page.html',
   styleUrl: './field-page.scss',
 })

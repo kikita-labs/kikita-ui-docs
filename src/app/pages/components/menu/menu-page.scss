@@ -7,3 +7,8 @@
 .menu-page__notes {
   @include doc-page-notes;
 }
+
+.menu-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}
