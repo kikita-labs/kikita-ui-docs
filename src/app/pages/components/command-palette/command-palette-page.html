@@ -19,6 +19,17 @@
     heading="Usage"
     description="Control open and query with signals, and run commands from the selected output."
   >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="command-palette-page__playground-link"
+    >
+      Open in Playground</a
+    >
     <app-live-preview previewLabel="Basic command palette">
       <app-basic-command-palette-example />
     </app-live-preview>
@@ -43,10 +54,30 @@
     description="The palette uses modal dialog semantics, focus trapping, and listbox navigation."
   >
     <ul class="command-palette-page__notes">
-      <li>The search input exposes combobox and listbox relationships.</li>
+      <li>
+        The palette renders through a CDK overlay with scroll blocking and a modal dialog container.
+        Set <code>label</code> to describe the dialog and search input for screen readers.
+      </li>
+      <li>
+        A CDK focus trap keeps focus inside the palette while open. Focus returns to the element
+        that opened the palette after it closes.
+      </li>
+      <li>
+        The search input exposes combobox and listbox relationships through
+        <code>aria-controls</code> and <code>aria-activedescendant</code>.
+      </li>
       <li>Arrow keys move the active option; <code>Enter</code> selects it.</li>
       <li><code>Escape</code> closes the palette and restores focus.</li>
       <li>Disabled commands are skipped by keyboard navigation and cannot be selected.</li>
+      <li>
+        Setting <code>loading</code> renders skeleton rows and sets <code>aria-busy</code> on the
+        list while results are pending.
+      </li>
+      <li>
+        Formal assistive-technology review is still pending for Command Palette per
+        <code>state-coverage.md</code>; only static and browser smoke review have been completed so
+        far.
+      </li>
     </ul>
   </app-doc-section>
 </article>

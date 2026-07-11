@@ -105,42 +105,151 @@ export const routes: Routes = [
       },
       {
         path: AppRoutePath.ComponentsCheckbox,
-        loadComponent: () =>
-          import('./pages/components/checkbox/checkbox-page').then((m) => m.CheckboxPage),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/checkbox/checkbox-page').then((m) => m.CheckboxPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/checkbox/playground/checkbox-playground-page').then(
+                (m) => m.CheckboxPlaygroundPage,
+              ),
+          },
+        ],
       },
       {
         path: AppRoutePath.ComponentsCommandPalette,
-        loadComponent: () =>
-          import('./pages/components/command-palette/command-palette-page').then(
-            (m) => m.CommandPalettePage,
-          ),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/command-palette/command-palette-page').then(
+                (m) => m.CommandPalettePage,
+              ),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/command-palette/playground/command-palette-playground-page').then(
+                (m) => m.CommandPalettePlaygroundPage,
+              ),
+          },
+        ],
       },
       {
         path: AppRoutePath.ComponentsIconButton,
-        loadComponent: () =>
-          import('./pages/components/icon-button/icon-button-page').then((m) => m.IconButtonPage),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/icon-button/icon-button-page').then(
+                (m) => m.IconButtonPage,
+              ),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/icon-button/playground/icon-button-playground-page').then(
+                (m) => m.IconButtonPlaygroundPage,
+              ),
+          },
+        ],
       },
       {
         path: AppRoutePath.ComponentsField,
-        loadComponent: () => import('./pages/components/field/field-page').then((m) => m.FieldPage),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/field/field-page').then((m) => m.FieldPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/field/playground/field-playground-page').then(
+                (m) => m.FieldPlaygroundPage,
+              ),
+          },
+        ],
       },
       {
         path: AppRoutePath.ComponentsInput,
-        loadComponent: () => import('./pages/components/input/input-page').then((m) => m.InputPage),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/input/input-page').then((m) => m.InputPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/input/playground/input-playground-page').then(
+                (m) => m.InputPlaygroundPage,
+              ),
+          },
+        ],
       },
       {
         path: AppRoutePath.ComponentsMenu,
-        loadComponent: () => import('./pages/components/menu/menu-page').then((m) => m.MenuPage),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/menu/menu-page').then((m) => m.MenuPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/menu/playground/menu-playground-page').then(
+                (m) => m.MenuPlaygroundPage,
+              ),
+          },
+        ],
       },
       {
         path: AppRoutePath.ComponentsSelect,
-        loadComponent: () =>
-          import('./pages/components/select/select-page').then((m) => m.SelectPage),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/select/select-page').then((m) => m.SelectPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/select/playground/select-playground-page').then(
+                (m) => m.SelectPlaygroundPage,
+              ),
+          },
+        ],
       },
       {
         path: AppRoutePath.ComponentsSwitch,
-        loadComponent: () =>
-          import('./pages/components/switch/switch-page').then((m) => m.SwitchPage),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/switch/switch-page').then((m) => m.SwitchPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/switch/playground/switch-playground-page').then(
+                (m) => m.SwitchPlaygroundPage,
+              ),
+          },
+        ],
       },
       ...componentDraftRoutes,
     ],
