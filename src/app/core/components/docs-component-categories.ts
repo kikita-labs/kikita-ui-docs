@@ -64,7 +64,7 @@ export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
       {
         name: 'Combobox',
         importName: 'KuiComboboxDirective',
-        status: 'docs-pending',
+        status: 'available',
         description: 'Searchable input with projected options and async mode.',
         routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsCombobox}`,
       },

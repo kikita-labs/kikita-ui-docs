@@ -288,6 +288,24 @@ export const routes: Routes = [
         ],
       },
       {
+        path: AppRoutePath.ComponentsCombobox,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/combobox/combobox-page').then((m) => m.ComboboxPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/combobox/playground/combobox-playground-page').then(
+                (m) => m.ComboboxPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
         path: AppRoutePath.ComponentsTextarea,
         children: [
           {

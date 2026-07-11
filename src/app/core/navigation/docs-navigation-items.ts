@@ -13,6 +13,7 @@ export const DOCS_PATHS = {
   components: `/${AppRoutePath.Components}`,
   componentsButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsButton}`,
   componentsCheckbox: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsCheckbox}`,
+  componentsCombobox: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsCombobox}`,
   componentsCommandPalette: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsCommandPalette}`,
   componentsField: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsField}`,
   componentsIconButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsIconButton}`,
@@ -113,6 +114,11 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         label: 'Switch',
         path: DOCS_PATHS.componentsSwitch,
         description: 'Native checkbox rendered as a switch for binary settings.',
+      },
+      {
+        label: 'Combobox',
+        path: DOCS_PATHS.componentsCombobox,
+        description: 'Searchable input trigger with projected options, filtering, and async mode.',
       },
       {
         label: 'Slider',

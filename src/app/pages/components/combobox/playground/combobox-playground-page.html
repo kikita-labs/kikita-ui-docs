@@ -1,0 +1,39 @@
+<article class="combobox-playground-page">
+  <div class="combobox-playground-page__header">
+    <h1>Combobox &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Combobox playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-field label="Assignee">
+      <input
+        kuiCombobox
+        [value]="value()"
+        (valueChange)="value.set($event)"
+        [(query)]="query"
+        [kuiLabelFn]="personLabel"
+        [mode]="modeOf(playground.values())"
+        [placeholder]="placeholderOf(playground.values())"
+        [clearable]="clearableOf(playground.values())"
+        [loading]="loadingOf(playground.values())"
+        [disabled]="disabledOf(playground.values())"
+        [readonly]="readonlyOf(playground.values())"
+        [invalid]="invalidOf(playground.values())"
+      />
+      <kui-dropdown>
+        @for (person of filteredPeople(); track person.id) {
+          <button kuiOption [value]="person">{{ person.name }}</button>
+        } @empty {
+          <div class="kui-combobox-empty">No people found</div>
+        }
+      </kui-dropdown>
+    </kui-field>
+  </app-api-playground>
+
+  <app-api-table label="Combobox API" [rows]="apiRows" />
+  <p class="combobox-playground-page__note">{{ apiDescription }}</p>
+</article>

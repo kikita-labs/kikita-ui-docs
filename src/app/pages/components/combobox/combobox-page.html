@@ -1,0 +1,113 @@
+<article class="combobox-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Combobox"
+    description="Searchable native input trigger with projected options, local filtering, and async mode."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Combobox composes field, dropdown, option, and the highlight pipe with the combobox directive."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Bind value and query with Angular signals. Filter and render projected options yourself."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="combobox-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic combobox">
+      <app-basic-combobox-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="async"
+    heading="Async search"
+    description='Use (search) for remote requests. The directive does not own async data; update the projected options when results arrive. Use mode="async" to document that filtering happens outside the directive.'
+  >
+    <app-live-preview previewLabel="Async combobox">
+      <app-async-combobox-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="asyncTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="free-input"
+    heading="Free input"
+    description='mode="free" stores typed text as the value. In the default filter mode, editing text clears the selected value until a projected option is chosen.'
+  >
+    <app-live-preview previewLabel="Free input combobox">
+      <app-free-combobox-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="freeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="field-states"
+    heading="Field composition"
+    description="Combobox inherits field id, label association, aria-describedby, invalid state, and field size from kui-field."
+  >
+    <app-live-preview previewLabel="Combobox field states">
+      <app-combobox-field-states-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="fieldStatesTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="provider-defaults"
+    heading="Provider defaults"
+    description="Use provider defaults for app-wide combobox behavior. Local inputs still win."
+  >
+    <app-code-tabs [tabs]="providerTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Combobox API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Combobox keeps native input semantics and composite listbox behavior on the dropdown."
+  >
+    <ul class="combobox-page__notes">
+      <li>The host remains a native <code>&lt;input&gt;</code>.</li>
+      <li>
+        The input uses <code>role="combobox"</code>, <code>aria-haspopup="listbox"</code>,
+        <code>aria-expanded</code>, and <code>aria-controls</code>.
+      </li>
+      <li>
+        <code>kui-field</code> provides label, hint, error, required marker,
+        <code>aria-describedby</code>, and inherited invalid state.
+      </li>
+      <li><code>kui-dropdown</code> renders the popup listbox through Angular CDK overlay.</li>
+      <li>
+        <code>kuiOption</code> provides <code>role="option"</code>, <code>aria-selected</code>,
+        disabled state, click selection, and keyboard navigation.
+      </li>
+      <li>Arrow keys open the dropdown and move focus to the first or last enabled option.</li>
+      <li>Escape closes the dropdown.</li>
+      <li>
+        Multiple chip-backed selection is intentionally not part of Combobox; use Select for fixed
+        choices without typing.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

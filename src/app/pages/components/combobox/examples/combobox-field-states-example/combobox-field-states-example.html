@@ -1,0 +1,17 @@
+<div class="combobox-field-states-example">
+  <kui-field label="Owner" hint="Disabled prevents editing and opening the dropdown">
+    <input kuiCombobox disabled [(value)]="disabledOwner" placeholder="Search people..." />
+    <kui-dropdown>
+      <button kuiOption value="engineer">Software Engineer</button>
+      <button kuiOption value="designer">Designer</button>
+    </kui-dropdown>
+  </kui-field>
+
+  <kui-field label="Owner" error="Choose an owner before continuing">
+    <input kuiCombobox invalid [(value)]="invalidOwner" placeholder="Search people..." />
+    <kui-dropdown>
+      <button kuiOption value="engineer">Software Engineer</button>
+      <button kuiOption value="designer">Designer</button>
+    </kui-dropdown>
+  </kui-field>
+</div>

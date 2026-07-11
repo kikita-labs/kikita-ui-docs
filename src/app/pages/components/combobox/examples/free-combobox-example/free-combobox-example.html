@@ -1,0 +1,8 @@
+<kui-field label="Tag" hint="Type a custom tag or choose a suggestion">
+  <input kuiCombobox mode="free" [(value)]="tag" placeholder="Type or choose..." />
+  <kui-dropdown>
+    <button kuiOption value="Bug">Bug</button>
+    <button kuiOption value="Feature">Feature</button>
+    <button kuiOption value="Regression">Regression</button>
+  </kui-dropdown>
+</kui-field>
