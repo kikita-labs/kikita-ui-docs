@@ -125,6 +125,24 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/components/field/field-page').then((m) => m.FieldPage),
       },
       {
+        path: AppRoutePath.ComponentsGroup,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/group/group-page').then((m) => m.GroupPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/group/playground/group-playground-page').then(
+                (m) => m.GroupPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
         path: AppRoutePath.ComponentsInput,
         loadComponent: () => import('./pages/components/input/input-page').then((m) => m.InputPage),
       },

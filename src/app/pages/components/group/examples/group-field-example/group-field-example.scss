@@ -1,0 +1,7 @@
+.group-field-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+  justify-content: center;
+}

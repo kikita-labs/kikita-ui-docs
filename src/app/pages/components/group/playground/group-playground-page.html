@@ -1,0 +1,27 @@
+<article class="group-playground-page">
+  <div class="group-playground-page__header">
+    <h1>Group &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Group playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <div
+      kuiGroup
+      [orientation]="orientationOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [collapsed]="collapsedOf(playground.values())"
+      [rounded]="roundedOf(playground.values())"
+    >
+      <button kuiButton type="button" shape="outline">{{ firstLabelOf(playground.values()) }}</button>
+      <button kuiButton type="button" shape="outline">{{ secondLabelOf(playground.values()) }}</button>
+      <button kuiButton type="button" shape="outline">{{ thirdLabelOf(playground.values()) }}</button>
+    </div>
+  </app-api-playground>
+
+  <app-api-table label="Group API" [rows]="apiRows" />
+  <p class="group-playground-page__note">{{ apiDescription }}</p>
+</article>

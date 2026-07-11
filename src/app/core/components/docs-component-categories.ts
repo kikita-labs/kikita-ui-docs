@@ -113,7 +113,7 @@ export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
       {
         name: 'Group',
         importName: 'KuiGroupDirective',
-        status: 'docs-pending',
+        status: 'available',
         description: 'Grouped control chrome for adjacent actions and fields.',
         routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsGroup}`,
       },

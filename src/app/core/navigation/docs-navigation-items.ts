@@ -14,6 +14,7 @@ export const DOCS_PATHS = {
   componentsButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsButton}`,
   componentsCommandPalette: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsCommandPalette}`,
   componentsField: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsField}`,
+  componentsGroup: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsGroup}`,
   componentsIconButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsIconButton}`,
   componentsInput: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsInput}`,
   componentsMenu: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsMenu}`,
@@ -73,6 +74,11 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         label: 'Field',
         path: DOCS_PATHS.componentsField,
         description: 'Label, hint, error, and ARIA wiring around native controls.',
+      },
+      {
+        label: 'Group',
+        path: DOCS_PATHS.componentsGroup,
+        description: 'Grouped control chrome for adjacent actions and fields.',
       },
       {
         label: 'Input',
