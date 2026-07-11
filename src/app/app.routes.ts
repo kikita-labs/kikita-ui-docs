@@ -234,6 +234,24 @@ export const routes: Routes = [
         ],
       },
       {
+        path: AppRoutePath.ComponentsSlider,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/slider/slider-page').then((m) => m.SliderPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/slider/playground/slider-playground-page').then(
+                (m) => m.SliderPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
         path: AppRoutePath.ComponentsSwitch,
         children: [
           {

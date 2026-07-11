@@ -20,6 +20,7 @@ export const DOCS_PATHS = {
   componentsMenu: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsMenu}`,
   componentsRadio: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsRadio}`,
   componentsSelect: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSelect}`,
+  componentsSlider: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSlider}`,
   componentsSwitch: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSwitch}`,
   componentsTextarea: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsTextarea}`,
   smoke: `/${AppRoutePath.Smoke}`,
@@ -112,6 +113,11 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         label: 'Switch',
         path: DOCS_PATHS.componentsSwitch,
         description: 'Native checkbox rendered as a switch for binary settings.',
+      },
+      {
+        label: 'Slider',
+        path: DOCS_PATHS.componentsSlider,
+        description: 'Native range input styling with Field and Signal Forms support.',
       },
       {
         label: 'Textarea',

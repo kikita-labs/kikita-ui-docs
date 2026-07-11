@@ -1,0 +1,6 @@
+.basic-slider-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}

@@ -71,7 +71,7 @@ export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
       {
         name: 'Slider',
         importName: 'KuiSliderDirective',
-        status: 'docs-pending',
+        status: 'available',
         description: 'Native range input styling with field and Signal Forms support.',
         routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSlider}`,
       },
