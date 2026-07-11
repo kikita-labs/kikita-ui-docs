@@ -1,0 +1,24 @@
+<article class="input-playground-page">
+  <div class="input-playground-page__header">
+    <h1>Input &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Input playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <input
+      kuiInput
+      [size]="sizeOf(playground.values())"
+      [invalid]="invalidOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [placeholder]="placeholderOf(playground.values())"
+      [value]="valueOf(playground.values())"
+    />
+  </app-api-playground>
+
+  <app-api-table label="Input API" [rows]="apiRows" />
+  <p class="input-playground-page__note">{{ apiDescription }}</p>
+</article>

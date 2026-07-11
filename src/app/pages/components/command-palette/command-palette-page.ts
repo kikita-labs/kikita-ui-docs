@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { KuiButtonDirective } from '@kikita-labs/ui';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
 import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
@@ -11,7 +13,16 @@ import { COMMAND_PALETTE_API_ROWS } from './command-palette.api-schema';
 
 @Component({
   selector: 'app-command-palette-page',
-  imports: [ApiTable, BasicCommandPaletteExample, CodeTabs, DocSection, LivePreview, PageHeader],
+  imports: [
+    ApiTable,
+    BasicCommandPaletteExample,
+    CodeTabs,
+    DocSection,
+    KuiButtonDirective,
+    LivePreview,
+    PageHeader,
+    RouterLink,
+  ],
   templateUrl: './command-palette-page.html',
   styleUrl: './command-palette-page.scss',
 })

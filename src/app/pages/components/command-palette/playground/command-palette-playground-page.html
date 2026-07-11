@@ -1,0 +1,34 @@
+<article class="command-palette-playground-page">
+  <div class="command-palette-playground-page__header">
+    <h1>Command Palette &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Command palette playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <div class="command-palette-playground-page__stage">
+      <button kuiButton type="button" (click)="open.set(true)">Open command palette</button>
+
+      @if (selectedCommand(); as command) {
+        <p class="command-palette-playground-page__selection">Selected: {{ command }}</p>
+      }
+    </div>
+
+    <kui-command-palette
+      [(open)]="open"
+      [(query)]="query"
+      [groups]="groupsOf(playground.values())"
+      [label]="labelOf(playground.values())"
+      [placeholder]="placeholderOf(playground.values())"
+      [emptyText]="emptyTextOf(playground.values())"
+      [loading]="loadingOf(playground.values())"
+      (selected)="runCommand($event)"
+    />
+  </app-api-playground>
+
+  <app-api-table label="Command palette API" [rows]="apiRows" />
+  <p class="command-palette-playground-page__note">{{ apiDescription }}</p>
+</article>

@@ -19,6 +19,18 @@
     heading="Usage"
     description="Icon-only controls must provide an accessible label on the host element."
   >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="icon-button-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
     <app-live-preview previewLabel="Icon button appearances">
       <app-icon-button-appearance-example />
     </app-live-preview>
@@ -39,7 +51,7 @@
   <app-doc-section
     anchor="size"
     heading="Size"
-    description="Size maps to square control dimensions and should match nearby controls."
+    description="Size (data-kui-size) drives control height directly; data-kui-density no longer affects height. Default md matches kui-input at 40px."
   >
     <app-live-preview previewLabel="Size options">
       <app-icon-button-size-example />
@@ -64,6 +76,25 @@
         anchors.
       </li>
       <li>Prefer visible text buttons when the icon meaning is not widely understood.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="known-gaps"
+    heading="Known gaps"
+    description="Differences from the sibling Button API worth calling out."
+  >
+    <ul class="icon-button-page__notes">
+      <li>
+        <code>kuiIconButton</code> does not expose a <code>loading</code> input. Only
+        <code>kuiButton</code> has <code>loading</code> as of
+        <code>&#64;kikita-labs/ui</code> 0.3.0.
+      </li>
+      <li>
+        Since 0.2.0, control height is driven only by
+        <code>size</code> (<code>data-kui-size</code>). <code>data-kui-density</code> no longer
+        changes icon button height.
+      </li>
     </ul>
   </app-doc-section>
 </article>
