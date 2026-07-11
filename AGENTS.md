@@ -13,6 +13,8 @@ Always read:
 - `.agents/workflow.md`
 - `.agents/library-sync.md`
 - `.agents/git-policy.md`
+- `.agents/architecture.md`
+- `.agents/progress.md`
 
 For Angular work, use `angularCliKikitaDocs.list_projects` first.
 

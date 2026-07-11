@@ -1,0 +1,35 @@
+<article class="select-playground-page">
+  <div class="select-playground-page__header">
+    <h1>Select &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Select playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-field label="Role">
+      <input
+        kuiSelect
+        [value]="value()"
+        (valueChange)="value.set($event)"
+        [multiple]="multipleOf(playground.values())"
+        [multipleDisplay]="multipleDisplayOf(playground.values())"
+        [maxVisibleChips]="maxVisibleChipsOf(playground.values())"
+        [placeholder]="placeholderOf(playground.values())"
+        [clearable]="clearableOf(playground.values())"
+        [disabled]="disabledOf(playground.values())"
+        [readonly]="readonlyOf(playground.values())"
+      />
+      <kui-dropdown>
+        @for (role of roleOptions; track role.value) {
+          <div kuiOption [value]="role.value">{{ role.label }}</div>
+        }
+      </kui-dropdown>
+    </kui-field>
+  </app-api-playground>
+
+  <app-api-table label="Select API" [rows]="apiRows" />
+  <p class="select-playground-page__note">{{ apiDescription }}</p>
+</article>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { KuiButtonDirective } from '@kikita-labs/ui';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
 import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
@@ -17,9 +19,11 @@ import { MENU_API_ROWS } from './menu.api-schema';
     BasicMenuExample,
     CodeTabs,
     DocSection,
+    KuiButtonDirective,
     LivePreview,
     MenuContentExample,
     PageHeader,
+    RouterLink,
   ],
   templateUrl: './menu-page.html',
   styleUrl: './menu-page.scss',

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { KuiButtonDirective } from '@kikita-labs/ui';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
 import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
@@ -18,8 +20,10 @@ import { ICON_BUTTON_API_ROWS } from './icon-button.api-schema';
     DocSection,
     IconButtonAppearanceExample,
     IconButtonSizeExample,
+    KuiButtonDirective,
     LivePreview,
     PageHeader,
+    RouterLink,
   ],
   templateUrl: './icon-button-page.html',
   styleUrl: './icon-button-page.scss',
@@ -74,19 +78,25 @@ export class IconButtonExample {
     {
       label: 'HTML',
       language: 'html',
-      code: `<button kuiIconButton type="button" aria-label="Solid action">
+      code: `<button kuiIconButton type="button" aria-label="Add item">
   <kui-icon [source]="plusIcon" />
 </button>
-<button kuiIconButton type="button" appearance="soft" aria-label="Soft action">
+<button kuiIconButton type="button" shape="soft" aria-label="Add item softly">
   <kui-icon [source]="plusIcon" />
 </button>
-<button kuiIconButton type="button" appearance="outline" aria-label="Outline action">
+<button kuiIconButton type="button" shape="outline" aria-label="Add item with outline">
   <kui-icon [source]="plusIcon" />
 </button>
-<button kuiIconButton type="button" appearance="ghost" aria-label="Ghost action">
-  <kui-icon [source]="plusIcon" />
+<button kuiIconButton type="button" appearance="danger" aria-label="Delete item">
+  <kui-icon [source]="trashIcon" />
 </button>
-<button kuiIconButton type="button" appearance="danger" aria-label="Danger action">
+<button
+  kuiIconButton
+  type="button"
+  shape="outline"
+  appearance="danger"
+  aria-label="Delete item with outline"
+>
   <kui-icon [source]="trashIcon" />
 </button>`,
     },

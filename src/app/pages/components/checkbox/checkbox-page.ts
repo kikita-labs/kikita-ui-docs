@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { KuiButtonDirective } from '@kikita-labs/ui';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
 import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
@@ -18,8 +20,10 @@ import { CheckboxSizeExample } from './examples/checkbox-size-example/checkbox-s
     CheckboxSizeExample,
     CodeTabs,
     DocSection,
+    KuiButtonDirective,
     LivePreview,
     PageHeader,
+    RouterLink,
   ],
   templateUrl: './checkbox-page.html',
   styleUrl: './checkbox-page.scss',
@@ -86,6 +90,18 @@ export class BasicCheckboxExample {
 <label class="checkbox-option">
   <input kuiCheckbox type="checkbox" size="lg" />
   <span>Large</span>
+</label>
+<label class="checkbox-option">
+  <input kuiCheckbox type="checkbox" disabled />
+  <span>Disabled</span>
+</label>
+<label class="checkbox-option">
+  <input kuiCheckbox type="checkbox" disabled checked />
+  <span>Disabled and checked</span>
+</label>
+<label class="checkbox-option">
+  <input kuiCheckbox type="checkbox" invalid />
+  <span>Invalid</span>
 </label>`,
     },
   ];
