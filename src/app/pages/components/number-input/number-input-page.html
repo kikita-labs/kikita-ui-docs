@@ -1,0 +1,107 @@
+<article class="number-input-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Number Input"
+    description="kuiNumberInput applies Kikita UI number-input styling and increment/decrement controls to a native input[type=number] element."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public number input directive from the package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Use kuiNumberInput on a native input[type=number] element. Standard HTML attributes such as min, max, step, disabled, readonly, and value are placed directly on the input."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="number-input-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Number inputs">
+      <app-basic-number-input-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="compact-variant"
+    heading="Compact variant"
+    description="variant b, with minus/plus controls on the sides, is the default and recommended for most use cases. variant a stacks compact arrow controls on the right."
+  >
+    <app-live-preview previewLabel="Variant comparison">
+      <app-compact-number-input-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="compactTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="min-max-step"
+    heading="Min, max, step, and invalid"
+    description="Click a generated button to step by the step attribute, or by 1 when step is omitted. At min the decrement button disables; at max the increment button disables. invalid applies an error border."
+  >
+    <app-live-preview previewLabel="Range and validation">
+      <app-range-number-input-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="rangeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="field-composition"
+    heading="Field composition"
+    description="Place the input inside kui-field to inherit label, hint, error, and id wiring. A parent field error also marks the input invalid automatically."
+  >
+    <app-live-preview previewLabel="Field integration">
+      <app-field-number-input-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="fieldTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="signal-forms"
+    heading="Signal Forms"
+    description="Use Angular Signal Forms [formField] on the same native input. When projected inside kui-field, the field wrapper reads the descendant [formField] and infers the required marker and first error message. Use Signal Forms min(...) and max(...) validators for range constraints instead of native min/max attributes on a [formField] input."
+  >
+    <app-code-tabs [tabs]="signalFormsTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Number Input API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="The native input[type=number] keeps its built-in keyboard and screen-reader semantics."
+  >
+    <ul class="number-input-page__notes">
+      <li>Provide an accessible name through <code>aria-label</code> or a <code>kui-field</code> label.</li>
+      <li>
+        Generated buttons use <code>aria-label="Decrease value"</code> and
+        <code>aria-label="Increase value"</code>, plus native <code>disabled</code> and
+        <code>aria-disabled="true"</code> when stepping is not available.
+      </li>
+      <li>
+        Native keyboard behavior on the input remains available: ArrowUp, ArrowDown, Home, and End.
+      </li>
+      <li>Press and hold a generated button for accelerating auto-increment after a 400 ms delay.</li>
+      <li>
+        Place the input inside <code>kui-field</code> to inherit label, hint, error, and id wiring
+        instead of wiring ARIA by hand.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

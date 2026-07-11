@@ -78,7 +78,7 @@ export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
       {
         name: 'Number Input',
         importName: 'KuiNumberInputDirective',
-        status: 'docs-pending',
+        status: 'available',
         description: 'Number input states with compact variant options.',
         routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsNumberInput}`,
       },

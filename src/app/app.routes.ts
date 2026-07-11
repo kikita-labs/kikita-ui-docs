@@ -216,6 +216,26 @@ export const routes: Routes = [
         ],
       },
       {
+        path: AppRoutePath.ComponentsNumberInput,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/number-input/number-input-page').then(
+                (m) => m.NumberInputPage,
+              ),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import(
+                './pages/components/number-input/playground/number-input-playground-page'
+              ).then((m) => m.NumberInputPlaygroundPage),
+          },
+        ],
+      },
+      {
         path: AppRoutePath.ComponentsSelect,
         children: [
           {
