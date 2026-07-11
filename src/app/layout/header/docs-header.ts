@@ -3,12 +3,14 @@ import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
 import {
+  KuiBreadcrumbItemDirective,
+  KuiBreadcrumbSeparatorComponent,
+  KuiBreadcrumbsDirective,
   KuiButtonDirective,
   KuiCommandPaletteComponent,
   type KuiCommandItem,
   KuiIconButtonDirective,
 } from '@kikita-labs/ui';
-import { DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE } from '../../core/appearance/docs-button-appearance';
 import { DOCS_COMPONENT_CATEGORIES } from '../../core/components/docs-component-categories';
 import {
   DOCS_HOME_PATH,
@@ -28,6 +30,9 @@ interface HeaderBreadcrumb {
 @Component({
   selector: 'app-docs-header',
   imports: [
+    KuiBreadcrumbItemDirective,
+    KuiBreadcrumbSeparatorComponent,
+    KuiBreadcrumbsDirective,
     KuiButtonDirective,
     KuiCommandPaletteComponent,
     KuiIconButtonDirective,
@@ -53,7 +58,6 @@ export class DocsHeader {
   protected readonly search = inject(DocsSearchStateService);
   protected readonly theme = inject(DocsThemeService);
   protected readonly homePath = DOCS_HOME_PATH;
-  protected readonly outlineSecondaryAppearance = DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE;
   protected readonly breadcrumbs = computed(() => this.getBreadcrumbs(this.currentUrl()));
 
   constructor() {
@@ -91,15 +95,18 @@ export class DocsHeader {
     const path = url.split(/[?#]/)[0];
 
     if (path.startsWith('/components/')) {
+      const isPlayground = path.endsWith('/playground');
+      const componentPath = isPlayground ? path.slice(0, -'/playground'.length) : path;
       const component = DOCS_COMPONENT_CATEGORIES.flatMap((category) =>
         category.components.map((item) => ({ category: category.label, ...item })),
-      ).find((item) => item.routePath === path);
+      ).find((item) => item.routePath === componentPath);
 
       if (component) {
         return [
           { label: 'Components', path: DOCS_PATHS.components },
           { label: component.category },
-          { label: component.name },
+          isPlayground ? { label: component.name, path: componentPath } : { label: component.name },
+          ...(isPlayground ? [{ label: 'Playground' }] : []),
         ];
       }
     }

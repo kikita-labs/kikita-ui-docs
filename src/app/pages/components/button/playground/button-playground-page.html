@@ -1,0 +1,28 @@
+<article class="button-playground-page">
+  <div class="button-playground-page__header">
+    <h1>Button &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Button playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <button
+      kuiButton
+      type="button"
+      [shape]="shapeOf(playground.values())"
+      [appearance]="appearanceOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [wrap]="wrapOf(playground.values())"
+      [loading]="loadingOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+    >
+      {{ labelOf(playground.values()) }}
+    </button>
+  </app-api-playground>
+
+  <app-api-table label="Button API" [rows]="apiRows" />
+  <p class="button-playground-page__note">{{ apiDescription }}</p>
+</article>

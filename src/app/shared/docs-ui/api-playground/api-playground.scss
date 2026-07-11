@@ -1,0 +1,202 @@
+@use '../../styles/mixins/caption-label' as *;
+
+.api-playground {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    'stage'
+    'controls'
+    'snippet';
+}
+
+.api-playground__viewport {
+  display: flex;
+  grid-area: stage;
+  flex-direction: column;
+  gap: var(--kui-space-3, 12px);
+  min-inline-size: 0;
+}
+
+.api-playground__viewport-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--kui-space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.api-playground__viewport-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  min-inline-size: 0;
+}
+
+.api-playground__width-field {
+  inline-size: 116px;
+}
+
+.api-playground__width-field input {
+  font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Consolas, monospace);
+  font-size: 11.5px;
+  text-align: end;
+}
+
+.api-playground__theme-toggle svg {
+  inline-size: 15px;
+  block-size: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.api-playground__stage {
+  display: block;
+  overflow-x: auto;
+  min-block-size: 220px;
+  background-color: var(--kui-color-surface);
+  background-image: radial-gradient(var(--kui-color-border) 1px, transparent 1px);
+  background-size: 16px 16px;
+  padding: 32px;
+  color: var(--kui-color-text);
+}
+
+.api-playground__resizable {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  min-block-size: 156px;
+  border: 1px dashed var(--kui-color-border);
+  border-radius: var(--kui-radius-md, 8px);
+  background: var(--kui-color-bg);
+  padding: 24px;
+}
+
+.api-playground__resize-handle {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: -9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 18px;
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.api-playground__resize-handle span {
+  display: block;
+  inline-size: 4px;
+  block-size: 36px;
+  border-radius: 2px;
+  background: var(--kui-color-border);
+}
+
+.api-playground__controls {
+  display: grid;
+  grid-area: controls;
+  gap: var(--kui-space-5, 20px);
+}
+
+.api-playground__group {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  align-content: start;
+  min-inline-size: 0;
+}
+
+.api-playground__group-label {
+  @include caption-label;
+
+  text-transform: none;
+}
+
+.api-playground__control-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--kui-space-6, 24px);
+}
+
+.api-playground__control-grid kui-segmented {
+  justify-self: start;
+}
+
+.api-playground__divider {
+  block-size: 1px;
+  background: var(--kui-color-border);
+}
+
+.api-playground__detail-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto;
+  gap: var(--kui-space-6, 24px);
+  align-items: start;
+}
+
+.api-playground__text-controls {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  inline-size: min(100%, 420px);
+  min-inline-size: 0;
+}
+
+.api-playground__text-controls input {
+  inline-size: 100%;
+}
+
+.api-playground__state-group {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+}
+
+.api-playground__state-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-5, 20px);
+  min-block-size: var(--kui-control-height-sm, 32px);
+}
+
+.api-playground__toggle-row {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+  font-size: var(--kui-text-sm-size, 13px);
+  font-weight: 600;
+}
+
+app-code-tabs {
+  grid-area: snippet;
+}
+
+@media (max-width: 640px) {
+  .api-playground__viewport-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .api-playground__control-grid,
+  .api-playground__detail-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .api-playground__width-field {
+    flex: 1 1 auto;
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  .api-playground__viewport-actions {
+    align-items: stretch;
+  }
+
+  .api-playground__state-controls {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

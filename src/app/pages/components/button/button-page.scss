@@ -7,3 +7,8 @@
 .button-page__notes {
   @include doc-page-notes;
 }
+
+.button-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

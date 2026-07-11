@@ -21,14 +21,14 @@
 
   <app-doc-section
     heading="Control recommendations"
-    description="These values come from the design-system spec and guide density-sensitive primitives."
+    description="Height is controlled only by data-kui-size. data-kui-density rebinds horizontal padding only."
   >
     <app-api-table label="Recommended control dimensions" [rows]="controlRows" />
   </app-doc-section>
 
   <app-doc-section
     heading="Component tokens"
-    description="Density-sensitive components resolve variant tokens into the current component token values."
+    description="Density rebinds the padding tokens below; height tokens resolve from data-kui-size instead."
   >
     <app-code-tabs [tabs]="tokenTabs" />
   </app-doc-section>

@@ -53,39 +53,6 @@
   display: none;
 }
 
-.docs-header__breadcrumbs {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--kui-space-2, 8px);
-  color: var(--kui-color-text-secondary);
-  font-size: var(--kui-text-sm-size, 13px);
-}
-
-.docs-header__breadcrumbs svg {
-  inline-size: 12px;
-  block-size: 12px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-}
-
-.docs-header__breadcrumb-link {
-  color: inherit;
-  text-decoration: none;
-}
-
-.docs-header__breadcrumb-link:hover,
-.docs-header__breadcrumb-link:focus-visible {
-  color: var(--kui-color-text);
-}
-
-.docs-header__breadcrumb--current {
-  color: var(--kui-color-text);
-  font-weight: 600;
-}
-
 .docs-header__mark {
   display: grid;
   inline-size: 30px;

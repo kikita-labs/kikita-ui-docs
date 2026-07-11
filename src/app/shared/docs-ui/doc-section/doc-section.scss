@@ -12,7 +12,25 @@
 .doc-section__heading-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: var(--kui-space-3, 12px);
+}
+
+.doc-section__heading-group {
+  display: flex;
+  align-items: center;
   gap: var(--kui-space-2, 8px);
+  min-inline-size: 0;
+}
+
+.doc-section__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+}
+
+.doc-section__actions:empty {
+  display: none;
 }
 
 .doc-section__title,

@@ -39,33 +39,24 @@
         </nav>
       }
     } @else {
-      <nav class="docs-header__breadcrumbs" aria-label="Breadcrumb">
-        @for (breadcrumb of breadcrumbs(); track breadcrumb.label; let last = $last) {
-          @if (!last && breadcrumb.path) {
-            <a
-              [routerLink]="breadcrumb.path"
-              class="docs-header__breadcrumb-link"
-              [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
-              >{{ breadcrumb.label }}</a
-            >
-          } @else {
-            <span
-              [class.docs-header__breadcrumb--current]="last"
-              [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
-              >{{ breadcrumb.label }}</span
-            >
+      <nav aria-label="Breadcrumb">
+        <ol kuiBreadcrumbs size="sm" class="docs-header__breadcrumbs">
+          @for (breadcrumb of breadcrumbs(); track breadcrumb.label; let last = $last) {
+            <li [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1">
+              @if (!last && breadcrumb.path) {
+                <a kuiBreadcrumbItem [routerLink]="breadcrumb.path">{{ breadcrumb.label }}</a>
+              } @else {
+                <span kuiBreadcrumbItem [current]="last">{{ breadcrumb.label }}</span>
+              }
+            </li>
+            @if (!last) {
+              <li
+                kuiBreadcrumbSeparator
+                [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
+              ></li>
+            }
           }
-          @if (!last) {
-            <svg
-              viewBox="0 0 12 12"
-              aria-hidden="true"
-              focusable="false"
-              [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
-            >
-              <path d="M4.5 3 7.5 6 4.5 9" />
-            </svg>
-          }
-        }
+        </ol>
       </nav>
     }
   </div>
@@ -76,7 +67,7 @@
         class="docs-header__search"
         kuiButton
         type="button"
-        [appearance]="outlineSecondaryAppearance"
+        shape="outline"
         size="sm"
         (click)="openSearch()"
       >
@@ -95,7 +86,7 @@
       class="docs-header__theme-toggle"
       kuiIconButton
       type="button"
-      [appearance]="outlineSecondaryAppearance"
+      shape="outline"
       size="sm"
       [attr.aria-label]="theme.toggleLabel()"
       [attr.aria-pressed]="theme.isDark()"

@@ -18,6 +18,7 @@ import { ApiTableRow } from './api-table-row';
     KuiThGroupDirective,
   ],
   templateUrl: './api-table.html',
+  styleUrl: './api-table.scss',
 })
 export class ApiTable {
   readonly label = input('API reference');

@@ -1,0 +1,145 @@
+<div class="api-playground">
+  <div class="api-playground__viewport">
+    <div class="api-playground__viewport-toolbar">
+      <kui-segmented [selected]="activePreset()" (selectedChange)="setViewportPreset($any($event))">
+        @for (preset of viewportPresets; track preset.key) {
+          <button kuiSegment type="button" [value]="preset.key">
+            {{ preset.label }}
+          </button>
+        }
+      </kui-segmented>
+      <div class="api-playground__viewport-actions">
+        <kui-field class="api-playground__width-field">
+          <div class="kui-input-group">
+            <input
+              kuiInput
+              type="number"
+              inputmode="numeric"
+              aria-label="Preview width"
+              [min]="320"
+              [max]="maxPreviewWidth()"
+              [value]="previewWidthValue()"
+              (input)="setPreviewWidthFromEvent($event)"
+            />
+            <span kuiFieldAffix>px</span>
+          </div>
+        </kui-field>
+
+        <button
+          class="api-playground__theme-toggle"
+          kuiIconButton
+          type="button"
+          shape="outline"
+          [attr.aria-label]="previewThemeToggleLabel()"
+          [attr.aria-pressed]="previewIsDark()"
+          (click)="togglePreviewTheme()"
+        >
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            @if (previewIsDark()) {
+              <path d="M13.5 9.5A6 6 0 1 1 6.5 2.5 4.8 4.8 0 0 0 13.5 9.5z" />
+            } @else {
+              <circle cx="8" cy="8" r="3" />
+              <path
+                d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.4 3.4l.9.9M11.7 11.7l.9.9M12.6 3.4l-.9.9M4.3 11.7l-.9.9"
+              />
+            }
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <section
+      #stage
+      kuiCard
+      class="api-playground__stage"
+      appearance="surface"
+      size="lg"
+      [attr.data-kui-theme]="previewTheme()"
+      [attr.aria-label]="previewLabel()"
+    >
+      <div class="api-playground__resizable" [style.inline-size.px]="previewWidth()">
+        <ng-content />
+        <div
+          class="api-playground__resize-handle"
+          role="separator"
+          aria-orientation="vertical"
+          aria-label="Resize preview width"
+          (pointerdown)="startResize($event)"
+        >
+          <span></span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="api-playground__controls" kuiCard appearance="surface" size="lg">
+    @if (enumControls().length) {
+      <div class="api-playground__control-grid">
+        @for (control of enumControls(); track control.key) {
+          <div class="api-playground__group">
+            <span class="api-playground__group-label">{{ control.label }}</span>
+            <kui-segmented
+              size="sm"
+              [selected]="stringValue(control.key)"
+              (selectedChange)="setValue(control.key, $event)"
+            >
+              @for (option of control.options; track option) {
+                <button kuiSegment type="button" [value]="option">{{ option }}</button>
+              }
+            </kui-segmented>
+          </div>
+        }
+      </div>
+    }
+
+    @if (textControls().length || booleanControls().length) {
+      <div class="api-playground__divider"></div>
+
+      <div class="api-playground__detail-row">
+        <div class="api-playground__text-controls">
+          @for (control of textControls(); track control.key) {
+            <div class="api-playground__group">
+              <span class="api-playground__group-label">{{ control.label }}</span>
+              @if (control.kind === 'number') {
+                <input
+                  kuiInput
+                  type="number"
+                  [value]="stringValue(control.key)"
+                  (input)="setNumberFromEvent(control.key, $event)"
+                />
+              } @else {
+                <input
+                  kuiInput
+                  type="text"
+                  [value]="stringValue(control.key)"
+                  (input)="setStringFromEvent(control.key, $event)"
+                />
+              }
+            </div>
+          }
+        </div>
+
+        @if (booleanControls().length) {
+          <div class="api-playground__state-group">
+            <span class="api-playground__group-label">State</span>
+            <div class="api-playground__state-controls">
+              @for (control of booleanControls(); track control.key) {
+                <label class="api-playground__toggle-row">
+                  <span>{{ control.label }}</span>
+                  <input
+                    kuiSwitch
+                    type="checkbox"
+                    [checked]="booleanValue(control.key)"
+                    (change)="toggleBoolean(control.key, $event)"
+                  />
+                </label>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <app-code-tabs label="Live snippet" [tabs]="snippetTabs()" />
+</div>

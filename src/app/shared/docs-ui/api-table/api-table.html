@@ -4,15 +4,23 @@
       <tr kuiThGroup>
         <th kuiTh>Name</th>
         <th kuiTh>Type</th>
+        <th kuiTh>Default</th>
         <th kuiTh>Description</th>
       </tr>
     </thead>
     <tbody>
       @for (row of rows(); track row.name) {
         <tr kuiRow [value]="row">
-          <td kuiCell>{{ row.name }}</td>
+          <td kuiCell class="api-table__name">{{ row.name }}</td>
           <td kuiCell>
             <code>{{ row.type }}</code>
+          </td>
+          <td kuiCell>
+            @if (row.defaultValue) {
+              <code>{{ row.defaultValue }}</code>
+            } @else {
+              &mdash;
+            }
           </td>
           <td kuiCell>{{ row.description }}</td>
         </tr>

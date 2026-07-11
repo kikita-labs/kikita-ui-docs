@@ -87,8 +87,21 @@ export const routes: Routes = [
       },
       {
         path: AppRoutePath.ComponentsButton,
-        loadComponent: () =>
-          import('./pages/components/button/button-page').then((m) => m.ButtonPage),
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/button/button-page').then((m) => m.ButtonPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/button/playground/button-playground-page').then(
+                (m) => m.ButtonPlaygroundPage,
+              ),
+          },
+        ],
       },
       {
         path: AppRoutePath.ComponentsCheckbox,

@@ -25,6 +25,10 @@ the sibling library repository:
 - `../kikita-ui/docs/state-coverage.md`
 - `../kikita-ui/.local-notes/claude-design/design system/<component>.dc.html`
 
+For component documentation page work, also read:
+
+- `.agents/component-doc-page.md`
+
 If present, also read:
 
 - `.local-notes/LIBRARY-BREAKING-CHANGES.md`

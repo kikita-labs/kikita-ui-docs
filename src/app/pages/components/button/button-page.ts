@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { KuiButtonDirective } from '@kikita-labs/ui';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
 import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
@@ -20,8 +22,10 @@ import { ButtonSizeExample } from './examples/button-size-example/button-size-ex
     ButtonSizeExample,
     CodeTabs,
     DocSection,
+    KuiButtonDirective,
     LivePreview,
     PageHeader,
+    RouterLink,
   ],
   templateUrl: './button-page.html',
   styleUrl: './button-page.scss',
@@ -44,7 +48,7 @@ export class ButtonPage {
       label: 'HTML',
       language: 'html',
       code: `<button kuiButton type="button">Save changes</button>
-<button kuiButton type="button" appearance="soft">Cancel</button>
+<button kuiButton type="button" shape="soft">Cancel</button>
 <a kuiButton href="/components/button">Button docs</a>`,
     },
     {
@@ -68,10 +72,11 @@ export class BasicButtonExample {}`,
       label: 'HTML',
       language: 'html',
       code: `<button kuiButton type="button">Solid</button>
-<button kuiButton type="button" appearance="soft">Soft</button>
-<button kuiButton type="button" appearance="outline">Outline</button>
-<button kuiButton type="button" appearance="ghost">Ghost</button>
-<button kuiButton type="button" appearance="danger">Danger</button>`,
+<button kuiButton type="button" shape="soft">Soft</button>
+<button kuiButton type="button" shape="outline">Outline</button>
+<button kuiButton type="button" shape="ghost">Ghost</button>
+<button kuiButton type="button" appearance="danger">Danger</button>
+<button kuiButton type="button" shape="outline" appearance="danger">Outline danger</button>`,
     },
   ];
 
@@ -83,7 +88,8 @@ export class BasicButtonExample {}`,
 <button kuiButton type="button" size="sm">Small</button>
 <button kuiButton type="button" size="md">Medium</button>
 <button kuiButton type="button" size="lg">Large</button>
-<button kuiButton type="button" disabled>Disabled</button>`,
+<button kuiButton type="button" disabled>Disabled</button>
+<button kuiButton type="button" loading>Loading</button>`,
     },
   ];
 

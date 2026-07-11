@@ -11,6 +11,10 @@
   margin-inline: auto;
 }
 
+.docs-shell__body:has(app-page-toc.page-toc-host--empty) {
+  grid-template-columns: 250px minmax(0, 1fr);
+}
+
 .docs-shell__body--landing {
   grid-template-columns: minmax(0, 1fr);
   max-inline-size: 1440px;
@@ -35,6 +39,10 @@
   align-content: start;
   min-inline-size: 0;
   padding: 32px 48px;
+}
+
+.docs-shell__content > router-outlet {
+  display: none;
 }
 
 .docs-shell__content:focus {

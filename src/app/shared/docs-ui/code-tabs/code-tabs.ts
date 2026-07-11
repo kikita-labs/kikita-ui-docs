@@ -6,7 +6,6 @@ import {
   KuiSegmentedComponent,
   kuiToast,
 } from '@kikita-labs/ui';
-import { DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE } from '../../../core/appearance/docs-button-appearance';
 import { DocsThemeService } from '../../../core/theme/docs-theme.service';
 import { CodeHighlighterService } from './code-highlighter.service';
 import { CodeTab } from './code-tab';
@@ -28,7 +27,6 @@ export class CodeTabs {
   readonly tabs = input.required<readonly CodeTab[]>();
 
   protected readonly id = `code-tabs-${++nextCodeTabsId}`;
-  protected readonly outlineSecondaryAppearance = DOCS_OUTLINE_SECONDARY_BUTTON_APPEARANCE;
   protected readonly selectedIndex = signal(0);
   protected readonly selectedTab = computed(() => this.tabs()[this.selectedIndex()]);
   protected readonly selectedValue = computed(() => this.selectedTab()?.label ?? '');

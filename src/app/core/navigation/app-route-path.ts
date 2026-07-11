@@ -40,6 +40,7 @@ export enum AppRoutePath {
   ComponentsTabs = 'tabs',
   ComponentsTextarea = 'textarea',
   ComponentsToast = 'toast',
+  Playground = 'playground',
   Smoke = 'smoke',
   NotFound = '**',
 }

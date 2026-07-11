@@ -64,39 +64,36 @@ export const appConfig = {
 
   protected readonly controlRows: readonly ApiTableRow[] = [
     {
-      name: 'Button height',
-      type: '24px / 32px / 40px',
-      description: 'Compact, regular, and comfortable recommended button heights.',
+      name: 'Control height (xs / sm / md / lg)',
+      type: '28px / 32px / 40px / 44px',
+      description:
+        'Set only by data-kui-size on Input, Button, Icon-Button, Segmented, Tabs, and Group. Density does not affect height.',
     },
     {
       name: 'Button x padding',
       type: '8px / 12px / 16px',
       description: 'Horizontal control padding across compact, regular, and comfortable density.',
     },
-    {
-      name: 'Input height',
-      type: '28px / 40px / 44px',
-      description: 'Recommended input heights for density-sensitive form layouts.',
-    },
   ];
 
   protected readonly tokenTabs: readonly CodeTab[] = [
     {
-      label: 'Button tokens',
+      label: 'Density tokens',
       language: 'css',
-      code: `--kui-btn-height-compact
---kui-btn-height-regular
---kui-btn-height-comfortable
---kui-btn-px-compact
+      code: `--kui-btn-px-compact
 --kui-btn-px-regular
 --kui-btn-px-comfortable`,
     },
     {
-      label: 'Current tokens',
+      label: 'Resolved tokens',
       language: 'css',
-      code: `--kui-btn-height
+      code: `--kui-control-height-xs
+--kui-control-height-sm
+--kui-control-height-md
+--kui-control-height-lg
+--kui-btn-height
 --kui-btn-px
---kui-input-height`,
+--kui-input-px`,
     },
   ];
 }

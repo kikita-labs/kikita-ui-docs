@@ -19,6 +19,18 @@
     heading="Usage"
     description="Use native button semantics for commands and anchor semantics for navigation."
   >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="button-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
     <app-live-preview previewLabel="Basic buttons">
       <app-basic-button-example />
     </app-live-preview>
@@ -39,7 +51,7 @@
   <app-doc-section
     anchor="sizes-and-states"
     heading="Sizes and states"
-    description="Use the shared Kikita size scale and native disabled state."
+    description="Use the shared Kikita size scale, native disabled state, and the loading state for pending actions."
   >
     <app-live-preview previewLabel="Size scale">
       <app-button-size-example />
@@ -62,6 +74,10 @@
       <li>Prefer visible text labels. Icon-only actions should use <code>kuiIconButton</code>.</li>
       <li>
         Disabled anchor buttons are removed from tab order and receive <code>aria-disabled</code>.
+      </li>
+      <li>
+        <code>loading</code> sets <code>aria-busy="true"</code> and behaves like
+        <code>disabled</code> (blocks clicks, removed from tab order) until it clears.
       </li>
     </ul>
   </app-doc-section>
