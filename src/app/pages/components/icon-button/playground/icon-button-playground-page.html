@@ -1,0 +1,27 @@
+<article class="icon-button-playground-page">
+  <div class="icon-button-playground-page__header">
+    <h1>Icon Button &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Icon button playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <button
+      kuiIconButton
+      type="button"
+      [shape]="shapeOf(playground.values())"
+      [appearance]="appearanceOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [attr.aria-label]="ariaLabelOf(playground.values())"
+    >
+      <kui-icon [source]="settingsIcon" />
+    </button>
+  </app-api-playground>
+
+  <app-api-table label="Icon button API" [rows]="apiRows" />
+  <p class="icon-button-playground-page__note">{{ apiDescription }}</p>
+</article>

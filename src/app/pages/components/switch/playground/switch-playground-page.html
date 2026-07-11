@@ -1,0 +1,27 @@
+<article class="switch-playground-page">
+  <div class="switch-playground-page__header">
+    <h1>Switch &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Switch playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <label class="switch-playground-page__option">
+      <input
+        kuiSwitch
+        type="checkbox"
+        [size]="sizeOf(playground.values())"
+        [checked]="checkedOf(playground.values())"
+        [invalid]="invalidOf(playground.values())"
+        [disabled]="disabledOf(playground.values())"
+      />
+      <span>{{ labelOf(playground.values()) }}</span>
+    </label>
+  </app-api-playground>
+
+  <app-api-table label="Switch API" [rows]="apiRows" />
+  <p class="switch-playground-page__note">{{ apiDescription }}</p>
+</article>

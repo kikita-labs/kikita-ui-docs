@@ -1,0 +1,49 @@
+<article class="menu-playground-page">
+  <div class="menu-playground-page__header">
+    <h1>Menu &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Menu playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <button kuiButton type="button" [kuiMenuFor]="playgroundMenu">
+      {{ triggerLabelOf(playground.values()) }}
+    </button>
+
+    <kui-menu
+      #playgroundMenu
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [placement]="placementOf(playground.values())"
+      [menuAlign]="menuAlignOf(playground.values())"
+      [offset]="offsetOf(playground.values())"
+      [minWidth]="minWidthOf(playground.values())"
+    >
+      @if (showHeaderOf(playground.values())) {
+        <div kuiMenuHeader>Project</div>
+      }
+      <button type="button" kuiMenuItem>
+        <span class="kui-menu-item__label">Edit</span>
+      </button>
+      <button type="button" kuiMenuItem>
+        <span class="kui-menu-item__label">Copy</span>
+      </button>
+      @if (disabledItemOf(playground.values())) {
+        <button type="button" kuiMenuItem disabled>
+          <span class="kui-menu-item__label">Archive</span>
+        </button>
+      }
+      @if (showDestructiveOf(playground.values())) {
+        <hr kuiSeparator spacing="xs" />
+        <button type="button" kuiMenuItem appearance="destructive">
+          <span class="kui-menu-item__label">Delete</span>
+        </button>
+      }
+    </kui-menu>
+  </app-api-playground>
+
+  <app-api-table label="Menu API" [rows]="apiRows" />
+  <p class="menu-playground-page__note">{{ apiDescription }}</p>
+</article>
