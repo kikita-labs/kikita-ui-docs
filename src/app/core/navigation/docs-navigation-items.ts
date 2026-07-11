@@ -20,6 +20,7 @@ export const DOCS_PATHS = {
   componentsIconButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsIconButton}`,
   componentsInput: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsInput}`,
   componentsMenu: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsMenu}`,
+  componentsNumberInput: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsNumberInput}`,
   componentsRadio: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsRadio}`,
   componentsSelect: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSelect}`,
   componentsSlider: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSlider}`,
@@ -100,6 +101,11 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         label: 'Command Palette',
         path: DOCS_PATHS.componentsCommandPalette,
         description: 'Keyboard-first searchable command dialog.',
+      },
+      {
+        label: 'Number Input',
+        path: DOCS_PATHS.componentsNumberInput,
+        description: 'Native number input styling with increment/decrement controls.',
       },
       {
         label: 'Radio',

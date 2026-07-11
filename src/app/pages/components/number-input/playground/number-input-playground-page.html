@@ -1,0 +1,30 @@
+<article class="number-input-playground-page">
+  <div class="number-input-playground-page__header">
+    <h1>Number Input &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Number input playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <input
+      type="number"
+      kuiNumberInput
+      [size]="sizeOf(playground.values())"
+      [variant]="variantOf(playground.values())"
+      [min]="minOf(playground.values())"
+      [max]="maxOf(playground.values())"
+      [step]="stepOf(playground.values())"
+      [value]="valueOf(playground.values())"
+      [invalid]="invalidOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [readOnly]="readonlyOf(playground.values())"
+      aria-label="Quantity"
+    />
+  </app-api-playground>
+
+  <app-api-table label="Number Input API" [rows]="apiRows" />
+  <p class="number-input-playground-page__note">{{ apiDescription }}</p>
+</article>

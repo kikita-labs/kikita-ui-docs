@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.number-input-page {
+  @include doc-page-layout;
+}
+
+.number-input-page__notes {
+  @include doc-page-notes;
+}
+
+.number-input-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}
