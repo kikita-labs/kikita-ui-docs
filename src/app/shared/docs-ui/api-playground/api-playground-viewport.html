@@ -1,0 +1,75 @@
+<div class="api-playground-viewport">
+  <div class="api-playground-viewport__toolbar">
+    <kui-segmented [selected]="activePreset()" (selectedChange)="setViewportPreset($any($event))">
+      @for (preset of viewportPresets; track preset.key) {
+        <button kuiSegment type="button" [value]="preset.key">
+          {{ preset.label }}
+        </button>
+      }
+    </kui-segmented>
+    <div class="api-playground-viewport__actions">
+      <kui-field class="api-playground-viewport__width-field">
+        <div class="kui-input-group">
+          <input
+            kuiInput
+            type="number"
+            inputmode="numeric"
+            aria-label="Preview width"
+            [min]="320"
+            [max]="maxPreviewWidth()"
+            [value]="previewWidthValue()"
+            (input)="setPreviewWidthFromEvent($event)"
+          />
+          <span kuiFieldAffix>px</span>
+        </div>
+      </kui-field>
+
+      <button
+        class="api-playground-viewport__theme-toggle"
+        kuiIconButton
+        type="button"
+        shape="outline"
+        [attr.aria-label]="previewThemeToggleLabel()"
+        [attr.aria-pressed]="previewIsDark()"
+        (click)="togglePreviewTheme()"
+      >
+        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+          @if (previewIsDark()) {
+            <path d="M13.5 9.5A6 6 0 1 1 6.5 2.5 4.8 4.8 0 0 0 13.5 9.5z" />
+          } @else {
+            <circle cx="8" cy="8" r="3" />
+            <path
+              d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.4 3.4l.9.9M11.7 11.7l.9.9M12.6 3.4l-.9.9M4.3 11.7l-.9.9"
+            />
+          }
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="api-playground-viewport__theme-root" [attr.data-kui-theme]="previewTheme()">
+    <section
+      #stage
+      kuiCard
+      class="api-playground-viewport__stage"
+      appearance="surface"
+      size="lg"
+      [attr.aria-label]="previewLabel()"
+    >
+      <div class="api-playground-viewport__resizable" [style.inline-size.px]="previewWidth()">
+        <ng-content />
+        <div
+          class="api-playground-viewport__resize-handle"
+          role="separator"
+          aria-orientation="vertical"
+          aria-label="Resize preview width"
+          (pointerdown)="startResize($event)"
+        >
+          <span></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="api-playground-viewport__overlay-root"></div>
+  </div>
+</div>
