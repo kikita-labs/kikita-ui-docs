@@ -1,0 +1,6 @@
+.empty-state-size-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+}

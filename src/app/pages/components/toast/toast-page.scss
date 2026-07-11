@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.toast-page {
+  @include doc-page-layout;
+}
+
+.toast-page__notes {
+  @include doc-page-notes;
+}
+
+.toast-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

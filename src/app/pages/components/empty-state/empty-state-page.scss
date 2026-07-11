@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.empty-state-page {
+  @include doc-page-layout;
+}
+
+.empty-state-page__notes {
+  @include doc-page-notes;
+}
+
+.empty-state-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

@@ -1,0 +1,87 @@
+<article class="progress-page">
+  <app-page-header
+    eyebrow="Feedback"
+    heading="Progress"
+    description="Component for rendering linear or circular progress using Kikita UI tokens."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public component from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Set value from 0 to 100 for determinate progress. Omit value, or pass null, for indeterminate progress."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="progress-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Linear progress">
+      <app-basic-progress-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="circular"
+    heading="Circular"
+    description="Set type to circular for a ring indicator. Projected content renders centered inside the ring."
+  >
+    <app-live-preview previewLabel="Circular progress">
+      <app-progress-circular-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="circularTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="colors-and-sizes"
+    heading="Colors and sizes"
+    description="size controls linear thickness or circular diameter. color sets the semantic intent of the indicator."
+  >
+    <app-live-preview previewLabel="Sizes and colors">
+      <app-progress-color-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="colorSizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Progress API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Progress sets the ARIA progressbar role and range attributes automatically, but the accessible name is the consumer's responsibility."
+  >
+    <ul class="progress-page__notes">
+      <li>
+        The host sets <code>role="progressbar"</code>, <code>aria-valuemin="0"</code>, and
+        <code>aria-valuemax="100"</code>.
+      </li>
+      <li>Determinate progress additionally sets <code>aria-valuenow</code> from value.</li>
+      <li>
+        Indeterminate progress (<code>value</code> omitted or <code>null</code>) does not set
+        <code>aria-valuenow</code>, matching native indeterminate semantics.
+      </li>
+      <li>
+        Always provide an accessible name with <code>aria-label</code> or
+        <code>aria-labelledby</code>. Progress does not infer one from projected content.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

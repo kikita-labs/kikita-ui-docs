@@ -1,0 +1,26 @@
+<article class="toast-playground-page">
+  <div class="toast-playground-page__header">
+    <h1>Toast &mdash; Playground</h1>
+    <p class="toast-playground-page__note">
+      Toast is a service, not a rendered instance: click the trigger to call
+      <code>kuiToast().open()</code> with the current values below. The toast itself renders in the
+      shared region on <code>document.body</code>, outside this preview stage &mdash; that matches
+      real usage. <code>maxVisible</code> is app-wide only (via <code>provideKuiToastOptions</code>)
+      and has no runtime setter, so it isn't a control here.
+    </p>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Toast trigger"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <button kuiButton type="button" (click)="openToast(playground.values())">
+      {{ triggerLabel(playground.values()) }}
+    </button>
+  </app-api-playground>
+
+  <app-api-table label="Toast API" [rows]="apiRows" />
+  <p class="toast-playground-page__note">{{ apiDescription }}</p>
+</article>

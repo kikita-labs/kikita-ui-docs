@@ -1,0 +1,18 @@
+.progress-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-4, 16px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+
+.progress-example__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-2, 8px);
+}
+
+.progress-example__label {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

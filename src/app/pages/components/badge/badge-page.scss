@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.badge-page {
+  @include doc-page-layout;
+}
+
+.badge-page__notes {
+  @include doc-page-notes;
+}
+
+.badge-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

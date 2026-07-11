@@ -1,0 +1,16 @@
+.skeleton-animation-example {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--kui-space-6, 24px);
+}
+
+.skeleton-animation-example__stack {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  align-content: start;
+}
+
+.skeleton-animation-example__stack code {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

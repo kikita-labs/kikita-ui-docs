@@ -1,0 +1,90 @@
+<article class="empty-state-page">
+  <app-page-header
+    eyebrow="Feedback"
+    heading="Empty State"
+    description="Displays a non-blocking no-data, no-results, error, no-access, or success state inside a known UI region."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public component and slot directives from the package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Project a decorative icon and, when relevant, an action row. Use surrounding page structure for heading hierarchy."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="empty-state-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic empty state">
+      <app-basic-empty-state-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="contexts"
+    heading="Contexts"
+    description="context changes the icon accent only; it does not change layout or add copy. Combine it with the right title, description, and actions for each situation."
+  >
+    <app-live-preview previewLabel="Context set">
+      <app-empty-state-context-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="contextTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes"
+    heading="Sizes"
+    description="size controls overall spacing and icon scale. Small uses a compact horizontal layout for tight regions."
+  >
+    <app-live-preview previewLabel="Size scale">
+      <app-empty-state-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Empty State API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Empty State keeps heading and interaction semantics owned by the surrounding page."
+  >
+    <ul class="empty-state-page__notes">
+      <li>
+        The built-in <code>title</code> is visual text, not a forced heading level. Use the
+        surrounding page structure for heading hierarchy.
+      </li>
+      <li>
+        Decorative icons projected through <code>[kuiEmptyStateIcon]</code> are marked
+        <code>aria-hidden="true"</code> automatically.
+      </li>
+      <li>
+        Add <code>role="status"</code> on the <code>kui-empty-state</code> host when a no-results
+        state appears dynamically after filtering, so assistive technology announces the change.
+      </li>
+      <li>
+        Actions projected through <code>[kuiEmptyStateActions]</code> remain normal interactive
+        elements; use native buttons or links, or Kikita's button directives.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

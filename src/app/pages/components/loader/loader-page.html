@@ -1,0 +1,92 @@
+<article class="loader-page">
+  <app-page-header
+    eyebrow="Feedback"
+    heading="Loader"
+    description="Directive for applying Kikita UI loading indicator styling to an inline element."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public directive from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description='Apply kuiLoader to an inline element such as a span. The directive sets role="status" and aria-live="polite" so assistive technology announces the label.'
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="loader-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic loader">
+      <app-basic-loader-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes"
+    heading="Sizes"
+    description="Use the shared Kikita size scale to match the loader to the surrounding control or text."
+  >
+    <app-live-preview previewLabel="Size scale">
+      <app-loader-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="with-button"
+    heading="With Button"
+    description='kuiButton&apos;s own loading input (0.3.0) renders a kuiLoader internally, sets aria-busy="true", and behaves like disabled. Compose kuiLoader manually only when the button markup needs a custom saving label; otherwise prefer loading.'
+  >
+    <app-live-preview previewLabel="Loader inside a button">
+      <app-loader-button-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="buttonTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Loader API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Loader announces progress through a live region instead of relying on visual motion alone."
+  >
+    <ul class="loader-page__notes">
+      <li>
+        The host element gets <code>role="status"</code> and <code>aria-live="polite"</code>
+        automatically; no extra ARIA wiring is required.
+      </li>
+      <li>
+        <code>label</code> sets the accessible name via <code>aria-label</code> and defaults to
+        <code>Loading</code>. Provide a specific label (for example <code>Saving</code>) whenever
+        the loading context is not obvious from surrounding text.
+      </li>
+      <li>
+        Since 0.3.0, the loader keeps <code>flex-shrink: 0</code> so it no longer collapses into an
+        oval when its flex container shrinks it, such as inside a wrapped multi-line button label.
+      </li>
+      <li>
+        When composed inside a <code>kuiButton</code> with native <code>disabled</code>, the button
+        itself communicates the busy state to assistive technology; keep <code>disabled</code> set
+        for the duration of the loading state.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

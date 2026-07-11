@@ -1,0 +1,25 @@
+<article class="progress-playground-page">
+  <div class="progress-playground-page__header">
+    <h1>Progress &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Progress playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-progress
+      [type]="typeOf(playground.values())"
+      [value]="valueOf(playground.values())"
+      [color]="colorOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [attr.aria-label]="labelOf(playground.values())"
+    >
+      {{ contentOf(playground.values()) }}
+    </kui-progress>
+  </app-api-playground>
+
+  <app-api-table label="Progress API" [rows]="apiRows" />
+  <p class="progress-playground-page__note">{{ apiDescription }}</p>
+</article>

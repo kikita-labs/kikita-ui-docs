@@ -1,0 +1,6 @@
+.empty-state-context-example {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--kui-space-4, 16px);
+  inline-size: 100%;
+}

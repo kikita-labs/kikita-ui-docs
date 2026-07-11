@@ -1,0 +1,17 @@
+.skeleton-composition-example {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  max-inline-size: 320px;
+}
+
+.skeleton-composition-example__row {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-3, 12px);
+}
+
+.skeleton-composition-example__stack {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  inline-size: 100%;
+}

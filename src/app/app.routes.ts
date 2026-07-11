@@ -361,6 +361,116 @@ export const routes: Routes = [
           },
         ],
       },
+      {
+        path: AppRoutePath.ComponentsBadge,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/badge/badge-page').then((m) => m.BadgePage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/badge/playground/badge-playground-page').then(
+                (m) => m.BadgePlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsLoader,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/loader/loader-page').then((m) => m.LoaderPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/loader/playground/loader-playground-page').then(
+                (m) => m.LoaderPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsSkeleton,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/skeleton/skeleton-page').then((m) => m.SkeletonPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/skeleton/playground/skeleton-playground-page').then(
+                (m) => m.SkeletonPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsEmptyState,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/empty-state/empty-state-page').then(
+                (m) => m.EmptyStatePage,
+              ),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/empty-state/playground/empty-state-playground-page').then(
+                (m) => m.EmptyStatePlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsProgress,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/progress/progress-page').then((m) => m.ProgressPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/progress/playground/progress-playground-page').then(
+                (m) => m.ProgressPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsToast,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/toast/toast-page').then((m) => m.ToastPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/toast/playground/toast-playground-page').then(
+                (m) => m.ToastPlaygroundPage,
+              ),
+          },
+        ],
+      },
       ...componentDraftRoutes,
     ],
   },

@@ -1,0 +1,6 @@
+.toast-position-example {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--kui-space-2, 8px);
+  max-inline-size: 420px;
+}

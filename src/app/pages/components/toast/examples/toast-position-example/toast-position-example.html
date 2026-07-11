@@ -1,0 +1,7 @@
+<div class="toast-position-example">
+  @for (position of positions; track position) {
+    <button kuiButton type="button" shape="soft" size="sm" (click)="show(position)">
+      {{ position }}
+    </button>
+  }
+</div>

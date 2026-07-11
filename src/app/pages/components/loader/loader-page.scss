@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.loader-page {
+  @include doc-page-layout;
+}
+
+.loader-page__notes {
+  @include doc-page-notes;
+}
+
+.loader-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

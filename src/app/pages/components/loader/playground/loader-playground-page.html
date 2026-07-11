@@ -1,0 +1,21 @@
+<article class="loader-playground-page">
+  <div class="loader-playground-page__header">
+    <h1>Loader &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Loader playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <span
+      kuiLoader
+      [size]="sizeOf(playground.values())"
+      [label]="labelOf(playground.values())"
+    ></span>
+  </app-api-playground>
+
+  <app-api-table label="Loader API" [rows]="apiRows" />
+  <p class="loader-playground-page__note">{{ apiDescription }}</p>
+</article>

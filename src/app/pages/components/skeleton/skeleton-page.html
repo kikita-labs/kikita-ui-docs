@@ -1,0 +1,98 @@
+<article class="skeleton-page">
+  <app-page-header
+    eyebrow="Feedback"
+    heading="Skeleton"
+    description="Directive that applies a non-semantic placeholder treatment to an existing element while known content is loading."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public directive from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Apply kuiSkeleton to placeholder elements inside a region marked aria-busy. Skeleton hosts are automatically aria-hidden."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="skeleton-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic skeleton region">
+      <section aria-busy="true">
+        <app-skeleton-composition-example />
+      </section>
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="shapes"
+    heading="Shapes"
+    description="shape maps to Kikita UI skeleton geometry tokens for common placeholder layouts."
+  >
+    <app-live-preview previewLabel="Skeleton shapes">
+      <app-skeleton-shapes-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="shapesTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="animation"
+    heading="Animation"
+    description="animation controls the placeholder motion. Defaults to shimmer; use pulse or none for quieter surfaces."
+  >
+    <app-live-preview previewLabel="Skeleton animation modes">
+      <app-skeleton-animation-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="animationTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="composition"
+    heading="Composition"
+    description="Combine skeleton shapes to mirror the loaded layout. Put aria-busy on the parent region, not on each skeleton block."
+  >
+    <app-live-preview previewLabel="Composed loading card">
+      <app-skeleton-composition-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="compositionTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Skeleton API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Skeleton is decorative placeholder chrome, not an announced loading status."
+  >
+    <ul class="skeleton-page__notes">
+      <li>
+        Skeleton hosts are automatically <code>aria-hidden="true"</code> and must not expose text to
+        assistive technology.
+      </li>
+      <li>Put <code>aria-busy="true"</code> on the loading region, not on every skeleton block.</li>
+      <li>Do not make skeleton hosts focusable or interactive.</li>
+      <li>Use <code>kuiLoader</code> instead when the UI needs an announced loading status.</li>
+      <li>
+        Kikita disables skeleton animation under <code>prefers-reduced-motion</code> regardless of
+        the configured <code>animation</code> value.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

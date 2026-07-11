@@ -1,0 +1,7 @@
+<div class="basic-toast-example">
+  @for (trigger of triggers; track trigger.appearance) {
+    <button kuiButton type="button" shape="soft" (click)="show(trigger.appearance)">
+      {{ trigger.label }}
+    </button>
+  }
+</div>

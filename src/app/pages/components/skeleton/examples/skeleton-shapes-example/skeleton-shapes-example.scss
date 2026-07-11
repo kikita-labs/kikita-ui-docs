@@ -1,0 +1,16 @@
+.skeleton-shapes-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-6, 24px);
+}
+
+.skeleton-shapes-example__item {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  justify-items: start;
+}
+
+.skeleton-shapes-example__item code {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

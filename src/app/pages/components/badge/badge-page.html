@@ -1,0 +1,88 @@
+<article class="badge-page">
+  <app-page-header
+    eyebrow="Feedback"
+    heading="Badge"
+    description="Directive for applying Kikita UI badge styling to inline status or metadata elements."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public directive from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="kuiBadge is an attribute directive, so it can be used on inline semantic elements such as span, strong, code, or a."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="badge-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic badges">
+      <app-basic-badge-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="appearances"
+    heading="Appearances"
+    description="appearance maps the badge to a semantic status color. Defaults to neutral."
+  >
+    <app-live-preview previewLabel="Appearance set">
+      <app-badge-appearance-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="appearanceTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes"
+    heading="Sizes"
+    description="Use the shared Kikita size scale to match badge density to surrounding content."
+  >
+    <app-live-preview previewLabel="Size scale">
+      <app-badge-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Badge API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Badge is a styling-only directive; it does not add or replace element semantics."
+  >
+    <ul class="badge-page__notes">
+      <li>
+        <code>kuiBadge</code> applies visual treatment only. It does not add a role or accessible
+        name, so choose a host element whose native semantics already fit (<code>span</code>,
+        <code>strong</code>, or <code>a</code> for a linked badge).
+      </li>
+      <li>
+        Do not rely on color alone to convey status. Keep a visible text label inside the badge for
+        every appearance.
+      </li>
+      <li>
+        When a badge duplicates state already announced elsewhere (for example next to a status
+        icon), avoid redundant announcements by keeping the text concise instead of adding extra
+        ARIA attributes.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

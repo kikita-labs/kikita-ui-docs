@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.progress-page {
+  @include doc-page-layout;
+}
+
+.progress-page__notes {
+  @include doc-page-notes;
+}
+
+.progress-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

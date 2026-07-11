@@ -1,0 +1,22 @@
+<article class="skeleton-playground-page">
+  <div class="skeleton-playground-page__header">
+    <h1>Skeleton &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Skeleton playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <span
+      kuiSkeleton
+      [shape]="shapeOf(playground.values())"
+      [animation]="animationOf(playground.values())"
+      style="inline-size: 140px; block-size: 32px"
+    ></span>
+  </app-api-playground>
+
+  <app-api-table label="Skeleton API" [rows]="apiRows" />
+  <p class="skeleton-playground-page__note">{{ apiDescription }}</p>
+</article>

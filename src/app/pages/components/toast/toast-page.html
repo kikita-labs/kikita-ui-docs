@@ -1,0 +1,107 @@
+<article class="toast-page">
+  <app-page-header
+    eyebrow="Feedback"
+    heading="Toast"
+    description="Global notification service for non-blocking, auto-dismissing messages. Opened imperatively via kuiToast(), not rendered as a bound component instance."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the inject-function and global options provider from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Inject kuiToast() once per component and call open() with a config object. The service lazily creates a single toast region on document.body the first time it is used, so there is nothing to render in your template."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="toast-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Appearance triggers">
+      <app-basic-toast-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="with-action"
+    heading="With action button"
+    description="Set actionLabel to render an inline action button. Clicking it emits once on the returned ref's action$ observable, which completes after emitting."
+  >
+    <app-live-preview previewLabel="Action button">
+      <app-toast-action-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="actionTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="positions"
+    heading="Positions"
+    description="The toast region renders at one of six positions. top-* stacks grow downward; bottom-* stacks grow upward, keeping the newest toast closest to the viewport edge. setPosition() changes the shared region at runtime and is intended for interactive demos like this one; prefer provideKuiToastOptions for real app configuration."
+  >
+    <app-live-preview previewLabel="Position triggers">
+      <app-toast-position-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="positionTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="global-defaults"
+    heading="Global defaults"
+    description="provideKuiToastOptions configures app-wide defaults, including maxVisible, which has no runtime setter and can only be configured this way. Provide it once in app.config.ts or a route-level provider."
+  >
+    <app-code-tabs [tabs]="globalDefaultsTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Toast API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Toast uses a polite live region instead of stealing focus, matching how assistive technology expects transient status messages to behave."
+  >
+    <ul class="toast-page__notes">
+      <li>
+        The toast region has <code>aria-live="polite"</code>, so new toasts are announced without
+        interrupting current speech.
+      </li>
+      <li>
+        Toasts do not capture keyboard focus on appear, unlike Dialog. Keep critical, blocking
+        confirmations in a Dialog instead of a toast.
+      </li>
+      <li>
+        Hovering a toast pauses its auto-dismiss timer; leaving resumes it with the remaining time.
+        This gives pointer users time to read before it disappears, but there is no
+        keyboard-equivalent pause gesture documented yet &mdash; treat <code>persistent</code> as
+        the safer choice for messages a keyboard-only user must be able to act on.
+      </li>
+      <li>
+        Set <code>persistent</code> for errors or messages requiring a response instead of relying
+        on the default 5 second auto-dismiss.
+      </li>
+      <li>
+        <code>prefers-reduced-motion</code> replaces slide animations with an opacity-only fade.
+      </li>
+      <li>
+        On the server, <code>KuiToastService.open()</code> returns a no-op ref and performs no DOM
+        access, so calling it during SSR is safe.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

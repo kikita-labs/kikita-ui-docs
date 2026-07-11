@@ -1,0 +1,35 @@
+<article class="empty-state-playground-page">
+  <div class="empty-state-playground-page__header">
+    <h1>Empty State &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Empty state playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-empty-state
+      [title]="titleOf(playground.values())"
+      [description]="descriptionOf(playground.values())"
+      [context]="contextOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+    >
+      <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M21 8v13H3V8" />
+        <path d="M1 3h22v5H1z" />
+        <path d="M10 12h4" />
+      </svg>
+
+      @if (showActionsOf(playground.values())) {
+        <div kuiEmptyStateActions>
+          <button kuiButton type="button">Create project</button>
+          <button kuiButton shape="ghost" type="button">Import</button>
+        </div>
+      }
+    </kui-empty-state>
+  </app-api-playground>
+
+  <app-api-table label="Empty State API" [rows]="apiRows" />
+  <p class="empty-state-playground-page__note">{{ apiDescription }}</p>
+</article>
