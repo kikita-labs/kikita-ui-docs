@@ -85,7 +85,7 @@ export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
       {
         name: 'Textarea',
         importName: 'KuiTextareaDirective',
-        status: 'docs-pending',
+        status: 'available',
         description: 'Native multiline input styling with field integration.',
         routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsTextarea}`,
       },

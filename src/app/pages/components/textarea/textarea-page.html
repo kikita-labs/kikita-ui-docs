@@ -1,0 +1,95 @@
+<article class="textarea-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Textarea"
+    description="Textarea keeps the control native and applies Kikita UI multiline styling through the kuiTextarea directive."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public textarea primitive from the package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Use kuiTextarea on a native textarea element. Use Field when the control needs label, hint, or error chrome."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="textarea-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Field-wrapped textarea">
+      <app-basic-textarea-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes"
+    heading="Sizes"
+    description="size sets textarea height and spacing using the same data-kui-size tokens as other Kikita UI controls. Control height comes from size, not from data-kui-density."
+  >
+    <app-live-preview previewLabel="Textarea sizes">
+      <app-textarea-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="invalid-state"
+    heading="Invalid state"
+    description="A kui-field error message infers invalid state on a projected textarea. Use the invalid input directly when the textarea is not inside a field."
+  >
+    <app-live-preview previewLabel="Invalid textarea">
+      <app-textarea-invalid-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="invalidTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="signal-forms"
+    heading="Signal Forms"
+    description="Bind Angular Signal Forms [formField] directly on the native textarea. kuiTextarea owns visual styling and ARIA description wiring; Signal Forms owns value, disabled, touched/dirty state, and validation."
+  >
+    <app-code-tabs [tabs]="signalFormsTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Textarea API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Keep native textarea semantics. Add labels through Field or a native label element."
+  >
+    <ul class="textarea-page__notes">
+      <li>Use a visible label through <code>kui-field</code> or a native <code>label</code>.</li>
+      <li>Use <code>invalid</code> only when the textarea is outside field error wiring.</li>
+      <li>
+        When projected inside <code>kui-field</code>, the field reads the descendant
+        <code>[formField]</code> and infers the required marker and first error message from
+        Angular Signal Forms metadata.
+      </li>
+      <li>
+        Native resize behavior (the drag handle in the bottom-right corner) is preserved by
+        default. <code>kuiTextarea</code> does not control or restrict resize; override it with
+        the CSS <code>resize</code> property when a fixed size is required.
+      </li>
+      <li>Native <code>rows</code>, <code>cols</code>, and <code>maxlength</code> attributes work as usual.</li>
+    </ul>
+  </app-doc-section>
+</article>

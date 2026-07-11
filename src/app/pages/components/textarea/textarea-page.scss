@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.textarea-page {
+  @include doc-page-layout;
+}
+
+.textarea-page__notes {
+  @include doc-page-notes;
+}
+
+.textarea-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

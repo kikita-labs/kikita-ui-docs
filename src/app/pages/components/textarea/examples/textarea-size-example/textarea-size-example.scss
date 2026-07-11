@@ -1,0 +1,12 @@
+.textarea-size-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
+
+.textarea-size-example__option {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

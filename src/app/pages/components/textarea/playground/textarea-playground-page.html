@@ -1,0 +1,25 @@
+<article class="textarea-playground-page">
+  <div class="textarea-playground-page__header">
+    <h1>Textarea &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Textarea playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <textarea
+      kuiTextarea
+      [size]="sizeOf(playground.values())"
+      [rows]="rowsOf(playground.values())"
+      [invalid]="invalidOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [placeholder]="placeholderOf(playground.values())"
+      [value]="valueOf(playground.values())"
+    ></textarea>
+  </app-api-playground>
+
+  <app-api-table label="Textarea API" [rows]="apiRows" />
+  <p class="textarea-playground-page__note">{{ apiDescription }}</p>
+</article>

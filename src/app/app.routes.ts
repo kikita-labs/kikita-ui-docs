@@ -142,6 +142,24 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/components/switch/switch-page').then((m) => m.SwitchPage),
       },
+      {
+        path: AppRoutePath.ComponentsTextarea,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/textarea/textarea-page').then((m) => m.TextareaPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/textarea/playground/textarea-playground-page').then(
+                (m) => m.TextareaPlaygroundPage,
+              ),
+          },
+        ],
+      },
       ...componentDraftRoutes,
     ],
   },

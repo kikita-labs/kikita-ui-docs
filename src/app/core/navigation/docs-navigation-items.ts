@@ -18,6 +18,7 @@ export const DOCS_PATHS = {
   componentsInput: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsInput}`,
   componentsMenu: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsMenu}`,
   componentsSelect: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSelect}`,
+  componentsTextarea: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsTextarea}`,
   smoke: `/${AppRoutePath.Smoke}`,
 } as const;
 
@@ -93,6 +94,11 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         label: 'Select',
         path: DOCS_PATHS.componentsSelect,
         description: 'Readonly input trigger backed by dropdown and option primitives.',
+      },
+      {
+        label: 'Textarea',
+        path: DOCS_PATHS.componentsTextarea,
+        description: 'Native multiline input styling with field integration.',
       },
     ],
   },

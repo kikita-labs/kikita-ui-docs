@@ -1,0 +1,5 @@
+.basic-textarea-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
