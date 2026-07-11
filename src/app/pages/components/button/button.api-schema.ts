@@ -2,9 +2,15 @@ import { ApiTableRow } from '../../../shared/docs-ui/api-table/api-table-row';
 
 export const BUTTON_API_ROWS: readonly ApiTableRow[] = [
   {
+    name: 'shape',
+    type: `'solid' | 'soft' | 'outline' | 'ghost'`,
+    description: 'Surface treatment. Defaults to solid. Combines freely with appearance.',
+  },
+  {
     name: 'appearance',
-    type: `'solid' | 'soft' | 'outline' | 'ghost' | 'danger' | 'primary' | 'secondary'`,
-    description: 'Visual treatment. primary and secondary are aliases for solid and soft.',
+    type: `'primary' | 'danger' | 'success' | 'warning'`,
+    description:
+      'Semantic color intent. Without an explicit value, solid/soft use primary colors and outline/ghost use neutral defaults.',
   },
   {
     name: 'size',

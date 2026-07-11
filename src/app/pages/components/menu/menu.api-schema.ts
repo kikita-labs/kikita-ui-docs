@@ -7,9 +7,16 @@ export const MENU_API_ROWS: readonly ApiTableRow[] = [
     description: 'Accessible name for the menu panel. Defaults to Actions.',
   },
   {
+    name: 'placement',
+    type: `'top' | 'bottom' | 'left' | 'right'`,
+    description:
+      'Preferred side of the trigger the menu opens on. Defaults to bottom. Auto-flips to the opposite side to fit the viewport.',
+  },
+  {
     name: 'menuAlign',
     type: `'start' | 'end'`,
-    description: 'Horizontal alignment relative to the trigger.',
+    description:
+      "Alignment along the trigger edge. For top/bottom placement this is horizontal; for left/right placement it's vertical.",
   },
   {
     name: 'offset',

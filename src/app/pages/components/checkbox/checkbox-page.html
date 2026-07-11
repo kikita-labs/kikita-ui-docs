@@ -50,6 +50,11 @@
       <li>Use <code>kui-field</code> for group label, hint, error, and described-by wiring.</li>
       <li>Use native checked and disabled states; do not replace the input with a custom role.</li>
       <li>Use <code>invalid</code> only when the checkbox is outside a field error state.</li>
+      <li>
+        <code>.kui-checkbox</code> styles the native <code>:indeterminate</code> pseudo-class (a
+        dash mark instead of a checkmark). <code>indeterminate</code> is a DOM property, not an HTML
+        attribute, so set it imperatively on the element.
+      </li>
     </ul>
   </app-doc-section>
 </article>

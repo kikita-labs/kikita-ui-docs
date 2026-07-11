@@ -27,8 +27,8 @@ importers:
         specifier: ^22.0.0
         version: 22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-browser@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2)))(rxjs@7.8.2)
       '@kikita-labs/ui':
-        specifier: 0.1.0
-        version: 0.1.0(098d34021aededa29fb218c0a82fbcbc)
+        specifier: 0.1.5
+        version: 0.1.5(098d34021aededa29fb218c0a82fbcbc)
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -1024,8 +1024,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kikita-labs/ui@0.1.0':
-    resolution: {integrity: sha512-0PASB/uJZzlJVZMM6O0wMi50yMNcTSc8fq9/vG4IANBDDDTo6PXW3GriGmuTX8MjJZp4pahICHSRTrHt3ZKu9A==, tarball: https://npm.pkg.github.com/download/@kikita-labs/ui/0.1.0/cfa7b287e9c5d2533c3c15b31c4076b54a21765d}
+  '@kikita-labs/ui@0.1.5':
+    resolution: {integrity: sha512-yhe4PKwgwX7h0F7NmTe5Q9PyMJAeuWVxsTi4IzWCwsU5SDThJVoAk+jAFGealru0zrD0REUkuFIYwgNxeKUNew==, tarball: https://npm.pkg.github.com/download/@kikita-labs/ui/0.1.5/fa91cecb6965c5fa596504483e536f8c6ec8e1fe}
     peerDependencies:
       '@angular/cdk': ^22.0.0
       '@angular/common': ^22.0.0
@@ -4335,7 +4335,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kikita-labs/ui@0.1.0(098d34021aededa29fb218c0a82fbcbc)':
+  '@kikita-labs/ui@0.1.5(098d34021aededa29fb218c0a82fbcbc)':
     dependencies:
       '@angular-devkit/schematics': 22.0.5(chokidar@5.0.0)
       '@angular/cdk': 22.0.3(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-browser@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2)))(rxjs@7.8.2)
