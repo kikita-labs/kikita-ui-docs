@@ -1,0 +1,30 @@
+.switch-playground-page {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+}
+
+.switch-playground-page__header {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: start;
+}
+
+.switch-playground-page__header h1 {
+  margin: 0;
+  color: var(--kui-color-text);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.switch-playground-page__option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-3, 12px);
+}
+
+.switch-playground-page__note {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

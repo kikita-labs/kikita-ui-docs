@@ -12,6 +12,7 @@ export const DOCS_PATHS = {
   foundationsAccessibility: `/${AppRoutePath.Foundations}/${AppRoutePath.FoundationsAccessibility}`,
   components: `/${AppRoutePath.Components}`,
   componentsButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsButton}`,
+  componentsCheckbox: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsCheckbox}`,
   componentsCommandPalette: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsCommandPalette}`,
   componentsField: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsField}`,
   componentsIconButton: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsIconButton}`,
@@ -19,6 +20,7 @@ export const DOCS_PATHS = {
   componentsMenu: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsMenu}`,
   componentsSelect: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSelect}`,
   componentsSlider: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSlider}`,
+  componentsSwitch: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSwitch}`,
   smoke: `/${AppRoutePath.Smoke}`,
 } as const;
 
@@ -94,6 +96,16 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         label: 'Select',
         path: DOCS_PATHS.componentsSelect,
         description: 'Readonly input trigger backed by dropdown and option primitives.',
+      },
+      {
+        label: 'Checkbox',
+        path: DOCS_PATHS.componentsCheckbox,
+        description: 'Native checkbox styling with field state integration.',
+      },
+      {
+        label: 'Switch',
+        path: DOCS_PATHS.componentsSwitch,
+        description: 'Native checkbox rendered as a switch for binary settings.',
       },
       {
         label: 'Slider',

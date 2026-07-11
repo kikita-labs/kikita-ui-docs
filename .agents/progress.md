@@ -6,7 +6,7 @@ Sources:
 
 - Plan: `.local-notes/PLAN.md`
 - Design reference: `.local-notes/claude-design/design/Docs Site Concept.dc.html`
-- Architecture baseline: `docs/architecture.md`
+- Architecture baseline: `.agents/architecture.md`
 - Package source of truth: sibling `kikita-ui` repo docs and published `@kikita-labs/ui`
 
 ## Legend

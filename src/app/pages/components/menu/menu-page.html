@@ -19,6 +19,18 @@
     heading="Usage"
     description="Use menu for actions, not value selection. Use Select or Dropdown for picking values."
   >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="menu-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
     <app-live-preview previewLabel="Basic menu">
       <app-basic-menu-example />
     </app-live-preview>
@@ -46,12 +58,31 @@
     description="Menu owns keyboard navigation while keeping triggers and items native."
   >
     <ul class="menu-page__notes">
+      <li>
+        <code>[kuiMenuFor]</code> sets <code>aria-haspopup="menu"</code> and
+        <code>aria-expanded</code> on the trigger, and adds <code>aria-controls</code> while the
+        panel is open.
+      </li>
       <li>The panel uses <code>role="menu"</code>; items use <code>role="menuitem"</code>.</li>
       <li>
-        <code>ArrowDown</code> and <code>ArrowUp</code> open from the trigger and focus items.
+        Group headers marked with <code>kuiMenuHeader</code> use <code>role="presentation"</code>.
+      </li>
+      <li>
+        Disabled items expose <code>aria-disabled="true"</code> and are skipped by keyboard
+        navigation.
+      </li>
+      <li>
+        <code>ArrowDown</code> and <code>ArrowUp</code> open from the trigger and focus the first or
+        last item.
       </li>
       <li><code>Home</code>, <code>End</code>, and arrow keys move focus inside the menu.</li>
       <li><code>Escape</code> closes the menu and returns focus to the trigger.</li>
+      <li><code>Tab</code> closes the menu and lets focus continue to the next element.</li>
+      <li>
+        Menu covers keyboard navigation and static ARIA review. Screen reader and other
+        assistive-technology verification has not been completed for this primitive yet; see
+        <code>state-coverage.md</code> in the library repository for current review status.
+      </li>
     </ul>
   </app-doc-section>
 </article>

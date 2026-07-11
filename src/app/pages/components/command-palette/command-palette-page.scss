@@ -7,3 +7,8 @@
 .command-palette-page__notes {
   @include doc-page-notes;
 }
+
+.command-palette-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}
