@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.radio-page {
+  @include doc-page-layout;
+}
+
+.radio-page__notes {
+  @include doc-page-notes;
+}
+
+.radio-page__playground-link {
+  justify-self: start;
+}

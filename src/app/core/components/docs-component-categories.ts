@@ -106,7 +106,7 @@ export const DOCS_COMPONENT_CATEGORIES: readonly DocsComponentCategory[] = [
       {
         name: 'Radio',
         importName: 'KuiRadioDirective',
-        status: 'docs-pending',
+        status: 'available',
         description: 'Native radio control styling for exclusive choices.',
         routePath: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsRadio}`,
       },
