@@ -1,0 +1,24 @@
+.slider-playground-page {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+}
+
+.slider-playground-page__header {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: start;
+}
+
+.slider-playground-page__header h1 {
+  margin: 0;
+  color: var(--kui-color-text);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.slider-playground-page__note {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

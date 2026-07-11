@@ -138,6 +138,24 @@ export const routes: Routes = [
           import('./pages/components/select/select-page').then((m) => m.SelectPage),
       },
       {
+        path: AppRoutePath.ComponentsSlider,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/slider/slider-page').then((m) => m.SliderPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/slider/playground/slider-playground-page').then(
+                (m) => m.SliderPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
         path: AppRoutePath.ComponentsSwitch,
         loadComponent: () =>
           import('./pages/components/switch/switch-page').then((m) => m.SwitchPage),

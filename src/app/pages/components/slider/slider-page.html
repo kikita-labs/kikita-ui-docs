@@ -1,0 +1,90 @@
+<article class="slider-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Slider"
+    description="kuiSlider applies Kikita UI slider styling and behavior to native range inputs."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public directive from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Use native range input semantics first. Prefer a wrapping kui-field for visible labels and helper text instead of hand-written labels or description ids."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="slider-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic sliders">
+      <app-basic-slider-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="min-max-step"
+    heading="Min, max, and step"
+    description="min, max, step, and value are native range attributes. kuiSlider reads them directly to size the fill and thumb."
+  >
+    <app-live-preview previewLabel="Range constraints">
+      <app-slider-range-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="rangeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="disabled-and-invalid"
+    heading="Disabled and invalid"
+    description="disabled mirrors native disabled styling. invalid applies invalid styling outside a kui-field error state."
+  >
+    <app-live-preview previewLabel="Disabled and invalid sliders">
+      <app-slider-disabled-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="disabledTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="signal-forms"
+    heading="Signal Forms"
+    description="Use Angular Signal Forms formField on the same native range input. Angular owns the native value, disabled, and validation state; kuiSlider keeps the generated visuals in sync. Use the min(...) and max(...) schema validators instead of native min/max attributes when formField is bound."
+  >
+    <app-live-preview previewLabel="Signal Forms slider">
+      <app-slider-field-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="fieldTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Slider API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Slider keeps native range input semantics instead of replacing them with ARIA roles."
+  >
+    <ul class="slider-page__notes">
+      <li>Use a visible label through <code>kui-field</code> or a native <code>label</code>; otherwise provide <code>aria-label</code>.</li>
+      <li>Arrow keys, Home, and End are native range input keyboard behavior and are preserved.</li>
+      <li>When projected inside <code>kui-field</code>, <code>kuiSlider</code> inherits the field id, <code>aria-describedby</code>, and <code>aria-invalid</code>.</li>
+      <li>Use <code>invalid</code> only when the slider is outside field error wiring.</li>
+      <li>The default hover tooltip shows the current numeric value; a non-empty <code>kuiTooltip</code> on the same host overrides it with static text.</li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,31 @@
+<article class="slider-playground-page">
+  <div class="slider-playground-page__header">
+    <h1>Slider &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Slider playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <input
+      type="range"
+      kuiSlider
+      [attr.min]="minOf(playground.values())"
+      [attr.max]="maxOf(playground.values())"
+      [attr.step]="stepOf(playground.values())"
+      [value]="valueOf(playground.values())"
+      [color]="colorOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [minLabel]="minLabelOf(playground.values())"
+      [maxLabel]="maxLabelOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [invalid]="invalidOf(playground.values())"
+      aria-label="Slider playground preview"
+    />
+  </app-api-playground>
+
+  <app-api-table label="Slider API" [rows]="apiRows" />
+  <p class="slider-playground-page__note">{{ apiDescription }}</p>
+</article>

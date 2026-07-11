@@ -18,6 +18,7 @@ export const DOCS_PATHS = {
   componentsInput: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsInput}`,
   componentsMenu: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsMenu}`,
   componentsSelect: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSelect}`,
+  componentsSlider: `/${AppRoutePath.Components}/${AppRoutePath.ComponentsSlider}`,
   smoke: `/${AppRoutePath.Smoke}`,
 } as const;
 
@@ -93,6 +94,11 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
         label: 'Select',
         path: DOCS_PATHS.componentsSelect,
         description: 'Readonly input trigger backed by dropdown and option primitives.',
+      },
+      {
+        label: 'Slider',
+        path: DOCS_PATHS.componentsSlider,
+        description: 'Native range input styling with Field and Signal Forms support.',
       },
     ],
   },
