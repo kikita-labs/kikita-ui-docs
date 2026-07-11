@@ -180,6 +180,24 @@ export const routes: Routes = [
         ],
       },
       {
+        path: AppRoutePath.ComponentsGroup,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/group/group-page').then((m) => m.GroupPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/group/playground/group-playground-page').then(
+                (m) => m.GroupPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
         path: AppRoutePath.ComponentsInput,
         children: [
           {

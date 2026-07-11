@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.group-page {
+  @include doc-page-layout;
+}
+
+.group-page__notes {
+  @include doc-page-notes;
+}
+
+.group-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

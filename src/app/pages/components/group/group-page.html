@@ -1,0 +1,89 @@
+<article class="group-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Group"
+    description="Directive that groups adjacent Kikita UI controls and can collapse their shared borders."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public directive from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Apply kuiGroup to a container element around adjacent buttons, icon buttons, or fields. Use collapsed to merge their shared borders into one visual control."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="group-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Collapsed button group">
+      <app-basic-group-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="orientation"
+    heading="Orientation"
+    description="orientation switches the group between a horizontal row and a vertical stack. Border collapsing follows the same axis."
+  >
+    <app-live-preview previewLabel="Horizontal and vertical groups">
+      <app-group-orientation-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="orientationTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="size"
+    heading="Size"
+    description="size is set once on the group and inherited by grouped controls through CSS variables, instead of repeating size on every child."
+  >
+    <app-live-preview previewLabel="Group size scale">
+      <app-group-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="grouping-fields"
+    heading="Grouping fields"
+    description="Group a text input with an adjacent button or icon button to build search and inline-action patterns."
+  >
+    <app-live-preview previewLabel="Grouped input and action">
+      <app-group-field-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="fieldTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Group API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Group only changes visual chrome. It does not change roles, focus order, or keyboard behavior of the controls it wraps."
+  >
+    <ul class="group-page__notes">
+      <li>Group applies to a plain container element; it does not add a role like toolbar or group by itself.</li>
+      <li>Keep native semantics on grouped children: real <code>&lt;button&gt;</code> elements, a labeled <code>&lt;input&gt;</code>, and an <code>aria-label</code> on icon-only buttons.</li>
+      <li>Tab order follows the DOM order of the grouped children, not the visual orientation.</li>
+      <li>collapsed and rounded are purely visual and never affect focus or hit targets.</li>
+    </ul>
+  </app-doc-section>
+</article>

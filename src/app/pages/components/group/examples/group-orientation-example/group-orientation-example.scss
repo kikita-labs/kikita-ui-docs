@@ -1,0 +1,11 @@
+.group-orientation-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-6, 24px);
+  align-items: center;
+  justify-content: center;
+}
+
+.group-orientation-example__vertical {
+  inline-size: fit-content;
+}
