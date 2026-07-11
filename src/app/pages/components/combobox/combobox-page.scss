@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.combobox-page {
+  @include doc-page-layout;
+}
+
+.combobox-page__notes {
+  @include doc-page-notes;
+}
+
+.combobox-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

@@ -1,0 +1,27 @@
+<kui-field label="Reviewer" hint="Simulates a remote lookup with a loading row">
+  <input
+    kuiCombobox
+    mode="async"
+    [(value)]="reviewer"
+    [(query)]="reviewerQuery"
+    [loading]="loading()"
+    [kuiLabelFn]="personLabel"
+    placeholder="Type to search..."
+    (search)="loadReviewers($event)"
+  />
+
+  <kui-dropdown>
+    @if (loading()) {
+      <div class="kui-combobox-loading-row">
+        <span class="kui-combobox-loader" aria-hidden="true"></span>
+        Loading people
+      </div>
+    } @else {
+      @for (person of reviewers(); track person.id) {
+        <button kuiOption [value]="person">{{ person.name }}</button>
+      } @empty {
+        <div class="kui-combobox-empty">No matches</div>
+      }
+    }
+  </kui-dropdown>
+</kui-field>

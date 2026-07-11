@@ -142,6 +142,24 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/components/switch/switch-page').then((m) => m.SwitchPage),
       },
+      {
+        path: AppRoutePath.ComponentsCombobox,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/combobox/combobox-page').then((m) => m.ComboboxPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/combobox/playground/combobox-playground-page').then(
+                (m) => m.ComboboxPlaygroundPage,
+              ),
+          },
+        ],
+      },
       ...componentDraftRoutes,
     ],
   },

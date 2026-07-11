@@ -1,0 +1,28 @@
+<kui-field label="Assignee" hint="Type to filter projected options">
+  <input
+    kuiCombobox
+    [(value)]="assignee"
+    [(query)]="query"
+    [kuiLabelFn]="personLabel"
+    placeholder="Search people..."
+    (search)="query.set($event)"
+  />
+
+  <kui-dropdown>
+    @for (person of filteredPeople(); track person.id) {
+      <button kuiOption [value]="person">
+        <span class="kui-combobox-match-label">
+          @for (segment of person.name | kuiComboboxHighlight: query(); track $index) {
+            @if (segment.match) {
+              <mark class="kui-combobox-highlight">{{ segment.text }}</mark>
+            } @else {
+              <span>{{ segment.text }}</span>
+            }
+          }
+        </span>
+      </button>
+    } @empty {
+      <div class="kui-combobox-empty">No people found</div>
+    }
+  </kui-dropdown>
+</kui-field>
