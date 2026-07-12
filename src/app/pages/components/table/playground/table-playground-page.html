@@ -1,0 +1,48 @@
+<article class="table-playground-page">
+  <div class="table-playground-page__header">
+    <h1>Table &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Table playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <table
+      kuiTable
+      [data]="rows"
+      [size]="sizeOf(playground.values())"
+      #table="kuiTable"
+      (selectionChange)="onSelectionChange($event)"
+    >
+      <thead>
+        <tr kuiThGroup>
+          @if (selectionEnabledOf(playground.values())) {
+            <th kuiSelectTh ariaLabel="Select all rows"></th>
+          }
+          <th kuiTh [sortKey]="sortEnabledOf(playground.values()) ? 'name' : undefined">Name</th>
+          <th kuiTh [sortKey]="sortEnabledOf(playground.values()) ? 'role' : undefined">Role</th>
+          <th kuiTh [sortKey]="sortEnabledOf(playground.values()) ? 'status' : undefined">
+            Status
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of sortEnabledOf(playground.values()) ? table.sortedData() : rows; track row.id) {
+          <tr kuiRow [value]="row">
+            @if (selectionEnabledOf(playground.values())) {
+              <td kuiSelectCell [ariaLabel]="'Select ' + row.name"></td>
+            }
+            <td kuiCell>{{ row.name }}</td>
+            <td kuiCell>{{ row.role }}</td>
+            <td kuiCell>{{ row.status }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </app-api-playground>
+
+  <app-api-table label="Table API" [rows]="apiRows" />
+  <p class="table-playground-page__note">{{ apiDescription }}</p>
+</article>

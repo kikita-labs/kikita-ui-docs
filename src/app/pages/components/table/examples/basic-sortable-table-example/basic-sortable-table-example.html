@@ -1,0 +1,18 @@
+<table kuiTable [data]="rows" #table="kuiTable">
+  <thead>
+    <tr kuiThGroup>
+      <th kuiTh sortKey="name">Name</th>
+      <th kuiTh sortKey="role">Role</th>
+      <th kuiTh sortKey="status">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of table.sortedData(); track row.id) {
+      <tr kuiRow [value]="row">
+        <td kuiCell>{{ row.name }}</td>
+        <td kuiCell>{{ row.role }}</td>
+        <td kuiCell>{{ row.status }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

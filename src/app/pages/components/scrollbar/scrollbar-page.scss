@@ -1,0 +1,21 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.scrollbar-page {
+  @include doc-page-layout;
+}
+
+.scrollbar-page__notes {
+  @include doc-page-notes;
+}
+
+.scrollbar-page__note {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  line-height: 1.6;
+
+  code {
+    color: var(--kui-color-primary-soft-text);
+    font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Consolas, monospace);
+    font-size: var(--kui-text-sm-size, 13px);
+  }
+}

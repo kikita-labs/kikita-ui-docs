@@ -1,0 +1,10 @@
+.combined-table-example__scroll {
+  max-block-size: 220px;
+  overflow: auto;
+}
+
+.combined-table-example__note {
+  margin: var(--kui-space-2, 8px) 0 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

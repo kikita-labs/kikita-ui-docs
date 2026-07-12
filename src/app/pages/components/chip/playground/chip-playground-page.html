@@ -1,0 +1,32 @@
+<article class="chip-playground-page">
+  <div class="chip-playground-page__header">
+    <h1>Chip &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Chip playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <span
+      kuiChip
+      [appearance]="appearanceOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [invalid]="invalidOf(playground.values())"
+    >
+      <span class="kui-chip-label">{{ labelOf(playground.values()) }}</span>
+      @if (removableOf(playground.values())) {
+        <button
+          kuiChipRemove
+          type="button"
+          [attr.aria-label]="'Remove ' + labelOf(playground.values())"
+        ></button>
+      }
+    </span>
+  </app-api-playground>
+
+  <app-api-table label="Chip API" [rows]="apiRows" />
+  <p class="chip-playground-page__note">{{ apiDescription }}</p>
+</article>

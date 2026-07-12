@@ -1,0 +1,26 @@
+<div class="interactive-chip-example">
+  <button
+    kuiChip
+    type="button"
+    [appearance]="selected() === 'all' ? 'primary' : 'neutral'"
+    (click)="select('all')"
+  >
+    All
+  </button>
+  <button
+    kuiChip
+    type="button"
+    [appearance]="selected() === 'open' ? 'primary' : 'neutral'"
+    (click)="select('open')"
+  >
+    Open
+  </button>
+  <button
+    kuiChip
+    type="button"
+    [appearance]="selected() === 'closed' ? 'primary' : 'neutral'"
+    (click)="select('closed')"
+  >
+    Closed
+  </button>
+</div>

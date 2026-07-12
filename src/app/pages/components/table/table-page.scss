@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.table-page {
+  @include doc-page-layout;
+}
+
+.table-page__notes {
+  @include doc-page-notes;
+}
+
+.table-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

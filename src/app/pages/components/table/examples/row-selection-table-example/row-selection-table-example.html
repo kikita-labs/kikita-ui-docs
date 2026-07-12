@@ -1,0 +1,23 @@
+<table kuiTable [data]="rows" (selectionChange)="onSelectionChange($event)">
+  <thead>
+    <tr kuiThGroup>
+      <th kuiSelectTh ariaLabel="Select all team members"></th>
+      <th kuiTh sortKey="name">Name</th>
+      <th kuiTh sortKey="role">Role</th>
+      <th kuiTh sortKey="status">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows; track row.id) {
+      <tr kuiRow [value]="row">
+        <td kuiSelectCell [ariaLabel]="'Select ' + row.name"></td>
+        <td kuiCell>{{ row.name }}</td>
+        <td kuiCell>{{ row.role }}</td>
+        <td kuiCell>{{ row.status }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+<p class="row-selection-table-example__note">
+  {{ selected().length }} of {{ rows.length }} selected
+</p>

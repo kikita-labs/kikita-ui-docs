@@ -1,0 +1,34 @@
+<article class="avatar-playground-page">
+  <div class="avatar-playground-page__header">
+    <h1>Avatar &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Avatar playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-avatar
+      [src]="srcOf(playground.values())"
+      [name]="nameOf(playground.values())"
+      [initials]="initialsOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [shape]="shapeOf(playground.values())"
+      [status]="statusOf(playground.values())"
+      [loading]="loadingOf(playground.values())"
+    />
+  </app-api-playground>
+
+  <div class="avatar-playground-page__group-demo">
+    <h2>Avatar group sample</h2>
+    <p class="avatar-playground-page__note">
+      kui-avatar-group takes a fixed <code>KuiAvatarItem[]</code> array rather than a playground
+      control. This is a realistic sample list; it is independent of the controls above.
+    </p>
+    <kui-avatar-group [avatars]="groupMembers" [max]="4" size="sm" label="Project participants" />
+  </div>
+
+  <app-api-table label="Avatar API" [rows]="apiRows" />
+  <p class="avatar-playground-page__note">{{ apiDescription }}</p>
+</article>

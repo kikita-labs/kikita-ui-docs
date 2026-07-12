@@ -1,0 +1,142 @@
+<article class="table-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Table"
+    description="Directive-based compound primitive for native data tables with sort, selection, and sticky header coordination."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Table composes several directives and components sharing one DI context."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Apply kuiTable to a real table element, keep native thead/tbody/tr/th/td markup, and read #table='kuiTable' for sorted rows."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="table-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Sortable table">
+      <app-basic-sortable-table-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sort"
+    heading="Sort"
+    description="sortKey on th[kuiTh] enables cycling through asc, desc, and clear via a native button. Uncontrolled sort (no (sortChange) listener) sorts data locally and exposes results as sortedData()."
+  >
+    <ul class="table-page__notes">
+      <li>
+        Controlled sort: observe <code>(sortChange)</code> and reorder <code>data</code> yourself.
+      </li>
+      <li>
+        Uncontrolled sort: leave <code>(sortChange)</code> unbound and read
+        <code>table.sortedData()</code>.
+      </li>
+      <li><code>comparator</code> overrides the default comparison for a column.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="selection"
+    heading="Row selection"
+    description="The selection column only renders when (selectionChange) is observed. th[kuiSelectTh] renders the select-all checkbox; td[kuiSelectCell] renders each row's checkbox."
+  >
+    <app-live-preview previewLabel="Row selection">
+      <app-row-selection-table-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="selectionTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sticky"
+    heading="Sticky header"
+    description="sticky on th[kuiTh] pins that header cell horizontally; sticky on tr[kuiThGroup] pins the whole header row vertically inside a scrolling container."
+  >
+    <app-live-preview previewLabel="Sticky header in a scroll region">
+      <app-sticky-header-table-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="stickyTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="combined"
+    heading="Sort, selection, and sticky combined"
+    description="All three behaviors compose on the same table through the shared kuiTable DI context."
+  >
+    <app-live-preview previewLabel="Combined table">
+      <app-combined-table-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="combinedTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Table API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Table keeps real table semantics and native interactive elements for sort and selection."
+  >
+    <ul class="table-page__notes">
+      <li>
+        Keep real <code>table</code>, <code>thead</code>, <code>tbody</code>, <code>tr</code>,
+        <code>th</code>, and <code>td</code> markup; kuiTable does not replace table semantics.
+      </li>
+      <li>
+        Sortable headers keep <code>aria-sort</code> on the <code>th</code> while a native
+        <code>button</code> owns keyboard and click interaction.
+      </li>
+      <li>
+        Selection uses native checkboxes; pass a human-readable <code>ariaLabel</code> on
+        <code>kuiSelectTh</code> and <code>kuiSelectCell</code>.
+      </li>
+      <li>
+        Add a native <code>caption</code> when the surrounding page does not already provide a clear
+        table title.
+      </li>
+      <li>
+        Avoid placing complex interactive widgets inside cells unless their focus order and labels
+        are explicitly tested.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="known-gaps"
+    heading="Known gaps"
+    description="One documented library behavior is not available in the installed package version."
+  >
+    <ul class="table-page__notes">
+      <li>
+        The library source documents <code>sticky</code> on <code>td[kuiCell]</code> for pinning
+        body columns, but in the installed <code>@kikita-labs/ui</code> version (see the API section
+        above for the exact version) <code>KuiCellDirective</code> exposes no public inputs, so body
+        cells cannot be pinned through a directive input yet. Only header-side stickiness (<code
+          >th[kuiTh] sticky</code
+        >
+        and <code>tr[kuiThGroup] sticky</code>) is available in this version. This page documents
+        only the working header behavior; do not add <code>sticky</code> to
+        <code>td[kuiCell]</code> until the installed package exposes it.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,5 @@
+.local-scroll-container-example__region {
+  max-block-size: 160px;
+  overflow: auto;
+  padding-inline-end: var(--kui-space-2, 8px);
+}

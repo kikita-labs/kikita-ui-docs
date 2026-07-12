@@ -1,0 +1,14 @@
+.avatar-sizes-shapes-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+
+.avatar-sizes-shapes-example__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}

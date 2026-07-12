@@ -1,0 +1,117 @@
+<article class="avatar-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Avatar"
+    description="User or entity identity with image, initials, icon fallback, presence status, and grouped stacks."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public components from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="kui-avatar renders an image first, falls back to initials derived from name, then falls back to an icon when no initials are available."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="avatar-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic avatars">
+      <app-basic-avatar-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes-and-shapes"
+    heading="Sizes and shapes"
+    description="size uses the shared Kikita size scale from xs to 2xl. shape defaults to circle for people; use square for bots, teams, channels, and other entities."
+  >
+    <app-live-preview previewLabel="Size and shape set">
+      <app-avatar-sizes-shapes-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizesShapesTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="status"
+    heading="Status"
+    description="status renders a decorative presence dot and appends the presence text to the avatar accessible label."
+  >
+    <app-live-preview previewLabel="Status set">
+      <app-avatar-status-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="statusTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="avatar-group"
+    heading="Avatar group"
+    description="kui-avatar-group renders a stack of avatars and collapses items beyond max into a +N overflow avatar with an accessible label such as '2 more'."
+  >
+    <app-live-preview previewLabel="Avatar group">
+      <app-avatar-group-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="groupTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="interactive-avatar"
+    heading="Button-backed avatar"
+    description="kui-avatar is not clickable itself. Wrap it in a native button when the avatar needs to open a profile or menu."
+  >
+    <app-live-preview previewLabel="Interactive avatar">
+      <app-avatar-button-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="buttonTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Avatar API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Avatar exposes accessible names automatically and keeps interactive behavior on native elements."
+  >
+    <ul class="avatar-page__notes">
+      <li>
+        Image avatars render a native <code>&lt;img&gt;</code> with <code>alt</code> derived from
+        <code>alt</code>, then <code>name</code>.
+      </li>
+      <li>
+        Initials and icon fallback avatars expose <code>role="img"</code> and
+        <code>aria-label</code>.
+      </li>
+      <li>
+        Status is appended to the accessible label, for example
+        <code>Nikita Repin, online</code>. The status dot itself is decorative.
+      </li>
+      <li>
+        Interactive avatars must use a native
+        <code>&lt;button class="kui-avatar-action"&gt;</code> wrapper with its own
+        <code>aria-label</code>. Do not make <code>kui-avatar</code> itself clickable.
+      </li>
+      <li>
+        Avatar group overflow exposes a <code>+N</code> avatar with an accessible label such as
+        <code>2 more</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

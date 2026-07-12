@@ -1,0 +1,24 @@
+<div class="sticky-header-table-example__scroll">
+  <table kuiTable [data]="rows" #table="kuiTable">
+    <thead>
+      <tr kuiThGroup [sticky]="true">
+        <th kuiTh sortKey="name" [sticky]="true">Name</th>
+        <th kuiTh sortKey="role">Role</th>
+        <th kuiTh sortKey="department">Department</th>
+        <th kuiTh sortKey="location">Location</th>
+        <th kuiTh sortKey="status">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of table.sortedData(); track row.id) {
+        <tr kuiRow [value]="row">
+          <td kuiCell>{{ row.name }}</td>
+          <td kuiCell>{{ row.role }}</td>
+          <td kuiCell>{{ row.department }}</td>
+          <td kuiCell>{{ row.location }}</td>
+          <td kuiCell>{{ row.status }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

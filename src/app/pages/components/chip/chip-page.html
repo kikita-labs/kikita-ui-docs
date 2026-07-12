@@ -1,0 +1,99 @@
+<article class="chip-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Chip"
+    description="Directive for compact selected values, filter tokens, tags, and entity references."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public directives from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="kuiChip applies to a span for a static, non-interactive chip, or to a button/a for an interactive chip. Chip represents a chosen value or removable filter; Badge represents status. See the Badge docs when you need a status marker instead."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="chip-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic chips">
+      <app-basic-chip-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="removable"
+    heading="Removable chip"
+    description="Nest a button[kuiChipRemove] inside the chip and listen for (removed) to drop a value from a collection."
+  >
+    <app-live-preview previewLabel="Removable chips">
+      <app-removable-chip-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="removableTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="interactive"
+    heading="Interactive filter chip"
+    description="Use a native button host when the chip itself toggles a filter or selection instead of only removing a value."
+  >
+    <app-live-preview previewLabel="Interactive filter chips">
+      <app-interactive-chip-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="interactiveTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="states"
+    heading="Disabled and invalid"
+    description="disabled reduces opacity and makes the nested remove action inert. invalid shows the invalid border treatment."
+  >
+    <app-live-preview previewLabel="Disabled and invalid chips">
+      <app-chip-states-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="statesTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Chip API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Chip keeps native element semantics instead of adding ARIA roles."
+  >
+    <ul class="chip-page__notes">
+      <li>Use a non-interactive host such as <code>span</code> for a static chip.</li>
+      <li>Use a native <code>button</code> or <code>a</code> for an interactive chip.</li>
+      <li>
+        The remove action must be a native <code>button[kuiChipRemove]</code> with its own
+        accessible name, for example <code>aria-label="Remove Design"</code>.
+      </li>
+      <li>
+        Disabled chips mark the remove button <code>aria-disabled="true"</code> and
+        <code>tabindex="-1"</code>.
+      </li>
+      <li>
+        Select and Combobox own keyboard behavior for Delete/Backspace selected-value removal; do
+        not duplicate that handling when Chip is used inside those controls.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

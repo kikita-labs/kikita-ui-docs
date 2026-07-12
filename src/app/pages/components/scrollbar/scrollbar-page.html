@@ -1,0 +1,63 @@
+<article class="scrollbar-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Scrollbar"
+    description="Token-driven native scrollbar styling. Not a component: a CSS utility class plus an app-wide provider option."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Load the Kikita stylesheet once. Scrollbar has no directive or component to import."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Apply the kui-scroll class to the element that actually scrolls for local, per-container opt-in styling."
+  >
+    <p class="scrollbar-page__note">
+      Scrollbar has no playground on this page. Its only public surface is the
+      <code>.kui-scroll</code> class and the
+      <code>provideKikitaUi(&#123; scrollbars &#125;)</code> provider option&mdash;there are no
+      component inputs to toggle in an interactive playground, so this page covers both directly
+      with a rendered example and code snippets instead.
+    </p>
+
+    <app-live-preview previewLabel="Local scroll container">
+      <app-local-scroll-container-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="localTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="provider-defaults"
+    heading="App-wide styled scrollbars"
+    description="Set scrollbars: 'styled' once in app config to style native scrollbars across application-owned scroll containers. Defaults to 'native'. Kikita-owned overlays (dropdown, dialog, drawer, command palette) already use Kikita scrollbar tokens regardless of this setting."
+  >
+    <app-code-tabs [tabs]="providerTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Scrollbar API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Scrollbar only restyles native browser scrolling; it does not change scroll behavior or semantics."
+  >
+    <ul class="scrollbar-page__notes">
+      <li>
+        Keyboard scrolling, touch scrolling, and assistive-technology behavior remain owned by the
+        native scroll container.
+      </li>
+      <li>Do not add ARIA roles solely to style a scrollbar.</li>
+      <li>In forced-colors mode, scrollbar colors fall back to the system implementation.</li>
+      <li>Browser and OS scrollbar rendering can differ, especially with overlay scrollbars.</li>
+    </ul>
+  </app-doc-section>
+</article>

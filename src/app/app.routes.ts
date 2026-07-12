@@ -615,6 +615,71 @@ export const routes: Routes = [
           },
         ],
       },
+      {
+        path: AppRoutePath.ComponentsTable,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/table/table-page').then((m) => m.TablePage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/table/playground/table-playground-page').then(
+                (m) => m.TablePlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsScrollbar,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/scrollbar/scrollbar-page').then((m) => m.ScrollbarPage),
+            pathMatch: 'full',
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsAvatar,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/avatar/avatar-page').then((m) => m.AvatarPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/avatar/playground/avatar-playground-page').then(
+                (m) => m.AvatarPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsChip,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/chip/chip-page').then((m) => m.ChipPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/chip/playground/chip-playground-page').then(
+                (m) => m.ChipPlaygroundPage,
+              ),
+          },
+        ],
+      },
       ...componentDraftRoutes,
     ],
   },

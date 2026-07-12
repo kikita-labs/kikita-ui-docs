@@ -1,0 +1,8 @@
+<div class="removable-chip-example">
+  @for (tag of tags(); track tag) {
+    <span kuiChip appearance="primary" (removed)="removeTag(tag)">
+      <span class="kui-chip-label">{{ tag }}</span>
+      <button kuiChipRemove type="button" [attr.aria-label]="'Remove ' + tag"></button>
+    </span>
+  }
+</div>
