@@ -1,9 +1,9 @@
 <div class="combined-table-example__scroll">
   <table kuiTable [data]="rows" #table="kuiTable" (selectionChange)="onSelectionChange($event)">
     <thead>
-      <tr kuiThGroup [sticky]="true">
+      <tr kuiThGroup sticky>
         <th kuiSelectTh ariaLabel="Select all team members"></th>
-        <th kuiTh sortKey="name" [sticky]="true">Name</th>
+        <th kuiTh sortKey="name" sticky>Name</th>
         <th kuiTh sortKey="role">Role</th>
         <th kuiTh sortKey="department">Department</th>
         <th kuiTh sortKey="status">Status</th>
