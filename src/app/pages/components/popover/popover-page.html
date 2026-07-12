@@ -1,0 +1,101 @@
+<article class="popover-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Popover"
+    description="Floating content panel anchored to a trigger element. Unlike Tooltip, Popover supports interactive content and both click and hover triggers. Unlike Dropdown, Popover is a free-content slot with no listbox structure."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Popover composes a panel component and a trigger directive."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Wire any element as a trigger with [kuiPopoverFor], then project arbitrary content into the panel."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="popover-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic popover">
+      <app-basic-popover-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="action-content"
+    heading="With action buttons"
+    description="Projected content is developer-provided, including buttons that call the popover's own close() method."
+  >
+    <app-live-preview previewLabel="Confirm action popover">
+      <app-action-popover-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="actionTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="hover-trigger"
+    heading="Hover trigger"
+    description='triggerType="hover" opens on mouseenter and closes after hoverDelay, so the mouse can travel from trigger to panel.'
+  >
+    <app-live-preview previewLabel="Hover popover">
+      <app-hover-popover-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="hoverTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Popover API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Popover exposes dialog semantics and returns focus to the trigger on close."
+  >
+    <ul class="popover-page__notes">
+      <li>
+        The panel renders <code>role="dialog"</code> with <code>aria-label</code> set from
+        <code>ariaLabel</code>. Prefer content-specific text over the default
+        <code>'Popover'</code>.
+      </li>
+      <li>
+        <code>[kuiPopoverFor]</code> sets <code>aria-expanded</code> and
+        <code>aria-haspopup="dialog"</code> on the trigger automatically.
+      </li>
+      <li>
+        Click mode: <code>Escape</code> or an outside click closes the panel and returns focus to
+        the trigger.
+      </li>
+      <li>
+        Hover mode: <code>mouseenter</code> on the trigger opens the panel;
+        <code>mouseleave</code> starts a <code>hoverDelay</code> timer that a mouseenter on the
+        panel cancels.
+      </li>
+      <li>
+        Set <code>[trapFocus]="true"</code> when the panel contains a form or multiple interactive
+        elements that need focus contained inside the panel while open.
+      </li>
+      <li>
+        Popover covers keyboard dismissal, ARIA dialog semantics, and focus return. Full screen
+        reader and other assistive-technology verification has not been completed for this primitive
+        yet; see <code>state-coverage.md</code> in the library repository for current review status.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

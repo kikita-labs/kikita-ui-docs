@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.accordion-page {
+  @include doc-page-layout;
+}
+
+.accordion-page__notes {
+  @include doc-page-notes;
+}
+
+.accordion-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

@@ -1,0 +1,12 @@
+<kui-accordion appearance="bordered">
+  <kui-accordion-item id="settings" header="Settings">
+    <ng-template kuiAccordionIcon>
+      <kui-icon [source]="settingsIcon" />
+    </ng-template>
+    Settings content with a leading icon slot.
+  </kui-accordion-item>
+
+  <kui-accordion-item id="disabled" header="Archived project" [disabled]="true">
+    This section is disabled and cannot be toggled.
+  </kui-accordion-item>
+</kui-accordion>

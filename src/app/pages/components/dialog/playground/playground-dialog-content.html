@@ -1,0 +1,36 @@
+<div class="kui-dialog-header">
+  @if (dialogContext.appearance !== 'default') {
+    <svg
+      class="kui-dialog-icon"
+      aria-hidden="true"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+    >
+      <circle cx="10" cy="10" r="8" />
+      <path d="M10 6v5" stroke-linecap="round" />
+      <circle cx="10" cy="13.5" r="0.75" fill="currentColor" stroke="none" />
+    </svg>
+  }
+  <h2 class="kui-dialog-title">{{ dialogContext.data.title }}</h2>
+  @if (dialogContext.closable) {
+    <button
+      class="kui-dialog-close"
+      type="button"
+      aria-label="Close"
+      (click)="dialogContext.close(null)"
+    >
+      &times;
+    </button>
+  }
+</div>
+<div class="kui-dialog-body">
+  <p>{{ dialogContext.data.message }}</p>
+</div>
+<div class="kui-dialog-footer">
+  <button kuiButton type="button" shape="outline" (click)="dialogContext.close(null)">
+    Cancel
+  </button>
+  <button kuiButton type="button" (click)="dialogContext.close('confirmed')">Confirm</button>
+</div>

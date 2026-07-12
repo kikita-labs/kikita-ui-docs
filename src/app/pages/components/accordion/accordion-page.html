@@ -1,0 +1,107 @@
+<article class="accordion-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Accordion"
+    description="Disclosure component for grouped expandable content."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Accordion composes a container component and an item component."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Give every kui-accordion-item a stable id and a header label. Only one section stays open at a time by default."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="accordion-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic accordion">
+      <app-basic-accordion-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="multi-mode"
+    heading="Multi mode"
+    description="Set mode to multi to let consumers keep any number of sections open at once. expandedItems is two-way bindable."
+  >
+    <app-live-preview previewLabel="Multi mode accordion">
+      <app-multi-accordion-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="multiTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="appearance"
+    heading="Appearance"
+    description="default uses bottom borders between items, bordered wraps each item in its own bordered block, ghost has no borders or dividers."
+  >
+    <app-live-preview previewLabel="Appearance variants">
+      <app-appearance-accordion-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="appearanceTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="composition"
+    heading="Icon slot and disabled items"
+    description="Project an ng-template marked with kuiAccordionIcon for a leading trigger icon. disabled removes an item from tab order and blocks toggling."
+  >
+    <app-live-preview previewLabel="Icon slot and disabled item">
+      <app-icon-accordion-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="iconTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Accordion API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Each item renders a native button trigger with ARIA disclosure semantics."
+  >
+    <ul class="accordion-page__notes">
+      <li>
+        Each trigger is a native <code>&lt;button&gt;</code> with <code>aria-expanded</code> and
+        <code>aria-controls</code> pointing at its body region.
+      </li>
+      <li>The body region is linked back to the trigger through <code>aria-labelledby</code>.</li>
+      <li>
+        <code>disabled</code> items set <code>aria-disabled="true"</code> and are removed from tab
+        order.
+      </li>
+      <li>
+        Activating a trigger with a click, <kbd>Enter</kbd>, or <kbd>Space</kbd> toggles the
+        section.
+      </li>
+      <li>
+        <code>Tab</code> moves focus between triggers in document order; Accordion does not trap or
+        override arrow-key focus.
+      </li>
+      <li>
+        Accordion covers native disclosure semantics and static ARIA review. Screen reader and other
+        assistive-technology verification has not been completed for this primitive yet; see
+        <code>state-coverage.md</code> in the library repository for current review status.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

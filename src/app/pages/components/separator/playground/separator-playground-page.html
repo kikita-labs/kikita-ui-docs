@@ -1,0 +1,29 @@
+<article class="separator-playground-page">
+  <div class="separator-playground-page__header">
+    <h1>Separator &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Separator playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <div
+      class="separator-playground-page__preview"
+      [class.separator-playground-page__preview--vertical]="isVertical(playground.values())"
+    >
+      <span>Before</span>
+      <hr
+        kuiSeparator
+        [appearance]="appearanceOf(playground.values())"
+        [orientation]="orientationOf(playground.values())"
+        [spacing]="spacingOf(playground.values())"
+      />
+      <span>After</span>
+    </div>
+  </app-api-playground>
+
+  <app-api-table label="Separator API" [rows]="apiRows" />
+  <p class="separator-playground-page__note">{{ apiDescription }}</p>
+</article>

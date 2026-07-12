@@ -1,0 +1,23 @@
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">Edit item</h2>
+    <div class="kui-drawer-subtitle">{{ drawerContext.data.id }}</div>
+  </div>
+  <button
+    class="kui-drawer-close"
+    type="button"
+    aria-label="Close"
+    (click)="drawerContext.close('cancelled')"
+  >
+    &times;
+  </button>
+</div>
+<div class="kui-drawer-body">
+  <p>Edit fields for item {{ drawerContext.data.id }} here.</p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" shape="outline" (click)="drawerContext.close('cancelled')">
+    Cancel
+  </button>
+  <button kuiButton type="button" (click)="drawerContext.close('saved')">Save</button>
+</div>

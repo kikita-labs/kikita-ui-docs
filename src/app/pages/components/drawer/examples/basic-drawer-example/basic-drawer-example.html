@@ -1,0 +1,6 @@
+<div class="basic-drawer-example">
+  <button kuiButton type="button" (click)="edit()">Edit item</button>
+  @if (lastResult()) {
+    <p class="basic-drawer-example__result">Last result: {{ lastResult() }}</p>
+  }
+</div>

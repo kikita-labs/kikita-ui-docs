@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.separator-page {
+  @include doc-page-layout;
+}
+
+.separator-page__notes {
+  @include doc-page-notes;
+}
+
+.separator-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

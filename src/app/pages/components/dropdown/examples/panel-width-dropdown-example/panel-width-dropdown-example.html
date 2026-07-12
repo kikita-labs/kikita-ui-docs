@@ -1,0 +1,16 @@
+<div class="panel-width-dropdown-example">
+  <button type="button" [kuiDropdownFor]="anchorPanel">panelWidth="anchor"</button>
+  <kui-dropdown #anchorPanel panelWidth="anchor">
+    <div kuiOption value="a">Matches trigger width</div>
+  </kui-dropdown>
+
+  <button type="button" [kuiDropdownFor]="contentPanel">panelWidth="content"</button>
+  <kui-dropdown #contentPanel panelWidth="content">
+    <div kuiOption value="b">Grows with a longer content line if needed</div>
+  </kui-dropdown>
+
+  <button type="button" [kuiDropdownFor]="explicitPanel">width="320px"</button>
+  <kui-dropdown #explicitPanel width="320px">
+    <div kuiOption value="c">Always exactly 320px wide</div>
+  </kui-dropdown>
+</div>

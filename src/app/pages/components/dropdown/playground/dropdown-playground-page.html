@@ -1,0 +1,35 @@
+<article class="dropdown-playground-page">
+  <div class="dropdown-playground-page__header">
+    <h1>Dropdown &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Dropdown playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <button type="button" [kuiDropdownFor]="playgroundDropdown">
+      {{ triggerLabelOf(playground.values()) }}
+    </button>
+
+    <kui-dropdown
+      #playgroundDropdown
+      [maxHeight]="maxHeightOf(playground.values())"
+      [offset]="offsetOf(playground.values())"
+      [closeOnSelect]="closeOnSelectOf(playground.values())"
+      [panelRole]="panelRoleOf(playground.values())"
+      [panelWidth]="panelWidthOf(playground.values())"
+      [width]="widthOf(playground.values())"
+    >
+      <div kuiOption value="edit">Edit</div>
+      <div kuiOption value="duplicate">Duplicate</div>
+      <div kuiOption value="archive" [disabled]="disabledOptionOf(playground.values())">
+        Archive
+      </div>
+    </kui-dropdown>
+  </app-api-playground>
+
+  <app-api-table label="Dropdown API" [rows]="apiRows" />
+  <p class="dropdown-playground-page__note">{{ apiDescription }}</p>
+</article>

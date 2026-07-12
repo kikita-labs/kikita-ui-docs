@@ -1,0 +1,16 @@
+:host {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  inline-size: 100%;
+}
+
+.card-interactive-example__button {
+  display: block;
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}

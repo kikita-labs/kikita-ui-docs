@@ -1,0 +1,107 @@
+<article class="tabs-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Tabs"
+    description="Line and pill tab navigation with optional panel wiring."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Tabs is a compound component: a host, a trigger directive, and an optional panel directive."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Bind selected to the active tab value and pair each kuiTab with a matching kuiTabPanel."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="tabs-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic tabs">
+      <app-basic-tabs-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="variant"
+    heading="Pill variant and error indicator"
+    description="Set variant to pill for a soft background indicator. hasError adds a small danger dot to a tab without changing its selected state."
+  >
+    <app-live-preview previewLabel="Pill tabs">
+      <app-pill-tabs-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="pillTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="orientation"
+    heading="Vertical orientation"
+    description="Set orientation to vertical to stack the tab list in a column with the indicator on the side edge."
+  >
+    <app-live-preview previewLabel="Vertical tabs">
+      <app-vertical-tabs-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="verticalTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="composition"
+    heading="Navigation-style tabs"
+    description="Set controlsPanels to false when tabs act as navigation and the routed content is rendered elsewhere, such as a router-outlet, instead of local kuiTabPanel elements."
+  >
+    <app-live-preview previewLabel="Navigation tabs">
+      <app-navigation-tabs-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="navigationTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Tabs API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Tabs owns keyboard navigation and the tablist/tab/tabpanel ARIA structure."
+  >
+    <ul class="tabs-page__notes">
+      <li>The list container uses <code>role="tablist"</code>.</li>
+      <li>
+        Each trigger uses <code>role="tab"</code> with <code>aria-selected</code> and roving
+        <code>tabindex</code>.
+      </li>
+      <li>Each panel uses <code>role="tabpanel"</code>.</li>
+      <li>
+        <code>aria-controls</code> is emitted by default and should point to a matching
+        <code>[kuiTabPanel]</code>; disable this wiring with <code>[controlsPanels]="false"</code>
+        for navigation-style tabs without local panels.
+      </li>
+      <li><code>ArrowLeft</code> / <code>ArrowRight</code> move focus between tabs.</li>
+      <li><code>Home</code> focuses the first tab; <code>End</code> focuses the last tab.</li>
+      <li>
+        At narrow widths the tablist scrolls horizontally and exposes accessible scroll buttons when
+        needed.
+      </li>
+      <li>
+        Tabs covers keyboard navigation and static ARIA review. Screen reader and other
+        assistive-technology verification has not been completed for this primitive yet; see
+        <code>state-coverage.md</code> in the library repository for current review status.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+.navigation-tabs-example__note {
+  margin: var(--kui-space-3, 12px) 0 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

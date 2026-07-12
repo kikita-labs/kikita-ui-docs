@@ -1,0 +1,13 @@
+<div class="hover-popover-example">
+  <button [kuiPopoverFor]="hoverPop" kuiButton type="button">Hover me</button>
+
+  <kui-popover
+    #hoverPop
+    placement="top"
+    triggerType="hover"
+    [arrow]="true"
+    ariaLabel="Hover details"
+  >
+    <div class="kui-popover-desc">Opens on hover. Mouse can travel to the panel.</div>
+  </kui-popover>
+</div>

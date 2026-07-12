@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.card-page {
+  @include doc-page-layout;
+}
+
+.card-page__notes {
+  @include doc-page-notes;
+}
+
+.card-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

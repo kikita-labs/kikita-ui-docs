@@ -471,6 +471,150 @@ export const routes: Routes = [
           },
         ],
       },
+      {
+        path: AppRoutePath.ComponentsCard,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/card/card-page').then((m) => m.CardPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/card/playground/card-playground-page').then(
+                (m) => m.CardPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsTabs,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/tabs/tabs-page').then((m) => m.TabsPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/tabs/playground/tabs-playground-page').then(
+                (m) => m.TabsPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsAccordion,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/accordion/accordion-page').then((m) => m.AccordionPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/accordion/playground/accordion-playground-page').then(
+                (m) => m.AccordionPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsPopover,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/popover/popover-page').then((m) => m.PopoverPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/popover/playground/popover-playground-page').then(
+                (m) => m.PopoverPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsDialog,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/dialog/dialog-page').then((m) => m.DialogPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/dialog/playground/dialog-playground-page').then(
+                (m) => m.DialogPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsDrawer,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/drawer/drawer-page').then((m) => m.DrawerPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/drawer/playground/drawer-playground-page').then(
+                (m) => m.DrawerPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsDropdown,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/dropdown/dropdown-page').then((m) => m.DropdownPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/dropdown/playground/dropdown-playground-page').then(
+                (m) => m.DropdownPlaygroundPage,
+              ),
+          },
+        ],
+      },
+      {
+        path: AppRoutePath.ComponentsSeparator,
+        children: [
+          {
+            path: AppRoutePath.Home,
+            loadComponent: () =>
+              import('./pages/components/separator/separator-page').then((m) => m.SeparatorPage),
+            pathMatch: 'full',
+          },
+          {
+            path: AppRoutePath.Playground,
+            loadComponent: () =>
+              import('./pages/components/separator/playground/separator-playground-page').then(
+                (m) => m.SeparatorPlaygroundPage,
+              ),
+          },
+        ],
+      },
       ...componentDraftRoutes,
     ],
   },

@@ -1,0 +1,98 @@
+<article class="separator-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Separator"
+    description="Directive for applying Kikita UI separator styling to a native horizontal rule that divides related groups of content or actions."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public directive from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Use the native hr element as the separator host instead of a div for purely visual dividers."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="separator-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic separator">
+      <app-basic-separator-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="appearances"
+    heading="Appearance"
+    description="appearance controls divider emphasis. The marker directive stays boolean-like; visual variants live on appearance, not on the kuiSeparator value itself. Defaults to default."
+  >
+    <app-live-preview previewLabel="Appearance set">
+      <app-separator-appearance-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="appearanceTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="spacing"
+    heading="Spacing"
+    description="spacing sets outer spacing around the divider line. Defaults to sm."
+  >
+    <app-live-preview previewLabel="Spacing scale">
+      <app-separator-spacing-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="spacingTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="vertical"
+    heading="Vertical"
+    description="orientation switches the divider to a vertical line that stretches to the parent block size, for example between toolbar actions."
+  >
+    <app-live-preview previewLabel="Vertical separator in a toolbar">
+      <app-separator-vertical-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="verticalTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Separator API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Separator keeps native hr semantics instead of replacing them with ARIA roles."
+  >
+    <ul class="separator-page__notes">
+      <li>
+        Prefer the native <code>&lt;hr kuiSeparator&gt;</code> host over a styled <code>div</code>
+        for structural dividers.
+      </li>
+      <li>The separator is not focusable and has no hover, focus, active, or disabled states.</li>
+      <li>
+        Vertical separators (<code>orientation="vertical"</code>) expose
+        <code>aria-orientation="vertical"</code> automatically.
+      </li>
+      <li>
+        Do not add labels by default. Named separators should be rare structural boundaries, not a
+        default pattern.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,16 @@
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">side="{{ drawerContext.side }}"</h2>
+  </div>
+  <button class="kui-drawer-close" type="button" aria-label="Close" (click)="drawerContext.close()">
+    &times;
+  </button>
+</div>
+<div class="kui-drawer-body">
+  <p>
+    This panel was opened with <code>side: '{{ drawerContext.side }}'</code>.
+  </p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" (click)="drawerContext.close()">Close</button>
+</div>

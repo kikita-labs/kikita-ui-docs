@@ -1,0 +1,6 @@
+:host {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  inline-size: 100%;
+}

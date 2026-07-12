@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.dropdown-page {
+  @include doc-page-layout;
+}
+
+.dropdown-page__notes {
+  @include doc-page-notes;
+}
+
+.dropdown-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

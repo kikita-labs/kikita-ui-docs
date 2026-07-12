@@ -1,0 +1,99 @@
+<article class="card-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Card"
+    description="Directive for applying Kikita UI card surface styling to semantic container elements."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the public directive from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="kuiCard is an attribute directive. Apply it to a real semantic element: article, section, aside, button, or a, depending on behavior."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="card-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic card">
+      <app-basic-card-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="appearances"
+    heading="Appearances"
+    description="appearance controls the surface treatment: flat surface, elevated shadow, or sunken inset. Defaults to surface."
+  >
+    <app-live-preview previewLabel="Appearance set">
+      <app-card-appearance-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="appearanceTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes"
+    heading="Sizes"
+    description="size maps to the shared Kikita size scale and controls card padding. Defaults to md."
+  >
+    <app-live-preview previewLabel="Size scale">
+      <app-card-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="interactive"
+    heading="Interactive cards"
+    description="interactive adds hover and focus-visible affordances. Use a real interactive host element (button or a) so keyboard and click behavior stay native."
+  >
+    <app-live-preview previewLabel="Interactive cards">
+      <app-card-interactive-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="interactiveTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Card API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Card is a styling-only directive; it does not add or replace element semantics."
+  >
+    <ul class="card-page__notes">
+      <li>
+        <code>kuiCard</code> applies visual treatment only. Choose the host element for its native
+        semantics: <code>article</code>/<code>section</code>/<code>aside</code> for static grouped
+        content, <code>button</code> or <code>a</code> for a clickable card.
+      </li>
+      <li>
+        <code>interactive</code> only changes hover and focus-visible styling. It does not add a
+        role, keyboard handler, or click behavior, so the host element must already provide those (a
+        real <code>button</code> or an <code>a</code> with a valid <code>href</code>).
+      </li>
+      <li>
+        Keep a real heading element inside the card for the card's accessible structure instead of
+        relying on visual styling alone.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

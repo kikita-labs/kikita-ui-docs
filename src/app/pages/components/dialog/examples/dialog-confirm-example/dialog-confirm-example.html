@@ -1,0 +1,8 @@
+<div class="dialog-confirm-example">
+  <button kuiButton type="button" appearance="danger" (click)="deleteRecord()">
+    Delete record
+  </button>
+  @if (lastResult()) {
+    <p class="dialog-confirm-example__result">Last result: {{ lastResult() }}</p>
+  }
+</div>

@@ -1,0 +1,22 @@
+<article class="drawer-playground-page">
+  <div class="drawer-playground-page__header">
+    <h1>Drawer &mdash; Playground</h1>
+    <p class="drawer-playground-page__note">
+      Drawer is a service, not a rendered instance: click the trigger to call
+      <code>kuiDrawer(component, config)(data)</code> with the current values below. The panel
+      renders in a CDK overlay outside this preview stage, matching real usage.
+    </p>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Drawer trigger"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <button kuiButton type="button" (click)="openDrawer(playground.values())">Open drawer</button>
+  </app-api-playground>
+
+  <app-api-table label="Drawer API" [rows]="apiRows" />
+  <p class="drawer-playground-page__note">{{ apiDescription }}</p>
+</article>

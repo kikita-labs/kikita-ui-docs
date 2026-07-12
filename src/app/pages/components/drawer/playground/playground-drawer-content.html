@@ -1,0 +1,27 @@
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">{{ drawerContext.data.title }}</h2>
+    <div class="kui-drawer-subtitle">
+      {{ drawerContext.side }} &middot; {{ drawerContext.size }}
+    </div>
+  </div>
+  @if (drawerContext.closable) {
+    <button
+      class="kui-drawer-close"
+      type="button"
+      aria-label="Close"
+      (click)="drawerContext.close(null)"
+    >
+      &times;
+    </button>
+  }
+</div>
+<div class="kui-drawer-body">
+  <p>{{ drawerContext.data.message }}</p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" shape="outline" (click)="drawerContext.close(null)">
+    Cancel
+  </button>
+  <button kuiButton type="button" (click)="drawerContext.close('confirmed')">Confirm</button>
+</div>

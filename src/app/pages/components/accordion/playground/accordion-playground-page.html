@@ -1,0 +1,42 @@
+<article class="accordion-playground-page">
+  <div class="accordion-playground-page__header">
+    <h1>Accordion &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Accordion playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-accordion
+      [mode]="modeOf(playground.values())"
+      [appearance]="appearanceOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [(expandedItems)]="expandedItems"
+    >
+      <kui-accordion-item
+        id="general"
+        [header]="labelOf(playground.values(), 'item1Header', 'General settings')"
+      >
+        Configure display and behavior options.
+      </kui-accordion-item>
+      <kui-accordion-item
+        id="notifications"
+        [header]="labelOf(playground.values(), 'item2Header', 'Notifications')"
+      >
+        Manage push notifications and email digests.
+      </kui-accordion-item>
+      <kui-accordion-item
+        id="security"
+        [header]="labelOf(playground.values(), 'item3Header', 'Security')"
+        [disabled]="disabledItemOf(playground.values())"
+      >
+        Account security parameters.
+      </kui-accordion-item>
+    </kui-accordion>
+  </app-api-playground>
+
+  <app-api-table label="Accordion API" [rows]="apiRows" />
+  <p class="accordion-playground-page__note">{{ apiDescription }}</p>
+</article>

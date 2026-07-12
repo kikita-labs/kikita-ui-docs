@@ -1,0 +1,34 @@
+<article class="popover-playground-page">
+  <div class="popover-playground-page__header">
+    <h1>Popover &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Popover playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <button [kuiPopoverFor]="playgroundPopover" kuiButton type="button">
+      {{ triggerLabelOf(playground.values()) }}
+    </button>
+
+    <kui-popover
+      #playgroundPopover
+      [placement]="placementOf(playground.values())"
+      [align]="alignOf(playground.values())"
+      [arrow]="arrowOf(playground.values())"
+      [triggerType]="triggerTypeOf(playground.values())"
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [hoverDelay]="hoverDelayOf(playground.values())"
+      [offset]="offsetOf(playground.values())"
+      [trapFocus]="trapFocusOf(playground.values())"
+    >
+      <div class="kui-popover-title">{{ titleOf(playground.values()) }}</div>
+      <div class="kui-popover-desc">{{ descriptionOf(playground.values()) }}</div>
+    </kui-popover>
+  </app-api-playground>
+
+  <app-api-table label="Popover API" [rows]="apiRows" />
+  <p class="popover-playground-page__note">{{ apiDescription }}</p>
+</article>

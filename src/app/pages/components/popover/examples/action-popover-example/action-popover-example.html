@@ -1,0 +1,32 @@
+<div class="action-popover-example">
+  <button [kuiPopoverFor]="confirmPop" kuiButton type="button" appearance="danger">Delete</button>
+
+  <kui-popover
+    #confirmPop
+    placement="bottom"
+    align="start"
+    [arrow]="true"
+    ariaLabel="Delete record"
+  >
+    <div class="kui-popover-title">Delete record?</div>
+    <div class="kui-popover-desc" style="margin-bottom: 12px">This cannot be undone.</div>
+    <div style="display: flex; gap: 8px; justify-content: flex-end">
+      <button kuiButton type="button" shape="outline" size="sm" (click)="confirmPop.close()">
+        Cancel
+      </button>
+      <button
+        kuiButton
+        type="button"
+        appearance="danger"
+        size="sm"
+        (click)="delete(); confirmPop.close()"
+      >
+        Delete
+      </button>
+    </div>
+  </kui-popover>
+
+  @if (deleted()) {
+    <span class="action-popover-example__status">Record deleted.</span>
+  }
+</div>

@@ -1,0 +1,106 @@
+<article class="dropdown-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Dropdown"
+    description="Primitive floating panel rendered through Angular CDK Overlay. Dropdown handles positioning, open/close animation, outside click, scroll-follow, and Escape close. It does not own selection or value state — Select, Combobox, Menu, or another host component provides that context."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Dropdown composes a panel component, a standalone trigger directive, and an option directive."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Wire a standalone trigger with [kuiDropdownFor]. Prefer a native button so keyboard behavior and semantics are already correct."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="dropdown-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Standalone dropdown">
+      <app-standalone-dropdown-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="standaloneTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="field-composition"
+    heading="Inside kui-field"
+    description="kui-field detects a nested dropdown, sets itself as the anchor, and toggles the panel when the field is clicked. This is the normal pattern behind input[kuiSelect]."
+  >
+    <app-live-preview previewLabel="Dropdown inside a field">
+      <app-field-dropdown-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="fieldTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="panel-width"
+    heading="Panel width"
+    description="panelWidth chooses a sizing strategy relative to the trigger; width overrides it entirely with an explicit CSS width."
+  >
+    <app-live-preview previewLabel="Panel width variants">
+      <app-panel-width-dropdown-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="panelWidthTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Dropdown API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Dropdown owns overlay positioning and dismissal while keeping ARIA state on the trigger and options."
+  >
+    <ul class="dropdown-page__notes">
+      <li>Keep dropdown triggers native where possible, especially a plain button.</li>
+      <li>
+        Select-style hosts should expose <code>role="combobox"</code>, <code>aria-expanded</code>,
+        <code>aria-controls</code>, and <code>aria-describedby</code> through their own directive;
+        Dropdown itself only renders the panel role set by <code>panelRole</code> (default
+        <code>listbox</code>).
+      </li>
+      <li>
+        Options render <code>role="option"</code> inside the panel. Disabled options expose
+        <code>aria-disabled="true"</code> and are skipped by selection.
+      </li>
+      <li><code>Escape</code> closes the panel.</li>
+      <li>
+        <code>Enter</code> and <code>Space</code> select the focused option; by default (<code
+          >closeOnSelect</code
+        >
+        true) selection also closes the panel.
+      </li>
+      <li>
+        <code>Tab</code> closes the panel without stealing focus back from the next tabbable
+        element.
+      </li>
+      <li>
+        The panel closes itself if its anchor scrolls fully out of the viewport instead of following
+        it off-screen or rendering detached.
+      </li>
+      <li>
+        Dropdown covers keyboard dismissal, viewport-safe positioning, and static ARIA review. Full
+        screen reader and other assistive-technology verification has not been completed for this
+        primitive yet; see <code>state-coverage.md</code> in the library repository for current
+        review status.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

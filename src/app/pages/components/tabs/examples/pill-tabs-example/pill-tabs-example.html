@@ -1,0 +1,9 @@
+<kui-tabs variant="pill" [(selected)]="activeTab">
+  <button kuiTab value="daily">Daily</button>
+  <button kuiTab value="weekly" hasError errorLabel="Contains validation errors">Weekly</button>
+  <button kuiTab value="monthly">Monthly</button>
+
+  <div kuiTabPanel value="daily">Daily report content.</div>
+  <div kuiTabPanel value="weekly">Weekly report content.</div>
+  <div kuiTabPanel value="monthly">Monthly report content.</div>
+</kui-tabs>

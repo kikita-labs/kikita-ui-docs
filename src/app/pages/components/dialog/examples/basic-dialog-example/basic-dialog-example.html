@@ -1,0 +1,6 @@
+<div class="basic-dialog-example">
+  <button kuiButton type="button" (click)="invite()">Invite teammate</button>
+  @if (lastResult()) {
+    <p class="basic-dialog-example__result">Last result: {{ lastResult() }}</p>
+  }
+</div>

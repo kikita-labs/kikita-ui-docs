@@ -1,0 +1,91 @@
+<article class="drawer-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Drawer"
+    description="Typed modal edge panel opened imperatively via kuiDrawer(), not rendered as a bound component instance. Built on Angular CDK Overlay. Use it for secondary workflows that keep page context visible: filters, detail panels, edit forms, navigation panels, and mobile action sheets."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the inject-function factory and drawer-host contract types from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Implement KuiDrawerHost on your drawer component, inject KUI_DRAWER_CONTEXT to read data and close, then create a typed opener with kuiDrawer() and call it with data to open. The returned observable emits the typed result once and completes."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="drawer-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Edit item">
+      <app-basic-drawer-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sides"
+    heading="Sides"
+    description="side selects the edge the drawer docks to and enters from: right (default), left, bottom, or top. Left/right drawers size by width; top/bottom drawers size by height."
+  >
+    <app-live-preview previewLabel="Side presets">
+      <app-drawer-sides-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sidesTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes"
+    heading="Sizes"
+    description="size selects a width preset for left/right drawers and a height preset for top/bottom drawers: sm, md (default), lg, or full."
+  >
+    <app-live-preview previewLabel="Size presets">
+      <app-drawer-sizes-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizesTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Drawer API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Drawer traps focus and matches native modal expectations while docked to a viewport edge."
+  >
+    <ul class="drawer-page__notes">
+      <li>
+        The panel renders <code>role="dialog"</code> and <code>aria-modal="true"</code>
+        automatically.
+      </li>
+      <li>
+        <code>.kui-drawer-title</code> is wired as <code>aria-labelledby</code> automatically when
+        present in your content. Always include one.
+      </li>
+      <li>Focus is trapped inside the drawer while open and returns to the opener on close.</li>
+      <li>
+        Escape closes by default unless <code>closeOnEscape: false</code>; backdrop click closes by
+        default unless <code>closeOnBackdropClick: false</code>. Disable both for required actions.
+      </li>
+      <li>
+        <code>closable</code> only mirrors onto <code>drawerContext.closable</code>; your component
+        is responsible for rendering (or omitting) the close button based on that flag.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

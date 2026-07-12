@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.drawer-page {
+  @include doc-page-layout;
+}
+
+.drawer-page__notes {
+  @include doc-page-notes;
+}
+
+.drawer-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}

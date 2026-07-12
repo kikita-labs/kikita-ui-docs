@@ -1,0 +1,97 @@
+<article class="dialog-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Dialog"
+    description="Typed modal overlay opened imperatively via kuiDialog(), not rendered as a bound component instance. Built on Angular CDK Overlay."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Import the inject-function factory and dialog-host contract types from the published package entrypoint."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Implement KuiDialogHost on your dialog component, inject KUI_DIALOG_CONTEXT to read data and close, then create a typed opener with kuiDialog() and call it with data to open. The returned observable emits the typed result once and completes."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="dialog-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Invite teammate">
+      <app-basic-dialog-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="sizes"
+    heading="Sizes"
+    description="size selects a panel width preset: auto sizes to content with a 320px minimum, sm is 400px, md is 560px (default), and lg is 720px."
+  >
+    <app-live-preview previewLabel="Size presets">
+      <app-dialog-sizes-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizesTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="confirm"
+    heading="Confirm"
+    description="kuiConfirm() opens a pre-built confirmation dialog without a custom component. It always sets dismissable: false and closable: false, so the user must pick Confirm or Cancel. It resolves Observable<boolean>."
+  >
+    <app-live-preview previewLabel="Confirm dialog">
+      <app-dialog-confirm-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="confirmTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Dialog API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Dialog traps focus and blocks page scroll while open, matching native modal expectations."
+  >
+    <ul class="dialog-page__notes">
+      <li>
+        The panel renders <code>role="dialog"</code> and <code>aria-modal="true"</code>
+        automatically.
+      </li>
+      <li>
+        The panel uses <code>aria-labelledby</code> when <code>.kui-dialog-title</code> exists in
+        your content, and falls back to <code>aria-label="Dialog"</code> otherwise. Always include a
+        <code>.kui-dialog-title</code> heading.
+      </li>
+      <li>
+        Focus is trapped inside the dialog via CDK <code>cdkTrapFocus</code> and returns to the
+        opening element after close.
+      </li>
+      <li>
+        Escape and backdrop click close the dialog by default; set
+        <code>dismissable: false</code> for actions the user must explicitly resolve, as
+        <code>kuiConfirm()</code> does.
+      </li>
+      <li>Page scroll is blocked via the CDK block scroll strategy while any dialog is open.</li>
+      <li>
+        <code>closable</code> only toggles <code>dialogContext.closable</code>; your component is
+        responsible for rendering (or omitting) the close button based on that flag.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,8 @@
+<div class="standalone-dropdown-example">
+  <button type="button" [kuiDropdownFor]="menu">Actions</button>
+
+  <kui-dropdown #menu [maxHeight]="null">
+    <div kuiOption value="edit">Edit</div>
+    <div kuiOption value="delete" [disabled]="true">Delete</div>
+  </kui-dropdown>
+</div>

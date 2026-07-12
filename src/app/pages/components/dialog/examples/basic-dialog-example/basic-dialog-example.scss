@@ -1,0 +1,11 @@
+.basic-dialog-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-dialog-example__result {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

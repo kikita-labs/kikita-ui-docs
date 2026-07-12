@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+
+p {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

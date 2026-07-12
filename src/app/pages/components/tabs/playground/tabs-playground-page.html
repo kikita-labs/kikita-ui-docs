@@ -1,0 +1,52 @@
+<article class="tabs-playground-page">
+  <div class="tabs-playground-page__header">
+    <h1>Tabs &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Tabs playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-tabs
+      [(selected)]="selected"
+      [variant]="variantOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [orientation]="orientationOf(playground.values())"
+      [controlsPanels]="controlsPanelsOf(playground.values())"
+    >
+      <button kuiTab value="overview">
+        {{ labelOf(playground.values(), 'tab1Label', 'Overview') }}
+      </button>
+      <button
+        kuiTab
+        value="settings"
+        [hasError]="showErrorOf(playground.values())"
+        errorLabel="Contains errors"
+      >
+        {{ labelOf(playground.values(), 'tab2Label', 'Settings') }}
+      </button>
+      <button kuiTab value="logs">{{ labelOf(playground.values(), 'tab3Label', 'Logs') }}</button>
+
+      @if (controlsPanelsOf(playground.values())) {
+        <div kuiTabPanel value="overview">
+          {{ labelOf(playground.values(), 'tab1Label', 'Overview') }} content.
+        </div>
+      }
+      @if (controlsPanelsOf(playground.values())) {
+        <div kuiTabPanel value="settings">
+          {{ labelOf(playground.values(), 'tab2Label', 'Settings') }} content.
+        </div>
+      }
+      @if (controlsPanelsOf(playground.values())) {
+        <div kuiTabPanel value="logs">
+          {{ labelOf(playground.values(), 'tab3Label', 'Logs') }} content.
+        </div>
+      }
+    </kui-tabs>
+  </app-api-playground>
+
+  <app-api-table label="Tabs API" [rows]="apiRows" />
+  <p class="tabs-playground-page__note">{{ apiDescription }}</p>
+</article>

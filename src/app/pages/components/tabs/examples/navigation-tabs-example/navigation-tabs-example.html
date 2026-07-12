@@ -1,0 +1,9 @@
+<kui-tabs [(selected)]="currentSection" [controlsPanels]="false" aria-label="Sections">
+  <button kuiTab value="/overview">Overview</button>
+  <button kuiTab value="/settings">Settings</button>
+  <button kuiTab value="/team">Team</button>
+</kui-tabs>
+
+<p class="navigation-tabs-example__note">
+  Selected value: <code>{{ currentSection() }}</code>
+</p>

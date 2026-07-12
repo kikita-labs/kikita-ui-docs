@@ -1,0 +1,22 @@
+<article class="dialog-playground-page">
+  <div class="dialog-playground-page__header">
+    <h1>Dialog &mdash; Playground</h1>
+    <p class="dialog-playground-page__note">
+      Dialog is a service, not a rendered instance: click the trigger to call
+      <code>kuiDialog(component, config)(data)</code> with the current values below. The panel
+      renders in a CDK overlay outside this preview stage, matching real usage.
+    </p>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Dialog trigger"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <button kuiButton type="button" (click)="openDialog(playground.values())">Open dialog</button>
+  </app-api-playground>
+
+  <app-api-table label="Dialog API" [rows]="apiRows" />
+  <p class="dialog-playground-page__note">{{ apiDescription }}</p>
+</article>

@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.popover-page {
+  @include doc-page-layout;
+}
+
+.popover-page__notes {
+  @include doc-page-notes;
+}
+
+.popover-page__playground-link {
+  flex: none;
+  text-decoration: none;
+}
