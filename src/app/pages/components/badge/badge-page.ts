@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { KuiBadgeDirective, KuiButtonDirective } from '@kikita-labs/ui';
+import { KuiButtonDirective } from '@kikita-labs/ui';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
 import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
@@ -22,7 +22,6 @@ import { BadgeSizeExample } from './examples/badge-size-example/badge-size-examp
     BasicBadgeExample,
     CodeTabs,
     DocSection,
-    KuiBadgeDirective,
     KuiButtonDirective,
     LivePreview,
     PageHeader,

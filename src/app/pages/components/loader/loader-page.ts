@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { KuiButtonDirective, KuiLoaderDirective } from '@kikita-labs/ui';
+import { KuiButtonDirective } from '@kikita-labs/ui';
 import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
 import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
 import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
@@ -21,7 +21,6 @@ import { LOADER_API_ROWS } from './loader.api-schema';
     CodeTabs,
     DocSection,
     KuiButtonDirective,
-    KuiLoaderDirective,
     LivePreview,
     LoaderButtonExample,
     LoaderSizeExample,
