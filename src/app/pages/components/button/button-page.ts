@@ -49,17 +49,18 @@ export class ButtonPage {
       language: 'html',
       code: `<button kuiButton type="button">Save changes</button>
 <button kuiButton type="button" shape="soft">Cancel</button>
-<a kuiButton href="/components/button">Button docs</a>`,
+<a kuiButton routerLink="/components/button">Button docs</a>`,
     },
     {
       label: 'TS',
       language: 'ts',
       code: `import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { KuiButtonDirective } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-button-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButtonDirective, RouterLink],
   templateUrl: './basic-button-example.html',
   styleUrl: './basic-button-example.scss',
 })
