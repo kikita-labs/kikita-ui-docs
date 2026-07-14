@@ -1,0 +1,31 @@
+<article class="stepper-playground-page">
+  <div class="stepper-playground-page__header">
+    <h1>Stepper &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Stepper playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-stepper
+      [(currentIndex)]="currentIndex"
+      [orientation]="orientationOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [linear]="linearOf(playground.values())"
+      [compact]="compactOf(playground.values())"
+    >
+      <kui-step label="Details" description="Project basics" />
+      <kui-step label="Team" description="Invite collaborators" />
+      <kui-step
+        label="Review"
+        description="Confirm settings"
+        [hasError]="reviewErrorOf(playground.values())"
+      />
+    </kui-stepper>
+  </app-api-playground>
+
+  <app-api-table label="Stepper API" [rows]="apiRows" />
+  <p class="stepper-playground-page__note">{{ apiDescription }}</p>
+</article>

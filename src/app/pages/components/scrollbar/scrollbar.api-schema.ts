@@ -1,4 +1,4 @@
-import { ApiTableRow } from '../../../shared/docs-ui/api-table/api-table-row';
+import { type ApiTableRow } from '@shared/docs-ui/api-table';
 
 export const SCROLLBAR_API_ROWS: readonly ApiTableRow[] = [
   {

@@ -1,0 +1,15 @@
+{
+  "reference": {
+    "package": "06-shell-responsive",
+    "initialRawBytes": 799860,
+    "lazyChunks": 189
+  },
+  "limits": {
+    "initialJavaScriptBytes": 700000,
+    "initialCssBytes": 160000,
+    "initialTotalBytes": 850000,
+    "lazyJavaScriptChunks": 170,
+    "largestRouteChunkBytes": 65000,
+    "shikiThemeChunks": 10
+  }
+}

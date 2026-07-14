@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { KuiProgressComponent } from '@kikita-labs/ui';
 
 @Component({

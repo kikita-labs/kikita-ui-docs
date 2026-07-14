@@ -1,0 +1,29 @@
+<article class="file-upload-playground-page">
+  <div class="file-upload-playground-page__header">
+    <h1>File Upload &mdash; Playground</h1>
+    <p>Adjust picker mode, density, and hints while keeping transport state controlled.</p>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="File Upload playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-file-upload
+      [variant]="variantOf(playground.values())"
+      [mode]="modeOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [acceptLabel]="acceptLabelOf(playground.values())"
+      [accept]="['image/png', 'image/jpeg', 'application/pdf']"
+      [maxSize]="10 * 1024 * 1024"
+      [maxCount]="maxCountOf(playground.values())"
+      [(files)]="files"
+      (retry)="handleRetry($event)"
+    />
+  </app-api-playground>
+
+  <app-api-table label="File Upload API" [rows]="apiRows" />
+  <p class="file-upload-playground-page__note">{{ apiDescription }}</p>
+</article>

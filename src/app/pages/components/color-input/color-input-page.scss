@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.color-input-page {
+  @include doc-page-layout;
+}
+
+.color-input-page__notes {
+  @include doc-page-notes;
+}
+
+.color-input-page__playground-link {
+  flex: none;
+}

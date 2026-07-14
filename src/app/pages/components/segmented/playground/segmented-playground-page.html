@@ -1,0 +1,27 @@
+<article class="segmented-playground-page">
+  <div class="segmented-playground-page__header">
+    <h1>Segmented &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Segmented playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-segmented
+      [(selected)]="selected"
+      aria-label="Project view"
+      [size]="sizeOf(playground.values())"
+    >
+      <button kuiSegment value="list">List</button>
+      <button kuiSegment value="board">Board</button>
+      <button kuiSegment value="timeline" [disabled]="disabledTimelineOf(playground.values())">
+        Timeline
+      </button>
+    </kui-segmented>
+  </app-api-playground>
+
+  <app-api-table label="Segmented API" [rows]="apiRows" />
+  <p class="segmented-playground-page__note">{{ apiDescription }}</p>
+</article>

@@ -1,3 +1,7 @@
+import type { DocsComponentStatus } from '../docs-registry';
+
+export type { DocsComponentStatus } from '../docs-registry';
+
 export interface DocsComponentCategory {
   readonly label: string;
   readonly description: string;
@@ -11,5 +15,3 @@ export interface DocsComponentSummary {
   readonly description: string;
   readonly routePath: string;
 }
-
-export type DocsComponentStatus = 'available' | 'docs-pending';

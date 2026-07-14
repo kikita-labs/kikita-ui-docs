@@ -6,6 +6,7 @@
   <div class="docs-header__start">
     @if (showMenuButton()) {
       <button
+        #menuButton
         kuiIconButton
         class="docs-header__menu"
         type="button"
@@ -13,6 +14,7 @@
         size="sm"
         aria-label="Toggle documentation navigation"
         [attr.aria-expanded]="menuOpen()"
+        aria-controls="docs-mobile-navigation"
         (click)="menuToggle.emit()"
       >
         <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
@@ -41,8 +43,12 @@
     } @else {
       <nav aria-label="Breadcrumb">
         <ol kuiBreadcrumbs size="sm" class="docs-header__breadcrumbs">
-          @for (breadcrumb of breadcrumbs(); track breadcrumb.label; let last = $last) {
-            <li [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1">
+          @for (breadcrumb of activePage().breadcrumbs; track breadcrumb.label; let last = $last) {
+            <li
+              [class.docs-header__breadcrumb--mobile-hidden]="
+                $first && activePage().breadcrumbs.length > 1
+              "
+            >
               @if (!last && breadcrumb.path) {
                 <a kuiBreadcrumbItem [routerLink]="breadcrumb.path">{{ breadcrumb.label }}</a>
               } @else {
@@ -52,7 +58,9 @@
             @if (!last) {
               <li
                 kuiBreadcrumbSeparator
-                [class.docs-header__breadcrumb--mobile-hidden]="$first && breadcrumbs().length > 1"
+                [class.docs-header__breadcrumb--mobile-hidden]="
+                  $first && activePage().breadcrumbs.length > 1
+                "
               ></li>
             }
           }

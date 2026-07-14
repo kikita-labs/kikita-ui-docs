@@ -1,19 +1,46 @@
 import { Component } from '@angular/core';
+
 import {
-  KuiChipAppearance,
+  type KuiChipAppearance,
   KuiChipDirective,
   KuiChipRemoveDirective,
-  KuiSize,
+  type KuiSize,
 } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { CHIP_API_ROWS } from '../chip.api-schema';
+import { CHIP_API_DESCRIPTION } from '../chip.docs-content';
+
+const CHIP_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'label', label: 'label', kind: 'string', defaultValue: 'Design' },
+  {
+    key: 'appearance',
+    label: 'appearance',
+    kind: 'enum',
+    options: ['neutral', 'primary', 'success', 'warning', 'danger', 'info'],
+    defaultValue: 'neutral',
+  },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+  { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
+  { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
+  { key: 'removable', label: 'removable', kind: 'boolean', defaultValue: true },
+] as const);
+
+type ChipPlaygroundValues = PlaygroundValues<typeof CHIP_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-chip-playground-page',
@@ -22,37 +49,20 @@ import { CHIP_API_ROWS } from '../chip.api-schema';
   styleUrl: './chip-playground-page.scss',
 })
 export class ChipPlaygroundPage {
-  protected readonly apiDescription = `Inputs and outputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = CHIP_API_DESCRIPTION;
   protected readonly apiRows = CHIP_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    { key: 'label', label: 'label', kind: 'string', defaultValue: 'Design' },
-    {
-      key: 'appearance',
-      label: 'appearance',
-      kind: 'enum',
-      options: ['neutral', 'primary', 'success', 'warning', 'danger', 'info'],
-      defaultValue: 'neutral',
-    },
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['xs', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-    { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
-    { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
-    { key: 'removable', label: 'removable', kind: 'boolean', defaultValue: true },
-  ];
+  protected readonly playgroundControls = CHIP_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const label = values['label'] as string;
-    const appearance = values['appearance'] as string;
-    const size = values['size'] as string;
-    const disabled = values['disabled'] as boolean;
-    const invalid = values['invalid'] as boolean;
-    const removable = values['removable'] as boolean;
+  protected readonly buildPlaygroundSnippet = (
+    values: ChipPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const label = values.label;
+    const appearance = values.appearance;
+    const size = values.size;
+    const disabled = values.disabled;
+    const invalid = values.invalid;
+    const removable = values.removable;
 
     const attrs = [
       appearance !== 'neutral' ? `appearance="${appearance}"` : null,
@@ -62,7 +72,7 @@ export class ChipPlaygroundPage {
     ].filter((attr): attr is string => attr !== null);
 
     const attrString = attrs.length > 0 ? ` ${attrs.join(' ')}` : '';
-    const escapedLabel = this.escapeHtml(label || 'Design');
+    const escapedLabel = escapePlaygroundHtml(label || 'Design');
 
     const code = removable
       ? `<span kuiChip${attrString} (removed)="removeTag()">
@@ -80,33 +90,29 @@ export class ChipPlaygroundPage {
     ];
   };
 
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  protected labelOf(values: PlaygroundValues): string {
-    const label = values['label'] as string;
+  protected labelOf(values: ChipPlaygroundValues): string {
+    const label = values.label;
 
     return label || 'Design';
   }
 
-  protected appearanceOf(values: PlaygroundValues): KuiChipAppearance {
-    return values['appearance'] as KuiChipAppearance;
+  protected appearanceOf(values: ChipPlaygroundValues): KuiChipAppearance {
+    return values.appearance;
   }
 
-  protected sizeOf(values: PlaygroundValues): KuiSize {
-    return values['size'] as KuiSize;
+  protected sizeOf(values: ChipPlaygroundValues): KuiSize {
+    return values.size;
   }
 
-  protected disabledOf(values: PlaygroundValues): boolean {
-    return values['disabled'] as boolean;
+  protected disabledOf(values: ChipPlaygroundValues): boolean {
+    return values.disabled;
   }
 
-  protected invalidOf(values: PlaygroundValues): boolean {
-    return values['invalid'] as boolean;
+  protected invalidOf(values: ChipPlaygroundValues): boolean {
+    return values.invalid;
   }
 
-  protected removableOf(values: PlaygroundValues): boolean {
-    return values['removable'] as boolean;
+  protected removableOf(values: ChipPlaygroundValues): boolean {
+    return values.removable;
   }
 }

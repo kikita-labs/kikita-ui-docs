@@ -1,0 +1,14 @@
+.basic-icon-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kui-space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.basic-icon-example__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}

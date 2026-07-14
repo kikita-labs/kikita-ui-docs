@@ -1,14 +1,20 @@
-import { isPlatformBrowser } from '@angular/common';
-import { DestroyRef, DOCUMENT, PLATFORM_ID } from '@angular/core';
-import { Component, inject, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import {
+  Component,
+  computed,
+  effect,
+  type ElementRef,
+  inject,
+  input,
+  signal,
+  viewChild,
+} from '@angular/core';
 
-interface PageTocLink {
-  readonly id: string;
-  readonly label: string;
-}
+import { DocsAnchorNavigationService } from '@core/platform/anchor';
+import {
+  DocsHeadingObserverService,
+  type DocsSectionRegistration,
+  DocsSectionRegistryService,
+} from '@core/platform/heading';
 
 @Component({
   selector: 'app-page-toc',
@@ -17,111 +23,47 @@ interface PageTocLink {
   styleUrl: './page-toc.scss',
   host: {
     '[class.page-toc-host--empty]': 'links().length === 0',
+    '[class.page-toc-host--mobile]': "variant() === 'mobile'",
   },
 })
 export class PageToc {
-  private readonly document = inject(DOCUMENT);
-  private readonly destroyRef = inject(DestroyRef);
-  private readonly platformId = inject(PLATFORM_ID);
-  private readonly router = inject(Router);
-  private readonly isBrowser = isPlatformBrowser(this.platformId);
-  private observer: IntersectionObserver | null = null;
+  private readonly anchorNavigation = inject(DocsAnchorNavigationService);
+  private readonly headingObserver = inject(DocsHeadingObserverService);
+  private readonly sectionRegistry = inject(DocsSectionRegistryService);
+  private readonly mobileDetails = viewChild<ElementRef<HTMLDetailsElement>>('mobileDetails');
 
-  protected readonly links = signal<readonly PageTocLink[]>([]);
+  public readonly variant = input<'desktop' | 'mobile'>('desktop');
+
+  protected readonly links = this.sectionRegistry.sections;
   protected readonly activeLinkId = signal<string | null>(null);
+  protected readonly activeLinkLabel = computed(
+    () => this.links().find((link) => link.id === this.activeLinkId())?.label ?? 'Sections',
+  );
 
-  constructor() {
-    this.destroyRef.onDestroy(() => this.observer?.disconnect());
+  private readonly headingObservationEffect = effect((onCleanup) => {
+    const links = this.links();
+    const activeLinkId = this.activeLinkId();
 
-    this.router.events
-      .pipe(
-        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-        takeUntilDestroyed(),
-      )
-      .subscribe(() => {
-        this.scheduleCollectLinks();
-      });
-
-    this.scheduleCollectLinks();
-  }
-
-  private scheduleCollectLinks(): void {
-    if (!this.isBrowser) {
-      return;
+    if (!links.some((link) => link.id === activeLinkId)) {
+      this.activeLinkId.set(links[0]?.id ?? null);
     }
 
-    this.document.defaultView?.setTimeout(() => {
-      this.collectLinks();
-    });
-  }
-
-  private collectLinks(): void {
-    this.observer?.disconnect();
-    this.observer = null;
-
-    if (this.document.querySelector('#main-content .docs-draft-page')) {
-      this.links.set([]);
-      this.activeLinkId.set(null);
-      return;
-    }
-
-    const headings = Array.from(
-      this.document.querySelectorAll<HTMLElement>('#main-content h2[id]'),
+    onCleanup(
+      this.headingObserver.observe(
+        links.map((link) => link.id),
+        (headingId) => this.activeLinkId.set(headingId),
+      ),
     );
+  });
 
-    const links = headings.map((heading) => ({
-      id: heading.id,
-      label: heading.textContent?.trim() ?? heading.id,
-    }));
-
-    this.links.set(links);
-    this.activeLinkId.set(links[0]?.id ?? null);
-    this.observeHeadings(headings);
-  }
-
-  private observeHeadings(headings: readonly HTMLElement[]): void {
-    const view = this.document.defaultView;
-
-    if (!view || headings.length === 0) {
-      return;
-    }
-
-    this.observer = new view.IntersectionObserver(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-
-        if (visibleEntry?.target instanceof HTMLElement) {
-          this.activeLinkId.set(visibleEntry.target.id);
-        }
-      },
-      {
-        rootMargin: '-96px 0px -65%',
-        threshold: 0,
-      },
-    );
-
-    headings.forEach((heading) => this.observer?.observe(heading));
-  }
-
-  protected scrollToLink(link: PageTocLink, event: MouseEvent): void {
+  protected scrollToLink(link: DocsSectionRegistration, event: MouseEvent): void {
     event.preventDefault();
     this.activeLinkId.set(link.id);
+    const details = this.mobileDetails()?.nativeElement;
 
-    const target = this.document.getElementById(link.id);
-    const view = this.document.defaultView;
-
-    if (!target || !view) {
-      return;
+    if (details) {
+      details.open = false;
     }
-
-    const offset = 84;
-    const top = target.getBoundingClientRect().top + view.scrollY - offset;
-    const url = new URL(this.document.location.href);
-    url.hash = link.id;
-
-    view.history.pushState(null, '', url);
-    view.scrollTo({ top, behavior: 'smooth' });
+    void this.anchorNavigation.navigate(link.id);
   }
 }

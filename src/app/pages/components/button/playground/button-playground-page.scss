@@ -1,7 +1,14 @@
 .button-playground-page {
   display: grid;
   gap: var(--kui-space-6, 24px);
+  grid-template-columns: minmax(0, 1fr);
   inline-size: 100%;
+  min-inline-size: 0;
+}
+
+app-api-playground {
+  display: block;
+  min-inline-size: 0;
 }
 
 .button-playground-page__header {

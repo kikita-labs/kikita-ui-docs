@@ -1,6 +1,7 @@
 @use '../../styles/mixins/caption-label' as *;
 
 .api-playground {
+  container-type: inline-size;
   display: grid;
   gap: var(--kui-space-4, 16px);
   grid-template-columns: minmax(0, 1fr);
@@ -42,6 +43,8 @@ app-api-playground-viewport {
 
 .api-playground__control-grid kui-segmented {
   justify-self: start;
+  max-inline-size: 100%;
+  overflow-x: auto;
 }
 
 .api-playground__divider {
@@ -90,9 +93,10 @@ app-api-playground-viewport {
 
 app-code-tabs {
   grid-area: snippet;
+  min-inline-size: 0;
 }
 
-@media (max-width: 640px) {
+@container (max-width: 760px) {
   .api-playground__control-grid,
   .api-playground__detail-row {
     grid-template-columns: minmax(0, 1fr);

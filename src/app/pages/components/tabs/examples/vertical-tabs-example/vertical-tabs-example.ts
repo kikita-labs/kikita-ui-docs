@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+
 import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
 
 @Component({

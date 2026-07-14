@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
 import { KuiButtonDirective } from '@kikita-labs/ui';
-import { DocsSearchStateService } from '../../core/search/docs-search-state.service';
+
+import { DocsSearchStateService } from '@core/search';
 
 @Component({
   selector: 'app-docs-not-found-page',

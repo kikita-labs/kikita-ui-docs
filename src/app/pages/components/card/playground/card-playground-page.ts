@@ -1,14 +1,45 @@
 import { Component } from '@angular/core';
-import { KuiCardAppearance, KuiCardDirective, KuiSize } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { type KuiCardAppearance, KuiCardDirective, type KuiSize } from '@kikita-labs/ui';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { CARD_API_ROWS } from '../card.api-schema';
+import { CARD_API_DESCRIPTION } from '../card.docs-content';
+
+const CARD_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'heading', label: 'heading', kind: 'string', defaultValue: 'Card heading' },
+  {
+    key: 'body',
+    label: 'body',
+    kind: 'string',
+    defaultValue: 'Grouped content with Kikita border, radius, and surface tokens.',
+  },
+  {
+    key: 'appearance',
+    label: 'appearance',
+    kind: 'enum',
+    options: ['surface', 'elevated', 'sunken'],
+    defaultValue: 'surface',
+  },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+  { key: 'interactive', label: 'interactive', kind: 'boolean', defaultValue: false },
+] as const);
+
+type CardPlaygroundValues = PlaygroundValues<typeof CARD_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-card-playground-page',
@@ -17,40 +48,19 @@ import { CARD_API_ROWS } from '../card.api-schema';
   styleUrl: './card-playground-page.scss',
 })
 export class CardPlaygroundPage {
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = CARD_API_DESCRIPTION;
   protected readonly apiRows = CARD_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    { key: 'heading', label: 'heading', kind: 'string', defaultValue: 'Card heading' },
-    {
-      key: 'body',
-      label: 'body',
-      kind: 'string',
-      defaultValue: 'Grouped content with Kikita border, radius, and surface tokens.',
-    },
-    {
-      key: 'appearance',
-      label: 'appearance',
-      kind: 'enum',
-      options: ['surface', 'elevated', 'sunken'],
-      defaultValue: 'surface',
-    },
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['xs', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-    { key: 'interactive', label: 'interactive', kind: 'boolean', defaultValue: false },
-  ];
+  protected readonly playgroundControls = CARD_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const heading = values['heading'] as string;
-    const body = values['body'] as string;
-    const appearance = values['appearance'] as string;
-    const size = values['size'] as string;
-    const interactive = values['interactive'] as boolean;
+  protected readonly buildPlaygroundSnippet = (
+    values: CardPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const heading = values.heading;
+    const body = values.body;
+    const appearance = values.appearance;
+    const size = values.size;
+    const interactive = values.interactive;
 
     const attrs = [
       appearance !== 'surface' ? `appearance="${appearance}"` : null,
@@ -61,44 +71,40 @@ export class CardPlaygroundPage {
     const attrString = attrs.length > 0 ? ` ${attrs.join(' ')}` : '';
     const tag = interactive ? 'button' : 'article';
     const typeAttr = interactive ? ' type="button"' : '';
-    const escapedHeading = this.escapeHtml(heading || 'Card heading');
-    const escapedBody = this.escapeHtml(body || '');
+    const escapedHeading = escapePlaygroundHtml(heading || 'Card heading');
+    const escapedBody = escapePlaygroundHtml(body || '');
 
     return [
       {
         label: 'HTML',
         language: 'html',
         code: `<${tag} kuiCard${attrString}${typeAttr}>
-  <h3>${escapedHeading}</h3>
+  <h2>${escapedHeading}</h2>
   <p>${escapedBody}</p>
 </${tag}>`,
       },
     ];
   };
 
-  protected headingOf(values: PlaygroundValues): string {
-    const heading = values['heading'] as string;
+  protected headingOf(values: CardPlaygroundValues): string {
+    const heading = values.heading;
 
     return heading || 'Card heading';
   }
 
-  protected bodyOf(values: PlaygroundValues): string {
-    return values['body'] as string;
+  protected bodyOf(values: CardPlaygroundValues): string {
+    return values.body;
   }
 
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  protected appearanceOf(values: CardPlaygroundValues): KuiCardAppearance {
+    return values.appearance;
   }
 
-  protected appearanceOf(values: PlaygroundValues): KuiCardAppearance {
-    return values['appearance'] as KuiCardAppearance;
+  protected sizeOf(values: CardPlaygroundValues): KuiSize {
+    return values.size;
   }
 
-  protected sizeOf(values: PlaygroundValues): KuiSize {
-    return values['size'] as KuiSize;
-  }
-
-  protected interactiveOf(values: PlaygroundValues): boolean {
-    return values['interactive'] as boolean;
+  protected interactiveOf(values: CardPlaygroundValues): boolean {
+    return values.interactive;
   }
 }

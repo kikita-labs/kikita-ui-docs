@@ -1,16 +1,55 @@
-import { Component, DestroyRef, inject } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { KuiButtonDirective, KuiDialogAppearance, KuiDialogSize, kuiDialog } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  Component,
+  DestroyRef,
+  EnvironmentInjector,
+  inject,
+  runInInjectionContext,
+} from '@angular/core';
+
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { KuiButtonDirective, kuiDialog } from '@kikita-labs/ui';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
+import {
+  definePlaygroundControls,
+  escapePlaygroundSingleQuotedString,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { DIALOG_API_ROWS } from '../dialog.api-schema';
+import { DIALOG_API_DESCRIPTION } from '../dialog.docs-content';
 import { PlaygroundDialogContent } from './playground-dialog-content';
+
+const DIALOG_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'title', label: 'title', kind: 'string', defaultValue: 'Discard changes?' },
+  {
+    key: 'message',
+    label: 'message',
+    kind: 'string',
+    defaultValue: 'Unsaved edits will be lost.',
+  },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['auto', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+  {
+    key: 'appearance',
+    label: 'appearance',
+    kind: 'enum',
+    options: ['default', 'danger', 'warning'],
+    defaultValue: 'default',
+  },
+  { key: 'dismissable', label: 'dismissable', kind: 'boolean', defaultValue: true },
+  { key: 'closable', label: 'closable', kind: 'boolean', defaultValue: true },
+] as const);
+
+type DialogPlaygroundValues = PlaygroundValues<typeof DIALOG_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-dialog-playground-page',
@@ -20,56 +59,37 @@ import { PlaygroundDialogContent } from './playground-dialog-content';
 })
 export class DialogPlaygroundPage {
   private readonly destroyRef = inject(DestroyRef);
+  private readonly environmentInjector = inject(EnvironmentInjector);
 
-  protected readonly apiDescription = `API verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = DIALOG_API_DESCRIPTION;
   protected readonly apiRows = DIALOG_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    { key: 'title', label: 'title', kind: 'string', defaultValue: 'Discard changes?' },
-    {
-      key: 'message',
-      label: 'message',
-      kind: 'string',
-      defaultValue: 'Unsaved edits will be lost.',
-    },
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['auto', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-    {
-      key: 'appearance',
-      label: 'appearance',
-      kind: 'enum',
-      options: ['default', 'danger', 'warning'],
-      defaultValue: 'default',
-    },
-    { key: 'dismissable', label: 'dismissable', kind: 'boolean', defaultValue: true },
-    { key: 'closable', label: 'closable', kind: 'boolean', defaultValue: true },
-  ];
+  protected readonly playgroundControls = DIALOG_PLAYGROUND_CONTROLS;
 
-  protected openDialog(values: PlaygroundValues): void {
-    const size = values['size'] as KuiDialogSize;
-    const appearance = values['appearance'] as KuiDialogAppearance;
-    const dismissable = values['dismissable'] as boolean;
-    const closable = values['closable'] as boolean;
-    const title = (values['title'] as string) || 'Discard changes?';
-    const message = (values['message'] as string) || '';
+  protected openDialog(values: DialogPlaygroundValues): void {
+    const size = values.size;
+    const appearance = values.appearance;
+    const dismissable = values.dismissable;
+    const closable = values.closable;
+    const title = values.title || 'Discard changes?';
+    const message = values.message || '';
 
-    const open = kuiDialog(PlaygroundDialogContent, { size, appearance, dismissable, closable });
+    const open = runInInjectionContext(this.environmentInjector, () =>
+      kuiDialog(PlaygroundDialogContent, { size, appearance, dismissable, closable }),
+    );
 
     open({ title, message }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const size = values['size'] as string;
-    const appearance = values['appearance'] as string;
-    const dismissable = values['dismissable'] as boolean;
-    const closable = values['closable'] as boolean;
-    const title = (values['title'] as string) || 'Discard changes?';
-    const message = (values['message'] as string) || '';
+  protected readonly buildPlaygroundSnippet = (
+    values: DialogPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const size = values.size;
+    const appearance = values.appearance;
+    const dismissable = values.dismissable;
+    const closable = values.closable;
+    const title = values.title || 'Discard changes?';
+    const message = values.message || '';
 
     const configLines = [
       size !== 'md' ? `  size: '${size}',` : null,
@@ -84,7 +104,10 @@ export class DialogPlaygroundPage {
 
     const code = `const openDialog = kuiDialog(MyDialog${configArg});
 
-openDialog({ title: '${title}', message: '${message}' })
+openDialog({
+  title: '${escapePlaygroundSingleQuotedString(title)}',
+  message: '${escapePlaygroundSingleQuotedString(message)}',
+})
   .pipe(takeUntilDestroyed())
   .subscribe();`;
 

@@ -1,0 +1,10 @@
+<div class="basic-file-upload-example">
+  <kui-file-upload
+    acceptLabel="PNG, JPG, or PDF up to 10 MB"
+    [accept]="['image/png', 'image/jpeg', 'application/pdf']"
+    [maxSize]="10 * 1024 * 1024"
+    [maxCount]="3"
+    [(files)]="files"
+    (retry)="handleRetry($event)"
+  />
+</div>

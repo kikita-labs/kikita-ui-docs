@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.stepper-page {
+  @include doc-page-layout;
+}
+
+.stepper-page__notes {
+  @include doc-page-notes;
+}
+
+.stepper-page__playground-link {
+  flex: none;
+}

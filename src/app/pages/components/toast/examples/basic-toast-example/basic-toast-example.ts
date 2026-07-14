@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { KuiButtonDirective, KuiToastAppearance, kuiToast } from '@kikita-labs/ui';
+
+import { KuiButtonDirective, kuiToast, type KuiToastAppearance } from '@kikita-labs/ui';
 
 interface ToastTrigger {
   readonly label: string;

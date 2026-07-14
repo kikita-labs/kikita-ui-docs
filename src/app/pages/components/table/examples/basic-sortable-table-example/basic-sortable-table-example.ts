@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import {
   KuiCellDirective,
   KuiRowDirective,
@@ -35,5 +36,5 @@ const TEAM_MEMBERS: TeamMember[] = [
   styleUrl: './basic-sortable-table-example.scss',
 })
 export class BasicSortableTableExample {
-  protected rows = TEAM_MEMBERS;
+  protected readonly rows = TEAM_MEMBERS;
 }

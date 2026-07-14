@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.tooltip-page {
+  @include doc-page-layout;
+}
+
+.tooltip-page__notes {
+  @include doc-page-notes;
+}
+
+.tooltip-page__playground-link {
+  white-space: nowrap;
+}

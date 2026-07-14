@@ -1,8 +1,15 @@
+@use '../../shared/styles/tokens/shell-layout' as shell;
+
 :host {
   display: block;
   min-inline-size: 0;
-  min-block-size: calc(100dvh - 56px);
+  min-block-size: calc(100dvh - shell.$header-height);
   border-inline-start: 1px solid var(--kui-color-border);
+}
+
+:host(.page-toc-host--mobile) {
+  min-block-size: 0;
+  border-inline-start: 0;
 }
 
 :host(.page-toc-host--empty) {
@@ -11,15 +18,55 @@
 
 .page-toc {
   position: sticky;
-  inset-block-start: 56px;
+  inset-block-start: shell.$header-height;
   display: grid;
   gap: 14px;
   align-content: start;
-  max-block-size: calc(100dvh - 56px);
+  max-block-size: calc(100dvh - shell.$header-height);
   overflow: auto;
   background: transparent;
   color: var(--kui-color-text-muted);
   padding: 32px 20px;
+}
+
+.page-toc__mobile {
+  border: 1px solid var(--kui-color-border);
+  border-radius: var(--kui-radius-md, 10px);
+}
+
+.page-toc__mobile summary {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  min-block-size: 44px;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.page-toc__mobile summary strong {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.page-toc__mobile-list {
+  margin: 0;
+  border-block-start: 1px solid var(--kui-color-border);
+  padding: 8px;
+  list-style: none;
+}
+
+.page-toc__mobile-list a {
+  display: block;
+  color: inherit;
+  padding: 8px;
+  text-decoration: none;
+}
+
+.page-toc__mobile-list a[aria-current='location'] {
+  font-weight: 600;
 }
 
 .page-toc__label {

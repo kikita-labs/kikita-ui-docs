@@ -1,0 +1,28 @@
+<article class="tree-playground-page">
+  <div class="tree-playground-page__header">
+    <h1>Tree &mdash; Playground</h1>
+    <p>Switch between display and checkable modes while preserving controlled state.</p>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Tree playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-tree
+      [mode]="modeOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [mobile]="mobileOf(playground.values())"
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [data]="nodes"
+      [loadChildren]="loadChildren"
+      [(selected)]="selectedId"
+      [(checkedIds)]="checkedIds"
+      [(expandedIds)]="expandedIds"
+    />
+  </app-api-playground>
+
+  <app-api-table label="Tree API" [rows]="apiRows" />
+  <p class="tree-playground-page__note">{{ apiDescription }}</p>
+</article>

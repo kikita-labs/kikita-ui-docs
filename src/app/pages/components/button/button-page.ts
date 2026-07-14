@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
 import { KuiButtonDirective } from '@kikita-labs/ui';
-import { ApiTable } from '../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../shared/docs-ui/code-tabs/code-tab';
-import { CodeTabs } from '../../../shared/docs-ui/code-tabs/code-tabs';
-import { DocSection } from '../../../shared/docs-ui/doc-section/doc-section';
-import { LivePreview } from '../../../shared/docs-ui/live-preview/live-preview';
-import { PageHeader } from '../../../shared/docs-ui/page-header/page-header';
-import { BasicButtonExample } from './examples/basic-button-example/basic-button-example';
+
+import { BUTTON_EXAMPLE_SOURCES } from '@generated/example-sources/button.generated';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { CodeTabs } from '@shared/docs-ui/code-tabs';
+import { DocSection } from '@shared/docs-ui/doc-section';
+import { LivePreview } from '@shared/docs-ui/live-preview';
+import { PageHeader } from '@shared/docs-ui/page-header';
+
 import { BUTTON_API_ROWS } from './button.api-schema';
-import { ButtonAppearanceExample } from './examples/button-appearance-example/button-appearance-example';
-import { ButtonSizeExample } from './examples/button-size-example/button-size-example';
+import { BUTTON_API_DESCRIPTION, BUTTON_IMPORT_TABS, BUTTON_STATUS } from './button.docs-content';
+import { BasicButtonExample, ButtonAppearanceExample, ButtonSizeExample } from './examples';
 
 @Component({
   selector: 'app-button-page',
@@ -31,68 +32,13 @@ import { ButtonSizeExample } from './examples/button-size-example/button-size-ex
   styleUrl: './button-page.scss',
 })
 export class ButtonPage {
-  protected readonly status = `Stable - @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION}`;
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly status = BUTTON_STATUS;
+  protected readonly apiDescription = BUTTON_API_DESCRIPTION;
+  protected readonly importTabs = BUTTON_IMPORT_TABS;
 
-  protected readonly importTabs: readonly CodeTab[] = [
-    {
-      label: 'Import',
-      filename: 'button.ts',
-      language: 'ts',
-      code: `import { KuiButtonDirective } from '@kikita-labs/ui';`,
-    },
-  ];
-
-  protected readonly basicTabs: readonly CodeTab[] = [
-    {
-      label: 'HTML',
-      language: 'html',
-      code: `<button kuiButton type="button">Save changes</button>
-<button kuiButton type="button" shape="soft">Cancel</button>
-<a kuiButton routerLink="/components/button">Button docs</a>`,
-    },
-    {
-      label: 'TS',
-      language: 'ts',
-      code: `import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { KuiButtonDirective } from '@kikita-labs/ui';
-
-@Component({
-  selector: 'app-basic-button-example',
-  imports: [KuiButtonDirective, RouterLink],
-  templateUrl: './basic-button-example.html',
-  styleUrl: './basic-button-example.scss',
-})
-export class BasicButtonExample {}`,
-    },
-  ];
-
-  protected readonly appearanceTabs: readonly CodeTab[] = [
-    {
-      label: 'HTML',
-      language: 'html',
-      code: `<button kuiButton type="button">Solid</button>
-<button kuiButton type="button" shape="soft">Soft</button>
-<button kuiButton type="button" shape="outline">Outline</button>
-<button kuiButton type="button" shape="ghost">Ghost</button>
-<button kuiButton type="button" appearance="danger">Danger</button>
-<button kuiButton type="button" shape="outline" appearance="danger">Outline danger</button>`,
-    },
-  ];
-
-  protected readonly sizeTabs: readonly CodeTab[] = [
-    {
-      label: 'HTML',
-      language: 'html',
-      code: `<button kuiButton type="button" size="xs">Extra small</button>
-<button kuiButton type="button" size="sm">Small</button>
-<button kuiButton type="button" size="md">Medium</button>
-<button kuiButton type="button" size="lg">Large</button>
-<button kuiButton type="button" disabled>Disabled</button>
-<button kuiButton type="button" loading>Loading</button>`,
-    },
-  ];
+  protected readonly basicTabs = BUTTON_EXAMPLE_SOURCES['basic-button-example'];
+  protected readonly appearanceTabs = BUTTON_EXAMPLE_SOURCES['button-appearance-example'];
+  protected readonly sizeTabs = BUTTON_EXAMPLE_SOURCES['button-size-example'];
 
   protected readonly apiRows = BUTTON_API_ROWS;
 }

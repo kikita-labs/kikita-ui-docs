@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.date-picker-page {
+  @include doc-page-layout;
+}
+
+.date-picker-page__notes {
+  @include doc-page-notes;
+}
+
+.date-picker-page__playground-link {
+  white-space: nowrap;
+}

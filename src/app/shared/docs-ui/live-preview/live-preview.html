@@ -4,9 +4,15 @@
   appearance="surface"
   size="lg"
   [attr.aria-label]="previewLabel()"
+  [attr.aria-description]="description()"
 >
-  <div class="live-preview__stage">
-    <div class="live-preview__surface" [class]="surfaceClass()">
+  <div
+    class="live-preview__stage"
+    role="group"
+    tabindex="0"
+    [attr.aria-label]="previewLabel() + ' content'"
+  >
+    <div class="live-preview__surface">
       <ng-content />
     </div>
   </div>

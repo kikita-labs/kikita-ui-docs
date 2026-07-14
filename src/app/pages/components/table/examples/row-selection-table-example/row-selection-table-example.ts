@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+
 import {
   KuiCellDirective,
   KuiRowDirective,
@@ -39,7 +40,7 @@ const TEAM_MEMBERS: TeamMember[] = [
   styleUrl: './row-selection-table-example.scss',
 })
 export class RowSelectionTableExample {
-  protected rows = TEAM_MEMBERS;
+  protected readonly rows = TEAM_MEMBERS;
   protected readonly selected = signal<readonly TeamMember[]>([]);
 
   protected onSelectionChange(rows: readonly TeamMember[]): void {

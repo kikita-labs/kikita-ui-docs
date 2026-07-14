@@ -1,6 +1,9 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
+
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 import { KuiButtonDirective, kuiDrawer } from '@kikita-labs/ui';
+
 import { EditItemDrawer } from './edit-item-drawer';
 
 @Component({

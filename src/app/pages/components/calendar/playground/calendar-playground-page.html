@@ -1,0 +1,38 @@
+<article class="calendar-playground-page">
+  <div class="calendar-playground-page__header">
+    <h1>Calendar &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Calendar playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    @if (modeOf(playground.values()) === 'range') {
+      <kui-calendar
+        mode="range"
+        [(value)]="selectedRange"
+        [size]="sizeOf(playground.values())"
+        [showFooter]="showFooterOf(playground.values())"
+        [flat]="flatOf(playground.values())"
+        [showWeekend]="showWeekendOf(playground.values())"
+        [locale]="localeOf(playground.values())"
+        [minDate]="minDateOf(playground.values())"
+      />
+    } @else {
+      <kui-calendar
+        [(value)]="selectedDate"
+        [size]="sizeOf(playground.values())"
+        [showFooter]="showFooterOf(playground.values())"
+        [flat]="flatOf(playground.values())"
+        [showWeekend]="showWeekendOf(playground.values())"
+        [locale]="localeOf(playground.values())"
+        [minDate]="minDateOf(playground.values())"
+      />
+    }
+  </app-api-playground>
+
+  <app-api-table label="Calendar API" [rows]="apiRows" />
+  <p class="calendar-playground-page__note">{{ apiDescription }}</p>
+</article>

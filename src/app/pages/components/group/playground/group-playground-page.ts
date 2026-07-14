@@ -1,19 +1,48 @@
 import { Component } from '@angular/core';
+
 import {
   KuiButtonDirective,
   KuiGroupDirective,
-  KuiGroupOrientation,
-  KuiSize,
+  type KuiGroupOrientation,
+  type KuiSize,
 } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+  serializePlaygroundAttributes,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { GROUP_API_ROWS } from '../group.api-schema';
+import { GROUP_API_DESCRIPTION } from '../group.docs-content';
+
+const GROUP_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  {
+    key: 'orientation',
+    label: 'orientation',
+    kind: 'enum',
+    options: ['horizontal', 'vertical'],
+    defaultValue: 'horizontal',
+  },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+  { key: 'collapsed', label: 'collapsed', kind: 'boolean', defaultValue: false },
+  { key: 'rounded', label: 'rounded', kind: 'boolean', defaultValue: true },
+  { key: 'firstLabel', label: 'first label', kind: 'string', defaultValue: 'One' },
+  { key: 'secondLabel', label: 'second label', kind: 'string', defaultValue: 'Two' },
+  { key: 'thirdLabel', label: 'third label', kind: 'string', defaultValue: 'Three' },
+] as const);
+
+type GroupPlaygroundValues = PlaygroundValues<typeof GROUP_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-group-playground-page',
@@ -22,48 +51,24 @@ import { GROUP_API_ROWS } from '../group.api-schema';
   styleUrl: './group-playground-page.scss',
 })
 export class GroupPlaygroundPage {
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = GROUP_API_DESCRIPTION;
   protected readonly apiRows = GROUP_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    {
-      key: 'orientation',
-      label: 'orientation',
-      kind: 'enum',
-      options: ['horizontal', 'vertical'],
-      defaultValue: 'horizontal',
-    },
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['xs', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-    { key: 'collapsed', label: 'collapsed', kind: 'boolean', defaultValue: false },
-    { key: 'rounded', label: 'rounded', kind: 'boolean', defaultValue: true },
-    { key: 'firstLabel', label: 'first label', kind: 'string', defaultValue: 'One' },
-    { key: 'secondLabel', label: 'second label', kind: 'string', defaultValue: 'Two' },
-    { key: 'thirdLabel', label: 'third label', kind: 'string', defaultValue: 'Three' },
-  ];
+  protected readonly playgroundControls = GROUP_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const orientation = values['orientation'] as string;
-    const size = values['size'] as string;
-    const collapsed = values['collapsed'] as boolean;
-    const rounded = values['rounded'] as boolean;
-    const firstLabel = this.escapeHtml((values['firstLabel'] as string) || 'One');
-    const secondLabel = this.escapeHtml((values['secondLabel'] as string) || 'Two');
-    const thirdLabel = this.escapeHtml((values['thirdLabel'] as string) || 'Three');
+  protected readonly buildPlaygroundSnippet = (
+    values: GroupPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const firstLabel = escapePlaygroundHtml(values.firstLabel || 'One');
+    const secondLabel = escapePlaygroundHtml(values.secondLabel || 'Two');
+    const thirdLabel = escapePlaygroundHtml(values.thirdLabel || 'Three');
 
-    const attrs = [
-      orientation !== 'horizontal' ? `orientation="${orientation}"` : null,
-      size !== 'md' ? `size="${size}"` : null,
-      collapsed ? 'collapsed' : null,
-      !rounded ? '[rounded]="false"' : null,
-    ].filter((attr): attr is string => attr !== null);
-
-    const attrString = attrs.length > 0 ? ` ${attrs.join(' ')}` : '';
+    const attrString = serializePlaygroundAttributes([
+      { name: 'orientation', value: values.orientation, defaultValue: 'horizontal' },
+      { name: 'size', value: values.size, defaultValue: 'md' },
+      { name: 'collapsed', value: values.collapsed },
+      { name: '[rounded]', value: values.rounded ? null : 'false' },
+    ]);
 
     return [
       {
@@ -78,35 +83,31 @@ export class GroupPlaygroundPage {
     ];
   };
 
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  protected orientationOf(values: GroupPlaygroundValues): KuiGroupOrientation {
+    return values.orientation;
   }
 
-  protected orientationOf(values: PlaygroundValues): KuiGroupOrientation {
-    return values['orientation'] as KuiGroupOrientation;
+  protected sizeOf(values: GroupPlaygroundValues): KuiSize {
+    return values.size;
   }
 
-  protected sizeOf(values: PlaygroundValues): KuiSize {
-    return values['size'] as KuiSize;
+  protected collapsedOf(values: GroupPlaygroundValues): boolean {
+    return values.collapsed;
   }
 
-  protected collapsedOf(values: PlaygroundValues): boolean {
-    return values['collapsed'] as boolean;
+  protected roundedOf(values: GroupPlaygroundValues): boolean {
+    return values.rounded;
   }
 
-  protected roundedOf(values: PlaygroundValues): boolean {
-    return values['rounded'] as boolean;
+  protected firstLabelOf(values: GroupPlaygroundValues): string {
+    return values.firstLabel || 'One';
   }
 
-  protected firstLabelOf(values: PlaygroundValues): string {
-    return (values['firstLabel'] as string) || 'One';
+  protected secondLabelOf(values: GroupPlaygroundValues): string {
+    return values.secondLabel || 'Two';
   }
 
-  protected secondLabelOf(values: PlaygroundValues): string {
-    return (values['secondLabel'] as string) || 'Two';
-  }
-
-  protected thirdLabelOf(values: PlaygroundValues): string {
-    return (values['thirdLabel'] as string) || 'Three';
+  protected thirdLabelOf(values: GroupPlaygroundValues): string {
+    return values.thirdLabel || 'Three';
   }
 }

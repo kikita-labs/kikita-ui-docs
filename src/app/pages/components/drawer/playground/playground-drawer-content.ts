@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
+
 import {
   KUI_DRAWER_CONTEXT,
   KuiButtonDirective,
-  KuiDrawerContext,
-  KuiDrawerHost,
+  type KuiDrawerContext,
+  type KuiDrawerHost,
 } from '@kikita-labs/ui';
 
 export interface PlaygroundDrawerData {
@@ -20,6 +21,6 @@ export class PlaygroundDrawerContent implements KuiDrawerHost<
   'confirmed' | null,
   PlaygroundDrawerData
 > {
-  readonly drawerContext =
+  public readonly drawerContext =
     inject<KuiDrawerContext<'confirmed' | null, PlaygroundDrawerData>>(KUI_DRAWER_CONTEXT);
 }

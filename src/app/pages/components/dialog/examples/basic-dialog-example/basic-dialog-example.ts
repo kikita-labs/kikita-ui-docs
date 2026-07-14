@@ -1,6 +1,9 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
+
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 import { KuiButtonDirective, kuiDialog } from '@kikita-labs/ui';
+
 import { InviteTeammateDialog } from './invite-teammate-dialog';
 
 @Component({

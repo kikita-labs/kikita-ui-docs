@@ -1,9 +1,9 @@
-import { ApiTableRow } from '../../../shared/docs-ui/api-table/api-table-row';
+import { type ApiTableRow } from '@shared/docs-ui/api-table';
 
 export const DIALOG_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'kuiDialog(component, config?)',
-    type: '(component: Type<KuiDialogHost<TResult, TData>>, config?: KuiDialogConfig<TData>) => KuiDialogRef<TResult, TData>',
+    type: '(component: Type<TComponent>, config?: Omit<KuiDialogConfig, "data">) => (data: TData) => Observable<TResult | undefined>',
     defaultValue: '-',
     description:
       'Inject-function factory. Call once per injection context to get a typed opener bound to that component.',
@@ -50,7 +50,8 @@ export const DIALOG_API_ROWS: readonly ApiTableRow[] = [
     name: 'KuiDialogConfig.data',
     type: 'TData',
     defaultValue: 'undefined',
-    description: 'Value made available on dialogContext.data.',
+    description:
+      'Available on the low-level config type; kuiDialog() passes feature data through the returned opener function instead.',
   },
   {
     name: 'KuiDialogConfig.size',
@@ -77,8 +78,8 @@ export const DIALOG_API_ROWS: readonly ApiTableRow[] = [
     description: 'Exposed on dialogContext.closable for the component to render a close button.',
   },
   {
-    name: 'KuiDialogRef<TResult, TData>',
-    type: 'type',
+    name: 'KuiDialogRef<TResult>',
+    type: 'class',
     defaultValue: '-',
     description:
       'Return type of kuiDialog(component, config). Calling it with data opens the dialog and returns Observable<TResult | undefined>.',

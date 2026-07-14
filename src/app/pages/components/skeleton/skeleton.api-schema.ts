@@ -1,4 +1,4 @@
-import { ApiTableRow } from '../../../shared/docs-ui/api-table/api-table-row';
+import { type ApiTableRow } from '@shared/docs-ui/api-table';
 
 export const SKELETON_API_ROWS: readonly ApiTableRow[] = [
   {

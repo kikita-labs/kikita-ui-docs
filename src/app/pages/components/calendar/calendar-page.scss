@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.calendar-page {
+  @include doc-page-layout;
+}
+
+.calendar-page__notes {
+  @include doc-page-notes;
+}
+
+.calendar-page__playground-link {
+  white-space: nowrap;
+}

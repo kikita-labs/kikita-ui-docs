@@ -10,10 +10,12 @@
       >
         @for (tab of tabs(); track tab.label; let index = $index) {
           <button
+            #tabButton
             kuiSegment
             [value]="tab.label"
             [id]="tabId(index)"
-            [attr.aria-controls]="panelId(index)"
+            [attr.aria-controls]="panelId()"
+            (keydown)="selectTabFromKeyboard($event, index)"
           >
             {{ tab.label }}
           </button>
@@ -43,8 +45,10 @@
     <div
       class="code-tabs__panel"
       role="tabpanel"
-      [id]="panelId(selectedIndex())"
-      [attr.aria-labelledby]="tabId(selectedIndex())"
+      tabindex="0"
+      [id]="panelId()"
+      [attr.aria-labelledby]="hasMultipleTabs() ? tabId(selectedIndex()) : null"
+      [attr.aria-label]="hasMultipleTabs() ? null : 'Source: ' + headerLabel()"
       [attr.aria-busy]="isHighlighting()"
     >
       @if (highlightedCode(); as html) {

@@ -2,9 +2,10 @@
 
 <div class="typography__group">
   <kui-field>
-    <label kuiLabel class="typography__label">Code theme</label>
+    <label kuiLabel class="typography__label" for="code-theme-select">Code theme</label>
     <input
       kuiSelect
+      id="code-theme-select"
       [value]="theme.codeThemeId()"
       (valueChange)="setCodeThemeId($event)"
       [kuiLabelFn]="codeThemeLabelFn"

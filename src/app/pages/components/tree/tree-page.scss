@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.tree-page {
+  @include doc-page-layout;
+}
+
+.tree-page__notes {
+  @include doc-page-notes;
+}
+
+.tree-page__playground-link {
+  justify-self: start;
+}

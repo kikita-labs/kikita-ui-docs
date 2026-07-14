@@ -1,0 +1,6 @@
+.basic-calendar-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-5, 20px);
+  align-items: flex-start;
+}

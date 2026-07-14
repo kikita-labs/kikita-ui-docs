@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { KuiButtonDirective, KuiDialogSize, kuiDialog } from '@kikita-labs/ui';
+
+import { KuiButtonDirective, kuiDialog, type KuiDialogSize } from '@kikita-labs/ui';
+
 import { SizePreviewDialog } from './size-preview-dialog';
 
 @Component({

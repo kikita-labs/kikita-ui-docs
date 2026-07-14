@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
+
 import {
   KuiButtonDirective,
-  KuiCommandGroup,
-  KuiCommandItem,
+  type KuiCommandGroup,
+  type KuiCommandItem,
   KuiCommandPaletteComponent,
 } from '@kikita-labs/ui';
 

@@ -1,0 +1,56 @@
+<article class="color-input-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Color Input"
+    description="A native text input for theme seed colors with Kikita picker affordances."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Use the directive on a native input, usually inside a Kikita field."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Keep the native input as the form source of truth and let the swatch open the picker."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="color-input-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic color input">
+      <app-basic-color-input-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Color Input API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="The editable value remains a native text input, while picker triggers are native buttons."
+  >
+    <ul class="color-input-page__notes">
+      <li>Use <code>kui-field</code> for label, hint, error, and described-by wiring.</li>
+      <li>Unsupported non-empty values expose invalid state on the wrapper.</li>
+      <li>Disabled and readonly native attributes also disable the swatch button.</li>
+      <li>Test the picker popover manually on narrow screens before releasing visual changes.</li>
+    </ul>
+  </app-doc-section>
+</article>

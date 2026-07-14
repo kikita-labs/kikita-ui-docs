@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
+
 import {
   KUI_DIALOG_CONTEXT,
   KuiButtonDirective,
-  KuiDialogContext,
-  KuiDialogHost,
+  type KuiDialogContext,
+  type KuiDialogHost,
 } from '@kikita-labs/ui';
 
 export interface PlaygroundDialogData {
@@ -20,6 +21,6 @@ export class PlaygroundDialogContent implements KuiDialogHost<
   'confirmed' | null,
   PlaygroundDialogData
 > {
-  readonly dialogContext =
+  public readonly dialogContext =
     inject<KuiDialogContext<'confirmed' | null, PlaygroundDialogData>>(KUI_DIALOG_CONTEXT);
 }

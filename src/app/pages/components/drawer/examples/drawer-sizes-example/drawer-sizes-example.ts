@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { KuiButtonDirective, KuiDrawerSize, kuiDrawer } from '@kikita-labs/ui';
+
+import { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';
+
 import { SizePreviewDrawer } from './size-preview-drawer';
 
 @Component({

@@ -1,15 +1,13 @@
 import { Component, computed, inject } from '@angular/core';
+
 import {
   KuiButtonDirective,
   KuiColorInputDirective,
   KuiFieldComponent,
   KuiLabelDirective,
 } from '@kikita-labs/ui';
-import {
-  DOCS_DEFAULT_SEED_COLORS,
-  type DocsSeedColorName,
-  DocsThemeService,
-} from '../../../../core/theme/docs-theme.service';
+
+import { DOCS_DEFAULT_SEED_COLORS, type DocsSeedColorName, DocsThemeService } from '@core/theme';
 
 interface SeedColorRow {
   readonly name: DocsSeedColorName;

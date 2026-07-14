@@ -1,22 +1,46 @@
 @if (links().length) {
-  <aside class="page-toc" aria-label="Page table of contents">
-    <p class="page-toc__label">On this page</p>
+  @if (variant() === 'mobile') {
+    <details #mobileDetails class="page-toc__mobile">
+      <summary>
+        <span>On this page</span>
+        <strong>{{ activeLinkLabel() }}</strong>
+      </summary>
 
-    <nav aria-label="Page sections">
-      <ul class="page-toc__list">
-        @for (link of links(); track link.id) {
-          <li>
-            <a
-              class="page-toc__link"
-              [class.page-toc__link--active]="activeLinkId() === link.id"
-              [href]="'#' + link.id"
-              [attr.aria-current]="activeLinkId() === link.id ? 'true' : null"
-              (click)="scrollToLink(link, $event)"
-              >{{ link.label }}</a
-            >
-          </li>
-        }
-      </ul>
-    </nav>
-  </aside>
+      <nav aria-label="On this page">
+        <ul class="page-toc__mobile-list">
+          @for (link of links(); track link.id) {
+            <li>
+              <a
+                [href]="'#' + link.id"
+                [attr.aria-current]="activeLinkId() === link.id ? 'location' : null"
+                (click)="scrollToLink(link, $event)"
+                >{{ link.label }}</a
+              >
+            </li>
+          }
+        </ul>
+      </nav>
+    </details>
+  } @else {
+    <aside class="page-toc" aria-label="Page table of contents">
+      <p class="page-toc__label">On this page</p>
+
+      <nav aria-label="Page sections">
+        <ul class="page-toc__list">
+          @for (link of links(); track link.id) {
+            <li>
+              <a
+                class="page-toc__link"
+                [class.page-toc__link--active]="activeLinkId() === link.id"
+                [href]="'#' + link.id"
+                [attr.aria-current]="activeLinkId() === link.id ? 'location' : null"
+                (click)="scrollToLink(link, $event)"
+                >{{ link.label }}</a
+              >
+            </li>
+          }
+        </ul>
+      </nav>
+    </aside>
+  }
 }

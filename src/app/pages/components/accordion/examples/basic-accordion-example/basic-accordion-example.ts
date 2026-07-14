@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
 
 @Component({

@@ -1,6 +1,7 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideKikitaUi } from '@kikita-labs/ui';
+import { type ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
+
+import { provideKikitaUi } from '@kikita-labs/ui';
 
 import { routes } from './app.routes';
 

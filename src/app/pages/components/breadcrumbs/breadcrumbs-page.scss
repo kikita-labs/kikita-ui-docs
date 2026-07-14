@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.breadcrumbs-page {
+  @include doc-page-layout;
+}
+
+.breadcrumbs-page__notes {
+  @include doc-page-notes;
+}
+
+.breadcrumbs-page__playground-link {
+  flex: none;
+}

@@ -1,14 +1,27 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
-import { SafeHtml } from '@angular/platform-browser';
+import {
+  Component,
+  computed,
+  effect,
+  type ElementRef,
+  inject,
+  input,
+  signal,
+  viewChildren,
+} from '@angular/core';
+import { type SafeHtml } from '@angular/platform-browser';
+
 import {
   KuiIconButtonDirective,
   KuiSegmentDirective,
   KuiSegmentedComponent,
   kuiToast,
 } from '@kikita-labs/ui';
-import { DocsThemeService } from '../../../core/theme/docs-theme.service';
+
+import { DocsClipboardService } from '@core/platform/clipboard';
+import { DocsThemeService } from '@core/theme';
+
 import { CodeHighlighterService } from './code-highlighter.service';
-import { CodeTab } from './code-tab';
+import { type CodeTab } from './code-tab';
 
 let nextCodeTabsId = 0;
 
@@ -20,13 +33,17 @@ let nextCodeTabsId = 0;
 })
 export class CodeTabs {
   private readonly highlighter = inject(CodeHighlighterService);
+  private readonly clipboard = inject(DocsClipboardService);
   private readonly theme = inject(DocsThemeService);
   private readonly toast = kuiToast();
 
-  readonly label = input('Code examples');
-  readonly tabs = input.required<readonly CodeTab[]>();
+  /** Accessible name for the source-file tab selector. */
+  public readonly label = input('Code examples');
+  /** Immutable source tabs; labels must be unique within this component. */
+  public readonly tabs = input.required<readonly CodeTab[]>();
 
   protected readonly id = `code-tabs-${++nextCodeTabsId}`;
+  protected readonly tabButtons = viewChildren<ElementRef<HTMLButtonElement>>('tabButton');
   protected readonly selectedIndex = signal(0);
   protected readonly selectedTab = computed(() => this.tabs()[this.selectedIndex()]);
   protected readonly selectedValue = computed(() => this.selectedTab()?.label ?? '');
@@ -92,6 +109,35 @@ export class CodeTabs {
     }
   }
 
+  protected selectTabFromKeyboard(event: KeyboardEvent, currentIndex: number): void {
+    const tabCount = this.tabs().length;
+
+    if (tabCount === 0) {
+      return;
+    }
+
+    const lastIndex = tabCount - 1;
+    const nextIndex =
+      event.key === 'Home'
+        ? 0
+        : event.key === 'End'
+          ? lastIndex
+          : event.key === 'ArrowRight' || event.key === 'ArrowDown'
+            ? (currentIndex + 1) % tabCount
+            : event.key === 'ArrowLeft' || event.key === 'ArrowUp'
+              ? (currentIndex - 1 + tabCount) % tabCount
+              : null;
+
+    if (nextIndex === null) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+    this.selectTab(nextIndex);
+    this.tabButtons()[nextIndex]?.nativeElement.focus();
+  }
+
   protected async copySelectedCode(): Promise<void> {
     const code = this.selectedTab()?.code;
 
@@ -100,7 +146,11 @@ export class CodeTabs {
     }
 
     try {
-      await navigator.clipboard.writeText(code);
+      const result = await this.clipboard.writeText(code);
+
+      if (!result.ok) {
+        throw new Error(`Clipboard ${result.reason}`);
+      }
       this.toast.open({
         title: 'Code copied',
         message: `${this.headerLabel()} copied to clipboard.`,
@@ -119,8 +169,8 @@ export class CodeTabs {
     return `${this.id}-tab-${index}`;
   }
 
-  protected panelId(index: number): string {
-    return `${this.id}-panel-${index}`;
+  protected panelId(): string {
+    return `${this.id}-panel`;
   }
 
   private getDefaultFilename(tab: CodeTab): string {

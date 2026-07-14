@@ -1,6 +1,13 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject, input, signal } from '@angular/core';
+
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { timer } from 'rxjs';
+
 import { KuiIconButtonDirective, kuiToast } from '@kikita-labs/ui';
+
+import { DocsAnchorNavigationService } from '@core/platform/anchor';
+import { DocsClipboardService } from '@core/platform/clipboard';
+import { DocsSectionRegistryService } from '@core/platform/heading';
 
 @Component({
   selector: 'app-doc-section',
@@ -9,12 +16,18 @@ import { KuiIconButtonDirective, kuiToast } from '@kikita-labs/ui';
   styleUrl: './doc-section.scss',
 })
 export class DocSection {
-  private readonly document = inject(DOCUMENT);
+  private readonly anchorNavigation = inject(DocsAnchorNavigationService);
+  private readonly clipboard = inject(DocsClipboardService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly sectionRegistry = inject(DocsSectionRegistryService);
   private readonly toast = kuiToast();
 
-  readonly heading = input.required<string>();
-  readonly description = input<string>();
-  readonly anchor = input<string>();
+  /** Visible section heading and table-of-contents label. */
+  public readonly heading = input.required<string>();
+  /** Optional supporting text rendered under the heading row. */
+  public readonly description = input<string>();
+  /** Optional stable anchor override; otherwise derived from the heading. */
+  public readonly anchor = input<string>();
 
   protected readonly copied = signal(false);
 
@@ -24,41 +37,53 @@ export class DocSection {
 
   protected readonly headingHref = computed(() => `#${this.headingId()}`);
 
+  private readonly registrationEffect = effect((onCleanup) => {
+    onCleanup(
+      this.sectionRegistry.register({
+        id: this.headingId(),
+        label: this.heading(),
+      }),
+    );
+  });
+
   protected scrollToHeading(event: MouseEvent): void {
     event.preventDefault();
 
-    const target = this.document.getElementById(this.headingId());
-    const view = this.document.defaultView;
-
-    if (!target || !view) {
-      return;
-    }
-
-    const offset = 84;
-    const top = target.getBoundingClientRect().top + view.scrollY - offset;
-    const url = new URL(this.document.location.href);
-    url.hash = this.headingId();
-
-    view.history.pushState(null, '', url);
-    view.scrollTo({ top, behavior: 'smooth' });
+    void this.anchorNavigation.navigate(this.headingId());
   }
 
   protected async copyHeadingLink(): Promise<void> {
-    const url = new URL(this.document.location.href);
-    url.hash = this.headingId();
+    const url = this.anchorNavigation.urlFor(this.headingId());
 
-    try {
-      await navigator.clipboard.writeText(url.toString());
+    if (!url.ok) {
+      this.showCopyFailure();
+      return;
+    }
+
+    const result = await this.clipboard.writeText(url.value);
+
+    if (result.ok) {
       this.copied.set(true);
       this.toast.open({
         title: 'Link copied',
         message: `${this.heading()} link copied to clipboard.`,
         appearance: 'success',
       });
-      window.setTimeout(() => this.copied.set(false), 1600);
-    } catch {
-      this.document.location.hash = this.headingId();
+      timer(1600)
+        .pipe(takeUntilDestroyed(this.destroyRef))
+        .subscribe(() => this.copied.set(false));
+      return;
     }
+
+    this.showCopyFailure();
+  }
+
+  private showCopyFailure(): void {
+    this.toast.open({
+      title: 'Copy failed',
+      message: 'Clipboard access is unavailable in this browser.',
+      appearance: 'danger',
+    });
   }
 
   private normalizeId(value: string): string {

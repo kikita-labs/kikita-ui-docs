@@ -1,4 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
+
 import {
   KuiButtonDirective,
   KuiDropdownComponent,
@@ -7,11 +8,9 @@ import {
   KuiOptionDirective,
   KuiSelectDirective,
 } from '@kikita-labs/ui';
-import {
-  docsCodeThemeOptionsForMode,
-  findDocsCodeThemeOption,
-} from '../../../../core/theme/docs-code-theme';
-import { DocsThemeService } from '../../../../core/theme/docs-theme.service';
+
+import { docsCodeThemeOptionsForMode, findDocsCodeThemeOption } from '@core/theme';
+import { DocsThemeService } from '@core/theme';
 
 @Component({
   selector: 'app-typography',

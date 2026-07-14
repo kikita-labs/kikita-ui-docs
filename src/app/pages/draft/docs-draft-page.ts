@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
+
+import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
-import { DocsRouteDraft } from '../../core/navigation/docs-route-draft';
-import { HOME_ROUTE_DRAFT } from '../../core/navigation/docs-route-drafts';
-import { DocSection } from '../../shared/docs-ui/doc-section/doc-section';
-import { DraftState } from '../../shared/docs-ui/draft-state/draft-state';
-import { PageHeader } from '../../shared/docs-ui/page-header/page-header';
+
+import type { DocsDraftPageData } from '@core/docs-registry';
+import { DocSection } from '@shared/docs-ui/doc-section';
+import { DraftState } from '@shared/docs-ui/draft-state';
+import { PageHeader } from '@shared/docs-ui/page-header';
 
 @Component({
   selector: 'app-docs-draft-page',
@@ -15,17 +16,23 @@ import { PageHeader } from '../../shared/docs-ui/page-header/page-header';
   styleUrl: './docs-draft-page.scss',
 })
 export class DocsDraftPage {
+  private static readonly DEFAULT_DATA: DocsDraftPageData = {
+    title: 'Kikita UI Docs',
+    eyebrow: 'Docs shell',
+    description: 'Public documentation shell for the Kikita UI package.',
+  };
+
   private readonly route = inject(ActivatedRoute);
 
   protected readonly draft = toSignal(this.route.data.pipe(map((data) => this.toDraft(data))), {
     initialValue: this.toDraft(this.route.snapshot.data),
   });
 
-  private toDraft(data: Partial<DocsRouteDraft>): DocsRouteDraft {
+  private toDraft(data: Partial<DocsDraftPageData>): DocsDraftPageData {
     return {
-      title: data.title ?? HOME_ROUTE_DRAFT.title,
-      eyebrow: data.eyebrow ?? HOME_ROUTE_DRAFT.eyebrow,
-      description: data.description ?? HOME_ROUTE_DRAFT.description,
+      title: data.title ?? DocsDraftPage.DEFAULT_DATA.title,
+      eyebrow: data.eyebrow ?? DocsDraftPage.DEFAULT_DATA.eyebrow,
+      description: data.description ?? DocsDraftPage.DEFAULT_DATA.description,
     };
   }
 }

@@ -1,3 +1,5 @@
+@use '../../shared/styles/tokens/shell-layout' as shell;
+
 :host {
   display: block;
   position: sticky;
@@ -10,11 +12,11 @@
 .docs-header {
   display: grid;
   grid-template-columns:
-    250px
-    minmax(0, 970px)
-    220px;
-  inline-size: min(1440px, 100%);
-  block-size: 56px;
+    shell.$sidebar-width
+    minmax(0, shell.$content-width)
+    shell.$toc-width;
+  inline-size: min(shell.$max-width, 100%);
+  block-size: shell.$header-height;
   align-content: center;
   align-items: center;
   gap: 0;
@@ -122,15 +124,16 @@
   padding: 1px 5px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: shell.$mobile-breakpoint) {
   .docs-header {
     display: flex;
-    min-block-size: 54px;
+    min-block-size: shell.$mobile-header-height;
     align-items: center;
     justify-content: space-between;
     gap: var(--kui-space-3, 12px);
     padding-block: 12px;
-    padding-inline: var(--kui-space-4, 16px);
+    padding-inline: max(var(--kui-space-4, 16px), env(safe-area-inset-left))
+      max(var(--kui-space-4, 16px), env(safe-area-inset-right));
   }
 
   .docs-header--minimal {
@@ -159,8 +162,24 @@
   }
 
   .docs-header__breadcrumbs {
+    max-inline-size: 100%;
     overflow: hidden;
     white-space: nowrap;
+  }
+
+  .docs-header__start > nav,
+  .docs-header__breadcrumbs > li {
+    min-inline-size: 0;
+  }
+
+  .docs-header__start > nav {
+    flex: 1 1 auto;
+    max-inline-size: 100%;
+    overflow: hidden;
+  }
+
+  .docs-header__breadcrumbs > li:last-child {
+    overflow: hidden;
   }
 
   .docs-header__nav {

@@ -13,8 +13,18 @@ html {
   font-family: var(--kui-font-sans);
 }
 
+html.docs-scroll-locked {
+  overflow: hidden;
+}
+
 body {
   margin: 0;
+}
+
+router-outlet + * {
+  display: block;
+  max-inline-size: 100%;
+  min-inline-size: 0;
 }
 
 .sidebar-nav__skip {

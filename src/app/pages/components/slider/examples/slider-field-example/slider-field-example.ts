@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { form, FormField, max, min } from '@angular/forms/signals';
+
 import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
 
 interface SettingsModel {

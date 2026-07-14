@@ -1,14 +1,14 @@
-import { DOCUMENT } from '@angular/common';
 import {
   afterNextRender,
   Component,
   computed,
-  ElementRef,
+  type ElementRef,
   inject,
   input,
   signal,
   viewChild,
 } from '@angular/core';
+
 import {
   KuiCardDirective,
   KuiFieldAffixDirective,
@@ -18,6 +18,8 @@ import {
   KuiSegmentDirective,
   KuiSegmentedComponent,
 } from '@kikita-labs/ui';
+
+import { DocsPointerDragService } from '@core/platform/pointer';
 
 type PlaygroundViewport = 'mobile' | 'tablet' | 'desktop';
 
@@ -45,12 +47,13 @@ const MAX_PREVIEW_WIDTH = 1160;
   styleUrl: './api-playground-viewport.scss',
 })
 export class ApiPlaygroundViewport {
-  private readonly document = inject(DOCUMENT);
+  private readonly pointerDrag = inject(DocsPointerDragService);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
 
-  readonly previewLabel = input('Live preview');
+  /** Accessible name for the preview stage. */
+  public readonly previewLabel = input('Live preview');
 
-  protected readonly previewTheme = signal<'dark' | 'light'>('dark');
+  protected readonly previewTheme = signal<'dark' | 'light'>('light');
   protected readonly previewIsDark = computed(() => this.previewTheme() === 'dark');
   protected readonly previewThemeToggleLabel = computed(() =>
     this.previewIsDark() ? 'Use light preview theme' : 'Use dark preview theme',
@@ -89,19 +92,22 @@ export class ApiPlaygroundViewport {
     });
   }
 
-  protected setPreviewWidthFromEvent(event: Event): void {
-    const raw = (event.target as HTMLInputElement).value;
-    const value = raw === '' ? MIN_PREVIEW_WIDTH : Number(raw);
+  protected setPreviewWidth(rawValue: string): void {
+    const value = rawValue === '' ? MIN_PREVIEW_WIDTH : Number(rawValue);
 
     this.previewWidth.set(this.clampPreviewWidth(value));
   }
 
-  protected setViewportPreset(preset: PlaygroundViewport | ''): void {
-    if (preset) {
+  protected setViewportPreset(preset: string): void {
+    if (this.isPlaygroundViewport(preset)) {
       const width = preset === 'desktop' ? this.maxPreviewWidth() : VIEWPORT_WIDTH[preset];
 
       this.previewWidth.set(this.clampPreviewWidth(width));
     }
+  }
+
+  private isPlaygroundViewport(value: string): value is PlaygroundViewport {
+    return value === 'mobile' || value === 'tablet' || value === 'desktop';
   }
 
   protected togglePreviewTheme(): void {
@@ -109,30 +115,24 @@ export class ApiPlaygroundViewport {
   }
 
   protected startResize(event: PointerEvent): void {
-    event.preventDefault();
+    const startWidth = this.previewWidth();
 
-    const view = this.document.defaultView;
+    this.pointerDrag.start(event, (delta) => {
+      this.previewWidth.set(this.clampPreviewWidth(startWidth + delta));
+    });
+  }
 
-    if (!view) {
+  protected resizeFromKeyboard(event: KeyboardEvent): void {
+    const direction = event.key === 'ArrowLeft' ? -1 : event.key === 'ArrowRight' ? 1 : 0;
+
+    if (direction === 0) {
       return;
     }
 
-    const startX = event.clientX;
-    const startWidth = this.previewWidth();
-    const onMove = (moveEvent: PointerEvent) => {
-      const next = startWidth + (moveEvent.clientX - startX);
+    event.preventDefault();
+    const step = event.shiftKey ? 64 : 16;
 
-      this.previewWidth.set(this.clampPreviewWidth(next));
-    };
-    const onUp = () => {
-      view.removeEventListener('pointermove', onMove);
-      view.removeEventListener('pointerup', onUp);
-      view.removeEventListener('pointercancel', onUp);
-    };
-
-    view.addEventListener('pointermove', onMove);
-    view.addEventListener('pointerup', onUp);
-    view.addEventListener('pointercancel', onUp);
+    this.previewWidth.update((width) => this.clampPreviewWidth(width + direction * step));
   }
 
   protected previewWidthValue(): string {

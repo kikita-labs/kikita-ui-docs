@@ -3,10 +3,13 @@
 <div class="seed-colors__grid">
   @for (row of rows(); track row.name) {
     <kui-field>
-      <label kuiLabel class="seed-colors__label">{{ row.label }}</label>
+      <label kuiLabel class="seed-colors__label" [attr.for]="'seed-color-' + row.name">
+        {{ row.label }}
+      </label>
       <input
         kuiColorInput
         class="seed-colors__input"
+        [id]="'seed-color-' + row.name"
         size="sm"
         spellcheck="false"
         [value]="row.value"

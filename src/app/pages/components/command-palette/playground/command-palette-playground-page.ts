@@ -1,19 +1,23 @@
 import { Component, signal } from '@angular/core';
+
 import {
   KuiButtonDirective,
-  KuiCommandGroup,
-  KuiCommandItem,
+  type KuiCommandGroup,
+  type KuiCommandItem,
   KuiCommandPaletteComponent,
 } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundSingleQuotedString,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { COMMAND_PALETTE_API_ROWS } from '../command-palette.api-schema';
+import { COMMAND_PALETTE_API_DESCRIPTION } from '../command-palette.docs-content';
 
 const PLAYGROUND_GROUPS: readonly KuiCommandGroup[] = [
   {
@@ -59,6 +63,28 @@ const PLAYGROUND_GROUPS: readonly KuiCommandGroup[] = [
 ];
 
 const EMPTY_GROUPS: readonly KuiCommandGroup[] = [];
+const PLAYGROUND_GROUPS_SOURCE = JSON.stringify(PLAYGROUND_GROUPS, null, 2);
+
+const COMMAND_PALETTE_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'label', label: 'label', kind: 'string', defaultValue: 'Command palette' },
+  {
+    key: 'placeholder',
+    label: 'placeholder',
+    kind: 'string',
+    defaultValue: 'Type a command or search...',
+  },
+  { key: 'emptyText', label: 'emptyText', kind: 'string', defaultValue: 'No commands found' },
+  {
+    key: 'groupsPreset',
+    label: 'groups',
+    kind: 'enum',
+    options: ['with commands', 'no matches'],
+    defaultValue: 'with commands',
+  },
+  { key: 'loading', label: 'loading', kind: 'boolean', defaultValue: false },
+] as const);
+
+type CommandPalettePlaygroundValues = PlaygroundValues<typeof COMMAND_PALETTE_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-command-palette-playground-page',
@@ -67,50 +93,39 @@ const EMPTY_GROUPS: readonly KuiCommandGroup[] = [];
   styleUrl: './command-palette-playground-page.scss',
 })
 export class CommandPalettePlaygroundPage {
-  protected readonly apiDescription = `Inputs and outputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = COMMAND_PALETTE_API_DESCRIPTION;
   protected readonly apiRows = COMMAND_PALETTE_API_ROWS;
 
   protected readonly open = signal(false);
   protected readonly query = signal('');
   protected readonly selectedCommand = signal<string | null>(null);
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    { key: 'label', label: 'label', kind: 'string', defaultValue: 'Command palette' },
-    {
-      key: 'placeholder',
-      label: 'placeholder',
-      kind: 'string',
-      defaultValue: 'Type a command or search...',
-    },
-    { key: 'emptyText', label: 'emptyText', kind: 'string', defaultValue: 'No commands found' },
-    {
-      key: 'groupsPreset',
-      label: 'groups',
-      kind: 'enum',
-      options: ['with commands', 'no matches'],
-      defaultValue: 'with commands',
-    },
-    { key: 'loading', label: 'loading', kind: 'boolean', defaultValue: false },
-  ];
+  protected readonly playgroundControls = COMMAND_PALETTE_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const label = values['label'] as string;
-    const placeholder = values['placeholder'] as string;
-    const emptyText = values['emptyText'] as string;
-    const groupsPreset = values['groupsPreset'] as string;
-    const loading = values['loading'] as boolean;
+  protected readonly buildPlaygroundSnippet = (
+    values: CommandPalettePlaygroundValues,
+  ): readonly CodeTab[] => {
+    const label = values.label;
+    const placeholder = values.placeholder;
+    const emptyText = values.emptyText;
+    const groupsPreset = values.groupsPreset;
+    const loading = values.loading;
 
     const attrs = [
-      label !== 'Command palette' ? `[label]="'${this.escapeAttr(label)}'"` : null,
-      placeholder !== 'Type a command or search...'
-        ? `[placeholder]="'${this.escapeAttr(placeholder)}'"`
+      label !== 'Command palette'
+        ? `[label]="'${escapePlaygroundSingleQuotedString(label)}'"`
         : null,
-      emptyText !== 'No commands found' ? `[emptyText]="'${this.escapeAttr(emptyText)}'"` : null,
+      placeholder !== 'Type a command or search...'
+        ? `[placeholder]="'${escapePlaygroundSingleQuotedString(placeholder)}'"`
+        : null,
+      emptyText !== 'No commands found'
+        ? `[emptyText]="'${escapePlaygroundSingleQuotedString(emptyText)}'"`
+        : null,
       loading ? '[loading]="true"' : null,
     ].filter((attr): attr is string => attr !== null);
 
     const attrString = attrs.length > 0 ? `\n  ${attrs.join('\n  ')}` : '';
-    const groupsConst = groupsPreset === 'no matches' ? '[]' : this.formatGroups();
+    const groupsConst = groupsPreset === 'no matches' ? '[]' : PLAYGROUND_GROUPS_SOURCE;
 
     return [
       {
@@ -133,35 +148,27 @@ export class CommandPalettePlaygroundPage {
     ];
   };
 
-  protected labelOf(values: PlaygroundValues): string {
-    return values['label'] as string;
+  protected labelOf(values: CommandPalettePlaygroundValues): string {
+    return values.label;
   }
 
-  protected placeholderOf(values: PlaygroundValues): string {
-    return values['placeholder'] as string;
+  protected placeholderOf(values: CommandPalettePlaygroundValues): string {
+    return values.placeholder;
   }
 
-  protected emptyTextOf(values: PlaygroundValues): string {
-    return values['emptyText'] as string;
+  protected emptyTextOf(values: CommandPalettePlaygroundValues): string {
+    return values.emptyText;
   }
 
-  protected loadingOf(values: PlaygroundValues): boolean {
-    return values['loading'] as boolean;
+  protected loadingOf(values: CommandPalettePlaygroundValues): boolean {
+    return values.loading;
   }
 
-  protected groupsOf(values: PlaygroundValues): readonly KuiCommandGroup[] {
-    return values['groupsPreset'] === 'no matches' ? EMPTY_GROUPS : PLAYGROUND_GROUPS;
+  protected groupsOf(values: CommandPalettePlaygroundValues): readonly KuiCommandGroup[] {
+    return values.groupsPreset === 'no matches' ? EMPTY_GROUPS : PLAYGROUND_GROUPS;
   }
 
   protected runCommand(item: KuiCommandItem): void {
     this.selectedCommand.set(item.label);
-  }
-
-  private formatGroups(): string {
-    return JSON.stringify(PLAYGROUND_GROUPS, null, 2);
-  }
-
-  private escapeAttr(value: string): string {
-    return value.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
   }
 }

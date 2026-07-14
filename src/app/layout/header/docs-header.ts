@@ -1,31 +1,31 @@
-import { Component, computed, inject, input, output, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter } from 'rxjs';
+import {
+  Component,
+  DestroyRef,
+  type ElementRef,
+  inject,
+  input,
+  output,
+  viewChild,
+} from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+
 import {
   KuiBreadcrumbItemDirective,
-  KuiBreadcrumbSeparatorComponent,
   KuiBreadcrumbsDirective,
+  KuiBreadcrumbSeparatorComponent,
   KuiButtonDirective,
-  KuiCommandPaletteComponent,
   type KuiCommandItem,
+  KuiCommandPaletteComponent,
   KuiIconButtonDirective,
 } from '@kikita-labs/ui';
-import { DOCS_COMPONENT_CATEGORIES } from '../../core/components/docs-component-categories';
-import {
-  DOCS_HOME_PATH,
-  DOCS_NAVIGATION_ITEMS,
-  DOCS_PATHS,
-} from '../../core/navigation/docs-navigation-items';
-import { DocsSearchIndexService } from '../../core/search/docs-search-index.service';
-import { DocsSearchStateService } from '../../core/search/docs-search-state.service';
-import { DocsThemeService } from '../../core/theme/docs-theme.service';
-import { Theming } from '../theming/theming';
 
-interface HeaderBreadcrumb {
-  readonly label: string;
-  readonly path?: string;
-}
+import { DOCS_HOME_PATH, DocsRouteStateService } from '@core/navigation';
+import { DocsKeyboardShortcutService } from '@core/platform/keyboard';
+import { DocsSearchIndexService } from '@core/search';
+import { DocsSearchStateService } from '@core/search';
+import { DocsThemeService } from '@core/theme';
+
+import { Theming } from '../theming/theming';
 
 @Component({
   selector: 'app-docs-header',
@@ -41,32 +41,30 @@ interface HeaderBreadcrumb {
   ],
   templateUrl: './docs-header.html',
   styleUrl: './docs-header.scss',
-  host: {
-    '(document:keydown)': 'handleDocumentKeydown($event)',
-  },
 })
 export class DocsHeader {
-  readonly landing = input(false);
-  readonly menuOpen = input(false);
-  readonly showMenuButton = input(false);
-  readonly minimal = input(false);
-  readonly menuToggle = output<void>();
+  public readonly landing = input(false);
+  public readonly menuOpen = input(false);
+  public readonly showMenuButton = input(false);
+  public readonly minimal = input(false);
+  public readonly menuToggle = output<void>();
 
+  private readonly menuButton = viewChild<ElementRef<HTMLButtonElement>>('menuButton');
+  private readonly keyboardShortcuts = inject(DocsKeyboardShortcutService);
+  private readonly routeState = inject(DocsRouteStateService);
   private readonly router = inject(Router);
-  private readonly currentUrl = signal(this.router.url);
   protected readonly searchIndex = inject(DocsSearchIndexService);
   protected readonly search = inject(DocsSearchStateService);
   protected readonly theme = inject(DocsThemeService);
   protected readonly homePath = DOCS_HOME_PATH;
-  protected readonly breadcrumbs = computed(() => this.getBreadcrumbs(this.currentUrl()));
+  protected readonly activePage = this.routeState.activePage;
 
   constructor() {
-    this.router.events
-      .pipe(
-        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-        takeUntilDestroyed(),
-      )
-      .subscribe((event) => this.currentUrl.set(event.urlAfterRedirects));
+    const registration = this.keyboardShortcuts.registerCommandPalette(() => this.openSearch());
+
+    if (registration.ok) {
+      inject(DestroyRef).onDestroy(registration.value);
+    }
   }
 
   protected openSearch(): void {
@@ -84,45 +82,8 @@ export class DocsHeader {
     void this.router.navigateByUrl(path);
   }
 
-  protected handleDocumentKeydown(event: KeyboardEvent): void {
-    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
-      event.preventDefault();
-      this.openSearch();
-    }
-  }
-
-  private getBreadcrumbs(url: string): readonly HeaderBreadcrumb[] {
-    const path = url.split(/[?#]/)[0];
-
-    if (path.startsWith('/components/')) {
-      const isPlayground = path.endsWith('/playground');
-      const componentPath = isPlayground ? path.slice(0, -'/playground'.length) : path;
-      const component = DOCS_COMPONENT_CATEGORIES.flatMap((category) =>
-        category.components.map((item) => ({ category: category.label, ...item })),
-      ).find((item) => item.routePath === componentPath);
-
-      if (component) {
-        return [
-          { label: 'Components', path: DOCS_PATHS.components },
-          { label: component.category },
-          isPlayground ? { label: component.name, path: componentPath } : { label: component.name },
-          ...(isPlayground ? [{ label: 'Playground' }] : []),
-        ];
-      }
-    }
-
-    for (const item of DOCS_NAVIGATION_ITEMS) {
-      if (item.path === path) {
-        return [{ label: item.label }];
-      }
-
-      const child = item.children?.find((navigationChild) => navigationChild.path === path);
-
-      if (child) {
-        return [{ label: item.label, path: item.path }, { label: child.label }];
-      }
-    }
-
-    return [{ label: 'Kikita UI' }];
+  /** Restores focus after the mobile navigation dialog closes. */
+  public focusMenuButton(): void {
+    this.menuButton()?.nativeElement.focus({ preventScroll: true });
   }
 }

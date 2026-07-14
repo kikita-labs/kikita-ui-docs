@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+
 import {
   KuiIconButtonDirective,
   KuiPopoverComponent,
   KuiPopoverForDirective,
   kuiProvideFieldOptions,
 } from '@kikita-labs/ui';
+
 import { SeedColors } from './components/seed-colors/seed-colors';
 import { Typography } from './components/typography/typography';
 

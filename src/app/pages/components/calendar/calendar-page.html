@@ -1,0 +1,70 @@
+<article class="calendar-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Calendar"
+    description="Inline month grid for single-date and range selection."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Calendar is a standalone component with optional locale provider helpers."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Bind value with a signal and keep Date objects in component state."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="calendar-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic calendar">
+      <app-basic-calendar-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="states"
+    heading="States and composition"
+    description="The installed API covers range selection, disabled dates, locale, footer, and popover-friendly flat mode."
+  >
+    <ul class="calendar-page__notes">
+      <li>Use <code>mode="range"</code> when the value is a <code>KuiDateRange</code>.</li>
+      <li>Use <code>minDate</code>, <code>maxDate</code>, or <code>disabledDates</code> to block days.</li>
+      <li>Use <code>flat</code> inside <code>kui-dropdown</code> so panel chrome is not doubled.</li>
+      <li>Use <code>locale</code> or <code>kuiProvideLocale()</code> for month names and week start.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Calendar API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Calendar owns grid semantics and roving focus; consumers provide context around the picker."
+  >
+    <ul class="calendar-page__notes">
+      <li>The day grid uses <code>role="grid"</code> with one focusable day at a time.</li>
+      <li>Selected days expose <code>aria-selected</code>; today exposes <code>aria-current="date"</code>.</li>
+      <li>Arrow keys, Home, End, PageUp, PageDown, Enter, and Space are handled by the grid.</li>
+      <li>Provide nearby text or a surrounding field label when the calendar appears in a larger form.</li>
+      <li>Assistive-technology review is still pending for the newest date primitives.</li>
+    </ul>
+  </app-doc-section>
+</article>

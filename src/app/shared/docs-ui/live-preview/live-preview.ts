@@ -1,7 +1,6 @@
-import { Component, computed, input, signal } from '@angular/core';
-import { KuiCardDirective } from '@kikita-labs/ui';
+import { Component, input } from '@angular/core';
 
-type LivePreviewWidth = 'desktop' | 'mobile';
+import { KuiCardDirective } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-live-preview',
@@ -10,12 +9,8 @@ type LivePreviewWidth = 'desktop' | 'mobile';
   styleUrl: './live-preview.scss',
 })
 export class LivePreview {
-  readonly previewLabel = input.required<string>();
-  readonly description = input<string>();
-
-  protected readonly width = signal<LivePreviewWidth>('desktop');
-
-  protected readonly surfaceClass = computed(() => ({
-    'live-preview__surface--mobile': this.width() === 'mobile',
-  }));
+  /** Accessible name for the preview region. */
+  public readonly previewLabel = input.required<string>();
+  /** Optional accessible description for the preview region. */
+  public readonly description = input<string>();
 }

@@ -1,0 +1,25 @@
+<article class="breadcrumbs-playground-page">
+  <div class="breadcrumbs-playground-page__header">
+    <h1>Breadcrumbs &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Breadcrumbs playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <nav aria-label="Breadcrumb">
+      <ol kuiBreadcrumbs [size]="sizeOf(playground.values())">
+        <li><a kuiBreadcrumbItem href="/components">Components</a></li>
+        <li kuiBreadcrumbSeparator></li>
+        <li><span kuiBreadcrumbItem>{{ middleLabelOf(playground.values()) }}</span></li>
+        <li kuiBreadcrumbSeparator></li>
+        <li><span kuiBreadcrumbItem current>{{ currentLabelOf(playground.values()) }}</span></li>
+      </ol>
+    </nav>
+  </app-api-playground>
+
+  <app-api-table label="Breadcrumbs API" [rows]="apiRows" />
+  <p class="breadcrumbs-playground-page__note">{{ apiDescription }}</p>
+</article>

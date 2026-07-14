@@ -1,21 +1,56 @@
 import { Component, signal } from '@angular/core';
+
 import {
-  KuiSize,
+  type KuiSize,
   KuiTabDirective,
   KuiTabPanelDirective,
   KuiTabsComponent,
-  KuiTabsOrientation,
-  KuiTabsVariant,
+  type KuiTabsOrientation,
+  type KuiTabsVariant,
 } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { TABS_API_ROWS } from '../tabs.api-schema';
+import { TABS_API_DESCRIPTION } from '../tabs.docs-content';
+
+const TABS_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  {
+    key: 'variant',
+    label: 'variant',
+    kind: 'enum',
+    options: ['line', 'pill'],
+    defaultValue: 'line',
+  },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+  {
+    key: 'orientation',
+    label: 'orientation',
+    kind: 'enum',
+    options: ['horizontal', 'vertical'],
+    defaultValue: 'horizontal',
+  },
+  { key: 'tab1Label', label: 'tab 1 label', kind: 'string', defaultValue: 'Overview' },
+  { key: 'tab2Label', label: 'tab 2 label', kind: 'string', defaultValue: 'Settings' },
+  { key: 'tab3Label', label: 'tab 3 label', kind: 'string', defaultValue: 'Logs' },
+  { key: 'controlsPanels', label: 'controlsPanels', kind: 'boolean', defaultValue: true },
+  { key: 'showError', label: 'tab 2 hasError', kind: 'boolean', defaultValue: false },
+] as const);
+
+type TabsPlaygroundValues = PlaygroundValues<typeof TABS_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-tabs-playground-page',
@@ -24,49 +59,24 @@ import { TABS_API_ROWS } from '../tabs.api-schema';
   styleUrl: './tabs-playground-page.scss',
 })
 export class TabsPlaygroundPage {
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = TABS_API_DESCRIPTION;
   protected readonly apiRows = TABS_API_ROWS;
 
   protected readonly selected = signal('overview');
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    {
-      key: 'variant',
-      label: 'variant',
-      kind: 'enum',
-      options: ['line', 'pill'],
-      defaultValue: 'line',
-    },
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['xs', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-    {
-      key: 'orientation',
-      label: 'orientation',
-      kind: 'enum',
-      options: ['horizontal', 'vertical'],
-      defaultValue: 'horizontal',
-    },
-    { key: 'tab1Label', label: 'tab 1 label', kind: 'string', defaultValue: 'Overview' },
-    { key: 'tab2Label', label: 'tab 2 label', kind: 'string', defaultValue: 'Settings' },
-    { key: 'tab3Label', label: 'tab 3 label', kind: 'string', defaultValue: 'Logs' },
-    { key: 'controlsPanels', label: 'controlsPanels', kind: 'boolean', defaultValue: true },
-    { key: 'showError', label: 'tab 2 hasError', kind: 'boolean', defaultValue: false },
-  ];
+  protected readonly playgroundControls = TABS_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const variant = values['variant'] as string;
-    const size = values['size'] as string;
-    const orientation = values['orientation'] as string;
-    const tab1Label = (values['tab1Label'] as string) || 'Overview';
-    const tab2Label = (values['tab2Label'] as string) || 'Settings';
-    const tab3Label = (values['tab3Label'] as string) || 'Logs';
-    const controlsPanels = values['controlsPanels'] as boolean;
-    const showError = values['showError'] as boolean;
+  protected readonly buildPlaygroundSnippet = (
+    values: TabsPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const variant = values.variant;
+    const size = values.size;
+    const orientation = values.orientation;
+    const tab1Label = values.tab1Label || 'Overview';
+    const tab2Label = values.tab2Label || 'Settings';
+    const tab3Label = values.tab3Label || 'Logs';
+    const controlsPanels = values.controlsPanels;
+    const showError = values.showError;
 
     const tabsAttrs = [
       variant !== 'line' ? `variant="${variant}"` : null,
@@ -80,15 +90,15 @@ export class TabsPlaygroundPage {
     const panels = controlsPanels
       ? `
 
-  <div kuiTabPanel value="overview">${this.escapeHtml(tab1Label)} content.</div>
-  <div kuiTabPanel value="settings">${this.escapeHtml(tab2Label)} content.</div>
-  <div kuiTabPanel value="logs">${this.escapeHtml(tab3Label)} content.</div>`
+  <div kuiTabPanel value="overview">${escapePlaygroundHtml(tab1Label)} content.</div>
+  <div kuiTabPanel value="settings">${escapePlaygroundHtml(tab2Label)} content.</div>
+  <div kuiTabPanel value="logs">${escapePlaygroundHtml(tab3Label)} content.</div>`
       : '';
 
     const code = `<kui-tabs [(selected)]="activeTab"${tabsAttrs ? ` ${tabsAttrs}` : ''}>
-  <button kuiTab value="overview">${this.escapeHtml(tab1Label)}</button>
-  <button kuiTab value="settings"${showError ? ` hasError errorLabel="Contains errors"` : ''}>${this.escapeHtml(tab2Label)}</button>
-  <button kuiTab value="logs">${this.escapeHtml(tab3Label)}</button>${panels}
+  <button kuiTab value="overview">${escapePlaygroundHtml(tab1Label)}</button>
+  <button kuiTab value="settings"${showError ? ` hasError errorLabel="Contains errors"` : ''}>${escapePlaygroundHtml(tab2Label)}</button>
+  <button kuiTab value="logs">${escapePlaygroundHtml(tab3Label)}</button>${panels}
 </kui-tabs>`;
 
     return [
@@ -100,31 +110,31 @@ export class TabsPlaygroundPage {
     ];
   };
 
-  protected variantOf(values: PlaygroundValues): KuiTabsVariant {
-    return values['variant'] as KuiTabsVariant;
+  protected variantOf(values: TabsPlaygroundValues): KuiTabsVariant {
+    return values.variant;
   }
 
-  protected sizeOf(values: PlaygroundValues): KuiSize {
-    return values['size'] as KuiSize;
+  protected sizeOf(values: TabsPlaygroundValues): KuiSize {
+    return values.size;
   }
 
-  protected orientationOf(values: PlaygroundValues): KuiTabsOrientation {
-    return values['orientation'] as KuiTabsOrientation;
+  protected orientationOf(values: TabsPlaygroundValues): KuiTabsOrientation {
+    return values.orientation;
   }
 
-  protected controlsPanelsOf(values: PlaygroundValues): boolean {
-    return values['controlsPanels'] as boolean;
+  protected controlsPanelsOf(values: TabsPlaygroundValues): boolean {
+    return values.controlsPanels;
   }
 
-  protected showErrorOf(values: PlaygroundValues): boolean {
-    return values['showError'] as boolean;
+  protected showErrorOf(values: TabsPlaygroundValues): boolean {
+    return values.showError;
   }
 
-  protected labelOf(values: PlaygroundValues, key: string, fallback: string): string {
-    return (values[key] as string) || fallback;
-  }
-
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  protected labelOf(
+    values: TabsPlaygroundValues,
+    key: 'tab1Label' | 'tab2Label' | 'tab3Label',
+    fallback: string,
+  ): string {
+    return values[key] || fallback;
   }
 }

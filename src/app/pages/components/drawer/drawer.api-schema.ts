@@ -1,9 +1,9 @@
-import { ApiTableRow } from '../../../shared/docs-ui/api-table/api-table-row';
+import { type ApiTableRow } from '@shared/docs-ui/api-table';
 
 export const DRAWER_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'kuiDrawer(component, config?)',
-    type: '(component: Type<KuiDrawerHost<TResult, TData>>, config?: KuiDrawerConfig<TData>) => KuiDrawerRef<TResult, TData>',
+    type: '(component: Type<TComponent>, config?: Omit<KuiDrawerConfig, "data">) => (data: TData) => Observable<TResult | undefined>',
     defaultValue: '-',
     description:
       'Inject-function factory. Call once per injection context to get a typed opener bound to that component.',
@@ -56,7 +56,8 @@ export const DRAWER_API_ROWS: readonly ApiTableRow[] = [
     name: 'KuiDrawerConfig.data',
     type: 'TData',
     defaultValue: 'undefined',
-    description: 'Value made available on drawerContext.data.',
+    description:
+      'Available on the low-level config type; kuiDrawer() passes feature data through the returned opener function instead.',
   },
   {
     name: 'KuiDrawerConfig.side',
@@ -90,8 +91,8 @@ export const DRAWER_API_ROWS: readonly ApiTableRow[] = [
       'Passed to the content context for close-button rendering; your component decides whether to render it.',
   },
   {
-    name: 'KuiDrawerRef<TResult, TData>',
-    type: 'type',
+    name: 'KuiDrawerRef<TResult>',
+    type: 'class',
     defaultValue: '-',
     description:
       'Return type of kuiDrawer(component, config). Calling it with data opens the drawer and returns Observable<TResult | undefined>.',

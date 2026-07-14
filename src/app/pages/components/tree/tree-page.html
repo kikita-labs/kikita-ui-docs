@@ -1,0 +1,69 @@
+<article class="tree-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Tree"
+    description="Hierarchical navigation and checkable node lists with keyboard navigation."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Tree is a standalone component driven by typed node data."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Provide stable node ids and bind selected or checked state from signals."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="tree-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic tree">
+      <app-basic-tree-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="modes"
+    heading="Modes and loading"
+    description="Use display mode for navigation and checkable mode for multi-select hierarchies."
+  >
+    <ul class="tree-page__notes">
+      <li>Checkable mode cascades checked state to non-disabled descendants.</li>
+      <li>Partially checked parents expose mixed state when descendants differ.</li>
+      <li>Lazy nodes call loadChildren once on first expansion and cache the result.</li>
+      <li>Built-in icons are limited to folder and file; very large trees are not virtualized.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Tree API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Tree uses ARIA tree semantics with roving tabindex keyboard navigation."
+  >
+    <ul class="tree-page__notes">
+      <li>Set ariaLabel when nearby text does not already name the tree.</li>
+      <li>Arrow keys, Home, End, Enter, Space, and type-ahead move through visible nodes.</li>
+      <li>Disabled nodes stay reachable by navigation but cannot be selected or checked.</li>
+      <li>Use mobile mode where touch targets need the larger 44px toggle affordance.</li>
+    </ul>
+  </app-doc-section>
+</article>

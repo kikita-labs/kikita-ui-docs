@@ -1,0 +1,56 @@
+<article class="segmented-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Segmented"
+    description="Compact single-choice control for switching related views or modes."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Segmented composes a container component with projected native buttons marked by kuiSegment."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Bind the selected segment with a signal and keep each projected button native."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="segmented-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic segmented control">
+      <app-basic-segmented-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Segmented API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Segmented uses radiogroup semantics while preserving native button focus."
+  >
+    <ul class="segmented-page__notes">
+      <li>The container renders <code>role="radiogroup"</code>.</li>
+      <li>Each segment button renders <code>role="radio"</code> and selection state.</li>
+      <li>Disabled segments cannot be selected.</li>
+      <li>Use an accessible label on the segmented group when nearby text is not enough.</li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -29,8 +29,9 @@ either update the package first or mark the docs task as blocked.
 
 ## Implementation Sequence
 
-1. Read `AGENTS.md`, `.agents/workflow.md`, `.agents/library-sync.md`,
-   `.agents/git-policy.md`, and this file.
+1. Read `AGENTS.md`, every document in its Always Read list, and this file.
+   For refactoring an existing feature, also read the master refactor plan,
+   component inventory, and the component's local work package.
 2. Run `angularCliKikitaDocs.list_projects` before Angular work.
 3. Load Angular best practices from `instructions://best-practices` if
    `get_best_practices` returns `Unexpected response type`.
@@ -44,8 +45,11 @@ either update the package first or mark the docs task as blocked.
    primitives for form work or overlay primitives for overlay work.
 7. Confirm the public imports and exported types from the installed package.
    Examples must import from `@kikita-labs/ui`, never from `../kikita-ui`.
-8. Create or update the docs route, navigation records, page, examples,
-   API schema, playground, and any local status notes together.
+8. Create or update the component docs manifest, page, examples, API schema,
+   playground, registry-derived surfaces, generated source, tests, and local
+   status notes together. Until the typed registry migration lands, update the
+   existing route/navigation/category sources together and record the remaining
+   migration task in the component work package.
 9. Verify with the relevant Angular target and review the rendered page when the
    change affects layout, responsive behavior, overlay behavior, or interaction.
 
@@ -59,6 +63,10 @@ For a component named `<name>`:
 - `src/app/pages/components/<name>/<name>.api-schema.ts`
 - `src/app/pages/components/<name>/examples/<scenario>-example/*`
 - `src/app/pages/components/<name>/playground/<name>-playground-page.*`
+- `src/app/pages/components/<name>/<name>.docs-manifest.ts` once the typed
+  registry migration is available
+- local boundary `index.ts` files according to
+  `.agents/imports-and-boundaries.md`
 - `src/app/core/navigation/app-route-path.ts`
 - `src/app/core/navigation/docs-navigation-items.ts`
 - `src/app/core/components/docs-component-categories.ts`
@@ -206,12 +214,21 @@ Code rules:
 - Use `input()` and `output()` for new component APIs.
 - Use native control flow: `@if`, `@for`, `@switch`.
 - Do not use `ngClass` or `ngStyle`; use class and style bindings.
+- Apply explicit public/protected/private visibility and readonly rules from
+  `.agents/angular-code-style.md`.
+- Do not use direct browser globals. Examples must model the platform and async
+  patterns in `.agents/platform-and-state.md`.
 - Keep example components focused on one scenario.
 - Keep snippets in sync with the rendered example.
 
 Snippet rules:
 
-- Store snippets as `readonly CodeTab[]` on the page class.
+- The target architecture generates snippet text from the real example source
+  files. Use the generated example-source module once it is available for the
+  feature; do not duplicate the source in page-owned multiline strings.
+- Until a feature is migrated, store legacy snippets as
+  `protected readonly CodeTab[]` and update the real example and snippet in
+  the same change.
 - Include file names where useful.
 - Use `language: 'html'`, `language: 'ts'`, or `language: 'scss'` so Shiki can
   highlight correctly.
@@ -234,7 +251,9 @@ Rendered examples:
 
 ## API Tables
 
-Create `<name>.api-schema.ts` with `readonly ApiTableRow[]`.
+Create `<name>.api-schema.ts` with readonly, version-verified API data. Use the
+typed shared schema once it is available; do not recover playground values with
+repeated type assertions.
 
 Every public API row should include:
 
@@ -264,7 +283,9 @@ Every component with configurable inputs should get a playground page.
 
 Use `app-api-playground`:
 
-- Define `playgroundControls: readonly PlaygroundControl[]`.
+- Define typed playground controls that infer the value map. During the
+  migration period, do not add new assertions to the legacy
+  `PlaygroundValues` API; improve the shared generic contract first.
 - Include every public input that can be changed by a consumer at runtime.
 - Include inputs even when they seem minor, such as `size`, `disabled`,
   `readonly`, `invalid`, `clearable`, `placement`, `align`, `shape`,
@@ -385,6 +406,11 @@ At minimum:
 - Confirm playground controls update the preview and snippet.
 - Confirm right menu links scroll to the intended sections.
 - Confirm left sidebar route opens the new page.
+- Confirm the document has no horizontal overflow at 320, 360, and 390 pixels.
+- Confirm API tables, code tabs, playground controls, and examples scroll or
+  stack locally rather than widening the document.
+- Confirm mobile navigation focus trap, close behavior, and focus restoration
+  when the change touches the shell.
 - Confirm no tracked file contains Cyrillic or mojibake.
 
 ## Final Checklist

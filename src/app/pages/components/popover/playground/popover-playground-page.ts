@@ -1,21 +1,59 @@
 import { Component } from '@angular/core';
+
 import {
   KuiButtonDirective,
-  KuiPopoverAlign,
+  type KuiPopoverAlign,
   KuiPopoverComponent,
   KuiPopoverForDirective,
-  KuiPopoverPlacement,
-  KuiPopoverTriggerType,
+  type KuiPopoverPlacement,
+  type KuiPopoverTriggerType,
 } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { POPOVER_API_ROWS } from '../popover.api-schema';
+import { POPOVER_API_DESCRIPTION } from '../popover.docs-content';
+
+const POPOVER_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'triggerLabel', label: 'trigger label', kind: 'string', defaultValue: 'Open' },
+  { key: 'title', label: 'title', kind: 'string', defaultValue: 'Title' },
+  { key: 'description', label: 'description', kind: 'string', defaultValue: 'Supporting text.' },
+  { key: 'ariaLabel', label: 'ariaLabel', kind: 'string', defaultValue: 'Popover' },
+  {
+    key: 'placement',
+    label: 'placement',
+    kind: 'enum',
+    options: ['top', 'bottom', 'left', 'right'],
+    defaultValue: 'bottom',
+  },
+  {
+    key: 'align',
+    label: 'align',
+    kind: 'enum',
+    options: ['start', 'center', 'end'],
+    defaultValue: 'center',
+  },
+  { key: 'arrow', label: 'arrow', kind: 'boolean', defaultValue: false },
+  {
+    key: 'triggerType',
+    label: 'triggerType',
+    kind: 'enum',
+    options: ['click', 'hover'],
+    defaultValue: 'click',
+  },
+  { key: 'hoverDelay', label: 'hoverDelay', kind: 'number', defaultValue: 100 },
+  { key: 'offset', label: 'offset', kind: 'number', defaultValue: 8 },
+  { key: 'trapFocus', label: 'trapFocus', kind: 'boolean', defaultValue: false },
+] as const);
+
+type PopoverPlaygroundValues = PlaygroundValues<typeof POPOVER_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-popover-playground-page',
@@ -30,60 +68,34 @@ import { POPOVER_API_ROWS } from '../popover.api-schema';
   styleUrl: './popover-playground-page.scss',
 })
 export class PopoverPlaygroundPage {
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = POPOVER_API_DESCRIPTION;
   protected readonly apiRows = POPOVER_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    { key: 'triggerLabel', label: 'trigger label', kind: 'string', defaultValue: 'Open' },
-    { key: 'title', label: 'title', kind: 'string', defaultValue: 'Title' },
-    { key: 'description', label: 'description', kind: 'string', defaultValue: 'Supporting text.' },
-    { key: 'ariaLabel', label: 'ariaLabel', kind: 'string', defaultValue: 'Popover' },
-    {
-      key: 'placement',
-      label: 'placement',
-      kind: 'enum',
-      options: ['top', 'bottom', 'left', 'right'],
-      defaultValue: 'bottom',
-    },
-    {
-      key: 'align',
-      label: 'align',
-      kind: 'enum',
-      options: ['start', 'center', 'end'],
-      defaultValue: 'center',
-    },
-    { key: 'arrow', label: 'arrow', kind: 'boolean', defaultValue: false },
-    {
-      key: 'triggerType',
-      label: 'triggerType',
-      kind: 'enum',
-      options: ['click', 'hover'],
-      defaultValue: 'click',
-    },
-    { key: 'hoverDelay', label: 'hoverDelay', kind: 'number', defaultValue: 100 },
-    { key: 'offset', label: 'offset', kind: 'number', defaultValue: 8 },
-    { key: 'trapFocus', label: 'trapFocus', kind: 'boolean', defaultValue: false },
-  ];
+  protected readonly playgroundControls = POPOVER_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const triggerLabel = (values['triggerLabel'] as string) || 'Open';
-    const title = (values['title'] as string) || 'Title';
-    const description = (values['description'] as string) || 'Supporting text.';
-    const ariaLabel = values['ariaLabel'] as string;
-    const placement = values['placement'] as string;
-    const align = values['align'] as string;
-    const arrow = values['arrow'] as boolean;
-    const triggerType = values['triggerType'] as string;
-    const hoverDelay = values['hoverDelay'] as number;
-    const offset = values['offset'] as number;
-    const trapFocus = values['trapFocus'] as boolean;
+  protected readonly buildPlaygroundSnippet = (
+    values: PopoverPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const triggerLabel = values.triggerLabel || 'Open';
+    const title = values.title || 'Title';
+    const description = values.description || 'Supporting text.';
+    const ariaLabel = values.ariaLabel;
+    const placement = values.placement;
+    const align = values.align;
+    const arrow = values.arrow;
+    const triggerType = values.triggerType;
+    const hoverDelay = values.hoverDelay;
+    const offset = values.offset;
+    const trapFocus = values.trapFocus;
 
     const popAttrs = [
       placement !== 'bottom' ? `placement="${placement}"` : null,
       align !== 'center' ? `align="${align}"` : null,
       arrow ? `[arrow]="true"` : null,
       triggerType !== 'click' ? `triggerType="${triggerType}"` : null,
-      ariaLabel && ariaLabel !== 'Popover' ? `ariaLabel="${this.escapeHtml(ariaLabel)}"` : null,
+      ariaLabel && ariaLabel !== 'Popover'
+        ? `ariaLabel="${escapePlaygroundHtml(ariaLabel)}"`
+        : null,
       hoverDelay !== 100 ? `[hoverDelay]="${hoverDelay}"` : null,
       offset !== 8 ? `[offset]="${offset}"` : null,
       trapFocus ? `[trapFocus]="true"` : null,
@@ -91,11 +103,11 @@ export class PopoverPlaygroundPage {
       .filter((attr): attr is string => attr !== null)
       .join(' ');
 
-    const code = `<button [kuiPopoverFor]="myPop" kuiButton type="button">${this.escapeHtml(triggerLabel)}</button>
+    const code = `<button [kuiPopoverFor]="myPop" kuiButton type="button">${escapePlaygroundHtml(triggerLabel)}</button>
 
 <kui-popover #myPop${popAttrs ? ` ${popAttrs}` : ''}>
-  <div class="kui-popover-title">${this.escapeHtml(title)}</div>
-  <div class="kui-popover-desc">${this.escapeHtml(description)}</div>
+  <div class="kui-popover-title">${escapePlaygroundHtml(title)}</div>
+  <div class="kui-popover-desc">${escapePlaygroundHtml(description)}</div>
 </kui-popover>`;
 
     return [
@@ -107,51 +119,47 @@ export class PopoverPlaygroundPage {
     ];
   };
 
-  protected triggerLabelOf(values: PlaygroundValues): string {
-    return (values['triggerLabel'] as string) || 'Open';
+  protected triggerLabelOf(values: PopoverPlaygroundValues): string {
+    return values.triggerLabel || 'Open';
   }
 
-  protected titleOf(values: PlaygroundValues): string {
-    return (values['title'] as string) || 'Title';
+  protected titleOf(values: PopoverPlaygroundValues): string {
+    return values.title || 'Title';
   }
 
-  protected descriptionOf(values: PlaygroundValues): string {
-    return (values['description'] as string) || 'Supporting text.';
+  protected descriptionOf(values: PopoverPlaygroundValues): string {
+    return values.description || 'Supporting text.';
   }
 
-  protected ariaLabelOf(values: PlaygroundValues): string {
-    return (values['ariaLabel'] as string) || 'Popover';
+  protected ariaLabelOf(values: PopoverPlaygroundValues): string {
+    return values.ariaLabel || 'Popover';
   }
 
-  protected placementOf(values: PlaygroundValues): KuiPopoverPlacement {
-    return values['placement'] as KuiPopoverPlacement;
+  protected placementOf(values: PopoverPlaygroundValues): KuiPopoverPlacement {
+    return values.placement;
   }
 
-  protected alignOf(values: PlaygroundValues): KuiPopoverAlign {
-    return values['align'] as KuiPopoverAlign;
+  protected alignOf(values: PopoverPlaygroundValues): KuiPopoverAlign {
+    return values.align;
   }
 
-  protected arrowOf(values: PlaygroundValues): boolean {
-    return values['arrow'] as boolean;
+  protected arrowOf(values: PopoverPlaygroundValues): boolean {
+    return values.arrow;
   }
 
-  protected triggerTypeOf(values: PlaygroundValues): KuiPopoverTriggerType {
-    return values['triggerType'] as KuiPopoverTriggerType;
+  protected triggerTypeOf(values: PopoverPlaygroundValues): KuiPopoverTriggerType {
+    return values.triggerType;
   }
 
-  protected hoverDelayOf(values: PlaygroundValues): number {
-    return values['hoverDelay'] as number;
+  protected hoverDelayOf(values: PopoverPlaygroundValues): number {
+    return values.hoverDelay;
   }
 
-  protected offsetOf(values: PlaygroundValues): number {
-    return values['offset'] as number;
+  protected offsetOf(values: PopoverPlaygroundValues): number {
+    return values.offset;
   }
 
-  protected trapFocusOf(values: PlaygroundValues): boolean {
-    return values['trapFocus'] as boolean;
-  }
-
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  protected trapFocusOf(values: PopoverPlaygroundValues): boolean {
+    return values.trapFocus;
   }
 }

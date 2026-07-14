@@ -1,5 +1,6 @@
 import { Overlay, OverlayContainer } from '@angular/cdk/overlay';
-import { Component, computed, effect, input, signal, untracked } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
+
 import {
   KuiCardDirective,
   KuiInputDirective,
@@ -7,11 +8,20 @@ import {
   KuiSegmentedComponent,
   KuiSwitchDirective,
 } from '@kikita-labs/ui';
-import { CodeTab } from '../code-tabs/code-tab';
+
+import { DocsLocalOverlayContainer } from '@core/platform/overlay';
+
 import { CodeTabs } from '../code-tabs/code-tabs';
-import { ApiPlaygroundOverlayContainer } from './api-playground-overlay-container';
 import { ApiPlaygroundViewport } from './api-playground-viewport';
-import { PlaygroundControl, PlaygroundValues } from './playground-control';
+import {
+  createPlaygroundValues,
+  parsePlaygroundNumber,
+  type PlaygroundControl,
+  type PlaygroundSnippetBuilder,
+  type PlaygroundValue,
+} from './playground-control';
+
+let nextApiPlaygroundId = 0;
 
 @Component({
   selector: 'app-api-playground',
@@ -25,16 +35,28 @@ import { PlaygroundControl, PlaygroundValues } from './playground-control';
     KuiSegmentedComponent,
     KuiSwitchDirective,
   ],
-  providers: [{ provide: OverlayContainer, useClass: ApiPlaygroundOverlayContainer }, Overlay],
+  providers: [{ provide: OverlayContainer, useClass: DocsLocalOverlayContainer }, Overlay],
   templateUrl: './api-playground.html',
   styleUrl: './api-playground.scss',
 })
-export class ApiPlayground {
-  readonly previewLabel = input('Live preview');
-  readonly controls = input.required<readonly PlaygroundControl[]>();
-  readonly snippet = input.required<(values: PlaygroundValues) => readonly CodeTab[]>();
+export class ApiPlayground<
+  TControls extends readonly PlaygroundControl[] = readonly PlaygroundControl[],
+> {
+  protected readonly id = `api-playground-${++nextApiPlaygroundId}`;
 
-  readonly values = signal<PlaygroundValues>({});
+  /** Accessible name forwarded to the interactive preview region. */
+  public readonly previewLabel = input('Live preview');
+  /** Discriminated control tuple that owns keys, options, and defaults. */
+  public readonly controls = input.required<TControls>();
+  /** Pure typed serializer that derives displayed source from current values. */
+  public readonly snippet = input.required<PlaygroundSnippetBuilder<TControls>>();
+
+  private readonly valueOverrides = signal<Readonly<Record<string, PlaygroundValue>>>({});
+
+  /** Readonly current value map exposed through exportAs for live previews. */
+  public readonly values = computed(() =>
+    createPlaygroundValues(this.controls(), this.valueOverrides()),
+  );
   protected readonly snippetTabs = computed(() => this.snippet()(this.values()));
   protected readonly enumControls = computed(() =>
     this.controls().filter((control) => control.kind === 'enum'),
@@ -46,41 +68,35 @@ export class ApiPlayground {
     this.controls().filter((control) => control.kind === 'boolean'),
   );
 
-  constructor() {
-    effect(() => {
-      const controls = this.controls();
-
-      untracked(() => {
-        this.values.set(
-          Object.fromEntries(controls.map((control) => [control.key, control.defaultValue])),
-        );
-      });
-    });
+  protected setValue(key: string, value: PlaygroundValue): void {
+    this.valueOverrides.update((current) => ({ ...current, [key]: value }));
   }
 
-  protected setValue(key: string, value: boolean | number | string): void {
-    this.values.update((current) => ({ ...current, [key]: value }));
+  protected setBooleanValue(key: string, value: boolean): void {
+    this.setValue(key, value);
   }
 
-  protected toggleBoolean(key: string, event: Event): void {
-    this.setValue(key, (event.target as HTMLInputElement).checked);
+  protected setStringValue(key: string, value: string): void {
+    this.setValue(key, value);
   }
 
-  protected setStringFromEvent(key: string, event: Event): void {
-    this.setValue(key, (event.target as HTMLInputElement).value);
+  protected setNumberValue(key: string, rawValue: string): void {
+    this.setValue(key, parsePlaygroundNumber(rawValue));
   }
 
-  protected setNumberFromEvent(key: string, event: Event): void {
-    const raw = (event.target as HTMLInputElement).value;
-
-    this.setValue(key, raw === '' ? 0 : Number(raw));
-  }
-
-  protected booleanValue(key: string): boolean {
+  protected booleanValue(key: TControls[number]['key']): boolean {
     return Boolean(this.values()[key]);
   }
 
-  protected stringValue(key: string): string {
+  protected stringValue(key: TControls[number]['key']): string {
     return String(this.values()[key] ?? '');
+  }
+
+  protected controlLabelId(key: string): string {
+    return `${this.id}-${key}-label`;
+  }
+
+  protected controlInputId(key: string): string {
+    return `${this.id}-${key}-input`;
   }
 }

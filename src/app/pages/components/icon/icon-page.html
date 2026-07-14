@@ -1,0 +1,77 @@
+<article class="icon-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Icon"
+    description="Render trusted SVG icons with accessible decorative and meaningful states."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Use the component directly, and register named icons at application setup when you want name-based lookup."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Use labels only when the icon carries meaning; omit labels for decorative support icons."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="icon-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic icon usage">
+      <app-basic-icon-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="security"
+    heading="Security"
+    description="Inline SVG inputs are trusted-code APIs, not user-content APIs."
+  >
+    <ul class="icon-page__notes">
+      <li>
+        Register SVG strings from static application code with <code>provideKuiIcons()</code>.
+      </li>
+      <li>Pass only trusted static SVG to <code>[source]</code>.</li>
+      <li>Do not pass user-generated SVG markup into the registry or direct source input.</li>
+      <li>Use <code>src</code> for normal image URLs when you do not need inline SVG styling.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Icon API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Icon accessibility depends on whether the graphic adds information."
+  >
+    <ul class="icon-page__notes">
+      <li>
+        Omit <code>label</code> for decorative icons so they are hidden from assistive technology.
+      </li>
+      <li>
+        Provide <code>label</code> when the icon itself communicates status, action, or identity.
+      </li>
+      <li>
+        Prefer visible text next to icons for actions; icon-only buttons need an accessible name.
+      </li>
+      <li>Keep icon sizing proportional to surrounding text or control height.</li>
+    </ul>
+  </app-doc-section>
+</article>

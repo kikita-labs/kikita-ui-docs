@@ -1,0 +1,15 @@
+.file-upload-playground-page {
+  display: grid;
+  gap: var(--kui-space-6);
+  min-width: 0;
+}
+
+.file-upload-playground-page__header h1 {
+  margin: 0;
+}
+
+.file-upload-playground-page__note {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size);
+  margin: 0;
+}

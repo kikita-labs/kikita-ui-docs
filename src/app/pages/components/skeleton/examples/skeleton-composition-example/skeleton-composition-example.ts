@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { KuiCardDirective, KuiSkeletonDirective } from '@kikita-labs/ui';
 
 @Component({

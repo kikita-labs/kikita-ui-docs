@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';
 
 @Component({

@@ -1,16 +1,43 @@
 import { Component } from '@angular/core';
-import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
-import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
-import { DROPDOWN_API_ROWS } from '../dropdown.api-schema';
 
-type PanelRoleOption = 'listbox' | 'dialog' | 'grid' | 'none';
+import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
+import {
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
+import { DROPDOWN_API_ROWS } from '../dropdown.api-schema';
+import { DROPDOWN_API_DESCRIPTION } from '../dropdown.docs-content';
+
+const DROPDOWN_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'triggerLabel', label: 'trigger label', kind: 'string', defaultValue: 'Actions' },
+  { key: 'maxHeight', label: 'maxHeight', kind: 'string', defaultValue: '240px' },
+  { key: 'offset', label: 'offset', kind: 'number', defaultValue: 4 },
+  { key: 'closeOnSelect', label: 'closeOnSelect', kind: 'boolean', defaultValue: true },
+  {
+    key: 'panelRole',
+    label: 'panelRole',
+    kind: 'enum',
+    options: ['listbox', 'dialog', 'grid', 'none'],
+    defaultValue: 'listbox',
+  },
+  {
+    key: 'panelWidth',
+    label: 'panelWidth',
+    kind: 'enum',
+    options: ['anchor', 'content', 'auto'],
+    defaultValue: 'anchor',
+  },
+  { key: 'width', label: 'width', kind: 'string', defaultValue: '' },
+  { key: 'disabledOption', label: 'disabled option', kind: 'boolean', defaultValue: false },
+] as const);
+
+type DropdownPlaygroundValues = PlaygroundValues<typeof DROPDOWN_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-dropdown-playground-page',
@@ -25,46 +52,27 @@ type PanelRoleOption = 'listbox' | 'dialog' | 'grid' | 'none';
   styleUrl: './dropdown-playground-page.scss',
 })
 export class DropdownPlaygroundPage {
-  protected readonly apiDescription = `Inputs, outputs, and public API verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = DROPDOWN_API_DESCRIPTION;
   protected readonly apiRows = DROPDOWN_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    { key: 'triggerLabel', label: 'trigger label', kind: 'string', defaultValue: 'Actions' },
-    { key: 'maxHeight', label: 'maxHeight', kind: 'string', defaultValue: '240px' },
-    { key: 'offset', label: 'offset', kind: 'number', defaultValue: 4 },
-    { key: 'closeOnSelect', label: 'closeOnSelect', kind: 'boolean', defaultValue: true },
-    {
-      key: 'panelRole',
-      label: 'panelRole',
-      kind: 'enum',
-      options: ['listbox', 'dialog', 'grid', 'none'],
-      defaultValue: 'listbox',
-    },
-    {
-      key: 'panelWidth',
-      label: 'panelWidth',
-      kind: 'enum',
-      options: ['anchor', 'content', 'auto'],
-      defaultValue: 'anchor',
-    },
-    { key: 'width', label: 'width', kind: 'string', defaultValue: '' },
-    { key: 'disabledOption', label: 'disabled option', kind: 'boolean', defaultValue: false },
-  ];
+  protected readonly playgroundControls = DROPDOWN_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const triggerLabel = (values['triggerLabel'] as string) || 'Actions';
-    const maxHeight = values['maxHeight'] as string;
-    const offset = values['offset'] as number;
-    const closeOnSelect = values['closeOnSelect'] as boolean;
-    const panelRole = values['panelRole'] as PanelRoleOption;
-    const panelWidth = values['panelWidth'] as string;
-    const width = values['width'] as string;
-    const disabledOption = values['disabledOption'] as boolean;
+  protected readonly buildPlaygroundSnippet = (
+    values: DropdownPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const triggerLabel = values.triggerLabel || 'Actions';
+    const maxHeight = values.maxHeight;
+    const offset = values.offset;
+    const closeOnSelect = values.closeOnSelect;
+    const panelRole = values.panelRole;
+    const panelWidth = values.panelWidth;
+    const width = values.width;
+    const disabledOption = values.disabledOption;
 
     const dropdownAttrs = [
       maxHeight !== '240px'
         ? maxHeight
-          ? `[maxHeight]="'${this.escapeHtml(maxHeight)}'"`
+          ? `[maxHeight]="'${escapePlaygroundHtml(maxHeight)}'"`
           : `[maxHeight]="null"`
         : null,
       offset !== 4 ? `[offset]="${offset}"` : null,
@@ -75,7 +83,7 @@ export class DropdownPlaygroundPage {
           : `panelRole="${panelRole}"`
         : null,
       panelWidth !== 'anchor' ? `panelWidth="${panelWidth}"` : null,
-      width ? `width="${this.escapeHtml(width)}"` : null,
+      width ? `width="${escapePlaygroundHtml(width)}"` : null,
     ]
       .filter((attr): attr is string => attr !== null)
       .join(' ');
@@ -84,7 +92,7 @@ export class DropdownPlaygroundPage {
       ? `\n  <div kuiOption value="archive" [disabled]="true">Archive</div>`
       : `\n  <div kuiOption value="archive">Archive</div>`;
 
-    const code = `<button type="button" [kuiDropdownFor]="menu">${this.escapeHtml(triggerLabel)}</button>
+    const code = `<button type="button" [kuiDropdownFor]="menu">${escapePlaygroundHtml(triggerLabel)}</button>
 
 <kui-dropdown #menu${dropdownAttrs ? ` ${dropdownAttrs}` : ''}>
   <div kuiOption value="edit">Edit</div>
@@ -100,45 +108,41 @@ export class DropdownPlaygroundPage {
     ];
   };
 
-  protected triggerLabelOf(values: PlaygroundValues): string {
-    return (values['triggerLabel'] as string) || 'Actions';
+  protected triggerLabelOf(values: DropdownPlaygroundValues): string {
+    return values.triggerLabel || 'Actions';
   }
 
-  protected maxHeightOf(values: PlaygroundValues): string | null {
-    const maxHeight = values['maxHeight'] as string;
+  protected maxHeightOf(values: DropdownPlaygroundValues): string | null {
+    const maxHeight = values.maxHeight;
 
     return maxHeight ? maxHeight : null;
   }
 
-  protected offsetOf(values: PlaygroundValues): number {
-    return values['offset'] as number;
+  protected offsetOf(values: DropdownPlaygroundValues): number {
+    return values.offset;
   }
 
-  protected closeOnSelectOf(values: PlaygroundValues): boolean {
-    return values['closeOnSelect'] as boolean;
+  protected closeOnSelectOf(values: DropdownPlaygroundValues): boolean {
+    return values.closeOnSelect;
   }
 
-  protected panelRoleOf(values: PlaygroundValues): 'listbox' | 'dialog' | 'grid' | null {
-    const panelRole = values['panelRole'] as PanelRoleOption;
+  protected panelRoleOf(values: DropdownPlaygroundValues): 'listbox' | 'dialog' | 'grid' | null {
+    const panelRole = values.panelRole;
 
     return panelRole === 'none' ? null : panelRole;
   }
 
-  protected panelWidthOf(values: PlaygroundValues): 'anchor' | 'content' | 'auto' {
-    return values['panelWidth'] as 'anchor' | 'content' | 'auto';
+  protected panelWidthOf(values: DropdownPlaygroundValues): 'anchor' | 'content' | 'auto' {
+    return values.panelWidth;
   }
 
-  protected widthOf(values: PlaygroundValues): string | null {
-    const width = values['width'] as string;
+  protected widthOf(values: DropdownPlaygroundValues): string | null {
+    const width = values.width;
 
     return width ? width : null;
   }
 
-  protected disabledOptionOf(values: PlaygroundValues): boolean {
-    return values['disabledOption'] as boolean;
-  }
-
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  protected disabledOptionOf(values: DropdownPlaygroundValues): boolean {
+    return values.disabledOption;
   }
 }

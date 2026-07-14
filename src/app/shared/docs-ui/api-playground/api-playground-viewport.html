@@ -1,6 +1,6 @@
 <div class="api-playground-viewport">
   <div class="api-playground-viewport__toolbar">
-    <kui-segmented [selected]="activePreset()" (selectedChange)="setViewportPreset($any($event))">
+    <kui-segmented [selected]="activePreset()" (selectedChange)="setViewportPreset($event)">
       @for (preset of viewportPresets; track preset.key) {
         <button kuiSegment type="button" [value]="preset.key">
           {{ preset.label }}
@@ -11,6 +11,7 @@
       <kui-field class="api-playground-viewport__width-field">
         <div class="kui-input-group">
           <input
+            #previewWidthInput
             kuiInput
             type="number"
             inputmode="numeric"
@@ -18,7 +19,7 @@
             [min]="320"
             [max]="maxPreviewWidth()"
             [value]="previewWidthValue()"
-            (input)="setPreviewWidthFromEvent($event)"
+            (input)="setPreviewWidth(previewWidthInput.value)"
           />
           <span kuiFieldAffix>px</span>
         </div>
@@ -54,6 +55,7 @@
       class="api-playground-viewport__stage"
       appearance="surface"
       size="lg"
+      tabindex="0"
       [attr.aria-label]="previewLabel()"
     >
       <div class="api-playground-viewport__resizable" [style.inline-size.px]="previewWidth()">
@@ -61,9 +63,14 @@
         <div
           class="api-playground-viewport__resize-handle"
           role="separator"
+          tabindex="0"
           aria-orientation="vertical"
           aria-label="Resize preview width"
+          [attr.aria-valuemin]="320"
+          [attr.aria-valuemax]="maxPreviewWidth()"
+          [attr.aria-valuenow]="previewWidth()"
           (pointerdown)="startResize($event)"
+          (keydown)="resizeFromKeyboard($event)"
         >
           <span></span>
         </div>

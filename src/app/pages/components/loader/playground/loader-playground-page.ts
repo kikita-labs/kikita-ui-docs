@@ -1,14 +1,31 @@
 import { Component } from '@angular/core';
-import { KuiLoaderDirective, KuiSize } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { KuiLoaderDirective, type KuiSize } from '@kikita-labs/ui';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { LOADER_API_ROWS } from '../loader.api-schema';
+import { LOADER_API_DESCRIPTION } from '../loader.docs-content';
+
+const LOADER_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+  { key: 'label', label: 'label', kind: 'string', defaultValue: 'Loading' },
+] as const);
+
+type LoaderPlaygroundValues = PlaygroundValues<typeof LOADER_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-loader-playground-page',
@@ -17,27 +34,20 @@ import { LOADER_API_ROWS } from '../loader.api-schema';
   styleUrl: './loader-playground-page.scss',
 })
 export class LoaderPlaygroundPage {
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = LOADER_API_DESCRIPTION;
   protected readonly apiRows = LOADER_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['xs', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-    { key: 'label', label: 'label', kind: 'string', defaultValue: 'Loading' },
-  ];
+  protected readonly playgroundControls = LOADER_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const size = values['size'] as string;
-    const label = values['label'] as string;
+  protected readonly buildPlaygroundSnippet = (
+    values: LoaderPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const size = values.size;
+    const label = values.label;
 
     const attrs = [
       size !== 'md' ? `size="${size}"` : null,
-      label ? `label="${this.escapeHtml(label)}"` : null,
+      label ? `label="${escapePlaygroundHtml(label)}"` : null,
     ].filter((attr): attr is string => attr !== null);
 
     const attrString = attrs.length > 0 ? ` ${attrs.join(' ')}` : '';
@@ -51,16 +61,12 @@ export class LoaderPlaygroundPage {
     ];
   };
 
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  protected sizeOf(values: LoaderPlaygroundValues): KuiSize {
+    return values.size;
   }
 
-  protected sizeOf(values: PlaygroundValues): KuiSize {
-    return values['size'] as KuiSize;
-  }
-
-  protected labelOf(values: PlaygroundValues): string {
-    const label = values['label'] as string;
+  protected labelOf(values: LoaderPlaygroundValues): string {
+    const label = values.label;
 
     return label || 'Loading';
   }

@@ -1,0 +1,26 @@
+<article class="color-input-playground-page">
+  <div class="color-input-playground-page__header">
+    <h1>Color Input &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Color input playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-field label="Primary seed" hint="Hex and OKLCH values are supported.">
+      <input
+        kuiColorInput
+        autocomplete="off"
+        [value]="valueOf(playground.values())"
+        [size]="sizeOf(playground.values())"
+        [invalid]="invalidOf(playground.values())"
+        [swatchLabel]="swatchLabelOf(playground.values())"
+      />
+    </kui-field>
+  </app-api-playground>
+
+  <app-api-table label="Color Input API" [rows]="apiRows" />
+  <p class="color-input-playground-page__note">{{ apiDescription }}</p>
+</article>

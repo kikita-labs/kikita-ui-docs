@@ -1,9 +1,11 @@
+@use '../../shared/styles/tokens/shell-layout' as shell;
+
 .sidebar-nav {
   position: sticky;
-  inset-block-start: 56px;
+  inset-block-start: shell.$header-height;
   display: grid;
   align-content: start;
-  max-block-size: calc(100dvh - 56px);
+  max-block-size: calc(100dvh - shell.$header-height);
   overflow: auto;
   border-inline-end: 1px solid var(--kui-color-border);
   background: var(--kui-color-surface);
@@ -136,7 +138,7 @@
 }
 
 .sidebar-nav__group-title svg {
-  transition: transform 160ms ease;
+  transition: transform shell.$motion-duration ease;
 }
 
 .sidebar-nav__group-title--collapsed svg {
@@ -172,7 +174,7 @@
   padding: 2px 7px;
 }
 
-@media (max-width: 760px) {
+@media (max-width: shell.$mobile-breakpoint) {
   .sidebar-nav {
     position: static;
     max-block-size: none;
@@ -190,5 +192,17 @@
 
   .sidebar-nav__brand {
     display: inline-flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-nav__group-title svg {
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (forced-colors: active) {
+  .sidebar-nav__draft-badge {
+    border-color: CanvasText;
   }
 }

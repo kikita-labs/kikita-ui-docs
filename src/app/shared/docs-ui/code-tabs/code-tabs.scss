@@ -28,6 +28,10 @@
 .code-tabs__segments {
   --kui-seg-height: 28px;
   --kui-seg-bg: transparent;
+
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  overflow-x: auto;
 }
 
 .code-tabs__copy svg {

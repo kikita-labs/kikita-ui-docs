@@ -80,8 +80,14 @@
     description="Group only changes visual chrome. It does not change roles, focus order, or keyboard behavior of the controls it wraps."
   >
     <ul class="group-page__notes">
-      <li>Group applies to a plain container element; it does not add a role like toolbar or group by itself.</li>
-      <li>Keep native semantics on grouped children: real <code>&lt;button&gt;</code> elements, a labeled <code>&lt;input&gt;</code>, and an <code>aria-label</code> on icon-only buttons.</li>
+      <li>
+        Group applies to a plain container element; it does not add a role like toolbar or group by
+        itself.
+      </li>
+      <li>
+        Keep native semantics on grouped children: real <code>&lt;button&gt;</code> elements, a
+        labeled <code>&lt;input&gt;</code>, and an <code>aria-label</code> on icon-only buttons.
+      </li>
       <li>Tab order follows the DOM order of the grouped children, not the visual orientation.</li>
       <li>collapsed and rounded are purely visual and never affect focus or hit targets.</li>
     </ul>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { KuiCheckboxDirective } from '@kikita-labs/ui';
 
 @Component({

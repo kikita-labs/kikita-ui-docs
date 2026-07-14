@@ -1,0 +1,13 @@
+.color-input-playground-page {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+
+.color-input-playground-page__header h1 {
+  margin: 0;
+}
+
+.color-input-playground-page__note {
+  margin: 0;
+  color: var(--kui-color-text-muted);
+}

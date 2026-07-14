@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { KuiButtonDirective, KuiToastPosition, kuiToast } from '@kikita-labs/ui';
+
+import { KuiButtonDirective, kuiToast, type KuiToastPosition } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-toast-position-example',

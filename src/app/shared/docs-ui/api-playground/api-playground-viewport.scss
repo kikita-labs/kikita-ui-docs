@@ -1,4 +1,7 @@
+@use '../../styles/mixins/preview-stage' as *;
+
 .api-playground-viewport {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   gap: var(--kui-space-3, 12px);
@@ -11,6 +14,11 @@
   justify-content: space-between;
   gap: var(--kui-space-3, 12px);
   flex-wrap: wrap;
+}
+
+.api-playground-viewport__toolbar > kui-segmented {
+  max-inline-size: 100%;
+  overflow-x: auto;
 }
 
 .api-playground-viewport__actions {
@@ -46,12 +54,10 @@
 }
 
 .api-playground-viewport__stage {
+  @include preview-stage;
+
   display: block;
-  overflow-x: auto;
   min-block-size: 220px;
-  background-color: var(--kui-color-surface);
-  background-image: radial-gradient(var(--kui-color-border) 1px, transparent 1px);
-  background-size: 16px 16px;
   padding: 32px;
 }
 
@@ -93,7 +99,7 @@
   z-index: 1;
 }
 
-@media (max-width: 640px) {
+@container (max-width: 640px) {
   .api-playground-viewport__toolbar {
     align-items: stretch;
     flex-direction: column;

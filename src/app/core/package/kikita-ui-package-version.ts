@@ -5,3 +5,4 @@ interface KikitaUiPackageJson {
 }
 
 export const KIKITA_UI_PACKAGE_VERSION = (packageJson as KikitaUiPackageJson).version;
+export const KIKITA_UI_PACKAGE_LABEL = `@kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION}`;

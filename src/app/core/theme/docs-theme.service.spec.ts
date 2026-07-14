@@ -1,7 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { TestBed } from '@angular/core/testing';
-import { DocsThemeMode } from './docs-theme-mode';
+
 import { DocsThemeService } from './docs-theme.service';
+import { DocsThemeMode } from './docs-theme-mode';
 
 describe('DocsThemeService', () => {
   beforeEach(() => {

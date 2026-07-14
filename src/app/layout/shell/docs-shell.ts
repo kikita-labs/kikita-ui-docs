@@ -1,62 +1,93 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter } from 'rxjs';
+import { CdkTrapFocus } from '@angular/cdk/a11y';
+import {
+  afterRenderEffect,
+  Component,
+  effect,
+  type ElementRef,
+  inject,
+  signal,
+  untracked,
+  viewChild,
+} from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+import { DocsRouteStateService } from '@core/navigation';
+import { DocsDocumentStyleService } from '@core/platform/document';
+
 import { DocsHeader } from '../header/docs-header';
 import { PageToc } from '../page-toc/page-toc';
 import { SidebarNav } from '../sidebar-nav/sidebar-nav';
 
-type DocsShellLayout = 'docs' | 'not-found';
-
 @Component({
   selector: 'app-docs-shell',
-  imports: [DocsHeader, PageToc, RouterOutlet, SidebarNav],
+  imports: [CdkTrapFocus, DocsHeader, PageToc, RouterOutlet, SidebarNav],
   templateUrl: './docs-shell.html',
   styleUrl: './docs-shell.scss',
+  host: {
+    '(keydown.escape)': 'closeNavigation()',
+  },
 })
 export class DocsShell {
-  private readonly router = inject(Router);
-  private readonly currentUrl = signal(this.router.url);
-  private readonly currentLayout = signal<DocsShellLayout>('docs');
+  private readonly header = viewChild(DocsHeader);
+  private readonly mainContent = viewChild<ElementRef<HTMLElement>>('mainContent');
+  private readonly routeState = inject(DocsRouteStateService);
+  private readonly documentStyle = inject(DocsDocumentStyleService);
 
-  protected readonly isLanding = computed(() => this.currentUrl().split(/[?#]/)[0] === '/');
-  protected readonly isNotFound = computed(() => this.currentLayout() === 'not-found');
+  protected readonly activePage = this.routeState.activePage;
   protected readonly isNavigationOpen = signal(false);
 
-  constructor() {
-    this.updateRouteState(this.router.url);
+  private readonly closeNavigationOnRouteChange = effect(() => {
+    if (this.activePage().url) {
+      untracked(() => this.setNavigationOpen(false, false));
+    }
+  });
 
-    this.router.events
-      .pipe(
-        filter((event): event is NavigationEnd => event instanceof NavigationEnd),
-        takeUntilDestroyed(),
-      )
-      .subscribe((event) => {
-        this.updateRouteState(event.urlAfterRedirects);
-        this.isNavigationOpen.set(false);
-      });
-  }
+  private readonly routeFocusEffect = afterRenderEffect(() => {
+    if (!this.activePage().url.includes('#')) {
+      this.focusContentElement();
+    }
+  });
+
+  private readonly navigationScrollLockEffect = effect((onCleanup) => {
+    this.documentStyle.setRootScrollLocked(this.isNavigationOpen());
+
+    onCleanup(() => this.documentStyle.setRootScrollLocked(false));
+  });
 
   protected toggleNavigation(): void {
-    this.isNavigationOpen.update((open) => !open);
+    this.setNavigationOpen(!this.isNavigationOpen(), this.isNavigationOpen());
   }
 
   protected closeNavigation(): void {
-    this.isNavigationOpen.set(false);
+    this.setNavigationOpen(false, true);
   }
 
-  private updateRouteState(url: string): void {
-    this.currentUrl.set(url);
-    this.currentLayout.set(this.getCurrentRouteLayout());
+  protected focusMainContent(): void {
+    this.setNavigationOpen(false, false);
+    this.focusContentElement();
   }
 
-  private getCurrentRouteLayout(): DocsShellLayout {
-    let route = this.router.routerState.snapshot.root;
-
-    while (route.firstChild) {
-      route = route.firstChild;
+  private setNavigationOpen(open: boolean, restoreMenuFocus: boolean): void {
+    if (this.isNavigationOpen() === open) {
+      return;
     }
 
-    return route.data['docsLayout'] === 'not-found' ? 'not-found' : 'docs';
+    this.isNavigationOpen.set(open);
+
+    if (!open && restoreMenuFocus) {
+      this.header()?.focusMenuButton();
+    }
+  }
+
+  private focusContentElement(): void {
+    const main = this.mainContent()?.nativeElement;
+    const target = main?.querySelector<HTMLElement>('h1') ?? main;
+
+    if (!target) {
+      return;
+    }
+
+    target.tabIndex = -1;
+    target.focus({ preventScroll: true });
   }
 }

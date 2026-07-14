@@ -1,0 +1,69 @@
+<article class="file-upload-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="File Upload"
+    description="Controlled file selection with validation, progress rows, and retry hooks."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="File Upload is a standalone package component plus the KuiUploadFile type for controlled state."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Bind the files model and drive upload transport from your own service."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="file-upload-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic file upload">
+      <app-basic-file-upload-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="states"
+    heading="States and transport"
+    description="The component validates picks, but never uploads bytes by itself."
+  >
+    <ul class="file-upload-page__notes">
+      <li>Picked files enter the model as pending, or error when client validation fails.</li>
+      <li>Consumers update each entry to uploading, success, or error as their transport runs.</li>
+      <li>The retry output only reports intent; restart the upload and write new state yourself.</li>
+      <li>Use compact variant for dense forms and dropzone when drag-and-drop is useful.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="File Upload API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Drag-and-drop is optional; keyboard users still activate a native file input."
+  >
+    <ul class="file-upload-page__notes">
+      <li>Keep the visible acceptLabel specific so the dropzone aria-label is meaningful.</li>
+      <li>Use Enter or Space on the dropzone or compact trigger to open the native picker.</li>
+      <li>Tab reaches file rows and actions; Delete or Backspace removes a focused file item.</li>
+      <li>File Upload is not a Signal Forms control; compose required state around the files model.</li>
+    </ul>
+  </app-doc-section>
+</article>

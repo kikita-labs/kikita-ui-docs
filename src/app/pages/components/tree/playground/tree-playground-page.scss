@@ -1,0 +1,15 @@
+.tree-playground-page {
+  display: grid;
+  gap: var(--kui-space-6);
+  min-width: 0;
+}
+
+.tree-playground-page__header h1 {
+  margin: 0;
+}
+
+.tree-playground-page__note {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size);
+  margin: 0;
+}

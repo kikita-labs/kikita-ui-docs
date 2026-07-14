@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { KuiSwitchDirective } from '@kikita-labs/ui';
 
 @Component({

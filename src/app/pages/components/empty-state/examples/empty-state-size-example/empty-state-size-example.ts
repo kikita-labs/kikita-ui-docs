@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { KuiEmptyStateComponent, KuiEmptyStateIconDirective } from '@kikita-labs/ui';
 
 @Component({

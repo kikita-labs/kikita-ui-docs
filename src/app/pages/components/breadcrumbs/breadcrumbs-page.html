@@ -1,0 +1,56 @@
+<article class="breadcrumbs-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Breadcrumbs"
+    description="Hierarchy trails built from native navigation, lists, links, and current-page text."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Breadcrumbs use directives on native list, link, and text elements."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Wrap the ordered list in a labelled navigation landmark and mark the final crumb as current."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="breadcrumbs-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic breadcrumbs">
+      <app-basic-breadcrumbs-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Breadcrumbs API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="The component keeps native semantics visible instead of replacing navigation with custom widgets."
+  >
+    <ul class="breadcrumbs-page__notes">
+      <li>Use <code>&lt;nav aria-label=&quot;Breadcrumb&quot;&gt;</code> around the trail.</li>
+      <li>Keep navigable ancestors as native links.</li>
+      <li>Render the current page as non-focusable text with <code>current</code>.</li>
+      <li>Collapse long mobile trails with first/last crumbs or a separate menu pattern.</li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -16,6 +16,8 @@
         <span class="kui-combobox-loader" aria-hidden="true"></span>
         Loading people
       </div>
+    } @else if (errorMessage(); as lookupError) {
+      <div class="kui-combobox-empty" role="alert">{{ lookupError }}</div>
     } @else {
       @for (person of reviewers(); track person.id) {
         <button kuiOption [value]="person">{{ person.name }}</button>

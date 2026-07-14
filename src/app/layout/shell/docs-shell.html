@@ -1,18 +1,18 @@
 <div class="docs-shell">
   <app-docs-header
-    [landing]="isLanding()"
-    [minimal]="isNotFound()"
-    [showMenuButton]="!isLanding() && !isNotFound()"
+    [landing]="activePage().isLanding"
+    [minimal]="activePage().isNotFound"
+    [showMenuButton]="!activePage().isLanding && !activePage().isNotFound"
     [menuOpen]="isNavigationOpen()"
     (menuToggle)="toggleNavigation()"
   />
 
   <div
     class="docs-shell__body"
-    [class.docs-shell__body--landing]="isLanding()"
-    [class.docs-shell__body--framed]="isNotFound()"
+    [class.docs-shell__body--landing]="activePage().isLanding"
+    [class.docs-shell__body--framed]="activePage().isNotFound"
   >
-    @if (!isLanding() && !isNotFound()) {
+    @if (!activePage().isLanding && !activePage().isNotFound) {
       <button
         class="docs-shell__backdrop"
         type="button"
@@ -22,16 +22,37 @@
       ></button>
 
       <aside class="docs-shell__sidebar" [class.docs-shell__sidebar--open]="isNavigationOpen()">
-        <app-sidebar-nav (closeNavigation)="closeNavigation()" />
+        <div
+          id="docs-mobile-navigation"
+          [cdkTrapFocus]="isNavigationOpen()"
+          [cdkTrapFocusAutoCapture]="isNavigationOpen()"
+          [attr.role]="isNavigationOpen() ? 'dialog' : null"
+          [attr.aria-modal]="isNavigationOpen() ? 'true' : null"
+          [attr.aria-label]="isNavigationOpen() ? 'Documentation navigation' : null"
+        >
+          <app-sidebar-nav
+            (closeNavigation)="closeNavigation()"
+            (skipToContent)="focusMainContent()"
+          />
+        </div>
       </aside>
     }
 
-    <main class="docs-shell__content" id="main-content" tabindex="-1">
+    <main
+      #mainContent
+      class="docs-shell__content"
+      id="main-content"
+      tabindex="-1"
+      [attr.inert]="isNavigationOpen() ? '' : null"
+    >
+      @if (!activePage().isLanding && !activePage().isNotFound) {
+        <app-page-toc class="docs-shell__mobile-toc" variant="mobile" />
+      }
       <router-outlet />
     </main>
 
-    @if (!isLanding() && !isNotFound()) {
-      <app-page-toc />
+    @if (!activePage().isLanding && !activePage().isNotFound) {
+      <app-page-toc class="docs-shell__desktop-toc" [attr.inert]="isNavigationOpen() ? '' : null" />
     }
   </div>
 </div>

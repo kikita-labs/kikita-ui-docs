@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { KuiAvatarGroupComponent, KuiAvatarItem } from '@kikita-labs/ui';
+
+import { KuiAvatarGroupComponent, type KuiAvatarItem } from '@kikita-labs/ui';
 
 const MEMBERS: readonly KuiAvatarItem[] = [
   { src: 'https://i.pravatar.cc/64?img=12', name: 'Nikita Repin', status: 'online' },

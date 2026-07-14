@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+
 import {
   KuiCellDirective,
   KuiRowDirective,
@@ -8,15 +9,14 @@ import {
   KuiThDirective,
   KuiThGroupDirective,
 } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
-import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
+import { definePlaygroundControls, type PlaygroundValues } from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { TABLE_API_ROWS } from '../table.api-schema';
+import { TABLE_API_DESCRIPTION } from '../table.docs-content';
 
 interface TeamMember {
   readonly id: string;
@@ -31,6 +31,20 @@ const TEAM_MEMBERS: TeamMember[] = [
   { id: '3', name: 'Noor Malik', role: 'Product Manager', status: 'Active' },
   { id: '4', name: 'Priya Rao', role: 'Support', status: 'Suspended' },
 ];
+
+const TABLE_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+  { key: 'sortEnabled', label: 'sortable columns', kind: 'boolean', defaultValue: true },
+  { key: 'selectionEnabled', label: 'row selection', kind: 'boolean', defaultValue: false },
+] as const);
+
+type TablePlaygroundValues = PlaygroundValues<typeof TABLE_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-table-playground-page',
@@ -49,43 +63,35 @@ const TEAM_MEMBERS: TeamMember[] = [
   styleUrl: './table-playground-page.scss',
 })
 export class TablePlaygroundPage {
-  protected readonly apiDescription = `Inputs and outputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = TABLE_API_DESCRIPTION;
   protected readonly apiRows = TABLE_API_ROWS;
-  protected rows = TEAM_MEMBERS;
+  protected readonly rows = TEAM_MEMBERS;
   protected readonly selected = signal<readonly TeamMember[]>([]);
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['xs', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-    { key: 'sortEnabled', label: 'sortable columns', kind: 'boolean', defaultValue: true },
-    { key: 'selectionEnabled', label: 'row selection', kind: 'boolean', defaultValue: false },
-  ];
+  protected readonly playgroundControls = TABLE_PLAYGROUND_CONTROLS;
 
   protected onSelectionChange(rows: readonly TeamMember[]): void {
     this.selected.set(rows);
   }
 
-  protected sizeOf(values: PlaygroundValues): 'xs' | 'sm' | 'md' | 'lg' {
-    return values['size'] as 'xs' | 'sm' | 'md' | 'lg';
+  protected sizeOf(values: TablePlaygroundValues): 'xs' | 'sm' | 'md' | 'lg' {
+    return values.size;
   }
 
-  protected sortEnabledOf(values: PlaygroundValues): boolean {
-    return values['sortEnabled'] as boolean;
+  protected sortEnabledOf(values: TablePlaygroundValues): boolean {
+    return values.sortEnabled;
   }
 
-  protected selectionEnabledOf(values: PlaygroundValues): boolean {
-    return values['selectionEnabled'] as boolean;
+  protected selectionEnabledOf(values: TablePlaygroundValues): boolean {
+    return values.selectionEnabled;
   }
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const size = values['size'] as string;
-    const sortEnabled = values['sortEnabled'] as boolean;
-    const selectionEnabled = values['selectionEnabled'] as boolean;
+  protected readonly buildPlaygroundSnippet = (
+    values: TablePlaygroundValues,
+  ): readonly CodeTab[] => {
+    const size = values.size;
+    const sortEnabled = values.sortEnabled;
+    const selectionEnabled = values.selectionEnabled;
 
     const sizeAttr = size !== 'md' ? ` size="${size}"` : '';
     const selectHeader = selectionEnabled

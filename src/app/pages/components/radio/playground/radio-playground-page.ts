@@ -1,14 +1,36 @@
 import { Component } from '@angular/core';
-import { KuiFieldComponent, KuiRadioDirective, KuiSize } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { KuiFieldComponent, KuiRadioDirective, type KuiSize } from '@kikita-labs/ui';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+  serializePlaygroundAttributes,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { RADIO_API_ROWS } from '../radio.api-schema';
+import { RADIO_API_DESCRIPTION } from '../radio.docs-content';
+
+const RADIO_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'label', label: 'group label', kind: 'string', defaultValue: 'Plan' },
+  { key: 'firstOption', label: 'first option', kind: 'string', defaultValue: 'Starter' },
+  { key: 'secondOption', label: 'second option', kind: 'string', defaultValue: 'Pro' },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+  { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
+  { key: 'disabled', label: 'disabled (second option)', kind: 'boolean', defaultValue: false },
+] as const);
+
+type RadioPlaygroundValues = PlaygroundValues<typeof RADIO_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-radio-playground-page',
@@ -17,49 +39,40 @@ import { RADIO_API_ROWS } from '../radio.api-schema';
   styleUrl: './radio-playground-page.scss',
 })
 export class RadioPlaygroundPage {
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = RADIO_API_DESCRIPTION;
   protected readonly apiRows = RADIO_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    { key: 'label', label: 'group label', kind: 'string', defaultValue: 'Plan' },
-    { key: 'firstOption', label: 'first option', kind: 'string', defaultValue: 'Starter' },
-    { key: 'secondOption', label: 'second option', kind: 'string', defaultValue: 'Pro' },
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['xs', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-    { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
-    { key: 'disabled', label: 'disabled (second option)', kind: 'boolean', defaultValue: false },
-  ];
+  protected readonly playgroundControls = RADIO_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const label = this.labelOf(values);
-    const firstOption = this.firstOptionOf(values);
-    const secondOption = this.secondOptionOf(values);
-    const size = this.sizeOf(values);
-    const invalid = this.invalidOf(values);
-    const disabled = this.disabledOf(values);
-
-    const sizeAttr = size !== 'md' ? ` size="${size}"` : '';
-    const invalidAttr = invalid ? ' invalid' : '';
-    const disabledAttr = disabled ? ' disabled' : '';
+  protected readonly buildPlaygroundSnippet = (
+    values: RadioPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const label = values.label || 'Plan';
+    const firstOption = values.firstOption || 'Starter';
+    const secondOption = values.secondOption || 'Pro';
+    const sharedAttrString = serializePlaygroundAttributes([
+      { name: 'size', value: values.size, defaultValue: 'md' },
+      { name: 'invalid', value: values.invalid },
+    ]);
+    const disabledAttrString = serializePlaygroundAttributes([
+      { name: 'size', value: values.size, defaultValue: 'md' },
+      { name: 'invalid', value: values.invalid },
+      { name: 'disabled', value: values.disabled },
+    ]);
 
     return [
       {
         label: 'HTML',
         language: 'html',
-        code: `<kui-field label="${this.escapeHtml(label || 'Plan')}">
-  <div role="radiogroup" aria-label="${this.escapeHtml(label || 'Plan')}">
+        code: `<kui-field label="${escapePlaygroundHtml(label || 'Plan')}">
+  <div role="radiogroup" aria-label="${escapePlaygroundHtml(label || 'Plan')}">
     <label>
-      <input kuiRadio type="radio" name="playground-radio"${sizeAttr}${invalidAttr} checked />
-      ${this.escapeHtml(firstOption || 'Starter')}
+      <input kuiRadio type="radio" name="playground-radio"${sharedAttrString} checked />
+      ${escapePlaygroundHtml(firstOption || 'Starter')}
     </label>
     <label>
-      <input kuiRadio type="radio" name="playground-radio"${sizeAttr}${invalidAttr}${disabledAttr} />
-      ${this.escapeHtml(secondOption || 'Pro')}
+      <input kuiRadio type="radio" name="playground-radio"${disabledAttrString} />
+      ${escapePlaygroundHtml(secondOption || 'Pro')}
     </label>
   </div>
 </kui-field>`,
@@ -67,31 +80,27 @@ export class RadioPlaygroundPage {
     ];
   };
 
-  protected labelOf(values: PlaygroundValues): string {
-    return (values['label'] as string) || 'Plan';
+  protected labelOf(values: RadioPlaygroundValues): string {
+    return values.label || 'Plan';
   }
 
-  protected firstOptionOf(values: PlaygroundValues): string {
-    return (values['firstOption'] as string) || 'Starter';
+  protected firstOptionOf(values: RadioPlaygroundValues): string {
+    return values.firstOption || 'Starter';
   }
 
-  protected secondOptionOf(values: PlaygroundValues): string {
-    return (values['secondOption'] as string) || 'Pro';
+  protected secondOptionOf(values: RadioPlaygroundValues): string {
+    return values.secondOption || 'Pro';
   }
 
-  protected sizeOf(values: PlaygroundValues): KuiSize {
-    return values['size'] as KuiSize;
+  protected sizeOf(values: RadioPlaygroundValues): KuiSize {
+    return values.size;
   }
 
-  protected invalidOf(values: PlaygroundValues): boolean {
-    return values['invalid'] as boolean;
+  protected invalidOf(values: RadioPlaygroundValues): boolean {
+    return values.invalid;
   }
 
-  protected disabledOf(values: PlaygroundValues): boolean {
-    return values['disabled'] as boolean;
-  }
-
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  protected disabledOf(values: RadioPlaygroundValues): boolean {
+    return values.disabled;
   }
 }

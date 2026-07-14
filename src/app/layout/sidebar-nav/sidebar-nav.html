@@ -1,5 +1,7 @@
 <nav class="sidebar-nav" aria-label="Documentation sections">
-  <a class="sidebar-nav__skip" href="#main-content">Skip to content</a>
+  <a class="sidebar-nav__skip" href="#main-content" (click)="activateSkipLink($event)">
+    Skip to content
+  </a>
 
   <div class="sidebar-nav__mobile-header">
     <a class="sidebar-nav__brand" routerLink="/" aria-label="Kikita UI Docs home">

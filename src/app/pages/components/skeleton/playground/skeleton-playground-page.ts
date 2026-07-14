@@ -1,14 +1,37 @@
 import { Component } from '@angular/core';
-import { KuiSkeletonAnimation, KuiSkeletonDirective, KuiSkeletonShape } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  type KuiSkeletonAnimation,
+  KuiSkeletonDirective,
+  type KuiSkeletonShape,
+} from '@kikita-labs/ui';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
+import { definePlaygroundControls, type PlaygroundValues } from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { SKELETON_API_ROWS } from '../skeleton.api-schema';
+import { SKELETON_API_DESCRIPTION } from '../skeleton.docs-content';
+
+const SKELETON_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  {
+    key: 'shape',
+    label: 'shape',
+    kind: 'enum',
+    options: ['text', 'heading', 'rect', 'circle', 'square', 'button', 'badge'],
+    defaultValue: 'rect',
+  },
+  {
+    key: 'animation',
+    label: 'animation',
+    kind: 'enum',
+    options: ['shimmer', 'pulse', 'none'],
+    defaultValue: 'shimmer',
+  },
+] as const);
+
+type SkeletonPlaygroundValues = PlaygroundValues<typeof SKELETON_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-skeleton-playground-page',
@@ -17,29 +40,16 @@ import { SKELETON_API_ROWS } from '../skeleton.api-schema';
   styleUrl: './skeleton-playground-page.scss',
 })
 export class SkeletonPlaygroundPage {
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = SKELETON_API_DESCRIPTION;
   protected readonly apiRows = SKELETON_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    {
-      key: 'shape',
-      label: 'shape',
-      kind: 'enum',
-      options: ['text', 'heading', 'rect', 'circle', 'square', 'button', 'badge'],
-      defaultValue: 'rect',
-    },
-    {
-      key: 'animation',
-      label: 'animation',
-      kind: 'enum',
-      options: ['shimmer', 'pulse', 'none'],
-      defaultValue: 'shimmer',
-    },
-  ];
+  protected readonly playgroundControls = SKELETON_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const shape = values['shape'] as string;
-    const animation = values['animation'] as string;
+  protected readonly buildPlaygroundSnippet = (
+    values: SkeletonPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const shape = values.shape;
+    const animation = values.animation;
 
     const attrs = [
       shape !== 'rect' ? `shape="${shape}"` : null,
@@ -57,11 +67,11 @@ export class SkeletonPlaygroundPage {
     ];
   };
 
-  protected shapeOf(values: PlaygroundValues): KuiSkeletonShape {
-    return values['shape'] as KuiSkeletonShape;
+  protected shapeOf(values: SkeletonPlaygroundValues): KuiSkeletonShape {
+    return values.shape;
   }
 
-  protected animationOf(values: PlaygroundValues): KuiSkeletonAnimation {
-    return values['animation'] as KuiSkeletonAnimation;
+  protected animationOf(values: SkeletonPlaygroundValues): KuiSkeletonAnimation {
+    return values.animation;
   }
 }

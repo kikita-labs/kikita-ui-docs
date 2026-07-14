@@ -1,0 +1,56 @@
+<article class="stepper-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Stepper"
+    description="Multi-step progress and navigation for guided flows."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Stepper composes a container and projected step components."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Bind currentIndex with a signal and describe each step with labels."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="stepper-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic stepper">
+      <app-basic-stepper-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Stepper API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Stepper exposes progress state through native buttons and clear labels."
+  >
+    <ul class="stepper-page__notes">
+      <li>Use descriptive labels and optional descriptions for each step.</li>
+      <li>Linear mode prevents activating upcoming steps.</li>
+      <li>Error steps disable later steps until the flow recovers.</li>
+      <li>Use vertical orientation when labels need more horizontal space.</li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,73 @@
+<article class="tooltip-page">
+  <app-page-header
+    eyebrow="Feedback"
+    heading="Tooltip"
+    description="Attach short contextual hints to controls without replacing visible labels."
+    [status]="status"
+  />
+
+  <app-doc-section
+    anchor="import"
+    heading="Import"
+    description="Tooltip is a directive that can be applied to native or Kikita-styled triggers."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="usage"
+    heading="Usage"
+    description="Provide short text and choose a preferred placement when the default top placement is not ideal."
+  >
+    <a
+      docSectionActions
+      routerLink="playground"
+      kuiButton
+      type="button"
+      shape="soft"
+      size="sm"
+      class="tooltip-page__playground-link"
+    >
+      Open in Playground
+    </a>
+
+    <app-live-preview previewLabel="Basic tooltip triggers">
+      <app-basic-tooltip-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="behavior"
+    heading="Behavior"
+    description="Tooltip is transient, pointer-safe, and keyboard-aware."
+  >
+    <ul class="tooltip-page__notes">
+      <li>Shows on hover and keyboard focus-visible, then hides on leave and blur.</li>
+      <li>Whitespace-only tooltip text is ignored.</li>
+      <li>Tooltip content renders through CDK Overlay and layers above floating panels.</li>
+      <li>
+        Touch does not show a tooltip; use a popover, sheet, or visible helper text on mobile.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+    <app-api-table label="Tooltip API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="accessibility"
+    heading="Accessibility"
+    description="Tooltips supplement labels; they should not contain required information."
+  >
+    <ul class="tooltip-page__notes">
+      <li>Keep a visible label or accessible name on the trigger itself.</li>
+      <li>
+        Use tooltip text for short hints, not form errors or instructions required to finish a task.
+      </li>
+      <li><code>aria-describedby</code> is present only while the floating tooltip exists.</li>
+      <li>Respect reduced-motion users; the package disables tooltip animation when requested.</li>
+    </ul>
+  </app-doc-section>
+</article>

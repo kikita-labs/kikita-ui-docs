@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.segmented-page {
+  @include doc-page-layout;
+}
+
+.segmented-page__notes {
+  @include doc-page-notes;
+}
+
+.segmented-page__playground-link {
+  white-space: nowrap;
+}

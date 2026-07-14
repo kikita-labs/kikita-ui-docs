@@ -1,0 +1,40 @@
+<article class="date-picker-playground-page">
+  <div class="date-picker-playground-page__header">
+    <h1>Date Picker &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Date Picker playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <div class="date-picker-playground-page__preview">
+      <kui-field [label]="labelOf(playground.values())">
+        <input
+          kuiDatePicker
+          [(value)]="date"
+          [(viewDate)]="viewDate"
+          [placeholder]="placeholderOf(playground.values())"
+          [clearable]="clearableOf(playground.values())"
+          [disabled]="disabledOf(playground.values())"
+          [readonly]="readonlyOf(playground.values())"
+          [invalid]="invalidOf(playground.values())"
+          [minDate]="minDateOf(playground.values())"
+        />
+        <kui-dropdown panelRole="dialog" panelWidth="content" maxHeight="420px">
+          <kui-calendar
+            flat
+            [(value)]="date"
+            [(viewDate)]="viewDate"
+            [showFooter]="showFooterOf(playground.values())"
+            [minDate]="minDateOf(playground.values())"
+          />
+        </kui-dropdown>
+      </kui-field>
+    </div>
+  </app-api-playground>
+
+  <app-api-table label="Date Picker API" [rows]="apiRows" />
+  <p class="date-picker-playground-page__note">{{ apiDescription }}</p>
+</article>

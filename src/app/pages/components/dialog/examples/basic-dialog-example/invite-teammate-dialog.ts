@@ -1,9 +1,10 @@
 import { Component, inject, signal } from '@angular/core';
+
 import {
   KUI_DIALOG_CONTEXT,
   KuiButtonDirective,
-  KuiDialogContext,
-  KuiDialogHost,
+  type KuiDialogContext,
+  type KuiDialogHost,
   KuiInputDirective,
 } from '@kikita-labs/ui';
 
@@ -22,7 +23,7 @@ export class InviteTeammateDialog implements KuiDialogHost<
   InviteTeammateResult,
   InviteTeammateData
 > {
-  readonly dialogContext =
+  public readonly dialogContext =
     inject<KuiDialogContext<InviteTeammateResult, InviteTeammateData>>(KUI_DIALOG_CONTEXT);
 
   protected readonly email = signal('');

@@ -14,6 +14,12 @@ Always read:
 - `.agents/library-sync.md`
 - `.agents/git-policy.md`
 - `.agents/architecture.md`
+- `.agents/angular-code-style.md`
+- `.agents/imports-and-boundaries.md`
+- `.agents/platform-and-state.md`
+- `.agents/responsive-accessibility.md`
+- `.agents/testing-and-quality.md`
+- `.agents/refactoring.md`
 - `.agents/progress.md`
 
 For Angular work, use `angularCliKikitaDocs.list_projects` first.
@@ -54,6 +60,22 @@ If present, also read:
 - Do not add broad visual polish that conflicts with the Kikita design system.
 - Angular state in this app is signals-only. Do not introduce NgRx or other
   external state stores.
+- Keep browser APIs behind the adapters described in
+  `.agents/platform-and-state.md`. Components, pages, examples, and ordinary
+  feature services must not access `window`, `document`, `navigator`, browser
+  storage, observers, history, location, or timer globals directly.
+- Apply explicit class-member visibility. Public members are intentional API,
+  protected members are template-facing, and private members are internal.
+  Make injected dependencies, signals, inputs, outputs, and stable callbacks
+  `readonly` unless reassignment is required and documented.
+- Use path aliases only across architectural boundaries and local relative
+  imports inside one feature. Follow `.agents/imports-and-boundaries.md`; do
+  not introduce arbitrary alias schemes or broad barrels.
+- New or changed UI must satisfy the responsive and accessibility acceptance
+  matrix in `.agents/responsive-accessibility.md`.
+- Structural refactors must be delivered as small verified slices. Do not mix
+  broad architecture moves with unrelated visual or documentation-content
+  changes.
 - Never add `Co-authored-by`, `Generated-by`, AI attribution, or assistant
   attribution lines to commit messages.
 - Never claim co-authorship for Claude, Codex, ChatGPT, or any other AI tool.
@@ -81,6 +103,15 @@ Read these before structural docs work when present:
 - `.local-notes/PLAN.md`
 - `.local-notes/claude-design/briefs/design-brief.md`
 - `.local-notes/LIBRARY-BREAKING-CHANGES.md`
+- `.local-notes/refactor/MASTER-REFACTOR-PLAN.md`
+- `.local-notes/refactor/COMPONENT-INVENTORY.md`
+- `.local-notes/refactor/components/<component>.md`
+
+The files under `.local-notes/refactor/` are the execution source of truth for
+the planned architecture migration. Before refactoring an area, read the master
+plan and its matching work package. Update the work package status, evidence,
+and remaining tasks in the same change. Do not mark a package complete without
+all required verification.
 
 ## Source Of Truth
 

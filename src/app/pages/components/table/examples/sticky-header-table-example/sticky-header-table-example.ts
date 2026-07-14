@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import {
   KuiCellDirective,
   KuiRowDirective,
@@ -72,5 +73,5 @@ const TEAM_MEMBERS: TeamMember[] = [
   styleUrl: './sticky-header-table-example.scss',
 })
 export class StickyHeaderTableExample {
-  protected rows = TEAM_MEMBERS;
+  protected readonly rows = TEAM_MEMBERS;
 }

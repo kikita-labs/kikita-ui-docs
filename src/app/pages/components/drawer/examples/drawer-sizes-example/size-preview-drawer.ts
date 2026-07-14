@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
+
 import {
   KUI_DRAWER_CONTEXT,
   KuiButtonDirective,
-  KuiDrawerContext,
-  KuiDrawerHost,
+  type KuiDrawerContext,
+  type KuiDrawerHost,
 } from '@kikita-labs/ui';
 
 @Component({
@@ -12,5 +13,5 @@ import {
   templateUrl: './size-preview-drawer.html',
 })
 export class SizePreviewDrawer implements KuiDrawerHost<void, void> {
-  readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);
+  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);
 }

@@ -20,7 +20,7 @@
       [size]="sizeOf(playground.values())"
       [minLabel]="minLabelOf(playground.values())"
       [maxLabel]="maxLabelOf(playground.values())"
-      [disabled]="disabledOf(playground.values())"
+      [attr.disabled]="disabledOf(playground.values()) ? '' : null"
       [invalid]="invalidOf(playground.values())"
       aria-label="Slider playground preview"
     />

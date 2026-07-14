@@ -32,6 +32,30 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pnpm run format:check
+
+      - run: pnpm run lint
+
+      - run: pnpm run test
+
+      - run: pnpm run check:boundaries
+
+      - run: pnpm run check:generated
+
+      - run: pnpm run check:inventory
+
+      - run: pnpm run check:package-consumer
+
+      - run: pnpm run check:migration-debt
+
+      - run: pnpm run build
+
+      - run: pnpm run check:performance
+
+      - run: pnpm exec playwright install --with-deps chromium
+
+      - run: pnpm run test:browser
+
       - run: pnpm exec ng build --base-href "/${{ github.event.repository.name }}/"
 
       - run: cp dist/kikita-ui-docs/browser/index.html dist/kikita-ui-docs/browser/404.html

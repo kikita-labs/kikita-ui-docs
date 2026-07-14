@@ -1,14 +1,38 @@
 import { Component } from '@angular/core';
-import { KuiBadgeAppearance, KuiBadgeDirective, KuiSize } from '@kikita-labs/ui';
-import { ApiPlayground } from '../../../../shared/docs-ui/api-playground/api-playground';
+
+import { type KuiBadgeAppearance, KuiBadgeDirective, type KuiSize } from '@kikita-labs/ui';
+
+import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
-  PlaygroundControl,
-  PlaygroundValues,
-} from '../../../../shared/docs-ui/api-playground/playground-control';
-import { ApiTable } from '../../../../shared/docs-ui/api-table/api-table';
-import { KIKITA_UI_PACKAGE_VERSION } from '../../../../core/package/kikita-ui-package-version';
-import { CodeTab } from '../../../../shared/docs-ui/code-tabs/code-tab';
+  definePlaygroundControls,
+  escapePlaygroundHtml,
+  type PlaygroundValues,
+} from '@shared/docs-ui/api-playground';
+import { ApiTable } from '@shared/docs-ui/api-table';
+import { type CodeTab } from '@shared/docs-ui/code-tabs';
+
 import { BADGE_API_ROWS } from '../badge.api-schema';
+import { BADGE_API_DESCRIPTION } from '../badge.docs-content';
+
+const BADGE_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'label', label: 'label', kind: 'string', defaultValue: 'Neutral' },
+  {
+    key: 'appearance',
+    label: 'appearance',
+    kind: 'enum',
+    options: ['neutral', 'primary', 'success', 'warning', 'danger', 'info'],
+    defaultValue: 'neutral',
+  },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
+] as const);
+
+type BadgePlaygroundValues = PlaygroundValues<typeof BADGE_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-badge-playground-page',
@@ -17,31 +41,17 @@ import { BADGE_API_ROWS } from '../badge.api-schema';
   styleUrl: './badge-playground-page.scss',
 })
 export class BadgePlaygroundPage {
-  protected readonly apiDescription = `Inputs verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+  protected readonly apiDescription = BADGE_API_DESCRIPTION;
   protected readonly apiRows = BADGE_API_ROWS;
 
-  protected readonly playgroundControls: readonly PlaygroundControl[] = [
-    { key: 'label', label: 'label', kind: 'string', defaultValue: 'Neutral' },
-    {
-      key: 'appearance',
-      label: 'appearance',
-      kind: 'enum',
-      options: ['neutral', 'primary', 'success', 'warning', 'danger', 'info'],
-      defaultValue: 'neutral',
-    },
-    {
-      key: 'size',
-      label: 'size',
-      kind: 'enum',
-      options: ['xs', 'sm', 'md', 'lg'],
-      defaultValue: 'md',
-    },
-  ];
+  protected readonly playgroundControls = BADGE_PLAYGROUND_CONTROLS;
 
-  protected buildPlaygroundSnippet = (values: PlaygroundValues): readonly CodeTab[] => {
-    const label = values['label'] as string;
-    const appearance = values['appearance'] as string;
-    const size = values['size'] as string;
+  protected readonly buildPlaygroundSnippet = (
+    values: BadgePlaygroundValues,
+  ): readonly CodeTab[] => {
+    const label = values.label;
+    const appearance = values.appearance;
+    const size = values.size;
 
     const attrs = [
       appearance !== 'neutral' ? `appearance="${appearance}"` : null,
@@ -49,7 +59,7 @@ export class BadgePlaygroundPage {
     ].filter((attr): attr is string => attr !== null);
 
     const attrString = attrs.length > 0 ? ` ${attrs.join(' ')}` : '';
-    const escapedLabel = this.escapeHtml(label || 'Neutral');
+    const escapedLabel = escapePlaygroundHtml(label || 'Neutral');
 
     return [
       {
@@ -60,21 +70,17 @@ export class BadgePlaygroundPage {
     ];
   };
 
-  protected labelOf(values: PlaygroundValues): string {
-    const label = values['label'] as string;
+  protected labelOf(values: BadgePlaygroundValues): string {
+    const label = values.label;
 
     return label || 'Neutral';
   }
 
-  private escapeHtml(value: string): string {
-    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  protected appearanceOf(values: BadgePlaygroundValues): KuiBadgeAppearance {
+    return values.appearance;
   }
 
-  protected appearanceOf(values: PlaygroundValues): KuiBadgeAppearance {
-    return values['appearance'] as KuiBadgeAppearance;
-  }
-
-  protected sizeOf(values: PlaygroundValues): KuiSize {
-    return values['size'] as KuiSize;
+  protected sizeOf(values: BadgePlaygroundValues): KuiSize {
+    return values.size;
   }
 }

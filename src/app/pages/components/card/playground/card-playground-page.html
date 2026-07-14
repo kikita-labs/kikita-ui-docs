@@ -9,15 +9,27 @@
     [controls]="playgroundControls"
     [snippet]="buildPlaygroundSnippet"
   >
-    <article
-      kuiCard
-      [appearance]="appearanceOf(playground.values())"
-      [size]="sizeOf(playground.values())"
-      [interactive]="interactiveOf(playground.values())"
-    >
-      <h3>{{ headingOf(playground.values()) }}</h3>
-      <p>{{ bodyOf(playground.values()) }}</p>
-    </article>
+    @if (interactiveOf(playground.values())) {
+      <button
+        kuiCard
+        type="button"
+        [appearance]="appearanceOf(playground.values())"
+        [size]="sizeOf(playground.values())"
+        [interactive]="true"
+      >
+        <h2>{{ headingOf(playground.values()) }}</h2>
+        <p>{{ bodyOf(playground.values()) }}</p>
+      </button>
+    } @else {
+      <article
+        kuiCard
+        [appearance]="appearanceOf(playground.values())"
+        [size]="sizeOf(playground.values())"
+      >
+        <h2>{{ headingOf(playground.values()) }}</h2>
+        <p>{{ bodyOf(playground.values()) }}</p>
+      </article>
+    }
   </app-api-playground>
 
   <app-api-table label="Card API" [rows]="apiRows" />

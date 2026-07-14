@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+
 import { DocsSearchIndexService } from './docs-search-index.service';
 
 describe('DocsSearchIndexService', () => {
@@ -16,6 +17,7 @@ describe('DocsSearchIndexService', () => {
     const commands = service.groups.flatMap((group) => group.items);
     const commandIds = commands.map((command) => command.id);
 
+    expect(commandIds).toContain('/');
     expect(commandIds).toContain('/components/button');
     expect(new Set(commandIds).size).toBe(commandIds.length);
   });
