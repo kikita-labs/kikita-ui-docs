@@ -23,7 +23,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: kikita-labs/kikita-ui
-          path: ../kikita-ui
+          path: kikita-ui-sibling-checkout
+
+      - run: mv kikita-ui-sibling-checkout ../kikita-ui
 
       - uses: pnpm/action-setup@v4
 
