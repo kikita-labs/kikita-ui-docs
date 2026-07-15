@@ -81,6 +81,6 @@ test('has no violations with a package drawer open', async ({ page }) => {
 
 test('has no violations with a package dropdown open', async ({ page }) => {
   await gotoReady(page, '/components/dropdown/playground');
-  await page.getByRole('button', { name: 'Actions' }).click();
+  await page.getByLabel('Dropdown playground').getByRole('button', { name: 'Actions' }).click();
   await expectNoAxeViolations(page);
 });

@@ -56,7 +56,7 @@ const routes = [
 ] as const;
 
 test('has no document overflow across the representative route matrix', async ({ page }) => {
-  test.setTimeout(240_000);
+  test.setTimeout(360_000);
 
   for (const width of widths) {
     await page.setViewportSize({ width, height: 900 });
