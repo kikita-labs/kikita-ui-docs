@@ -1,15 +1,16 @@
 {
   "reference": {
-    "package": "@kikita-labs/ui@0.4.0",
-    "initialRawBytes": 857326,
-    "lazyChunks": 164
+    "package": "@kikita-labs/ui@0.4.3",
+    "initialRawBytes": 883609,
+    "lazyChunks": 176,
+    "note": "SSR migration (ng add @angular/ssr) added a parallel server bundle, which roughly doubles lazyJavaScriptChunks and shikiThemeChunks since the build now emits both browser (.js) and server (.mjs) variants of the same route chunks. initialJavaScriptBytes dropped sharply because outputMode: server moves most of the former main bundle into finer-grained lazy chunks."
   },
   "limits": {
-    "initialJavaScriptBytes": 705000,
+    "initialJavaScriptBytes": 60000,
     "initialCssBytes": 160000,
-    "initialTotalBytes": 865000,
-    "lazyJavaScriptChunks": 170,
-    "largestRouteChunkBytes": 65000,
-    "shikiThemeChunks": 10
+    "initialTotalBytes": 220000,
+    "lazyJavaScriptChunks": 185,
+    "largestRouteChunkBytes": 30000,
+    "shikiThemeChunks": 18
   }
 }
