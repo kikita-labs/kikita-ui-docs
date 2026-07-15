@@ -62,8 +62,9 @@
         Disabled anchor buttons are removed from tab order and receive <code>aria-disabled</code>.
       </li>
       <li>
-        <code>loading</code> sets <code>aria-busy="true"</code> and behaves like
-        <code>disabled</code> (blocks clicks, removed from tab order) until it clears.
+        <code>loading</code> keeps the button's original content in layout, centers a spinner over
+        it, sets <code>aria-busy="true"</code>, and behaves like <code>disabled</code>
+        until it clears.
       </li>
     </ul>
   </app-doc-section>

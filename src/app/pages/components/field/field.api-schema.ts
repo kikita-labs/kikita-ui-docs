@@ -21,7 +21,8 @@ export const FIELD_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'hideErrors',
     type: 'boolean',
-    description: 'Hides automatically inferred Angular Signal Forms error messages.',
+    description:
+      'Hides automatic, explicit, and projected error messages while keeping invalid state.',
   },
   {
     name: 'required',

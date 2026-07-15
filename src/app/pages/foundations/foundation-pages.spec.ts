@@ -10,6 +10,7 @@ import { DensityPage } from './density/density-page';
 import { InstallationPage } from './installation/installation-page';
 import { ThemingPage } from './theming/theming-page';
 import { TokensPage } from './tokens/tokens-page';
+import { TypographyPage } from './typography/typography-page';
 
 interface FoundationPageCase {
   readonly component: Type<unknown>;
@@ -32,6 +33,19 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
     component: TokensPage,
     heading: 'Tokens',
     sections: ['Token layers', 'Color seeds', 'Common scales'],
+  },
+  {
+    component: TypographyPage,
+    heading: 'Typography',
+    sections: [
+      'Import',
+      'Usage',
+      'Type roles',
+      'Tone utilities',
+      'Directive API',
+      'Tokens',
+      'Accessibility',
+    ],
   },
   {
     component: DensityPage,

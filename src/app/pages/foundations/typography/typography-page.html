@@ -1,0 +1,73 @@
+<article class="typography-page">
+  <app-page-header
+    eyebrow="Foundation"
+    heading="Typography"
+    description="Semantic type-role classes, text tone utilities, generated type tokens, and the kuiText directive."
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="The CSS classes ship through the main stylesheet. Import the directive only when templates should bind variant or tone."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Decorate native text elements. Typography classes and kuiText change presentation without replacing semantic HTML."
+  >
+    <section class="typography-page__sample" aria-labelledby="typography-sample-title">
+      <p kuiText variant="overline" tone="primary">Project profile</p>
+      <h3 id="typography-sample-title" kuiText variant="heading-lg">Workspace settings</h3>
+      <p kuiText variant="body" tone="muted">Manage members, billing, and integrations.</p>
+      <small kuiText variant="caption" tone="muted">Last updated 2 minutes ago</small>
+      <p kuiText variant="body-sm" tone="danger">Slug is already used by another workspace.</p>
+      <p kuiText variant="body-sm">Current slug: <code class="kui-code">workspace.slug</code></p>
+    </section>
+    <app-code-tabs [tabs]="usageTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Type roles"
+    description="Choose the role that matches the text's purpose, then keep the native element semantic."
+  >
+    <app-api-table label="Typography role classes" [rows]="roleRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Tone utilities"
+    description="Tone utilities only set color. Pair status color with clear visible text when the state matters."
+  >
+    <app-api-table label="Typography tone classes" [rows]="toneRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Directive API"
+    description="The kuiText directive is convenience sugar over the same public class contract."
+  >
+    <app-api-table label="kuiText API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Tokens"
+    description="Each role exposes generated size, line-height, and weight tokens for theme-aware text scales."
+  >
+    <app-code-tabs [tabs]="tokenTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="Typography should strengthen native semantics rather than replace them."
+  >
+    <ul class="typography-page__notes">
+      <li>Keep heading order meaningful; visual classes do not change document structure.</li>
+      <li>
+        Use native <code>small</code> and <code>code</code> elements where those semantics apply.
+      </li>
+      <li>
+        Let long text wrap unless a local row layout owns truncation and exposes the full value.
+      </li>
+      <li>Do not rely on color alone for success, warning, danger, or disabled states.</li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,32 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.typography-page {
+  @include doc-page-layout;
+}
+
+.typography-page__sample {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  min-inline-size: 0;
+  padding-block-end: var(--kui-space-2, 8px);
+}
+
+.typography-page__sample > * {
+  margin: 0;
+}
+
+.typography-page__sample > :first-child {
+  margin-block-end: var(--kui-space-1, 4px);
+}
+
+.typography-page__sample > :nth-child(4) {
+  margin-block-start: var(--kui-space-1, 4px);
+}
+
+.typography-page__sample code {
+  overflow-wrap: anywhere;
+}
+
+.typography-page__notes {
+  @include doc-page-notes;
+}

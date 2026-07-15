@@ -23,6 +23,8 @@ const requiredExports = [
   'KuiDensity',
   'KuiFieldComponent',
   'KuiInputDirective',
+  'KuiTextDirective',
+  'KuiTextVariant',
   'kuiDialog',
   'provideKikitaUi',
 ];

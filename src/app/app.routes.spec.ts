@@ -49,7 +49,14 @@ const COMPONENT_SLUGS = [
   'tree',
 ] as const;
 
-const FOUNDATION_SLUGS = ['accessibility', 'density', 'installation', 'theming', 'tokens'] as const;
+const FOUNDATION_SLUGS = [
+  'accessibility',
+  'density',
+  'installation',
+  'theming',
+  'tokens',
+  'typography',
+] as const;
 
 function collectPublicPaths(routeList: typeof routes, parentPath = ''): readonly string[] {
   return routeList.flatMap((route) => {

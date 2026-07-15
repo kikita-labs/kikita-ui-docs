@@ -38,6 +38,6 @@ export const BUTTON_API_ROWS: readonly ApiTableRow[] = [
     type: 'boolean',
     defaultValue: 'false',
     description:
-      'Shows a kui-loader spinner before the content, sets aria-busy, and behaves like disabled (blocks clicks, removed from tab order).',
+      'Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled.',
   },
 ];

@@ -55,6 +55,7 @@ import { DENSITY_DOCS_MANIFEST } from '@pages/foundations/density/density.docs-m
 import { INSTALLATION_DOCS_MANIFEST } from '@pages/foundations/installation/installation.docs-manifest';
 import { THEMING_DOCS_MANIFEST } from '@pages/foundations/theming/theming.docs-manifest';
 import { TOKENS_DOCS_MANIFEST } from '@pages/foundations/tokens/tokens.docs-manifest';
+import { TYPOGRAPHY_DOCS_MANIFEST } from '@pages/foundations/typography/typography.docs-manifest';
 import { HOME_DOCS_MANIFEST } from '@pages/home/home.docs-manifest';
 import { NOT_FOUND_DOCS_MANIFEST } from '@pages/not-found/not-found.docs-manifest';
 import { SMOKE_DOCS_MANIFEST } from '@pages/smoke/smoke.docs-manifest';
@@ -114,6 +115,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     INSTALLATION_DOCS_MANIFEST,
     THEMING_DOCS_MANIFEST,
     TOKENS_DOCS_MANIFEST,
+    TYPOGRAPHY_DOCS_MANIFEST,
     DENSITY_DOCS_MANIFEST,
     ACCESSIBILITY_DOCS_MANIFEST,
   ],
