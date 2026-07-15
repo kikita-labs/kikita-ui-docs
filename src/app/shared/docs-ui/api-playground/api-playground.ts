@@ -1,5 +1,6 @@
+import { _IdGenerator } from '@angular/cdk/a11y';
 import { Overlay, OverlayContainer } from '@angular/cdk/overlay';
-import { Component, computed, input, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 
 import {
   KuiCardDirective,
@@ -22,11 +23,17 @@ import {
   type PlaygroundValue,
 } from './playground-control';
 
-let nextApiPlaygroundId = 0;
-
 @Component({
   selector: 'app-api-playground',
   exportAs: 'appApiPlayground',
+  // KuiNumberInputDirective rebuilds its host's DOM imperatively (wraps the native input in a
+  // container + step buttons via Renderer2), which Angular's hydration node-matching can't
+  // reconcile against server-rendered output -- it ends up nesting a second wrapper around the
+  // stale server input. Skip hydrating this component so it fully re-renders client-side instead
+  // of producing a broken/duplicated DOM. Playground routes aren't in the SSR completeness
+  // contract's required pre-hydration content list (see .agents/ssr.md), so this is a scoped,
+  // documented tradeoff, not a silent regression.
+  host: { ngSkipHydration: 'true' },
   imports: [
     ApiPlaygroundViewport,
     CodeTabs,
@@ -44,7 +51,7 @@ let nextApiPlaygroundId = 0;
 export class ApiPlayground<
   TControls extends readonly PlaygroundControl[] = readonly PlaygroundControl[],
 > {
-  protected readonly id = `api-playground-${++nextApiPlaygroundId}`;
+  protected readonly id = inject(_IdGenerator).getId('api-playground-');
 
   /** Accessible name forwarded to the interactive preview region. */
   public readonly previewLabel = input('Live preview');
