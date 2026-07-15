@@ -15,20 +15,17 @@ Follow this workflow for every non-trivial docs-site change.
    - `../kikita-ui/docs/component-roadmap.md`
    - `../kikita-ui/docs/state-coverage.md`
    - `../kikita-ui/CHANGELOG.md`
-   - `../kikita-ui-docs/.local-notes/LIBRARY-BREAKING-CHANGES.md`, if present
 6. Verify the installed `@kikita-labs/ui` package version in `package.json` and
    lockfile before writing examples that depend on newly released APIs.
 7. Use Kikita UI public package imports only. Do not import source files from the
    sibling library repository.
-8. For structural or refactoring work, read
-   `.local-notes/refactor/MASTER-REFACTOR-PLAN.md`,
-   `.local-notes/refactor/COMPONENT-INVENTORY.md`, and the matching component or
-   infrastructure work package. Confirm prerequisites before editing.
+8. For structural or refactoring work, confirm tracked architecture guidance and
+   prerequisites before editing.
 9. Define the smallest behavior-preserving slice. Add characterization coverage
    before moving behavior that is not already protected by tests.
 10. Update docs pages, the typed registry/navigation/search data, examples, API
-    schemas, generated source artifacts, tests, and local status notes together
-    when a docs feature changes.
+    schemas, generated source artifacts, and tests together when a docs feature
+    changes.
 11. Run the relevant verification commands. If a command cannot run, record the
     exact reason in the final response and do not claim it passed.
     Browser-impacting structural work must build production output and run the

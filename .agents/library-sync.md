@@ -18,15 +18,10 @@ Before creating or changing docs for a Kikita UI primitive:
    - `pnpm-lock.yaml`
 2. Check the sibling library changelog:
    - `../kikita-ui/CHANGELOG.md`
-3. Check pending migration notes:
-   - `.local-notes/LIBRARY-BREAKING-CHANGES.md`
-4. Check source documentation in the library:
+3. Check source documentation in the library:
    - `../kikita-ui/docs/<primitive>.md`
    - `../kikita-ui/docs/component-roadmap.md`
    - `../kikita-ui/docs/state-coverage.md`
-5. If the docs need a component visual/API detail, check the matching design spec
-   in the library:
-   - `../kikita-ui/.local-notes/claude-design/design system/<component>.dc.html`
 
 ## Changelog Handling
 
@@ -40,17 +35,6 @@ were published. Distinguish:
 - installed package behavior
 - unreleased library source behavior
 - planned/future behavior
-
-## Breaking Changes
-
-If `.local-notes/LIBRARY-BREAKING-CHANGES.md` exists, read it before coding.
-Every unresolved entry should be either:
-
-- migrated in the docs app;
-- marked as not applicable with a short reason;
-- left open with a clear blocker.
-
-Do not delete migration notes unless the migration is complete and verified.
 
 ## Examples
 

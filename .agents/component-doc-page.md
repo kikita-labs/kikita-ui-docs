@@ -17,11 +17,6 @@ Before writing code, collect the component facts from source-of-truth files:
   - `../kikita-ui/docs/<primitive>.md`
   - `../kikita-ui/docs/component-roadmap.md`
   - `../kikita-ui/docs/state-coverage.md`
-- Design references when present:
-  - `../kikita-ui/.local-notes/claude-design/design system/<component>.dc.html`
-  - `.local-notes/claude-design/design/Docs Site Concept.dc.html`
-- Pending migration notes when present:
-  - `.local-notes/LIBRARY-BREAKING-CHANGES.md`
 
 Do not document unreleased library behavior as available in the docs app. If the
 library source has a newer API than the installed `@kikita-labs/ui` package,
@@ -30,8 +25,6 @@ either update the package first or mark the docs task as blocked.
 ## Implementation Sequence
 
 1. Read `AGENTS.md`, every document in its Always Read list, and this file.
-   For refactoring an existing feature, also read the master refactor plan,
-   component inventory, and the component's local work package.
 2. Run `angularCliKikitaDocs.list_projects` before Angular work.
 3. Load Angular best practices from `instructions://best-practices` if
    `get_best_practices` returns `Unexpected response type`.
@@ -46,10 +39,9 @@ either update the package first or mark the docs task as blocked.
 7. Confirm the public imports and exported types from the installed package.
    Examples must import from `@kikita-labs/ui`, never from `../kikita-ui`.
 8. Create or update the component docs manifest, page, examples, API schema,
-   playground, registry-derived surfaces, generated source, tests, and local
-   status notes together. Until the typed registry migration lands, update the
-   existing route/navigation/category sources together and record the remaining
-   migration task in the component work package.
+   playground, registry-derived surfaces, generated source, and tests together.
+   Until the typed registry migration lands, update the existing
+   route/navigation/category sources together.
 9. Verify with the relevant Angular target and review the rendered page when the
    change affects layout, responsive behavior, overlay behavior, or interaction.
 
@@ -65,6 +57,8 @@ For a component named `<name>`:
 - `src/app/pages/components/<name>/playground/<name>-playground-page.*`
 - `src/app/pages/components/<name>/<name>.docs-manifest.ts` once the typed
   registry migration is available
+- generated Markdown mirror, agent manifest entry, `llms-full.txt`, and MCP data
+  after the agent-surface generator exists
 - local boundary `index.ts` files according to
   `.agents/imports-and-boundaries.md`
 - `src/app/core/navigation/app-route-path.ts`
@@ -347,10 +341,6 @@ playground.
 
 ## Design And Layout Expectations
 
-The current visual target is documented in
-`.local-notes/claude-design/design/Docs Site Concept.dc.html`. Treat it as a
-composition concept, not as production code to copy.
-
 Follow these expectations:
 
 - Keep docs pages quiet, dense, and scannable.
@@ -442,6 +432,9 @@ Use this before calling the page done:
 - [ ] Migration/version notes are included when the installed package requires
       them.
 - [ ] Shared docs UI and Kikita UI primitives are used instead of ad hoc UI.
+- [ ] Agent-surface outputs were regenerated or the exact blocker was recorded:
+      Markdown mirror, agent manifest, `llms.txt` when curated, `llms-full.txt`,
+      and MCP data.
 - [ ] No sibling library source imports were added.
 - [ ] No unreleased behavior was documented as available.
 - [ ] Angular verification ran or the exact blocker is recorded.

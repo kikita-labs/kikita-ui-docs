@@ -17,6 +17,8 @@ Always read:
 - `.agents/angular-code-style.md`
 - `.agents/imports-and-boundaries.md`
 - `.agents/platform-and-state.md`
+- `.agents/ssr.md`
+- `.agents/agent-surface.md`
 - `.agents/responsive-accessibility.md`
 - `.agents/testing-and-quality.md`
 - `.agents/refactoring.md`
@@ -31,15 +33,10 @@ the sibling library repository:
 - `../kikita-ui/docs/<primitive>.md`
 - `../kikita-ui/docs/component-roadmap.md`
 - `../kikita-ui/docs/state-coverage.md`
-- `../kikita-ui/.local-notes/claude-design/design system/<component>.dc.html`
 
 For component documentation page work, also read:
 
 - `.agents/component-doc-page.md`
-
-If present, also read:
-
-- `.local-notes/LIBRARY-BREAKING-CHANGES.md`
 
 ## Non-Negotiable Rules
 
@@ -93,25 +90,6 @@ in that case, use the readable MCP resource and the working `list_projects` /
 
 If the MCP server is unavailable or not connected, stop and tell the user. Do
 not silently fall back to guesses.
-
-## Local Notes
-
-`.local-notes/` is gitignored and can contain planning docs for this repo.
-
-Read these before structural docs work when present:
-
-- `.local-notes/PLAN.md`
-- `.local-notes/claude-design/briefs/design-brief.md`
-- `.local-notes/LIBRARY-BREAKING-CHANGES.md`
-- `.local-notes/refactor/MASTER-REFACTOR-PLAN.md`
-- `.local-notes/refactor/COMPONENT-INVENTORY.md`
-- `.local-notes/refactor/components/<component>.md`
-
-The files under `.local-notes/refactor/` are the execution source of truth for
-the planned architecture migration. Before refactoring an area, read the master
-plan and its matching work package. Update the work package status, evidence,
-and remaining tasks in the same change. Do not mark a package complete without
-all required verification.
 
 ## Source Of Truth
 

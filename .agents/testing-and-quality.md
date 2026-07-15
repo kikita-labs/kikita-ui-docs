@@ -34,6 +34,7 @@ pnpm check:generated
 pnpm check:inventory
 pnpm check:package-consumer
 pnpm check:migration-debt
+pnpm check:agent-surface
 pnpm build
 pnpm check:performance
 pnpm test:browser
@@ -104,6 +105,7 @@ Add invariant tests that fail when:
 - navigation/search/category/breadcrumb data diverges from the registry;
 - a stable route or anchor is removed without an explicit migration;
 - generated example source is stale;
+- generated agent Markdown, `llms.txt`, `llms-full.txt`, or MCP data is stale;
 - API schema values are duplicated or invalid;
 - a public package import referenced by docs is unavailable in the installed
   dependency.

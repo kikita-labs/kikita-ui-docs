@@ -4,8 +4,6 @@ Updated: 2026-07-15
 
 Sources:
 
-- Plan: `.local-notes/PLAN.md`
-- Design reference: `.local-notes/claude-design/design/Docs Site Concept.dc.html`
 - Architecture baseline: `.agents/architecture.md`
 - Package source of truth: sibling `kikita-ui` repo docs and published `@kikita-labs/ui`
 
@@ -60,7 +58,7 @@ Sources:
 
 - Rendered component examples and Package Smoke now own their displayed source through 111 generated source records; non-rendered import/provider guidance remains intentionally page-authored.
 - Component API schemas must keep being checked against installed package `.d.ts` before page work lands.
-- Visual parity is not done just because routes exist; every page still needs comparison against the Claude design concept.
+- Visual parity is not done just because routes exist; every page still needs design review against the tracked docs UI rules.
 - Approved path aliases, explicit barrels, import sorting, and boundary checks are now enforced; feature-local deep imports remain for later package-local cleanup where appropriate.
 - The Button Playground now has zero document overflow at 375px; package 05/06 must preserve that local-overflow contract across shared UI and the shell review matrix.
 - Installed `@kikita-labs/ui` 0.3.1 solid Button renders white on `#8283ff` in dark preview state (axe contrast 3.16:1); shared docs chrome passes axe and no docs-only token override masks the upstream primitive issue.

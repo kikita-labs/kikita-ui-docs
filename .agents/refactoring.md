@@ -14,16 +14,13 @@ the next step is unambiguous.
 Before editing:
 
 1. read `AGENTS.md` and all mandatory `.agents` documents;
-2. read `.local-notes/refactor/MASTER-REFACTOR-PLAN.md`;
-3. read `.local-notes/refactor/COMPONENT-INVENTORY.md`;
-4. read the matching infrastructure or component work package;
-5. inspect current git status and preserve unrelated changes;
-6. confirm prerequisite work packages are complete;
-7. run or inspect the current relevant baseline.
+2. inspect current git status and preserve unrelated changes;
+3. confirm prerequisite tracked work is complete;
+4. run or inspect the current relevant baseline.
 
-If a work package is missing or contradicted by current code, update the plan
-before implementation. Do not improvise a new architecture inside a component
-diff.
+If tracked architecture guidance is missing or contradicted by current code,
+update the tracked guidance before implementation. Do not improvise a new
+architecture inside a component diff.
 
 ## Slice Shape
 
@@ -125,7 +122,7 @@ source-of-truth verification.
 - Reduce Shiki/theme overhead.
 - Remove compatibility files and obsolete constants.
 - Tighten lint rules from warning/migration mode to error.
-- Update architecture/progress and close work packages.
+- Update architecture/progress and close tracked follow-up items.
 
 ## No Big-Bang Rules
 

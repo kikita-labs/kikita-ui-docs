@@ -7,8 +7,6 @@
   technical change.
 - Do not commit unless the user asks for a commit or the current task explicitly
   includes committing.
-- Before committing, check whether the docs change depends on a library release
-  or migration note.
-- If docs were updated because of `../kikita-ui/CHANGELOG.md` or
-  `.local-notes/LIBRARY-BREAKING-CHANGES.md`, mention that in the commit body
-  without adding AI attribution.
+- Before committing, check whether the docs change depends on a library release.
+- If docs were updated because of `../kikita-ui/CHANGELOG.md`, mention that in
+  the commit body without adding AI attribution.
