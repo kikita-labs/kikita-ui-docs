@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: read
-  packages: read
   pages: write
   id-token: write
 
@@ -27,8 +26,6 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-
-      - run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
 
       - run: pnpm install --frozen-lockfile
 
