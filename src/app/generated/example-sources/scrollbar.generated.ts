@@ -9,7 +9,7 @@ export const SCROLLBAR_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "local-scroll-container-example.html",
       language: "html",
-      code: "<div class=\"kui-scroll local-scroll-container-example__region\">\n  <p>First paragraph of scrollable content.</p>\n  <p>Second paragraph of scrollable content.</p>\n  <p>Third paragraph of scrollable content.</p>\n  <p>Fourth paragraph of scrollable content.</p>\n  <p>Fifth paragraph of scrollable content.</p>\n</div>",
+      code: "<div class=\"kui-scroll local-scroll-container-example__region\" tabindex=\"0\">\n  <p>First paragraph of scrollable content.</p>\n  <p>Second paragraph of scrollable content.</p>\n  <p>Third paragraph of scrollable content.</p>\n  <p>Fourth paragraph of scrollable content.</p>\n  <p>Fifth paragraph of scrollable content.</p>\n</div>",
     },
     {
       label: "TS",
