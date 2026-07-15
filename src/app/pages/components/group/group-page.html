@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public directive from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Apply kuiGroup to a container element around adjacent buttons, icon buttons, or fields. Use collapsed to merge their shared borders into one visual control."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="group-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Collapsed button group">
       <app-basic-group-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="orientation"
     heading="Orientation"
     description="orientation switches the group between a horizontal row and a vertical stack. Border collapsing follows the same axis."
   >
@@ -49,7 +36,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="size"
     heading="Size"
     description="size is set once on the group and inherited by grouped controls through CSS variables, instead of repeating size on every child."
   >
@@ -60,7 +46,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="grouping-fields"
     heading="Grouping fields"
     description="Group a text input with an adjacent button or icon button to build search and inline-action patterns."
   >
@@ -70,12 +55,11 @@
     <app-code-tabs [tabs]="fieldTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Group API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Group only changes visual chrome. It does not change roles, focus order, or keyboard behavior of the controls it wraps."
   >

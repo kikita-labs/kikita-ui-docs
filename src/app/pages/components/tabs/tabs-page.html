@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Tabs is a compound component: a host, a trigger directive, and an optional panel directive."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Bind selected to the active tab value and pair each kuiTab with a matching kuiTabPanel."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="tabs-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic tabs">
       <app-basic-tabs-example />
@@ -70,12 +58,11 @@
     <app-code-tabs [tabs]="navigationTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Tabs API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Tabs owns keyboard navigation and the tablist/tab/tabpanel ARIA structure."
   >

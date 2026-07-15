@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public component and slot directives from the package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Project a decorative icon and, when relevant, an action row. Use surrounding page structure for heading hierarchy."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="empty-state-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic empty state">
       <app-basic-empty-state-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="contexts"
     heading="Contexts"
     description="context changes the icon accent only; it does not change layout or add copy. Combine it with the right title, description, and actions for each situation."
   >
@@ -49,7 +36,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="sizes"
     heading="Sizes"
     description="size controls overall spacing and icon scale. Small uses a compact horizontal layout for tight regions."
   >
@@ -59,12 +45,11 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Empty State API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Empty State keeps heading and interaction semantics owned by the surrounding page."
   >

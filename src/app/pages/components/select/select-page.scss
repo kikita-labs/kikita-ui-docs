@@ -7,8 +7,3 @@
 .select-page__notes {
   @include doc-page-notes;
 }
-
-.select-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

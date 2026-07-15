@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Use the directive on native checkbox inputs and pair it with kui-field for field-level wiring."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Keep native label text next to the switch and reserve switch for binary settings."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="switch-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic switch">
       <app-basic-switch-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="sizes"
     heading="Sizes"
     description="Use the same size scale as other Kikita form controls."
   >
@@ -48,12 +35,11 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Switch API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Switch adds role=switch while keeping the native checkbox element."
   >

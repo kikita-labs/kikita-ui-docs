@@ -15,7 +15,7 @@ export const EMPTY_STATE_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-empty-state-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiEmptyStateActionsDirective,\n  KuiEmptyStateComponent,\n  KuiEmptyStateIconDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-empty-state-example',\n  imports: [\n    KuiButtonDirective,\n    KuiEmptyStateActionsDirective,\n    KuiEmptyStateComponent,\n    KuiEmptyStateIconDirective,\n  ],\n  templateUrl: './basic-empty-state-example.html',\n  styleUrl: './basic-empty-state-example.scss',\n})\nexport class BasicEmptyStateExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport {\r\n  KuiButtonDirective,\r\n  KuiEmptyStateActionsDirective,\r\n  KuiEmptyStateComponent,\r\n  KuiEmptyStateIconDirective,\r\n} from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-empty-state-example',\r\n  imports: [\r\n    KuiButtonDirective,\r\n    KuiEmptyStateActionsDirective,\r\n    KuiEmptyStateComponent,\r\n    KuiEmptyStateIconDirective,\r\n  ],\r\n  templateUrl: './basic-empty-state-example.html',\r\n  styleUrl: './basic-empty-state-example.scss',\r\n})\r\nexport class BasicEmptyStateExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const EMPTY_STATE_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "empty-state-context-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiEmptyStateActionsDirective,\n  KuiEmptyStateComponent,\n  KuiEmptyStateIconDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-empty-state-context-example',\n  imports: [\n    KuiButtonDirective,\n    KuiEmptyStateActionsDirective,\n    KuiEmptyStateComponent,\n    KuiEmptyStateIconDirective,\n  ],\n  templateUrl: './empty-state-context-example.html',\n  styleUrl: './empty-state-context-example.scss',\n})\nexport class EmptyStateContextExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport {\r\n  KuiButtonDirective,\r\n  KuiEmptyStateActionsDirective,\r\n  KuiEmptyStateComponent,\r\n  KuiEmptyStateIconDirective,\r\n} from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-empty-state-context-example',\r\n  imports: [\r\n    KuiButtonDirective,\r\n    KuiEmptyStateActionsDirective,\r\n    KuiEmptyStateComponent,\r\n    KuiEmptyStateIconDirective,\r\n  ],\r\n  templateUrl: './empty-state-context-example.html',\r\n  styleUrl: './empty-state-context-example.scss',\r\n})\r\nexport class EmptyStateContextExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const EMPTY_STATE_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "empty-state-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiEmptyStateComponent, KuiEmptyStateIconDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-empty-state-size-example',\n  imports: [KuiEmptyStateComponent, KuiEmptyStateIconDirective],\n  templateUrl: './empty-state-size-example.html',\n  styleUrl: './empty-state-size-example.scss',\n})\nexport class EmptyStateSizeExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiEmptyStateComponent, KuiEmptyStateIconDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-empty-state-size-example',\r\n  imports: [KuiEmptyStateComponent, KuiEmptyStateIconDirective],\r\n  templateUrl: './empty-state-size-example.html',\r\n  styleUrl: './empty-state-size-example.scss',\r\n})\r\nexport class EmptyStateSizeExample {}",
     },
     {
       label: "SCSS",

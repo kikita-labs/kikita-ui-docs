@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { SELECT_EXAMPLE_SOURCES } from '@generated/example-sources/select.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { BasicSelectExample, MultipleSelectExample } from './examples';
 import { SELECT_API_ROWS } from './select.api-schema';
@@ -26,11 +24,10 @@ import {
     BasicSelectExample,
     CodeTabs,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     MultipleSelectExample,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './select-page.html',
   styleUrl: './select-page.scss',

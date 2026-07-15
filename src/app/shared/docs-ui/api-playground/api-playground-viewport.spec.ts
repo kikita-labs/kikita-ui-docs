@@ -12,6 +12,8 @@ describe('ApiPlaygroundViewport', () => {
   const start = vi.fn();
 
   beforeEach(async () => {
+    window.localStorage.removeItem('kikita-ui-docs.playground-preview-theme');
+
     await TestBed.configureTestingModule({
       imports: [ApiPlaygroundViewport],
       providers: [provideKikitaUi(), { provide: DocsPointerDragService, useValue: { start } }],
@@ -51,6 +53,29 @@ describe('ApiPlaygroundViewport', () => {
       fixture.detectChanges();
     }
     expect(width?.value).toBe('320');
+  });
+
+  it('persists the selected preview theme for the next viewport instance', async () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const theme = root.querySelector<HTMLButtonElement>('[aria-label="Use dark preview theme"]');
+
+    theme?.click();
+    fixture.detectChanges();
+
+    expect(window.localStorage.getItem('kikita-ui-docs.playground-preview-theme')).toBe('dark');
+
+    fixture.destroy();
+
+    const nextFixture = TestBed.createComponent(ApiPlaygroundViewport);
+    nextFixture.detectChanges();
+    await nextFixture.whenStable();
+    nextFixture.detectChanges();
+
+    expect(
+      (nextFixture.nativeElement as HTMLElement).querySelector('[data-kui-theme="dark"]'),
+    ).not.toBeNull();
+
+    nextFixture.destroy();
   });
 
   it('delegates pointer resizing to the platform adapter', () => {

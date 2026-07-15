@@ -7,8 +7,3 @@
 .dropdown-page__notes {
   @include doc-page-notes;
 }
-
-.dropdown-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

@@ -1,5 +1,7 @@
 import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { provideKikitaUi } from '@kikita-labs/ui';
+
 import { DocsAnchorNavigationService } from '@core/platform/anchor';
 import { DocsHeadingObserverService, DocsSectionRegistryService } from '@core/platform/heading';
 import { expectNoAxeViolations } from '@shared/docs-ui/testing/axe';
@@ -16,6 +18,7 @@ describe('PageToc', () => {
     await TestBed.configureTestingModule({
       imports: [PageToc],
       providers: [
+        provideKikitaUi(),
         {
           provide: DocsAnchorNavigationService,
           useValue: { navigate },
@@ -47,20 +50,17 @@ describe('PageToc', () => {
     fixture.detectChanges();
 
     const root = fixture.nativeElement as HTMLElement;
-    const details = root.querySelector<HTMLDetailsElement>('details');
+    const accordion = root.querySelector('kui-accordion');
     const accessibility = root.querySelector<HTMLAnchorElement>('[href="#accessibility"]');
 
-    expect(details).not.toBeNull();
-    expect(root.querySelector('summary')?.textContent).toContain('Overview');
+    expect(accordion).not.toBeNull();
+    expect(root.textContent).toContain('On this page');
+    expect(root.textContent).toContain('Overview');
 
-    if (details) {
-      details.open = true;
-    }
     accessibility?.click();
     fixture.detectChanges();
 
     expect(navigate).toHaveBeenCalledWith('accessibility');
-    expect(details?.open).toBe(false);
     expect(accessibility?.getAttribute('aria-current')).toBe('location');
   });
 

@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Date Picker composes the directive, Field, Dropdown, and Calendar public APIs."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Bind the input and calendar to the same Date signal so typed and clicked values stay synchronized."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="date-picker-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic date picker">
       <app-basic-date-picker-example />
@@ -44,32 +32,39 @@
   >
     <ul class="date-picker-page__notes">
       <li>Use <code>panelRole="dialog"</code> because the panel contains a calendar grid.</li>
-      <li>Use <code>panelWidth="content"</code> so the calendar is not clipped to a narrow field.</li>
+      <li>
+        Use <code>panelWidth="content"</code> so the calendar is not clipped to a narrow field.
+      </li>
       <li>Use <code>maxHeight</code> as a viewport safety cap for constrained spaces.</li>
-      <li>Use <code>flat</code> on the calendar to avoid a double border inside the dropdown panel.</li>
+      <li>
+        Use <code>flat</code> on the calendar to avoid a double border inside the dropdown panel.
+      </li>
     </ul>
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Date Picker API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="The input owns combobox trigger semantics and the calendar owns grid navigation."
   >
     <ul class="date-picker-page__notes">
-      <li>The input exposes <code>role="combobox"</code>, dialog popup state, and invalid state.</li>
+      <li>
+        The input exposes <code>role="combobox"</code>, dialog popup state, and invalid state.
+      </li>
       <li>ArrowDown opens the popover; a second ArrowDown moves focus into the calendar grid.</li>
       <li>Escape closes the popover while keeping focus in the field.</li>
-      <li>Use <code>kui-field</code> labels and hints so the native input has a clear accessible name and description.</li>
+      <li>
+        Use <code>kui-field</code> labels and hints so the native input has a clear accessible name
+        and description.
+      </li>
       <li>Assistive-technology review is still pending for the newest date primitives.</li>
     </ul>
   </app-doc-section>
 
   <app-doc-section
-    anchor="known-gaps"
     heading="Known gaps"
     description="The installed package intentionally ships single-date picking first."
   >

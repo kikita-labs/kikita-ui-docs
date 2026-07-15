@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Select composes field, dropdown, option, and the native input select directive."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Bind value with Angular signals and keep option markup explicit."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="select-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic select">
       <app-basic-select-example />
@@ -49,19 +37,17 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="provider-defaults"
     heading="Provider defaults"
     description="Use provider defaults for app-wide select behavior. Local inputs still win."
   >
     <app-code-tabs [tabs]="providerTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Select API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Select keeps field wiring on kui-field and listbox semantics on dropdown options."
   >

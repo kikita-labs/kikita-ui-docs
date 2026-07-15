@@ -29,6 +29,10 @@ app-api-playground-viewport {
   min-inline-size: 0;
 }
 
+.api-playground__group--wide {
+  min-inline-size: 0;
+}
+
 .api-playground__group-label {
   @include caption-label;
 
@@ -37,7 +41,7 @@ app-api-playground-viewport {
 
 .api-playground__control-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--kui-space-6, 24px);
 }
 
@@ -96,7 +100,7 @@ app-code-tabs {
   min-inline-size: 0;
 }
 
-@container (max-width: 760px) {
+@container (max-width: 820px) {
   .api-playground__control-grid,
   .api-playground__detail-row {
     grid-template-columns: minmax(0, 1fr);

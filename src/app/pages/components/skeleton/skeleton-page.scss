@@ -7,8 +7,3 @@
 .skeleton-page__notes {
   @include doc-page-notes;
 }
-
-.skeleton-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

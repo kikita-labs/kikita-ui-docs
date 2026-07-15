@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Load the Kikita stylesheet once. Scrollbar has no directive or component to import."
   >
@@ -15,7 +14,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Apply the kui-scroll class to the element that actually scrolls for local, per-container opt-in styling."
   >
@@ -41,12 +39,11 @@
     <app-code-tabs [tabs]="providerTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Scrollbar API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Scrollbar only restyles native browser scrolling; it does not change scroll behavior or semantics."
   >

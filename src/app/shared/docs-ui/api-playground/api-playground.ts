@@ -4,6 +4,7 @@ import { Component, computed, input, signal } from '@angular/core';
 import {
   KuiCardDirective,
   KuiInputDirective,
+  KuiNumberInputDirective,
   KuiSegmentDirective,
   KuiSegmentedComponent,
   KuiSwitchDirective,
@@ -31,6 +32,7 @@ let nextApiPlaygroundId = 0;
     CodeTabs,
     KuiCardDirective,
     KuiInputDirective,
+    KuiNumberInputDirective,
     KuiSegmentDirective,
     KuiSegmentedComponent,
     KuiSwitchDirective,

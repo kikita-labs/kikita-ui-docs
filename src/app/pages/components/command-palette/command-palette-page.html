@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Command palette uses a component for the overlay and typed command group data."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Control open and query with signals, and run commands from the selected output."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="command-palette-page__playground-link"
-    >
-      Open in Playground</a
-    >
+    <app-playground-route-button docSectionActions />
     <app-live-preview previewLabel="Basic command palette">
       <app-basic-command-palette-example />
     </app-live-preview>
@@ -37,19 +25,17 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="item-data"
     heading="Item data"
     description="Items support metadata for rendering and keywords for search matching."
   >
     <app-code-tabs [tabs]="itemTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Command palette API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="The palette uses modal dialog semantics, focus trapping, and listbox navigation."
   >

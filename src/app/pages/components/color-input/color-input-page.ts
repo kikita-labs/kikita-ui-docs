@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { COLOR_INPUT_EXAMPLE_SOURCES } from '@generated/example-sources/color-input.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { COLOR_INPUT_API_ROWS } from './color-input.api-schema';
 import {
@@ -25,10 +23,9 @@ import { BasicColorInputExample } from './examples';
     BasicColorInputExample,
     CodeTabs,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './color-input-page.html',
   styleUrl: './color-input-page.scss',

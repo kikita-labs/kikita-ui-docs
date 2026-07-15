@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { BREADCRUMBS_EXAMPLE_SOURCES } from '@generated/example-sources/breadcrumbs.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { BREADCRUMBS_API_ROWS } from './breadcrumbs.api-schema';
 import {
@@ -25,10 +23,9 @@ import { BasicBreadcrumbsExample } from './examples';
     BasicBreadcrumbsExample,
     CodeTabs,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './breadcrumbs-page.html',
   styleUrl: './breadcrumbs-page.scss',

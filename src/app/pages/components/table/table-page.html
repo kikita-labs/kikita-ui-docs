@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Table composes several directives and components sharing one DI context."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Apply kuiTable to a real table element, keep native thead/tbody/tr/th/td markup, and read #table='kuiTable' for sorted rows."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="table-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Sortable table">
       <app-basic-sortable-table-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="sort"
     heading="Sort"
     description="sortKey on th[kuiTh] enables cycling through asc, desc, and clear via a native button. Uncontrolled sort (no (sortChange) listener) sorts data locally and exposes results as sortedData()."
   >
@@ -87,12 +74,11 @@
     <app-code-tabs [tabs]="combinedTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Table API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Table keeps real table semantics and native interactive elements for sort and selection."
   >
@@ -121,7 +107,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="known-gaps"
     heading="Known gaps"
     description="One documented library behavior is not available in the installed package version."
   >

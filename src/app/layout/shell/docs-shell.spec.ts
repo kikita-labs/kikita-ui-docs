@@ -27,6 +27,14 @@ const TEST_ROUTES: Routes = [
     component: TestRoutePage,
   },
   {
+    path: 'components/button',
+    component: TestRoutePage,
+  },
+  {
+    path: 'components/button/playground',
+    component: TestRoutePage,
+  },
+  {
     path: 'missing',
     component: TestRoutePage,
     data: { docsLayout: 'not-found' },
@@ -73,6 +81,12 @@ describe('DocsShell', () => {
     expect(query('.docs-shell__sidebar')).not.toBeNull();
     expect(query('app-page-toc')).not.toBeNull();
     expect(menuToggle()).not.toBeNull();
+  });
+
+  it('keeps the component navigation item active on its playground route', async () => {
+    await navigateTo('/components/button/playground');
+
+    expect(query('.sidebar-nav__item[aria-current="page"]')?.textContent).toContain('Button');
   });
 
   it('opens mobile navigation and closes it after route navigation', async () => {

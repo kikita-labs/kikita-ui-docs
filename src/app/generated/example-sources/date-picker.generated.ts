@@ -9,19 +9,19 @@ export const DATE_PICKER_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-date-picker-example.html",
       language: "html",
-      code: "<div class=\"basic-date-picker-example\">\n  <kui-field label=\"Meeting date\" hint=\"Type dd.mm.yyyy or choose from the calendar.\">\n    <input\n      kuiDatePicker\n      [(value)]=\"meetingDate\"\n      [(viewDate)]=\"viewDate\"\n      [minDate]=\"minDate\"\n      placeholder=\"dd.mm.yyyy\"\n    />\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"content\" maxHeight=\"420px\">\n      <kui-calendar\n        flat\n        showFooter\n        [(value)]=\"meetingDate\"\n        [(viewDate)]=\"viewDate\"\n        [minDate]=\"minDate\"\n      />\n    </kui-dropdown>\n  </kui-field>\n</div>",
+      code: "<div class=\"basic-date-picker-example\">\r\n  <kui-field label=\"Meeting date\" hint=\"Type dd.mm.yyyy or choose from the calendar.\">\r\n    <input\r\n      kuiDatePicker\r\n      [(value)]=\"meetingDate\"\r\n      [(viewDate)]=\"viewDate\"\r\n      [minDate]=\"minDate\"\r\n      placeholder=\"dd.mm.yyyy\"\r\n    />\r\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"content\" maxHeight=\"420px\">\r\n      <kui-calendar\r\n        flat\r\n        showFooter\r\n        [(value)]=\"meetingDate\"\r\n        [(viewDate)]=\"viewDate\"\r\n        [minDate]=\"minDate\"\r\n      />\r\n    </kui-dropdown>\r\n  </kui-field>\r\n</div>",
     },
     {
       label: "TS",
       filename: "basic-date-picker-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiCalendarComponent,\n  KuiDatePickerDirective,\n  KuiDropdownComponent,\n  KuiFieldComponent,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-date-picker-example',\n  imports: [\n    KuiCalendarComponent,\n    KuiDatePickerDirective,\n    KuiDropdownComponent,\n    KuiFieldComponent,\n  ],\n  templateUrl: './basic-date-picker-example.html',\n  styleUrl: './basic-date-picker-example.scss',\n})\nexport class BasicDatePickerExample {\n  protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly viewDate = signal(new Date(2026, 6, 1));\n  protected readonly minDate = new Date(2026, 6, 1);\n}",
+      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport {\r\n  KuiCalendarComponent,\r\n  KuiDatePickerDirective,\r\n  KuiDropdownComponent,\r\n  KuiFieldComponent,\r\n} from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-date-picker-example',\r\n  imports: [\r\n    KuiCalendarComponent,\r\n    KuiDatePickerDirective,\r\n    KuiDropdownComponent,\r\n    KuiFieldComponent,\r\n  ],\r\n  templateUrl: './basic-date-picker-example.html',\r\n  styleUrl: './basic-date-picker-example.scss',\r\n})\r\nexport class BasicDatePickerExample {\r\n  protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));\r\n  protected readonly viewDate = signal(new Date(2026, 6, 1));\r\n  protected readonly minDate = new Date(2026, 6, 1);\r\n}",
     },
     {
       label: "SCSS",
       filename: "basic-date-picker-example.scss",
       language: "scss",
-      code: ".basic-date-picker-example {\n  max-width: 22rem;\n}",
+      code: ".basic-date-picker-example {\r\n  max-width: 22rem;\r\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

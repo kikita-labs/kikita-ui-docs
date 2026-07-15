@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public input primitives from the package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Use kuiInput on native input elements. Use Field only when the control needs label, hint, or error chrome."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="input-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Native inputs">
       <app-basic-input-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="input-group"
     heading="Input group"
     description="Use .kui-input-group for prefix text, suffix text, decorative icons, or trailing field actions around a native input."
   >
@@ -48,12 +35,11 @@
     <app-code-tabs [tabs]="groupTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Input API" [rows]="inputRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Keep native input semantics. Add labels through Field or native label elements."
   >

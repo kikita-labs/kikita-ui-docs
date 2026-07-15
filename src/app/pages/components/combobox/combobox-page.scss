@@ -7,8 +7,3 @@
 .combobox-page__notes {
   @include doc-page-notes;
 }
-
-.combobox-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

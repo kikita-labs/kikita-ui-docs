@@ -1,26 +1,29 @@
 @if (links().length) {
   @if (variant() === 'mobile') {
-    <details #mobileDetails class="page-toc__mobile">
-      <summary>
-        <span>On this page</span>
-        <strong>{{ activeLinkLabel() }}</strong>
-      </summary>
-
-      <nav aria-label="On this page">
-        <ul class="page-toc__mobile-list">
-          @for (link of links(); track link.id) {
-            <li>
-              <a
-                [href]="'#' + link.id"
-                [attr.aria-current]="activeLinkId() === link.id ? 'location' : null"
-                (click)="scrollToLink(link, $event)"
-                >{{ link.label }}</a
-              >
-            </li>
-          }
-        </ul>
-      </nav>
-    </details>
+    <kui-accordion
+      class="page-toc__mobile"
+      mode="exclusive"
+      appearance="bordered"
+      size="sm"
+      [(expandedItems)]="mobileExpandedItems"
+    >
+      <kui-accordion-item id="page-sections" [header]="'On this page — ' + activeLinkLabel()">
+        <nav aria-label="On this page">
+          <ul class="page-toc__mobile-list">
+            @for (link of links(); track link.id) {
+              <li>
+                <a
+                  [href]="'#' + link.id"
+                  [attr.aria-current]="activeLinkId() === link.id ? 'location' : null"
+                  (click)="scrollToLink(link, $event)"
+                  >{{ link.label }}</a
+                >
+              </li>
+            }
+          </ul>
+        </nav>
+      </kui-accordion-item>
+    </kui-accordion>
   } @else {
     <aside class="page-toc" aria-label="Page table of contents">
       <p class="page-toc__label">On this page</p>

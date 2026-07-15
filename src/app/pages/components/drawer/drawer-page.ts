@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { DRAWER_EXAMPLE_SOURCES } from '@generated/example-sources/drawer.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { DRAWER_API_ROWS } from './drawer.api-schema';
 import { DRAWER_API_DESCRIPTION, DRAWER_IMPORT_TABS, DRAWER_STATUS } from './drawer.docs-content';
@@ -23,10 +21,9 @@ import { BasicDrawerExample, DrawerSidesExample, DrawerSizesExample } from './ex
     DocSection,
     DrawerSidesExample,
     DrawerSizesExample,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './drawer-page.html',
   styleUrl: './drawer-page.scss',

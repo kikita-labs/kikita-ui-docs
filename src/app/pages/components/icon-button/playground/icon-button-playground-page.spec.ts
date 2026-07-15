@@ -81,6 +81,30 @@ describe('IconButtonPlaygroundPage', () => {
     );
   });
 
+  it('orders shape and appearance controls like the button playground without none', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const groups = [...root.querySelectorAll<HTMLElement>('.api-playground__group')];
+    const shapeOptions = groups
+      .find((group) => group.textContent?.includes('shape'))
+      ?.querySelectorAll<HTMLButtonElement>('[role="radio"]');
+    const appearanceOptions = groups
+      .find((group) => group.textContent?.includes('appearance'))
+      ?.querySelectorAll<HTMLButtonElement>('[role="radio"]');
+
+    expect([...(shapeOptions ?? [])].map((button) => button.textContent?.trim())).toEqual([
+      'solid',
+      'soft',
+      'outline',
+      'ghost',
+    ]);
+    expect([...(appearanceOptions ?? [])].map((button) => button.textContent?.trim())).toEqual([
+      'primary',
+      'danger',
+      'success',
+      'warning',
+    ]);
+  });
+
   it('keeps disabled preview behavior and snippet attribute', () => {
     const root = fixture.nativeElement as HTMLElement;
     const toggle = root.querySelector<HTMLInputElement>('.api-playground__toggle-row input');
@@ -92,7 +116,9 @@ describe('IconButtonPlaygroundPage', () => {
     const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
 
     expect(button?.disabled).toBe(true);
-    expect(snippet?.textContent).toContain('<button kuiIconButton type="button" disabled');
+    expect(snippet?.textContent).toContain(
+      '<button kuiIconButton type="button" appearance="primary" disabled',
+    );
   });
 
   it('has no automated accessibility violations', async () => {

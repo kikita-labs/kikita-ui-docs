@@ -15,7 +15,7 @@ export const LOADER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-loader-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiLoaderDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-loader-example',\n  imports: [KuiLoaderDirective],\n  templateUrl: './basic-loader-example.html',\n  styleUrl: './basic-loader-example.scss',\n})\nexport class BasicLoaderExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiLoaderDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-loader-example',\r\n  imports: [KuiLoaderDirective],\r\n  templateUrl: './basic-loader-example.html',\r\n  styleUrl: './basic-loader-example.scss',\r\n})\r\nexport class BasicLoaderExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const LOADER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "loader-button-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiLoaderDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-loader-button-example',\n  imports: [KuiButtonDirective, KuiLoaderDirective],\n  templateUrl: './loader-button-example.html',\n  styleUrl: './loader-button-example.scss',\n})\nexport class LoaderButtonExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiButtonDirective, KuiLoaderDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-loader-button-example',\r\n  imports: [KuiButtonDirective, KuiLoaderDirective],\r\n  templateUrl: './loader-button-example.html',\r\n  styleUrl: './loader-button-example.scss',\r\n})\r\nexport class LoaderButtonExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const LOADER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "loader-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiLoaderDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-loader-size-example',\n  imports: [KuiLoaderDirective],\n  templateUrl: './loader-size-example.html',\n  styleUrl: './loader-size-example.scss',\n})\nexport class LoaderSizeExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiLoaderDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-loader-size-example',\r\n  imports: [KuiLoaderDirective],\r\n  templateUrl: './loader-size-example.html',\r\n  styleUrl: './loader-size-example.scss',\r\n})\r\nexport class LoaderSizeExample {}",
     },
     {
       label: "SCSS",

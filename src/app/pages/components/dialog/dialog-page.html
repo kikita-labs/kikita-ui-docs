@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the inject-function factory and dialog-host contract types from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Implement KuiDialogHost on your dialog component, inject KUI_DIALOG_CONTEXT to read data and close, then create a typed opener with kuiDialog() and call it with data to open. The returned observable emits the typed result once and completes."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="dialog-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Invite teammate">
       <app-basic-dialog-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="sizes"
     heading="Sizes"
     description="size selects a panel width preset: auto sizes to content with a 320px minimum, sm is 400px, md is 560px (default), and lg is 720px."
   >
@@ -49,7 +36,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="confirm"
     heading="Confirm"
     description="kuiConfirm() opens a pre-built confirmation dialog without a custom component. It always sets dismissable: false and closable: false, so the user must pick Confirm or Cancel. It resolves Observable<boolean>."
   >
@@ -59,12 +45,11 @@
     <app-code-tabs [tabs]="confirmTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Dialog API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Dialog traps focus and blocks page scroll while open, matching native modal expectations."
   >

@@ -7,8 +7,3 @@
 .chip-page__notes {
   @include doc-page-notes;
 }
-
-.chip-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

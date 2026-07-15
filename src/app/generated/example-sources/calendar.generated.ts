@@ -9,19 +9,19 @@ export const CALENDAR_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-calendar-example.html",
       language: "html",
-      code: "<div class=\"basic-calendar-example\">\n  <kui-calendar [(value)]=\"selectedDate\" [minDate]=\"minDate\" showFooter />\n\n  <kui-calendar mode=\"range\" size=\"sm\" [(value)]=\"sprintRange\" locale=\"en-US\" />\n</div>",
+      code: "<div class=\"basic-calendar-example\">\r\n  <kui-calendar [(value)]=\"selectedDate\" [minDate]=\"minDate\" showFooter />\r\n\r\n  <kui-calendar mode=\"range\" size=\"sm\" [(value)]=\"sprintRange\" locale=\"en-US\" />\r\n</div>",
     },
     {
       label: "TS",
       filename: "basic-calendar-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendarComponent, type KuiDateRange } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-calendar-example',\n  imports: [KuiCalendarComponent],\n  templateUrl: './basic-calendar-example.html',\n  styleUrl: './basic-calendar-example.scss',\n})\nexport class BasicCalendarExample {\n  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly sprintRange = signal<KuiDateRange>({\n    start: new Date(2026, 6, 13),\n    end: new Date(2026, 6, 17),\n  });\n  protected readonly minDate = new Date(2026, 6, 1);\n}",
+      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiCalendarComponent, type KuiDateRange } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-calendar-example',\r\n  imports: [KuiCalendarComponent],\r\n  templateUrl: './basic-calendar-example.html',\r\n  styleUrl: './basic-calendar-example.scss',\r\n})\r\nexport class BasicCalendarExample {\r\n  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));\r\n  protected readonly sprintRange = signal<KuiDateRange>({\r\n    start: new Date(2026, 6, 13),\r\n    end: new Date(2026, 6, 17),\r\n  });\r\n  protected readonly minDate = new Date(2026, 6, 1);\r\n}",
     },
     {
       label: "SCSS",
       filename: "basic-calendar-example.scss",
       language: "scss",
-      code: ".basic-calendar-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-5, 20px);\n  align-items: flex-start;\n}",
+      code: ".basic-calendar-example {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  gap: var(--kui-space-5, 20px);\r\n  align-items: flex-start;\r\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

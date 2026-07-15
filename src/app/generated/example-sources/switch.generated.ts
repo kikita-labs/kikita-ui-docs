@@ -15,7 +15,7 @@ export const SWITCH_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-switch-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiSwitchDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-switch-example',\n  imports: [KuiFieldComponent, KuiSwitchDirective],\n  templateUrl: './basic-switch-example.html',\n  styleUrl: './basic-switch-example.scss',\n})\nexport class BasicSwitchExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiFieldComponent, KuiSwitchDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-switch-example',\r\n  imports: [KuiFieldComponent, KuiSwitchDirective],\r\n  templateUrl: './basic-switch-example.html',\r\n  styleUrl: './basic-switch-example.scss',\r\n})\r\nexport class BasicSwitchExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const SWITCH_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "switch-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiSwitchDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-switch-size-example',\n  imports: [KuiSwitchDirective],\n  templateUrl: './switch-size-example.html',\n  styleUrl: './switch-size-example.scss',\n})\nexport class SwitchSizeExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiSwitchDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-switch-size-example',\r\n  imports: [KuiSwitchDirective],\r\n  templateUrl: './switch-size-example.html',\r\n  styleUrl: './switch-size-example.scss',\r\n})\r\nexport class SwitchSizeExample {}",
     },
     {
       label: "SCSS",

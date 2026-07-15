@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { CHIP_EXAMPLE_SOURCES } from '@generated/example-sources/chip.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { CHIP_API_ROWS } from './chip.api-schema';
 import { CHIP_API_DESCRIPTION, CHIP_IMPORT_TABS, CHIP_STATUS } from './chip.docs-content';
@@ -28,11 +26,10 @@ import {
     CodeTabs,
     DocSection,
     InteractiveChipExample,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
+    PlaygroundRouteButton,
     RemovableChipExample,
-    RouterLink,
   ],
   templateUrl: './chip-page.html',
   styleUrl: './chip-page.scss',

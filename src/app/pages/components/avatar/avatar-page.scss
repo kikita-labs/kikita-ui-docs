@@ -7,8 +7,3 @@
 .avatar-page__notes {
   @include doc-page-notes;
 }
-
-.avatar-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

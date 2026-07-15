@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Dropdown composes a panel component, a standalone trigger directive, and an option directive."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Wire a standalone trigger with [kuiDropdownFor]. Prefer a native button so keyboard behavior and semantics are already correct."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="dropdown-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Standalone dropdown">
       <app-standalone-dropdown-example />
@@ -49,7 +37,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="panel-width"
     heading="Panel width"
     description="panelWidth chooses a sizing strategy relative to the trigger; width overrides it entirely with an explicit CSS width."
   >
@@ -59,12 +46,11 @@
     <app-code-tabs [tabs]="panelWidthTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Dropdown API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Dropdown owns overlay positioning and dismissal while keeping ARIA state on the trigger and options."
   >

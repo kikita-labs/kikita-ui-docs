@@ -7,8 +7,3 @@
 .number-input-page__notes {
   @include doc-page-notes;
 }
-
-.number-input-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

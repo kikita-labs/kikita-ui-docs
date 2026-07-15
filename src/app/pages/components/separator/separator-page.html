@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public directive from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Use the native hr element as the separator host instead of a div for purely visual dividers."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="separator-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic separator">
       <app-basic-separator-example />
@@ -49,7 +37,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="spacing"
     heading="Spacing"
     description="spacing sets outer spacing around the divider line. Defaults to sm."
   >
@@ -60,7 +47,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="vertical"
     heading="Vertical"
     description="orientation switches the divider to a vertical line that stretches to the parent block size, for example between toolbar actions."
   >
@@ -70,12 +56,11 @@
     <app-code-tabs [tabs]="verticalTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Separator API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Separator keeps native hr semantics instead of replacing them with ARIA roles."
   >

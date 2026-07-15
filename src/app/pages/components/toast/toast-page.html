@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the inject-function and global options provider from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Inject kuiToast() once per component and call open() with a config object. The service lazily creates a single toast region on document.body the first time it is used, so there is nothing to render in your template."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="toast-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Appearance triggers">
       <app-basic-toast-example />
@@ -49,7 +37,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="positions"
     heading="Positions"
     description="The toast region renders at one of six positions. top-* stacks grow downward; bottom-* stacks grow upward, keeping the newest toast closest to the viewport edge. setPosition() changes the shared region at runtime and is intended for interactive demos like this one; prefer provideKuiToastOptions for real app configuration."
   >
@@ -60,19 +47,17 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="global-defaults"
     heading="Global defaults"
     description="provideKuiToastOptions configures app-wide defaults, including maxVisible, which has no runtime setter and can only be configured this way. Provide it once in app.config.ts or a route-level provider."
   >
     <app-code-tabs [tabs]="globalDefaultsTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Toast API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Toast uses a polite live region instead of stealing focus, matching how assistive technology expects transient status messages to behave."
   >

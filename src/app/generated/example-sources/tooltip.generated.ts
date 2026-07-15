@@ -9,19 +9,19 @@ export const TOOLTIP_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-tooltip-example.html",
       language: "html",
-      code: "<div class=\"basic-tooltip-example\">\n  <button kuiButton type=\"button\" [kuiTooltip]=\"'Save the current draft'\">Save</button>\n  <button\n    kuiButton\n    type=\"button\"\n    shape=\"soft\"\n    [kuiTooltip]=\"'Open advanced settings'\"\n    placement=\"bottom\"\n  >\n    Settings\n  </button>\n</div>",
+      code: "<div class=\"basic-tooltip-example\">\r\n  <button kuiButton type=\"button\" [kuiTooltip]=\"'Save the current draft'\">Save</button>\r\n  <button\r\n    kuiButton\r\n    type=\"button\"\r\n    shape=\"soft\"\r\n    [kuiTooltip]=\"'Open advanced settings'\"\r\n    placement=\"bottom\"\r\n  >\r\n    Settings\r\n  </button>\r\n</div>",
     },
     {
       label: "TS",
       filename: "basic-tooltip-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiTooltipDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-tooltip-example',\n  imports: [KuiButtonDirective, KuiTooltipDirective],\n  templateUrl: './basic-tooltip-example.html',\n  styleUrl: './basic-tooltip-example.scss',\n})\nexport class BasicTooltipExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiButtonDirective, KuiTooltipDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-tooltip-example',\r\n  imports: [KuiButtonDirective, KuiTooltipDirective],\r\n  templateUrl: './basic-tooltip-example.html',\r\n  styleUrl: './basic-tooltip-example.scss',\r\n})\r\nexport class BasicTooltipExample {}",
     },
     {
       label: "SCSS",
       filename: "basic-tooltip-example.scss",
       language: "scss",
-      code: ".basic-tooltip-example {\n  display: flex;\n  justify-content: center;\n  gap: var(--kui-space-3, 12px);\n  flex-wrap: wrap;\n}",
+      code: ".basic-tooltip-example {\r\n  display: flex;\r\n  justify-content: center;\r\n  gap: var(--kui-space-3, 12px);\r\n  flex-wrap: wrap;\r\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

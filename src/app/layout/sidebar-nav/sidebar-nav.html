@@ -104,7 +104,7 @@
                   [shape]="componentLink.isActive ? 'soft' : 'ghost'"
                   [routerLink]="component.routePath"
                   routerLinkActive
-                  [routerLinkActiveOptions]="activeOptions"
+                  [routerLinkActiveOptions]="componentActiveOptions"
                   [attr.aria-current]="componentLink.isActive ? 'page' : null"
                 >
                   <span>{{ component.name }}</span>

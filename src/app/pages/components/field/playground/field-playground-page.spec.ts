@@ -89,14 +89,20 @@ describe('FieldPlaygroundPage', () => {
     expect(snippet?.textContent).toContain('required');
   });
 
-  it('keeps hideErrors in the generated snippet', () => {
+  it('keeps explicit errors invalid when hideErrors is enabled', () => {
     const root = fixture.nativeElement as HTMLElement;
 
+    setTextInput(root, 'error', '<Required>');
     toggleSwitch(root, 'hideErrors');
     fixture.detectChanges();
 
+    const input = root.querySelector<HTMLInputElement>(
+      '.api-playground-viewport__resizable input.kui-input',
+    );
     const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
 
+    expect(input?.getAttribute('aria-invalid')).toBe('true');
+    expect(snippet?.textContent).toContain('error="&lt;Required&gt;"');
     expect(snippet?.textContent).toContain('hideErrors');
   });
 

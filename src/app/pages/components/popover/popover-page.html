@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Popover composes a panel component and a trigger directive."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Wire any element as a trigger with [kuiPopoverFor], then project arbitrary content into the panel."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="popover-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic popover">
       <app-basic-popover-example />
@@ -49,7 +37,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="hover-trigger"
     heading="Hover trigger"
     description='triggerType="hover" opens on mouseenter and closes after hoverDelay, so the mouse can travel from trigger to panel.'
   >
@@ -59,12 +46,11 @@
     <app-code-tabs [tabs]="hoverTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Popover API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Popover exposes dialog semantics and returns focus to the trigger on close."
   >

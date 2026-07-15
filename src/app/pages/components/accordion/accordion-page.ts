@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { ACCORDION_EXAMPLE_SOURCES } from '@generated/example-sources/accordion.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { ACCORDION_API_ROWS } from './accordion.api-schema';
 import {
@@ -32,11 +30,10 @@ import {
     CodeTabs,
     DocSection,
     IconAccordionExample,
-    KuiButtonDirective,
     LivePreview,
     MultiAccordionExample,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './accordion-page.html',
   styleUrl: './accordion-page.scss',

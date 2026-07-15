@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public directive from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="kuiBadge is an attribute directive, so it can be used on inline semantic elements such as span, strong, code, or a."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="badge-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic badges">
       <app-basic-badge-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="appearances"
     heading="Appearances"
     description="appearance maps the badge to a semantic status color. Defaults to neutral."
   >
@@ -49,7 +36,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="sizes"
     heading="Sizes"
     description="Use the shared Kikita size scale to match badge density to surrounding content."
   >
@@ -59,12 +45,11 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Badge API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Badge is a styling-only directive; it does not add or replace element semantics."
   >

@@ -1,13 +1,6 @@
-import {
-  Component,
-  computed,
-  effect,
-  type ElementRef,
-  inject,
-  input,
-  signal,
-  viewChild,
-} from '@angular/core';
+import { Component, computed, effect, inject, input, signal } from '@angular/core';
+
+import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
 
 import { DocsAnchorNavigationService } from '@core/platform/anchor';
 import {
@@ -18,7 +11,7 @@ import {
 
 @Component({
   selector: 'app-page-toc',
-  imports: [],
+  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
   templateUrl: './page-toc.html',
   styleUrl: './page-toc.scss',
   host: {
@@ -30,12 +23,12 @@ export class PageToc {
   private readonly anchorNavigation = inject(DocsAnchorNavigationService);
   private readonly headingObserver = inject(DocsHeadingObserverService);
   private readonly sectionRegistry = inject(DocsSectionRegistryService);
-  private readonly mobileDetails = viewChild<ElementRef<HTMLDetailsElement>>('mobileDetails');
 
   public readonly variant = input<'desktop' | 'mobile'>('desktop');
 
   protected readonly links = this.sectionRegistry.sections;
   protected readonly activeLinkId = signal<string | null>(null);
+  protected readonly mobileExpandedItems = signal<string[]>([]);
   protected readonly activeLinkLabel = computed(
     () => this.links().find((link) => link.id === this.activeLinkId())?.label ?? 'Sections',
   );
@@ -59,11 +52,7 @@ export class PageToc {
   protected scrollToLink(link: DocsSectionRegistration, event: MouseEvent): void {
     event.preventDefault();
     this.activeLinkId.set(link.id);
-    const details = this.mobileDetails()?.nativeElement;
-
-    if (details) {
-      details.open = false;
-    }
+    this.mobileExpandedItems.set([]);
     void this.anchorNavigation.navigate(link.id);
   }
 }

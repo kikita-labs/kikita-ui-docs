@@ -15,7 +15,7 @@ export const SEPARATOR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-separator-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiSeparatorDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-separator-example',\n  imports: [KuiSeparatorDirective],\n  templateUrl: './basic-separator-example.html',\n  styleUrl: './basic-separator-example.scss',\n})\nexport class BasicSeparatorExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiSeparatorDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-separator-example',\r\n  imports: [KuiSeparatorDirective],\r\n  templateUrl: './basic-separator-example.html',\r\n  styleUrl: './basic-separator-example.scss',\r\n})\r\nexport class BasicSeparatorExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const SEPARATOR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "separator-appearance-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiSeparatorDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-separator-appearance-example',\n  imports: [KuiSeparatorDirective],\n  templateUrl: './separator-appearance-example.html',\n  styleUrl: './separator-appearance-example.scss',\n})\nexport class SeparatorAppearanceExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiSeparatorDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-separator-appearance-example',\r\n  imports: [KuiSeparatorDirective],\r\n  templateUrl: './separator-appearance-example.html',\r\n  styleUrl: './separator-appearance-example.scss',\r\n})\r\nexport class SeparatorAppearanceExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const SEPARATOR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "separator-spacing-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiSeparatorDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-separator-spacing-example',\n  imports: [KuiSeparatorDirective],\n  templateUrl: './separator-spacing-example.html',\n  styleUrl: './separator-spacing-example.scss',\n})\nexport class SeparatorSpacingExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiSeparatorDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-separator-spacing-example',\r\n  imports: [KuiSeparatorDirective],\r\n  templateUrl: './separator-spacing-example.html',\r\n  styleUrl: './separator-spacing-example.scss',\r\n})\r\nexport class SeparatorSpacingExample {}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const SEPARATOR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "separator-vertical-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiSeparatorDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-separator-vertical-example',\n  imports: [KuiButtonDirective, KuiSeparatorDirective],\n  templateUrl: './separator-vertical-example.html',\n  styleUrl: './separator-vertical-example.scss',\n})\nexport class SeparatorVerticalExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiButtonDirective, KuiSeparatorDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-separator-vertical-example',\r\n  imports: [KuiButtonDirective, KuiSeparatorDirective],\r\n  templateUrl: './separator-vertical-example.html',\r\n  styleUrl: './separator-vertical-example.scss',\r\n})\r\nexport class SeparatorVerticalExample {}",
     },
     {
       label: "SCSS",

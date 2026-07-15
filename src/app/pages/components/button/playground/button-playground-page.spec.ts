@@ -85,6 +85,30 @@ describe('ButtonPlaygroundPage', () => {
     );
   });
 
+  it('orders shape and appearance controls without a none appearance option', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const groups = [...root.querySelectorAll<HTMLElement>('.api-playground__group')];
+    const shapeOptions = groups
+      .find((group) => group.textContent?.includes('shape'))
+      ?.querySelectorAll<HTMLButtonElement>('[role="radio"]');
+    const appearanceOptions = groups
+      .find((group) => group.textContent?.includes('appearance'))
+      ?.querySelectorAll<HTMLButtonElement>('[role="radio"]');
+
+    expect([...(shapeOptions ?? [])].map((button) => button.textContent?.trim())).toEqual([
+      'solid',
+      'soft',
+      'outline',
+      'ghost',
+    ]);
+    expect([...(appearanceOptions ?? [])].map((button) => button.textContent?.trim())).toEqual([
+      'primary',
+      'danger',
+      'success',
+      'warning',
+    ]);
+  });
+
   it('keeps loading behavior disabled and busy in preview and snippet', () => {
     const root = fixture.nativeElement as HTMLElement;
     const toggles = [
@@ -100,7 +124,7 @@ describe('ButtonPlaygroundPage', () => {
     expect(button?.disabled).toBe(true);
     expect(button?.getAttribute('aria-busy')).toBe('true');
     expect(snippet?.textContent).toBe(
-      '<button kuiButton type="button" loading>Save changes</button>',
+      '<button kuiButton type="button" appearance="primary" loading>Save changes</button>',
     );
   });
 

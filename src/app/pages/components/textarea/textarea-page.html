@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public textarea primitive from the package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Use kuiTextarea on a native textarea element. Use Field when the control needs label, hint, or error chrome."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="textarea-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Field-wrapped textarea">
       <app-basic-textarea-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="sizes"
     heading="Sizes"
     description="size sets textarea height and spacing using the same data-kui-size tokens as other Kikita UI controls. Control height comes from size, not from data-kui-density."
   >
@@ -49,7 +36,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="invalid-state"
     heading="Invalid state"
     description="A kui-field error message infers invalid state on a projected textarea. Use the invalid input directly when the textarea is not inside a field."
   >
@@ -60,19 +46,17 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="signal-forms"
     heading="Signal Forms"
     description="Bind Angular Signal Forms [formField] directly on the native textarea. kuiTextarea owns visual styling and ARIA description wiring; Signal Forms owns value, disabled, touched/dirty state, and validation."
   >
     <app-code-tabs [tabs]="signalFormsTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Textarea API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Keep native textarea semantics. Add labels through Field or a native label element."
   >

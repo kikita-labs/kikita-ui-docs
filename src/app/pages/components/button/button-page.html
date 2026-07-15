@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public directive from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Use native button semantics for commands and anchor semantics for navigation."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="button-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic buttons">
       <app-basic-button-example />
@@ -49,7 +37,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="sizes-and-states"
     heading="Sizes and states"
     description="Use the shared Kikita size scale, native disabled state, and the loading state for pending actions."
   >
@@ -59,12 +46,11 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Button API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Button keeps native element behavior instead of replacing it with ARIA roles."
   >

@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Use the icon button directive on native button or anchor elements. Pair it with kui-icon for package-backed icon rendering."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Icon-only controls must provide an accessible label on the host element."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="icon-button-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Icon button appearances">
       <app-icon-button-appearance-example />
@@ -49,7 +37,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="size"
     heading="Size"
     description="Size (data-kui-size) drives control height directly; data-kui-density no longer affects height. Default md matches kui-input at 40px."
   >
@@ -59,12 +46,11 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Icon button API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="The visual icon is decorative when the host already has a clear label."
   >
@@ -80,7 +66,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="known-gaps"
     heading="Known gaps"
     description="Differences from the sibling Button API worth calling out."
   >

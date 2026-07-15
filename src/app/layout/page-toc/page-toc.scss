@@ -30,31 +30,12 @@
 }
 
 .page-toc__mobile {
-  border: 1px solid var(--kui-color-border);
-  border-radius: var(--kui-radius-md, 10px);
-}
-
-.page-toc__mobile summary {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--kui-space-3, 12px);
-  align-items: center;
-  min-block-size: 44px;
-  cursor: pointer;
-  padding: 8px 12px;
-}
-
-.page-toc__mobile summary strong {
-  min-inline-size: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  display: block;
 }
 
 .page-toc__mobile-list {
   margin: 0;
-  border-block-start: 1px solid var(--kui-color-border);
-  padding: 8px;
+  padding: 0;
   list-style: none;
 }
 

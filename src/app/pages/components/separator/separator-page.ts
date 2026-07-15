@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { SEPARATOR_EXAMPLE_SOURCES } from '@generated/example-sources/separator.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import {
   BasicSeparatorExample,
@@ -30,10 +28,9 @@ import {
     BasicSeparatorExample,
     CodeTabs,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
     SeparatorAppearanceExample,
     SeparatorSpacingExample,
     SeparatorVerticalExample,

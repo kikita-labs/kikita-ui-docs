@@ -24,6 +24,7 @@
       <aside class="docs-shell__sidebar" [class.docs-shell__sidebar--open]="isNavigationOpen()">
         <div
           id="docs-mobile-navigation"
+          class="docs-shell__navigation-frame"
           [cdkTrapFocus]="isNavigationOpen()"
           [cdkTrapFocusAutoCapture]="isNavigationOpen()"
           [attr.role]="isNavigationOpen() ? 'dialog' : null"

@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { AVATAR_EXAMPLE_SOURCES } from '@generated/example-sources/avatar.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { AVATAR_API_ROWS } from './avatar.api-schema';
 import { AVATAR_API_DESCRIPTION, AVATAR_IMPORT_TABS, AVATAR_STATUS } from './avatar.docs-content';
@@ -31,10 +29,9 @@ import {
     BasicAvatarExample,
     CodeTabs,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './avatar-page.html',
   styleUrl: './avatar-page.scss',

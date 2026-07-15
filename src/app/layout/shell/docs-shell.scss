@@ -53,7 +53,15 @@
 }
 
 .docs-shell__sidebar {
+  position: sticky;
+  inset-block-start: shell.$header-height;
+  align-self: start;
   min-inline-size: 0;
+  block-size: calc(100dvh - shell.$header-height);
+}
+
+.docs-shell__navigation-frame {
+  block-size: 100%;
 }
 
 .docs-shell__backdrop {
@@ -109,6 +117,10 @@
 
   .docs-shell__sidebar--open {
     transform: translateX(0);
+  }
+
+  .docs-shell__navigation-frame {
+    block-size: auto;
   }
 
   .docs-shell__backdrop {

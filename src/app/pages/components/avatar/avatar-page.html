@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public components from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="kui-avatar renders an image first, falls back to initials derived from name, then falls back to an icon when no initials are available."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="avatar-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic avatars">
       <app-basic-avatar-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="sizes-and-shapes"
     heading="Sizes and shapes"
     description="size uses the shared Kikita size scale from xs to 2xl. shape defaults to circle for people; use square for bots, teams, channels, and other entities."
   >
@@ -49,7 +36,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="status"
     heading="Status"
     description="status renders a decorative presence dot and appends the presence text to the avatar accessible label."
   >
@@ -60,7 +46,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="avatar-group"
     heading="Avatar group"
     description="kui-avatar-group renders a stack of avatars and collapses items beyond max into a +N overflow avatar with an accessible label such as '2 more'."
   >
@@ -81,12 +66,11 @@
     <app-code-tabs [tabs]="buttonTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Avatar API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Avatar exposes accessible names automatically and keeps interactive behavior on native elements."
   >

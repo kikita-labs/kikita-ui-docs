@@ -33,8 +33,8 @@ const BUTTON_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'appearance',
     label: 'appearance',
     kind: 'enum',
-    options: ['none', 'primary', 'danger', 'success', 'warning'],
-    defaultValue: 'none',
+    options: ['primary', 'danger', 'success', 'warning'],
+    defaultValue: 'primary',
   },
   {
     key: 'size',
@@ -73,7 +73,7 @@ export class ButtonPlaygroundPage {
       },
       {
         name: 'appearance',
-        value: values.appearance === 'none' ? null : values.appearance,
+        value: values.appearance,
       },
       { name: 'size', value: values.size, defaultValue: 'md' },
       { name: 'wrap', value: values.wrap },
@@ -99,8 +99,8 @@ export class ButtonPlaygroundPage {
     return values.shape;
   }
 
-  protected appearanceOf(values: ButtonPlaygroundValues): KuiButtonAppearance | null {
-    return values.appearance === 'none' ? null : values.appearance;
+  protected appearanceOf(values: ButtonPlaygroundValues): KuiButtonAppearance {
+    return values.appearance;
   }
 
   protected sizeOf(values: ButtonPlaygroundValues): KuiSize {

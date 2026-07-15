@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public directive from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Apply kuiSkeleton to placeholder elements inside a region marked aria-busy. Skeleton hosts are automatically aria-hidden."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="skeleton-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic skeleton region">
       <section aria-busy="true">
@@ -40,7 +28,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="shapes"
     heading="Shapes"
     description="shape maps to Kikita UI skeleton geometry tokens for common placeholder layouts."
   >
@@ -51,7 +38,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="animation"
     heading="Animation"
     description="animation controls the placeholder motion. Defaults to shimmer; use pulse or none for quieter surfaces."
   >
@@ -62,7 +48,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="composition"
     heading="Composition"
     description="Combine skeleton shapes to mirror the loaded layout. Put aria-busy on the parent region, not on each skeleton block."
   >
@@ -72,12 +57,11 @@
     <app-code-tabs [tabs]="compositionTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Skeleton API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Skeleton is decorative placeholder chrome, not an announced loading status."
   >

@@ -30,15 +30,15 @@ const ICON_BUTTON_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'shape',
     label: 'shape',
     kind: 'enum',
-    options: ['ghost', 'solid', 'soft', 'outline'],
+    options: ['solid', 'soft', 'outline', 'ghost'],
     defaultValue: 'ghost',
   },
   {
     key: 'appearance',
     label: 'appearance',
     kind: 'enum',
-    options: ['none', 'primary', 'danger', 'success', 'warning'],
-    defaultValue: 'none',
+    options: ['primary', 'danger', 'success', 'warning'],
+    defaultValue: 'primary',
   },
   {
     key: 'size',
@@ -72,7 +72,7 @@ export class IconButtonPlaygroundPage {
       { name: 'shape', value: values.shape, defaultValue: 'ghost' },
       {
         name: 'appearance',
-        value: values.appearance === 'none' ? null : values.appearance,
+        value: values.appearance,
       },
       { name: 'size', value: values.size, defaultValue: 'md' },
       { name: 'disabled', value: values.disabled },
@@ -101,10 +101,8 @@ export class IconButtonPlaygroundPage {
     return values.shape;
   }
 
-  protected appearanceOf(values: IconButtonPlaygroundValues): KuiButtonAppearance | null {
-    const appearance = values.appearance;
-
-    return appearance === 'none' ? null : appearance;
+  protected appearanceOf(values: IconButtonPlaygroundValues): KuiButtonAppearance {
+    return values.appearance;
   }
 
   protected sizeOf(values: IconButtonPlaygroundValues): KuiSize {

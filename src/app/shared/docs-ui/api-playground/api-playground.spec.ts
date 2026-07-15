@@ -14,6 +14,13 @@ import { definePlaygroundControls } from './playground-control';
 
 const CONTROLS = definePlaygroundControls([
   { key: 'shape', label: 'shape', kind: 'enum', options: ['solid', 'soft'], defaultValue: 'solid' },
+  {
+    key: 'appearance',
+    label: 'appearance',
+    kind: 'enum',
+    options: ['none', 'primary', 'danger', 'success', 'warning'],
+    defaultValue: 'none',
+  },
   { key: 'label', label: 'label', kind: 'string', defaultValue: 'Save' },
   { key: 'count', label: 'count', kind: 'number', defaultValue: 1 },
   { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
@@ -62,6 +69,9 @@ describe('ApiPlayground', () => {
     const inputs = root.querySelectorAll<HTMLInputElement>('.api-playground__text-controls input');
     const toggle = root.querySelector<HTMLInputElement>('input[type="checkbox"]');
 
+    expect(inputs[0]?.classList.contains('kui-input')).toBe(true);
+    expect(inputs[1]?.classList.contains('kui-number-input__input')).toBe(true);
+
     soft?.click();
     if (inputs[0]) {
       inputs[0].value = 'Submit';
@@ -76,10 +86,19 @@ describe('ApiPlayground', () => {
 
     expect(fixture.componentInstance.values()).toEqual({
       shape: 'soft',
+      appearance: 'none',
       label: 'Submit',
       count: 3,
       disabled: true,
     });
+  });
+
+  it('marks wide enum groups for wrapping without changing control data', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const wideGroups = root.querySelectorAll('.api-playground__group--wide');
+
+    expect(wideGroups).toHaveLength(1);
+    expect(wideGroups[0]?.textContent).toContain('appearance');
   });
 
   it('has no automated accessibility violations', async () => {

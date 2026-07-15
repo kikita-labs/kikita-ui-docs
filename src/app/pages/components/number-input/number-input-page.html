@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public number input directive from the package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Use kuiNumberInput on a native input[type=number] element. Standard HTML attributes such as min, max, step, disabled, readonly, and value are placed directly on the input."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="number-input-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Number inputs">
       <app-basic-number-input-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="compact-variant"
     heading="Compact variant"
     description="variant b, with minus/plus controls on the sides, is the default and recommended for most use cases. variant a stacks compact arrow controls on the right."
   >
@@ -60,7 +47,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="field-composition"
     heading="Field composition"
     description="Place the input inside kui-field to inherit label, hint, error, and id wiring. A parent field error also marks the input invalid automatically."
   >
@@ -71,19 +57,17 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="signal-forms"
     heading="Signal Forms"
     description="Use Angular Signal Forms [formField] on the same native input. When projected inside kui-field, the field wrapper reads the descendant [formField] and infers the required marker and first error message. Use Signal Forms min(...) and max(...) validators for range constraints instead of native min/max attributes on a [formField] input."
   >
     <app-code-tabs [tabs]="signalFormsTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Number Input API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="The native input[type=number] keeps its built-in keyboard and screen-reader semantics."
   >

@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { INPUT_EXAMPLE_SOURCES } from '@generated/example-sources/input.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { BasicInputExample, InputGroupExample } from './examples';
 import { INPUT_API_ROWS } from './input.api-schema';
@@ -22,10 +20,9 @@ import { INPUT_API_DESCRIPTION, INPUT_IMPORT_TABS, INPUT_STATUS } from './input.
     CodeTabs,
     DocSection,
     InputGroupExample,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './input-page.html',
   styleUrl: './input-page.scss',

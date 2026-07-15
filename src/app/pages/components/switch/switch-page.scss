@@ -7,8 +7,3 @@
 .switch-page__notes {
   @include doc-page-notes;
 }
-
-.switch-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

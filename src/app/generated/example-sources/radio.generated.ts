@@ -15,7 +15,7 @@ export const RADIO_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-radio-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-radio-example',\n  imports: [KuiFieldComponent, KuiRadioDirective],\n  templateUrl: './basic-radio-example.html',\n  styleUrl: './basic-radio-example.scss',\n})\nexport class BasicRadioExample {\n  protected readonly plan = signal('starter');\n}",
+      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-radio-example',\r\n  imports: [KuiFieldComponent, KuiRadioDirective],\r\n  templateUrl: './basic-radio-example.html',\r\n  styleUrl: './basic-radio-example.scss',\r\n})\r\nexport class BasicRadioExample {\r\n  protected readonly plan = signal('starter');\r\n}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const RADIO_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "radio-disabled-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiRadioDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-radio-disabled-example',\n  imports: [KuiRadioDirective],\n  templateUrl: './radio-disabled-example.html',\n  styleUrl: './radio-disabled-example.scss',\n})\nexport class RadioDisabledExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiRadioDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-radio-disabled-example',\r\n  imports: [KuiRadioDirective],\r\n  templateUrl: './radio-disabled-example.html',\r\n  styleUrl: './radio-disabled-example.scss',\r\n})\r\nexport class RadioDisabledExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const RADIO_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "radio-invalid-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-radio-invalid-example',\n  imports: [KuiFieldComponent, KuiRadioDirective],\n  templateUrl: './radio-invalid-example.html',\n  styleUrl: './radio-invalid-example.scss',\n})\nexport class RadioInvalidExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-radio-invalid-example',\r\n  imports: [KuiFieldComponent, KuiRadioDirective],\r\n  templateUrl: './radio-invalid-example.html',\r\n  styleUrl: './radio-invalid-example.scss',\r\n})\r\nexport class RadioInvalidExample {}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const RADIO_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "radio-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiRadioDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-radio-size-example',\n  imports: [KuiRadioDirective],\n  templateUrl: './radio-size-example.html',\n  styleUrl: './radio-size-example.scss',\n})\nexport class RadioSizeExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiRadioDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-radio-size-example',\r\n  imports: [KuiRadioDirective],\r\n  templateUrl: './radio-size-example.html',\r\n  styleUrl: './radio-size-example.scss',\r\n})\r\nexport class RadioSizeExample {}",
     },
     {
       label: "SCSS",

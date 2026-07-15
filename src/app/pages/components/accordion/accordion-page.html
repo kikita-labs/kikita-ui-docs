@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Accordion composes a container component and an item component."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Give every kui-accordion-item a stable id and a header label. Only one section stays open at a time by default."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="accordion-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic accordion">
       <app-basic-accordion-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="multi-mode"
     heading="Multi mode"
     description="Set mode to multi to let consumers keep any number of sections open at once. expandedItems is two-way bindable."
   >
@@ -49,7 +36,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="appearance"
     heading="Appearance"
     description="default uses bottom borders between items, bordered wraps each item in its own bordered block, ghost has no borders or dividers."
   >
@@ -70,12 +56,11 @@
     <app-code-tabs [tabs]="iconTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Accordion API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Each item renders a native button trigger with ARIA disclosure semantics."
   >

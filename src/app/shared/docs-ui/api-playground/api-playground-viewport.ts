@@ -20,8 +20,10 @@ import {
 } from '@kikita-labs/ui';
 
 import { DocsPointerDragService } from '@core/platform/pointer';
+import { type DocsStorageKey, DocsStorageService } from '@core/platform/storage';
 
 type PlaygroundViewport = 'mobile' | 'tablet' | 'desktop';
+type PlaygroundPreviewTheme = 'dark' | 'light';
 
 const VIEWPORT_WIDTH: Record<PlaygroundViewport, number> = {
   mobile: 375,
@@ -29,6 +31,8 @@ const VIEWPORT_WIDTH: Record<PlaygroundViewport, number> = {
   desktop: 1160,
 };
 
+const PLAYGROUND_PREVIEW_THEME_STORAGE_KEY: DocsStorageKey =
+  'kikita-ui-docs.playground-preview-theme';
 const MIN_PREVIEW_WIDTH = 320;
 const MAX_PREVIEW_WIDTH = 1160;
 
@@ -48,12 +52,13 @@ const MAX_PREVIEW_WIDTH = 1160;
 })
 export class ApiPlaygroundViewport {
   private readonly pointerDrag = inject(DocsPointerDragService);
+  private readonly storage = inject(DocsStorageService);
   private readonly stage = viewChild<ElementRef<HTMLElement>>('stage');
 
   /** Accessible name for the preview stage. */
   public readonly previewLabel = input('Live preview');
 
-  protected readonly previewTheme = signal<'dark' | 'light'>('light');
+  protected readonly previewTheme = signal<PlaygroundPreviewTheme>(this.readPreviewTheme());
   protected readonly previewIsDark = computed(() => this.previewTheme() === 'dark');
   protected readonly previewThemeToggleLabel = computed(() =>
     this.previewIsDark() ? 'Use light preview theme' : 'Use dark preview theme',
@@ -111,7 +116,13 @@ export class ApiPlaygroundViewport {
   }
 
   protected togglePreviewTheme(): void {
-    this.previewTheme.update((theme) => (theme === 'dark' ? 'light' : 'dark'));
+    this.previewTheme.update((theme) => {
+      const nextTheme = theme === 'dark' ? 'light' : 'dark';
+
+      this.storage.write(PLAYGROUND_PREVIEW_THEME_STORAGE_KEY, nextTheme, (value) => value);
+
+      return nextTheme;
+    });
   }
 
   protected startResize(event: PointerEvent): void {
@@ -153,5 +164,13 @@ export class ApiPlaygroundViewport {
     const normalized = Number.isFinite(value) ? value : MIN_PREVIEW_WIDTH;
 
     return Math.round(Math.min(this.maxPreviewWidth(), Math.max(MIN_PREVIEW_WIDTH, normalized)));
+  }
+
+  private readPreviewTheme(): PlaygroundPreviewTheme {
+    const storedTheme = this.storage.read(PLAYGROUND_PREVIEW_THEME_STORAGE_KEY, (value) =>
+      value === 'dark' || value === 'light' ? value : null,
+    );
+
+    return storedTheme.ok && storedTheme.value ? storedTheme.value : 'light';
   }
 }

@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { DIALOG_EXAMPLE_SOURCES } from '@generated/example-sources/dialog.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { DIALOG_API_ROWS } from './dialog.api-schema';
 import { DIALOG_API_DESCRIPTION, DIALOG_IMPORT_TABS, DIALOG_STATUS } from './dialog.docs-content';
@@ -23,10 +21,9 @@ import { BasicDialogExample, DialogConfirmExample, DialogSizesExample } from './
     DialogConfirmExample,
     DialogSizesExample,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './dialog-page.html',
   styleUrl: './dialog-page.scss',

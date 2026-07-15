@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Combobox composes field, dropdown, option, and the highlight pipe with the combobox directive."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Bind value and query with Angular signals. Filter and render projected options yourself."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="combobox-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Basic combobox">
       <app-basic-combobox-example />
@@ -49,7 +37,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="free-input"
     heading="Free input"
     description='mode="free" stores typed text as the value. In the default filter mode, editing text clears the selected value until a projected option is chosen.'
   >
@@ -71,19 +58,17 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="provider-defaults"
     heading="Provider defaults"
     description="Use provider defaults for app-wide combobox behavior. Local inputs still win."
   >
     <app-code-tabs [tabs]="providerTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Combobox API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Combobox keeps native input semantics and composite listbox behavior on the dropdown."
   >

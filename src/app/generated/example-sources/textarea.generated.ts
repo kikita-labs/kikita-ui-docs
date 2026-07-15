@@ -15,7 +15,7 @@ export const TEXTAREA_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-textarea-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiTextareaDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-textarea-example',\n  imports: [KuiFieldComponent, KuiTextareaDirective],\n  templateUrl: './basic-textarea-example.html',\n  styleUrl: './basic-textarea-example.scss',\n})\nexport class BasicTextareaExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiFieldComponent, KuiTextareaDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-textarea-example',\r\n  imports: [KuiFieldComponent, KuiTextareaDirective],\r\n  templateUrl: './basic-textarea-example.html',\r\n  styleUrl: './basic-textarea-example.scss',\r\n})\r\nexport class BasicTextareaExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const TEXTAREA_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "textarea-invalid-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiTextareaDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-textarea-invalid-example',\n  imports: [KuiFieldComponent, KuiTextareaDirective],\n  templateUrl: './textarea-invalid-example.html',\n  styleUrl: './textarea-invalid-example.scss',\n})\nexport class TextareaInvalidExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiFieldComponent, KuiTextareaDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-textarea-invalid-example',\r\n  imports: [KuiFieldComponent, KuiTextareaDirective],\r\n  templateUrl: './textarea-invalid-example.html',\r\n  styleUrl: './textarea-invalid-example.scss',\r\n})\r\nexport class TextareaInvalidExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const TEXTAREA_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "textarea-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiTextareaDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-textarea-size-example',\n  imports: [KuiTextareaDirective],\n  templateUrl: './textarea-size-example.html',\n  styleUrl: './textarea-size-example.scss',\n})\nexport class TextareaSizeExample {}",
+      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiTextareaDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-textarea-size-example',\r\n  imports: [KuiTextareaDirective],\r\n  templateUrl: './textarea-size-example.html',\r\n  styleUrl: './textarea-size-example.scss',\r\n})\r\nexport class TextareaSizeExample {}",
     },
     {
       label: "SCSS",

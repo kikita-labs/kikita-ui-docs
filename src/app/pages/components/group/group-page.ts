@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { GROUP_EXAMPLE_SOURCES } from '@generated/example-sources/group.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import {
   BasicGroupExample,
@@ -29,10 +27,9 @@ import { GROUP_API_DESCRIPTION, GROUP_IMPORT_TABS, GROUP_STATUS } from './group.
     GroupFieldExample,
     GroupOrientationExample,
     GroupSizeExample,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './group-page.html',
   styleUrl: './group-page.scss',

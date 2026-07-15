@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { ICON_EXAMPLE_SOURCES } from '@generated/example-sources/icon.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { BasicIconExample } from './examples';
 import { ICON_API_ROWS } from './icon.api-schema';
@@ -21,10 +19,9 @@ import { ICON_API_DESCRIPTION, ICON_IMPORT_TABS, ICON_STATUS } from './icon.docs
     BasicIconExample,
     CodeTabs,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './icon-page.html',
   styleUrl: './icon-page.scss',

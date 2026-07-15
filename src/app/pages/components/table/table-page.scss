@@ -7,8 +7,3 @@
 .table-page__notes {
   @include doc-page-notes;
 }
-
-.table-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

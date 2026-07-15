@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { BADGE_EXAMPLE_SOURCES } from '@generated/example-sources/badge.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { BADGE_API_ROWS } from './badge.api-schema';
 import { BADGE_API_DESCRIPTION, BADGE_IMPORT_TABS, BADGE_STATUS } from './badge.docs-content';
@@ -23,10 +21,9 @@ import { BadgeAppearanceExample, BadgeSizeExample, BasicBadgeExample } from './e
     BasicBadgeExample,
     CodeTabs,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './badge-page.html',
   styleUrl: './badge-page.scss',

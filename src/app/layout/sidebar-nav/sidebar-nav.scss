@@ -1,11 +1,15 @@
 @use '../../shared/styles/tokens/shell-layout' as shell;
 
+:host {
+  display: block;
+  block-size: 100%;
+  min-inline-size: 0;
+}
+
 .sidebar-nav {
-  position: sticky;
-  inset-block-start: shell.$header-height;
   display: grid;
   align-content: start;
-  max-block-size: calc(100dvh - shell.$header-height);
+  block-size: 100%;
   overflow: auto;
   border-inline-end: 1px solid var(--kui-color-border);
   background: var(--kui-color-surface);
@@ -175,8 +179,13 @@
 }
 
 @media (max-width: shell.$mobile-breakpoint) {
+  :host {
+    block-size: auto;
+  }
+
   .sidebar-nav {
     position: static;
+    block-size: auto;
     max-block-size: none;
     border-inline-end: 0;
     background: transparent;

@@ -25,6 +25,7 @@ export class SidebarNav {
     ? [DOCS_NAVIGATION_ITEMS[2]]
     : [];
   protected readonly activeOptions = { exact: true };
+  protected readonly componentActiveOptions = { exact: false };
   protected readonly expandedGroupIds = signal(
     new Set([
       'foundations',

@@ -7,8 +7,3 @@
 .dialog-page__notes {
   @include doc-page-notes;
 }
-
-.dialog-page__playground-link {
-  flex: none;
-  text-decoration: none;
-}

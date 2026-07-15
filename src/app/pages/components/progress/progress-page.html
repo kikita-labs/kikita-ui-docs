@@ -7,7 +7,6 @@
   />
 
   <app-doc-section
-    anchor="import"
     heading="Import"
     description="Import the public component from the published package entrypoint."
   >
@@ -15,21 +14,10 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="usage"
     heading="Usage"
     description="Set value from 0 to 100 for determinate progress. Omit value, or pass null, for indeterminate progress."
   >
-    <a
-      docSectionActions
-      routerLink="playground"
-      kuiButton
-      type="button"
-      shape="soft"
-      size="sm"
-      class="progress-page__playground-link"
-    >
-      Open in Playground
-    </a>
+    <app-playground-route-button docSectionActions />
 
     <app-live-preview previewLabel="Linear progress">
       <app-basic-progress-example />
@@ -38,7 +26,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="circular"
     heading="Circular"
     description="Set type to circular for a ring indicator. Projected content renders centered inside the ring."
   >
@@ -49,7 +36,6 @@
   </app-doc-section>
 
   <app-doc-section
-    anchor="colors-and-sizes"
     heading="Colors and sizes"
     description="size controls linear thickness or circular diameter. color sets the semantic intent of the indicator."
   >
@@ -59,12 +45,11 @@
     <app-code-tabs [tabs]="colorSizeTabs" />
   </app-doc-section>
 
-  <app-doc-section anchor="api" heading="API" [description]="apiDescription">
+  <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Progress API" [rows]="apiRows" />
   </app-doc-section>
 
   <app-doc-section
-    anchor="accessibility"
     heading="Accessibility"
     description="Progress sets the ARIA progressbar role and range attributes automatically, but the accessible name is the consumer's responsibility."
   >

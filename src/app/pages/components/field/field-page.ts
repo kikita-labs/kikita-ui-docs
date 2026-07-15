@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-import { KuiButtonDirective } from '@kikita-labs/ui';
 
 import { FIELD_EXAMPLE_SOURCES } from '@generated/example-sources/field.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -9,6 +6,7 @@ import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { BasicFieldExample } from './examples';
 import { FIELD_API_ROWS } from './field.api-schema';
@@ -21,10 +19,9 @@ import { FIELD_API_DESCRIPTION, FIELD_IMPORT_TABS, FIELD_STATUS } from './field.
     BasicFieldExample,
     CodeTabs,
     DocSection,
-    KuiButtonDirective,
     LivePreview,
     PageHeader,
-    RouterLink,
+    PlaygroundRouteButton,
   ],
   templateUrl: './field-page.html',
   styleUrl: './field-page.scss',
