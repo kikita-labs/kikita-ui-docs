@@ -10,6 +10,8 @@
  * `parse-api-schema.mjs`), which is this repo's own verified source of truth for public API facts.
  */
 
+import { markdownPathToUrl } from './site-config.mjs';
+
 const SITE_ROUTE_NOTE =
   'Rendered documentation, interactive examples, and the playground live at the HTML route above.';
 
@@ -62,19 +64,21 @@ function renderHome(entry, allEntries) {
     '',
     ...foundations.map(
       (foundation) =>
-        `- [${foundation.label}](${foundation.markdownPath}): ${foundation.description}`,
+        `- [${foundation.label}](${markdownPathToUrl(foundation.markdownPath)}): ${foundation.description}`,
     ),
     '',
     '## Components',
     '',
     ...components.map(
-      (component) => `- [${component.label}](${component.markdownPath}): ${component.description}`,
+      (component) =>
+        `- [${component.label}](${markdownPathToUrl(component.markdownPath)}): ${component.description}`,
     ),
     '',
     '## Resources',
     '',
     ...resources.map(
-      (resource) => `- [${resource.label}](${resource.markdownPath}): ${resource.description}`,
+      (resource) =>
+        `- [${resource.label}](${markdownPathToUrl(resource.markdownPath)}): ${resource.description}`,
     ),
     '',
   ].join('\n');

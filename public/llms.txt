@@ -2,16 +2,21 @@
 
 > Angular component library documentation and external consumer verification.
 
-- Status: available
-- Route: /
-- Package: @kikita-labs/ui@0.4.2
+Important notes:
+- Use @kikita-labs/ui public package imports only.
+- Documentation is versioned to the installed package shown on each page.
+- Do not use sibling repository source APIs unless they are released.
+
+## Start Here
+
+- [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
+- [Theming](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md): Theme provider setup and theme customization basics.
+- [Components overview](https://kikita-labs.github.io/kikita-ui-docs/llms/index.md): Every available component with a link to its Markdown mirror.
 
 ## Foundations
 
 - [Accessibility](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md): Keyboard, semantics, focus, and WCAG expectations.
 - [Density](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md): Spacing and control density expectations for product UIs.
-- [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
-- [Theming](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md): Theme provider setup and theme customization basics.
 - [Tokens](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/tokens.md): Design token categories exposed through Kikita CSS variables.
 - [Typography](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/typography.md): Semantic type-role classes, text tones, and the kuiText directive.
 
@@ -61,6 +66,6 @@
 - [Tooltip](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tooltip.md): Hover and focus hint.
 - [Tree](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tree.md): Hierarchical list.
 
-## Resources
+## Optional
 
-- [Package Smoke](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md): External consumer verification for package imports, styles, and providers.
+- [Full context](https://kikita-labs.github.io/kikita-ui-docs/llms-full.txt): Every public doc page concatenated with route/source metadata.

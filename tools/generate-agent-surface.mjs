@@ -7,6 +7,7 @@ import { collectAgentEntries } from './agent-surface/collect-agent-entries.mjs';
 import { parseApiSchemaRows } from './agent-surface/parse-api-schema.mjs';
 import { splitMarkdownSections } from './agent-surface/parse-markdown-sections.mjs';
 import { renderAgentMarkdown } from './agent-surface/render-agent-markdown.mjs';
+import { renderLlmsFullTxt, renderLlmsTxt } from './agent-surface/render-llms-txt.mjs';
 
 const workspace = resolve('.');
 const CHECK_MODE = process.argv.includes('--check');
@@ -24,25 +25,32 @@ if (consistencyFailures.length > 0) {
 
 async function generateOrCheck(allEntries) {
   const outputs = new Map();
+  const contentByMarkdownPath = new Map();
 
   for (const entry of allEntries) {
     const context =
       entry.kind === 'home' ? { allEntries } : await buildComponentContext(entry, workspace);
+    const content = renderAgentMarkdown(entry, context);
 
-    outputs.set(resolve(workspace, entry.markdownPath), renderAgentMarkdown(entry, context));
+    outputs.set(resolve(workspace, entry.markdownPath), content);
+    contentByMarkdownPath.set(entry.markdownPath, content);
   }
+
+  outputs.set(resolve(workspace, 'public/llms.txt'), renderLlmsTxt(allEntries));
+  outputs.set(
+    resolve(workspace, 'public/llms-full.txt'),
+    renderLlmsFullTxt(allEntries, contentByMarkdownPath),
+  );
 
   const staleOutputs = await findStaleOutputs(outputs);
 
   if (staleOutputs.length === 0 && (await allCurrent(outputs))) {
-    console.log(`Agent surface Markdown mirrors are current (${outputs.size} files).`);
+    console.log(`Agent surface is current (${outputs.size} files).`);
     return;
   }
 
   if (CHECK_MODE) {
-    console.error(
-      'Agent surface Markdown mirrors are stale. Run "node tools/generate-agent-surface.mjs".',
-    );
+    console.error('Agent surface is stale. Run "node tools/generate-agent-surface.mjs".');
     process.exitCode = 1;
     return;
   }
@@ -56,7 +64,7 @@ async function generateOrCheck(allEntries) {
     await rm(staleOutput);
   }
 
-  console.log(`Generated ${outputs.size} agent surface Markdown files.`);
+  console.log(`Generated ${outputs.size} agent surface files.`);
 }
 
 async function allCurrent(outputs) {

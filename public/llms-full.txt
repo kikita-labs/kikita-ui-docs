@@ -1,0 +1,3732 @@
+# Kikita UI -- Full Context
+
+Every public docs page for the installed @kikita-labs/ui package, concatenated for large-context
+agent ingestion. Prefer llms.txt for a curated index; use this file when you need everything.
+
+---
+
+<!-- route: / -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/index.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Kikita UI
+
+> Angular component library documentation and external consumer verification.
+
+- Status: available
+- Route: /
+- Package: @kikita-labs/ui@0.4.2
+
+## Foundations
+
+- [Accessibility](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md): Keyboard, semantics, focus, and WCAG expectations.
+- [Density](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md): Spacing and control density expectations for product UIs.
+- [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
+- [Theming](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md): Theme provider setup and theme customization basics.
+- [Tokens](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/tokens.md): Design token categories exposed through Kikita CSS variables.
+- [Typography](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/typography.md): Semantic type-role classes, text tones, and the kuiText directive.
+
+## Components
+
+- [Accordion](https://kikita-labs.github.io/kikita-ui-docs/llms/components/accordion.md): Disclosure component for grouped expandable content.
+- [Avatar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/avatar.md): User or entity identity with image, initials, and status.
+- [Badge](https://kikita-labs.github.io/kikita-ui-docs/llms/components/badge.md): Compact status or metadata marker.
+- [Breadcrumbs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md): Hierarchy trail.
+- [Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/button.md): Primary command primitive for buttons and links.
+- [Calendar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md): Date grid.
+- [Card](https://kikita-labs.github.io/kikita-ui-docs/llms/components/card.md): Surface, elevated, and sunken content container.
+- [Checkbox](https://kikita-labs.github.io/kikita-ui-docs/llms/components/checkbox.md): Native checkbox styling with field state integration.
+- [Chip](https://kikita-labs.github.io/kikita-ui-docs/llms/components/chip.md): Compact token for selected values, filters, and entity references.
+- [Color Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/color-input.md): Color value input.
+- [Combobox](https://kikita-labs.github.io/kikita-ui-docs/llms/components/combobox.md): Searchable input with projected options and async mode.
+- [Command Palette](https://kikita-labs.github.io/kikita-ui-docs/llms/components/command-palette.md): Searchable command overlay for application actions.
+- [Date Picker](https://kikita-labs.github.io/kikita-ui-docs/llms/components/date-picker.md): Calendar date input.
+- [Dialog](https://kikita-labs.github.io/kikita-ui-docs/llms/components/dialog.md): Typed modal overlay service and host contract.
+- [Drawer](https://kikita-labs.github.io/kikita-ui-docs/llms/components/drawer.md): Side and edge overlay surface for focused workflows.
+- [Dropdown](https://kikita-labs.github.io/kikita-ui-docs/llms/components/dropdown.md): Projected option overlay used by select-like controls.
+- [Empty State](https://kikita-labs.github.io/kikita-ui-docs/llms/components/empty-state.md): Known empty, error, no-access, and success content states.
+- [Field](https://kikita-labs.github.io/kikita-ui-docs/llms/components/field.md): Label, hint, error, and form-control composition.
+- [File Upload](https://kikita-labs.github.io/kikita-ui-docs/llms/components/file-upload.md): Controlled file picker.
+- [Group](https://kikita-labs.github.io/kikita-ui-docs/llms/components/group.md): Grouped control chrome for adjacent actions and fields.
+- [Icon](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon.md): SVG icon renderer.
+- [Icon Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon-button.md): Compact icon-only action control.
+- [Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/input.md): Native text input styling with field integration.
+- [Loader](https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md): Inline loading indicator for buttons and status areas.
+- [Menu](https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md): Anchored command menu with keyboard focus behavior.
+- [Number Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md): Number input states with compact variant options.
+- [Popover](https://kikita-labs.github.io/kikita-ui-docs/llms/components/popover.md): Anchored content surface for contextual UI.
+- [Progress](https://kikita-labs.github.io/kikita-ui-docs/llms/components/progress.md): Progress status primitive for determinate and indeterminate work.
+- [Radio](https://kikita-labs.github.io/kikita-ui-docs/llms/components/radio.md): Native radio control styling for exclusive choices.
+- [Scrollbar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/scrollbar.md): Tokenized native scroll container utility.
+- [Segmented](https://kikita-labs.github.io/kikita-ui-docs/llms/components/segmented.md): Compact single-choice control rendered as adjacent segment buttons.
+- [Select](https://kikita-labs.github.io/kikita-ui-docs/llms/components/select.md): Dropdown-backed selection control for single and multiple values.
+- [Separator](https://kikita-labs.github.io/kikita-ui-docs/llms/components/separator.md): Tokenized horizontal or vertical separator primitive.
+- [Skeleton](https://kikita-labs.github.io/kikita-ui-docs/llms/components/skeleton.md): Loading placeholder with reduced-motion behavior.
+- [Slider](https://kikita-labs.github.io/kikita-ui-docs/llms/components/slider.md): Native range input styling with field and Signal Forms support.
+- [Stepper](https://kikita-labs.github.io/kikita-ui-docs/llms/components/stepper.md): Multi-step progress and navigation indicator.
+- [Switch](https://kikita-labs.github.io/kikita-ui-docs/llms/components/switch.md): Native switch control styling for binary settings.
+- [Table](https://kikita-labs.github.io/kikita-ui-docs/llms/components/table.md): Native table styling, sorting context, and selection cells.
+- [Tabs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tabs.md): Line and pill tab navigation with optional panel wiring.
+- [Textarea](https://kikita-labs.github.io/kikita-ui-docs/llms/components/textarea.md): Native multiline input styling with field integration.
+- [Toast](https://kikita-labs.github.io/kikita-ui-docs/llms/components/toast.md): Global notifications with actions and live-region semantics.
+- [Tooltip](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tooltip.md): Hover and focus hint.
+- [Tree](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tree.md): Hierarchical list.
+
+## Resources
+
+- [Package Smoke](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md): External consumer verification for package imports, styles, and providers.
+
+---
+
+<!-- route: /foundations/accessibility -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Accessibility
+
+> Keyboard, semantics, focus, and WCAG expectations.
+
+- Status: available
+- Route: /foundations/accessibility
+- Package: @kikita-labs/ui@0.4.2
+
+## Content
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+---
+
+<!-- route: /foundations/density -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Density
+
+> Spacing and control density expectations for product UIs.
+
+- Status: available
+- Route: /foundations/density
+- Package: @kikita-labs/ui@0.4.2
+
+## Content
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+---
+
+<!-- route: /foundations/installation -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Installation
+
+> Package installation and global stylesheet setup.
+
+- Status: available
+- Route: /foundations/installation
+- Package: @kikita-labs/ui@0.4.2
+
+## Content
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+---
+
+<!-- route: /foundations/theming -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Theming
+
+> Theme provider setup and theme customization basics.
+
+- Status: available
+- Route: /foundations/theming
+- Package: @kikita-labs/ui@0.4.2
+
+## Content
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+---
+
+<!-- route: /foundations/tokens -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/tokens.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Tokens
+
+> Design token categories exposed through Kikita CSS variables.
+
+- Status: available
+- Route: /foundations/tokens
+- Package: @kikita-labs/ui@0.4.2
+
+## Content
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+---
+
+<!-- route: /foundations/typography -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/typography.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Typography
+
+> Semantic type-role classes, text tones, and the kuiText directive.
+
+- Status: available
+- Route: /foundations/typography
+- Package: @kikita-labs/ui@0.4.2
+
+## Content
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+---
+
+<!-- route: /components/accordion -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/accordion.md -->
+<!-- source: ../kikita-ui/docs/accordion.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Accordion
+
+> Disclosure component for grouped expandable content.
+
+- Status: available
+- Route: /components/accordion
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiAccordionComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/accordion.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-accordion mode="exclusive" appearance="default" size="md">
+  <kui-accordion-item id="general" header="General settings">
+    Configure display and behavior options.
+  </kui-accordion-item>
+
+  <kui-accordion-item id="security" header="Security">
+    Account security parameters.
+  </kui-accordion-item>
+</kui-accordion>
+```
+
+## Examples
+
+Rendered at /components/accordion:
+
+- `appearance-accordion-example`
+- `basic-accordion-example`
+- `icon-accordion-example`
+- `multi-accordion-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| mode | 'exclusive' \| 'multi' | 'exclusive' | Toggle mode. exclusive keeps a single section open at a time; multi allows any number of sections open simultaneously. Two-way bindable. |
+| appearance | 'default' \| 'bordered' \| 'ghost' | 'default' | Container and divider treatment: default uses bottom borders between items, bordered wraps each item in its own bordered block, ghost has no borders. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Trigger height and text size. |
+| expandedItems | string[] | [] | IDs of currently expanded items. Supports two-way binding with [(expandedItems)]; mutations are reflected back through the model. |
+| header | string | '' | kui-accordion-item: trigger label text. |
+| id | string | auto-generated | kui-accordion-item: stable ID used for state tracking and ARIA wiring. |
+| disabled | boolean | false | kui-accordion-item: removes the trigger from tab order and prevents toggling the section. |
+| kuiAccordionIcon | - | - | Marker directive for an ng-template projected into a kui-accordion-item trigger, before the label text. |
+
+## Accessibility
+
+Each item renders a native button trigger with `aria-expanded`, `aria-controls`,
+and a region body linked through `aria-labelledby`.
+
+## Playground
+
+Available at /components/accordion/playground.
+
+---
+
+<!-- route: /components/avatar -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/avatar.md -->
+<!-- source: ../kikita-ui/docs/avatar.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Avatar
+
+> User or entity identity with image, initials, and status.
+
+- Status: available
+- Route: /components/avatar
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiAvatarComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/avatar.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-avatar src="/users/nikita.png" name="Nikita Repin" status="online" />
+<kui-avatar name="Anya Murashova" />
+<kui-avatar />
+```
+
+Image avatars render a native `<img>`. If the image fails to load, the component falls back to
+initials generated from `name`, then to the icon fallback when no initials are available.
+
+## Examples
+
+Rendered at /components/avatar:
+
+- `avatar-button-example`
+- `avatar-group-example`
+- `avatar-sizes-shapes-example`
+- `avatar-status-example`
+- `basic-avatar-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| src | string \| undefined | undefined | Image URL. Falls back to initials, then the icon fallback, on load error. |
+| name | string \| undefined | undefined | Used to derive initials, the palette hash, and the accessible label. |
+| initials | string \| undefined | auto | Explicit one or two character initials, overriding the value derived from name. |
+| alt | string \| undefined | name | Image alt text and accessible label override. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' | 'md' | Fixed avatar size. |
+| shape | 'circle' \| 'square' | 'circle' | circle is intended for people; square is intended for entities such as bots, teams, or projects. |
+| status | 'online' \| 'away' \| 'busy' \| 'offline' \| undefined | undefined | Optional presence indicator. Appended to the accessible label; the dot itself is decorative. |
+| paletteIndex | number \| undefined | auto | Palette slot from 1 to 7 used for the fallback background and text color. Clamped when explicit. |
+| loading | boolean | false | Renders the avatar using the internal [kuiSkeleton] loading treatment and hides avatar content. |
+| kui-avatar-group avatars | readonly KuiAvatarItem[] | [] | Items rendered by the group. Each item accepts the same fields as kui-avatar. |
+| kui-avatar-group max | number | 4 | Maximum visible avatars before the group collapses the rest into a +N overflow avatar. |
+| kui-avatar-group size | KuiAvatarSize | 'md' | Size applied to every avatar in the group, including the overflow avatar. |
+| kui-avatar-group shape | KuiAvatarShape | 'circle' | Shape applied to every avatar in the group, including the overflow avatar. |
+| kui-avatar-group label | string | 'Avatar group' | Accessible label for the group container. |
+| .kui-avatar-action | CSS class | - | Applied to an external native button wrapping a kui-avatar to make it interactive. kui-avatar itself must not be made clickable. |
+
+## Accessibility
+
+- Image avatars render a native `<img>` with `alt` derived from `alt`, then `name`.
+- Initials and icon fallback avatars expose `role="img"` and `aria-label`.
+- Status is appended to the accessible label, for example `Nikita Repin, online`.
+- The status dot is decorative.
+- Interactive avatars must use a native `<button>` wrapper with `aria-label`.
+
+## Playground
+
+Available at /components/avatar/playground.
+
+---
+
+<!-- route: /components/badge -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/badge.md -->
+<!-- source: ../kikita-ui/docs/badge.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Badge
+
+> Compact status or metadata marker.
+
+- Status: available
+- Route: /components/badge
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiBadgeDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/badge.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<span kuiBadge>Neutral</span>
+<span kuiBadge appearance="success">Ready</span>
+<span kuiBadge appearance="danger">Error</span>
+```
+
+`kuiBadge` is an attribute directive so it can be used on inline semantic elements such as `span`,
+`strong`, `code`, or `a`.
+
+## Examples
+
+Rendered at /components/badge:
+
+- `badge-appearance-example`
+- `badge-size-example`
+- `basic-badge-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| appearance | 'neutral' \| 'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' | 'neutral' | Visual badge treatment mapped to Kikita UI status tokens. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Badge size mapped to Kikita UI text and spacing tokens. |
+| --kui-badge-height | CSS length | 22px | Badge block size. Overridden per size by the size input. |
+| --kui-badge-px | CSS length | 8px | Inline padding. Overridden per size by the size input. |
+| --kui-badge-radius | CSS length | var(--kui-radius-full) | Corner radius of the badge surface. |
+| --kui-badge-font-size | CSS length | 11px | Badge label font size. Overridden per size by the size input. |
+| --kui-badge-neutral-bg | CSS color | - | Background color for the neutral appearance (default). |
+| --kui-badge-primary-bg | CSS color | - | Background color for the primary appearance. |
+| --kui-badge-success-bg | CSS color | - | Background color for the success appearance. |
+| --kui-badge-warning-bg | CSS color | - | Background color for the warning appearance. |
+| --kui-badge-danger-bg | CSS color | - | Background color for the danger appearance. |
+| --kui-badge-info-bg | CSS color | - | Background color for the info appearance. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/badge/playground.
+
+---
+
+<!-- route: /components/breadcrumbs -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md -->
+<!-- source: ../kikita-ui/docs/breadcrumbs.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Breadcrumbs
+
+> Hierarchy trail.
+
+- Status: available
+- Route: /components/breadcrumbs
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiBreadcrumbsDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/breadcrumbs.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<nav aria-label="Breadcrumb">
+  <ol kuiBreadcrumbs>
+    <li><a kuiBreadcrumbItem href="/components">Components</a></li>
+    <li kuiBreadcrumbSeparator></li>
+    <li><a kuiBreadcrumbItem href="/components/actions">Actions</a></li>
+    <li kuiBreadcrumbSeparator></li>
+    <li><span kuiBreadcrumbItem current>Icon Button</span></li>
+  </ol>
+</nav>
+```
+
+### Plain-text (non-link) crumb
+
+Use a `<span kuiBreadcrumbItem>` without `current` for a grouping crumb that has no page of its own:
+
+```html
+<li><a kuiBreadcrumbItem href="/catalog">Catalog</a></li>
+<li kuiBreadcrumbSeparator></li>
+<li><span kuiBreadcrumbItem>Electronics</span></li>
+<li kuiBreadcrumbSeparator></li>
+<li><span kuiBreadcrumbItem current>Headphones</span></li>
+```
+
+### Leading icon
+
+At most one optional leading icon, on the first crumb only:
+
+```html
+<li>
+  <a kuiBreadcrumbItem href="/">
+    <span class="kui-breadcrumb-icon"><svg>...</svg></span>
+  </a>
+</li>
+```
+
+### Sizes
+
+```html
+<ol kuiBreadcrumbs size="sm">
+  ...
+</ol>
+<ol kuiBreadcrumbs size="lg">
+  ...
+</ol>
+```
+
+### Responsive / narrow screens
+
+The library does not enforce a single collapse strategy; pick the one that fits the consumer app and hierarchy depth:
+
+- **Truncate a middle crumb** — add `.kui-breadcrumb-truncate` to the `<a>`/`<span>` that should shrink with an ellipsis; keep the trail's `<ol>` non-wrapping (`style="flex-wrap: nowrap"`).
+- **Collapse behind an ellipsis menu** — render a `<button class="kui-breadcrumb-ellipsis">` in place of the hidden crumbs and wire it to an existing `kui-menu`/`kui-dropdown` listing the hidden levels. Breadcrumbs does not manage this menu itself.
+- **First + last only** — drop the middle crumbs and separators entirely at the narrowest breakpoint.
+
+## Examples
+
+Rendered at /components/breadcrumbs:
+
+- `basic-breadcrumbs-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| ol[kuiBreadcrumbs].size | 'sm' \| 'md' \| 'lg' | 'md' | Font size, separator scale, and spacing for the full trail. |
+| a[kuiBreadcrumbItem] | directive | - | Native link crumb for navigable hierarchy levels. |
+| span[kuiBreadcrumbItem] | directive | - | Plain-text crumb for grouping labels or the current page. |
+| span[kuiBreadcrumbItem].current | boolean | false | Marks the final crumb as the current page and sets aria-current. |
+| li[kuiBreadcrumbSeparator] | component | - | Decorative separator list item hidden from assistive technology. |
+
+## Accessibility
+
+- Wrap the trail in `<nav aria-label="Breadcrumb">` (or a localized label).
+- `[kuiBreadcrumbs]` sets `role="list"` on the `<ol>` to restore list semantics after `list-style: none`.
+- Link crumbs are native `<a>`, focusable with a visible `:focus-visible` ring.
+- The current crumb is a `<span aria-current="page">`, not a link, and is not in tab order.
+- `[kuiBreadcrumbSeparator]` renders a decorative chevron `<li aria-hidden="true">`, never read by assistive technology.
+
+## Playground
+
+Available at /components/breadcrumbs/playground.
+
+---
+
+<!-- route: /components/button -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/button.md -->
+<!-- source: ../kikita-ui/docs/button.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Button
+
+> Primary command primitive for buttons and links.
+
+- Status: available
+- Route: /components/button
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiButtonDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/button.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<button kuiButton>Save</button>
+<button kuiButton shape="soft">Cancel</button>
+<button kuiButton shape="outline" appearance="danger">Delete</button>
+<button kuiButton shape="ghost" appearance="success">Approve</button>
+<button kuiButton appearance="warning">Review</button>
+<button kuiButton wrap>Long responsive label</button>
+<button kuiButton [loading]="isSaving()">Save changes</button>
+
+<a kuiButton shape="outline" href="/settings">Settings</a>
+```
+
+`shape` controls the surface treatment and `appearance` controls its semantic color intent. The
+axes can be combined freely.
+
+Without an explicit `appearance`, `solid` and `soft` use primary colors while `outline` and
+`ghost` use their neutral defaults.
+
+Use `kui-icon` explicitly for icon content:
+
+```html
+<button kuiButton appearance="success">
+  <kui-icon name="check" />
+  Save
+</button>
+```
+
+## Examples
+
+Rendered at /components/button:
+
+- `basic-button-example`
+- `button-appearance-example`
+- `button-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| shape | 'solid' \| 'soft' \| 'outline' \| 'ghost' | 'solid' | Surface treatment. Defaults to solid. Combines freely with appearance. |
+| appearance | 'primary' \| 'danger' \| 'success' \| 'warning' \| null | null | Semantic color intent. Without an explicit value, solid/soft use primary colors and outline/ghost use neutral defaults. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height and spacing size. |
+| wrap | boolean | false | Allows long button text to wrap instead of truncating in narrow containers. |
+| disabled | boolean | false | Disables native button behavior. Anchor buttons receive aria-disabled and leave tab order. |
+| loading | boolean | false | Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled. |
+
+## Accessibility
+
+Use native `button` whenever the action does not navigate. Use an `a` host only for navigation.
+Every button needs an accessible name. Disabled native buttons use `disabled`; disabled anchors
+use `aria-disabled="true"`, leave the tab order, and suppress navigation.
+
+Native button keyboard behavior is preserved: `Enter` and `Space` activate a `button`; links use
+native anchor keyboard behavior. The directive does not introduce a custom keyboard model.
+
+## Playground
+
+Available at /components/button/playground.
+
+---
+
+<!-- route: /components/calendar -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md -->
+<!-- source: ../kikita-ui/docs/calendar.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Calendar
+
+> Date grid.
+
+- Status: available
+- Route: /components/calendar
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiCalendarComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/calendar.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-calendar [(value)]="selectedDate" />
+```
+
+### Range Mode
+
+```html
+<kui-calendar mode="range" [(value)]="selectedRange" />
+```
+
+`value` holds a `Date` in `single` mode, and a `{ start: Date; end: Date | null }` object (`KuiDateRange`) in `range` mode. `end` is `null` while the range is still open (only the start date has been picked); the first click after a committed range starts a new one.
+
+### Disabled Dates
+
+```html
+<kui-calendar [minDate]="today" [(value)]="selectedDate" />
+<kui-calendar [disabledDates]="[holiday1, holiday2]" [(value)]="selectedDate" />
+<kui-calendar [disabledDates]="isWeekend" [(value)]="selectedDate" />
+```
+
+### Footer
+
+```html
+<kui-calendar showFooter [(value)]="selectedDate" />
+```
+
+Off by default. When enabled, adds a footer with the current value and a "Today" shortcut button — useful when the calendar is the whole surface (e.g. inside a popover), but usually skipped for bare inline placements (sidebars, filter panels).
+
+### Custom Header / Footer
+
+The header (month/year title + nav arrows) and footer are both replaceable through content projection. Project an element with `kuiCalendarHeader` or `kuiCalendarFooter` to fully replace the corresponding default block; the built-in one (including the `showFooter` toggle) only renders when nothing is projected.
+
+```html
+<kui-calendar [(value)]="selectedDate">
+  <div kuiCalendarFooter class="my-footer">
+    <button type="button" (click)="clearSelection()">Clear</button>
+  </div>
+</kui-calendar>
+```
+
+Projected content is compiled against the host template, not `kui-calendar`'s internal state — it replaces the block rather than augmenting it.
+
+### Compact Size
+
+```html
+<kui-calendar size="sm" [(value)]="selectedDate" />
+```
+
+`sm` drops the border and padding, for embedding directly inside a sidebar or panel.
+
+### Width
+
+The calendar has a fixed width (`296px`) so its day grid always has enough room, regardless of
+how wide whatever's anchoring it (a field, a dropdown trigger) happens to be. Override it with
+the `--kui-calendar-width` custom property:
+
+```html
+<kui-calendar style="--kui-calendar-width: 340px" [(value)]="selectedDate" />
+```
+
+### Flat (No Own Chrome)
+
+```html
+<kui-calendar flat [(value)]="selectedDate" />
+```
+
+Strips the calendar's own background/border/padding. Use this when nesting it inside chrome
+that already draws those — a `kui-dropdown`/`kui-popover` panel in a date picker — so the two
+don't stack into a double frame. See [Date Picker](./date-picker.md).
+
+### Controlling The Displayed Month
+
+```html
+<kui-calendar [(value)]="selectedDate" [(viewDate)]="viewDate" />
+```
+
+`viewDate` (a first-of-month `Date`, two-way) drives which month the grid shows. Bind it when
+an external control (e.g. a paired `input[kuiDatePicker]`) needs to move the calendar to a
+specific month — for example, jumping to the typed date's month in real time. Left unbound, it
+defaults to today's month, or the bound `value`'s month at construction time.
+
+`showPrevNav`/`showNextNav` (`boolean`, default `true`) hide the previous/next nav button. This
+is for pairing two linked calendars a month apart (one showing month N with only a "previous"
+button, the other month N+1 with only "next") — not yet wired up as a built-in range popover,
+but available for custom layouts.
+
+### Locale
+
+`kui-calendar` resolves month names, weekday names, and the first day of the week purely from `Intl` — there is no bundled locale data to keep in sync. By default it uses the app-wide `KUI_LOCALE` token (which itself defaults to `navigator.language`, falling back to `en-US`).
+
+Override the locale for the whole app:
+
+```ts
+// app.config.ts
+import { kuiProvideLocale } from '@kikita-labs/ui';
+
+providers: [kuiProvideLocale('ru-RU')];
+```
+
+Or override it for a single instance with the `locale` input, which takes precedence over the token:
+
+```html
+<kui-calendar locale="ru-RU" [(value)]="selectedDate" />
+```
+
+## Examples
+
+Rendered at /components/calendar:
+
+- `basic-calendar-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| mode | 'single' \| 'range' | 'single' | Selection mode. Range mode stores a start date and a nullable end date. |
+| [(value)] | Date \| KuiDateRange \| null | null | Selected date in single mode or selected range in range mode. |
+| [(viewDate)] | Date | current month | First-of-month date that controls the visible month. |
+| size | 'md' \| 'sm' | 'md' | Calendar density. Use sm when embedding in tighter sidebars or panels. |
+| flat | boolean | false | Removes the calendar frame for dropdown or popover panel composition. |
+| showWeekend | boolean | true | Mutes Saturday and Sunday labels when enabled. |
+| showFooter | boolean | false | Shows the built-in value summary and Today shortcut. |
+| minDate / maxDate | Date \| undefined | undefined | Inclusive lower and upper bounds for selectable days. |
+| disabledDates | Date[] \| ((date: Date) => boolean) \| undefined | undefined | Individual disabled dates or a predicate evaluated for each rendered date. |
+| locale | string \| undefined | KUI_LOCALE | BCP 47 locale override for month names, weekday names, and week start. |
+| showPrevNav / showNextNav | boolean | true | Hide one header navigation control for linked multi-calendar layouts. |
+| [kuiCalendarHeader] / [kuiCalendarFooter] | projected content | - | Replace the default header or footer with consumer-owned content. |
+| kuiProvideLocale(locale) | Provider | - | Provides the default app or subtree locale used by date-aware components. |
+| --kui-calendar-width | CSS custom property | 296px | Overrides the fixed calendar width while keeping the day grid predictable. |
+
+## Accessibility
+
+- `role="grid"` on the day grid, `role="row"` on the weekday header row.
+- `aria-selected` on selected/range-endpoint cells, `aria-current="date"` on today, `aria-disabled` on disabled dates.
+- Roving tabindex: one day cell is in the tab order at a time (the focused date); arrow keys, `Home`/`End`, `PageUp`/`PageDown` move focus without leaving the grid.
+- Month/year changes are announced through an `aria-live="polite"` region.
+
+### Keyboard
+
+- `ArrowLeft` / `ArrowRight`: previous/next day
+- `ArrowUp` / `ArrowDown`: previous/next week
+- `Home` / `End`: start/end of the focused week
+- `PageUp` / `PageDown`: previous/next month
+- `Shift+PageUp` / `Shift+PageDown`: previous/next year
+- `Enter` / `Space`: select the focused date
+
+## Playground
+
+Available at /components/calendar/playground.
+
+---
+
+<!-- route: /components/card -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/card.md -->
+<!-- source: ../kikita-ui/docs/card.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Card
+
+> Surface, elevated, and sunken content container.
+
+- Status: available
+- Route: /components/card
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiCardDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/card.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<article kuiCard>
+  <h3>Default surface</h3>
+  <p>Grouped content with Kikita border, radius, and surface tokens.</p>
+</article>
+
+<button kuiCard interactive type="button">Interactive card</button>
+```
+
+Use real semantic elements: `article`, `section`, `aside`, `button`, or `a` depending on behavior.
+
+## Examples
+
+Rendered at /components/card:
+
+- `basic-card-example`
+- `card-appearance-example`
+- `card-interactive-example`
+- `card-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| appearance | 'surface' \| 'elevated' \| 'sunken' | 'surface' | Visual surface treatment: flat surface, elevated shadow, or sunken inset. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Card padding size, mapped to the shared Kikita size scale. |
+| interactive | boolean | false | Enables hover and focus-visible affordances for clickable cards. Does not add semantics or keyboard behavior; choose an interactive host element (button, a) for that. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/card/playground.
+
+---
+
+<!-- route: /components/checkbox -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/checkbox.md -->
+<!-- source: ../kikita-ui/docs/checkbox.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Checkbox
+
+> Native checkbox styling with field state integration.
+
+- Status: available
+- Route: /components/checkbox
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiCheckboxDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/checkbox.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Notifications" hint="Control product and release emails">
+  <label>
+    <input kuiCheckbox type="checkbox" />
+    Receive updates
+  </label>
+</kui-field>
+```
+
+Inside `kui-field`, `kuiCheckbox` receives the field id, `aria-describedby`, and invalid state
+automatically. Keep the native label around the checkbox for the option text itself.
+
+## Examples
+
+Rendered at /components/checkbox:
+
+- `basic-checkbox-example`
+- `checkbox-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Checkbox size mapped to Kikita checkbox tokens. |
+| invalid | boolean | false | Marks the checkbox invalid outside a field error state. |
+| id | string \| undefined | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| checked | boolean | false | Native checked state. Not a directive input; bind it directly on the input element. |
+| disabled | boolean | false | Native disabled state. Not a directive input; bind it directly on the input element. |
+| indeterminate | boolean | false | Native DOM property, not an HTML attribute or directive input. Set it imperatively on the element to show the dash-mark state; .kui-checkbox styles :indeterminate. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/checkbox/playground.
+
+---
+
+<!-- route: /components/chip -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/chip.md -->
+<!-- source: ../kikita-ui/docs/chip.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Chip
+
+> Compact token for selected values, filters, and entity references.
+
+- Status: available
+- Route: /components/chip
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiChipDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/chip.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<span kuiChip>Design</span>
+
+<span kuiChip size="sm" appearance="primary" (removed)="removeTag('design')">
+  <span class="kui-chip-label">Design</span>
+  <button kuiChipRemove aria-label="Remove Design">...</button>
+</span>
+
+<button kuiChip type="button">Filter</button>
+```
+
+## Examples
+
+Rendered at /components/chip:
+
+- `basic-chip-example`
+- `chip-states-example`
+- `interactive-chip-example`
+- `removable-chip-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| appearance | 'neutral' \| 'primary' \| 'success' \| 'warning' \| 'danger' \| 'info' | 'neutral' | Semantic visual treatment mapped to Kikita UI status tokens. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Chip size. sm is the size used inside Select and Combobox controls. |
+| disabled | boolean | false | Reduces opacity and makes the nested remove action inert. |
+| invalid | boolean | false | Shows the invalid border treatment. |
+| removed | output: void | - | Emitted when a nested button[kuiChipRemove] is clicked. |
+| kuiChipRemove | directive on button | - | Marks a native button as the chip remove action. Needs its own aria-label, for example "Remove Design". |
+| --kui-chip-bg | CSS color | - | Chip background color. |
+| --kui-chip-bg-hover | CSS color | - | Chip background color on hover for interactive chips. |
+| --kui-chip-border | CSS color | - | Chip border color. |
+| --kui-chip-text | CSS color | - | Chip label text color. |
+| --kui-chip-radius | CSS length | - | Chip corner radius. |
+| --kui-chip-height-xs | CSS length | - | Chip block size for size="xs". |
+| --kui-chip-height-sm | CSS length | - | Chip block size for size="sm". |
+| --kui-chip-height-md | CSS length | - | Chip block size for size="md" (default). |
+| --kui-chip-height-lg | CSS length | - | Chip block size for size="lg". |
+| --kui-chip-remove-color | CSS color | - | Remove icon color. |
+| --kui-chip-remove-color-hover | CSS color | - | Remove icon color on hover. |
+| --kui-chip-disabled-opacity | CSS number | - | Opacity applied to the whole chip when disabled. |
+
+## Accessibility
+
+- Static chip: use a non-interactive host such as `span`.
+- Interactive chip: use a native `button` or `a`.
+- Remove action must be a native `button[kuiChipRemove]`.
+- Remove buttons need an accessible name such as `aria-label="Remove Design"`.
+- Disabled chips mark remove buttons as `aria-disabled="true"` and `tabindex="-1"`.
+- Select and Combobox own keyboard behavior for Delete/Backspace selected-value removal.
+
+## Playground
+
+Available at /components/chip/playground.
+
+---
+
+<!-- route: /components/color-input -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/color-input.md -->
+<!-- source: ../kikita-ui/docs/color-input.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Color Input
+
+> Color value input.
+
+- Status: available
+- Route: /components/color-input
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiColorInputDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/color-input.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Primary seed" hint="Hex or oklch().">
+  <input kuiColorInput value="#5b4fe0" />
+</kui-field>
+```
+
+OKLCH values are accepted as text seed values:
+
+```html
+<kui-field label="Primary seed">
+  <input kuiColorInput value="oklch(0.52 0.25 285)" />
+</kui-field>
+```
+
+Hex values also enable the browser-native color picker from the swatch button:
+
+```html
+<kui-field label="Danger seed">
+  <input kuiColorInput value="#e0002a" />
+</kui-field>
+```
+
+## Examples
+
+Rendered at /components/color-input:
+
+- `basic-color-input-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| kuiColorInput | directive | - | Applies Kikita color-input styling and picker affordances to a native input. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height matched to Kikita UI size tokens. |
+| invalid | boolean | false | Applies an error border and inherits invalid state from parent kui-field. |
+| id | string \| undefined | field id | Native input id override. |
+| swatchLabel | string | 'Open color picker' | Accessible label for the swatch button. |
+
+## Accessibility
+
+- The control uses a native text input for editable value semantics.
+- The swatch is a native button with an accessible name containing the current
+  value.
+- The chevron is a native button and rotates while the picker is open.
+- The 2D surface exposes slider semantics and supports arrow-key changes.
+- The hue control is a native range input.
+- The swatch focus ring is visible and does not shift layout.
+- Invalid state is exposed through `aria-invalid`.
+- Place the input inside `kui-field` for label and description wiring.
+
+## Playground
+
+Available at /components/color-input/playground.
+
+---
+
+<!-- route: /components/combobox -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/combobox.md -->
+<!-- source: ../kikita-ui/docs/combobox.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Combobox
+
+> Searchable input with projected options and async mode.
+
+- Status: available
+- Route: /components/combobox
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiComboboxDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/combobox.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Assignee">
+  <input
+    kuiCombobox
+    [(value)]="assignee"
+    [(query)]="query"
+    [kuiLabelFn]="personLabel"
+    placeholder="Search people..."
+    (search)="query.set($event)"
+  />
+
+  <kui-dropdown>
+    @for (person of filteredPeople(); track person.id) {
+    <button kuiOption [value]="person">
+      <span class="kui-combobox-match-label">
+        @for (segment of person.name | kuiComboboxHighlight: query(); track $index) { @if
+        (segment.match) {
+        <mark class="kui-combobox-highlight">{{ segment.text }}</mark>
+        } @else {
+        <span>{{ segment.text }}</span>
+        } }
+      </span>
+    </button>
+    } @empty {
+    <div class="kui-combobox-empty">No people found</div>
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+```ts
+assignee = signal<Person | null>(null);
+query = signal('');
+personLabel = (person: Person) => person.name;
+filteredPeople = computed(() => {
+  const q = this.query().toLocaleLowerCase();
+  return q
+    ? this.people.filter((person) => person.name.toLocaleLowerCase().includes(q))
+    : this.people;
+});
+```
+
+Inside `kui-field`, Combobox inherits field id, label association, `aria-describedby`,
+invalid state, and field size.
+
+## Examples
+
+Rendered at /components/combobox:
+
+- `async-combobox-example`
+- `basic-combobox-example`
+- `combobox-field-states-example`
+- `free-combobox-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | T \| string \| null | null | Selected value. Bound by [formField] or [(value)]. |
+| query | string | '' | Current search text shown in the native input. |
+| search | output: string | - | Emitted on every native input edit. Use for local filtering or remote requests. |
+| kuiLabelFn | (item: T) => string | String() | Maps a selected object value to display text. Required when T is not a primitive. |
+| placeholder | string | '' | Native input placeholder shown when no value is selected. |
+| mode | 'filter' \| 'free' \| 'async' | 'filter' | filter clears the value while editing until a kuiOption is selected. free stores typed text as the value. async documents that filtering happens outside the directive. |
+| clearable | boolean \| undefined | true | Shows a clear affordance. Falls back to KUI_COMBOBOX_OPTIONS, then KUI_FIELD_OPTIONS, then true. |
+| loading | boolean | false | Shows a suffix loader. Loading row content inside kui-dropdown is projected by the consumer. |
+| disabled | boolean | false | Disables the native input. Set by [formField] or directly. |
+| readonly | boolean | false | Keeps the value readable but prevents editing and opening the dropdown. |
+| invalid | boolean | false | Applies ARIA invalid state. kui-field also contributes invalid state from validation. |
+| errors | readonly ValidationError[] | [] | Validation errors set by [formField], consumed by kui-field for automatic error text. |
+| touched | boolean | false | Touched state set by [formField] or Signal Forms. |
+| touch | output: void | - | Emitted when an opened dropdown closes; marks the control touched for Signal Forms. |
+| id | string \| undefined | undefined | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| kuiOption | directive | - | Marks a projected option inside kui-dropdown. Provides role="option", aria-selected, disabled state, and keyboard navigation. |
+| kuiComboboxHighlight | pipe: (label: string, query: string \| null \| undefined) => readonly { text: string; match: boolean }[] | - | Splits an option label into plain and matched segments for highlighting the current query. |
+| kuiProvideComboboxOptions | (opts: KuiComboboxOptions) => Provider | - | Registers app-wide combobox defaults, such as clearable, via KUI_COMBOBOX_OPTIONS. |
+| KUI_COMBOBOX_OPTIONS | InjectionToken<KuiComboboxOptions> | - | Injection token backing kuiProvideComboboxOptions. Read by the directive for clearable fallback. |
+| --kui-combobox-affordance-size | CSS custom property | - | Size of the suffix clear/chevron affordance controls. |
+| --kui-combobox-suffix-gap | CSS custom property | - | Gap between suffix affordances (clear button, chevron, loader). |
+| --kui-combobox-loader-size | CSS custom property | - | Diameter of the suffix loading spinner. |
+| --kui-combobox-loader-border-width | CSS custom property | - | Border width of the suffix loading spinner. |
+| --kui-combobox-loader-duration | CSS custom property | - | Animation duration of the suffix loading spinner. |
+| --kui-combobox-highlight-bg | CSS custom property | - | Background color of matched text inside kui-combobox-highlight. |
+| --kui-combobox-highlight-text | CSS custom property | - | Text color of matched text inside kui-combobox-highlight. |
+| --kui-combobox-highlight-radius | CSS custom property | - | Corner radius of the matched-text highlight mark. |
+
+## Accessibility
+
+- The host remains a native `<input>`.
+- The input uses `role="combobox"`, `aria-haspopup="listbox"`, `aria-expanded`, and `aria-controls`.
+- `kui-field` provides label, hint, error, required marker, `aria-describedby`, and inherited invalid state.
+- `kui-dropdown` renders the popup listbox through Angular CDK overlay.
+- `kuiOption` provides `role="option"`, `aria-selected`, disabled state, click selection, and keyboard navigation.
+- Arrow keys open the dropdown and move focus to the first or last enabled option.
+- Escape closes the dropdown.
+
+## Playground
+
+Available at /components/combobox/playground.
+
+---
+
+<!-- route: /components/command-palette -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/command-palette.md -->
+<!-- source: ../kikita-ui/docs/command-palette.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Command Palette
+
+> Searchable command overlay for application actions.
+
+- Status: available
+- Route: /components/command-palette
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiCommandPaletteComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/command-palette.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<button kuiButton type="button" (click)="open.set(true)">Open command palette</button>
+
+<kui-command-palette
+  [(open)]="open"
+  [groups]="groups"
+  [(query)]="query"
+  (selected)="runCommand($event)"
+/>
+```
+
+```ts
+readonly open = signal(false);
+readonly query = signal('');
+
+readonly groups: readonly KuiCommandGroup[] = [
+  {
+    heading: 'Navigation',
+    items: [
+      {
+        id: 'projects',
+        label: 'Open projects',
+        shortcut: ['G', 'P'],
+        keywords: ['workspace'],
+      },
+    ],
+  },
+];
+```
+
+## Examples
+
+Rendered at /components/command-palette:
+
+- `basic-command-palette-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| open | ModelSignal<boolean> | - | Two-way model controlling overlay visibility. |
+| groups | readonly KuiCommandGroup[] | - | Command groups rendered in the list. |
+| loading | boolean | - | Renders skeleton rows and sets aria-busy. |
+| placeholder | string | - | Search input placeholder. |
+| label | string | - | Accessible label for the modal dialog and search input. |
+| emptyText | string | - | Empty-state title when no command matches. |
+| query | ModelSignal<string> | - | Two-way model for the current search value. |
+| selected | OutputEmitterRef<KuiCommandItem> | - | Emits the selected command item. |
+
+## Accessibility
+
+- Uses a CDK overlay with scroll blocking.
+- Uses a modal dialog container with CDK focus trap.
+- The search input exposes combobox/listbox relationships through `aria-controls` and
+  `aria-activedescendant`.
+- Arrow keys move the active option, Enter selects it, Escape closes the palette.
+- Disabled commands are skipped by keyboard navigation and cannot be selected.
+
+## Playground
+
+Available at /components/command-palette/playground.
+
+---
+
+<!-- route: /components/date-picker -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/date-picker.md -->
+<!-- source: ../kikita-ui/docs/date-picker.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Date Picker
+
+> Calendar date input.
+
+- Status: available
+- Route: /components/date-picker
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiDatePickerDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/date-picker.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Meeting date">
+  <input kuiDatePicker [(value)]="date" />
+  <kui-dropdown panelRole="dialog" panelWidth="content" maxHeight="420px">
+    <kui-calendar flat [(value)]="date" [showFooter]="true" />
+  </kui-dropdown>
+</kui-field>
+```
+
+Three things on `kui-dropdown` matter here, all different from its default (listbox) usage:
+
+- `panelRole="dialog"` — the panel holds a calendar grid, not a list of options.
+- `panelWidth="content"` — sizes the panel to the calendar's own width (296px by default)
+  instead of clipping it to the (usually narrower) field. This is why the popover is often
+  wider than the input — that's intentional, not a bug: `kui-calendar` has a fixed width
+  (`--kui-calendar-width`, 296px by default) because its day grid needs a minimum amount of
+  room regardless of the trigger. Override `--kui-calendar-width` on `kui-calendar` if you want
+  it narrower or wider — `panelWidth` only controls how the _dropdown panel_ relates to the
+  trigger's width, not the calendar's own size, so switching it to `"anchor"` alone would just
+  clip a still-296px-wide calendar into a narrower panel rather than shrink it.
+- `maxHeight="420px"` — the calendar's natural height comfortably fits under this; it's a
+  safety cap so the popover never renders unbounded when there isn't enough room in either
+  direction, falling back to an internal scroll instead of visually overflowing.
+
+And on `kui-calendar`:
+
+- `flat` — the popover panel already draws its own background/border, so the calendar drops
+  its own to avoid a double frame. See [Calendar](./calendar.md#flat-no-own-chrome).
+
+## Examples
+
+Rendered at /components/date-picker:
+
+- `basic-date-picker-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| input[kuiDatePicker] | Directive | - | Turns a native text input into a masked date picker trigger. |
+| [(value)] | Date \| null | null | Selected date. Bind the same signal to the paired calendar. |
+| [(viewDate)] | Date | current month | Visible calendar month. Bind on both input and calendar for live month sync. |
+| minDate / maxDate | Date \| undefined | undefined | Inclusive bounds for typed values and linked calendar cells. |
+| clearable | boolean \| undefined | field option | Shows a clear action when the input has a value. |
+| disabled | boolean | false | Disables the input and prevents opening the dropdown. |
+| readonly | boolean | false | Keeps the value readable while preventing popover opening. |
+| invalid | boolean | false | Reflects validation state from Signal Forms or direct binding. |
+| errors / touched / touch | Signal Forms control contract | - | Integrates with Angular Signal Forms validation and touched state. |
+| placeholder | string | 'dd.mm.yyyy' | Native input placeholder for the fixed display mask. |
+| id | string \| undefined | field control id | Input id. Falls back to the parent kui-field control id when present. |
+| kui-dropdown panelRole | 'dialog' \| 'listbox' \| 'grid' \| null | 'listbox' | Use dialog for the calendar popover because the panel is not a listbox. |
+| kui-calendar flat | boolean | false | Use flat inside the dropdown so the calendar does not draw a second frame. |
+
+## Accessibility
+
+- `role="combobox"` on the input, `aria-haspopup="dialog"`, `aria-expanded` + `aria-controls`
+  pointing at the popover panel id.
+- `aria-invalid`/`data-kui-invalid` reflect parse failures and out-of-range dates.
+- The linked `kui-calendar` carries its own grid accessibility (`role="grid"`, roving tabindex,
+  `aria-current="date"`, `aria-selected`) — see [Calendar](./calendar.md#accessibility).
+
+### Keyboard
+
+- `ArrowDown`: opens the popover
+- `Enter`: opens the popover if closed, closes it if open
+- `Escape`: closes the popover, focus stays in the field
+- `Tab`: closes the popover, focus moves to the next tabbable element
+- Inside the popover: calendar keyboard navigation applies (see Calendar docs)
+
+## Playground
+
+Available at /components/date-picker/playground.
+
+---
+
+<!-- route: /components/dialog -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/dialog.md -->
+<!-- source: ../kikita-ui/docs/dialog.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Dialog
+
+> Typed modal overlay service and host contract.
+
+- Status: available
+- Route: /components/dialog
+- Package: @kikita-labs/ui@0.4.2
+- Import: kuiDialog from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/dialog.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```ts
+// 1. Define the dialog component
+@Component({ ... })
+export class EditUserDialog implements KuiDialogHost<'saved' | null, UserData> {
+  public readonly dialogContext =
+    inject<KuiDialogContext<'saved' | null, UserData>>(KUI_DIALOG_CONTEXT);
+}
+
+// 2. Create a typed opener in an injection context
+export function injectEditUserDialog() {
+  return kuiDialog(EditUserDialog, { size: 'md' });
+}
+
+// 3. Use in a component
+class MyPage {
+  private readonly openEditUser = injectEditUserDialog();
+
+  edit(user: User) {
+    this.openEditUser({ userId: user.id })
+      .pipe(takeUntilDestroyed())
+      .subscribe((result) => {
+        if (result === 'saved') this.reload();
+      });
+  }
+}
+```
+
+## Examples
+
+Rendered at /components/dialog:
+
+- `basic-dialog-example`
+- `dialog-confirm-example`
+- `dialog-sizes-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| kuiDialog(component, config?) | (component: Type<TComponent>, config?: Omit<KuiDialogConfig, "data">) => (data: TData) => Observable<TResult \| undefined> | - | Inject-function factory. Call once per injection context to get a typed opener bound to that component. |
+| KuiDialogHost<TResult, TData> | interface | - | Contract your dialog component implements. Requires a dialogContext property injected from KUI_DIALOG_CONTEXT. |
+| KUI_DIALOG_CONTEXT | InjectionToken<KuiDialogContext<TResult, TData>> | - | Injected inside the dialog component to read data and close the dialog. |
+| dialogContext.data | TData | - | Data passed via the opener call, e.g. openDialog(data). |
+| dialogContext.closable | boolean | - | Mirrors KuiDialogConfig.closable, for conditionally rendering a close button. |
+| dialogContext.appearance | KuiDialogAppearance | - | Mirrors KuiDialogConfig.appearance, for coloring a custom icon if needed. |
+| dialogContext.close(result?) | (result?: TResult) => void | - | Closes the dialog, optionally emitting a typed result to the opener subscription. |
+| KuiDialogConfig.data | TData | undefined | Available on the low-level config type; kuiDialog() passes feature data through the returned opener function instead. |
+| KuiDialogConfig.size | 'auto' \| 'sm' \| 'md' \| 'lg' | 'md' | Panel width preset: auto (min 320px), sm (400px), md (560px), lg (720px). |
+| KuiDialogConfig.appearance | 'default' \| 'danger' \| 'warning' | 'default' | Colors .kui-dialog-icon via a CSS variable. Has no other visual effect. |
+| KuiDialogConfig.dismissable | boolean | true | Allows Escape and backdrop click to close the dialog. |
+| KuiDialogConfig.closable | boolean | true | Exposed on dialogContext.closable for the component to render a close button. |
+| KuiDialogRef<TResult> | class | - | Return type of kuiDialog(component, config). Calling it with data opens the dialog and returns Observable<TResult \| undefined>. |
+| kuiConfirm() | () => (config: KuiConfirmConfig) => Observable<boolean> | - | Inject-function for a pre-built confirmation dialog. No custom component required. |
+| KuiConfirmConfig.title | string | required | Header text. |
+| KuiConfirmConfig.message | string \| undefined | - | Body text. |
+| KuiConfirmConfig.appearance | KuiDialogAppearance | 'default' | Icon color and button tone. |
+| KuiConfirmConfig.confirmLabel | string | 'OK' | Confirm button label. |
+| KuiConfirmConfig.cancelLabel | string | 'Cancel' | Cancel button label. |
+| .kui-dialog-icon | CSS class | - | Add to an SVG placed before .kui-dialog-title inside .kui-dialog-header. Fixed 20x20px, colored via appearance. |
+| --kui-dialog-bg | CSS custom property | var(--kui-color-surface-elevated) | Panel background color. |
+| --kui-dialog-border | CSS custom property | var(--kui-color-border) | Panel border color. |
+| --kui-dialog-radius | CSS custom property | var(--kui-radius-lg) | Panel corner radius. |
+| --kui-dialog-shadow | CSS custom property | var(--kui-shadow-lg) | Panel elevation shadow. |
+| --kui-dialog-backdrop | CSS custom property | oklch(0 0 0 / 0.5) | Backdrop fill color. |
+
+## Accessibility
+
+- `role="dialog"` and `aria-modal="true"` are set on the panel.
+- The panel uses `aria-labelledby` when `.kui-dialog-title` exists.
+- The panel falls back to `aria-label="Dialog"` when no title is present.
+- Focus is trapped inside the dialog via CDK `cdkTrapFocus`.
+- Focus returns to the opener after the dialog closes.
+- Escape closes when `dismissable: true`.
+- Page scroll is blocked via CDK block scroll strategy while open.
+
+## Playground
+
+Available at /components/dialog/playground.
+
+---
+
+<!-- route: /components/drawer -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/drawer.md -->
+<!-- source: ../kikita-ui/docs/drawer.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Drawer
+
+> Side and edge overlay surface for focused workflows.
+
+- Status: available
+- Route: /components/drawer
+- Package: @kikita-labs/ui@0.4.2
+- Import: kuiDrawer from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/drawer.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```ts
+interface EditData {
+  id: string;
+}
+
+type EditResult = 'saved' | 'cancelled';
+
+@Component({
+  selector: 'app-edit-drawer',
+  template: `
+    <div class="kui-drawer-header">
+      <div class="kui-drawer-header-text">
+        <h2 class="kui-drawer-title">Edit item</h2>
+        <div class="kui-drawer-subtitle">{{ drawerContext.data.id }}</div>
+      </div>
+      <button
+        class="kui-drawer-close"
+        type="button"
+        aria-label="Close"
+        (click)="drawerContext.close('cancelled')"
+      >
+        ...
+      </button>
+    </div>
+    <div class="kui-drawer-body">...</div>
+    <div class="kui-drawer-footer">
+      <button
+        kuiButton
+        appearance="outline"
+        type="button"
+        (click)="drawerContext.close('cancelled')"
+      >
+        Cancel
+      </button>
+      <button kuiButton type="button" (click)="drawerContext.close('saved')">Save</button>
+    </div>
+  `,
+  imports: [KuiButtonDirective],
+})
+export class EditDrawer implements KuiDrawerHost<EditResult, EditData> {
+  public readonly drawerContext =
+    inject<KuiDrawerContext<EditResult, EditData>>(KUI_DRAWER_CONTEXT);
+}
+
+function injectEditDrawer() {
+  return kuiDrawer(EditDrawer, { side: 'right', size: 'md' });
+}
+```
+
+## Examples
+
+Rendered at /components/drawer:
+
+- `basic-drawer-example`
+- `drawer-sides-example`
+- `drawer-sizes-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| kuiDrawer(component, config?) | (component: Type<TComponent>, config?: Omit<KuiDrawerConfig, "data">) => (data: TData) => Observable<TResult \| undefined> | - | Inject-function factory. Call once per injection context to get a typed opener bound to that component. |
+| KuiDrawerHost<TResult, TData> | interface | - | Contract your drawer component implements. Requires a drawerContext property injected from KUI_DRAWER_CONTEXT. |
+| KUI_DRAWER_CONTEXT | InjectionToken<KuiDrawerContext<TResult, TData>> | - | Injected inside the drawer component to read data and close the drawer. |
+| drawerContext.data | TData | - | Data passed via the opener call, e.g. openDrawer(data). |
+| drawerContext.side | KuiDrawerSide | - | Drawer side resolved from KuiDrawerConfig.side, read-only. |
+| drawerContext.size | KuiDrawerSize | - | Drawer size preset resolved from KuiDrawerConfig.size, read-only. |
+| drawerContext.closable | boolean | - | Mirrors KuiDrawerConfig.closable, for conditionally rendering a close button. |
+| drawerContext.close(result?) | (result?: TResult) => void | - | Closes the drawer, optionally emitting a typed result to the opener subscription. |
+| KuiDrawerConfig.data | TData | undefined | Available on the low-level config type; kuiDrawer() passes feature data through the returned opener function instead. |
+| KuiDrawerConfig.side | 'right' \| 'left' \| 'bottom' \| 'top' | 'right' | Edge from which the drawer enters and docks. |
+| KuiDrawerConfig.size | 'sm' \| 'md' \| 'lg' \| 'full' | 'md' | Width for left/right drawers, height for top/bottom drawers. |
+| KuiDrawerConfig.closeOnBackdropClick | boolean | true | Closes the drawer on backdrop click. Disable for required actions. |
+| KuiDrawerConfig.closeOnEscape | boolean | true | Closes the drawer on Escape. Disable for required actions. |
+| KuiDrawerConfig.closable | boolean | true | Passed to the content context for close-button rendering; your component decides whether to render it. |
+| KuiDrawerRef<TResult> | class | - | Return type of kuiDrawer(component, config). Calling it with data opens the drawer and returns Observable<TResult \| undefined>. |
+| .kui-drawer-header / .kui-drawer-title / .kui-drawer-subtitle | CSS classes | - | Header structure classes. .kui-drawer-title is wired as aria-labelledby automatically when present. |
+| .kui-drawer-body / .kui-drawer-footer | CSS classes | - | Scrollable content region and action row classes. |
+| .kui-drawer-close | CSS class | - | Close-button class for the header, shown conditionally on drawerContext.closable. |
+| --kui-drawer-bg | CSS custom property | - | Panel background color. |
+| --kui-drawer-border | CSS custom property | - | Panel border color. |
+| --kui-drawer-radius | CSS custom property | - | Panel corner radius. |
+| --kui-drawer-backdrop-bg | CSS custom property | - | Backdrop fill color. |
+| --kui-drawer-width-sm / -md / -lg | CSS custom properties | - | Width presets used by left/right drawers. |
+| --kui-drawer-height-sm / -md / -lg | CSS custom properties | - | Height presets used by top/bottom drawers. |
+| --kui-drawer-duration-open / -close | CSS custom properties | - | Enter/exit animation durations. |
+
+## Accessibility
+
+- Drawer renders `role="dialog"` and `aria-modal="true"`.
+- Focus is trapped inside the drawer while open.
+- Focus returns to the previously focused element after close.
+- If `.kui-drawer-title` exists, it is wired as `aria-labelledby`.
+- Escape closes by default unless `closeOnEscape` is `false`.
+- Backdrop click closes by default unless `closeOnBackdropClick` is `false`.
+
+## Playground
+
+Available at /components/drawer/playground.
+
+---
+
+<!-- route: /components/dropdown -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/dropdown.md -->
+<!-- source: ../kikita-ui/docs/dropdown.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Dropdown
+
+> Projected option overlay used by select-like controls.
+
+- Status: available
+- Route: /components/dropdown
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiDropdownComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/dropdown.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+### Inside `kui-field`
+
+`kui-field` detects a nested dropdown, sets itself as the anchor, and toggles the
+panel when the field is clicked. This is the normal pattern for `input[kuiSelect]`.
+
+```html
+<kui-field label="Fruit">
+  <input kuiSelect [(value)]="fruit" placeholder="Pick..." />
+  <kui-dropdown>
+    @for (option of options; track option) {
+    <div [kuiOption]="option">{{ option }}</div>
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+### Trigger directive
+
+Use `[kuiDropdownFor]` when the dropdown is anchored to a standalone trigger.
+Prefer a native `<button>` so keyboard behavior and button semantics are already
+correct.
+
+```html
+<button type="button" [kuiDropdownFor]="menu">Actions</button>
+
+<kui-dropdown #menu [maxHeight]="null">
+  <div kuiOption="edit">Edit</div>
+  <div kuiOption="delete" [disabled]="true">Delete</div>
+</kui-dropdown>
+```
+
+For non-button triggers, the host element must already be focusable and handle
+keyboard activation. The directive only wires click toggling, `aria-expanded`,
+and `aria-haspopup`.
+
+## Examples
+
+Rendered at /components/dropdown:
+
+- `field-dropdown-example`
+- `panel-width-dropdown-example`
+- `standalone-dropdown-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| maxHeight | string \| null | '240px' | Preferred max height of the panel before it scrolls. Always additionally clamped to the viewport so the panel can never render taller than the screen. null removes only the preferred cap, not the viewport clamp. |
+| offset | number | 4 | Gap in px between the anchor and the panel edge. |
+| closeOnSelect | boolean (model) | true | Closes the panel when a selectable option is clicked. Two-way bindable via closeOnSelectChange. |
+| panelRole | 'listbox' \| 'dialog' \| 'grid' \| null | 'listbox' | ARIA role rendered on the panel. Set to dialog (or null to omit the role) for non-listbox projected content, e.g. kui-calendar. |
+| panelWidth | 'anchor' \| 'content' \| 'auto' | 'anchor' | anchor matches the trigger's width exactly (listboxes). content grows with the panel's own content but never below the trigger's width. auto ignores the trigger's width and sizes purely to content. |
+| width | string \| null | null | Explicit panel width (any CSS width, e.g. 320px). Overrides panelWidth entirely when set. |
+| isOpen | Signal<boolean> | - | Current open state. |
+| open() | method | - | Shows the panel and attaches scroll/outside-click/Escape listeners. |
+| close() | method | - | Starts the close animation and detaches listeners. |
+| toggle() | method | - | Opens when closed, closes when open. |
+| setAnchor(el) | method | - | Sets the anchor imperatively. Called by kui-field and [kuiDropdownFor]. |
+| getPanel() | method | - | Returns the rendered panel element, if attached. |
+| getPanelId() | method | - | Returns the stable panel id for ARIA wiring. |
+| [kuiDropdownFor] | KuiDropdownComponent | - | Wires a standalone trigger to a dropdown instance and manages click toggling, aria-expanded, and aria-haspopup. Prefer a native button so keyboard behavior is already correct. |
+| [kuiOption] value | unknown | - | Required. The value an option renders and emits. Set via the `value` input on `KuiOptionDirective`, e.g. `<div kuiOption value="edit">`. |
+| [kuiOption] disabled | boolean | false | Disables click and keyboard selection for this option. |
+| kuiOptionSelect | EventEmitter<unknown> | - | Emits the option value on selection. |
+| --kui-dropdown-bg | CSS custom property | var(--kui-color-surface-elevated) | Panel background. |
+| --kui-dropdown-border | CSS custom property | var(--kui-color-border) | Panel border color. |
+| --kui-dropdown-radius | CSS custom property | var(--kui-radius-md) | Panel corner radius. |
+| --kui-dropdown-shadow | CSS custom property | var(--kui-shadow-lg) | Panel drop shadow. |
+| --kui-dropdown-viewport-margin | CSS custom property | var(--kui-space-6, 32px) | Margin subtracted from the viewport height when clamping the panel max-height. |
+| Known non-feature | - | - | Dropdown does not own selection or value state itself. Select, Combobox, Menu, or another host component provides that context; a bare kui-dropdown only positions the panel and manages open/close. |
+
+## Accessibility
+
+- Keep dropdown triggers native where possible, especially `<button>`.
+- Select-style hosts should expose `role="combobox"`, `aria-expanded`,
+  `aria-controls`, and `aria-describedby` through their own directive.
+- Options use `role="option"` inside the dropdown `role="listbox"` panel.
+- Escape closes the panel. Enter/Space selects an option. Tab closes without
+  stealing focus back from the next tabbable element.
+
+## Playground
+
+Available at /components/dropdown/playground.
+
+---
+
+<!-- route: /components/empty-state -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/empty-state.md -->
+<!-- source: ../kikita-ui/docs/empty-state.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Empty State
+
+> Known empty, error, no-access, and success content states.
+
+- Status: available
+- Route: /components/empty-state
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiEmptyStateComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/empty-state.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-empty-state
+  title="No projects yet"
+  description="Create the first project to start working with your team."
+>
+  <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+    <path d="M21 8v13H3V8" />
+    <path d="M1 3h22v5H1z" />
+    <path d="M10 12h4" />
+  </svg>
+
+  <div kuiEmptyStateActions>
+    <button kuiButton type="button">Create project</button>
+    <button kuiButton appearance="ghost" type="button">Import</button>
+  </div>
+</kui-empty-state>
+```
+
+## Examples
+
+Rendered at /components/empty-state:
+
+- `basic-empty-state-example`
+- `empty-state-context-example`
+- `empty-state-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| title | string | - | Required empty-state title text. Visual text only, not a forced heading level. |
+| description | string \| null | null | Optional supporting text rendered below the title. |
+| context | 'no-data' \| 'no-results' \| 'error' \| 'no-access' \| 'success' | 'no-data' | Semantic context. Only changes the icon accent, not layout. |
+| size | 'sm' \| 'md' \| 'lg' | 'md' | Empty-state layout size. Small uses a compact horizontal layout. |
+| [kuiEmptyStateIcon] | KuiEmptyStateIconDirective | - | Marks projected visual content as the decorative icon slot. Kikita marks it aria-hidden. |
+| [kuiEmptyStateActions] | KuiEmptyStateActionsDirective | - | Marks projected content as the action slot for native buttons, links, or Kikita button directives. |
+
+## Accessibility
+
+- Use surrounding page structure for heading hierarchy. The built-in title is visual text, not a
+  forced heading level.
+- Decorative icons should use `[kuiEmptyStateIcon]`.
+- Use `role="status"` on the `kui-empty-state` host when a no-results state appears dynamically
+  after filtering.
+- Actions remain normal interactive elements and should use native buttons or links.
+
+## Playground
+
+Available at /components/empty-state/playground.
+
+---
+
+<!-- route: /components/field -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/field.md -->
+<!-- source: ../kikita-ui/docs/field.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Field
+
+> Label, hint, error, and form-control composition.
+
+- Status: available
+- Route: /components/field
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiFieldComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/field.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Email" hint="Use your work email" required>
+  <input kuiInput type="email" />
+</kui-field>
+
+<kui-field label="Email" error="Email is required">
+  <input kuiInput type="email" />
+</kui-field>
+```
+
+When `kuiInput` is projected inside `kui-field`, it receives the field id, `aria-describedby`, and invalid state automatically.
+
+Use `kui-field` as the default wrapper for input-like controls whenever a visible label, hint,
+error, or required marker is needed. Do not hand-wire those pieces around Kikita inputs in docs,
+playground pages, or examples.
+
+## Examples
+
+Rendered at /components/field:
+
+- `basic-field-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| label | string | - | Visible label shorthand. Prefer this for simple field labels. |
+| hint | string | - | Optional help text rendered below the control and wired through aria-describedby. |
+| error | string | - | Explicit error text rendered below the control and wired through aria-describedby. |
+| hideErrors | boolean | - | Hides automatic, explicit, and projected error messages while keeping invalid state. |
+| required | boolean | - | Explicit required marker override. Omit when Signal Forms can infer it. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Field spacing and projected control size. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/field/playground.
+
+---
+
+<!-- route: /components/file-upload -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/file-upload.md -->
+<!-- source: ../kikita-ui/docs/file-upload.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# File Upload
+
+> Controlled file picker.
+
+- Status: available
+- Route: /components/file-upload
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiFileUploadComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/file-upload.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-file-upload
+  acceptLabel="PNG, JPG up to 10 MB"
+  [accept]="['image/png', 'image/jpeg']"
+  [maxSize]="10 * 1024 * 1024"
+  [maxCount]="5"
+  [(files)]="files"
+  (retry)="onRetry($event)"
+/>
+```
+
+```ts
+protected readonly files = signal<KuiUploadFile[]>([]);
+
+protected onRetry(entry: KuiUploadFile): void {
+  this.startUpload(entry);
+}
+
+private startUpload(entry: KuiUploadFile): void {
+  this.files.update((list) =>
+    list.map((f) => (f.id === entry.id ? { ...f, status: 'uploading', progress: 0 } : f)),
+  );
+
+  // Drive `entry.file` through your own transport, updating `progress` as it
+  // advances and setting `status` to 'success' or 'error' (with `errorMsg`)
+  // when it settles.
+}
+```
+
+A newly picked or dropped file lands in the model as `pending`; wire a
+`files` effect (or watch `filesChange` via two-way binding) to notice new
+`pending` entries and call `startUpload` on them the same way `onRetry` does.
+
+## Examples
+
+Rendered at /components/file-upload:
+
+- `basic-file-upload-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| variant | 'dropzone' \| 'compact' | 'dropzone' | Renders the full drag-and-drop zone or a compact attach button. |
+| mode | 'single' \| 'multiple' | 'multiple' | Controls whether a new selection replaces or appends to the file list. |
+| accept | readonly string[] | undefined | Allowed MIME types. Omit it to accept any file type. |
+| acceptLabel | string | undefined | Human-readable format and limit hint shown near the picker. |
+| maxSize | number | undefined | Maximum file size in bytes. |
+| maxCount | number | undefined | Maximum number of files in multiple mode. |
+| size | 'sm' \| 'md' \| 'lg' | 'md' | Controls row height, thumbnail scale, and trigger density. |
+| disabled | boolean | false | Stops drag, click, and keyboard file-picking interactions. |
+| [(files)] | readonly KuiUploadFile[] | [] | Controlled file list. Consumers own upload status and progress after picking. |
+| (retry) | KuiUploadFile | - | Emits when an errored item retry action is activated. |
+| KuiUploadFile.status | 'pending' \| 'uploading' \| 'success' \| 'error' | - | Per-file state written by the component initially and then by the consumer. |
+
+## Accessibility
+
+The visible dropzone/button controls a visually hidden native
+`<input type="file">` — drag-and-drop is never the only way to select a
+file. The dropzone is `role="button"` with an `aria-label` that includes
+`acceptLabel` when set. Upload progress reuses `kui-progress`
+(`role="progressbar"`, `aria-valuenow`) with an
+`aria-label="Uploading {name}"`. The file list is wrapped in
+`aria-live="polite"` so additions/removals are announced, and the
+`maxCount` form error is its own `aria-live="polite"` region. The remove
+button has `aria-label="Remove {name}"`.
+
+## Playground
+
+Available at /components/file-upload/playground.
+
+---
+
+<!-- route: /components/group -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/group.md -->
+<!-- source: ../kikita-ui/docs/group.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Group
+
+> Grouped control chrome for adjacent actions and fields.
+
+- Status: available
+- Route: /components/group
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiGroupDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/group.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<div kuiGroup collapsed>
+  <button kuiButton appearance="outline">One</button>
+  <button kuiButton appearance="outline">Two</button>
+  <button kuiIconButton appearance="outline" aria-label="More">
+    <kui-icon name="more" />
+  </button>
+</div>
+```
+
+## Examples
+
+Rendered at /components/group:
+
+- `basic-group-example`
+- `group-field-example`
+- `group-orientation-example`
+- `group-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Layout direction for the grouped controls. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Size inherited by grouped controls through CSS variables. Set on the group instead of each child. |
+| collapsed | boolean | false | Collapses adjacent control borders into a single visual group, removing the double border between children. |
+| rounded | boolean | true | Keeps the outer group corners rounded when collapsed. Set to false for square outer corners. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/group/playground.
+
+---
+
+<!-- route: /components/icon -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon.md -->
+<!-- source: ../kikita-ui/docs/icon.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Icon
+
+> SVG icon renderer.
+
+- Status: available
+- Route: /components/icon
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiIconComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/icon.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-icon name="check" label="Success" />
+<kui-icon src="/assets/logo.svg" label="Logo" />
+<kui-icon name="check" />
+```
+
+Omit `label` for decorative icons. Decorative icons render with `aria-hidden="true"`.
+
+## Examples
+
+Rendered at /components/icon:
+
+- `basic-icon-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| kui-icon | Component | - | Renders an icon from a registered name, trusted inline SVG source, or image URL. |
+| name | KuiIconName \| undefined | undefined | Icon name resolved from icons registered with provideKuiIcons(). |
+| source | KuiIconSource \| undefined | undefined | Trusted static inline SVG markup. It takes precedence over name. |
+| src | string \| undefined | undefined | External image URL used when no source or registered name is provided. |
+| label | string \| undefined | undefined | Accessible name for meaningful icons. Omit it for decorative icons. |
+| size | string | '1em' | CSS size applied to the square icon box, for example 16px, 1.25rem, or 2em. |
+| provideKuiIcons(icons) | EnvironmentProviders | - | Registers trusted static SVG strings for name-based icon lookup. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/icon/playground.
+
+---
+
+<!-- route: /components/icon-button -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon-button.md -->
+<!-- source: ../kikita-ui/docs/icon-button.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Icon Button
+
+> Compact icon-only action control.
+
+- Status: available
+- Route: /components/icon-button
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiIconButtonDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/icon-button.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<button kuiIconButton aria-label="Close">
+  <kui-icon name="x" />
+</button>
+
+<button kuiIconButton shape="soft" appearance="success" aria-label="Approve">
+  <kui-icon name="check" />
+</button>
+
+<a kuiIconButton shape="outline" appearance="primary" href="/settings" aria-label="Settings">
+  <kui-icon name="settings" />
+</a>
+```
+
+## Examples
+
+Rendered at /components/icon-button:
+
+- `icon-button-appearance-example`
+- `icon-button-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| shape | 'solid' \| 'soft' \| 'outline' \| 'ghost' | 'ghost' | Surface treatment. Defaults to ghost. Combines freely with appearance. |
+| appearance | 'primary' \| 'danger' \| 'success' \| 'warning' \| null | null | Semantic color intent. Without an explicit value, solid/soft use primary colors and outline/ghost use neutral defaults. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Square control size mapped to Kikita control height tokens (matches kui-input height at md). |
+| disabled | boolean | false | Disables native button behavior. Anchor icon buttons receive aria-disabled and leave tab order. |
+
+## Accessibility
+
+Icon-only controls must have an accessible label, normally through `aria-label`. Use native
+`button` for actions and `a` for navigation.
+
+Native button and anchor keyboard behavior is preserved. The directive adds no custom key
+bindings.
+
+## Playground
+
+Available at /components/icon-button/playground.
+
+---
+
+<!-- route: /components/input -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/input.md -->
+<!-- source: ../kikita-ui/docs/input.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Input
+
+> Native text input styling with field integration.
+
+- Status: available
+- Route: /components/input
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiInputDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/input.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<input kuiInput placeholder="Email" />
+```
+
+Inside `kui-field`, `kuiInput` automatically wires label, hint, error, and invalid ARIA attributes.
+Use `textarea[kuiTextarea]` for multiline controls.
+
+## Examples
+
+Rendered at /components/input:
+
+- `basic-input-example`
+- `input-group-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Native input height and spacing size. |
+| invalid | boolean | - | Marks the input invalid outside a field error state. |
+| id | string | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/input/playground.
+
+---
+
+<!-- route: /components/loader -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md -->
+<!-- source: ../kikita-ui/docs/loader.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Loader
+
+> Inline loading indicator for buttons and status areas.
+
+- Status: available
+- Route: /components/loader
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiLoaderDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/loader.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<span kuiLoader label="Loading"></span>
+
+<button kuiButton disabled>
+  <span kuiLoader size="sm" label="Saving"></span>
+  Saving
+</button>
+```
+
+The directive sets `role="status"` and `aria-live="polite"`.
+
+## Examples
+
+Rendered at /components/loader:
+
+- `basic-loader-example`
+- `loader-button-example`
+- `loader-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Loader size mapped to Kikita UI loader tokens. |
+| label | string | 'Loading' | Accessible label rendered as aria-label. Also announced through the host role="status" and aria-live="polite". |
+| --kui-loader-size | CSS custom property | - | Overrides the rendered loader diameter for the current size step. |
+| --kui-loader-track | CSS custom property | - | Overrides the loader track (background ring) color. |
+| --kui-loader-fill | CSS custom property | - | Overrides the loader spinning fill color. |
+| --kui-loader-border-width | CSS custom property | - | Overrides the loader ring stroke width. |
+| --kui-loader-duration | CSS custom property | - | Overrides the spin animation duration. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/loader/playground.
+
+---
+
+<!-- route: /components/menu -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md -->
+<!-- source: ../kikita-ui/docs/menu.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Menu
+
+> Anchored command menu with keyboard focus behavior.
+
+- Status: available
+- Route: /components/menu
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiMenuComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/menu.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<button kuiButton type="button" [kuiMenuFor]="actionsMenu">Actions</button>
+
+<kui-menu #actionsMenu ariaLabel="Project actions">
+  <button type="button" kuiMenuItem>
+    <span class="kui-menu-item__label">Edit</span>
+  </button>
+  <button type="button" kuiMenuItem>
+    <span class="kui-menu-item__label">Copy</span>
+  </button>
+  <hr kuiSeparator spacing="xs" />
+  <button type="button" kuiMenuItem appearance="destructive">
+    <span class="kui-menu-item__label">Delete</span>
+  </button>
+</kui-menu>
+```
+
+## Examples
+
+Rendered at /components/menu:
+
+- `basic-menu-example`
+- `menu-content-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| ariaLabel | string | 'Actions' | Accessible name for the menu panel. |
+| placement | 'top' \| 'bottom' \| 'left' \| 'right' | 'bottom' | Preferred side of the trigger the menu opens on. Auto-flips to the opposite side to fit the viewport. |
+| menuAlign | 'start' \| 'end' | 'start' | Alignment along the trigger edge. For top/bottom placement, start is left-aligned and end is right-aligned. For left/right placement, start is top-aligned and end is bottom-aligned. |
+| offset | number | 4 | Pixel gap between the trigger and the menu panel. |
+| minWidth | string \| null | null | Optional overlay minimum width. |
+| [kuiMenuFor] | KuiMenuComponent \| undefined | - | Wires a native trigger to a menu instance and manages trigger ARIA state. |
+| kuiMenuHeader | - | - | Marks a non-interactive group heading inside the menu panel. Renders with role="presentation". |
+| kuiSeparator | - | - | Native hr[kuiSeparator] divider between menu item groups. See the Separator page for spacing and appearance inputs. |
+| kuiMenuItem.appearance | 'neutral' \| 'destructive' | 'neutral' | Visual treatment for an action item. Use destructive for dangerous actions. |
+| kuiMenuItem.disabled | boolean | false | Prevents activation and applies disabled/aria-disabled semantics. Disabled items are skipped by keyboard navigation. |
+
+## Accessibility
+
+- The panel uses `role="menu"`.
+- Items use `role="menuitem"`.
+- Separators use native `hr[kuiSeparator]`.
+- Group headers use `role="presentation"`.
+- Disabled items expose `aria-disabled="true"`.
+- `ArrowDown` / `ArrowUp` opens from the trigger and focuses first/last item.
+- Inside the menu, `ArrowDown`, `ArrowUp`, `Home`, and `End` move focus.
+- `Escape` closes the menu and returns focus to the trigger.
+- `Tab` closes the menu and lets focus continue normally.
+
+## Playground
+
+Available at /components/menu/playground.
+
+---
+
+<!-- route: /components/number-input -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md -->
+<!-- source: ../kikita-ui/docs/number-input.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Number Input
+
+> Number input states with compact variant options.
+
+- Status: available
+- Route: /components/number-input
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiNumberInputDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/number-input.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<!-- Standalone -->
+<input type="number" kuiNumberInput min="0" max="100" aria-label="Quantity" />
+
+<!-- With ngModel -->
+<input type="number" kuiNumberInput min="1" max="99" [(ngModel)]="qty" aria-label="Quantity" />
+
+<!-- In a kui-field -->
+<kui-field label="Count" hint="Enter a value from 1 to 100">
+  <input type="number" kuiNumberInput min="1" max="100" [(ngModel)]="qty" />
+</kui-field>
+```
+
+Variant B, with minus/plus controls on the sides, is the default and recommended
+for most use cases. Variant A uses stacked arrows on the right and is more compact.
+
+```html
+<input type="number" kuiNumberInput variant="a" min="0" max="99" [(ngModel)]="qty" />
+```
+
+## Examples
+
+Rendered at /components/number-input:
+
+- `basic-number-input-example`
+- `compact-number-input-example`
+- `field-number-input-example`
+- `range-number-input-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height from --kui-control-height-*. Generated buttons scale to match. |
+| variant | 'a' \| 'b' | 'b' | Button layout. b places minus/plus controls on the sides (recommended). a stacks compact arrow controls on the right. |
+| invalid | boolean | false | Applies an error border. Also inherited automatically from a parent kui-field with an error. |
+| id | string \| undefined | - | Id override for the native input. Falls back to the parent kui-field control id. |
+| min | string \| number | - | Native HTML attribute placed directly on the input. Decrement stops and disables at this value. |
+| max | string \| number | - | Native HTML attribute placed directly on the input. Increment stops and disables at this value. |
+| step | string \| number | 1 | Native HTML attribute. Amount the generated buttons and arrow keys step by. |
+| disabled | boolean | false | Native HTML attribute. Sets data-kui-disabled on the container and disables both generated buttons. |
+| readonly | boolean | false | Native HTML attribute. Sets data-kui-readonly on the container and disables both generated buttons. |
+| --kui-number-input-border | CSS custom property | --kui-color-border | Border color in the default state. |
+| --kui-number-input-divider | CSS custom property | --kui-color-border | Divider color between the buttons and the native input. |
+| --kui-number-input-btn-bg | CSS custom property | transparent | Generated button background in the default state. |
+| --kui-number-input-btn-bg-hover | CSS custom property | --kui-color-surface-elevated | Generated button background on hover. |
+| --kui-number-input-btn-text | CSS custom property | --kui-color-text-secondary | Generated button icon color. |
+
+## Accessibility
+
+- The native `input[type=number]` keeps its built-in keyboard and screen-reader semantics.
+- Generated buttons use `aria-label="Decrease value"` and `aria-label="Increase value"`.
+- Generated buttons use native `disabled` plus `aria-disabled="true"` when stepping is not available.
+- Place the input inside `kui-field` to inherit label, hint, error, and id wiring.
+
+## Playground
+
+Available at /components/number-input/playground.
+
+---
+
+<!-- route: /components/popover -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/popover.md -->
+<!-- source: ../kikita-ui/docs/popover.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Popover
+
+> Anchored content surface for contextual UI.
+
+- Status: available
+- Route: /components/popover
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiPopoverComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/popover.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<button [kuiPopoverFor]="myPop" kuiButton>Open</button>
+
+<kui-popover #myPop placement="bottom" [arrow]="true" ariaLabel="Details">
+  <div class="kui-popover-title">Title</div>
+  <div class="kui-popover-desc">Supporting text.</div>
+</kui-popover>
+```
+
+## Examples
+
+Rendered at /components/popover:
+
+- `action-popover-example`
+- `basic-popover-example`
+- `hover-popover-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| placement | 'top' \| 'bottom' \| 'left' \| 'right' | 'bottom' | Preferred side of the anchor. Auto-flips to the opposite side to fit the viewport. |
+| align | 'start' \| 'center' \| 'end' | 'center' | Alignment of the panel along the anchor edge. Preserved after a placement flip. |
+| arrow | boolean | false | Shows the arrow caret pointing to the anchor. |
+| triggerType | 'click' \| 'hover' | 'click' | click toggles the panel on click and closes on outside click or ESC. hover opens on mouseenter and closes on mouseleave. |
+| ariaLabel | string | 'Popover' | Accessible name for the role="dialog" panel. Prefer content-specific text. |
+| hoverDelay | number | 100 | Delay in ms before closing on mouseleave in hover mode. Lets the mouse travel from trigger to panel. |
+| offset | number | 8 | Gap in px between the anchor and the panel. The arrow adds 6px automatically. |
+| trapFocus | boolean | false | Traps focus inside the panel and auto-focuses the first focusable element on open. |
+| open | boolean (model) | false | Current open state exposed for trigger integrations via openChange. Not intended as a standalone controlled API. |
+| [kuiPopoverFor] | KuiPopoverComponent \| undefined | - | Wires any element as a trigger for a kui-popover. Sets aria-expanded and aria-haspopup="dialog" automatically. |
+| .kui-popover-title | - | - | Optional CSS class for a semi-bold sm title inside the projected content. |
+| .kui-popover-desc | - | - | Optional CSS class for secondary sm supporting text inside the projected content. |
+| --kui-popover-bg | CSS custom property | var(--kui-color-surface-elevated) | Panel background. |
+| --kui-popover-border | CSS custom property | var(--kui-color-border) | Panel border color. |
+| --kui-popover-radius | CSS custom property | var(--kui-radius-lg) | Panel corner radius. |
+| --kui-popover-shadow | CSS custom property | var(--kui-shadow-lg) | Panel drop shadow. |
+| --kui-popover-padding-x | CSS custom property | var(--kui-space-4) | Panel horizontal padding. |
+| --kui-popover-padding-y | CSS custom property | var(--kui-space-4) | Panel vertical padding. |
+| --kui-popover-min-width | CSS custom property | 160px | Minimum panel width. |
+| --kui-popover-max-width | CSS custom property | 320px | Maximum panel width. |
+| --kui-popover-arrow-size | CSS custom property | 10px | Arrow caret size. |
+| --kui-z-popover | CSS custom property | 400 | Panel z-index, between Dropdown (300) and Dialog (500). |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/popover/playground.
+
+---
+
+<!-- route: /components/progress -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/progress.md -->
+<!-- source: ../kikita-ui/docs/progress.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Progress
+
+> Progress status primitive for determinate and indeterminate work.
+
+- Status: available
+- Route: /components/progress
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiProgressComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/progress.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Examples
+
+Rendered at /components/progress:
+
+- `basic-progress-example`
+- `progress-circular-example`
+- `progress-color-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| type | 'linear' \| 'circular' | 'linear' | Progress shape. |
+| value | number \| null | null | Progress value from 0 to 100. Values are clamped visually. null renders the indeterminate animation. |
+| color | 'primary' \| 'success' \| 'warning' \| 'danger' \| 'neutral' | 'primary' | Semantic color. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' | 'md' | Linear thickness or circular diameter. |
+| content projection | text \| template | - | Projected content is rendered centered inside circular progress. |
+
+## Accessibility
+
+The host uses `role="progressbar"`, `aria-valuemin="0"`, and
+`aria-valuemax="100"`. Determinate progress also sets `aria-valuenow`.
+
+Always provide an accessible name with `aria-label` or `aria-labelledby`.
+
+## Playground
+
+Available at /components/progress/playground.
+
+---
+
+<!-- route: /components/radio -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/radio.md -->
+<!-- source: ../kikita-ui/docs/radio.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Radio
+
+> Native radio control styling for exclusive choices.
+
+- Status: available
+- Route: /components/radio
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiRadioDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/radio.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Plan" hint="Choose a billing plan">
+  <div role="radiogroup">
+    <label>
+      <input kuiRadio type="radio" name="plan" value="starter" />
+      Starter
+    </label>
+    <label>
+      <input kuiRadio type="radio" name="plan" value="pro" />
+      Pro
+    </label>
+  </div>
+</kui-field>
+```
+
+Use a shared native `name` for mutually exclusive radio choices. Use `kui-field` for the
+field-level label, hint, error, and description wiring; keep native labels for each option.
+
+## Examples
+
+Rendered at /components/radio:
+
+- `basic-radio-example`
+- `radio-disabled-example`
+- `radio-invalid-example`
+- `radio-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Radio size mapped to Kikita radio tokens. |
+| invalid | boolean | - | Marks the radio invalid outside a kui-field error state. |
+| id | string \| undefined | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/radio/playground.
+
+---
+
+<!-- route: /components/scrollbar -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/scrollbar.md -->
+<!-- source: ../kikita-ui/docs/scrollbar.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Scrollbar
+
+> Tokenized native scroll container utility.
+
+- Status: available
+- Route: /components/scrollbar
+- Package: @kikita-labs/ui@0.4.2
+- Import: .kui-scroll from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/scrollbar.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+For application-wide scrollbar styling, enable the provider option once:
+
+```ts
+import { provideKikitaUi } from '@kikita-labs/ui';
+
+export const appConfig = {
+  providers: [provideKikitaUi({ scrollbars: 'styled' })],
+};
+```
+
+This sets `data-kui-scrollbars="styled"` on the document root and styles native scrollbars for application-owned scroll containers.
+
+The default is `scrollbars: 'native'` for application-owned scroll containers. Kikita-owned internal scroll areas, such as dropdown, dialog body, drawer body, and command palette list, still use Kikita scrollbar tokens automatically.
+
+Use `kui-scroll` only for local opt-in when you do not want global application scrollbar styling:
+
+```html
+<div class="kui-scroll" tabindex="0" style="max-block-size: 240px; overflow: auto">
+  <p>Scrollable content...</p>
+  <p>Scrollable content...</p>
+  <p>Scrollable content...</p>
+</div>
+```
+
+Apply the class to the element that actually scrolls. Do not apply it to a child wrapper that has no overflow.
+
+## Examples
+
+Rendered at /components/scrollbar:
+
+- `local-scroll-container-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| .kui-scroll | CSS class | - | Local opt-in for Kikita scrollbar token styling. Apply to the element that actually scrolls (the one with overflow: auto/scroll set), not a non-scrolling wrapper. |
+| provideKikitaUi({ scrollbars }) | KuiScrollbarMode = 'native' \| 'styled' | 'native' | App-wide scrollbar mode for application-owned scroll containers. Sets data-kui-scrollbars on the document root. Kikita-owned internal scroll areas (dropdown, dialog body, drawer body, command palette list) use Kikita scrollbar tokens automatically regardless of this option. |
+| --kui-scrollbar-size | CSS custom property | - | Scrollbar thickness. |
+| --kui-scrollbar-radius | CSS custom property | - | Corner radius of the scrollbar thumb. |
+| --kui-scrollbar-track | CSS custom property | - | Scrollbar track background color. |
+| --kui-scrollbar-thumb-min | CSS custom property | - | Minimum thumb length so short thumbs stay grabbable. |
+| --kui-scrollbar-thumb-inset | CSS custom property | - | Inset spacing between the thumb and the track edge. |
+| --kui-color-scrollbar-thumb | CSS custom property | - | Thumb color in the resting state. |
+| --kui-color-scrollbar-thumb-hover | CSS custom property | - | Thumb color on hover. |
+| --kui-color-scrollbar-thumb-active | CSS custom property | - | Thumb color while being dragged. |
+
+## Accessibility
+
+- The utility keeps native browser scrolling behavior.
+- Add `tabindex="0"` on the scrollable element itself so keyboard users can focus and scroll it (WCAG 2.1.1 / axe `scrollable-region-focusable`). CSS alone cannot make an overflow container focusable.
+- Do not add ARIA roles only to style a scrollbar.
+- Keyboard scrolling, touch scrolling, and assistive-technology behavior remain owned by the native scroll container.
+- In forced-colors mode, scrollbar colors fall back to the system implementation.
+- Browser and OS scrollbar rendering can differ, especially with overlay scrollbars.
+
+## Playground
+
+No playground for this component.
+
+---
+
+<!-- route: /components/segmented -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/segmented.md -->
+<!-- source: ../kikita-ui/docs/segmented.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Segmented
+
+> Compact single-choice control rendered as adjacent segment buttons.
+
+- Status: available
+- Route: /components/segmented
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiSegmentedComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/segmented.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-segmented [(selected)]="view">
+  <button kuiSegment value="list">List</button>
+  <button kuiSegment value="grid">Grid</button>
+  <button kuiSegment value="calendar">Calendar</button>
+</kui-segmented>
+```
+
+### Sizes
+
+```html
+<kui-segmented size="sm" [(selected)]="view">...</kui-segmented>
+```
+
+## Examples
+
+Rendered at /components/segmented:
+
+- `basic-segmented-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [(selected)] | string \| number \| null | null | Selected segment value. Use stable primitive values for predictable forms. |
+| size | 'sm' \| 'md' \| 'lg' | 'md' | Control height and spacing for the whole segmented group. |
+| button[kuiSegment].value | string \| number \| null | null | Value emitted when the segment is selected. |
+| button[kuiSegment].disabled | boolean | false | Disables one segment and removes it from keyboard selection. |
+
+## Accessibility
+
+- `role="radiogroup"` on `kui-segmented`
+- `role="radio"` and `aria-checked` on each segment
+- Roving `tabindex`
+
+## Playground
+
+Available at /components/segmented/playground.
+
+---
+
+<!-- route: /components/select -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/select.md -->
+<!-- source: ../kikita-ui/docs/select.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Select
+
+> Dropdown-backed selection control for single and multiple values.
+
+- Status: available
+- Route: /components/select
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiSelectDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/select.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Role">
+  <input kuiSelect [(value)]="role" placeholder="Select a role..." />
+  <kui-dropdown>
+    <div kuiOption value="engineer">Software Engineer</div>
+    <div kuiOption value="designer">Designer</div>
+  </kui-dropdown>
+</kui-field>
+```
+
+```ts
+role = signal<string | null>(null);
+```
+
+## Examples
+
+Rendered at /components/select:
+
+- `basic-select-example`
+- `multiple-select-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| value | T \| readonly T[] \| null | - | Selected value. In multiple mode this is an array. |
+| disabled | boolean | - | Disables the native input and prevents opening the dropdown. |
+| readonly | boolean | - | Prevents opening the dropdown while keeping the field visually enabled. |
+| invalid | boolean | - | Validation state set by Signal Forms or direct input binding. |
+| errors | ValidationError[] | - | Validation errors consumed by kui-field for automatic error text. |
+| touched | boolean | - | Touched state set by Signal Forms. |
+| id | string | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| multiple | boolean | - | Enables array values and keeps the dropdown open on option selection. |
+| maxVisibleChips | number \| undefined | - | Maximum selected chips shown before collapsed +N overflow. |
+| multipleDisplay | 'chips' \| 'text' | - | Renders multiple selections as field chips or plain joined text. |
+| multipleTextFn | (items: readonly T[]) => string | - | Formats native input text when multipleDisplay is text. |
+| kuiLabelFn | (item: T) => string | - | Maps selected object values to display text. |
+| placeholder | string | - | Placeholder on the readonly input. |
+| clearable | boolean \| undefined | - | Shows a clear button when a value is selected; falls back to provider options. |
+| touch | output | - | Emitted after an opened dropdown closes for Signal Forms support. |
+
+## Accessibility
+
+- The input uses `role="combobox"`, `aria-haspopup="listbox"`, and `aria-expanded`.
+- The dropdown panel uses `role="listbox"`.
+- Each `kuiOption` uses `role="option"`, `aria-selected`, and `aria-disabled`.
+- The clear button is a native button with `aria-label="Clear"`.
+- Multiple selected values render removable chip buttons inside the field.
+- Custom selected value templates receive `item`, `label`, and `remove` context values.
+- `maxVisibleChips` is count-based. It does not currently auto-measure field width.
+- Use `kui-field` for label, hint, error, `aria-describedby`, and `aria-invalid` wiring.
+
+## Playground
+
+Available at /components/select/playground.
+
+---
+
+<!-- route: /components/separator -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/separator.md -->
+<!-- source: ../kikita-ui/docs/separator.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Separator
+
+> Tokenized horizontal or vertical separator primitive.
+
+- Status: available
+- Route: /components/separator
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiSeparatorDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/separator.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<section>
+  <p>Account details</p>
+  <hr kuiSeparator />
+  <p>Billing details</p>
+</section>
+```
+
+Use the native `<hr>` host. Do not use a `div` for purely visual separators
+unless a future primitive explicitly supports it.
+
+## Examples
+
+Rendered at /components/separator:
+
+- `basic-separator-example`
+- `separator-appearance-example`
+- `separator-spacing-example`
+- `separator-vertical-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| appearance | 'subtle' \| 'default' \| 'strong' | 'default' | Visual divider emphasis. |
+| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Divider direction. Vertical separators set aria-orientation="vertical" and stretch to the parent block size. |
+| spacing | 'none' \| 'xs' \| 'sm' \| 'md' \| 'lg' | 'sm' | Outer spacing around the divider line. |
+
+## Accessibility
+
+- Prefer native `<hr kuiSeparator>`.
+- The separator is not focusable and has no hover, focus, active, or disabled
+  states.
+- Vertical separators expose `aria-orientation="vertical"`.
+- Do not add labels by default; named separators should be rare structural
+  boundaries.
+
+## Playground
+
+Available at /components/separator/playground.
+
+---
+
+<!-- route: /components/skeleton -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/skeleton.md -->
+<!-- source: ../kikita-ui/docs/skeleton.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Skeleton
+
+> Loading placeholder with reduced-motion behavior.
+
+- Status: available
+- Route: /components/skeleton
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiSkeletonDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/skeleton.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<section aria-busy="true">
+  <span kuiSkeleton shape="heading" style="inline-size: 180px"></span>
+  <span kuiSkeleton shape="text" style="inline-size: 80%"></span>
+  <span kuiSkeleton shape="button" style="inline-size: 96px"></span>
+</section>
+```
+
+Skeleton hosts are automatically `aria-hidden="true"`. Put `aria-busy="true"` on the loading
+region, not on every skeleton block.
+
+## Examples
+
+Rendered at /components/skeleton:
+
+- `skeleton-animation-example`
+- `skeleton-composition-example`
+- `skeleton-shapes-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| shape | 'text' \| 'heading' \| 'rect' \| 'circle' \| 'square' \| 'button' \| 'badge' | 'rect' | Placeholder shape mapped to Kikita UI skeleton geometry tokens. |
+| animation | 'shimmer' \| 'pulse' \| 'none' | 'shimmer' | Placeholder animation mode. Automatically disabled when the user prefers reduced motion, regardless of this value. |
+
+## Accessibility
+
+- Skeleton is decorative placeholder chrome and must not expose text to assistive technology.
+- Do not make skeleton hosts focusable or interactive.
+- Use Loader instead when the UI needs an announced loading status.
+- Respect `prefers-reduced-motion`; Kikita disables skeleton animation under reduced motion.
+
+## Playground
+
+Available at /components/skeleton/playground.
+
+---
+
+<!-- route: /components/slider -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/slider.md -->
+<!-- source: ../kikita-ui/docs/slider.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Slider
+
+> Native range input styling with field and Signal Forms support.
+
+- Status: available
+- Route: /components/slider
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiSliderDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/slider.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Volume" hint="Use arrow keys, Home, and End.">
+  <input type="range" kuiSlider min="0" max="100" value="60" />
+</kui-field>
+```
+
+Use native range input semantics first. For visible labels and helper text, prefer a wrapping
+`kui-field` instead of hand-written labels or description ids.
+When projected inside `kui-field`, `kuiSlider` inherits the field id, `aria-describedby`,
+`aria-invalid`, and visual invalid state.
+
+```html
+<input
+  type="range"
+  kuiSlider
+  color="success"
+  size="lg"
+  minLabel="0"
+  maxLabel="100"
+  aria-label="Progress"
+/>
+```
+
+## Examples
+
+Rendered at /components/slider:
+
+- `basic-slider-example`
+- `slider-disabled-example`
+- `slider-field-example`
+- `slider-range-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| kuiSlider | directive | - | Selector input[type=range][kuiSlider]. Applies Kikita UI slider styling and behavior to a native range input. |
+| color | 'primary' \| 'success' \| 'danger' \| 'neutral' | 'primary' | Semantic color applied to the generated slider fill and thumb. |
+| size | 'sm' \| 'md' \| 'lg' | 'md' | Visual size of the generated slider control. |
+| minLabel | string | '' | Optional label rendered below the minimum side of the track. |
+| maxLabel | string | '' | Optional label rendered below the maximum side of the track. |
+| disabled | boolean | false | Mirrors disabled styling on the generated slider wrapper. |
+| invalid | boolean | false | Applies invalid styling outside a kui-field error state. |
+| id | string \| undefined | - | Explicit native input id. Falls back to the parent kui-field control id. |
+| min / max / step / value | native attributes | - | Native range input attributes. kuiSlider reads them directly; use them (or Signal Forms min/max validators) instead of a directive input. |
+| kuiTooltip | string | - | When set to a non-empty string on the same host, the static tooltip text wins over the default value tooltip. Otherwise kuiSlider shows the current numeric value in a tooltip on hover. |
+| [formField] | FieldTree<number> (from @angular/forms/signals) | - | Angular Signal Forms binding. Owns native value, disabled, and validation state; kuiSlider keeps the generated track and thumb visuals in sync. Do not add native min/max alongside formField; use the min(...) and max(...) schema validators instead. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/slider/playground.
+
+---
+
+<!-- route: /components/stepper -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/stepper.md -->
+<!-- source: ../kikita-ui/docs/stepper.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Stepper
+
+> Multi-step progress and navigation indicator.
+
+- Status: available
+- Route: /components/stepper
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiStepperComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/stepper.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-stepper [(currentIndex)]="step" aria-label="Progress">
+  <kui-step label="Account" />
+  <kui-step label="Workspace" />
+  <kui-step label="Invite team" />
+</kui-stepper>
+```
+
+### Vertical Orientation
+
+```html
+<kui-stepper orientation="vertical" [(currentIndex)]="step" aria-label="Progress">
+  <kui-step label="Account details" description="Name, email, password" />
+  <kui-step label="Workspace setup" description="Team name and logo" />
+</kui-stepper>
+```
+
+### Error State
+
+```html
+<kui-stepper [currentIndex]="1" aria-label="Progress">
+  <kui-step label="Account" />
+  <kui-step label="Payment" description="Card declined" [hasError]="true" />
+  <kui-step label="Confirm" />
+</kui-stepper>
+```
+
+Steps after an errored step automatically render as `disabled`.
+
+### Compact
+
+```html
+<kui-stepper compact [(currentIndex)]="step" aria-label="Progress">
+  <kui-step label="Account" />
+  <kui-step label="Workspace" />
+  <kui-step label="Invite team" />
+</kui-stepper>
+```
+
+## Examples
+
+Rendered at /components/stepper:
+
+- `basic-stepper-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [(currentIndex)] | number | 0 | Zero-based active step index. |
+| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Step list layout direction. |
+| size | 'sm' \| 'md' \| 'lg' | 'md' | Circle size and label scale. |
+| linear | boolean | true | Prevents jumping forward to upcoming steps when true. |
+| compact | boolean | false | Shows step circles without labels or descriptions. |
+| kui-step.label | string | '' | Primary step label. |
+| kui-step.description | string | '' | Optional secondary line below the label. |
+| kui-step.hasError | boolean | false | Marks the step as errored and disables later steps. |
+| kui-step.disabled | boolean | false | Forces a step to render disabled. |
+
+## Accessibility
+
+- `kui-stepper` renders `role="list"`; each `kui-step` renders `role="listitem"`.
+- The current step has `aria-current="step"`.
+- Completed steps (and, when `linear` is `false`, upcoming steps) render their circle as a native `<button>` with an accessible name (`Back to step X` / `Go to step X`).
+- Disabled and non-interactive steps render a plain `<span>`, out of tab order.
+- Connector lines are decorative (`aria-hidden="true"`).
+- Pass `aria-label` on the host, for example `aria-label="Progress"`.
+
+## Playground
+
+Available at /components/stepper/playground.
+
+---
+
+<!-- route: /components/switch -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/switch.md -->
+<!-- source: ../kikita-ui/docs/switch.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Switch
+
+> Native switch control styling for binary settings.
+
+- Status: available
+- Route: /components/switch
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiSwitchDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/switch.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Notifications" hint="Control product and release notifications">
+  <label>
+    <input kuiSwitch type="checkbox" />
+    Enable notifications
+  </label>
+</kui-field>
+```
+
+The directive adds `role="switch"` while keeping the native checkbox input, keyboard behavior, and
+form behavior. Use `kui-field` for field-level label, hint, error, and description wiring; keep a
+native label for the switch text itself.
+
+## Examples
+
+Rendered at /components/switch:
+
+- `basic-switch-example`
+- `switch-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Switch size mapped to Kikita switch tokens. |
+| invalid | boolean | - | Marks the switch invalid outside a field error state. |
+| id | string \| undefined | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/switch/playground.
+
+---
+
+<!-- route: /components/table -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/table.md -->
+<!-- source: ../kikita-ui/docs/table.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Table
+
+> Native table styling, sorting context, and selection cells.
+
+- Status: available
+- Route: /components/table
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiTableDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/table.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<table kuiTable [data]="rows" #table="kuiTable">
+  <thead>
+    <tr kuiThGroup>
+      <th kuiSelectTh ariaLabel="Select all rows"></th>
+      <th kuiTh sortKey="name">Name</th>
+      <th kuiTh sortKey="status">Status</th>
+      <th kuiTh>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of table.sortedData(); track row.id) {
+    <tr kuiRow [value]="row">
+      <td kuiSelectCell [ariaLabel]="'Select ' + row.name"></td>
+      <td kuiCell>{{ row.name }}</td>
+      <td kuiCell>{{ row.status }}</td>
+      <td kuiCell>...</td>
+    </tr>
+    }
+  </tbody>
+</table>
+```
+
+## Examples
+
+Rendered at /components/table:
+
+- `basic-sortable-table-example`
+- `combined-table-example`
+- `row-selection-table-example`
+- `sticky-header-table-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| data | T[] | [] | Source rows for sorting and selection. Selector: table[kuiTable]. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Table density and typography scale. Selector: table[kuiTable]. |
+| selectionChange | output<T[]> | - | Emits current selection whenever it changes. Observing this output is what makes the selection column appear. Selector: table[kuiTable]. |
+| sortChange | output<KuiActiveSortState \| null> | - | Emits the active sort key/direction, or null when sort is cleared. When observed, kuiTable hands row ordering to the parent instead of sorting locally. Selector: table[kuiTable]. |
+| sortState | Signal<KuiSortState> | - | Current sort state (null when no column is sorted). Selector: table[kuiTable]. |
+| sortedData | Signal<T[]> | - | Rows in current sort order. Use this in the template instead of data when sort is uncontrolled. Selector: table[kuiTable]. |
+| isSelected(item) | (item: T) => boolean | - | Returns whether a given row value is currently selected. Selector: table[kuiTable]. |
+| #table="kuiTable" | exportAs | - | Template reference for reading sortedData(), sortState(), and selection state. |
+| sortKey | string \| undefined | - | Enables sort for this header cell; usually matches a row property name. Selector: th[kuiTh]. |
+| comparator | (a: T, b: T) => number | - | Custom sort function for the column, used instead of default comparison. Selector: th[kuiTh]. |
+| sticky | boolean | false | Pins this header cell horizontally with position: sticky. Selector: th[kuiTh]. Also available on tr[kuiThGroup] to pin the whole header row vertically. |
+| value | T | - | The data object represented by this row. Selector: tr[kuiRow], required. |
+| ariaLabel | string | 'Select all rows' | Accessible label for the select-all checkbox. Selector: th[kuiSelectTh]. |
+| ariaLabel | string | - | Accessible label for a row selection checkbox, e.g. "Select " + row.name. Selector: td[kuiSelectCell]. |
+| td[kuiCell] | marker directive | - | Applies Kikita table cell styling to a native td. No inputs in the installed version. |
+| --kui-table-font-size | CSS custom property | - | Base font size for table text. |
+| --kui-table-th-py | CSS custom property | - | Vertical padding for header cells. |
+| --kui-table-cell-px | CSS custom property | - | Horizontal padding for cells. |
+| --kui-table-row-py | CSS custom property | - | Vertical padding for body row cells. |
+| --kui-table-th-fg | CSS custom property | - | Header cell text color. |
+| --kui-table-th-bg | CSS custom property | - | Header cell background color. |
+| --kui-table-border | CSS custom property | - | Outer table border color. |
+| --kui-table-row-border | CSS custom property | - | Row divider border color. |
+| --kui-table-row-hover-bg | CSS custom property | - | Row background on hover. |
+| --kui-table-row-selected-bg | CSS custom property | - | Row background when selected. |
+| --kui-table-row-selected-accent | CSS custom property | - | Accent color for selected rows. |
+| --kui-table-sort-active-color | CSS custom property | - | Color used for the active sort indicator. |
+| --kui-table-bg | CSS custom property | - | Table background color. |
+
+## Accessibility
+
+- Keep real `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>` markup.
+- Sortable headers keep `aria-sort` on `<th>` and expose the action through a
+  native button.
+- Selection uses native checkboxes with accessible labels.
+- Add a native `<caption>` in product tables when the surrounding page does not
+  already provide a clear table title.
+- Avoid putting complex interactive widgets inside cells unless their focus
+  order and labels are explicitly tested.
+
+## Playground
+
+Available at /components/table/playground.
+
+---
+
+<!-- route: /components/tabs -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tabs.md -->
+<!-- source: ../kikita-ui/docs/tabs.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Tabs
+
+> Line and pill tab navigation with optional panel wiring.
+
+- Status: available
+- Route: /components/tabs
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiTabsComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/tabs.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-tabs [(selected)]="activeTab">
+  <button kuiTab value="overview">Overview</button>
+  <button kuiTab value="settings">Settings</button>
+  <button kuiTab value="logs">Logs</button>
+
+  <div kuiTabPanel value="overview">Overview content</div>
+  <div kuiTabPanel value="settings">Settings content</div>
+  <div kuiTabPanel value="logs">Log content</div>
+</kui-tabs>
+```
+
+### Pill Variant
+
+```html
+<kui-tabs variant="pill" [(selected)]="activeTab"> ... </kui-tabs>
+```
+
+### Router Navigation
+
+Use `controlsPanels="false"` when `kui-tabs` is used as navigation and the routed page content is rendered by `router-outlet` instead of local `kuiTabPanel` elements.
+
+```html
+<kui-tabs [(selected)]="currentRoute" [controlsPanels]="false" aria-label="Sections">
+  <button kuiTab value="/overview">Overview</button>
+  <button kuiTab value="/settings">Settings</button>
+</kui-tabs>
+```
+
+## Examples
+
+Rendered at /components/tabs:
+
+- `basic-tabs-example`
+- `navigation-tabs-example`
+- `pill-tabs-example`
+- `vertical-tabs-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| variant | 'line' \| 'pill' | 'line' | Tab visual style: underline indicator (line) or pill background (pill). |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Tab trigger height and font size. |
+| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Layout direction of the tab list. Vertical stacks triggers in a column with the indicator on the side edge. |
+| controlsPanels | boolean | true | Whether tabs expose aria-controls links to projected kuiTabPanel elements. Set to false when tabs are used as navigation and content is rendered elsewhere, such as a router-outlet. |
+| selected | string | - | Value of the active tab. Two-way bindable with [(selected)]. |
+| [kuiTab] value | string | - | Identifier for this tab trigger. Must match a kuiTabPanel value when controlsPanels is true. |
+| [kuiTab] hasError | boolean | false | Shows a small danger dot next to the tab label without changing the selected state or tab color. |
+| [kuiTab] errorLabel | string | '' | Screen-reader-only text announced alongside the error dot. |
+| [kuiTabPanel] value | string | - | Identifier matching a [kuiTab] value. Panel is shown when its value matches selected. |
+| --kui-tabs-gap | CSS length | 2px | Gap between tab triggers in the list. |
+| --kui-tabs-border | CSS color | var(--kui-color-border) | Border color of the tab list edge (bottom for horizontal, side for vertical). |
+| --kui-tabs-panel-gap | CSS length | var(--kui-space-4) | Gap between the tab list and the active panel. |
+| --kui-tab-height | CSS length | var(--kui-btn-height) | Tab trigger block size. Overridden per size. |
+| --kui-tab-px | CSS length | var(--kui-btn-px) | Tab trigger inline padding. Overridden per size. |
+| --kui-tab-indicator | CSS color | var(--kui-color-primary-fill) | Color of the selected-tab indicator (underline for line, background for pill). |
+| --kui-tab-fg-active | CSS color | var(--kui-color-text) | Text color of the selected tab. |
+
+## Accessibility
+
+- `role="tablist"` on the list container
+- `role="tab"` on each trigger, with `aria-selected` and roving `tabindex`
+- `role="tabpanel"` on each panel
+- `aria-controls` is emitted by default and should point to a matching `[kuiTabPanel]`
+- Use `[controlsPanels]="false"` only for navigation-style tabs without local panels
+
+## Playground
+
+Available at /components/tabs/playground.
+
+---
+
+<!-- route: /components/textarea -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/textarea.md -->
+<!-- source: ../kikita-ui/docs/textarea.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Textarea
+
+> Native multiline input styling with field integration.
+
+- Status: available
+- Route: /components/textarea
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiTextareaDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/textarea.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-field label="Notes" hint="Internal project note">
+  <textarea kuiTextarea rows="4" placeholder="Write a note"></textarea>
+</kui-field>
+```
+
+## Examples
+
+Rendered at /components/textarea:
+
+- `basic-textarea-example`
+- `textarea-invalid-example`
+- `textarea-size-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Textarea height and spacing size, mapped to Kikita UI control tokens. |
+| invalid | boolean | false | Marks the textarea invalid outside a kui-field error state. |
+| id | string | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/textarea/playground.
+
+---
+
+<!-- route: /components/toast -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/toast.md -->
+<!-- source: ../kikita-ui/docs/toast.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Toast
+
+> Global notifications with actions and live-region semantics.
+
+- Status: available
+- Route: /components/toast
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiToastService from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/toast.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```ts
+@Component({ ... })
+export class MyComponent {
+  private toast = kuiToast();
+
+  save() {
+    this.api.save().subscribe({
+      next: () =>
+        this.toast.open({ title: 'Saved', appearance: 'success' }),
+      error: () =>
+        this.toast.open({ title: 'Failed', appearance: 'danger', persistent: true }),
+    });
+  }
+}
+```
+
+## Examples
+
+Rendered at /components/toast:
+
+- `basic-toast-example`
+- `toast-action-example`
+- `toast-position-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| title | string | - | Required headline text passed to open(). |
+| message | string \| undefined | - | Optional supporting text below the title. |
+| appearance | 'neutral' \| 'success' \| 'warning' \| 'danger' \| 'info' | 'neutral' | Visual intent. Controls the accent bar and icon color; neutral renders no icon. |
+| actionLabel | string \| undefined | - | Label for the inline action button. Clicking it emits once on KuiToastRef.action$. |
+| duration | number | 5000 | Auto-dismiss delay in ms. Ignored when persistent is true. App-wide default overridable via provideKuiToastOptions. |
+| persistent | boolean | false | Keeps the toast open until the user closes it explicitly. |
+| closable | boolean | true | Shows the close button. App-wide default overridable via provideKuiToastOptions. |
+| showIcon | boolean | true | Shows the appearance icon. App-wide default overridable via provideKuiToastOptions. |
+| showProgress | boolean | false | Shows a progress bar tracking time until auto-dismiss. App-wide default overridable via provideKuiToastOptions. |
+| kuiToast() | () => KuiToastService | - | Inject-function returning a reusable opener bound to the current injector scope. Call once per component; prefer over injecting KuiToastService directly. |
+| KuiToastService.open(config) | (config: KuiToastConfig) => KuiToastRef | - | Shows a toast notification and returns a ref for programmatic control. |
+| KuiToastService.setPosition(position) | (position: KuiToastPosition) => void | - | Changes the shared toast region position at runtime. Intended for interactive demos; prefer provideKuiToastOptions for app-level configuration. |
+| KuiToastRef.close() | () => void | - | Closes this toast programmatically and plays the exit animation. |
+| KuiToastRef.closed$ | Observable<void> | - | Emits once after the close animation finishes, then completes. |
+| KuiToastRef.action$ | Observable<void> | - | Emits once when the action button is clicked, then completes. |
+| provideKuiToastOptions(options) | (options: KuiToastOptions) => Provider | - | App or route-level provider for global toast defaults: position, duration, maxVisible, showProgress, closable, showIcon. |
+| position | 'top-start' \| 'top-center' \| 'top-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end' | 'bottom-center' | Global region position. Set app-wide via provideKuiToastOptions, or at runtime via KuiToastService.setPosition for demos. |
+| maxVisible | number | 3 | Max simultaneous toasts, set via provideKuiToastOptions. The oldest visible toast is evicted when exceeded. Not changeable at runtime. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/toast/playground.
+
+---
+
+<!-- route: /components/tooltip -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tooltip.md -->
+<!-- source: ../kikita-ui/docs/tooltip.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Tooltip
+
+> Hover and focus hint.
+
+- Status: available
+- Route: /components/tooltip
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiTooltipDirective from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/tooltip.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<button kuiButton [kuiTooltip]="'Save changes'">Save</button>
+
+<button kuiButton [kuiTooltip]="'Delete item'" placement="bottom">Delete</button>
+```
+
+The tooltip text is passed as the directive binding value. Empty or whitespace-only strings are ignored, and no tooltip is rendered.
+
+## Examples
+
+Rendered at /components/tooltip:
+
+- `basic-tooltip-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| [kuiTooltip] | string | '' | Tooltip text content. Empty or whitespace-only text does not render a tooltip. |
+| placement | 'top' \| 'bottom' \| 'left' \| 'right' | 'top' | Preferred placement relative to the trigger. The CDK overlay can still adjust. |
+| role | 'tooltip' | 'tooltip' | The floating element is exposed as a tooltip while it exists. |
+| aria-describedby | string \| null | null | Applied only while the tooltip is visible, preventing stale removed ids. |
+| CSS variables | --kui-tooltip-* | - | Controls padding, radius, colors, and shadow through documented tooltip tokens. |
+
+## Accessibility
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
+
+## Playground
+
+Available at /components/tooltip/playground.
+
+---
+
+<!-- route: /components/tree -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tree.md -->
+<!-- source: ../kikita-ui/docs/tree.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Tree
+
+> Hierarchical list.
+
+- Status: available
+- Route: /components/tree
+- Package: @kikita-labs/ui@0.4.2
+- Import: KuiTreeComponent from @kikita-labs/ui
+- Source docs: ../kikita-ui/docs/tree.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-tree ariaLabel="Project explorer" [data]="nodes" [(selected)]="selectedId" />
+```
+
+```ts
+protected readonly nodes: KuiTreeNode[] = [
+  {
+    id: 'src',
+    label: 'src',
+    icon: 'folder',
+    children: [
+      { id: 'main-ts', label: 'main.ts', icon: 'file' },
+      { id: 'readme', label: 'README.md', icon: 'file' },
+    ],
+  },
+];
+protected readonly selectedId = signal<string | null>(null);
+```
+
+## Examples
+
+Rendered at /components/tree:
+
+- `basic-tree-example`
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| mode | 'display' \| 'checkable' | 'display' | Selects navigation-style rows or checkbox rows with cascade. |
+| size | 'sm' \| 'md' \| 'lg' | 'md' | Controls row height and label scale. |
+| data | readonly KuiTreeNode[] | [] | Root nodes rendered by the tree. |
+| ariaLabel | string | 'Tree' | Accessible name for the role="tree" container. |
+| mobile | boolean | false | Increases toggle hit targets to support touch layouts. |
+| [(selected)] | string \| null | null | Controlled selected node id in display mode. |
+| [(checkedIds)] | string[] | [] | Controlled checked node ids in checkable mode. |
+| [(expandedIds)] | string[] | [] | Controlled expanded node ids. |
+| loadChildren | (node: KuiTreeNode) => Promise<readonly KuiTreeNode[]> | - | Lazy child loader called once for nodes marked lazy. |
+| KuiTreeNode.icon | 'folder' \| 'file' | - | Optional built-in glyph. Custom icon templates are not implemented. |
+
+## Accessibility
+
+`role="tree"` on the root, `role="treeitem"` on every node, `role="group"` on
+nested children. `aria-expanded` on nodes with children, `aria-selected`
+(`display` mode) or `aria-checked` (`checkable` mode, including `"mixed"`),
+`aria-level`/`aria-setsize`/`aria-posinset` for depth and position, and
+`aria-disabled="true"` on disabled nodes. Exactly one node is in the tab order
+(`tabindex="0"`, roving tabindex); the rest are `tabindex="-1"`.
+
+## Playground
+
+Available at /components/tree/playground.
+
+---
+
+<!-- route: /smoke -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md -->
+<!-- package: @kikita-labs/ui@0.4.2 -->
+
+# Package Smoke
+
+> External consumer verification for package imports, styles, and providers.
+
+- Status: available
+- Route: /smoke
+- Package: @kikita-labs/ui@0.4.2
+
+## Content
+
+Rendered documentation, interactive examples, and the playground live at the HTML route above.
