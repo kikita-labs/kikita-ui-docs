@@ -16,6 +16,7 @@
     "check:package-consumer": "node tools/check-package-consumer.mjs",
     "check:performance": "node tools/check-performance-budgets.mjs",
     "check:migration-debt": "node tools/check-migration-debt.mjs",
+    "check:agent-surface": "node tools/check-agent-surface.mjs",
     "lint": "node tools/generate-example-sources.mjs --check && ng lint",
     "test:e2e": "playwright test --project=e2e",
     "test:a11y": "playwright test --project=a11y",

@@ -40,7 +40,12 @@ module.exports = defineConfig([
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ['playwright.config.ts', 'tests/e2e/*.ts', 'tests/e2e/support/*.ts'],
+          allowDefaultProject: [
+            'playwright.config.ts',
+            'tests/e2e/*.ts',
+            'tests/e2e/support/*.ts',
+            'tools/agent-surface/*.ts',
+          ],
         },
         tsconfigRootDir: __dirname,
       },
