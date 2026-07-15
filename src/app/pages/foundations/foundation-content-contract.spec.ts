@@ -65,9 +65,7 @@ describe('foundation content contracts', () => {
   });
 
   it('matches the installed package setup and schematic contract', () => {
-    expect(INSTALLATION_REGISTRY_TABS[0].code).toContain(
-      '@kikita-labs:registry=https://npm.pkg.github.com',
-    );
+    expect(INSTALLATION_REGISTRY_TABS[0].code).toContain('pnpm add @kikita-labs/ui');
     expect(INSTALLATION_CLI_TABS.map((tab) => tab.code)).toEqual([
       'ng add @kikita-labs/ui',
       'ng add @kikita-labs/ui --project my-app',

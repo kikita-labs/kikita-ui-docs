@@ -3,13 +3,6 @@ import type { CodeTab } from '@shared/docs-ui/code-tabs';
 
 export const INSTALLATION_REGISTRY_TABS = [
   {
-    label: '.npmrc',
-    filename: '.npmrc',
-    language: 'text',
-    code: `@kikita-labs:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=<github-token>`,
-  },
-  {
     label: 'Install',
     filename: 'terminal',
     language: 'bash',
