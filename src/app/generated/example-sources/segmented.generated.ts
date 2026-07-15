@@ -9,19 +9,19 @@ export const SEGMENTED_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-segmented-example.html",
       language: "html",
-      code: "<div class=\"basic-segmented-example\">\r\n  <kui-segmented [(selected)]=\"view\" aria-label=\"Project view\">\r\n    <button kuiSegment value=\"list\">List</button>\r\n    <button kuiSegment value=\"board\">Board</button>\r\n    <button kuiSegment value=\"timeline\">Timeline</button>\r\n  </kui-segmented>\r\n\r\n  <p>Selected view: {{ view() }}</p>\r\n</div>",
+      code: "<div class=\"basic-segmented-example\">\n  <kui-segmented [(selected)]=\"view\" aria-label=\"Project view\">\n    <button kuiSegment value=\"list\">List</button>\n    <button kuiSegment value=\"board\">Board</button>\n    <button kuiSegment value=\"timeline\">Timeline</button>\n  </kui-segmented>\n\n  <p>Selected view: {{ view() }}</p>\n</div>",
     },
     {
       label: "TS",
       filename: "basic-segmented-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiSegmentDirective, KuiSegmentedComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-segmented-example',\r\n  imports: [KuiSegmentDirective, KuiSegmentedComponent],\r\n  templateUrl: './basic-segmented-example.html',\r\n  styleUrl: './basic-segmented-example.scss',\r\n})\r\nexport class BasicSegmentedExample {\r\n  protected readonly view = signal('list');\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiSegmentDirective, KuiSegmentedComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-segmented-example',\n  imports: [KuiSegmentDirective, KuiSegmentedComponent],\n  templateUrl: './basic-segmented-example.html',\n  styleUrl: './basic-segmented-example.scss',\n})\nexport class BasicSegmentedExample {\n  protected readonly view = signal('list');\n}",
     },
     {
       label: "SCSS",
       filename: "basic-segmented-example.scss",
       language: "scss",
-      code: ".basic-segmented-example {\r\n  display: grid;\r\n  gap: var(--kui-space-3, 12px);\r\n  justify-items: center;\r\n}\r\n\r\n.basic-segmented-example p {\r\n  margin: 0;\r\n  color: var(--kui-color-text-muted);\r\n  font-size: var(--kui-font-size-sm);\r\n}",
+      code: ".basic-segmented-example {\n  display: grid;\n  gap: var(--kui-space-3, 12px);\n  justify-items: center;\n}\n\n.basic-segmented-example p {\n  margin: 0;\n  color: var(--kui-color-text-muted);\n  font-size: var(--kui-font-size-sm);\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

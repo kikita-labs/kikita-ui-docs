@@ -15,7 +15,7 @@ export const CHIP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-chip-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiChipDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-chip-example',\r\n  imports: [KuiChipDirective],\r\n  templateUrl: './basic-chip-example.html',\r\n  styleUrl: './basic-chip-example.scss',\r\n})\r\nexport class BasicChipExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiChipDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-chip-example',\n  imports: [KuiChipDirective],\n  templateUrl: './basic-chip-example.html',\n  styleUrl: './basic-chip-example.scss',\n})\nexport class BasicChipExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const CHIP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "chip-states-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-chip-states-example',\r\n  imports: [KuiChipDirective, KuiChipRemoveDirective],\r\n  templateUrl: './chip-states-example.html',\r\n  styleUrl: './chip-states-example.scss',\r\n})\r\nexport class ChipStatesExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-chip-states-example',\n  imports: [KuiChipDirective, KuiChipRemoveDirective],\n  templateUrl: './chip-states-example.html',\n  styleUrl: './chip-states-example.scss',\n})\nexport class ChipStatesExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const CHIP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "interactive-chip-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiChipDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-interactive-chip-example',\r\n  imports: [KuiChipDirective],\r\n  templateUrl: './interactive-chip-example.html',\r\n  styleUrl: './interactive-chip-example.scss',\r\n})\r\nexport class InteractiveChipExample {\r\n  protected readonly selected = signal<'all' | 'open' | 'closed'>('all');\r\n\r\n  protected select(filter: 'all' | 'open' | 'closed'): void {\r\n    this.selected.set(filter);\r\n  }\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiChipDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-interactive-chip-example',\n  imports: [KuiChipDirective],\n  templateUrl: './interactive-chip-example.html',\n  styleUrl: './interactive-chip-example.scss',\n})\nexport class InteractiveChipExample {\n  protected readonly selected = signal<'all' | 'open' | 'closed'>('all');\n\n  protected select(filter: 'all' | 'open' | 'closed'): void {\n    this.selected.set(filter);\n  }\n}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const CHIP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "removable-chip-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-removable-chip-example',\r\n  imports: [KuiChipDirective, KuiChipRemoveDirective],\r\n  templateUrl: './removable-chip-example.html',\r\n  styleUrl: './removable-chip-example.scss',\r\n})\r\nexport class RemovableChipExample {\r\n  protected readonly tags = signal(['Design', 'Engineering', 'Product']);\r\n\r\n  protected removeTag(tag: string): void {\r\n    this.tags.update((current) => current.filter((existing) => existing !== tag));\r\n  }\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-removable-chip-example',\n  imports: [KuiChipDirective, KuiChipRemoveDirective],\n  templateUrl: './removable-chip-example.html',\n  styleUrl: './removable-chip-example.scss',\n})\nexport class RemovableChipExample {\n  protected readonly tags = signal(['Design', 'Engineering', 'Product']);\n\n  protected removeTag(tag: string): void {\n    this.tags.update((current) => current.filter((existing) => existing !== tag));\n  }\n}",
     },
     {
       label: "SCSS",

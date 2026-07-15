@@ -9,19 +9,19 @@ export const COLOR_INPUT_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-color-input-example.html",
       language: "html",
-      code: "<div class=\"basic-color-input-example\">\r\n  <kui-field label=\"Primary seed\" hint=\"Hex and OKLCH values are supported.\">\r\n    <input\r\n      kuiColorInput\r\n      value=\"#5b4fe0\"\r\n      autocomplete=\"off\"\r\n      swatchLabel=\"Open primary seed color picker\"\r\n    />\r\n  </kui-field>\r\n</div>",
+      code: "<div class=\"basic-color-input-example\">\n  <kui-field label=\"Primary seed\" hint=\"Hex and OKLCH values are supported.\">\n    <input\n      kuiColorInput\n      value=\"#5b4fe0\"\n      autocomplete=\"off\"\n      swatchLabel=\"Open primary seed color picker\"\n    />\n  </kui-field>\n</div>",
     },
     {
       label: "TS",
       filename: "basic-color-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiColorInputDirective, KuiFieldComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-color-input-example',\r\n  imports: [KuiColorInputDirective, KuiFieldComponent],\r\n  templateUrl: './basic-color-input-example.html',\r\n  styleUrl: './basic-color-input-example.scss',\r\n})\r\nexport class BasicColorInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiColorInputDirective, KuiFieldComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-color-input-example',\n  imports: [KuiColorInputDirective, KuiFieldComponent],\n  templateUrl: './basic-color-input-example.html',\n  styleUrl: './basic-color-input-example.scss',\n})\nexport class BasicColorInputExample {}",
     },
     {
       label: "SCSS",
       filename: "basic-color-input-example.scss",
       language: "scss",
-      code: ".basic-color-input-example {\r\n  display: grid;\r\n  max-width: 28rem;\r\n  min-width: 0;\r\n}",
+      code: ".basic-color-input-example {\n  display: grid;\n  max-width: 28rem;\n  min-width: 0;\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

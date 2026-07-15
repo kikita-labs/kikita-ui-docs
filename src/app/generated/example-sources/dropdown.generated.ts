@@ -15,7 +15,7 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "field-dropdown-example.ts",
       filename: "field-dropdown-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport {\r\n  KuiDropdownComponent,\r\n  KuiFieldComponent,\r\n  KuiOptionDirective,\r\n  KuiSelectDirective,\r\n} from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-field-dropdown-example',\r\n  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],\r\n  templateUrl: './field-dropdown-example.html',\r\n})\r\nexport class FieldDropdownExample {\r\n  protected readonly fruit = signal<string | null>(null);\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiDropdownComponent,\n  KuiFieldComponent,\n  KuiOptionDirective,\n  KuiSelectDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-dropdown-example',\n  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],\n  templateUrl: './field-dropdown-example.html',\n})\nexport class FieldDropdownExample {\n  protected readonly fruit = signal<string | null>(null);\n}",
     },
   ],
   "panel-width-dropdown-example": [
@@ -29,7 +29,7 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "panel-width-dropdown-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-panel-width-dropdown-example',\r\n  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\r\n  templateUrl: './panel-width-dropdown-example.html',\r\n  styleUrl: './panel-width-dropdown-example.scss',\r\n})\r\nexport class PanelWidthDropdownExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-panel-width-dropdown-example',\n  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './panel-width-dropdown-example.html',\n  styleUrl: './panel-width-dropdown-example.scss',\n})\nexport class PanelWidthDropdownExample {}",
     },
     {
       label: "SCSS",
@@ -49,7 +49,7 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "standalone-dropdown-example.ts",
       filename: "standalone-dropdown-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-standalone-dropdown-example',\r\n  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\r\n  templateUrl: './standalone-dropdown-example.html',\r\n})\r\nexport class StandaloneDropdownExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-standalone-dropdown-example',\n  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './standalone-dropdown-example.html',\n})\nexport class StandaloneDropdownExample {}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

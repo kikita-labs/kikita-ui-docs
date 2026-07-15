@@ -148,8 +148,7 @@ function readMarkedSource({ filePath, startMarker, endMarker, label, filename, l
 }
 
 function removeCommonIndent(source) {
-  const lines = source
-    .replaceAll('\r\n', '\n')
+  const lines = normalizeLineEndings(source)
     .replace(/^\n|\n\s*$/g, '')
     .split('\n');
   const indents = lines
@@ -158,6 +157,10 @@ function removeCommonIndent(source) {
   const commonIndent = Math.min(...indents);
 
   return lines.map((line) => line.slice(commonIndent)).join('\n');
+}
+
+function normalizeLineEndings(source) {
+  return source.replaceAll('\r\n', '\n');
 }
 
 function readExample(featureRoot, featureSlug, exampleId) {
@@ -179,7 +182,9 @@ function readExample(featureRoot, featureSlug, exampleId) {
     .map((entry) => ({
       filename: entry.name,
       language: languageFor(entry.name),
-      code: fs.readFileSync(path.join(exampleRoot, entry.name), 'utf8').trimEnd(),
+      code: normalizeLineEndings(
+        fs.readFileSync(path.join(exampleRoot, entry.name), 'utf8'),
+      ).trimEnd(),
     }));
 
   if (files.length === 0) {

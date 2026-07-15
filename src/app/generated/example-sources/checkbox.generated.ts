@@ -15,7 +15,7 @@ export const CHECKBOX_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-checkbox-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiCheckboxDirective, KuiFieldComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-checkbox-example',\r\n  imports: [KuiCheckboxDirective, KuiFieldComponent],\r\n  templateUrl: './basic-checkbox-example.html',\r\n  styleUrl: './basic-checkbox-example.scss',\r\n})\r\nexport class BasicCheckboxExample {\r\n  protected readonly receiveUpdates = signal(true);\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCheckboxDirective, KuiFieldComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-checkbox-example',\n  imports: [KuiCheckboxDirective, KuiFieldComponent],\n  templateUrl: './basic-checkbox-example.html',\n  styleUrl: './basic-checkbox-example.scss',\n})\nexport class BasicCheckboxExample {\n  protected readonly receiveUpdates = signal(true);\n}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const CHECKBOX_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "checkbox-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiCheckboxDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-checkbox-size-example',\r\n  imports: [KuiCheckboxDirective],\r\n  templateUrl: './checkbox-size-example.html',\r\n  styleUrl: './checkbox-size-example.scss',\r\n})\r\nexport class CheckboxSizeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiCheckboxDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-checkbox-size-example',\n  imports: [KuiCheckboxDirective],\n  templateUrl: './checkbox-size-example.html',\n  styleUrl: './checkbox-size-example.scss',\n})\nexport class CheckboxSizeExample {}",
     },
     {
       label: "SCSS",

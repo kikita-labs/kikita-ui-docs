@@ -9,19 +9,19 @@ export const STEPPER_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-stepper-example.html",
       language: "html",
-      code: "<div class=\"basic-stepper-example\">\r\n  <kui-stepper [(currentIndex)]=\"currentIndex\">\r\n    <kui-step label=\"Details\" description=\"Project basics\" />\r\n    <kui-step label=\"Team\" description=\"Invite collaborators\" />\r\n    <kui-step label=\"Review\" description=\"Confirm settings\" />\r\n  </kui-stepper>\r\n</div>",
+      code: "<div class=\"basic-stepper-example\">\n  <kui-stepper [(currentIndex)]=\"currentIndex\">\n    <kui-step label=\"Details\" description=\"Project basics\" />\n    <kui-step label=\"Team\" description=\"Invite collaborators\" />\n    <kui-step label=\"Review\" description=\"Confirm settings\" />\n  </kui-stepper>\n</div>",
     },
     {
       label: "TS",
       filename: "basic-stepper-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiStepComponent, KuiStepperComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-stepper-example',\r\n  imports: [KuiStepComponent, KuiStepperComponent],\r\n  templateUrl: './basic-stepper-example.html',\r\n  styleUrl: './basic-stepper-example.scss',\r\n})\r\nexport class BasicStepperExample {\r\n  protected readonly currentIndex = signal(1);\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiStepComponent, KuiStepperComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-stepper-example',\n  imports: [KuiStepComponent, KuiStepperComponent],\n  templateUrl: './basic-stepper-example.html',\n  styleUrl: './basic-stepper-example.scss',\n})\nexport class BasicStepperExample {\n  protected readonly currentIndex = signal(1);\n}",
     },
     {
       label: "SCSS",
       filename: "basic-stepper-example.scss",
       language: "scss",
-      code: ".basic-stepper-example {\r\n  display: grid;\r\n  min-width: 0;\r\n}",
+      code: ".basic-stepper-example {\n  display: grid;\n  min-width: 0;\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

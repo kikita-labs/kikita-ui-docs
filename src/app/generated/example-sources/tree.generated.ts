@@ -9,19 +9,19 @@ export const TREE_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-tree-example.html",
       language: "html",
-      code: "<div class=\"basic-tree-example\">\r\n  <kui-tree\r\n    ariaLabel=\"Project files\"\r\n    [data]=\"nodes\"\r\n    [(selected)]=\"selectedId\"\r\n    [(expandedIds)]=\"expandedIds\"\r\n  />\r\n</div>",
+      code: "<div class=\"basic-tree-example\">\n  <kui-tree\n    ariaLabel=\"Project files\"\n    [data]=\"nodes\"\n    [(selected)]=\"selectedId\"\n    [(expandedIds)]=\"expandedIds\"\n  />\n</div>",
     },
     {
       label: "TS",
       filename: "basic-tree-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiTreeComponent, type KuiTreeNode } from '@kikita-labs/ui';\r\n\r\nconst PROJECT_NODES: readonly KuiTreeNode[] = [\r\n  {\r\n    id: 'src',\r\n    label: 'src',\r\n    icon: 'folder',\r\n    children: [\r\n      { id: 'main-ts', label: 'main.ts', icon: 'file' },\r\n      { id: 'styles', label: 'styles', icon: 'folder', children: [] },\r\n    ],\r\n  },\r\n  {\r\n    id: 'docs',\r\n    label: 'docs',\r\n    icon: 'folder',\r\n    children: [{ id: 'readme', label: 'README.md', icon: 'file' }],\r\n  },\r\n];\r\n\r\n@Component({\r\n  selector: 'app-basic-tree-example',\r\n  imports: [KuiTreeComponent],\r\n  templateUrl: './basic-tree-example.html',\r\n  styleUrl: './basic-tree-example.scss',\r\n})\r\nexport class BasicTreeExample {\r\n  protected readonly nodes = PROJECT_NODES;\r\n  protected readonly selectedId = signal<string | null>('main-ts');\r\n  protected readonly expandedIds = signal<string[]>(['src']);\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTreeComponent, type KuiTreeNode } from '@kikita-labs/ui';\n\nconst PROJECT_NODES: readonly KuiTreeNode[] = [\n  {\n    id: 'src',\n    label: 'src',\n    icon: 'folder',\n    children: [\n      { id: 'main-ts', label: 'main.ts', icon: 'file' },\n      { id: 'styles', label: 'styles', icon: 'folder', children: [] },\n    ],\n  },\n  {\n    id: 'docs',\n    label: 'docs',\n    icon: 'folder',\n    children: [{ id: 'readme', label: 'README.md', icon: 'file' }],\n  },\n];\n\n@Component({\n  selector: 'app-basic-tree-example',\n  imports: [KuiTreeComponent],\n  templateUrl: './basic-tree-example.html',\n  styleUrl: './basic-tree-example.scss',\n})\nexport class BasicTreeExample {\n  protected readonly nodes = PROJECT_NODES;\n  protected readonly selectedId = signal<string | null>('main-ts');\n  protected readonly expandedIds = signal<string[]>(['src']);\n}",
     },
     {
       label: "SCSS",
       filename: "basic-tree-example.scss",
       language: "scss",
-      code: ".basic-tree-example {\r\n  display: grid;\r\n  min-width: 0;\r\n  max-width: 24rem;\r\n}",
+      code: ".basic-tree-example {\n  display: grid;\n  min-width: 0;\n  max-width: 24rem;\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

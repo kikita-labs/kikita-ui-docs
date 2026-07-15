@@ -9,7 +9,7 @@ export const DATE_PICKER_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-date-picker-example.html",
       language: "html",
-      code: "<div class=\"basic-date-picker-example\">\r\n  <kui-field label=\"Meeting date\" hint=\"Type dd.mm.yyyy or choose from the calendar.\">\r\n    <input\r\n      kuiDatePicker\r\n      [(value)]=\"meetingDate\"\r\n      [(viewDate)]=\"viewDate\"\r\n      [minDate]=\"minDate\"\r\n      placeholder=\"dd.mm.yyyy\"\r\n    />\r\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"content\" maxHeight=\"420px\">\r\n      <kui-calendar\r\n        flat\r\n        showFooter\r\n        [(value)]=\"meetingDate\"\r\n        [(viewDate)]=\"viewDate\"\r\n        [minDate]=\"minDate\"\r\n      />\r\n    </kui-dropdown>\r\n  </kui-field>\r\n</div>",
+      code: "<div class=\"basic-date-picker-example\">\n  <kui-field label=\"Meeting date\" hint=\"Type dd.mm.yyyy or choose from the calendar.\">\n    <input\n      kuiDatePicker\n      [(value)]=\"meetingDate\"\n      [(viewDate)]=\"viewDate\"\n      [minDate]=\"minDate\"\n      placeholder=\"dd.mm.yyyy\"\n    />\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"content\" maxHeight=\"420px\">\n      <kui-calendar\n        flat\n        showFooter\n        [(value)]=\"meetingDate\"\n        [(viewDate)]=\"viewDate\"\n        [minDate]=\"minDate\"\n      />\n    </kui-dropdown>\n  </kui-field>\n</div>",
     },
     {
       label: "TS",
@@ -21,7 +21,7 @@ export const DATE_PICKER_EXAMPLE_SOURCES = {
       label: "SCSS",
       filename: "basic-date-picker-example.scss",
       language: "scss",
-      code: ".basic-date-picker-example {\r\n  max-width: 22rem;\r\n}",
+      code: ".basic-date-picker-example {\n  max-width: 22rem;\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

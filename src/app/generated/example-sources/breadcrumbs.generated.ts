@@ -9,19 +9,19 @@ export const BREADCRUMBS_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-breadcrumbs-example.html",
       language: "html",
-      code: "<nav class=\"basic-breadcrumbs-example\" aria-label=\"Breadcrumb\">\r\n  <ol kuiBreadcrumbs>\r\n    <li><a kuiBreadcrumbItem href=\"/components\">Components</a></li>\r\n    <li kuiBreadcrumbSeparator></li>\r\n    <li><span kuiBreadcrumbItem>Surfaces</span></li>\r\n    <li kuiBreadcrumbSeparator></li>\r\n    <li><span kuiBreadcrumbItem current>Breadcrumbs</span></li>\r\n  </ol>\r\n</nav>",
+      code: "<nav class=\"basic-breadcrumbs-example\" aria-label=\"Breadcrumb\">\n  <ol kuiBreadcrumbs>\n    <li><a kuiBreadcrumbItem href=\"/components\">Components</a></li>\n    <li kuiBreadcrumbSeparator></li>\n    <li><span kuiBreadcrumbItem>Surfaces</span></li>\n    <li kuiBreadcrumbSeparator></li>\n    <li><span kuiBreadcrumbItem current>Breadcrumbs</span></li>\n  </ol>\n</nav>",
     },
     {
       label: "TS",
       filename: "basic-breadcrumbs-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport {\r\n  KuiBreadcrumbItemDirective,\r\n  KuiBreadcrumbsDirective,\r\n  KuiBreadcrumbSeparatorComponent,\r\n} from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-breadcrumbs-example',\r\n  imports: [KuiBreadcrumbItemDirective, KuiBreadcrumbSeparatorComponent, KuiBreadcrumbsDirective],\r\n  templateUrl: './basic-breadcrumbs-example.html',\r\n  styleUrl: './basic-breadcrumbs-example.scss',\r\n})\r\nexport class BasicBreadcrumbsExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiBreadcrumbItemDirective,\n  KuiBreadcrumbsDirective,\n  KuiBreadcrumbSeparatorComponent,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-breadcrumbs-example',\n  imports: [KuiBreadcrumbItemDirective, KuiBreadcrumbSeparatorComponent, KuiBreadcrumbsDirective],\n  templateUrl: './basic-breadcrumbs-example.html',\n  styleUrl: './basic-breadcrumbs-example.scss',\n})\nexport class BasicBreadcrumbsExample {}",
     },
     {
       label: "SCSS",
       filename: "basic-breadcrumbs-example.scss",
       language: "scss",
-      code: ".basic-breadcrumbs-example {\r\n  min-width: 0;\r\n}",
+      code: ".basic-breadcrumbs-example {\n  min-width: 0;\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

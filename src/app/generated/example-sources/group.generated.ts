@@ -15,7 +15,7 @@ export const GROUP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-group-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport {\r\n  KuiButtonDirective,\r\n  KuiGroupDirective,\r\n  KuiIconButtonDirective,\r\n  KuiIconComponent,\r\n} from '@kikita-labs/ui';\r\n\r\nconst MORE_ICON =\r\n  '<svg viewBox=\"0 0 24 24\" fill=\"none\"><circle cx=\"5\" cy=\"12\" r=\"1.6\" fill=\"currentColor\"/><circle cx=\"12\" cy=\"12\" r=\"1.6\" fill=\"currentColor\"/><circle cx=\"19\" cy=\"12\" r=\"1.6\" fill=\"currentColor\"/></svg>';\r\n\r\n@Component({\r\n  selector: 'app-basic-group-example',\r\n  imports: [KuiButtonDirective, KuiGroupDirective, KuiIconButtonDirective, KuiIconComponent],\r\n  templateUrl: './basic-group-example.html',\r\n  styleUrl: './basic-group-example.scss',\r\n})\r\nexport class BasicGroupExample {\r\n  protected readonly moreIcon = MORE_ICON;\r\n}",
+      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiGroupDirective,\n  KuiIconButtonDirective,\n  KuiIconComponent,\n} from '@kikita-labs/ui';\n\nconst MORE_ICON =\n  '<svg viewBox=\"0 0 24 24\" fill=\"none\"><circle cx=\"5\" cy=\"12\" r=\"1.6\" fill=\"currentColor\"/><circle cx=\"12\" cy=\"12\" r=\"1.6\" fill=\"currentColor\"/><circle cx=\"19\" cy=\"12\" r=\"1.6\" fill=\"currentColor\"/></svg>';\n\n@Component({\n  selector: 'app-basic-group-example',\n  imports: [KuiButtonDirective, KuiGroupDirective, KuiIconButtonDirective, KuiIconComponent],\n  templateUrl: './basic-group-example.html',\n  styleUrl: './basic-group-example.scss',\n})\nexport class BasicGroupExample {\n  protected readonly moreIcon = MORE_ICON;\n}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const GROUP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "group-field-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport {\r\n  KuiButtonDirective,\r\n  KuiGroupDirective,\r\n  KuiIconButtonDirective,\r\n  KuiIconComponent,\r\n  KuiInputDirective,\r\n} from '@kikita-labs/ui';\r\n\r\nconst SEARCH_ICON =\r\n  '<svg viewBox=\"0 0 24 24\" fill=\"none\"><circle cx=\"11\" cy=\"11\" r=\"6\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M20 20l-3.5-3.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>';\r\n\r\n@Component({\r\n  selector: 'app-group-field-example',\r\n  imports: [\r\n    KuiButtonDirective,\r\n    KuiGroupDirective,\r\n    KuiIconButtonDirective,\r\n    KuiIconComponent,\r\n    KuiInputDirective,\r\n  ],\r\n  templateUrl: './group-field-example.html',\r\n  styleUrl: './group-field-example.scss',\r\n})\r\nexport class GroupFieldExample {\r\n  protected readonly searchIcon = SEARCH_ICON;\r\n}",
+      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiGroupDirective,\n  KuiIconButtonDirective,\n  KuiIconComponent,\n  KuiInputDirective,\n} from '@kikita-labs/ui';\n\nconst SEARCH_ICON =\n  '<svg viewBox=\"0 0 24 24\" fill=\"none\"><circle cx=\"11\" cy=\"11\" r=\"6\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M20 20l-3.5-3.5\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"/></svg>';\n\n@Component({\n  selector: 'app-group-field-example',\n  imports: [\n    KuiButtonDirective,\n    KuiGroupDirective,\n    KuiIconButtonDirective,\n    KuiIconComponent,\n    KuiInputDirective,\n  ],\n  templateUrl: './group-field-example.html',\n  styleUrl: './group-field-example.scss',\n})\nexport class GroupFieldExample {\n  protected readonly searchIcon = SEARCH_ICON;\n}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const GROUP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "group-orientation-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiButtonDirective, KuiGroupDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-group-orientation-example',\r\n  imports: [KuiButtonDirective, KuiGroupDirective],\r\n  templateUrl: './group-orientation-example.html',\r\n  styleUrl: './group-orientation-example.scss',\r\n})\r\nexport class GroupOrientationExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiGroupDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-group-orientation-example',\n  imports: [KuiButtonDirective, KuiGroupDirective],\n  templateUrl: './group-orientation-example.html',\n  styleUrl: './group-orientation-example.scss',\n})\nexport class GroupOrientationExample {}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const GROUP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "group-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiButtonDirective, KuiGroupDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-group-size-example',\r\n  imports: [KuiButtonDirective, KuiGroupDirective],\r\n  templateUrl: './group-size-example.html',\r\n  styleUrl: './group-size-example.scss',\r\n})\r\nexport class GroupSizeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiGroupDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-group-size-example',\n  imports: [KuiButtonDirective, KuiGroupDirective],\n  templateUrl: './group-size-example.html',\n  styleUrl: './group-size-example.scss',\n})\nexport class GroupSizeExample {}",
     },
     {
       label: "SCSS",

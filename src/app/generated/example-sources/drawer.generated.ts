@@ -21,13 +21,13 @@ export const DRAWER_EXAMPLE_SOURCES = {
       label: "basic-drawer-example.ts",
       filename: "basic-drawer-example.ts",
       language: "ts",
-      code: "import { Component, DestroyRef, inject, signal } from '@angular/core';\r\n\r\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\r\n\r\nimport { KuiButtonDirective, kuiDrawer } from '@kikita-labs/ui';\r\n\r\nimport { EditItemDrawer } from './edit-item-drawer';\r\n\r\n@Component({\r\n  selector: 'app-basic-drawer-example',\r\n  imports: [KuiButtonDirective],\r\n  templateUrl: './basic-drawer-example.html',\r\n  styleUrl: './basic-drawer-example.scss',\r\n})\r\nexport class BasicDrawerExample {\r\n  private readonly destroyRef = inject(DestroyRef);\r\n  private readonly openEditItem = kuiDrawer(EditItemDrawer, { side: 'right', size: 'md' });\r\n\r\n  protected readonly lastResult = signal<string | null>(null);\r\n\r\n  protected edit(): void {\r\n    this.openEditItem({ id: 'item-42' })\r\n      .pipe(takeUntilDestroyed(this.destroyRef))\r\n      .subscribe((result) => this.lastResult.set(result ?? 'dismissed'));\r\n  }\r\n}",
+      code: "import { Component, DestroyRef, inject, signal } from '@angular/core';\n\nimport { takeUntilDestroyed } from '@angular/core/rxjs-interop';\n\nimport { KuiButtonDirective, kuiDrawer } from '@kikita-labs/ui';\n\nimport { EditItemDrawer } from './edit-item-drawer';\n\n@Component({\n  selector: 'app-basic-drawer-example',\n  imports: [KuiButtonDirective],\n  templateUrl: './basic-drawer-example.html',\n  styleUrl: './basic-drawer-example.scss',\n})\nexport class BasicDrawerExample {\n  private readonly destroyRef = inject(DestroyRef);\n  private readonly openEditItem = kuiDrawer(EditItemDrawer, { side: 'right', size: 'md' });\n\n  protected readonly lastResult = signal<string | null>(null);\n\n  protected edit(): void {\n    this.openEditItem({ id: 'item-42' })\n      .pipe(takeUntilDestroyed(this.destroyRef))\n      .subscribe((result) => this.lastResult.set(result ?? 'dismissed'));\n  }\n}",
     },
     {
       label: "edit-item-drawer.ts",
       filename: "edit-item-drawer.ts",
       language: "ts",
-      code: "import { Component, inject } from '@angular/core';\r\n\r\nimport {\r\n  KUI_DRAWER_CONTEXT,\r\n  KuiButtonDirective,\r\n  type KuiDrawerContext,\r\n  type KuiDrawerHost,\r\n} from '@kikita-labs/ui';\r\n\r\nexport interface EditItemData {\r\n  readonly id: string;\r\n}\r\n\r\nexport type EditItemResult = 'saved' | 'cancelled';\r\n\r\n@Component({\r\n  selector: 'app-edit-item-drawer',\r\n  imports: [KuiButtonDirective],\r\n  templateUrl: './edit-item-drawer.html',\r\n})\r\nexport class EditItemDrawer implements KuiDrawerHost<EditItemResult, EditItemData> {\r\n  public readonly drawerContext =\r\n    inject<KuiDrawerContext<EditItemResult, EditItemData>>(KUI_DRAWER_CONTEXT);\r\n}",
+      code: "import { Component, inject } from '@angular/core';\n\nimport {\n  KUI_DRAWER_CONTEXT,\n  KuiButtonDirective,\n  type KuiDrawerContext,\n  type KuiDrawerHost,\n} from '@kikita-labs/ui';\n\nexport interface EditItemData {\n  readonly id: string;\n}\n\nexport type EditItemResult = 'saved' | 'cancelled';\n\n@Component({\n  selector: 'app-edit-item-drawer',\n  imports: [KuiButtonDirective],\n  templateUrl: './edit-item-drawer.html',\n})\nexport class EditItemDrawer implements KuiDrawerHost<EditItemResult, EditItemData> {\n  public readonly drawerContext =\n    inject<KuiDrawerContext<EditItemResult, EditItemData>>(KUI_DRAWER_CONTEXT);\n}",
     },
     {
       label: "basic-drawer-example.scss",
@@ -53,13 +53,13 @@ export const DRAWER_EXAMPLE_SOURCES = {
       label: "drawer-sides-example.ts",
       filename: "drawer-sides-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiButtonDirective, kuiDrawer, type KuiDrawerSide } from '@kikita-labs/ui';\r\n\r\nimport { SidePreviewDrawer } from './side-preview-drawer';\r\n\r\n@Component({\r\n  selector: 'app-drawer-sides-example',\r\n  imports: [KuiButtonDirective],\r\n  templateUrl: './drawer-sides-example.html',\r\n  styleUrl: './drawer-sides-example.scss',\r\n})\r\nexport class DrawerSidesExample {\r\n  protected readonly sides: readonly KuiDrawerSide[] = ['top', 'right', 'bottom', 'left'];\r\n\r\n  private readonly openers = new Map(\r\n    this.sides.map((side) => [side, kuiDrawer(SidePreviewDrawer, { side, size: 'sm' })]),\r\n  );\r\n\r\n  protected open(side: KuiDrawerSide): void {\r\n    this.openers.get(side)?.(undefined);\r\n  }\r\n}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, kuiDrawer, type KuiDrawerSide } from '@kikita-labs/ui';\n\nimport { SidePreviewDrawer } from './side-preview-drawer';\n\n@Component({\n  selector: 'app-drawer-sides-example',\n  imports: [KuiButtonDirective],\n  templateUrl: './drawer-sides-example.html',\n  styleUrl: './drawer-sides-example.scss',\n})\nexport class DrawerSidesExample {\n  protected readonly sides: readonly KuiDrawerSide[] = ['top', 'right', 'bottom', 'left'];\n\n  private readonly openers = new Map(\n    this.sides.map((side) => [side, kuiDrawer(SidePreviewDrawer, { side, size: 'sm' })]),\n  );\n\n  protected open(side: KuiDrawerSide): void {\n    this.openers.get(side)?.(undefined);\n  }\n}",
     },
     {
       label: "side-preview-drawer.ts",
       filename: "side-preview-drawer.ts",
       language: "ts",
-      code: "import { Component, inject } from '@angular/core';\r\n\r\nimport {\r\n  KUI_DRAWER_CONTEXT,\r\n  KuiButtonDirective,\r\n  type KuiDrawerContext,\r\n  type KuiDrawerHost,\r\n} from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-side-preview-drawer',\r\n  imports: [KuiButtonDirective],\r\n  templateUrl: './side-preview-drawer.html',\r\n})\r\nexport class SidePreviewDrawer implements KuiDrawerHost<void, void> {\r\n  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);\r\n}",
+      code: "import { Component, inject } from '@angular/core';\n\nimport {\n  KUI_DRAWER_CONTEXT,\n  KuiButtonDirective,\n  type KuiDrawerContext,\n  type KuiDrawerHost,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-side-preview-drawer',\n  imports: [KuiButtonDirective],\n  templateUrl: './side-preview-drawer.html',\n})\nexport class SidePreviewDrawer implements KuiDrawerHost<void, void> {\n  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);\n}",
     },
     {
       label: "drawer-sides-example.scss",
@@ -85,13 +85,13 @@ export const DRAWER_EXAMPLE_SOURCES = {
       label: "drawer-sizes-example.ts",
       filename: "drawer-sizes-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';\r\n\r\nimport { SizePreviewDrawer } from './size-preview-drawer';\r\n\r\n@Component({\r\n  selector: 'app-drawer-sizes-example',\r\n  imports: [KuiButtonDirective],\r\n  templateUrl: './drawer-sizes-example.html',\r\n  styleUrl: './drawer-sizes-example.scss',\r\n})\r\nexport class DrawerSizesExample {\r\n  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full'];\r\n\r\n  private readonly openers = new Map(\r\n    this.sizes.map((size) => [size, kuiDrawer(SizePreviewDrawer, { side: 'right', size })]),\r\n  );\r\n\r\n  protected open(size: KuiDrawerSize): void {\r\n    this.openers.get(size)?.(undefined);\r\n  }\r\n}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';\n\nimport { SizePreviewDrawer } from './size-preview-drawer';\n\n@Component({\n  selector: 'app-drawer-sizes-example',\n  imports: [KuiButtonDirective],\n  templateUrl: './drawer-sizes-example.html',\n  styleUrl: './drawer-sizes-example.scss',\n})\nexport class DrawerSizesExample {\n  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full'];\n\n  private readonly openers = new Map(\n    this.sizes.map((size) => [size, kuiDrawer(SizePreviewDrawer, { side: 'right', size })]),\n  );\n\n  protected open(size: KuiDrawerSize): void {\n    this.openers.get(size)?.(undefined);\n  }\n}",
     },
     {
       label: "size-preview-drawer.ts",
       filename: "size-preview-drawer.ts",
       language: "ts",
-      code: "import { Component, inject } from '@angular/core';\r\n\r\nimport {\r\n  KUI_DRAWER_CONTEXT,\r\n  KuiButtonDirective,\r\n  type KuiDrawerContext,\r\n  type KuiDrawerHost,\r\n} from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-size-preview-drawer',\r\n  imports: [KuiButtonDirective],\r\n  templateUrl: './size-preview-drawer.html',\r\n})\r\nexport class SizePreviewDrawer implements KuiDrawerHost<void, void> {\r\n  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);\r\n}",
+      code: "import { Component, inject } from '@angular/core';\n\nimport {\n  KUI_DRAWER_CONTEXT,\n  KuiButtonDirective,\n  type KuiDrawerContext,\n  type KuiDrawerHost,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-size-preview-drawer',\n  imports: [KuiButtonDirective],\n  templateUrl: './size-preview-drawer.html',\n})\nexport class SizePreviewDrawer implements KuiDrawerHost<void, void> {\n  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);\n}",
     },
     {
       label: "drawer-sizes-example.scss",

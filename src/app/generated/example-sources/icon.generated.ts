@@ -9,19 +9,19 @@ export const ICON_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-icon-example.html",
       language: "html",
-      code: "<div class=\"basic-icon-example\">\r\n  <span class=\"basic-icon-example__status\">\r\n    <kui-icon [source]=\"checkIcon\" label=\"Success\" size=\"18px\" />\r\n    Package verified\r\n  </span>\r\n\r\n  <button kuiIconButton type=\"button\" shape=\"soft\" aria-label=\"Run magic action\">\r\n    <kui-icon [source]=\"sparkIcon\" />\r\n  </button>\r\n</div>",
+      code: "<div class=\"basic-icon-example\">\n  <span class=\"basic-icon-example__status\">\n    <kui-icon [source]=\"checkIcon\" label=\"Success\" size=\"18px\" />\n    Package verified\n  </span>\n\n  <button kuiIconButton type=\"button\" shape=\"soft\" aria-label=\"Run magic action\">\n    <kui-icon [source]=\"sparkIcon\" />\n  </button>\n</div>",
     },
     {
       label: "TS",
       filename: "basic-icon-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-icon-example',\r\n  imports: [KuiIconButtonDirective, KuiIconComponent],\r\n  templateUrl: './basic-icon-example.html',\r\n  styleUrl: './basic-icon-example.scss',\r\n})\r\nexport class BasicIconExample {\r\n  protected readonly checkIcon =\r\n    '<svg viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3 8l3 3 7-7\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>';\r\n  protected readonly sparkIcon =\r\n    '<svg viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M8 1.5l1.4 4 4.1 1.5-4.1 1.5-1.4 4-1.4-4L2.5 7l4.1-1.5L8 1.5z\" stroke=\"currentColor\" stroke-linejoin=\"round\"/></svg>';\r\n}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-icon-example',\n  imports: [KuiIconButtonDirective, KuiIconComponent],\n  templateUrl: './basic-icon-example.html',\n  styleUrl: './basic-icon-example.scss',\n})\nexport class BasicIconExample {\n  protected readonly checkIcon =\n    '<svg viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3 8l3 3 7-7\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>';\n  protected readonly sparkIcon =\n    '<svg viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M8 1.5l1.4 4 4.1 1.5-4.1 1.5-1.4 4-1.4-4L2.5 7l4.1-1.5L8 1.5z\" stroke=\"currentColor\" stroke-linejoin=\"round\"/></svg>';\n}",
     },
     {
       label: "SCSS",
       filename: "basic-icon-example.scss",
       language: "scss",
-      code: ".basic-icon-example {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  gap: var(--kui-space-3, 12px);\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.basic-icon-example__status {\r\n  display: inline-flex;\r\n  align-items: center;\r\n  gap: var(--kui-space-2, 8px);\r\n  color: var(--kui-color-text);\r\n}",
+      code: ".basic-icon-example {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--kui-space-3, 12px);\n  flex-wrap: wrap;\n}\n\n.basic-icon-example__status {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--kui-space-2, 8px);\n  color: var(--kui-color-text);\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

@@ -15,7 +15,7 @@ export const NUMBER_INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-number-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-number-input-example',\r\n  imports: [KuiNumberInputDirective],\r\n  templateUrl: './basic-number-input-example.html',\r\n  styleUrl: './basic-number-input-example.scss',\r\n})\r\nexport class BasicNumberInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-number-input-example',\n  imports: [KuiNumberInputDirective],\n  templateUrl: './basic-number-input-example.html',\n  styleUrl: './basic-number-input-example.scss',\n})\nexport class BasicNumberInputExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const NUMBER_INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "compact-number-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-compact-number-input-example',\r\n  imports: [KuiNumberInputDirective],\r\n  templateUrl: './compact-number-input-example.html',\r\n  styleUrl: './compact-number-input-example.scss',\r\n})\r\nexport class CompactNumberInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-compact-number-input-example',\n  imports: [KuiNumberInputDirective],\n  templateUrl: './compact-number-input-example.html',\n  styleUrl: './compact-number-input-example.scss',\n})\nexport class CompactNumberInputExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const NUMBER_INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "field-number-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiFieldComponent, KuiNumberInputDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-field-number-input-example',\r\n  imports: [KuiFieldComponent, KuiNumberInputDirective],\r\n  templateUrl: './field-number-input-example.html',\r\n  styleUrl: './field-number-input-example.scss',\r\n})\r\nexport class FieldNumberInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiNumberInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-number-input-example',\n  imports: [KuiFieldComponent, KuiNumberInputDirective],\n  templateUrl: './field-number-input-example.html',\n  styleUrl: './field-number-input-example.scss',\n})\nexport class FieldNumberInputExample {}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const NUMBER_INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "range-number-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-range-number-input-example',\r\n  imports: [KuiNumberInputDirective],\r\n  templateUrl: './range-number-input-example.html',\r\n  styleUrl: './range-number-input-example.scss',\r\n})\r\nexport class RangeNumberInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-range-number-input-example',\n  imports: [KuiNumberInputDirective],\n  templateUrl: './range-number-input-example.html',\n  styleUrl: './range-number-input-example.scss',\n})\nexport class RangeNumberInputExample {}",
     },
     {
       label: "SCSS",

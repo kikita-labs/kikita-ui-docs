@@ -9,19 +9,19 @@ export const FILE_UPLOAD_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-file-upload-example.html",
       language: "html",
-      code: "<div class=\"basic-file-upload-example\">\r\n  <kui-file-upload\r\n    acceptLabel=\"PNG, JPG, or PDF up to 10 MB\"\r\n    [accept]=\"['image/png', 'image/jpeg', 'application/pdf']\"\r\n    [maxSize]=\"10 * 1024 * 1024\"\r\n    [maxCount]=\"3\"\r\n    [(files)]=\"files\"\r\n    (retry)=\"handleRetry($event)\"\r\n  />\r\n</div>",
+      code: "<div class=\"basic-file-upload-example\">\n  <kui-file-upload\n    acceptLabel=\"PNG, JPG, or PDF up to 10 MB\"\n    [accept]=\"['image/png', 'image/jpeg', 'application/pdf']\"\n    [maxSize]=\"10 * 1024 * 1024\"\n    [maxCount]=\"3\"\n    [(files)]=\"files\"\n    (retry)=\"handleRetry($event)\"\n  />\n</div>",
     },
     {
       label: "TS",
       filename: "basic-file-upload-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport { KuiFileUploadComponent, type KuiUploadFile } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-file-upload-example',\r\n  imports: [KuiFileUploadComponent],\r\n  templateUrl: './basic-file-upload-example.html',\r\n  styleUrl: './basic-file-upload-example.scss',\r\n})\r\nexport class BasicFileUploadExample {\r\n  protected readonly files = signal<readonly KuiUploadFile[]>([]);\r\n\r\n  protected handleRetry(file: KuiUploadFile): void {\r\n    this.files.update((files) =>\r\n      files.map((entry) =>\r\n        entry.id === file.id ? { ...entry, status: 'pending', progress: 0 } : entry,\r\n      ),\r\n    );\r\n  }\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiFileUploadComponent, type KuiUploadFile } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-file-upload-example',\n  imports: [KuiFileUploadComponent],\n  templateUrl: './basic-file-upload-example.html',\n  styleUrl: './basic-file-upload-example.scss',\n})\nexport class BasicFileUploadExample {\n  protected readonly files = signal<readonly KuiUploadFile[]>([]);\n\n  protected handleRetry(file: KuiUploadFile): void {\n    this.files.update((files) =>\n      files.map((entry) =>\n        entry.id === file.id ? { ...entry, status: 'pending', progress: 0 } : entry,\n      ),\n    );\n  }\n}",
     },
     {
       label: "SCSS",
       filename: "basic-file-upload-example.scss",
       language: "scss",
-      code: ".basic-file-upload-example {\r\n  display: grid;\r\n  min-width: 0;\r\n  max-width: 32rem;\r\n}",
+      code: ".basic-file-upload-example {\n  display: grid;\n  min-width: 0;\n  max-width: 32rem;\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

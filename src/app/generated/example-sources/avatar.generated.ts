@@ -15,7 +15,7 @@ export const AVATAR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "avatar-button-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiAvatarComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-avatar-button-example',\r\n  imports: [KuiAvatarComponent],\r\n  templateUrl: './avatar-button-example.html',\r\n  styleUrl: './avatar-button-example.scss',\r\n})\r\nexport class AvatarButtonExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiAvatarComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-avatar-button-example',\n  imports: [KuiAvatarComponent],\n  templateUrl: './avatar-button-example.html',\n  styleUrl: './avatar-button-example.scss',\n})\nexport class AvatarButtonExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const AVATAR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "avatar-group-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiAvatarGroupComponent, type KuiAvatarItem } from '@kikita-labs/ui';\r\n\r\nconst MEMBERS: readonly KuiAvatarItem[] = [\r\n  { src: 'https://i.pravatar.cc/64?img=12', name: 'Nikita Repin', status: 'online' },\r\n  { name: 'Anya Murashova', status: 'away' },\r\n  { name: 'Timur Ognev' },\r\n  { name: 'Vera Saltykova' },\r\n  { name: 'Ilya Denisov' },\r\n];\r\n\r\n@Component({\r\n  selector: 'app-avatar-group-example',\r\n  imports: [KuiAvatarGroupComponent],\r\n  templateUrl: './avatar-group-example.html',\r\n  styleUrl: './avatar-group-example.scss',\r\n})\r\nexport class AvatarGroupExample {\r\n  protected readonly members = MEMBERS;\r\n}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiAvatarGroupComponent, type KuiAvatarItem } from '@kikita-labs/ui';\n\nconst MEMBERS: readonly KuiAvatarItem[] = [\n  { src: 'https://i.pravatar.cc/64?img=12', name: 'Nikita Repin', status: 'online' },\n  { name: 'Anya Murashova', status: 'away' },\n  { name: 'Timur Ognev' },\n  { name: 'Vera Saltykova' },\n  { name: 'Ilya Denisov' },\n];\n\n@Component({\n  selector: 'app-avatar-group-example',\n  imports: [KuiAvatarGroupComponent],\n  templateUrl: './avatar-group-example.html',\n  styleUrl: './avatar-group-example.scss',\n})\nexport class AvatarGroupExample {\n  protected readonly members = MEMBERS;\n}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const AVATAR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "avatar-sizes-shapes-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiAvatarComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-avatar-sizes-shapes-example',\r\n  imports: [KuiAvatarComponent],\r\n  templateUrl: './avatar-sizes-shapes-example.html',\r\n  styleUrl: './avatar-sizes-shapes-example.scss',\r\n})\r\nexport class AvatarSizesShapesExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiAvatarComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-avatar-sizes-shapes-example',\n  imports: [KuiAvatarComponent],\n  templateUrl: './avatar-sizes-shapes-example.html',\n  styleUrl: './avatar-sizes-shapes-example.scss',\n})\nexport class AvatarSizesShapesExample {}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const AVATAR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "avatar-status-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiAvatarComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-avatar-status-example',\r\n  imports: [KuiAvatarComponent],\r\n  templateUrl: './avatar-status-example.html',\r\n  styleUrl: './avatar-status-example.scss',\r\n})\r\nexport class AvatarStatusExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiAvatarComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-avatar-status-example',\n  imports: [KuiAvatarComponent],\n  templateUrl: './avatar-status-example.html',\n  styleUrl: './avatar-status-example.scss',\n})\nexport class AvatarStatusExample {}",
     },
     {
       label: "SCSS",
@@ -95,7 +95,7 @@ export const AVATAR_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-avatar-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\r\n\r\nimport { KuiAvatarComponent } from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-avatar-example',\r\n  imports: [KuiAvatarComponent],\r\n  templateUrl: './basic-avatar-example.html',\r\n  styleUrl: './basic-avatar-example.scss',\r\n})\r\nexport class BasicAvatarExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiAvatarComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-avatar-example',\n  imports: [KuiAvatarComponent],\n  templateUrl: './basic-avatar-example.html',\n  styleUrl: './basic-avatar-example.scss',\n})\nexport class BasicAvatarExample {}",
     },
     {
       label: "SCSS",
