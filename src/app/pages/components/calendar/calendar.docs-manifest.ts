@@ -11,7 +11,5 @@ export const CALENDAR_DOCS_MANIFEST = {
   exampleIds: ['basic-calendar-example'],
   loadPage: () => import('./calendar-page').then((module) => module.CalendarPage),
   loadPlayground: () =>
-    import('./playground/calendar-playground-page').then(
-      (module) => module.CalendarPlaygroundPage,
-    ),
+    import('./playground/calendar-playground-page').then((module) => module.CalendarPlaygroundPage),
 } as const satisfies DocsComponentManifest;

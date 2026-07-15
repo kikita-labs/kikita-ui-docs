@@ -23,7 +23,9 @@ describe('FileUploadPlaygroundPage', () => {
     const root = fixture.nativeElement as HTMLElement;
 
     expect(root.querySelector('h1')?.textContent).toContain('File Upload');
-    expect(root.querySelector('.api-playground-viewport__resizable kui-file-upload')).not.toBeNull();
+    expect(
+      root.querySelector('.api-playground-viewport__resizable kui-file-upload'),
+    ).not.toBeNull();
     expect(root.querySelector('app-api-table')).not.toBeNull();
   });
 });

@@ -20,12 +20,24 @@ import { CALENDAR_API_ROWS } from '../calendar.api-schema';
 import { CALENDAR_API_DESCRIPTION } from '../calendar.docs-content';
 
 const CALENDAR_PLAYGROUND_CONTROLS = definePlaygroundControls([
-  { key: 'mode', label: 'mode', kind: 'enum', options: ['single', 'range'], defaultValue: 'single' },
+  {
+    key: 'mode',
+    label: 'mode',
+    kind: 'enum',
+    options: ['single', 'range'],
+    defaultValue: 'single',
+  },
   { key: 'size', label: 'size', kind: 'enum', options: ['md', 'sm'], defaultValue: 'md' },
   { key: 'showFooter', label: 'show footer', kind: 'boolean', defaultValue: false },
   { key: 'flat', label: 'flat', kind: 'boolean', defaultValue: false },
   { key: 'showWeekend', label: 'show weekend', kind: 'boolean', defaultValue: true },
-  { key: 'locale', label: 'locale', kind: 'enum', options: ['en-US', 'en-GB'], defaultValue: 'en-US' },
+  {
+    key: 'locale',
+    label: 'locale',
+    kind: 'enum',
+    options: ['en-US', 'en-GB'],
+    defaultValue: 'en-US',
+  },
   { key: 'minDate', label: 'min date', kind: 'boolean', defaultValue: false },
 ] as const);
 

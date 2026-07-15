@@ -9,12 +9,7 @@ import {
 
 @Component({
   selector: 'app-basic-date-picker-example',
-  imports: [
-    KuiCalendarComponent,
-    KuiDatePickerDirective,
-    KuiDropdownComponent,
-    KuiFieldComponent,
-  ],
+  imports: [KuiCalendarComponent, KuiDatePickerDirective, KuiDropdownComponent, KuiFieldComponent],
   templateUrl: './basic-date-picker-example.html',
   styleUrl: './basic-date-picker-example.scss',
 })

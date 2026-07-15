@@ -13,9 +13,13 @@
       <ol kuiBreadcrumbs [size]="sizeOf(playground.values())">
         <li><a kuiBreadcrumbItem href="/components">Components</a></li>
         <li kuiBreadcrumbSeparator></li>
-        <li><span kuiBreadcrumbItem>{{ middleLabelOf(playground.values()) }}</span></li>
+        <li>
+          <span kuiBreadcrumbItem>{{ middleLabelOf(playground.values()) }}</span>
+        </li>
         <li kuiBreadcrumbSeparator></li>
-        <li><span kuiBreadcrumbItem current>{{ currentLabelOf(playground.values()) }}</span></li>
+        <li>
+          <span kuiBreadcrumbItem current>{{ currentLabelOf(playground.values()) }}</span>
+        </li>
       </ol>
     </nav>
   </app-api-playground>

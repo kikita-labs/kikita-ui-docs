@@ -42,7 +42,9 @@ describe('BreadcrumbsPlaygroundPage', () => {
 
     const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
 
-    expect(root.querySelector('.api-playground-viewport__resizable ol[kuibreadcrumbs]')).not.toBeNull();
+    expect(
+      root.querySelector('.api-playground-viewport__resizable ol[kuibreadcrumbs]'),
+    ).not.toBeNull();
     expect(snippet?.textContent).toContain('size="lg"');
   });
 

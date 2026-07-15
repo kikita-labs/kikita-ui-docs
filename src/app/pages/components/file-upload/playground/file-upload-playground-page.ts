@@ -1,10 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiFileUploadComponent,
-  type KuiSize,
-  type KuiUploadFile,
-} from '@kikita-labs/ui';
+import { KuiFileUploadComponent, type KuiSize, type KuiUploadFile } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,

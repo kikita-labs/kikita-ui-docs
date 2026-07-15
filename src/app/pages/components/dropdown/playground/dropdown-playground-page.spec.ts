@@ -84,9 +84,9 @@ describe('DropdownPlaygroundPage', () => {
   });
 
   it('opens the configured package dropdown and closes after option selection', async () => {
-    const trigger = [...(fixture.nativeElement as HTMLElement).querySelectorAll<HTMLButtonElement>('button')].find(
-      (button) => button.textContent?.trim() === 'Actions',
-    );
+    const trigger = [
+      ...(fixture.nativeElement as HTMLElement).querySelectorAll<HTMLButtonElement>('button'),
+    ].find((button) => button.textContent?.trim() === 'Actions');
 
     trigger?.click();
     fixture.detectChanges();
@@ -102,9 +102,9 @@ describe('DropdownPlaygroundPage', () => {
     await fixture.whenStable();
 
     expect(
-      document.querySelector<HTMLElement>('[role="listbox"]')?.classList.contains(
-        'kui-dropdown--closing',
-      ),
+      document
+        .querySelector<HTMLElement>('[role="listbox"]')
+        ?.classList.contains('kui-dropdown--closing'),
     ).toBe(true);
   });
 

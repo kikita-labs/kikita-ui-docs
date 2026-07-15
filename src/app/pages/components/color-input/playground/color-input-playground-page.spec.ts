@@ -55,7 +55,9 @@ describe('ColorInputPlaygroundPage', () => {
 
     const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
 
-    expect(root.querySelector('.api-playground-viewport__resizable input[kuicolorinput]')).not.toBeNull();
+    expect(
+      root.querySelector('.api-playground-viewport__resizable input[kuicolorinput]'),
+    ).not.toBeNull();
     expect(snippet?.textContent).toContain('size="lg"');
     expect(snippet?.textContent).toContain('invalid');
   });

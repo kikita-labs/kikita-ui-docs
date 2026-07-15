@@ -85,9 +85,7 @@ export class TreePlaygroundPage {
       { name: '[loadChildren]', value: 'loadChildren' },
     ]);
     const modelBinding =
-      values.mode === 'checkable'
-        ? ` [(checkedIds)]="checkedIds"`
-        : ` [(selected)]="selectedId"`;
+      values.mode === 'checkable' ? ` [(checkedIds)]="checkedIds"` : ` [(selected)]="selectedId"`;
 
     return [
       {

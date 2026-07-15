@@ -16,7 +16,13 @@ import { COLOR_INPUT_API_DESCRIPTION } from '../color-input.docs-content';
 
 const COLOR_INPUT_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'value', label: 'value', kind: 'string', defaultValue: '#5b4fe0' },
-  { key: 'size', label: 'size', kind: 'enum', options: ['xs', 'sm', 'md', 'lg'], defaultValue: 'md' },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg'],
+    defaultValue: 'md',
+  },
   { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
   {
     key: 'swatchLabel',
