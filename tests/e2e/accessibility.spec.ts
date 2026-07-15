@@ -1,7 +1,7 @@
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 import { expectNoAxeViolations } from './support/axe';
-import { gotoReady } from './support/page-ready';
+import { gotoReady, waitForAnimationsToFinish } from './support/page-ready';
 
 const routes = [
   '/',
@@ -64,23 +64,38 @@ test('has no violations with the mobile drawer open', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await gotoReady(page, '/components/button');
   await page.getByRole('button', { name: 'Toggle documentation navigation' }).click();
+  await waitForAnimationsToFinish(page.locator('#docs-mobile-navigation'));
   await expectNoAxeViolations(page);
 });
 
 test('has no violations with a package dialog open', async ({ page }) => {
   await gotoReady(page, '/components/dialog/playground');
   await page.getByRole('button', { name: 'Open dialog' }).click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog).toBeVisible();
+  await waitForAnimationsToFinish(dialog);
   await expectNoAxeViolations(page);
 });
 
 test('has no violations with a package drawer open', async ({ page }) => {
   await gotoReady(page, '/components/drawer/playground');
   await page.getByRole('button', { name: 'Open drawer' }).click();
+  const drawer = page.getByRole('dialog');
+  await expect(drawer).toBeVisible();
+  await waitForAnimationsToFinish(drawer);
   await expectNoAxeViolations(page);
 });
 
 test('has no violations with a package dropdown open', async ({ page }) => {
   await gotoReady(page, '/components/dropdown/playground');
   await page.getByLabel('Dropdown playground').getByRole('button', { name: 'Actions' }).click();
-  await expectNoAxeViolations(page);
+  await expect(page.locator('.kui-listbox-option').first()).toBeFocused();
+
+  // scrollable-region-focusable is checked separately: some other axe-core rule's own evaluate()
+  // steals document.activeElement away from the just-focused option mid-run when the full ruleset
+  // executes together, producing a false positive here. Isolated, the rule passes reliably (the
+  // option genuinely has real DOM focus, asserted above) -- this is an axe-core cross-rule
+  // interaction, not a real accessibility defect.
+  await expectNoAxeViolations(page, { excludeRules: ['scrollable-region-focusable'] });
+  await expectNoAxeViolations(page, { onlyRules: ['scrollable-region-focusable'] });
 });
