@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/tabs
-- Package: @kikita-labs/ui@0.4.2
+- Package: @kikita-labs/ui@0.4.3
 - Import: KuiTabsComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/tabs.md
 

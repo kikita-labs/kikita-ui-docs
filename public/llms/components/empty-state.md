@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/empty-state
-- Package: @kikita-labs/ui@0.4.2
+- Package: @kikita-labs/ui@0.4.3
 - Import: KuiEmptyStateComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/empty-state.md
 

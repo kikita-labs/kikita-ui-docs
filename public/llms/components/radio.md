@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/radio
-- Package: @kikita-labs/ui@0.4.2
+- Package: @kikita-labs/ui@0.4.3
 - Import: KuiRadioDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/radio.md
 
