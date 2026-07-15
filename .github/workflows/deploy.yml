@@ -48,6 +48,8 @@ jobs:
 
       - run: pnpm run check:migration-debt
 
+      - run: pnpm run check:agent-surface
+
       - run: pnpm run build
 
       - run: pnpm run check:performance
