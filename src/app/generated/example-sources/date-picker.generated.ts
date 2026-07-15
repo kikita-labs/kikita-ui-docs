@@ -15,7 +15,7 @@ export const DATE_PICKER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-date-picker-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\r\n\r\nimport {\r\n  KuiCalendarComponent,\r\n  KuiDatePickerDirective,\r\n  KuiDropdownComponent,\r\n  KuiFieldComponent,\r\n} from '@kikita-labs/ui';\r\n\r\n@Component({\r\n  selector: 'app-basic-date-picker-example',\r\n  imports: [\r\n    KuiCalendarComponent,\r\n    KuiDatePickerDirective,\r\n    KuiDropdownComponent,\r\n    KuiFieldComponent,\r\n  ],\r\n  templateUrl: './basic-date-picker-example.html',\r\n  styleUrl: './basic-date-picker-example.scss',\r\n})\r\nexport class BasicDatePickerExample {\r\n  protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));\r\n  protected readonly viewDate = signal(new Date(2026, 6, 1));\r\n  protected readonly minDate = new Date(2026, 6, 1);\r\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiCalendarComponent,\n  KuiDatePickerDirective,\n  KuiDropdownComponent,\n  KuiFieldComponent,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-date-picker-example',\n  imports: [KuiCalendarComponent, KuiDatePickerDirective, KuiDropdownComponent, KuiFieldComponent],\n  templateUrl: './basic-date-picker-example.html',\n  styleUrl: './basic-date-picker-example.scss',\n})\nexport class BasicDatePickerExample {\n  protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly viewDate = signal(new Date(2026, 6, 1));\n  protected readonly minDate = new Date(2026, 6, 1);\n}",
     },
     {
       label: "SCSS",
