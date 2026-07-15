@@ -5,3 +5,4 @@
 /node_modules
 /pnpm-lock.yaml
 /src/app/generated/example-sources/*.generated.ts
+/public/llms
