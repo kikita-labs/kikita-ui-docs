@@ -20,6 +20,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/checkout@v4
+        with:
+          repository: kikita-labs/kikita-ui
+          path: ../kikita-ui
+
       - uses: pnpm/action-setup@v4
 
       - uses: actions/setup-node@v4
