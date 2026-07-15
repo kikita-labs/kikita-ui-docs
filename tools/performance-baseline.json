@@ -1,13 +1,13 @@
 {
   "reference": {
-    "package": "06-shell-responsive",
-    "initialRawBytes": 799860,
-    "lazyChunks": 189
+    "package": "@kikita-labs/ui@0.4.0",
+    "initialRawBytes": 857326,
+    "lazyChunks": 164
   },
   "limits": {
-    "initialJavaScriptBytes": 700000,
+    "initialJavaScriptBytes": 705000,
     "initialCssBytes": 160000,
-    "initialTotalBytes": 850000,
+    "initialTotalBytes": 865000,
     "lazyJavaScriptChunks": 170,
     "largestRouteChunkBytes": 65000,
     "shikiThemeChunks": 10
