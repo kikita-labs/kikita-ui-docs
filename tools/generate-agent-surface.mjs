@@ -6,6 +6,7 @@ import process from 'node:process';
 import { collectAgentEntries } from './agent-surface/collect-agent-entries.mjs';
 import { parseApiSchemaRows } from './agent-surface/parse-api-schema.mjs';
 import { splitMarkdownSections } from './agent-surface/parse-markdown-sections.mjs';
+import { renderAgentManifest } from './agent-surface/render-agent-manifest.mjs';
 import { renderAgentMarkdown } from './agent-surface/render-agent-markdown.mjs';
 import { renderLlmsFullTxt, renderLlmsTxt } from './agent-surface/render-llms-txt.mjs';
 
@@ -40,6 +41,10 @@ async function generateOrCheck(allEntries) {
   outputs.set(
     resolve(workspace, 'public/llms-full.txt'),
     renderLlmsFullTxt(allEntries, contentByMarkdownPath),
+  );
+  outputs.set(
+    resolve(workspace, 'public/llms/agent-manifest.json'),
+    renderAgentManifest(allEntries),
   );
 
   const staleOutputs = await findStaleOutputs(outputs);
