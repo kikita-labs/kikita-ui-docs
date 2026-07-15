@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/icon
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiIconComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon.md
 

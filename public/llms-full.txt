@@ -7,7 +7,7 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 
 <!-- route: / -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/index.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Kikita UI
 
@@ -15,7 +15,7 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 
 - Status: available
 - Route: /
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Foundations
 
@@ -80,7 +80,7 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 
 <!-- route: /foundations/accessibility -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Accessibility
 
@@ -88,7 +88,7 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 
 - Status: available
 - Route: /foundations/accessibility
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Content
 
@@ -98,7 +98,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 <!-- route: /foundations/density -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Density
 
@@ -106,7 +106,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 - Status: available
 - Route: /foundations/density
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Content
 
@@ -116,7 +116,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 <!-- route: /foundations/installation -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Installation
 
@@ -124,7 +124,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 - Status: available
 - Route: /foundations/installation
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Content
 
@@ -134,7 +134,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 <!-- route: /foundations/theming -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Theming
 
@@ -142,7 +142,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 - Status: available
 - Route: /foundations/theming
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Content
 
@@ -152,7 +152,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 <!-- route: /foundations/tokens -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/tokens.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Tokens
 
@@ -160,7 +160,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 - Status: available
 - Route: /foundations/tokens
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Content
 
@@ -170,7 +170,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 <!-- route: /foundations/typography -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/typography.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Typography
 
@@ -178,7 +178,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 - Status: available
 - Route: /foundations/typography
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Content
 
@@ -189,7 +189,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 <!-- route: /components/accordion -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/accordion.md -->
 <!-- source: ../kikita-ui/docs/accordion.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Accordion
 
@@ -197,7 +197,7 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 - Status: available
 - Route: /components/accordion
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiAccordionComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/accordion.md
 
@@ -258,7 +258,7 @@ Available at /components/accordion/playground.
 <!-- route: /components/avatar -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/avatar.md -->
 <!-- source: ../kikita-ui/docs/avatar.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Avatar
 
@@ -266,7 +266,7 @@ Available at /components/accordion/playground.
 
 - Status: available
 - Route: /components/avatar
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiAvatarComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/avatar.md
 
@@ -335,7 +335,7 @@ Available at /components/avatar/playground.
 <!-- route: /components/badge -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/badge.md -->
 <!-- source: ../kikita-ui/docs/badge.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Badge
 
@@ -343,7 +343,7 @@ Available at /components/avatar/playground.
 
 - Status: available
 - Route: /components/badge
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiBadgeDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/badge.md
 
@@ -403,7 +403,7 @@ Available at /components/badge/playground.
 <!-- route: /components/breadcrumbs -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md -->
 <!-- source: ../kikita-ui/docs/breadcrumbs.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Breadcrumbs
 
@@ -411,7 +411,7 @@ Available at /components/badge/playground.
 
 - Status: available
 - Route: /components/breadcrumbs
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiBreadcrumbsDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/breadcrumbs.md
 
@@ -512,7 +512,7 @@ Available at /components/breadcrumbs/playground.
 <!-- route: /components/button -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/button.md -->
 <!-- source: ../kikita-ui/docs/button.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Button
 
@@ -520,7 +520,7 @@ Available at /components/breadcrumbs/playground.
 
 - Status: available
 - Route: /components/button
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiButtonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/button.md
 
@@ -597,7 +597,7 @@ Available at /components/button/playground.
 <!-- route: /components/calendar -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md -->
 <!-- source: ../kikita-ui/docs/calendar.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Calendar
 
@@ -605,7 +605,7 @@ Available at /components/button/playground.
 
 - Status: available
 - Route: /components/calendar
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiCalendarComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/calendar.md
 
@@ -773,7 +773,7 @@ Available at /components/calendar/playground.
 <!-- route: /components/card -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/card.md -->
 <!-- source: ../kikita-ui/docs/card.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Card
 
@@ -781,7 +781,7 @@ Available at /components/calendar/playground.
 
 - Status: available
 - Route: /components/card
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiCardDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/card.md
 
@@ -835,7 +835,7 @@ Available at /components/card/playground.
 <!-- route: /components/checkbox -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/checkbox.md -->
 <!-- source: ../kikita-ui/docs/checkbox.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Checkbox
 
@@ -843,7 +843,7 @@ Available at /components/card/playground.
 
 - Status: available
 - Route: /components/checkbox
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiCheckboxDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/checkbox.md
 
@@ -899,7 +899,7 @@ Available at /components/checkbox/playground.
 <!-- route: /components/chip -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/chip.md -->
 <!-- source: ../kikita-ui/docs/chip.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Chip
 
@@ -907,7 +907,7 @@ Available at /components/checkbox/playground.
 
 - Status: available
 - Route: /components/chip
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiChipDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/chip.md
 
@@ -981,7 +981,7 @@ Available at /components/chip/playground.
 <!-- route: /components/color-input -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/color-input.md -->
 <!-- source: ../kikita-ui/docs/color-input.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Color Input
 
@@ -989,7 +989,7 @@ Available at /components/chip/playground.
 
 - Status: available
 - Route: /components/color-input
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiColorInputDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/color-input.md
 
@@ -1061,7 +1061,7 @@ Available at /components/color-input/playground.
 <!-- route: /components/combobox -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/combobox.md -->
 <!-- source: ../kikita-ui/docs/combobox.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Combobox
 
@@ -1069,7 +1069,7 @@ Available at /components/color-input/playground.
 
 - Status: available
 - Route: /components/combobox
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiComboboxDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/combobox.md
 
@@ -1187,7 +1187,7 @@ Available at /components/combobox/playground.
 <!-- route: /components/command-palette -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/command-palette.md -->
 <!-- source: ../kikita-ui/docs/command-palette.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Command Palette
 
@@ -1195,7 +1195,7 @@ Available at /components/combobox/playground.
 
 - Status: available
 - Route: /components/command-palette
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiCommandPaletteComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/command-palette.md
 
@@ -1275,7 +1275,7 @@ Available at /components/command-palette/playground.
 <!-- route: /components/date-picker -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/date-picker.md -->
 <!-- source: ../kikita-ui/docs/date-picker.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Date Picker
 
@@ -1283,7 +1283,7 @@ Available at /components/command-palette/playground.
 
 - Status: available
 - Route: /components/date-picker
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiDatePickerDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/date-picker.md
 
@@ -1374,7 +1374,7 @@ Available at /components/date-picker/playground.
 <!-- route: /components/dialog -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/dialog.md -->
 <!-- source: ../kikita-ui/docs/dialog.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Dialog
 
@@ -1382,7 +1382,7 @@ Available at /components/date-picker/playground.
 
 - Status: available
 - Route: /components/dialog
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: kuiDialog from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/dialog.md
 
@@ -1479,7 +1479,7 @@ Available at /components/dialog/playground.
 <!-- route: /components/drawer -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/drawer.md -->
 <!-- source: ../kikita-ui/docs/drawer.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Drawer
 
@@ -1487,7 +1487,7 @@ Available at /components/dialog/playground.
 
 - Status: available
 - Route: /components/drawer
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: kuiDrawer from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/drawer.md
 
@@ -1605,7 +1605,7 @@ Available at /components/drawer/playground.
 <!-- route: /components/dropdown -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/dropdown.md -->
 <!-- source: ../kikita-ui/docs/dropdown.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Dropdown
 
@@ -1613,7 +1613,7 @@ Available at /components/drawer/playground.
 
 - Status: available
 - Route: /components/dropdown
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiDropdownComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/dropdown.md
 
@@ -1715,7 +1715,7 @@ Available at /components/dropdown/playground.
 <!-- route: /components/empty-state -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/empty-state.md -->
 <!-- source: ../kikita-ui/docs/empty-state.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Empty State
 
@@ -1723,7 +1723,7 @@ Available at /components/dropdown/playground.
 
 - Status: available
 - Route: /components/empty-state
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiEmptyStateComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/empty-state.md
 
@@ -1791,7 +1791,7 @@ Available at /components/empty-state/playground.
 <!-- route: /components/field -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/field.md -->
 <!-- source: ../kikita-ui/docs/field.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Field
 
@@ -1799,7 +1799,7 @@ Available at /components/empty-state/playground.
 
 - Status: available
 - Route: /components/field
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiFieldComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/field.md
 
@@ -1858,7 +1858,7 @@ Available at /components/field/playground.
 <!-- route: /components/file-upload -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/file-upload.md -->
 <!-- source: ../kikita-ui/docs/file-upload.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # File Upload
 
@@ -1866,7 +1866,7 @@ Available at /components/field/playground.
 
 - Status: available
 - Route: /components/file-upload
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiFileUploadComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/file-upload.md
 
@@ -1955,7 +1955,7 @@ Available at /components/file-upload/playground.
 <!-- route: /components/group -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/group.md -->
 <!-- source: ../kikita-ui/docs/group.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Group
 
@@ -1963,7 +1963,7 @@ Available at /components/file-upload/playground.
 
 - Status: available
 - Route: /components/group
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiGroupDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/group.md
 
@@ -2017,7 +2017,7 @@ Available at /components/group/playground.
 <!-- route: /components/icon -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon.md -->
 <!-- source: ../kikita-ui/docs/icon.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Icon
 
@@ -2025,7 +2025,7 @@ Available at /components/group/playground.
 
 - Status: available
 - Route: /components/icon
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiIconComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon.md
 
@@ -2077,7 +2077,7 @@ Available at /components/icon/playground.
 <!-- route: /components/icon-button -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon-button.md -->
 <!-- source: ../kikita-ui/docs/icon-button.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Icon Button
 
@@ -2085,7 +2085,7 @@ Available at /components/icon/playground.
 
 - Status: available
 - Route: /components/icon-button
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiIconButtonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon-button.md
 
@@ -2145,7 +2145,7 @@ Available at /components/icon-button/playground.
 <!-- route: /components/input -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/input.md -->
 <!-- source: ../kikita-ui/docs/input.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Input
 
@@ -2153,7 +2153,7 @@ Available at /components/icon-button/playground.
 
 - Status: available
 - Route: /components/input
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiInputDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/input.md
 
@@ -2201,7 +2201,7 @@ Available at /components/input/playground.
 <!-- route: /components/loader -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md -->
 <!-- source: ../kikita-ui/docs/loader.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Loader
 
@@ -2209,7 +2209,7 @@ Available at /components/input/playground.
 
 - Status: available
 - Route: /components/loader
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiLoaderDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/loader.md
 
@@ -2266,7 +2266,7 @@ Available at /components/loader/playground.
 <!-- route: /components/menu -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md -->
 <!-- source: ../kikita-ui/docs/menu.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Menu
 
@@ -2274,7 +2274,7 @@ Available at /components/loader/playground.
 
 - Status: available
 - Route: /components/menu
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiMenuComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/menu.md
 
@@ -2347,7 +2347,7 @@ Available at /components/menu/playground.
 <!-- route: /components/number-input -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md -->
 <!-- source: ../kikita-ui/docs/number-input.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Number Input
 
@@ -2355,7 +2355,7 @@ Available at /components/menu/playground.
 
 - Status: available
 - Route: /components/number-input
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiNumberInputDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/number-input.md
 
@@ -2432,7 +2432,7 @@ Available at /components/number-input/playground.
 <!-- route: /components/popover -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/popover.md -->
 <!-- source: ../kikita-ui/docs/popover.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Popover
 
@@ -2440,7 +2440,7 @@ Available at /components/number-input/playground.
 
 - Status: available
 - Route: /components/popover
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiPopoverComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/popover.md
 
@@ -2510,7 +2510,7 @@ Available at /components/popover/playground.
 <!-- route: /components/progress -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/progress.md -->
 <!-- source: ../kikita-ui/docs/progress.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Progress
 
@@ -2518,7 +2518,7 @@ Available at /components/popover/playground.
 
 - Status: available
 - Route: /components/progress
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiProgressComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/progress.md
 
@@ -2567,7 +2567,7 @@ Available at /components/progress/playground.
 <!-- route: /components/radio -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/radio.md -->
 <!-- source: ../kikita-ui/docs/radio.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Radio
 
@@ -2575,7 +2575,7 @@ Available at /components/progress/playground.
 
 - Status: available
 - Route: /components/radio
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiRadioDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/radio.md
 
@@ -2636,7 +2636,7 @@ Available at /components/radio/playground.
 <!-- route: /components/scrollbar -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/scrollbar.md -->
 <!-- source: ../kikita-ui/docs/scrollbar.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Scrollbar
 
@@ -2644,7 +2644,7 @@ Available at /components/radio/playground.
 
 - Status: available
 - Route: /components/scrollbar
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: .kui-scroll from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/scrollbar.md
 
@@ -2722,7 +2722,7 @@ No playground for this component.
 <!-- route: /components/segmented -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/segmented.md -->
 <!-- source: ../kikita-ui/docs/segmented.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Segmented
 
@@ -2730,7 +2730,7 @@ No playground for this component.
 
 - Status: available
 - Route: /components/segmented
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiSegmentedComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/segmented.md
 
@@ -2787,7 +2787,7 @@ Available at /components/segmented/playground.
 <!-- route: /components/select -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/select.md -->
 <!-- source: ../kikita-ui/docs/select.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Select
 
@@ -2795,7 +2795,7 @@ Available at /components/segmented/playground.
 
 - Status: available
 - Route: /components/select
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiSelectDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/select.md
 
@@ -2869,7 +2869,7 @@ Available at /components/select/playground.
 <!-- route: /components/separator -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/separator.md -->
 <!-- source: ../kikita-ui/docs/separator.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Separator
 
@@ -2877,7 +2877,7 @@ Available at /components/select/playground.
 
 - Status: available
 - Route: /components/separator
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiSeparatorDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/separator.md
 
@@ -2936,7 +2936,7 @@ Available at /components/separator/playground.
 <!-- route: /components/skeleton -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/skeleton.md -->
 <!-- source: ../kikita-ui/docs/skeleton.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Skeleton
 
@@ -2944,7 +2944,7 @@ Available at /components/separator/playground.
 
 - Status: available
 - Route: /components/skeleton
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiSkeletonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/skeleton.md
 
@@ -2999,7 +2999,7 @@ Available at /components/skeleton/playground.
 <!-- route: /components/slider -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/slider.md -->
 <!-- source: ../kikita-ui/docs/slider.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Slider
 
@@ -3007,7 +3007,7 @@ Available at /components/skeleton/playground.
 
 - Status: available
 - Route: /components/slider
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiSliderDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/slider.md
 
@@ -3081,7 +3081,7 @@ Available at /components/slider/playground.
 <!-- route: /components/stepper -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/stepper.md -->
 <!-- source: ../kikita-ui/docs/stepper.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Stepper
 
@@ -3089,7 +3089,7 @@ Available at /components/slider/playground.
 
 - Status: available
 - Route: /components/stepper
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiStepperComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/stepper.md
 
@@ -3179,7 +3179,7 @@ Available at /components/stepper/playground.
 <!-- route: /components/switch -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/switch.md -->
 <!-- source: ../kikita-ui/docs/switch.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Switch
 
@@ -3187,7 +3187,7 @@ Available at /components/stepper/playground.
 
 - Status: available
 - Route: /components/switch
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiSwitchDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/switch.md
 
@@ -3241,7 +3241,7 @@ Available at /components/switch/playground.
 <!-- route: /components/table -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/table.md -->
 <!-- source: ../kikita-ui/docs/table.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Table
 
@@ -3249,7 +3249,7 @@ Available at /components/switch/playground.
 
 - Status: available
 - Route: /components/table
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiTableDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/table.md
 
@@ -3347,7 +3347,7 @@ Available at /components/table/playground.
 <!-- route: /components/tabs -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tabs.md -->
 <!-- source: ../kikita-ui/docs/tabs.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Tabs
 
@@ -3355,7 +3355,7 @@ Available at /components/table/playground.
 
 - Status: available
 - Route: /components/tabs
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiTabsComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/tabs.md
 
@@ -3444,7 +3444,7 @@ Available at /components/tabs/playground.
 <!-- route: /components/textarea -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/textarea.md -->
 <!-- source: ../kikita-ui/docs/textarea.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Textarea
 
@@ -3452,7 +3452,7 @@ Available at /components/tabs/playground.
 
 - Status: available
 - Route: /components/textarea
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiTextareaDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/textarea.md
 
@@ -3500,7 +3500,7 @@ Available at /components/textarea/playground.
 <!-- route: /components/toast -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/toast.md -->
 <!-- source: ../kikita-ui/docs/toast.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Toast
 
@@ -3508,7 +3508,7 @@ Available at /components/textarea/playground.
 
 - Status: available
 - Route: /components/toast
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiToastService from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/toast.md
 
@@ -3581,7 +3581,7 @@ Available at /components/toast/playground.
 <!-- route: /components/tooltip -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tooltip.md -->
 <!-- source: ../kikita-ui/docs/tooltip.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Tooltip
 
@@ -3589,7 +3589,7 @@ Available at /components/toast/playground.
 
 - Status: available
 - Route: /components/tooltip
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiTooltipDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/tooltip.md
 
@@ -3639,7 +3639,7 @@ Available at /components/tooltip/playground.
 <!-- route: /components/tree -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tree.md -->
 <!-- source: ../kikita-ui/docs/tree.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Tree
 
@@ -3647,7 +3647,7 @@ Available at /components/tooltip/playground.
 
 - Status: available
 - Route: /components/tree
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 - Import: KuiTreeComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/tree.md
 
@@ -3717,7 +3717,7 @@ Available at /components/tree/playground.
 
 <!-- route: /smoke -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md -->
-<!-- package: @kikita-labs/ui@0.4.3 -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
 
 # Package Smoke
 
@@ -3725,7 +3725,7 @@ Available at /components/tree/playground.
 
 - Status: available
 - Route: /smoke
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Content
 

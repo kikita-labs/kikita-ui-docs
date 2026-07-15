@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /foundations/accessibility
-- Package: @kikita-labs/ui@0.4.3
+- Package: @kikita-labs/ui@0.4.4
 
 ## Content
 
