@@ -93,14 +93,15 @@ test('mobile on-this-page navigation updates the fragment and heading focus', as
   await page.setViewportSize({ width: 390, height: 844 });
   await gotoReady(page, '/components/button');
   const toc = page.locator('.docs-shell__mobile-toc');
+  const trigger = toc.locator('.kui-accordion-trigger');
 
-  await toc.locator('summary').focus();
+  await trigger.focus();
   await page.keyboard.press('Enter');
   await toc.getByRole('link', { name: 'Accessibility' }).focus();
   await page.keyboard.press('Enter');
 
   await expect(page).toHaveURL(/#accessibility$/);
-  await expect(toc.locator('details')).not.toHaveAttribute('open', '');
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
   await expect(toc.locator('a[href="#accessibility"]')).toHaveAttribute('aria-current', 'location');
   await expect(page.locator('#accessibility')).toBeFocused();
 });
