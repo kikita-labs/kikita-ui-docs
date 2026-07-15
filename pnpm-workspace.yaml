@@ -5,3 +5,4 @@ allowBuilds:
   msgpackr-extract: true
 minimumReleaseAgeExclude:
   - '@kikita-labs/ui'
+  - '@angular/ssr@22.0.7'

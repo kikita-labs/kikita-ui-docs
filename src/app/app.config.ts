@@ -1,4 +1,5 @@
 import { type ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideClientHydration } from '@angular/platform-browser';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { provideKikitaUi } from '@kikita-labs/ui';
@@ -18,5 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideKikitaUi({
       scrollbars: 'styled',
     }),
+    provideClientHydration(),
   ],
 };
