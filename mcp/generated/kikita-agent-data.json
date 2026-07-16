@@ -219,7 +219,11 @@
         "sourceDocPath": "../kikita-ui/docs/badge.md",
         "publicImportName": "KuiBadgeDirective",
         "category": "feedback",
-        "exampleIds": ["badge-appearance-example", "badge-size-example", "basic-badge-example"],
+        "exampleIds": [
+          "badge-appearance-example",
+          "badge-size-example",
+          "basic-badge-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/badge/badge.api-schema.ts",
         "hasPlayground": true
       },
@@ -240,7 +244,9 @@
         "sourceDocPath": "../kikita-ui/docs/breadcrumbs.md",
         "publicImportName": "KuiBreadcrumbsDirective",
         "category": "surfaces",
-        "exampleIds": ["basic-breadcrumbs-example"],
+        "exampleIds": [
+          "basic-breadcrumbs-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/breadcrumbs/breadcrumbs.api-schema.ts",
         "hasPlayground": true
       },
@@ -261,7 +267,11 @@
         "sourceDocPath": "../kikita-ui/docs/button.md",
         "publicImportName": "KuiButtonDirective",
         "category": "actions",
-        "exampleIds": ["basic-button-example", "button-appearance-example", "button-size-example"],
+        "exampleIds": [
+          "basic-button-example",
+          "button-appearance-example",
+          "button-size-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/button/button.api-schema.ts",
         "hasPlayground": true
       },
@@ -282,7 +292,9 @@
         "sourceDocPath": "../kikita-ui/docs/calendar.md",
         "publicImportName": "KuiCalendarComponent",
         "category": "forms",
-        "exampleIds": ["basic-calendar-example"],
+        "exampleIds": [
+          "basic-calendar-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/calendar/calendar.api-schema.ts",
         "hasPlayground": true
       },
@@ -329,7 +341,10 @@
         "sourceDocPath": "../kikita-ui/docs/checkbox.md",
         "publicImportName": "KuiCheckboxDirective",
         "category": "forms",
-        "exampleIds": ["basic-checkbox-example", "checkbox-size-example"],
+        "exampleIds": [
+          "basic-checkbox-example",
+          "checkbox-size-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/checkbox/checkbox.api-schema.ts",
         "hasPlayground": true
       },
@@ -376,7 +391,9 @@
         "sourceDocPath": "../kikita-ui/docs/color-input.md",
         "publicImportName": "KuiColorInputDirective",
         "category": "forms",
-        "exampleIds": ["basic-color-input-example"],
+        "exampleIds": [
+          "basic-color-input-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/color-input/color-input.api-schema.ts",
         "hasPlayground": true
       },
@@ -423,7 +440,9 @@
         "sourceDocPath": "../kikita-ui/docs/command-palette.md",
         "publicImportName": "KuiCommandPaletteComponent",
         "category": "actions",
-        "exampleIds": ["basic-command-palette-example"],
+        "exampleIds": [
+          "basic-command-palette-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/command-palette/command-palette.api-schema.ts",
         "hasPlayground": true
       },
@@ -444,7 +463,9 @@
         "sourceDocPath": "../kikita-ui/docs/date-picker.md",
         "publicImportName": "KuiDatePickerDirective",
         "category": "forms",
-        "exampleIds": ["basic-date-picker-example"],
+        "exampleIds": [
+          "basic-date-picker-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/date-picker/date-picker.api-schema.ts",
         "hasPlayground": true
       },
@@ -465,7 +486,11 @@
         "sourceDocPath": "../kikita-ui/docs/dialog.md",
         "publicImportName": "kuiDialog",
         "category": "surfaces",
-        "exampleIds": ["basic-dialog-example", "dialog-confirm-example", "dialog-sizes-example"],
+        "exampleIds": [
+          "basic-dialog-example",
+          "dialog-confirm-example",
+          "dialog-sizes-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/dialog/dialog.api-schema.ts",
         "hasPlayground": true
       },
@@ -486,7 +511,11 @@
         "sourceDocPath": "../kikita-ui/docs/drawer.md",
         "publicImportName": "kuiDrawer",
         "category": "surfaces",
-        "exampleIds": ["basic-drawer-example", "drawer-sides-example", "drawer-sizes-example"],
+        "exampleIds": [
+          "basic-drawer-example",
+          "drawer-sides-example",
+          "drawer-sizes-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/drawer/drawer.api-schema.ts",
         "hasPlayground": true
       },
@@ -557,7 +586,9 @@
         "sourceDocPath": "../kikita-ui/docs/field.md",
         "publicImportName": "KuiFieldComponent",
         "category": "forms",
-        "exampleIds": ["basic-field-example"],
+        "exampleIds": [
+          "basic-field-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/field/field.api-schema.ts",
         "hasPlayground": true
       },
@@ -578,7 +609,9 @@
         "sourceDocPath": "../kikita-ui/docs/file-upload.md",
         "publicImportName": "KuiFileUploadComponent",
         "category": "forms",
-        "exampleIds": ["basic-file-upload-example"],
+        "exampleIds": [
+          "basic-file-upload-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/file-upload/file-upload.api-schema.ts",
         "hasPlayground": true
       },
@@ -625,7 +658,9 @@
         "sourceDocPath": "../kikita-ui/docs/icon.md",
         "publicImportName": "KuiIconComponent",
         "category": "data-identity",
-        "exampleIds": ["basic-icon-example"],
+        "exampleIds": [
+          "basic-icon-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/icon/icon.api-schema.ts",
         "hasPlayground": true
       },
@@ -646,7 +681,10 @@
         "sourceDocPath": "../kikita-ui/docs/icon-button.md",
         "publicImportName": "KuiIconButtonDirective",
         "category": "actions",
-        "exampleIds": ["icon-button-appearance-example", "icon-button-size-example"],
+        "exampleIds": [
+          "icon-button-appearance-example",
+          "icon-button-size-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/icon-button/icon-button.api-schema.ts",
         "hasPlayground": true
       },
@@ -667,7 +705,10 @@
         "sourceDocPath": "../kikita-ui/docs/input.md",
         "publicImportName": "KuiInputDirective",
         "category": "forms",
-        "exampleIds": ["basic-input-example", "input-group-example"],
+        "exampleIds": [
+          "basic-input-example",
+          "input-group-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/input/input.api-schema.ts",
         "hasPlayground": true
       },
@@ -688,7 +729,11 @@
         "sourceDocPath": "../kikita-ui/docs/loader.md",
         "publicImportName": "KuiLoaderDirective",
         "category": "feedback",
-        "exampleIds": ["basic-loader-example", "loader-button-example", "loader-size-example"],
+        "exampleIds": [
+          "basic-loader-example",
+          "loader-button-example",
+          "loader-size-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/loader/loader.api-schema.ts",
         "hasPlayground": true
       },
@@ -709,7 +754,10 @@
         "sourceDocPath": "../kikita-ui/docs/menu.md",
         "publicImportName": "KuiMenuComponent",
         "category": "actions",
-        "exampleIds": ["basic-menu-example", "menu-content-example"],
+        "exampleIds": [
+          "basic-menu-example",
+          "menu-content-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/menu/menu.api-schema.ts",
         "hasPlayground": true
       },
@@ -756,7 +804,11 @@
         "sourceDocPath": "../kikita-ui/docs/popover.md",
         "publicImportName": "KuiPopoverComponent",
         "category": "surfaces",
-        "exampleIds": ["action-popover-example", "basic-popover-example", "hover-popover-example"],
+        "exampleIds": [
+          "action-popover-example",
+          "basic-popover-example",
+          "hover-popover-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/popover/popover.api-schema.ts",
         "hasPlayground": true
       },
@@ -828,7 +880,9 @@
         "sourceDocPath": "../kikita-ui/docs/scrollbar.md",
         "publicImportName": ".kui-scroll",
         "category": "data-identity",
-        "exampleIds": ["local-scroll-container-example"],
+        "exampleIds": [
+          "local-scroll-container-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/scrollbar/scrollbar.api-schema.ts",
         "hasPlayground": false
       },
@@ -849,7 +903,9 @@
         "sourceDocPath": "../kikita-ui/docs/segmented.md",
         "publicImportName": "KuiSegmentedComponent",
         "category": "forms",
-        "exampleIds": ["basic-segmented-example"],
+        "exampleIds": [
+          "basic-segmented-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/segmented/segmented.api-schema.ts",
         "hasPlayground": true
       },
@@ -870,7 +926,10 @@
         "sourceDocPath": "../kikita-ui/docs/select.md",
         "publicImportName": "KuiSelectDirective",
         "category": "forms",
-        "exampleIds": ["basic-select-example", "multiple-select-example"],
+        "exampleIds": [
+          "basic-select-example",
+          "multiple-select-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/select/select.api-schema.ts",
         "hasPlayground": true
       },
@@ -968,7 +1027,9 @@
         "sourceDocPath": "../kikita-ui/docs/stepper.md",
         "publicImportName": "KuiStepperComponent",
         "category": "surfaces",
-        "exampleIds": ["basic-stepper-example"],
+        "exampleIds": [
+          "basic-stepper-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/stepper/stepper.api-schema.ts",
         "hasPlayground": true
       },
@@ -989,7 +1050,10 @@
         "sourceDocPath": "../kikita-ui/docs/switch.md",
         "publicImportName": "KuiSwitchDirective",
         "category": "forms",
-        "exampleIds": ["basic-switch-example", "switch-size-example"],
+        "exampleIds": [
+          "basic-switch-example",
+          "switch-size-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/switch/switch.api-schema.ts",
         "hasPlayground": true
       },
@@ -1087,7 +1151,11 @@
         "sourceDocPath": "../kikita-ui/docs/toast.md",
         "publicImportName": "KuiToastService",
         "category": "feedback",
-        "exampleIds": ["basic-toast-example", "toast-action-example", "toast-position-example"],
+        "exampleIds": [
+          "basic-toast-example",
+          "toast-action-example",
+          "toast-position-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/toast/toast.api-schema.ts",
         "hasPlayground": true
       },
@@ -1108,7 +1176,9 @@
         "sourceDocPath": "../kikita-ui/docs/tooltip.md",
         "publicImportName": "KuiTooltipDirective",
         "category": "feedback",
-        "exampleIds": ["basic-tooltip-example"],
+        "exampleIds": [
+          "basic-tooltip-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/tooltip/tooltip.api-schema.ts",
         "hasPlayground": true
       },
@@ -1129,7 +1199,9 @@
         "sourceDocPath": "../kikita-ui/docs/tree.md",
         "publicImportName": "KuiTreeComponent",
         "category": "data-identity",
-        "exampleIds": ["basic-tree-example"],
+        "exampleIds": [
+          "basic-tree-example"
+        ],
         "apiSchemaPath": "src/app/pages/components/tree/tree.api-schema.ts",
         "hasPlayground": true
       },
@@ -1171,7 +1243,9 @@
         "sourceDocPath": null,
         "publicImportName": null,
         "category": null,
-        "exampleIds": ["package-smoke-consumer"],
+        "exampleIds": [
+          "package-smoke-consumer"
+        ],
         "apiSchemaPath": null,
         "hasPlayground": false
       },
@@ -1366,7 +1440,11 @@
       "sourceDocPath": "../kikita-ui/docs/badge.md",
       "publicImportName": "KuiBadgeDirective",
       "category": "feedback",
-      "exampleIds": ["badge-appearance-example", "badge-size-example", "basic-badge-example"],
+      "exampleIds": [
+        "badge-appearance-example",
+        "badge-size-example",
+        "basic-badge-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/badge/badge.api-schema.ts",
       "hasPlayground": true
     },
@@ -1384,7 +1462,9 @@
       "sourceDocPath": "../kikita-ui/docs/breadcrumbs.md",
       "publicImportName": "KuiBreadcrumbsDirective",
       "category": "surfaces",
-      "exampleIds": ["basic-breadcrumbs-example"],
+      "exampleIds": [
+        "basic-breadcrumbs-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/breadcrumbs/breadcrumbs.api-schema.ts",
       "hasPlayground": true
     },
@@ -1402,7 +1482,11 @@
       "sourceDocPath": "../kikita-ui/docs/button.md",
       "publicImportName": "KuiButtonDirective",
       "category": "actions",
-      "exampleIds": ["basic-button-example", "button-appearance-example", "button-size-example"],
+      "exampleIds": [
+        "basic-button-example",
+        "button-appearance-example",
+        "button-size-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/button/button.api-schema.ts",
       "hasPlayground": true
     },
@@ -1420,7 +1504,9 @@
       "sourceDocPath": "../kikita-ui/docs/calendar.md",
       "publicImportName": "KuiCalendarComponent",
       "category": "forms",
-      "exampleIds": ["basic-calendar-example"],
+      "exampleIds": [
+        "basic-calendar-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/calendar/calendar.api-schema.ts",
       "hasPlayground": true
     },
@@ -1461,7 +1547,10 @@
       "sourceDocPath": "../kikita-ui/docs/checkbox.md",
       "publicImportName": "KuiCheckboxDirective",
       "category": "forms",
-      "exampleIds": ["basic-checkbox-example", "checkbox-size-example"],
+      "exampleIds": [
+        "basic-checkbox-example",
+        "checkbox-size-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/checkbox/checkbox.api-schema.ts",
       "hasPlayground": true
     },
@@ -1502,7 +1591,9 @@
       "sourceDocPath": "../kikita-ui/docs/color-input.md",
       "publicImportName": "KuiColorInputDirective",
       "category": "forms",
-      "exampleIds": ["basic-color-input-example"],
+      "exampleIds": [
+        "basic-color-input-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/color-input/color-input.api-schema.ts",
       "hasPlayground": true
     },
@@ -1543,7 +1634,9 @@
       "sourceDocPath": "../kikita-ui/docs/command-palette.md",
       "publicImportName": "KuiCommandPaletteComponent",
       "category": "actions",
-      "exampleIds": ["basic-command-palette-example"],
+      "exampleIds": [
+        "basic-command-palette-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/command-palette/command-palette.api-schema.ts",
       "hasPlayground": true
     },
@@ -1561,7 +1654,9 @@
       "sourceDocPath": "../kikita-ui/docs/date-picker.md",
       "publicImportName": "KuiDatePickerDirective",
       "category": "forms",
-      "exampleIds": ["basic-date-picker-example"],
+      "exampleIds": [
+        "basic-date-picker-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/date-picker/date-picker.api-schema.ts",
       "hasPlayground": true
     },
@@ -1579,7 +1674,11 @@
       "sourceDocPath": "../kikita-ui/docs/dialog.md",
       "publicImportName": "kuiDialog",
       "category": "surfaces",
-      "exampleIds": ["basic-dialog-example", "dialog-confirm-example", "dialog-sizes-example"],
+      "exampleIds": [
+        "basic-dialog-example",
+        "dialog-confirm-example",
+        "dialog-sizes-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/dialog/dialog.api-schema.ts",
       "hasPlayground": true
     },
@@ -1597,7 +1696,11 @@
       "sourceDocPath": "../kikita-ui/docs/drawer.md",
       "publicImportName": "kuiDrawer",
       "category": "surfaces",
-      "exampleIds": ["basic-drawer-example", "drawer-sides-example", "drawer-sizes-example"],
+      "exampleIds": [
+        "basic-drawer-example",
+        "drawer-sides-example",
+        "drawer-sizes-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/drawer/drawer.api-schema.ts",
       "hasPlayground": true
     },
@@ -1659,7 +1762,9 @@
       "sourceDocPath": "../kikita-ui/docs/field.md",
       "publicImportName": "KuiFieldComponent",
       "category": "forms",
-      "exampleIds": ["basic-field-example"],
+      "exampleIds": [
+        "basic-field-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/field/field.api-schema.ts",
       "hasPlayground": true
     },
@@ -1677,7 +1782,9 @@
       "sourceDocPath": "../kikita-ui/docs/file-upload.md",
       "publicImportName": "KuiFileUploadComponent",
       "category": "forms",
-      "exampleIds": ["basic-file-upload-example"],
+      "exampleIds": [
+        "basic-file-upload-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/file-upload/file-upload.api-schema.ts",
       "hasPlayground": true
     },
@@ -1718,7 +1825,9 @@
       "sourceDocPath": "../kikita-ui/docs/icon.md",
       "publicImportName": "KuiIconComponent",
       "category": "data-identity",
-      "exampleIds": ["basic-icon-example"],
+      "exampleIds": [
+        "basic-icon-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/icon/icon.api-schema.ts",
       "hasPlayground": true
     },
@@ -1736,7 +1845,10 @@
       "sourceDocPath": "../kikita-ui/docs/icon-button.md",
       "publicImportName": "KuiIconButtonDirective",
       "category": "actions",
-      "exampleIds": ["icon-button-appearance-example", "icon-button-size-example"],
+      "exampleIds": [
+        "icon-button-appearance-example",
+        "icon-button-size-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/icon-button/icon-button.api-schema.ts",
       "hasPlayground": true
     },
@@ -1754,7 +1866,10 @@
       "sourceDocPath": "../kikita-ui/docs/input.md",
       "publicImportName": "KuiInputDirective",
       "category": "forms",
-      "exampleIds": ["basic-input-example", "input-group-example"],
+      "exampleIds": [
+        "basic-input-example",
+        "input-group-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/input/input.api-schema.ts",
       "hasPlayground": true
     },
@@ -1772,7 +1887,11 @@
       "sourceDocPath": "../kikita-ui/docs/loader.md",
       "publicImportName": "KuiLoaderDirective",
       "category": "feedback",
-      "exampleIds": ["basic-loader-example", "loader-button-example", "loader-size-example"],
+      "exampleIds": [
+        "basic-loader-example",
+        "loader-button-example",
+        "loader-size-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/loader/loader.api-schema.ts",
       "hasPlayground": true
     },
@@ -1790,7 +1909,10 @@
       "sourceDocPath": "../kikita-ui/docs/menu.md",
       "publicImportName": "KuiMenuComponent",
       "category": "actions",
-      "exampleIds": ["basic-menu-example", "menu-content-example"],
+      "exampleIds": [
+        "basic-menu-example",
+        "menu-content-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/menu/menu.api-schema.ts",
       "hasPlayground": true
     },
@@ -1831,7 +1953,11 @@
       "sourceDocPath": "../kikita-ui/docs/popover.md",
       "publicImportName": "KuiPopoverComponent",
       "category": "surfaces",
-      "exampleIds": ["action-popover-example", "basic-popover-example", "hover-popover-example"],
+      "exampleIds": [
+        "action-popover-example",
+        "basic-popover-example",
+        "hover-popover-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/popover/popover.api-schema.ts",
       "hasPlayground": true
     },
@@ -1894,7 +2020,9 @@
       "sourceDocPath": "../kikita-ui/docs/scrollbar.md",
       "publicImportName": ".kui-scroll",
       "category": "data-identity",
-      "exampleIds": ["local-scroll-container-example"],
+      "exampleIds": [
+        "local-scroll-container-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/scrollbar/scrollbar.api-schema.ts",
       "hasPlayground": false
     },
@@ -1912,7 +2040,9 @@
       "sourceDocPath": "../kikita-ui/docs/segmented.md",
       "publicImportName": "KuiSegmentedComponent",
       "category": "forms",
-      "exampleIds": ["basic-segmented-example"],
+      "exampleIds": [
+        "basic-segmented-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/segmented/segmented.api-schema.ts",
       "hasPlayground": true
     },
@@ -1930,7 +2060,10 @@
       "sourceDocPath": "../kikita-ui/docs/select.md",
       "publicImportName": "KuiSelectDirective",
       "category": "forms",
-      "exampleIds": ["basic-select-example", "multiple-select-example"],
+      "exampleIds": [
+        "basic-select-example",
+        "multiple-select-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/select/select.api-schema.ts",
       "hasPlayground": true
     },
@@ -2016,7 +2149,9 @@
       "sourceDocPath": "../kikita-ui/docs/stepper.md",
       "publicImportName": "KuiStepperComponent",
       "category": "surfaces",
-      "exampleIds": ["basic-stepper-example"],
+      "exampleIds": [
+        "basic-stepper-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/stepper/stepper.api-schema.ts",
       "hasPlayground": true
     },
@@ -2034,7 +2169,10 @@
       "sourceDocPath": "../kikita-ui/docs/switch.md",
       "publicImportName": "KuiSwitchDirective",
       "category": "forms",
-      "exampleIds": ["basic-switch-example", "switch-size-example"],
+      "exampleIds": [
+        "basic-switch-example",
+        "switch-size-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/switch/switch.api-schema.ts",
       "hasPlayground": true
     },
@@ -2098,7 +2236,11 @@
       "sourceDocPath": "../kikita-ui/docs/textarea.md",
       "publicImportName": "KuiTextareaDirective",
       "category": "forms",
-      "exampleIds": ["basic-textarea-example", "textarea-invalid-example", "textarea-size-example"],
+      "exampleIds": [
+        "basic-textarea-example",
+        "textarea-invalid-example",
+        "textarea-size-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/textarea/textarea.api-schema.ts",
       "hasPlayground": true
     },
@@ -2116,7 +2258,11 @@
       "sourceDocPath": "../kikita-ui/docs/toast.md",
       "publicImportName": "KuiToastService",
       "category": "feedback",
-      "exampleIds": ["basic-toast-example", "toast-action-example", "toast-position-example"],
+      "exampleIds": [
+        "basic-toast-example",
+        "toast-action-example",
+        "toast-position-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/toast/toast.api-schema.ts",
       "hasPlayground": true
     },
@@ -2134,7 +2280,9 @@
       "sourceDocPath": "../kikita-ui/docs/tooltip.md",
       "publicImportName": "KuiTooltipDirective",
       "category": "feedback",
-      "exampleIds": ["basic-tooltip-example"],
+      "exampleIds": [
+        "basic-tooltip-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/tooltip/tooltip.api-schema.ts",
       "hasPlayground": true
     },
@@ -2152,7 +2300,9 @@
       "sourceDocPath": "../kikita-ui/docs/tree.md",
       "publicImportName": "KuiTreeComponent",
       "category": "data-identity",
-      "exampleIds": ["basic-tree-example"],
+      "exampleIds": [
+        "basic-tree-example"
+      ],
       "apiSchemaPath": "src/app/pages/components/tree/tree.api-schema.ts",
       "hasPlayground": true
     },
@@ -2188,7 +2338,9 @@
       "sourceDocPath": null,
       "publicImportName": null,
       "category": null,
-      "exampleIds": ["package-smoke-consumer"],
+      "exampleIds": [
+        "package-smoke-consumer"
+      ],
       "apiSchemaPath": null,
       "hasPlayground": false
     }

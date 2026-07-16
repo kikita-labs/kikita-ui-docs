@@ -31,9 +31,7 @@ async function generateOrCheck(allEntries) {
 
   for (const entry of allEntries) {
     const context =
-      entry.kind === 'home'
-        ? { allEntries }
-        : await buildEntryContext(entry, workspace);
+      entry.kind === 'home' ? { allEntries } : await buildEntryContext(entry, workspace);
     const content = renderAgentMarkdown(entry, context);
 
     outputs.set(resolve(workspace, entry.markdownPath), content);

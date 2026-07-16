@@ -6,3 +6,4 @@
 /pnpm-lock.yaml
 /src/app/generated/example-sources/*.generated.ts
 /public/llms
+/mcp/generated
