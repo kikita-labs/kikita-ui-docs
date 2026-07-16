@@ -18,6 +18,7 @@ ng add @kikita-labs/ui
 ## Usage
 
 ```html
+
 <kui-avatar src="/users/nikita.png" name="Nikita Repin" status="online" />
 <kui-avatar name="Anya Murashova" />
 <kui-avatar />
@@ -35,6 +36,7 @@ Rendered at /components/avatar:
 #### avatar-button-example.html
 
 ```html
+
 <div class="avatar-button-example">
   <button class="kui-avatar-action" type="button" aria-label="Open Nikita Repin profile">
     <kui-avatar src="https://i.pravatar.cc/64?img=12" name="Nikita Repin" />
@@ -55,7 +57,8 @@ import { KuiAvatarComponent } from '@kikita-labs/ui';
   templateUrl: './avatar-button-example.html',
   styleUrl: './avatar-button-example.scss',
 })
-export class AvatarButtonExample {}
+export class AvatarButtonExample {
+}
 ```
 
 #### avatar-button-example.scss
@@ -73,6 +76,7 @@ export class AvatarButtonExample {}
 #### avatar-group-example.html
 
 ```html
+
 <div class="avatar-group-example">
   <kui-avatar-group [avatars]="members" [max]="4" size="sm" label="Project participants" />
 </div>
@@ -119,6 +123,7 @@ export class AvatarGroupExample {
 #### avatar-sizes-shapes-example.html
 
 ```html
+
 <div class="avatar-sizes-shapes-example">
   <div class="avatar-sizes-shapes-example__row">
     <kui-avatar name="Nikita Repin" size="xs" />
@@ -148,7 +153,8 @@ import { KuiAvatarComponent } from '@kikita-labs/ui';
   templateUrl: './avatar-sizes-shapes-example.html',
   styleUrl: './avatar-sizes-shapes-example.scss',
 })
-export class AvatarSizesShapesExample {}
+export class AvatarSizesShapesExample {
+}
 ```
 
 #### avatar-sizes-shapes-example.scss
@@ -175,6 +181,7 @@ export class AvatarSizesShapesExample {}
 #### avatar-status-example.html
 
 ```html
+
 <div class="avatar-status-example">
   <kui-avatar name="Nikita Repin" status="online" />
   <kui-avatar name="Anya Murashova" status="away" />
@@ -196,7 +203,8 @@ import { KuiAvatarComponent } from '@kikita-labs/ui';
   templateUrl: './avatar-status-example.html',
   styleUrl: './avatar-status-example.scss',
 })
-export class AvatarStatusExample {}
+export class AvatarStatusExample {
+}
 ```
 
 #### avatar-status-example.scss
@@ -216,6 +224,7 @@ export class AvatarStatusExample {}
 #### basic-avatar-example.html
 
 ```html
+
 <div class="basic-avatar-example">
   <kui-avatar src="https://i.pravatar.cc/64?img=12" name="Nikita Repin" status="online" />
   <kui-avatar name="Anya Murashova" />
@@ -236,7 +245,8 @@ import { KuiAvatarComponent } from '@kikita-labs/ui';
   templateUrl: './basic-avatar-example.html',
   styleUrl: './basic-avatar-example.scss',
 })
-export class BasicAvatarExample {}
+export class BasicAvatarExample {
+}
 ```
 
 #### basic-avatar-example.scss
@@ -253,23 +263,23 @@ export class BasicAvatarExample {}
 
 ## API
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| src | string \| undefined | undefined | Image URL. Falls back to initials, then the icon fallback, on load error. |
-| name | string \| undefined | undefined | Used to derive initials, the palette hash, and the accessible label. |
-| initials | string \| undefined | auto | Explicit one or two character initials, overriding the value derived from name. |
-| alt | string \| undefined | name | Image alt text and accessible label override. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' | 'md' | Fixed avatar size. |
-| shape | 'circle' \| 'square' | 'circle' | circle is intended for people; square is intended for entities such as bots, teams, or projects. |
-| status | 'online' \| 'away' \| 'busy' \| 'offline' \| undefined | undefined | Optional presence indicator. Appended to the accessible label; the dot itself is decorative. |
-| paletteIndex | number \| undefined | auto | Palette slot from 1 to 7 used for the fallback background and text color. Clamped when explicit. |
-| loading | boolean | false | Renders the avatar using the internal [kuiSkeleton] loading treatment and hides avatar content. |
-| kui-avatar-group avatars | readonly KuiAvatarItem[] | [] | Items rendered by the group. Each item accepts the same fields as kui-avatar. |
-| kui-avatar-group max | number | 4 | Maximum visible avatars before the group collapses the rest into a +N overflow avatar. |
-| kui-avatar-group size | KuiAvatarSize | 'md' | Size applied to every avatar in the group, including the overflow avatar. |
-| kui-avatar-group shape | KuiAvatarShape | 'circle' | Shape applied to every avatar in the group, including the overflow avatar. |
-| kui-avatar-group label | string | 'Avatar group' | Accessible label for the group container. |
-| .kui-avatar-action | CSS class | - | Applied to an external native button wrapping a kui-avatar to make it interactive. kui-avatar itself must not be made clickable. |
+| Name                     | Type                                                   | Default        | Description                                                                                                                      |
+|--------------------------|--------------------------------------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------|
+| src                      | string \| undefined                                    | undefined      | Image URL. Falls back to initials, then the icon fallback, on load error.                                                        |
+| name                     | string \| undefined                                    | undefined      | Used to derive initials, the palette hash, and the accessible label.                                                             |
+| initials                 | string \| undefined                                    | auto           | Explicit one or two character initials, overriding the value derived from name.                                                  |
+| alt                      | string \| undefined                                    | name           | Image alt text and accessible label override.                                                                                    |
+| size                     | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'          | 'md'           | Fixed avatar size.                                                                                                               |
+| shape                    | 'circle' \| 'square'                                   | 'circle'       | circle is intended for people; square is intended for entities such as bots, teams, or projects.                                 |
+| status                   | 'online' \| 'away' \| 'busy' \| 'offline' \| undefined | undefined      | Optional presence indicator. Appended to the accessible label; the dot itself is decorative.                                     |
+| paletteIndex             | number \| undefined                                    | auto           | Palette slot from 1 to 7 used for the fallback background and text color. Clamped when explicit.                                 |
+| loading                  | boolean                                                | false          | Renders the avatar using the internal [kuiSkeleton] loading treatment and hides avatar content.                                  |
+| kui-avatar-group avatars | readonly KuiAvatarItem[]                               | []             | Items rendered by the group. Each item accepts the same fields as kui-avatar.                                                    |
+| kui-avatar-group max     | number                                                 | 4              | Maximum visible avatars before the group collapses the rest into a +N overflow avatar.                                           |
+| kui-avatar-group size    | KuiAvatarSize                                          | 'md'           | Size applied to every avatar in the group, including the overflow avatar.                                                        |
+| kui-avatar-group shape   | KuiAvatarShape                                         | 'circle'       | Shape applied to every avatar in the group, including the overflow avatar.                                                       |
+| kui-avatar-group label   | string                                                 | 'Avatar group' | Accessible label for the group container.                                                                                        |
+| .kui-avatar-action       | CSS class                                              | -              | Applied to an external native button wrapping a kui-avatar to make it interactive. kui-avatar itself must not be made clickable. |
 
 ## Accessibility
 

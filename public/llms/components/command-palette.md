@@ -162,16 +162,16 @@ export class BasicCommandPaletteExample {
 
 ## API
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| open | ModelSignal<boolean> | - | Two-way model controlling overlay visibility. |
-| groups | readonly KuiCommandGroup[] | - | Command groups rendered in the list. |
-| loading | boolean | - | Renders skeleton rows and sets aria-busy. |
-| placeholder | string | - | Search input placeholder. |
-| label | string | - | Accessible label for the modal dialog and search input. |
-| emptyText | string | - | Empty-state title when no command matches. |
-| query | ModelSignal<string> | - | Two-way model for the current search value. |
-| selected | OutputEmitterRef<KuiCommandItem> | - | Emits the selected command item. |
+| Name        | Type                             | Default | Description                                             |
+|-------------|----------------------------------|---------|---------------------------------------------------------|
+| open        | ModelSignal<boolean>             | -       | Two-way model controlling overlay visibility.           |
+| groups      | readonly KuiCommandGroup[]       | -       | Command groups rendered in the list.                    |
+| loading     | boolean                          | -       | Renders skeleton rows and sets aria-busy.               |
+| placeholder | string                           | -       | Search input placeholder.                               |
+| label       | string                           | -       | Accessible label for the modal dialog and search input. |
+| emptyText   | string                           | -       | Empty-state title when no command matches.              |
+| query       | ModelSignal<string>              | -       | Two-way model for the current search value.             |
+| selected    | OutputEmitterRef<KuiCommandItem> | -       | Emits the selected command item.                        |
 
 ## Accessibility
 

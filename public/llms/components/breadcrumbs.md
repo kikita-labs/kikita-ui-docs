@@ -122,13 +122,13 @@ export class BasicBreadcrumbsExample {}
 
 ## API
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| ol[kuiBreadcrumbs].size | 'sm' \| 'md' \| 'lg' | 'md' | Font size, separator scale, and spacing for the full trail. |
-| a[kuiBreadcrumbItem] | directive | - | Native link crumb for navigable hierarchy levels. |
-| span[kuiBreadcrumbItem] | directive | - | Plain-text crumb for grouping labels or the current page. |
-| span[kuiBreadcrumbItem].current | boolean | false | Marks the final crumb as the current page and sets aria-current. |
-| li[kuiBreadcrumbSeparator] | component | - | Decorative separator list item hidden from assistive technology. |
+| Name                            | Type                 | Default | Description                                                      |
+|---------------------------------|----------------------|---------|------------------------------------------------------------------|
+| ol[kuiBreadcrumbs].size         | 'sm' \| 'md' \| 'lg' | 'md'    | Font size, separator scale, and spacing for the full trail.      |
+| a[kuiBreadcrumbItem]            | directive            | -       | Native link crumb for navigable hierarchy levels.                |
+| span[kuiBreadcrumbItem]         | directive            | -       | Plain-text crumb for grouping labels or the current page.        |
+| span[kuiBreadcrumbItem].current | boolean              | false   | Marks the final crumb as the current page and sets aria-current. |
+| li[kuiBreadcrumbSeparator]      | component            | -       | Decorative separator list item hidden from assistive technology. |
 
 ## Accessibility
 

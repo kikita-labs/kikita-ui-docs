@@ -177,14 +177,14 @@ export class ButtonSizeExample {}
 
 ## API
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| shape | 'solid' \| 'soft' \| 'outline' \| 'ghost' | 'solid' | Surface treatment. Defaults to solid. Combines freely with appearance. |
-| appearance | 'primary' \| 'danger' \| 'success' \| 'warning' \| null | null | Semantic color intent. Without an explicit value, solid/soft use primary colors and outline/ghost use neutral defaults. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height and spacing size. |
-| wrap | boolean | false | Allows long button text to wrap instead of truncating in narrow containers. |
-| disabled | boolean | false | Disables native button behavior. Anchor buttons receive aria-disabled and leave tab order. |
-| loading | boolean | false | Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled. |
+| Name       | Type                                                    | Default | Description                                                                                                             |
+|------------|---------------------------------------------------------|---------|-------------------------------------------------------------------------------------------------------------------------|
+| shape      | 'solid' \| 'soft' \| 'outline' \| 'ghost'               | 'solid' | Surface treatment. Defaults to solid. Combines freely with appearance.                                                  |
+| appearance | 'primary' \| 'danger' \| 'success' \| 'warning' \| null | null    | Semantic color intent. Without an explicit value, solid/soft use primary colors and outline/ghost use neutral defaults. |
+| size       | 'xs' \| 'sm' \| 'md' \| 'lg'                            | 'md'    | Control height and spacing size.                                                                                        |
+| wrap       | boolean                                                 | false   | Allows long button text to wrap instead of truncating in narrow containers.                                             |
+| disabled   | boolean                                                 | false   | Disables native button behavior. Anchor buttons receive aria-disabled and leave tab order.                              |
+| loading    | boolean                                                 | false   | Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled. |
 
 ## Accessibility
 

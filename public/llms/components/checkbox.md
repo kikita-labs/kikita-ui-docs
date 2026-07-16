@@ -152,14 +152,14 @@ export class CheckboxSizeExample {}
 
 ## API
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Checkbox size mapped to Kikita checkbox tokens. |
-| invalid | boolean | false | Marks the checkbox invalid outside a field error state. |
-| id | string \| undefined | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
-| checked | boolean | false | Native checked state. Not a directive input; bind it directly on the input element. |
-| disabled | boolean | false | Native disabled state. Not a directive input; bind it directly on the input element. |
-| indeterminate | boolean | false | Native DOM property, not an HTML attribute or directive input. Set it imperatively on the element to show the dash-mark state; .kui-checkbox styles :indeterminate. |
+| Name          | Type                         | Default | Description                                                                                                                                                         |
+|---------------|------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| size          | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md'    | Checkbox size mapped to Kikita checkbox tokens.                                                                                                                     |
+| invalid       | boolean                      | false   | Marks the checkbox invalid outside a field error state.                                                                                                             |
+| id            | string \| undefined          | -       | Explicit id override. Inside kui-field, the field id is used when omitted.                                                                                          |
+| checked       | boolean                      | false   | Native checked state. Not a directive input; bind it directly on the input element.                                                                                 |
+| disabled      | boolean                      | false   | Native disabled state. Not a directive input; bind it directly on the input element.                                                                                |
+| indeterminate | boolean                      | false   | Native DOM property, not an HTML attribute or directive input. Set it imperatively on the element to show the dash-mark state; .kui-checkbox styles :indeterminate. |
 
 ## Accessibility
 

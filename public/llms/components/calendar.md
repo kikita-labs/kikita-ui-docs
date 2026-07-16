@@ -174,22 +174,22 @@ export class BasicCalendarExample {
 
 ## API
 
-| Name | Type | Default | Description |
-| --- | --- | --- | --- |
-| mode | 'single' \| 'range' | 'single' | Selection mode. Range mode stores a start date and a nullable end date. |
-| [(value)] | Date \| KuiDateRange \| null | null | Selected date in single mode or selected range in range mode. |
-| [(viewDate)] | Date | current month | First-of-month date that controls the visible month. |
-| size | 'md' \| 'sm' | 'md' | Calendar density. Use sm when embedding in tighter sidebars or panels. |
-| flat | boolean | false | Removes the calendar frame for dropdown or popover panel composition. |
-| showWeekend | boolean | true | Mutes Saturday and Sunday labels when enabled. |
-| showFooter | boolean | false | Shows the built-in value summary and Today shortcut. |
-| minDate / maxDate | Date \| undefined | undefined | Inclusive lower and upper bounds for selectable days. |
-| disabledDates | Date[] \| ((date: Date) => boolean) \| undefined | undefined | Individual disabled dates or a predicate evaluated for each rendered date. |
-| locale | string \| undefined | KUI_LOCALE | BCP 47 locale override for month names, weekday names, and week start. |
-| showPrevNav / showNextNav | boolean | true | Hide one header navigation control for linked multi-calendar layouts. |
-| [kuiCalendarHeader] / [kuiCalendarFooter] | projected content | - | Replace the default header or footer with consumer-owned content. |
-| kuiProvideLocale(locale) | Provider | - | Provides the default app or subtree locale used by date-aware components. |
-| --kui-calendar-width | CSS custom property | 296px | Overrides the fixed calendar width while keeping the day grid predictable. |
+| Name                                      | Type                                             | Default       | Description                                                                |
+|-------------------------------------------|--------------------------------------------------|---------------|----------------------------------------------------------------------------|
+| mode                                      | 'single' \| 'range'                              | 'single'      | Selection mode. Range mode stores a start date and a nullable end date.    |
+| [(value)]                                 | Date \| KuiDateRange \| null                     | null          | Selected date in single mode or selected range in range mode.              |
+| [(viewDate)]                              | Date                                             | current month | First-of-month date that controls the visible month.                       |
+| size                                      | 'md' \| 'sm'                                     | 'md'          | Calendar density. Use sm when embedding in tighter sidebars or panels.     |
+| flat                                      | boolean                                          | false         | Removes the calendar frame for dropdown or popover panel composition.      |
+| showWeekend                               | boolean                                          | true          | Mutes Saturday and Sunday labels when enabled.                             |
+| showFooter                                | boolean                                          | false         | Shows the built-in value summary and Today shortcut.                       |
+| minDate / maxDate                         | Date \| undefined                                | undefined     | Inclusive lower and upper bounds for selectable days.                      |
+| disabledDates                             | Date[] \| ((date: Date) => boolean) \| undefined | undefined     | Individual disabled dates or a predicate evaluated for each rendered date. |
+| locale                                    | string \| undefined                              | KUI_LOCALE    | BCP 47 locale override for month names, weekday names, and week start.     |
+| showPrevNav / showNextNav                 | boolean                                          | true          | Hide one header navigation control for linked multi-calendar layouts.      |
+| [kuiCalendarHeader] / [kuiCalendarFooter] | projected content                                | -             | Replace the default header or footer with consumer-owned content.          |
+| kuiProvideLocale(locale)                  | Provider                                         | -             | Provides the default app or subtree locale used by date-aware components.  |
+| --kui-calendar-width                      | CSS custom property                              | 296px         | Overrides the fixed calendar width while keeping the day grid predictable. |
 
 ## Accessibility
 
