@@ -4,6 +4,7 @@ import {
   KuiButtonDirective,
   KuiColorInputDirective,
   KuiFieldComponent,
+  KuiIconComponent,
   KuiLabelDirective,
 } from '@kikita-labs/ui';
 
@@ -26,7 +27,13 @@ const SEED_COLOR_LABELS: Readonly<Record<DocsSeedColorName, string>> = {
 
 @Component({
   selector: 'app-seed-colors',
-  imports: [KuiButtonDirective, KuiColorInputDirective, KuiFieldComponent, KuiLabelDirective],
+  imports: [
+    KuiButtonDirective,
+    KuiColorInputDirective,
+    KuiFieldComponent,
+    KuiIconComponent,
+    KuiLabelDirective,
+  ],
   templateUrl: './seed-colors.html',
   styleUrl: './seed-colors.scss',
 })

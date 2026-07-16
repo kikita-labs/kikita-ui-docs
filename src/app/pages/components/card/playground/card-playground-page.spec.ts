@@ -56,10 +56,13 @@ describe('CardPlaygroundPage', () => {
     );
   });
 
-  it('uses a static article host and omits defaults by default', () => {
+  it('uses a static article host and omits defaults by default', async () => {
+    await fixture.whenStable();
+    fixture.detectChanges();
+
     const root = fixture.nativeElement as HTMLElement;
     const preview = root.querySelector<HTMLElement>('app-api-playground-viewport article.kui-card');
-    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__panel code');
 
     expect(preview).not.toBeNull();
     expect(preview?.getAttribute('data-kui-appearance')).toBe('surface');

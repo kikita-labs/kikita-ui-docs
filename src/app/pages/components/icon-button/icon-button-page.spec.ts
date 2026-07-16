@@ -50,13 +50,16 @@ describe('IconButtonPage', () => {
       'usage',
       'appearance',
       'size',
+      'icon-composition',
       'api',
       'accessibility',
       'known-gaps',
     ]);
-    expect(buttons).toHaveLength(17);
+    expect(buttons).toHaveLength(20);
     expect(buttons.every((button) => button.hasAttribute('aria-label'))).toBe(true);
-    expect(buttons.at(-1)?.disabled).toBe(true);
+    expect(
+      buttons.find((button) => button.getAttribute('aria-label') === 'Disabled settings')?.disabled,
+    ).toBe(true);
   });
 
   it('keeps manifest loaders and generated example ownership aligned', async () => {
@@ -70,6 +73,7 @@ describe('IconButtonPage', () => {
     expect(ICON_BUTTON_DOCS_MANIFEST.exampleIds).toEqual([
       'icon-button-appearance-example',
       'icon-button-size-example',
+      'icon-button-icon-example',
     ]);
     expect(Object.keys(ICON_BUTTON_EXAMPLE_SOURCES).sort()).toEqual(
       [...ICON_BUTTON_DOCS_MANIFEST.exampleIds].sort(),

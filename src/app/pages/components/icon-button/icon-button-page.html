@@ -8,7 +8,7 @@
 
   <app-doc-section
     heading="Import"
-    description="Use the icon button directive on native button or anchor elements. Pair it with kui-icon for package-backed icon rendering."
+    description="Use the icon button directive on native button or anchor elements. Use its icon input for a registered icon name, or project kui-icon directly for source/src icons."
   >
     <app-code-tabs [tabs]="importTabs" />
   </app-doc-section>
@@ -44,6 +44,16 @@
       <app-icon-button-size-example />
     </app-live-preview>
     <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Icon composition"
+    description="Use icon for a registered icon name instead of hand-projecting kui-icon."
+  >
+    <app-live-preview previewLabel="Icon button icon input">
+      <app-icon-button-icon-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="iconTabs" />
   </app-doc-section>
 
   <app-doc-section heading="API" [description]="apiDescription">

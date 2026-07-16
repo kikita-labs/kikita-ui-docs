@@ -57,28 +57,6 @@
   color: var(--kui-color-primary-fill);
 }
 
-.sidebar-nav__search svg,
-.sidebar-nav__brand-mark svg,
-.sidebar-nav__close svg {
-  inline-size: 14px;
-  block-size: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-}
-
-.sidebar-nav__brand-mark svg {
-  inline-size: 11px;
-  block-size: 11px;
-}
-
-.sidebar-nav__close svg {
-  inline-size: 12px;
-  block-size: 12px;
-}
-
 .sidebar-nav__search span {
   margin-inline-end: auto;
 }

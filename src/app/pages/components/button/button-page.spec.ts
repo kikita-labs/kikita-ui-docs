@@ -51,6 +51,7 @@ describe('ButtonPage', () => {
       'usage',
       'appearances',
       'sizes-and-states',
+      'icon-composition',
       'api',
       'accessibility',
     ]);
@@ -69,10 +70,16 @@ describe('ButtonPage', () => {
       'Large',
       'Disabled',
       'Loading',
+      'Save',
+      'Continue',
     ]);
     expect(links.map((link) => link.textContent?.trim())).toEqual(['Button docs']);
-    expect(buttons.at(-2)?.disabled).toBe(true);
-    expect(buttons.at(-1)?.getAttribute('aria-busy')).toBe('true');
+    expect(buttons.find((button) => button.textContent?.trim() === 'Disabled')?.disabled).toBe(
+      true,
+    );
+    expect(
+      buttons.find((button) => button.textContent?.trim() === 'Loading')?.getAttribute('aria-busy'),
+    ).toBe('true');
   });
 
   it('keeps manifest loaders and generated example ownership aligned', async () => {
@@ -87,6 +94,7 @@ describe('ButtonPage', () => {
       'basic-button-example',
       'button-appearance-example',
       'button-size-example',
+      'button-icon-example',
     ]);
     expect(Object.keys(BUTTON_EXAMPLE_SOURCES).sort()).toEqual(
       [...BUTTON_DOCS_MANIFEST.exampleIds].sort(),

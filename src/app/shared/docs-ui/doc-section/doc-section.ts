@@ -3,7 +3,7 @@ import { Component, computed, DestroyRef, effect, inject, input, signal } from '
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { timer } from 'rxjs';
 
-import { KuiIconButtonDirective, kuiToast } from '@kikita-labs/ui';
+import { KuiIconButtonDirective, KuiIconComponent, kuiToast } from '@kikita-labs/ui';
 
 import { DocsAnchorNavigationService } from '@core/platform/anchor';
 import { DocsClipboardService } from '@core/platform/clipboard';
@@ -11,7 +11,7 @@ import { DocsSectionRegistryService } from '@core/platform/heading';
 
 @Component({
   selector: 'app-doc-section',
-  imports: [KuiIconButtonDirective],
+  imports: [KuiIconButtonDirective, KuiIconComponent],
   templateUrl: './doc-section.html',
   styleUrl: './doc-section.scss',
 })

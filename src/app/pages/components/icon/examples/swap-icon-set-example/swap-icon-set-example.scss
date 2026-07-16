@@ -1,0 +1,16 @@
+.swap-icon-set-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kui-space-6, 24px);
+  flex-wrap: wrap;
+}
+
+.swap-icon-set-example__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}

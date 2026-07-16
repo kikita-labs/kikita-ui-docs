@@ -55,10 +55,13 @@ describe('EmptyStatePlaygroundPage', () => {
     expect(snippet?.textContent).toContain('size="lg"');
   });
 
-  it('keeps installed defaults out of the generated snippet and projected actions in preview', () => {
+  it('keeps installed defaults out of the generated snippet and projected actions in preview', async () => {
+    await fixture.whenStable();
+    fixture.detectChanges();
+
     const root = fixture.nativeElement as HTMLElement;
     const preview = root.querySelector<HTMLElement>('app-api-playground-viewport kui-empty-state');
-    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__panel code');
 
     expect(preview?.getAttribute('data-kui-context')).toBe('no-data');
     expect(preview?.getAttribute('data-kui-size')).toBe('md');

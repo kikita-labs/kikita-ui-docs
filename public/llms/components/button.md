@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/button
-- Package: @kikita-labs/ui@0.5.0
+- Package: @kikita-labs/ui@0.6.0
 - Import: KuiButtonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/button.md
 
@@ -35,11 +35,18 @@ axes can be combined freely.
 Without an explicit `appearance`, `solid` and `soft` use primary colors while `outline` and
 `ghost` use their neutral defaults.
 
-Use `kui-icon` explicitly for icon content:
+Use `iconStart`/`iconEnd` for a registered icon by name, instead of hand-projecting `kui-icon`:
+
+```html
+<button kuiButton appearance="success" iconStart="check">Save</button>
+<button kuiButton shape="outline" iconEnd="arrow-right">Continue</button>
+```
+
+Project `kui-icon` directly when the icon needs `source` or `src` instead of a registered `name`:
 
 ```html
 <button kuiButton appearance="success">
-  <kui-icon name="check" />
+  <kui-icon [source]="checkIcon" />
   Save
 </button>
 ```
@@ -175,6 +182,46 @@ export class ButtonSizeExample {}
 }
 ```
 
+### button-icon-example
+
+#### button-icon-example.html
+
+```html
+<div class="button-icon-example">
+  <button kuiButton appearance="success" iconStart="check" type="button">Save</button>
+  <button kuiButton shape="outline" iconEnd="arrow-right" type="button">Continue</button>
+  <button kuiIconButton shape="soft" appearance="danger" icon="trash-2" aria-label="Delete" type="button"></button>
+</div>
+```
+
+#### button-icon-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiIconButtonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-button-icon-example',
+  imports: [KuiButtonDirective, KuiIconButtonDirective],
+  templateUrl: './button-icon-example.html',
+  styleUrl: './button-icon-example.scss',
+})
+export class ButtonIconExample {}
+```
+
+#### button-icon-example.scss
+
+```scss
+.button-icon-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
 ## API
 
 | Name | Type | Default | Description |
@@ -185,6 +232,8 @@ export class ButtonSizeExample {}
 | wrap | boolean | false | Allows long button text to wrap instead of truncating in narrow containers. |
 | disabled | boolean | false | Disables native button behavior. Anchor buttons receive aria-disabled and leave tab order. |
 | loading | boolean | false | Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled. |
+| iconStart | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name before the projected content, without hand-projecting kui-icon. |
+| iconEnd | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name after the projected content, without hand-projecting kui-icon. |
 
 ## Accessibility
 

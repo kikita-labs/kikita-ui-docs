@@ -26,6 +26,16 @@
   </app-doc-section>
 
   <app-doc-section
+    heading="Swap the icon set"
+    description="Override the resolved icon set anywhere in the tree with provideKuiIcons() in a component's own providers; later registrations win for names they both define."
+  >
+    <app-live-preview previewLabel="Same icon name resolved by three different sets">
+      <app-swap-icon-set-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="swapIconSetTabs" />
+  </app-doc-section>
+
+  <app-doc-section
     heading="Security"
     description="Inline SVG inputs are trusted-code APIs, not user-content APIs."
   >

@@ -44,6 +44,26 @@ export const ICON_BUTTON_EXAMPLE_SOURCES = {
       code: ".icon-button-size-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-3, 12px);\n  align-items: center;\n  justify-content: center;\n}",
     },
   ],
+  "icon-button-icon-example": [
+    {
+      label: "HTML",
+      filename: "icon-button-icon-example.html",
+      language: "html",
+      code: "<div class=\"icon-button-icon-example\">\n  <button kuiIconButton icon=\"plus\" aria-label=\"Add item\" type=\"button\"></button>\n  <button kuiIconButton shape=\"outline\" appearance=\"danger\" icon=\"trash-2\" aria-label=\"Delete item\" type=\"button\"></button>\n  <button kuiIconButton shape=\"soft\" icon=\"settings\" aria-label=\"Settings\" type=\"button\"></button>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "icon-button-icon-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiIconButtonDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-icon-button-icon-example',\n  imports: [KuiIconButtonDirective],\n  templateUrl: './icon-button-icon-example.html',\n  styleUrl: './icon-button-icon-example.scss',\n})\nexport class IconButtonIconExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "icon-button-icon-example.scss",
+      language: "scss",
+      code: ".icon-button-icon-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-3, 12px);\n  align-items: center;\n  justify-content: center;\n}",
+    },
+  ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;
 
 export type IconButtonExampleId = keyof typeof ICON_BUTTON_EXAMPLE_SOURCES;

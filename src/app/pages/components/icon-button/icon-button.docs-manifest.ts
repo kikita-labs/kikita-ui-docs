@@ -8,7 +8,11 @@ export const ICON_BUTTON_DOCS_MANIFEST = {
   description: 'Compact icon-only action control.',
   importName: 'KuiIconButtonDirective',
   status: 'available',
-  exampleIds: ['icon-button-appearance-example', 'icon-button-size-example'],
+  exampleIds: [
+    'icon-button-appearance-example',
+    'icon-button-size-example',
+    'icon-button-icon-example',
+  ],
   loadPage: () => import('./icon-button-page').then((module) => module.IconButtonPage),
   loadPlayground: () =>
     import('./playground/icon-button-playground-page').then(

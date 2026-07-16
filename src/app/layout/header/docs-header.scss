@@ -65,19 +65,6 @@
   color: var(--kui-color-primary-fill);
 }
 
-.docs-header__mark svg,
-.docs-header__menu svg,
-.docs-header__search svg,
-.docs-header__theme-toggle svg {
-  inline-size: 15px;
-  block-size: 15px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.6;
-}
-
 .docs-header__title {
   font-size: var(--kui-text-md-size, 15px);
   white-space: nowrap;

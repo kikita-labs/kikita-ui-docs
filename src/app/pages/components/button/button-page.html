@@ -46,6 +46,16 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    heading="Icon composition"
+    description="Use iconStart/iconEnd for a registered icon name instead of hand-projecting kui-icon. Icon-only actions use kuiIconButton's icon input the same way."
+  >
+    <app-live-preview previewLabel="Button icon slots">
+      <app-button-icon-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="iconTabs" />
+  </app-doc-section>
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Button API" [rows]="apiRows" />
   </app-doc-section>

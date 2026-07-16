@@ -24,6 +24,26 @@ export const ICON_EXAMPLE_SOURCES = {
       code: ".basic-icon-example {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--kui-space-3, 12px);\n  flex-wrap: wrap;\n}\n\n.basic-icon-example__status {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--kui-space-2, 8px);\n  color: var(--kui-color-text);\n}",
     },
   ],
+  "swap-icon-set-example": [
+    {
+      label: "HTML",
+      filename: "swap-icon-set-example.html",
+      language: "html",
+      code: "<div class=\"swap-icon-set-example\">\n  <div class=\"swap-icon-set-example__item\">\n    <kui-icon name=\"star\" label=\"Lucide star\" size=\"28px\" />\n    <span>Lucide (default)</span>\n  </div>\n\n  <div class=\"swap-icon-set-example__item\">\n    <app-material-icon-scope />\n    <span>Material Symbols</span>\n  </div>\n\n  <div class=\"swap-icon-set-example__item\">\n    <app-custom-icon-scope />\n    <span>Custom set</span>\n  </div>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "swap-icon-set-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KUI_ICONS, KuiIconComponent, type KuiIconRegistry } from '@kikita-labs/ui';\n\nconst MATERIAL_SYMBOLS_ICON_SET: KuiIconRegistry = {\n  star: '<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 -960 960 960\" fill=\"currentColor\"><path d=\"m323-245 157-94 157 95-42-178 138-120-182-16-71-168-71 167-182 16 138 120-42 178Zm-90 125 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-355Z\"/></svg>',\n};\n\nconst CUSTOM_ICON_SET: KuiIconRegistry = {\n  'brand-mark':\n    '<svg viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M3 2v12M3 8l7-6M3 8l7 6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>',\n};\n\n@Component({\n  selector: 'app-material-icon-scope',\n  imports: [KuiIconComponent],\n  template: `<kui-icon name=\"star\" label=\"Material Symbols star\" size=\"28px\" />`,\n  providers: [{ provide: KUI_ICONS, multi: true, useValue: MATERIAL_SYMBOLS_ICON_SET }],\n})\nexport class MaterialIconScope {}\n\n@Component({\n  selector: 'app-custom-icon-scope',\n  imports: [KuiIconComponent],\n  template: `<kui-icon name=\"brand-mark\" label=\"Custom brand mark\" size=\"28px\" />`,\n  providers: [{ provide: KUI_ICONS, multi: true, useValue: CUSTOM_ICON_SET }],\n})\nexport class CustomIconScope {}\n\n@Component({\n  selector: 'app-swap-icon-set-example',\n  imports: [KuiIconComponent, MaterialIconScope, CustomIconScope],\n  templateUrl: './swap-icon-set-example.html',\n  styleUrl: './swap-icon-set-example.scss',\n})\nexport class SwapIconSetExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "swap-icon-set-example.scss",
+      language: "scss",
+      code: ".swap-icon-set-example {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--kui-space-6, 24px);\n  flex-wrap: wrap;\n}\n\n.swap-icon-set-example__item {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: var(--kui-space-2, 8px);\n  color: var(--kui-color-text-secondary);\n  font-size: var(--kui-text-sm-size, 13px);\n}",
+    },
+  ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;
 
 export type IconExampleId = keyof typeof ICON_EXAMPLE_SOURCES;

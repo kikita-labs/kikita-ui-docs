@@ -28,4 +28,11 @@ export const ICON_BUTTON_API_ROWS: readonly ApiTableRow[] = [
     description:
       'Disables native button behavior. Anchor icon buttons receive aria-disabled and leave tab order.',
   },
+  {
+    name: 'icon',
+    type: 'KuiIconName | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Renders a kui-icon resolved by name as the button content, prepended before any other projected content, without hand-projecting kui-icon.',
+  },
 ];

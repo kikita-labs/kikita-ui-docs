@@ -5,10 +5,7 @@
     title="No results"
     description="Try a different search term or clear your filters."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="11" cy="11" r="7" />
-      <path d="m20 20-3.5-3.5" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="search" />
   </kui-empty-state>
 
   <kui-empty-state
@@ -17,11 +14,7 @@
     title="Couldn't load projects"
     description="Something went wrong while loading this list."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 8v5" />
-      <path d="M12 16h.01" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="circle-alert" />
 
     <div kuiEmptyStateActions>
       <button kuiButton shape="soft" type="button">Retry</button>
@@ -34,10 +27,7 @@
     title="No access"
     description="Ask a workspace admin for access to this project."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <rect x="4" y="10" width="16" height="10" rx="2" />
-      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="lock" />
   </kui-empty-state>
 
   <kui-empty-state
@@ -46,9 +36,6 @@
     title="All caught up"
     description="No pending reviews are waiting on you right now."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="12" cy="12" r="9" />
-      <path d="m8 12 3 3 5-6" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="circle-check" />
   </kui-empty-state>
 </div>

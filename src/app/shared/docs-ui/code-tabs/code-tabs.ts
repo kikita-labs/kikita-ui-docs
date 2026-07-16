@@ -12,6 +12,7 @@ import { type SafeHtml } from '@angular/platform-browser';
 
 import {
   KuiIconButtonDirective,
+  KuiIconComponent,
   KuiSegmentDirective,
   KuiSegmentedComponent,
   kuiToast,
@@ -27,7 +28,7 @@ let nextCodeTabsId = 0;
 
 @Component({
   selector: 'app-code-tabs',
-  imports: [KuiIconButtonDirective, KuiSegmentDirective, KuiSegmentedComponent],
+  imports: [KuiIconButtonDirective, KuiIconComponent, KuiSegmentDirective, KuiSegmentedComponent],
   templateUrl: './code-tabs.html',
   styleUrl: './code-tabs.scss',
 })

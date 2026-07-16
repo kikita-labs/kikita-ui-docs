@@ -17,18 +17,14 @@
         aria-controls="docs-mobile-navigation"
         (click)="menuToggle.emit()"
       >
-        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-          <path d="M3 4.5h10M3 8h10M3 11.5h10" />
-        </svg>
+        <kui-icon name="menu" size="15px" />
       </button>
     }
 
     @if (minimal() || landing()) {
       <a class="docs-header__brand" [routerLink]="homePath" aria-label="Kikita UI Docs home">
         <span class="docs-header__mark" aria-hidden="true">
-          <svg viewBox="0 0 16 16" focusable="false">
-            <path d="M3 2v12M3 8l7-6M3 8l7 6" />
-          </svg>
+          <kui-icon [source]="brandMarkIcon" size="15px" />
         </span>
         <span class="docs-header__title">Kikita UI</span>
       </a>
@@ -79,10 +75,7 @@
         size="sm"
         (click)="openSearch()"
       >
-        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-          <circle cx="7" cy="7" r="5" />
-          <path d="M11 11 14 14" />
-        </svg>
+        <kui-icon name="search" size="15px" />
         <span>Search</span>
         <kbd>Ctrl K</kbd>
       </button>
@@ -100,16 +93,7 @@
       [attr.aria-pressed]="theme.isDark()"
       (click)="theme.toggle()"
     >
-      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-        @if (theme.isDark()) {
-          <path d="M13.5 9.5A6 6 0 1 1 6.5 2.5 4.8 4.8 0 0 0 13.5 9.5z" />
-        } @else {
-          <circle cx="8" cy="8" r="3" />
-          <path
-            d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.4 3.4l.9.9M11.7 11.7l.9.9M12.6 3.4l-.9.9M4.3 11.7l-.9.9"
-          />
-        }
-      </svg>
+      <kui-icon [name]="theme.isDark() ? 'moon' : 'sun'" size="15px" />
     </button>
   </div>
 

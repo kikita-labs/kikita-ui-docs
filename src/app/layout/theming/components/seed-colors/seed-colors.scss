@@ -21,13 +21,3 @@
 .seed-colors__reset {
   margin-block-start: var(--kui-space-4, 16px);
 }
-
-.seed-colors__reset svg {
-  inline-size: 15px;
-  block-size: 15px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.4;
-}

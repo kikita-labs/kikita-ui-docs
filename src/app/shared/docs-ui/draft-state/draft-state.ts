@@ -5,6 +5,7 @@ import {
   KuiEmptyStateActionsDirective,
   KuiEmptyStateComponent,
   KuiEmptyStateIconDirective,
+  KuiIconComponent,
 } from '@kikita-labs/ui';
 
 import { DOCS_EXTERNAL_LINKS } from '@core/navigation';
@@ -16,6 +17,7 @@ import { DOCS_EXTERNAL_LINKS } from '@core/navigation';
     KuiEmptyStateActionsDirective,
     KuiEmptyStateComponent,
     KuiEmptyStateIconDirective,
+    KuiIconComponent,
   ],
   templateUrl: './draft-state.html',
   styleUrl: './draft-state.scss',

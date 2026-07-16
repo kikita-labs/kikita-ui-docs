@@ -5,12 +5,7 @@
   [title]="stateTitle()"
   [description]="description()"
 >
-  <svg kuiEmptyStateIcon viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-    <path d="M6 3h9l3 3v15H6z" />
-    <path d="M14 3v4h4" />
-    <path d="M9 13h5" />
-    <path d="M9 17h3" />
-  </svg>
+  <kui-icon kuiEmptyStateIcon name="file-text" size="34px" />
 
   <div kuiEmptyStateActions class="draft-state__actions">
     <a kuiButton shape="outline" [href]="links.githubRepository" target="_blank" rel="noreferrer">

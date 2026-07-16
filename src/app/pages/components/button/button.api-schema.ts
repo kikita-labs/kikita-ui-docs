@@ -40,4 +40,18 @@ export const BUTTON_API_ROWS: readonly ApiTableRow[] = [
     description:
       'Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled.',
   },
+  {
+    name: 'iconStart',
+    type: 'KuiIconName | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Renders a kui-icon resolved by name before the projected content, without hand-projecting kui-icon.',
+  },
+  {
+    name: 'iconEnd',
+    type: 'KuiIconName | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Renders a kui-icon resolved by name after the projected content, without hand-projecting kui-icon.',
+  },
 ];

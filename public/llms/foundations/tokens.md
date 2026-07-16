@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /foundations/tokens
-- Package: @kikita-labs/ui@0.5.0
+- Package: @kikita-labs/ui@0.6.0
 
 ## Content
 

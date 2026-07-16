@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import {
   KuiIconButtonDirective,
+  KuiIconComponent,
   KuiPopoverComponent,
   KuiPopoverForDirective,
   kuiProvideFieldOptions,
@@ -14,6 +15,7 @@ import { Typography } from './components/typography/typography';
   selector: 'app-theming',
   imports: [
     KuiIconButtonDirective,
+    KuiIconComponent,
     KuiPopoverComponent,
     KuiPopoverForDirective,
     SeedColors,

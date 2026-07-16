@@ -60,11 +60,6 @@
   transition: opacity 160ms ease;
 }
 
-.doc-section__copy svg {
-  inline-size: 16px;
-  block-size: 16px;
-}
-
 .doc-section__heading-row:hover .doc-section__copy,
 .doc-section__copy:focus-visible {
   opacity: 1;

@@ -8,7 +8,7 @@ export const ICON_DOCS_MANIFEST = {
   description: 'SVG icon renderer.',
   importName: 'KuiIconComponent',
   status: 'available',
-  exampleIds: ['basic-icon-example'],
+  exampleIds: ['basic-icon-example', 'swap-icon-set-example'],
   loadPage: () => import('./icon-page').then((module) => module.IconPage),
   loadPlayground: () =>
     import('./playground/icon-playground-page').then((module) => module.IconPlaygroundPage),

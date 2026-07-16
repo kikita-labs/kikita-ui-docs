@@ -15,11 +15,7 @@
       [context]="contextOf(playground.values())"
       [size]="sizeOf(playground.values())"
     >
-      <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M21 8v13H3V8" />
-        <path d="M1 3h22v5H1z" />
-        <path d="M10 12h4" />
-      </svg>
+      <kui-icon kuiEmptyStateIcon name="package" />
 
       @if (showActionsOf(playground.values())) {
         <div kuiEmptyStateActions>

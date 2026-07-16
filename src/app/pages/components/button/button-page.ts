@@ -10,7 +10,12 @@ import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { BUTTON_API_ROWS } from './button.api-schema';
 import { BUTTON_API_DESCRIPTION, BUTTON_IMPORT_TABS, BUTTON_STATUS } from './button.docs-content';
-import { BasicButtonExample, ButtonAppearanceExample, ButtonSizeExample } from './examples';
+import {
+  BasicButtonExample,
+  ButtonAppearanceExample,
+  ButtonIconExample,
+  ButtonSizeExample,
+} from './examples';
 
 @Component({
   selector: 'app-button-page',
@@ -18,6 +23,7 @@ import { BasicButtonExample, ButtonAppearanceExample, ButtonSizeExample } from '
     ApiTable,
     BasicButtonExample,
     ButtonAppearanceExample,
+    ButtonIconExample,
     ButtonSizeExample,
     CodeTabs,
     DocSection,
@@ -36,6 +42,7 @@ export class ButtonPage {
   protected readonly basicTabs = BUTTON_EXAMPLE_SOURCES['basic-button-example'];
   protected readonly appearanceTabs = BUTTON_EXAMPLE_SOURCES['button-appearance-example'];
   protected readonly sizeTabs = BUTTON_EXAMPLE_SOURCES['button-size-example'];
+  protected readonly iconTabs = BUTTON_EXAMPLE_SOURCES['button-icon-example'];
 
   protected readonly apiRows = BUTTON_API_ROWS;
 }

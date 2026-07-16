@@ -56,9 +56,12 @@ describe('SeparatorPlaygroundPage', () => {
     );
   });
 
-  it('omits default values from the generated snippet', () => {
+  it('omits default values from the generated snippet', async () => {
+    await fixture.whenStable();
+    fixture.detectChanges();
+
     const root = fixture.nativeElement as HTMLElement;
-    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__panel code');
 
     expect(snippet?.textContent?.trim()).toBe('<hr kuiSeparator />');
   });

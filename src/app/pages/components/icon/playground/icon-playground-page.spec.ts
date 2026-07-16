@@ -50,7 +50,7 @@ describe('IconPlaygroundPage', () => {
     const root = fixture.nativeElement as HTMLElement;
 
     setTextControl(root, 'size', '32px');
-    setTextControl(root, 'label', 'Verified');
+    setTextControl(root, 'label (accessible name)', 'Verified');
     fixture.detectChanges();
 
     const icon = root.querySelector<HTMLElement>('.api-playground-viewport__resizable kui-icon');

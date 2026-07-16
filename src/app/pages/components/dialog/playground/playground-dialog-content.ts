@@ -5,6 +5,7 @@ import {
   KuiButtonDirective,
   type KuiDialogContext,
   type KuiDialogHost,
+  KuiIconComponent,
 } from '@kikita-labs/ui';
 
 export interface PlaygroundDialogData {
@@ -14,7 +15,7 @@ export interface PlaygroundDialogData {
 
 @Component({
   selector: 'app-playground-dialog-content',
-  imports: [KuiButtonDirective],
+  imports: [KuiButtonDirective, KuiIconComponent],
   templateUrl: './playground-dialog-content.html',
 })
 export class PlaygroundDialogContent implements KuiDialogHost<

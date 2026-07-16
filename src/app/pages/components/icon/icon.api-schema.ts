@@ -43,7 +43,14 @@ export const ICON_API_ROWS: readonly ApiTableRow[] = [
     type: 'EnvironmentProviders',
     defaultValue: '-',
     description:
-      'Registers a static map of trusted SVG strings, or an async KuiIconResolver function, for name-based icon lookup. Later registrations take precedence for names both define.',
+      'Registers a static map of trusted SVG strings, or an async KuiIconResolver function, for name-based icon lookup. Later registrations take precedence for names both define. Route-level only; component providers cannot accept EnvironmentProviders.',
+  },
+  {
+    name: 'KUI_ICONS',
+    type: 'InjectionToken<readonly KuiIconRegistry[]>',
+    defaultValue: '-',
+    description:
+      "The multi-provider token behind provideKuiIcons(). Provide it directly in a component's own providers ({ provide: KUI_ICONS, multi: true, useValue }) to scope an icon-set override to that subtree.",
   },
   {
     name: `provideKikitaUi({ icons })`,

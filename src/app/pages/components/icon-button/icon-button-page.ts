@@ -8,7 +8,11 @@ import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
-import { IconButtonAppearanceExample, IconButtonSizeExample } from './examples';
+import {
+  IconButtonAppearanceExample,
+  IconButtonIconExample,
+  IconButtonSizeExample,
+} from './examples';
 import { ICON_BUTTON_API_ROWS } from './icon-button.api-schema';
 import {
   ICON_BUTTON_API_DESCRIPTION,
@@ -23,6 +27,7 @@ import {
     CodeTabs,
     DocSection,
     IconButtonAppearanceExample,
+    IconButtonIconExample,
     IconButtonSizeExample,
     LivePreview,
     PageHeader,
@@ -42,4 +47,6 @@ export class IconButtonPage {
   protected readonly appearanceTabs = ICON_BUTTON_EXAMPLE_SOURCES['icon-button-appearance-example'];
 
   protected readonly sizeTabs = ICON_BUTTON_EXAMPLE_SOURCES['icon-button-size-example'];
+
+  protected readonly iconTabs = ICON_BUTTON_EXAMPLE_SOURCES['icon-button-icon-example'];
 }

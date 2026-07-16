@@ -34,16 +34,7 @@
         [attr.aria-pressed]="previewIsDark()"
         (click)="togglePreviewTheme()"
       >
-        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-          @if (previewIsDark()) {
-            <path d="M13.5 9.5A6 6 0 1 1 6.5 2.5 4.8 4.8 0 0 0 13.5 9.5z" />
-          } @else {
-            <circle cx="8" cy="8" r="3" />
-            <path
-              d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.4 3.4l.9.9M11.7 11.7l.9.9M12.6 3.4l-.9.9M4.3 11.7l-.9.9"
-            />
-          }
-        </svg>
+        <kui-icon [name]="previewIsDark() ? 'moon' : 'sun'" size="15px" />
       </button>
     </div>
   </div>

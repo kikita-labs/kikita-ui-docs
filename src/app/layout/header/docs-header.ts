@@ -17,8 +17,10 @@ import {
   type KuiCommandItem,
   KuiCommandPaletteComponent,
   KuiIconButtonDirective,
+  KuiIconComponent,
 } from '@kikita-labs/ui';
 
+import { KIKITA_BRAND_MARK_ICON } from '@core/branding';
 import { DOCS_HOME_PATH, DocsRouteStateService } from '@core/navigation';
 import { DocsKeyboardShortcutService } from '@core/platform/keyboard';
 import { DocsSearchIndexService } from '@core/search';
@@ -36,6 +38,7 @@ import { Theming } from '../theming/theming';
     KuiButtonDirective,
     KuiCommandPaletteComponent,
     KuiIconButtonDirective,
+    KuiIconComponent,
     RouterLink,
     Theming,
   ],
@@ -57,6 +60,7 @@ export class DocsHeader {
   protected readonly search = inject(DocsSearchStateService);
   protected readonly theme = inject(DocsThemeService);
   protected readonly homePath = DOCS_HOME_PATH;
+  protected readonly brandMarkIcon = KIKITA_BRAND_MARK_ICON;
   protected readonly activePage = this.routeState.activePage;
 
   constructor() {

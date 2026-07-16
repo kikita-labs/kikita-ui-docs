@@ -8,8 +8,10 @@ import {
   KuiAccordionComponent,
   KuiAccordionItemComponent,
   KuiIconButtonDirective,
+  KuiIconComponent,
 } from '@kikita-labs/ui';
 
+import { KIKITA_BRAND_MARK_ICON } from '@core/branding';
 import type { DocsComponentCategory } from '@core/components';
 import { DOCS_COMPONENT_CATEGORIES } from '@core/components';
 import type { DocsNavigationItem } from '@core/navigation';
@@ -22,6 +24,7 @@ import { DocsSearchStateService } from '@core/search';
     KuiAccordionComponent,
     KuiAccordionItemComponent,
     KuiIconButtonDirective,
+    KuiIconComponent,
     RouterLink,
     RouterLinkActive,
   ],
@@ -29,6 +32,8 @@ import { DocsSearchStateService } from '@core/search';
   styleUrl: './sidebar-nav.scss',
 })
 export class SidebarNav {
+  protected readonly brandMarkIcon = KIKITA_BRAND_MARK_ICON;
+
   public readonly closeNavigation = output<void>();
   public readonly skipToContent = output<void>();
 

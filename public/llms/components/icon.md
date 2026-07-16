@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/icon
-- Package: @kikita-labs/ui@0.5.0
+- Package: @kikita-labs/ui@0.6.0
 - Import: KuiIconComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon.md
 
@@ -89,6 +89,91 @@ export class BasicIconExample {
 }
 ```
 
+### swap-icon-set-example
+
+#### swap-icon-set-example.html
+
+```html
+<div class="swap-icon-set-example">
+  <div class="swap-icon-set-example__item">
+    <kui-icon name="star" label="Lucide star" size="28px" />
+    <span>Lucide (default)</span>
+  </div>
+
+  <div class="swap-icon-set-example__item">
+    <app-material-icon-scope />
+    <span>Material Symbols</span>
+  </div>
+
+  <div class="swap-icon-set-example__item">
+    <app-custom-icon-scope />
+    <span>Custom set</span>
+  </div>
+</div>
+```
+
+#### swap-icon-set-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KUI_ICONS, KuiIconComponent, type KuiIconRegistry } from '@kikita-labs/ui';
+
+const MATERIAL_SYMBOLS_ICON_SET: KuiIconRegistry = {
+  star: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m323-245 157-94 157 95-42-178 138-120-182-16-71-168-71 167-182 16 138 120-42 178Zm-90 125 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-355Z"/></svg>',
+};
+
+const CUSTOM_ICON_SET: KuiIconRegistry = {
+  'brand-mark':
+    '<svg viewBox="0 0 16 16" fill="none"><path d="M3 2v12M3 8l7-6M3 8l7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+};
+
+@Component({
+  selector: 'app-material-icon-scope',
+  imports: [KuiIconComponent],
+  template: `<kui-icon name="star" label="Material Symbols star" size="28px" />`,
+  providers: [{ provide: KUI_ICONS, multi: true, useValue: MATERIAL_SYMBOLS_ICON_SET }],
+})
+export class MaterialIconScope {}
+
+@Component({
+  selector: 'app-custom-icon-scope',
+  imports: [KuiIconComponent],
+  template: `<kui-icon name="brand-mark" label="Custom brand mark" size="28px" />`,
+  providers: [{ provide: KUI_ICONS, multi: true, useValue: CUSTOM_ICON_SET }],
+})
+export class CustomIconScope {}
+
+@Component({
+  selector: 'app-swap-icon-set-example',
+  imports: [KuiIconComponent, MaterialIconScope, CustomIconScope],
+  templateUrl: './swap-icon-set-example.html',
+  styleUrl: './swap-icon-set-example.scss',
+})
+export class SwapIconSetExample {}
+```
+
+#### swap-icon-set-example.scss
+
+```scss
+.swap-icon-set-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kui-space-6, 24px);
+  flex-wrap: wrap;
+}
+
+.swap-icon-set-example__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
 ## API
 
 | Name | Type | Default | Description |
@@ -99,7 +184,8 @@ export class BasicIconExample {
 | src | string \| undefined | undefined | External image URL used when no source or registered name is provided. |
 | label | string \| undefined | undefined | Accessible name for meaningful icons. Omit it for decorative icons. |
 | size | string | '1em' | CSS size applied to the square icon box, for example 16px, 1.25rem, or 2em. |
-| provideKuiIcons(icons) | EnvironmentProviders | - | Registers a static map of trusted SVG strings, or an async KuiIconResolver function, for name-based icon lookup. Later registrations take precedence for names both define. |
+| provideKuiIcons(icons) | EnvironmentProviders | - | Registers a static map of trusted SVG strings, or an async KuiIconResolver function, for name-based icon lookup. Later registrations take precedence for names both define. Route-level only; component providers cannot accept EnvironmentProviders. |
+| KUI_ICONS | InjectionToken<readonly KuiIconRegistry[]> | - | The multi-provider token behind provideKuiIcons(). Provide it directly in a component's own providers ({ provide: KUI_ICONS, multi: true, useValue }) to scope an icon-set override to that subtree. |
 | provideKikitaUi({ icons }) | 'lucide' \| false | 'lucide' | Default icon set kui-icon resolves against when a name is not matched locally. Lazily fetches Lucide SVG markup from the jsDelivr CDN; set to false to opt out. |
 
 ## Accessibility

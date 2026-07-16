@@ -6,9 +6,7 @@
   <div class="sidebar-nav__mobile-header">
     <a class="sidebar-nav__brand" routerLink="/" aria-label="Kikita UI Docs home">
       <span class="sidebar-nav__brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 16 16" focusable="false">
-          <path d="M3 2v12M3 8l7-6M3 8l7 6" />
-        </svg>
+        <kui-icon [source]="brandMarkIcon" size="11px" />
       </span>
       <span>Kikita UI</span>
     </a>
@@ -22,17 +20,12 @@
       aria-label="Close documentation navigation"
       (click)="closeNavigation.emit()"
     >
-      <svg viewBox="0 0 14 14" aria-hidden="true" focusable="false">
-        <path d="M3 3 11 11M11 3 3 11" />
-      </svg>
+      <kui-icon name="x" size="12px" />
     </button>
   </div>
 
   <button class="sidebar-nav__search" type="button" (click)="search.show()">
-    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-      <circle cx="7" cy="7" r="5" />
-      <path d="M11 11 14 14" />
-    </svg>
+    <kui-icon name="search" size="16px" />
     <span>Search</span>
     <kbd>Ctrl K</kbd>
   </button>

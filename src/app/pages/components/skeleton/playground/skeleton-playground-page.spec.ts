@@ -53,9 +53,12 @@ describe('SkeletonPlaygroundPage', () => {
     );
   });
 
-  it('omits installed defaults from the generated snippet', () => {
+  it('omits installed defaults from the generated snippet', async () => {
+    await fixture.whenStable();
+    fixture.detectChanges();
+
     const root = fixture.nativeElement as HTMLElement;
-    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__panel code');
     const previewSkeleton = root.querySelector<HTMLElement>('span.kui-skeleton');
 
     expect(previewSkeleton?.getAttribute('data-kui-shape')).toBe('rect');

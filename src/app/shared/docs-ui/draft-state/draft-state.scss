@@ -4,16 +4,6 @@
   padding: clamp(48px, 10vw, 96px) var(--kui-space-4, 16px);
 }
 
-.draft-state svg {
-  inline-size: 34px;
-  block-size: 34px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
-}
-
 .draft-state__actions {
   display: flex;
   flex-wrap: wrap;

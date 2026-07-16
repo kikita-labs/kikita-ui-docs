@@ -7,6 +7,7 @@ import {
   type KuiEmptyStateContext,
   KuiEmptyStateIconDirective,
   type KuiEmptyStateSize,
+  KuiIconComponent,
 } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
@@ -57,6 +58,7 @@ type EmptyStatePlaygroundValues = PlaygroundValues<typeof EMPTY_STATE_PLAYGROUND
     KuiEmptyStateActionsDirective,
     KuiEmptyStateComponent,
     KuiEmptyStateIconDirective,
+    KuiIconComponent,
   ],
   templateUrl: './empty-state-playground-page.html',
   styleUrl: './empty-state-playground-page.scss',
@@ -97,11 +99,7 @@ export class EmptyStatePlaygroundPage {
         label: 'HTML',
         language: 'html',
         code: `<kui-empty-state ${attrs.join(' ')}>
-  <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-    <path d="M21 8v13H3V8" />
-    <path d="M1 3h22v5H1z" />
-    <path d="M10 12h4" />
-  </svg>${actionsBlock}
+  <kui-icon kuiEmptyStateIcon name="package" />${actionsBlock}
 </kui-empty-state>`,
       },
     ];

@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/empty-state
-- Package: @kikita-labs/ui@0.5.0
+- Package: @kikita-labs/ui@0.6.0
 - Import: KuiEmptyStateComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/empty-state.md
 
@@ -49,11 +49,7 @@ Rendered at /components/empty-state:
     title="No projects yet"
     description="Create the first project to start working with your team."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path d="M21 8v13H3V8" />
-      <path d="M1 3h22v5H1z" />
-      <path d="M10 12h4" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="package" />
 
     <div kuiEmptyStateActions>
       <button kuiButton type="button">Create project</button>
@@ -73,6 +69,7 @@ import {
   KuiEmptyStateActionsDirective,
   KuiEmptyStateComponent,
   KuiEmptyStateIconDirective,
+  KuiIconComponent,
 } from '@kikita-labs/ui';
 
 @Component({
@@ -82,6 +79,7 @@ import {
     KuiEmptyStateActionsDirective,
     KuiEmptyStateComponent,
     KuiEmptyStateIconDirective,
+    KuiIconComponent,
   ],
   templateUrl: './basic-empty-state-example.html',
   styleUrl: './basic-empty-state-example.scss',
@@ -111,10 +109,7 @@ export class BasicEmptyStateExample {}
     title="No results"
     description="Try a different search term or clear your filters."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="11" cy="11" r="7" />
-      <path d="m20 20-3.5-3.5" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="search" />
   </kui-empty-state>
 
   <kui-empty-state
@@ -123,11 +118,7 @@ export class BasicEmptyStateExample {}
     title="Couldn't load projects"
     description="Something went wrong while loading this list."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 8v5" />
-      <path d="M12 16h.01" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="circle-alert" />
 
     <div kuiEmptyStateActions>
       <button kuiButton shape="soft" type="button">Retry</button>
@@ -140,10 +131,7 @@ export class BasicEmptyStateExample {}
     title="No access"
     description="Ask a workspace admin for access to this project."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <rect x="4" y="10" width="16" height="10" rx="2" />
-      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="lock" />
   </kui-empty-state>
 
   <kui-empty-state
@@ -152,10 +140,7 @@ export class BasicEmptyStateExample {}
     title="All caught up"
     description="No pending reviews are waiting on you right now."
   >
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <circle cx="12" cy="12" r="9" />
-      <path d="m8 12 3 3 5-6" />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="circle-check" />
   </kui-empty-state>
 </div>
 ```
@@ -170,6 +155,7 @@ import {
   KuiEmptyStateActionsDirective,
   KuiEmptyStateComponent,
   KuiEmptyStateIconDirective,
+  KuiIconComponent,
 } from '@kikita-labs/ui';
 
 @Component({
@@ -179,6 +165,7 @@ import {
     KuiEmptyStateActionsDirective,
     KuiEmptyStateComponent,
     KuiEmptyStateIconDirective,
+    KuiIconComponent,
   ],
   templateUrl: './empty-state-context-example.html',
   styleUrl: './empty-state-context-example.scss',
@@ -204,27 +191,15 @@ export class EmptyStateContextExample {}
 ```html
 <div class="empty-state-size-example">
   <kui-empty-state size="sm" title="No comments" description="Be the first to leave a comment.">
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path
-        d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-      />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="message-circle" />
   </kui-empty-state>
 
   <kui-empty-state size="md" title="No comments" description="Be the first to leave a comment.">
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path
-        d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-      />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="message-circle" />
   </kui-empty-state>
 
   <kui-empty-state size="lg" title="No comments" description="Be the first to leave a comment.">
-    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path
-        d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
-      />
-    </svg>
+    <kui-icon kuiEmptyStateIcon name="message-circle" />
   </kui-empty-state>
 </div>
 ```
@@ -234,11 +209,11 @@ export class EmptyStateContextExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiEmptyStateComponent, KuiEmptyStateIconDirective } from '@kikita-labs/ui';
+import { KuiEmptyStateComponent, KuiEmptyStateIconDirective, KuiIconComponent } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-empty-state-size-example',
-  imports: [KuiEmptyStateComponent, KuiEmptyStateIconDirective],
+  imports: [KuiEmptyStateComponent, KuiEmptyStateIconDirective, KuiIconComponent],
   templateUrl: './empty-state-size-example.html',
   styleUrl: './empty-state-size-example.scss',
 })

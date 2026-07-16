@@ -38,16 +38,6 @@
   text-align: end;
 }
 
-.api-playground-viewport__theme-toggle svg {
-  inline-size: 15px;
-  block-size: 15px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.6;
-}
-
 .api-playground-viewport__theme-root {
   position: relative;
   color: var(--kui-color-text);

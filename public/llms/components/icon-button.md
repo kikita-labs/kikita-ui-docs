@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/icon-button
-- Package: @kikita-labs/ui@0.5.0
+- Package: @kikita-labs/ui@0.6.0
 - Import: KuiIconButtonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon-button.md
 
@@ -17,18 +17,29 @@ ng add @kikita-labs/ui
 
 ## Usage
 
+Use `icon` for a registered icon by name, instead of hand-projecting `kui-icon`:
+
+```html
+<button kuiIconButton icon="x" aria-label="Close"></button>
+
+<button kuiIconButton shape="soft" appearance="success" icon="check" aria-label="Approve"></button>
+
+<a
+  kuiIconButton
+  shape="outline"
+  appearance="primary"
+  href="/settings"
+  icon="settings"
+  aria-label="Settings"
+></a>
+```
+
+Project `kui-icon` directly when the icon needs `source` or `src` instead of a registered `name`:
+
 ```html
 <button kuiIconButton aria-label="Close">
-  <kui-icon name="x" />
+  <kui-icon [source]="closeIcon" />
 </button>
-
-<button kuiIconButton shape="soft" appearance="success" aria-label="Approve">
-  <kui-icon name="check" />
-</button>
-
-<a kuiIconButton shape="outline" appearance="primary" href="/settings" aria-label="Settings">
-  <kui-icon name="settings" />
-</a>
 ```
 
 ## Examples
@@ -161,6 +172,46 @@ export class IconButtonSizeExample {
 }
 ```
 
+### icon-button-icon-example
+
+#### icon-button-icon-example.html
+
+```html
+<div class="icon-button-icon-example">
+  <button kuiIconButton icon="plus" aria-label="Add item" type="button"></button>
+  <button kuiIconButton shape="outline" appearance="danger" icon="trash-2" aria-label="Delete item" type="button"></button>
+  <button kuiIconButton shape="soft" icon="settings" aria-label="Settings" type="button"></button>
+</div>
+```
+
+#### icon-button-icon-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiIconButtonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-icon-button-icon-example',
+  imports: [KuiIconButtonDirective],
+  templateUrl: './icon-button-icon-example.html',
+  styleUrl: './icon-button-icon-example.scss',
+})
+export class IconButtonIconExample {}
+```
+
+#### icon-button-icon-example.scss
+
+```scss
+.icon-button-icon-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
 ## API
 
 | Name | Type | Default | Description |
@@ -169,6 +220,7 @@ export class IconButtonSizeExample {
 | appearance | 'primary' \| 'danger' \| 'success' \| 'warning' \| null | null | Semantic color intent. Without an explicit value, solid/soft use primary colors and outline/ghost use neutral defaults. |
 | size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Square control size mapped to Kikita control height tokens (matches kui-input height at md). |
 | disabled | boolean | false | Disables native button behavior. Anchor icon buttons receive aria-disabled and leave tab order. |
+| icon | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name as the button content, prepended before any other projected content, without hand-projecting kui-icon. |
 
 ## Accessibility
 

@@ -5,6 +5,7 @@ import {
   KuiEmptyStateActionsDirective,
   KuiEmptyStateComponent,
   KuiEmptyStateIconDirective,
+  KuiIconComponent,
 } from '@kikita-labs/ui';
 
 @Component({
@@ -14,6 +15,7 @@ import {
     KuiEmptyStateActionsDirective,
     KuiEmptyStateComponent,
     KuiEmptyStateIconDirective,
+    KuiIconComponent,
   ],
   templateUrl: './empty-state-context-example.html',
   styleUrl: './empty-state-context-example.scss',

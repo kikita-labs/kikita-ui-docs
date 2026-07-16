@@ -20,12 +20,18 @@ const ICON_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'mode',
     label: 'source',
     kind: 'enum',
-    options: ['inline', 'image'],
-    defaultValue: 'inline',
+    options: ['name', 'inline', 'image'],
+    defaultValue: 'name',
   },
+  { key: 'iconName', label: 'name (Lucide icon name)', kind: 'string', defaultValue: 'settings' },
   { key: 'size', label: 'size', kind: 'string', defaultValue: '24px' },
-  { key: 'label', label: 'label', kind: 'string', defaultValue: 'Success' },
-  { key: 'decorative', label: 'decorative', kind: 'boolean', defaultValue: false },
+  { key: 'label', label: 'label (accessible name)', kind: 'string', defaultValue: 'Success' },
+  {
+    key: 'decorative',
+    label: 'decorative (hide from screen readers)',
+    kind: 'boolean',
+    defaultValue: false,
+  },
 ] as const);
 
 type IconPlaygroundValues = PlaygroundValues<typeof ICON_PLAYGROUND_CONTROLS>;
@@ -56,6 +62,23 @@ export class IconPlaygroundPage {
     values: IconPlaygroundValues,
   ): readonly CodeTab[] => {
     const label = iconLabelOf(values);
+
+    if (values.mode === 'name') {
+      const attrString = serializePlaygroundAttributes([
+        { name: 'name', value: values.iconName },
+        { name: 'label', value: label },
+        { name: 'size', value: values.size, defaultValue: '1em' },
+      ]);
+
+      return [
+        {
+          label: 'HTML',
+          language: 'html',
+          code: `<kui-icon${attrString} />`,
+        },
+      ];
+    }
+
     const attrString = serializePlaygroundAttributes([
       {
         name: values.mode === 'inline' ? '[source]' : 'src',
@@ -79,6 +102,10 @@ export class IconPlaygroundPage {
       },
     ];
   };
+
+  protected nameOf(values: IconPlaygroundValues): string | undefined {
+    return values.mode === 'name' ? values.iconName.trim() || undefined : undefined;
+  }
 
   protected sourceOf(values: IconPlaygroundValues): string | undefined {
     return values.mode === 'inline' ? INLINE_ICON : undefined;
