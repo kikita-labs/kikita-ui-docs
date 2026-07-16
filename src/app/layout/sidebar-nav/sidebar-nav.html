@@ -39,32 +39,6 @@
 
   <kui-accordion class="sidebar-nav__sections" mode="multi" [(expandedItems)]="expandedGroupIds">
     <kui-accordion-item
-      id="resources"
-      header="Resources"
-      class="sidebar-nav__section"
-      [class.sidebar-nav__section--active]="isNavigationGroupActive(resourceItems, true)"
-      routerLinkActive="sidebar-nav__section--active"
-      [routerLinkActiveOptions]="activeOptions"
-    >
-      <ul class="sidebar-nav__sublist">
-        @for (item of resourceItems; track item.path) {
-          <li>
-            <a
-              #resourceLink="routerLinkActive"
-              class="sidebar-nav__item"
-              [routerLink]="item.path"
-              routerLinkActive
-              [routerLinkActiveOptions]="activeOptions"
-              [attr.aria-current]="resourceLink.isActive ? 'page' : null"
-            >
-              {{ item.label }}
-            </a>
-          </li>
-        }
-      </ul>
-    </kui-accordion-item>
-
-    <kui-accordion-item
       id="foundations"
       header="Foundations"
       class="sidebar-nav__section"
@@ -82,6 +56,32 @@
               routerLinkActive
               [routerLinkActiveOptions]="activeOptions"
               [attr.aria-current]="foundationLink.isActive ? 'page' : null"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </kui-accordion-item>
+
+    <kui-accordion-item
+      id="resources"
+      header="Resources"
+      class="sidebar-nav__section"
+      [class.sidebar-nav__section--active]="isNavigationGroupActive(resourceItems, true)"
+      routerLinkActive="sidebar-nav__section--active"
+      [routerLinkActiveOptions]="activeOptions"
+    >
+      <ul class="sidebar-nav__sublist">
+        @for (item of resourceItems; track item.path) {
+          <li>
+            <a
+              #resourceLink="routerLinkActive"
+              class="sidebar-nav__item"
+              [routerLink]="item.path"
+              routerLinkActive
+              [routerLinkActiveOptions]="activeOptions"
+              [attr.aria-current]="resourceLink.isActive ? 'page' : null"
             >
               {{ item.label }}
             </a>

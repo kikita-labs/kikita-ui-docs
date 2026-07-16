@@ -7,7 +7,7 @@
 
   <div class="components-overview-page__categories">
     @for (category of categories; track category.label) {
-      <section class="components-overview-page__category" [attr.aria-labelledby]="category.label">
+      <div class="components-overview-page__category" [attr.aria-labelledby]="category.label">
         <header class="components-overview-page__category-header">
           <div>
             <h2 [id]="category.label">{{ category.label }}</h2>
@@ -42,7 +42,7 @@
             }
           }
         </div>
-      </section>
+      </div>
     }
   </div>
 </article>

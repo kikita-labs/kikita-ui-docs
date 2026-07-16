@@ -51,8 +51,8 @@ export class SidebarNav {
   protected readonly activeOptions = { exact: true };
   protected readonly componentActiveOptions = { exact: false };
   protected readonly expandedGroupIds = signal([
-    'resources',
     'foundations',
+    'resources',
     ...DOCS_COMPONENT_CATEGORIES.map((category) => this.groupDomId(category.label)),
   ]);
   protected readonly activeUrl = computed(() => this.currentUrl().split(/[?#]/, 1)[0] || '/');
