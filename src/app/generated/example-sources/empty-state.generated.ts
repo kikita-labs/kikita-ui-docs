@@ -55,7 +55,7 @@ export const EMPTY_STATE_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "empty-state-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiEmptyStateComponent, KuiEmptyStateIconDirective, KuiIconComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-empty-state-size-example',\n  imports: [KuiEmptyStateComponent, KuiEmptyStateIconDirective, KuiIconComponent],\n  templateUrl: './empty-state-size-example.html',\n  styleUrl: './empty-state-size-example.scss',\n})\nexport class EmptyStateSizeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiEmptyStateComponent,\n  KuiEmptyStateIconDirective,\n  KuiIconComponent,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-empty-state-size-example',\n  imports: [KuiEmptyStateComponent, KuiEmptyStateIconDirective, KuiIconComponent],\n  templateUrl: './empty-state-size-example.html',\n  styleUrl: './empty-state-size-example.scss',\n})\nexport class EmptyStateSizeExample {}",
     },
     {
       label: "SCSS",
