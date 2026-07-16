@@ -20,10 +20,24 @@ export const ICON_IMPORT_TABS: readonly CodeTab[] = [
 
 export const appConfig = {
   providers: [
-    provideKikitaUi(),
+    // 'lucide' is the default: unregistered names resolve against Lucide via jsDelivr.
+    provideKikitaUi({ icons: 'lucide' }),
     provideKuiIcons({
       check: '<svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" /></svg>',
     }),
+  ],
+};`,
+  },
+  {
+    label: 'Disable default',
+    filename: 'app.config.ts',
+    language: 'ts',
+    code: `import { provideKikitaUi } from '@kikita-labs/ui';
+
+export const appConfig = {
+  providers: [
+    // Opt out of the bundled Lucide/jsDelivr resolver entirely.
+    provideKikitaUi({ icons: false }),
   ],
 };`,
   },

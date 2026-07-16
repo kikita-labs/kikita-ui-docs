@@ -36,8 +36,8 @@ importers:
         specifier: ^22.0.5
         version: 22.0.7(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-server@22.0.6(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/compiler@22.0.5)(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-browser@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2)))(rxjs@7.8.2))(@angular/router@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-browser@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2)))(rxjs@7.8.2))
       '@kikita-labs/ui':
-        specifier: 0.4.6
-        version: 0.4.6(098d34021aededa29fb218c0a82fbcbc)
+        specifier: 0.5.0
+        version: 0.5.0(098d34021aededa29fb218c0a82fbcbc)
       express:
         specifier: ^5.1.0
         version: 5.2.1
@@ -1072,8 +1072,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kikita-labs/ui@0.4.6':
-    resolution: {integrity: sha512-2n7wNp42/g60GZx1pQrIAP1R9anXRfUqVZSi+ixBvHZ1OphcNTWT79d6em8jhosznuzlucQjdw5i5btmsnbwvA==}
+  '@kikita-labs/ui@0.5.0':
+    resolution: {integrity: sha512-N5i/9P3ONXgYJH0NzMO0MNQN9QfWvk7joiKv5qi6QNZktDag3Sr/8T2wV6QLllkVc6+vFECsOEPR69zTe3IWDg==}
     peerDependencies:
       '@angular/cdk': ^22.0.0
       '@angular/common': ^22.0.0
@@ -4500,7 +4500,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kikita-labs/ui@0.4.6(098d34021aededa29fb218c0a82fbcbc)':
+  '@kikita-labs/ui@0.5.0(098d34021aededa29fb218c0a82fbcbc)':
     dependencies:
       '@angular-devkit/schematics': 22.0.5(chokidar@5.0.0)
       '@angular/cdk': 22.0.3(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-browser@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2)))(rxjs@7.8.2)

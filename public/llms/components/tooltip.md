@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/tooltip
-- Package: @kikita-labs/ui@0.4.6
+- Package: @kikita-labs/ui@0.5.0
 - Import: KuiTooltipDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/tooltip.md
 

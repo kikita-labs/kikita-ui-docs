@@ -8,7 +8,7 @@
 
   <app-doc-section
     heading="Import"
-    description="Use the component directly, and register named icons at application setup when you want name-based lookup."
+    description="Use the component directly. Named icons resolve against Lucide by default via provideKikitaUi(); register your own set with provideKuiIcons() to override or opt out entirely."
   >
     <app-code-tabs [tabs]="importTabs" />
   </app-doc-section>
@@ -36,6 +36,11 @@
       <li>Pass only trusted static SVG to <code>[source]</code>.</li>
       <li>Do not pass user-generated SVG markup into the registry or direct source input.</li>
       <li>Use <code>src</code> for normal image URLs when you do not need inline SVG styling.</li>
+      <li>
+        The default Lucide resolver fetches SVG markup from the jsDelivr CDN by name; set
+        <code>provideKikitaUi({{ '{' }} icons: false {{ '}' }})</code> to avoid that network
+        dependency, or override with your own registry.
+      </li>
     </ul>
   </app-doc-section>
 

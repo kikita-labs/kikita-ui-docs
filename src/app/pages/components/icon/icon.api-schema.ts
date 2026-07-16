@@ -11,7 +11,8 @@ export const ICON_API_ROWS: readonly ApiTableRow[] = [
     name: 'name',
     type: 'KuiIconName | undefined',
     defaultValue: 'undefined',
-    description: 'Icon name resolved from icons registered with provideKuiIcons().',
+    description:
+      'Icon name resolved from icons registered with provideKuiIcons(), falling back to the default Lucide resolver unless disabled.',
   },
   {
     name: 'source',
@@ -41,6 +42,14 @@ export const ICON_API_ROWS: readonly ApiTableRow[] = [
     name: 'provideKuiIcons(icons)',
     type: 'EnvironmentProviders',
     defaultValue: '-',
-    description: 'Registers trusted static SVG strings for name-based icon lookup.',
+    description:
+      'Registers a static map of trusted SVG strings, or an async KuiIconResolver function, for name-based icon lookup. Later registrations take precedence for names both define.',
+  },
+  {
+    name: `provideKikitaUi({ icons })`,
+    type: `'lucide' | false`,
+    defaultValue: `'lucide'`,
+    description:
+      'Default icon set kui-icon resolves against when a name is not matched locally. Lazily fetches Lucide SVG markup from the jsDelivr CDN; set to false to opt out.',
   },
 ];

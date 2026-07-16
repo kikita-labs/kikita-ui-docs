@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/icon
-- Package: @kikita-labs/ui@0.4.6
+- Package: @kikita-labs/ui@0.5.0
 - Import: KuiIconComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon.md
 
@@ -24,6 +24,9 @@ ng add @kikita-labs/ui
 ```
 
 Omit `label` for decorative icons. Decorative icons render with `aria-hidden="true"`.
+
+`source` (direct inline SVG markup) always takes precedence over `name` and resolves
+synchronously -- no registry lookup, no network request.
 
 ## Examples
 
@@ -91,12 +94,13 @@ export class BasicIconExample {
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | kui-icon | Component | - | Renders an icon from a registered name, trusted inline SVG source, or image URL. |
-| name | KuiIconName \| undefined | undefined | Icon name resolved from icons registered with provideKuiIcons(). |
+| name | KuiIconName \| undefined | undefined | Icon name resolved from icons registered with provideKuiIcons(), falling back to the default Lucide resolver unless disabled. |
 | source | KuiIconSource \| undefined | undefined | Trusted static inline SVG markup. It takes precedence over name. |
 | src | string \| undefined | undefined | External image URL used when no source or registered name is provided. |
 | label | string \| undefined | undefined | Accessible name for meaningful icons. Omit it for decorative icons. |
 | size | string | '1em' | CSS size applied to the square icon box, for example 16px, 1.25rem, or 2em. |
-| provideKuiIcons(icons) | EnvironmentProviders | - | Registers trusted static SVG strings for name-based icon lookup. |
+| provideKuiIcons(icons) | EnvironmentProviders | - | Registers a static map of trusted SVG strings, or an async KuiIconResolver function, for name-based icon lookup. Later registrations take precedence for names both define. |
+| provideKikitaUi({ icons }) | 'lucide' \| false | 'lucide' | Default icon set kui-icon resolves against when a name is not matched locally. Lazily fetches Lucide SVG markup from the jsDelivr CDN; set to false to opt out. |
 
 ## Accessibility
 

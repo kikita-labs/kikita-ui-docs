@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/accordion
-- Package: @kikita-labs/ui@0.4.6
+- Package: @kikita-labs/ui@0.5.0
 - Import: KuiAccordionComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/accordion.md
 
