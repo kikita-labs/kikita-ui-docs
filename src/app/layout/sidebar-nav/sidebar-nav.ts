@@ -16,7 +16,7 @@ import type { DocsComponentCategory } from '@core/components';
 import { DOCS_COMPONENT_CATEGORIES } from '@core/components';
 import type { DocsNavigationItem } from '@core/navigation';
 import { DOCS_NAVIGATION_ITEMS } from '@core/navigation';
-import { DocsSearchStateService } from '@core/search';
+import { SearchTrigger } from '@shared/docs-ui/search-trigger';
 
 @Component({
   selector: 'app-sidebar-nav',
@@ -27,6 +27,7 @@ import { DocsSearchStateService } from '@core/search';
     KuiIconComponent,
     RouterLink,
     RouterLinkActive,
+    SearchTrigger,
   ],
   templateUrl: './sidebar-nav.html',
   styleUrl: './sidebar-nav.scss',
@@ -37,7 +38,6 @@ export class SidebarNav {
   public readonly closeNavigation = output<void>();
   public readonly skipToContent = output<void>();
 
-  protected readonly search = inject(DocsSearchStateService);
   private readonly router = inject(Router);
   private readonly currentUrl = toSignal(
     this.router.events.pipe(

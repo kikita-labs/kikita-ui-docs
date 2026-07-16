@@ -1,0 +1,27 @@
+:host {
+  display: contents;
+}
+
+.search-trigger {
+  --kui-btn-gap: var(--kui-space-2, 8px);
+}
+
+.search-trigger kbd {
+  border-radius: var(--kui-radius-xs, 4px);
+  background: var(--kui-color-surface-elevated);
+  color: var(--kui-color-text-muted);
+  font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+  font-size: 10px;
+  padding: 1px 5px;
+}
+
+.search-trigger--full {
+  inline-size: 100%;
+  justify-content: space-between;
+  margin-block-end: 18px;
+  color: var(--kui-color-text-secondary);
+}
+
+.search-trigger--full span {
+  margin-inline-end: auto;
+}

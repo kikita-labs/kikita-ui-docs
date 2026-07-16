@@ -24,11 +24,7 @@
     </button>
   </div>
 
-  <button class="sidebar-nav__search" type="button" (click)="search.show()">
-    <kui-icon name="search" size="16px" />
-    <span>Search</span>
-    <kbd>Ctrl K</kbd>
-  </button>
+  <app-search-trigger fullWidth />
 
   <kui-accordion class="sidebar-nav__sections" mode="multi" [(expandedItems)]="expandedGroupIds">
     <kui-accordion-item

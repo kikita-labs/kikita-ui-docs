@@ -129,19 +129,6 @@
   white-space: nowrap;
 }
 
-.docs-header__search {
-  --kui-btn-gap: var(--kui-space-2, 8px);
-}
-
-.docs-header__search kbd {
-  border-radius: var(--kui-radius-xs, 4px);
-  background: var(--kui-color-surface-elevated);
-  color: var(--kui-color-text-muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 10px;
-  padding: 1px 5px;
-}
-
 @media (max-width: shell.$mobile-breakpoint) {
   .docs-header {
     display: flex;

@@ -209,7 +209,11 @@ export class EmptyStateContextExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiEmptyStateComponent, KuiEmptyStateIconDirective, KuiIconComponent } from '@kikita-labs/ui';
+import {
+  KuiEmptyStateComponent,
+  KuiEmptyStateIconDirective,
+  KuiIconComponent,
+} from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-empty-state-size-example',

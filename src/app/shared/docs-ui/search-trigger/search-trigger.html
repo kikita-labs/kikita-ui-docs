@@ -1,0 +1,13 @@
+<button
+  kuiButton
+  shape="outline"
+  size="sm"
+  type="button"
+  class="search-trigger"
+  [class.search-trigger--full]="fullWidth()"
+  (click)="search.show()"
+>
+  <kui-icon name="search" size="15px" />
+  <span>Search</span>
+  <kbd>Ctrl K</kbd>
+</button>

@@ -67,18 +67,9 @@
 
   <div class="docs-header__actions">
     @if (!minimal()) {
-      <button
-        class="docs-header__search"
-        kuiButton
-        type="button"
-        shape="outline"
-        size="sm"
-        (click)="openSearch()"
-      >
-        <kui-icon name="search" size="15px" />
-        <span>Search</span>
-        <kbd>Ctrl K</kbd>
-      </button>
+      <div class="docs-header__search">
+        <app-search-trigger />
+      </div>
     }
 
     <app-theming />

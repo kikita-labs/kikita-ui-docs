@@ -179,7 +179,14 @@ export class IconButtonSizeExample {
 ```html
 <div class="icon-button-icon-example">
   <button kuiIconButton icon="plus" aria-label="Add item" type="button"></button>
-  <button kuiIconButton shape="outline" appearance="danger" icon="trash-2" aria-label="Delete item" type="button"></button>
+  <button
+    kuiIconButton
+    shape="outline"
+    appearance="danger"
+    icon="trash-2"
+    aria-label="Delete item"
+    type="button"
+  ></button>
   <button kuiIconButton shape="soft" icon="settings" aria-label="Settings" type="button"></button>
 </div>
 ```

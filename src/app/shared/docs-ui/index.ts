@@ -9,3 +9,4 @@ export { DraftState } from './draft-state';
 export { LivePreview } from './live-preview';
 export { PageHeader } from './page-header';
 export { PlaygroundRouteButton } from './playground-route-button';
+export { SearchTrigger } from './search-trigger';

@@ -1703,7 +1703,14 @@ export class ButtonSizeExample {}
 <div class="button-icon-example">
   <button kuiButton appearance="success" iconStart="check" type="button">Save</button>
   <button kuiButton shape="outline" iconEnd="arrow-right" type="button">Continue</button>
-  <button kuiIconButton shape="soft" appearance="danger" icon="trash-2" aria-label="Delete" type="button"></button>
+  <button
+    kuiIconButton
+    shape="soft"
+    appearance="danger"
+    icon="trash-2"
+    aria-label="Delete"
+    type="button"
+  ></button>
 </div>
 ```
 
@@ -4876,7 +4883,11 @@ export class EmptyStateContextExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiEmptyStateComponent, KuiEmptyStateIconDirective, KuiIconComponent } from '@kikita-labs/ui';
+import {
+  KuiEmptyStateComponent,
+  KuiEmptyStateIconDirective,
+  KuiIconComponent,
+} from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-empty-state-size-example',
@@ -5854,7 +5865,14 @@ export class IconButtonSizeExample {
 ```html
 <div class="icon-button-icon-example">
   <button kuiIconButton icon="plus" aria-label="Add item" type="button"></button>
-  <button kuiIconButton shape="outline" appearance="danger" icon="trash-2" aria-label="Delete item" type="button"></button>
+  <button
+    kuiIconButton
+    shape="outline"
+    appearance="danger"
+    icon="trash-2"
+    aria-label="Delete item"
+    type="button"
+  ></button>
   <button kuiIconButton shape="soft" icon="settings" aria-label="Settings" type="button"></button>
 </div>
 ```

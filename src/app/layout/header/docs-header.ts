@@ -13,7 +13,6 @@ import {
   KuiBreadcrumbItemDirective,
   KuiBreadcrumbsDirective,
   KuiBreadcrumbSeparatorComponent,
-  KuiButtonDirective,
   type KuiCommandItem,
   KuiCommandPaletteComponent,
   KuiIconButtonDirective,
@@ -26,6 +25,7 @@ import { DocsKeyboardShortcutService } from '@core/platform/keyboard';
 import { DocsSearchIndexService } from '@core/search';
 import { DocsSearchStateService } from '@core/search';
 import { DocsThemeService } from '@core/theme';
+import { SearchTrigger } from '@shared/docs-ui/search-trigger';
 
 import { Theming } from '../theming/theming';
 
@@ -35,11 +35,11 @@ import { Theming } from '../theming/theming';
     KuiBreadcrumbItemDirective,
     KuiBreadcrumbSeparatorComponent,
     KuiBreadcrumbsDirective,
-    KuiButtonDirective,
     KuiCommandPaletteComponent,
     KuiIconButtonDirective,
     KuiIconComponent,
     RouterLink,
+    SearchTrigger,
     Theming,
   ],
   templateUrl: './docs-header.html',
