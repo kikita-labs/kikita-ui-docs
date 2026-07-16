@@ -1,6 +1,11 @@
 import { Component, computed, effect, inject, input, signal } from '@angular/core';
 
-import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
+import {
+  KuiAccordionComponent,
+  KuiAccordionItemComponent,
+  KuiTabDirective,
+  KuiTabsComponent,
+} from '@kikita-labs/ui';
 
 import { DocsAnchorNavigationService } from '@core/platform/anchor';
 import {
@@ -11,7 +16,7 @@ import {
 
 @Component({
   selector: 'app-page-toc',
-  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
+  imports: [KuiAccordionComponent, KuiAccordionItemComponent, KuiTabDirective, KuiTabsComponent],
   templateUrl: './page-toc.html',
   styleUrl: './page-toc.scss',
   host: {
@@ -51,6 +56,20 @@ export class PageToc {
 
   protected scrollToLink(link: DocsSectionRegistration, event: MouseEvent): void {
     event.preventDefault();
+    this.activateLink(link);
+  }
+
+  protected scrollToSelectedLink(linkId: string): void {
+    const link = this.links().find((candidate) => candidate.id === linkId);
+
+    if (!link) {
+      return;
+    }
+
+    this.activateLink(link);
+  }
+
+  private activateLink(link: DocsSectionRegistration): void {
     this.activeLinkId.set(link.id);
     this.mobileExpandedItems.set([]);
     void this.anchorNavigation.navigate(link.id);

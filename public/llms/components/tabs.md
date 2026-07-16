@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/tabs
-- Package: @kikita-labs/ui@0.4.4
+- Package: @kikita-labs/ui@0.4.6
 - Import: KuiTabsComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/tabs.md
 
@@ -33,6 +33,31 @@ ng add @kikita-labs/ui
 
 ```html
 <kui-tabs variant="pill" [(selected)]="activeTab"> ... </kui-tabs>
+```
+
+### Inverted Edge
+
+Use `inverted` when the tab list should sit on the opposite edge of the panels.
+Horizontal tabs render panels above the tab list and place the line indicator on
+the top edge. Vertical tabs render panels before the tab list and place the line
+indicator on the start edge.
+
+```html
+<kui-tabs inverted [(selected)]="activeTab">
+  <button kuiTab value="details">Details</button>
+  <button kuiTab value="history">History</button>
+
+  <div kuiTabPanel value="details">Details content</div>
+  <div kuiTabPanel value="history">History content</div>
+</kui-tabs>
+
+<kui-tabs orientation="vertical" inverted [(selected)]="activeTab">
+  <button kuiTab value="details">Details</button>
+  <button kuiTab value="history">History</button>
+
+  <div kuiTabPanel value="details">Details content</div>
+  <div kuiTabPanel value="history">History content</div>
+</kui-tabs>
 ```
 
 ### Router Navigation
@@ -231,6 +256,7 @@ export class VerticalTabsExample {
 | variant | 'line' \| 'pill' | 'line' | Tab visual style: underline indicator (line) or pill background (pill). |
 | size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Tab trigger height and font size. |
 | orientation | 'horizontal' \| 'vertical' | 'horizontal' | Layout direction of the tab list. Vertical stacks triggers in a column with the indicator on the side edge. |
+| inverted | boolean | false | Flips the tab edge. Horizontal tabs render panels above and the indicator on top; vertical tabs render panels before the list and the indicator on the start edge. |
 | controlsPanels | boolean | true | Whether tabs expose aria-controls links to projected kuiTabPanel elements. Set to false when tabs are used as navigation and content is rendered elsewhere, such as a router-outlet. |
 | selected | string | - | Value of the active tab. Two-way bindable with [(selected)]. |
 | [kuiTab] value | string | - | Identifier for this tab trigger. Must match a kuiTabPanel value when controlsPanels is true. |

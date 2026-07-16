@@ -37,124 +37,88 @@
     <kbd>Ctrl K</kbd>
   </button>
 
-  <div class="sidebar-nav__sections">
-    <section class="sidebar-nav__section">
-      <button
-        class="sidebar-nav__group-title"
-        type="button"
-        [class.sidebar-nav__group-title--collapsed]="!isGroupExpanded('foundations')"
-        [attr.aria-expanded]="isGroupExpanded('foundations')"
-        [attr.aria-controls]="groupDomId('foundations')"
-        (click)="toggleGroup('foundations')"
-      >
-        <span>Foundations</span>
-        <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-          <path d="M3 4.5 6 7.5 9 4.5" />
-        </svg>
-      </button>
+  <kui-accordion class="sidebar-nav__sections" mode="multi" [(expandedItems)]="expandedGroupIds">
+    <kui-accordion-item
+      id="resources"
+      header="Resources"
+      class="sidebar-nav__section"
+      [class.sidebar-nav__section--active]="isNavigationGroupActive(resourceItems, true)"
+      routerLinkActive="sidebar-nav__section--active"
+      [routerLinkActiveOptions]="activeOptions"
+    >
+      <ul class="sidebar-nav__sublist">
+        @for (item of resourceItems; track item.path) {
+          <li>
+            <a
+              #resourceLink="routerLinkActive"
+              class="sidebar-nav__item"
+              [routerLink]="item.path"
+              routerLinkActive
+              [routerLinkActiveOptions]="activeOptions"
+              [attr.aria-current]="resourceLink.isActive ? 'page' : null"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </kui-accordion-item>
 
-      @if (isGroupExpanded('foundations')) {
-        <ul class="sidebar-nav__sublist" [id]="groupDomId('foundations')">
-          @for (item of foundationItems; track item.path) {
-            <li>
-              <a
-                kuiButton
-                size="sm"
-                #foundationLink="routerLinkActive"
-                class="sidebar-nav__item"
-                [shape]="foundationLink.isActive ? 'soft' : 'ghost'"
-                [routerLink]="item.path"
-                routerLinkActive
-                [routerLinkActiveOptions]="activeOptions"
-                [attr.aria-current]="foundationLink.isActive ? 'page' : null"
-              >
-                {{ item.label }}
-              </a>
-            </li>
-          }
-        </ul>
-      }
-    </section>
+    <kui-accordion-item
+      id="foundations"
+      header="Foundations"
+      class="sidebar-nav__section"
+      [class.sidebar-nav__section--active]="isNavigationGroupActive(foundationItems, true)"
+      routerLinkActive="sidebar-nav__section--active"
+      [routerLinkActiveOptions]="activeOptions"
+    >
+      <ul class="sidebar-nav__sublist">
+        @for (item of foundationItems; track item.path) {
+          <li>
+            <a
+              #foundationLink="routerLinkActive"
+              class="sidebar-nav__item"
+              [routerLink]="item.path"
+              routerLinkActive
+              [routerLinkActiveOptions]="activeOptions"
+              [attr.aria-current]="foundationLink.isActive ? 'page' : null"
+            >
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </kui-accordion-item>
 
     @for (category of componentCategories; track category.label) {
-      <section class="sidebar-nav__section">
-        <button
-          class="sidebar-nav__group-title"
-          type="button"
-          [class.sidebar-nav__group-title--collapsed]="!isGroupExpanded(category.label)"
-          [attr.aria-expanded]="isGroupExpanded(category.label)"
-          [attr.aria-controls]="groupDomId(category.label)"
-          (click)="toggleGroup(category.label)"
-        >
-          <span>{{ category.label }}</span>
-          <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-            <path d="M3 4.5 6 7.5 9 4.5" />
-          </svg>
-        </button>
-
-        @if (isGroupExpanded(category.label)) {
-          <ul class="sidebar-nav__sublist" [id]="groupDomId(category.label)">
-            @for (component of category.components; track component.name) {
-              <li>
-                <a
-                  kuiButton
-                  size="sm"
-                  #componentLink="routerLinkActive"
-                  class="sidebar-nav__item"
-                  [shape]="componentLink.isActive ? 'soft' : 'ghost'"
-                  [routerLink]="component.routePath"
-                  routerLinkActive
-                  [routerLinkActiveOptions]="componentActiveOptions"
-                  [attr.aria-current]="componentLink.isActive ? 'page' : null"
-                >
-                  <span>{{ component.name }}</span>
-                  @if (component.status === 'docs-pending') {
-                    <span class="sidebar-nav__draft-badge">Draft</span>
-                  }
-                </a>
-              </li>
-            }
-          </ul>
-        }
-      </section>
-    }
-
-    <section class="sidebar-nav__section">
-      <button
-        class="sidebar-nav__group-title"
-        type="button"
-        [class.sidebar-nav__group-title--collapsed]="!isGroupExpanded('package')"
-        [attr.aria-expanded]="isGroupExpanded('package')"
-        [attr.aria-controls]="groupDomId('package')"
-        (click)="toggleGroup('package')"
+      <kui-accordion-item
+        [id]="groupDomId(category.label)"
+        [header]="category.label"
+        class="sidebar-nav__section"
+        [class.sidebar-nav__section--active]="isCategoryActive(category)"
+        routerLinkActive="sidebar-nav__section--active"
+        [routerLinkActiveOptions]="componentActiveOptions"
       >
-        <span>Package</span>
-        <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false">
-          <path d="M3 4.5 6 7.5 9 4.5" />
-        </svg>
-      </button>
-
-      @if (isGroupExpanded('package')) {
-        <ul class="sidebar-nav__sublist" [id]="groupDomId('package')">
-          @for (item of packageItems; track item.path) {
+        <ul class="sidebar-nav__sublist">
+          @for (component of category.components; track component.name) {
             <li>
               <a
-                kuiButton
-                size="sm"
-                #packageLink="routerLinkActive"
+                #componentLink="routerLinkActive"
                 class="sidebar-nav__item"
-                [shape]="packageLink.isActive ? 'soft' : 'ghost'"
-                [routerLink]="item.path"
+                [routerLink]="component.routePath"
                 routerLinkActive
-                [routerLinkActiveOptions]="activeOptions"
-                [attr.aria-current]="packageLink.isActive ? 'page' : null"
+                [routerLinkActiveOptions]="componentActiveOptions"
+                [attr.aria-current]="componentLink.isActive ? 'page' : null"
               >
-                {{ item.label }}
+                <span>{{ component.name }}</span>
+                @if (component.status === 'docs-pending') {
+                  <span class="sidebar-nav__draft-badge">Draft</span>
+                }
               </a>
             </li>
           }
         </ul>
-      }
-    </section>
-  </div>
+      </kui-accordion-item>
+    }
+  </kui-accordion>
 </nav>

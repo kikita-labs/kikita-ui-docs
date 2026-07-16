@@ -1,6 +1,9 @@
 import { isPlatformBrowser } from '@angular/common';
 import { DOCUMENT, inject, Injectable, PLATFORM_ID } from '@angular/core';
 
+const DOCS_ACTIVE_HEADING_OFFSET = 96;
+const DOCS_SCROLL_END_TOLERANCE = 2;
+
 @Injectable({ providedIn: 'root' })
 export class DocsHeadingObserverService {
   private readonly document = inject(DOCUMENT);
@@ -10,9 +13,10 @@ export class DocsHeadingObserverService {
     headingIds: readonly string[],
     onActiveHeadingChange: (headingId: string) => void,
   ): () => void {
-    const Observer = this.document.defaultView?.IntersectionObserver;
+    const window = this.document.defaultView;
+    const Observer = window?.IntersectionObserver;
 
-    if (!this.isBrowser || !Observer || headingIds.length === 0) {
+    if (!this.isBrowser || !window || headingIds.length === 0) {
       return () => undefined;
     }
 
@@ -24,24 +28,78 @@ export class DocsHeadingObserverService {
       return () => undefined;
     }
 
-    const observer = new Observer(
-      (entries) => {
-        const visibleEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((left, right) => left.boundingClientRect.top - right.boundingClientRect.top)[0];
+    const publishCurrentHeading = () => {
+      const activeHeadingId = this.getCurrentHeadingId(headings);
 
-        if (visibleEntry?.target.id) {
-          onActiveHeadingChange(visibleEntry.target.id);
-        }
-      },
-      {
-        rootMargin: '-96px 0px -65%',
-        threshold: 0,
-      },
+      if (activeHeadingId) {
+        onActiveHeadingChange(activeHeadingId);
+      }
+    };
+    const observer = Observer
+      ? new Observer(
+          (entries) => {
+            const visibleEntry = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((left, right) => left.boundingClientRect.top - right.boundingClientRect.top)[0];
+
+            if (visibleEntry?.target.id) {
+              onActiveHeadingChange(visibleEntry.target.id);
+            }
+          },
+          {
+            rootMargin: `-${DOCS_ACTIVE_HEADING_OFFSET}px 0px -65%`,
+            threshold: 0,
+          },
+        )
+      : null;
+
+    headings.forEach((heading) => observer?.observe(heading));
+    window.addEventListener('scroll', publishCurrentHeading, { passive: true });
+    window.addEventListener('resize', publishCurrentHeading);
+    publishCurrentHeading();
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('scroll', publishCurrentHeading);
+      window.removeEventListener('resize', publishCurrentHeading);
+    };
+  }
+
+  private getCurrentHeadingId(headings: readonly HTMLElement[]): string | null {
+    const window = this.document.defaultView;
+    const documentElement = this.document.documentElement;
+    const body = this.document.body;
+
+    if (!window || !documentElement || headings.length === 0) {
+      return null;
+    }
+
+    const scrollTop = window.scrollY || documentElement.scrollTop || body?.scrollTop || 0;
+    const viewportHeight = window.innerHeight || documentElement.clientHeight || 0;
+    const scrollHeight = Math.max(
+      documentElement.scrollHeight,
+      body?.scrollHeight ?? 0,
+      documentElement.offsetHeight,
+      body?.offsetHeight ?? 0,
     );
 
-    headings.forEach((heading) => observer.observe(heading));
+    if (
+      scrollHeight > 0 &&
+      scrollTop + viewportHeight >= scrollHeight - DOCS_SCROLL_END_TOLERANCE
+    ) {
+      return headings.at(-1)?.id ?? null;
+    }
 
-    return () => observer.disconnect();
+    let activeHeadingId = headings[0]?.id ?? null;
+
+    for (const heading of headings) {
+      if (heading.getBoundingClientRect().top > DOCS_ACTIVE_HEADING_OFFSET) {
+        break;
+      }
+
+      activeHeadingId = heading.id;
+    }
+
+    return activeHeadingId;
   }
 }

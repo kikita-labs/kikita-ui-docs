@@ -43,6 +43,7 @@ const TABS_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['horizontal', 'vertical'],
     defaultValue: 'horizontal',
   },
+  { key: 'inverted', label: 'inverted', kind: 'boolean', defaultValue: false },
   { key: 'tab1Label', label: 'tab 1 label', kind: 'string', defaultValue: 'Overview' },
   { key: 'tab2Label', label: 'tab 2 label', kind: 'string', defaultValue: 'Settings' },
   { key: 'tab3Label', label: 'tab 3 label', kind: 'string', defaultValue: 'Logs' },
@@ -72,6 +73,7 @@ export class TabsPlaygroundPage {
     const variant = values.variant;
     const size = values.size;
     const orientation = values.orientation;
+    const inverted = values.inverted;
     const tab1Label = values.tab1Label || 'Overview';
     const tab2Label = values.tab2Label || 'Settings';
     const tab3Label = values.tab3Label || 'Logs';
@@ -82,6 +84,7 @@ export class TabsPlaygroundPage {
       variant !== 'line' ? `variant="${variant}"` : null,
       size !== 'md' ? `size="${size}"` : null,
       orientation !== 'horizontal' ? `orientation="${orientation}"` : null,
+      inverted ? `inverted` : null,
       !controlsPanels ? `[controlsPanels]="false"` : null,
     ]
       .filter((attr): attr is string => attr !== null)
@@ -124,6 +127,10 @@ export class TabsPlaygroundPage {
 
   protected controlsPanelsOf(values: TabsPlaygroundValues): boolean {
     return values.controlsPanels;
+  }
+
+  protected invertedOf(values: TabsPlaygroundValues): boolean {
+    return values.inverted;
   }
 
   protected showErrorOf(values: TabsPlaygroundValues): boolean {

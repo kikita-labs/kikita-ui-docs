@@ -13,6 +13,14 @@ import { TabsPlaygroundPage } from './tabs-playground-page';
 describe('TabsPlaygroundPage', () => {
   let fixture: ComponentFixture<TabsPlaygroundPage>;
 
+  function toggleByLabel(root: HTMLElement, label: string): void {
+    const row = [...root.querySelectorAll<HTMLElement>('.api-playground__toggle-row')].find(
+      (item) => item.textContent?.includes(label),
+    );
+
+    row?.querySelector<HTMLInputElement>('input[type="checkbox"]')?.click();
+  }
+
   beforeEach(async () => {
     vi.stubGlobal(
       'ResizeObserver',
@@ -57,12 +65,12 @@ describe('TabsPlaygroundPage', () => {
   it('updates preview state and emits typed non-default snippet attributes', () => {
     const root = fixture.nativeElement as HTMLElement;
     const optionButtons = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
-    const switches = [...root.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')];
 
     optionButtons.find((button) => button.textContent?.trim() === 'pill')?.click();
     optionButtons.find((button) => button.textContent?.trim() === 'lg')?.click();
     optionButtons.find((button) => button.textContent?.trim() === 'vertical')?.click();
-    switches[1]?.click();
+    toggleByLabel(root, 'inverted');
+    toggleByLabel(root, 'tab 2 hasError');
     fixture.detectChanges();
 
     const preview = root.querySelector<HTMLElement>('app-api-playground-viewport .kui-tabs');
@@ -72,18 +80,18 @@ describe('TabsPlaygroundPage', () => {
     expect(preview?.getAttribute('data-kui-variant')).toBe('pill');
     expect(preview?.getAttribute('data-kui-size')).toBe('lg');
     expect(preview?.getAttribute('data-kui-orientation')).toBe('vertical');
+    expect(preview?.hasAttribute('data-kui-inverted')).toBe(true);
     expect(errorTab?.querySelector('.kui-tab-error-dot')).not.toBeNull();
     expect(snippet?.textContent).toContain(
-      '<kui-tabs [(selected)]="activeTab" variant="pill" size="lg" orientation="vertical">',
+      '<kui-tabs [(selected)]="activeTab" variant="pill" size="lg" orientation="vertical" inverted>',
     );
     expect(snippet?.textContent).toContain('hasError errorLabel="Contains errors"');
   });
 
   it('omits panels and aria-controls when controlsPanels is false', () => {
     const root = fixture.nativeElement as HTMLElement;
-    const switches = [...root.querySelectorAll<HTMLInputElement>('input[type="checkbox"]')];
 
-    switches[0]?.click();
+    toggleByLabel(root, 'controlsPanels');
     fixture.detectChanges();
 
     const preview = root.querySelector<HTMLElement>('app-api-playground-viewport .kui-tabs');

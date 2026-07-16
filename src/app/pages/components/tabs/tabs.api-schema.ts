@@ -21,6 +21,13 @@ export const TABS_API_ROWS: readonly ApiTableRow[] = [
       'Layout direction of the tab list. Vertical stacks triggers in a column with the indicator on the side edge.',
   },
   {
+    name: 'inverted',
+    type: 'boolean',
+    defaultValue: 'false',
+    description:
+      'Flips the tab edge. Horizontal tabs render panels above and the indicator on top; vertical tabs render panels before the list and the indicator on the start edge.',
+  },
+  {
     name: 'controlsPanels',
     type: 'boolean',
     defaultValue: 'true',

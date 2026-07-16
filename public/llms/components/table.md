@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/table
-- Package: @kikita-labs/ui@0.4.4
+- Package: @kikita-labs/ui@0.4.6
 - Import: KuiTableDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/table.md
 

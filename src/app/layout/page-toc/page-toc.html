@@ -7,7 +7,7 @@
       size="sm"
       [(expandedItems)]="mobileExpandedItems"
     >
-      <kui-accordion-item id="page-sections" [header]="'On this page — ' + activeLinkLabel()">
+      <kui-accordion-item id="page-sections" [header]="'On this page - ' + activeLinkLabel()">
         <nav aria-label="On this page">
           <ul class="page-toc__mobile-list">
             @for (link of links(); track link.id) {
@@ -28,22 +28,26 @@
     <aside class="page-toc" aria-label="Page table of contents">
       <p class="page-toc__label">On this page</p>
 
-      <nav aria-label="Page sections">
-        <ul class="page-toc__list">
-          @for (link of links(); track link.id) {
-            <li>
-              <a
-                class="page-toc__link"
-                [class.page-toc__link--active]="activeLinkId() === link.id"
-                [href]="'#' + link.id"
-                [attr.aria-current]="activeLinkId() === link.id ? 'location' : null"
-                (click)="scrollToLink(link, $event)"
-                >{{ link.label }}</a
-              >
-            </li>
-          }
-        </ul>
-      </nav>
+      <kui-tabs
+        class="page-toc__tabs"
+        orientation="vertical"
+        inverted
+        [controlsPanels]="false"
+        [selected]="activeLinkId() ?? ''"
+        (selectedChange)="scrollToSelectedLink($event)"
+        aria-label="Page sections"
+      >
+        @for (link of links(); track link.id) {
+          <button
+            kuiTab
+            type="button"
+            [value]="link.id"
+            [attr.aria-current]="activeLinkId() === link.id ? 'location' : null"
+          >
+            {{ link.label }}
+          </button>
+        }
+      </kui-tabs>
     </aside>
   }
 }
