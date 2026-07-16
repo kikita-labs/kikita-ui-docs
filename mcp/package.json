@@ -1,8 +1,27 @@
 {
   "name": "@kikita-labs/ui-mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Local read-only MCP server for Kikita UI documentation.",
   "type": "module",
+  "homepage": "https://kikita-labs.github.io/kikita-ui-docs/ai-support",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikita-labs/kikita-ui-docs.git",
+    "directory": "mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/kikita-labs/kikita-ui-docs/issues"
+  },
+  "keywords": [
+    "kikita-ui",
+    "mcp",
+    "model-context-protocol",
+    "angular",
+    "ui-library",
+    "design-system",
+    "documentation",
+    "llms"
+  ],
   "bin": {
     "kikita-ui-mcp": "src/index.js"
   },
