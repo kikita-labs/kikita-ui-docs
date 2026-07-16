@@ -27,6 +27,10 @@ router-outlet + * {
   min-inline-size: 0;
 }
 
+:where(h1, h2, h3, h4, h5, h6)[tabindex='-1']:focus {
+  outline: none;
+}
+
 .sidebar-nav__skip {
   position: fixed;
   z-index: 10;
