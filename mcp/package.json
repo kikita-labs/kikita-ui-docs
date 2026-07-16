@@ -1,12 +1,13 @@
 {
   "name": "@kikita-labs/ui-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Local read-only MCP server for Kikita UI documentation.",
   "type": "module",
   "bin": {
     "kikita-ui-mcp": "src/index.js"
   },
   "files": [
+    "README.md",
     "generated/kikita-agent-data.json",
     "src/index.js"
   ],
