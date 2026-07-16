@@ -84,7 +84,7 @@ describe('docs registry', () => {
     ];
     const pageTypes = await Promise.all(ownedPageManifests.map((manifest) => manifest.loadPage()));
 
-    expect(ownedPageManifests).toHaveLength(11);
+    expect(ownedPageManifests).toHaveLength(12);
     expect(new Set(pageTypes).size).toBe(ownedPageManifests.length);
     expect(pageTypes.every((pageType) => isStandalone(pageType))).toBe(true);
   });

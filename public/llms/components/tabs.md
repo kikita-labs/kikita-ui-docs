@@ -50,10 +50,179 @@ Use `controlsPanels="false"` when `kui-tabs` is used as navigation and the route
 
 Rendered at /components/tabs:
 
-- `basic-tabs-example`
-- `navigation-tabs-example`
-- `pill-tabs-example`
-- `vertical-tabs-example`
+### basic-tabs-example
+
+#### basic-tabs-example.html
+
+```html
+<kui-tabs [(selected)]="activeTab">
+  <button kuiTab value="overview">Overview</button>
+  <button kuiTab value="settings">Settings</button>
+  <button kuiTab value="logs">Logs</button>
+
+  <div kuiTabPanel value="overview">Overview content.</div>
+  <div kuiTabPanel value="settings">Settings content.</div>
+  <div kuiTabPanel value="logs">Log content.</div>
+</kui-tabs>
+```
+
+#### basic-tabs-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-tabs-example',
+  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  templateUrl: './basic-tabs-example.html',
+  styleUrl: './basic-tabs-example.scss',
+})
+export class BasicTabsExample {
+  protected readonly activeTab = signal('overview');
+}
+```
+
+#### basic-tabs-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
+
+### navigation-tabs-example
+
+#### navigation-tabs-example.html
+
+```html
+<kui-tabs [(selected)]="currentSection" [controlsPanels]="false" aria-label="Sections">
+  <button kuiTab value="/overview">Overview</button>
+  <button kuiTab value="/settings">Settings</button>
+  <button kuiTab value="/team">Team</button>
+</kui-tabs>
+
+<p class="navigation-tabs-example__note">
+  Selected value: <code>{{ currentSection() }}</code>
+</p>
+```
+
+#### navigation-tabs-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTabDirective, KuiTabsComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-navigation-tabs-example',
+  imports: [KuiTabDirective, KuiTabsComponent],
+  templateUrl: './navigation-tabs-example.html',
+  styleUrl: './navigation-tabs-example.scss',
+})
+export class NavigationTabsExample {
+  protected readonly currentSection = signal('/overview');
+}
+```
+
+#### navigation-tabs-example.scss
+
+```scss
+:host {
+  display: block;
+}
+
+.navigation-tabs-example__note {
+  margin: var(--kui-space-3, 12px) 0 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### pill-tabs-example
+
+#### pill-tabs-example.html
+
+```html
+<kui-tabs variant="pill" [(selected)]="activeTab">
+  <button kuiTab value="daily">Daily</button>
+  <button kuiTab value="weekly" hasError errorLabel="Contains validation errors">Weekly</button>
+  <button kuiTab value="monthly">Monthly</button>
+
+  <div kuiTabPanel value="daily">Daily report content.</div>
+  <div kuiTabPanel value="weekly">Weekly report content.</div>
+  <div kuiTabPanel value="monthly">Monthly report content.</div>
+</kui-tabs>
+```
+
+#### pill-tabs-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-pill-tabs-example',
+  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  templateUrl: './pill-tabs-example.html',
+  styleUrl: './pill-tabs-example.scss',
+})
+export class PillTabsExample {
+  protected readonly activeTab = signal('daily');
+}
+```
+
+#### pill-tabs-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
+
+### vertical-tabs-example
+
+#### vertical-tabs-example.html
+
+```html
+<kui-tabs orientation="vertical" [(selected)]="activeTab">
+  <button kuiTab value="profile">Profile</button>
+  <button kuiTab value="billing">Billing</button>
+  <button kuiTab value="security">Security</button>
+
+  <div kuiTabPanel value="profile">Profile content.</div>
+  <div kuiTabPanel value="billing">Billing content.</div>
+  <div kuiTabPanel value="security">Security content.</div>
+</kui-tabs>
+```
+
+#### vertical-tabs-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-vertical-tabs-example',
+  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  templateUrl: './vertical-tabs-example.html',
+  styleUrl: './vertical-tabs-example.scss',
+})
+export class VerticalTabsExample {
+  protected readonly activeTab = signal('profile');
+}
+```
+
+#### vertical-tabs-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
 
 ## API
 

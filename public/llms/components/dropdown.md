@@ -56,9 +56,121 @@ and `aria-haspopup`.
 
 Rendered at /components/dropdown:
 
-- `field-dropdown-example`
-- `panel-width-dropdown-example`
-- `standalone-dropdown-example`
+### field-dropdown-example
+
+#### field-dropdown-example.html
+
+```html
+<kui-field label="Fruit">
+  <input kuiSelect [(value)]="fruit" placeholder="Pick..." />
+  <kui-dropdown>
+    <div kuiOption value="apple">Apple</div>
+    <div kuiOption value="banana">Banana</div>
+    <div kuiOption value="cherry">Cherry</div>
+  </kui-dropdown>
+</kui-field>
+```
+
+#### field-dropdown-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+  KuiSelectDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-field-dropdown-example',
+  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  templateUrl: './field-dropdown-example.html',
+})
+export class FieldDropdownExample {
+  protected readonly fruit = signal<string | null>(null);
+}
+```
+
+### panel-width-dropdown-example
+
+#### panel-width-dropdown-example.html
+
+```html
+<div class="panel-width-dropdown-example">
+  <button type="button" [kuiDropdownFor]="anchorPanel">panelWidth="anchor"</button>
+  <kui-dropdown #anchorPanel panelWidth="anchor">
+    <div kuiOption value="a">Matches trigger width</div>
+  </kui-dropdown>
+
+  <button type="button" [kuiDropdownFor]="contentPanel">panelWidth="content"</button>
+  <kui-dropdown #contentPanel panelWidth="content">
+    <div kuiOption value="b">Grows with a longer content line if needed</div>
+  </kui-dropdown>
+
+  <button type="button" [kuiDropdownFor]="explicitPanel">width="320px"</button>
+  <kui-dropdown #explicitPanel width="320px">
+    <div kuiOption value="c">Always exactly 320px wide</div>
+  </kui-dropdown>
+</div>
+```
+
+#### panel-width-dropdown-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-panel-width-dropdown-example',
+  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  templateUrl: './panel-width-dropdown-example.html',
+  styleUrl: './panel-width-dropdown-example.scss',
+})
+export class PanelWidthDropdownExample {}
+```
+
+#### panel-width-dropdown-example.scss
+
+```scss
+.panel-width-dropdown-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+}
+```
+
+### standalone-dropdown-example
+
+#### standalone-dropdown-example.html
+
+```html
+<div class="standalone-dropdown-example">
+  <button type="button" [kuiDropdownFor]="menu">Actions</button>
+
+  <kui-dropdown #menu [maxHeight]="null">
+    <div kuiOption value="edit">Edit</div>
+    <div kuiOption value="delete" [disabled]="true">Delete</div>
+  </kui-dropdown>
+</div>
+```
+
+#### standalone-dropdown-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-standalone-dropdown-example',
+  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  templateUrl: './standalone-dropdown-example.html',
+})
+export class StandaloneDropdownExample {}
+```
 
 ## API
 

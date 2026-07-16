@@ -28,8 +28,86 @@ Use `textarea[kuiTextarea]` for multiline controls.
 
 Rendered at /components/input:
 
-- `basic-input-example`
-- `input-group-example`
+### basic-input-example
+
+#### basic-input-example.html
+
+```html
+<div class="basic-input-example">
+  <input kuiInput type="email" aria-label="Work email" placeholder="mira@company.dev" />
+  <input kuiInput aria-label="Project slug" value="kikita-ui" />
+  <input kuiInput invalid aria-label="Invalid project slug" value="Invalid value" />
+</div>
+```
+
+#### basic-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-input-example',
+  imports: [KuiInputDirective],
+  templateUrl: './basic-input-example.html',
+  styleUrl: './basic-input-example.scss',
+})
+export class BasicInputExample {}
+```
+
+#### basic-input-example.scss
+
+```scss
+.basic-input-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
+```
+
+### input-group-example
+
+#### input-group-example.html
+
+```html
+<kui-field label="Project URL" hint="Affixes are visual field chrome.">
+  <div class="kui-input-group input-group-example">
+    <span kuiFieldAffix>https://</span>
+    <input kuiInput aria-label="Project slug" value="kikita-ui" />
+    <span kuiFieldAffix>.dev</span>
+  </div>
+</kui-field>
+```
+
+#### input-group-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiFieldAffixDirective,
+  KuiFieldComponent,
+  KuiInputDirective,
+  KuiInputGroupDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-input-group-example',
+  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective, KuiInputGroupDirective],
+  templateUrl: './input-group-example.html',
+  styleUrl: './input-group-example.scss',
+})
+export class InputGroupExample {}
+```
+
+#### input-group-example.scss
+
+```scss
+.input-group-example {
+  inline-size: min(100%, 380px);
+}
+```
 
 ## API
 

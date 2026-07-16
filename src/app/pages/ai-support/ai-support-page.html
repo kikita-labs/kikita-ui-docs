@@ -1,0 +1,40 @@
+<article class="ai-support-page">
+  <app-page-header
+    eyebrow="Agent support"
+    heading="AI Support"
+    description="Use Kikita UI with coding agents through curated Markdown context or the local read-only MCP server."
+    [status]="packageVersion"
+  />
+
+  <app-doc-section
+    heading="Context files"
+    description="Use llms.txt for a concise index and llms-full.txt when an agent needs the full public documentation context."
+  >
+    <app-code-tabs [tabs]="directTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Local MCP"
+    description="Run the read-only stdio MCP server locally with npx. It exposes package docs, component examples, API sections, search, and prompt templates."
+  >
+    <app-code-tabs [tabs]="mcpTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Agent instruction"
+    description="Give agents a short rule that keeps them on published package APIs and the generated Kikita documentation surface."
+  >
+    <app-code-tabs [tabs]="agentTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Version boundary"
+    description="The MCP package is generated from this docs site's installed @kikita-labs/ui version. If the package dependency changes, regenerate the agent surface before publishing docs or MCP data."
+  >
+    <ul class="ai-support-page__notes">
+      <li>Agents should import only from <code>@kikita-labs/ui</code>.</li>
+      <li>Unreleased sibling repository source is not public documentation.</li>
+      <li>The first MCP server is read-only: no file writes, shell commands, or telemetry.</li>
+    </ul>
+  </app-doc-section>
+</article>

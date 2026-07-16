@@ -35,7 +35,55 @@ ng add @kikita-labs/ui
 
 Rendered at /components/segmented:
 
-- `basic-segmented-example`
+### basic-segmented-example
+
+#### basic-segmented-example.html
+
+```html
+<div class="basic-segmented-example">
+  <kui-segmented [(selected)]="view" aria-label="Project view">
+    <button kuiSegment value="list">List</button>
+    <button kuiSegment value="board">Board</button>
+    <button kuiSegment value="timeline">Timeline</button>
+  </kui-segmented>
+
+  <p>Selected view: {{ view() }}</p>
+</div>
+```
+
+#### basic-segmented-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiSegmentDirective, KuiSegmentedComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-segmented-example',
+  imports: [KuiSegmentDirective, KuiSegmentedComponent],
+  templateUrl: './basic-segmented-example.html',
+  styleUrl: './basic-segmented-example.scss',
+})
+export class BasicSegmentedExample {
+  protected readonly view = signal('list');
+}
+```
+
+#### basic-segmented-example.scss
+
+```scss
+.basic-segmented-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-segmented-example p {
+  margin: 0;
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-font-size-sm);
+}
+```
 
 ## API
 

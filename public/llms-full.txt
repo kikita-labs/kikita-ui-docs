@@ -74,6 +74,7 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 
 ## Resources
 
+- [AI Support](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/ai-support.md): Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.
 - [Package Smoke](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md): External consumer verification for package imports, styles, and providers.
 
 ---
@@ -92,7 +93,57 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 
 ## Content
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+### Baseline rules
+These requirements apply to primitives, docs examples, and consumer verification pages.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| Semantics first | HTML | - | Prefer native elements and browser behavior before adding ARIA. |
+| Keyboard | WCAG AA | - | Every interactive state must be reachable, operable, and escapable by keyboard. |
+| Focus | Visible state | - | Focus indicators must remain visible and must not cause layout shift. |
+| Contrast | WCAG AA | - | Text, icons, focus, disabled, invalid, selected, and loading states must remain distinguishable. |
+
+### Review levels
+A clean automated scan is only a smoke test. Do not mark a primitive fully audited without keyboard and assistive-technology review.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| DOM smoke | Automated | - | Catches broken ARIA references, duplicate ids, invalid roles, and unnamed controls. |
+| Keyboard review | Manual | - | Verifies tab order, activation keys, escape behavior, and focus restoration. |
+| Assistive technology | Manual | - | Uses a real screen reader or platform accessibility tool for names, roles, and states. |
+| Visual review | Manual | - | Checks responsive layout, 200% zoom, reduced motion, forced colors, and contrast. |
+
+### Docs examples
+Examples should use Kikita field wiring and native state attributes instead of compensating for broken markup with custom ARIA.
+#### field-example.html
+
+```html
+<kui-field label="Email" hint="Use your work address.">
+  <input kuiInput type="email" autocomplete="email" />
+</kui-field>
+```
+
+#### navigation.html
+
+```html
+<a routerLink="/foundations/tokens" aria-current="page">
+  Tokens
+</a>
+```
+
+### Coverage notes
+Record the actual level of review. Be explicit when only DOM smoke has run.
+#### state-coverage.md
+
+```md
+- DOM accessibility smoke has run for <primitive>, but real assistive-technology review is still pending.
+```
+
+#### state-coverage.md
+
+```md
+- Assistive-technology review for <primitive> was run with <AT/browser/OS>.
+  Covered keyboard navigation, names/roles/states, focus return, and primitive-specific behavior.
+  Remaining gap: none known.
+```
 
 ---
 
@@ -110,7 +161,75 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 ## Content
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+### Density values
+The published package exposes a typed KuiDensity union for compact, regular, and comfortable experiences.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| compact | KuiDensity | - | Dense operational surfaces such as toolbars, tables, and high-frequency controls. |
+| regular | KuiDensity | - | Default application density and the safest choice for documentation examples. |
+| comfortable | KuiDensity | - | Touch-heavy or spacious contexts where larger hit areas matter more than density. |
+
+### Global defaults
+Set app-wide density through the Kikita provider. Keep docs examples on regular density unless the example is explicitly about density.
+#### app.config.ts
+
+```ts
+import { provideKikitaUi } from '@kikita-labs/ui';
+
+export const appConfig = {
+  providers: [
+    provideKikitaUi({
+      defaults: {
+        density: 'regular',
+      },
+    }),
+  ],
+};
+```
+
+#### app.config.ts
+
+```ts
+import { DEFAULT_KUI_THEME, provideKikitaUi } from '@kikita-labs/ui';
+
+provideKikitaUi({
+  theme: {
+    seeds: {
+      ...DEFAULT_KUI_THEME.seeds,
+      density: 'regular',
+    },
+  },
+});
+```
+
+### Control recommendations
+Height is controlled only by data-kui-size. data-kui-density rebinds horizontal padding only.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| Control height (xs / sm / md / lg) | 28px / 32px / 40px / 44px | - | Set only by data-kui-size on Input, Button, Icon-Button, Segmented, Tabs, and Group. Density does not affect height. |
+| Button x padding | 8px / 12px / 16px | - | Horizontal control padding across compact, regular, and comfortable density. |
+
+### Component tokens
+Density rebinds the padding tokens below; height tokens resolve from data-kui-size instead.
+#### density.css
+
+```css
+--kui-btn-px-compact
+--kui-btn-px-regular
+--kui-btn-px-comfortable
+```
+
+#### resolved.css
+
+```css
+--kui-control-height-xs
+--kui-control-height-sm
+--kui-control-height-md
+--kui-control-height-lg
+--kui-btn-height
+--kui-btn-px
+--kui-input-px
+```
 
 ---
 
@@ -128,7 +247,62 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 ## Content
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+### Package registry
+Kikita UI is published under the @kikita-labs scope on the public npm registry. No registry configuration or auth token is required.
+#### terminal
+
+```bash
+pnpm add @kikita-labs/ui
+```
+
+### Angular CLI setup
+Use the package schematic when possible. It preserves existing style entries and configures the selected Angular project.
+#### terminal
+
+```bash
+ng add @kikita-labs/ui
+```
+
+#### terminal
+
+```bash
+ng add @kikita-labs/ui --project my-app
+```
+
+### Manual setup
+This docs app keeps the stylesheet in angular.json because that path is verified in a fresh Angular consumer build.
+#### angular.json
+
+```json
+"styles": [
+  "node_modules/@kikita-labs/ui/styles/kikita-ui.css",
+  "src/styles.scss"
+]
+```
+
+#### app.config.ts
+
+```ts
+import { type ApplicationConfig } from '@angular/core';
+import { provideKikitaUi } from '@kikita-labs/ui';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideKikitaUi({
+      scrollbars: 'styled',
+    }),
+  ],
+};
+```
+
+### Schematic options
+Use these options when a consumer app needs to control which parts of setup are written.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| --project | string | - | Targets a specific Angular project when the workspace contains multiple projects. |
+| --skip-provider | boolean | - | Skips writing provideKikitaUi() when the app manages providers manually. |
+| --skip-styles | boolean | - | Skips adding the package stylesheet to angular.json. |
+| --theme | boolean | - | Writes the default theme seed configuration into provideKikitaUi(). |
 
 ---
 
@@ -146,7 +320,72 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 ## Content
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+### Runtime contract
+The public theming contract is CSS variables. The theme pipeline starts with seed tokens and ends in component-level tokens.
+#### theme-pipeline.txt
+
+```text
+seed tokens -> OKLCH palettes -> semantic tokens -> component tokens
+```
+
+#### index.html
+
+```html
+<html data-kui-theme="dark"></html>
+```
+
+### Angular provider
+Use provideKikitaUi() for the default theme and optional root configuration.
+#### app.config.ts
+
+```ts
+import { type ApplicationConfig } from '@angular/core';
+import { provideKikitaUi } from '@kikita-labs/ui';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideKikitaUi()],
+};
+```
+
+#### app.config.ts
+
+```ts
+provideKikitaUi({
+  scrollbars: 'styled',
+});
+```
+
+### Custom seeds
+Seed values are the stable way to customize generated palettes and shared scales.
+#### app.config.ts
+
+```ts
+provideKikitaUi({
+  theme: {
+    seeds: {
+      color: {
+        primary: 'oklch(0.52 0.25 285)',
+        neutral: 'oklch(0.5 0.01 80)',
+        success: 'oklch(0.54 0.16 145)',
+        warning: 'oklch(0.74 0.16 75)',
+        danger: 'oklch(0.54 0.22 25)',
+        info: 'oklch(0.58 0.16 215)',
+      },
+      radius: 8,
+      density: 'regular',
+    },
+  },
+});
+```
+
+### Theme utilities
+These public functions can generate CSS variables for docs, visual tests, or non-Angular tooling.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| createKuiTheme | (options?: KuiThemeOptions) => KuiGeneratedTheme | - | Generates a theme object from seed options. |
+| createKuiThemeVariableMap | (theme, mode?) => KuiCssVariableMap | - | Flattens a generated theme into CSS variable names and values. |
+| createKuiThemeCssText | (theme, selector, mode?) => string | - | Serializes variables for a selector. |
+| createKuiThemeStyleSheet | (theme) => string | - | Serializes light and dark theme CSS for tooling or docs output. |
 
 ---
 
@@ -164,7 +403,74 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 ## Content
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+### Token layers
+Public CSS variables use the --kui-* prefix and flow through predictable layers.
+#### token-layers.txt
+
+```text
+seed -> palette -> semantic -> component
+```
+
+#### palette.css
+
+```css
+--kui-primary-1 ... --kui-primary-12
+--kui-neutral-1 ... --kui-neutral-12
+--kui-success-1 ... --kui-success-12
+--kui-warning-1 ... --kui-warning-12
+--kui-danger-1 ... --kui-danger-12
+--kui-info-1 ... --kui-info-12
+```
+
+#### semantic.css
+
+```css
+--kui-color-bg
+--kui-color-surface
+--kui-color-border
+--kui-color-text
+--kui-color-primary-fill
+--kui-color-primary-focus-ring
+```
+
+### Color seeds
+Required color seeds generate the palette and semantic token layers.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| --kui-seed-primary | oklch(0.52 0.25 285) | - | Brand and action color. |
+| --kui-seed-neutral | oklch(0.5 0.01 80) | - | Surface, border, and text base. |
+| --kui-seed-success | oklch(0.54 0.16 145) | - | Positive state. |
+| --kui-seed-warning | oklch(0.74 0.16 75) | - | Caution state. |
+| --kui-seed-danger | oklch(0.54 0.22 25) | - | Error or destructive state. |
+| --kui-seed-info | oklch(0.58 0.16 215) | - | Informational state. |
+
+### Common scales
+Radius and spacing scales are shared by component tokens and docs layout primitives.
+#### radius.css
+
+```css
+--kui-radius-none: 0;
+--kui-radius-xs: 4px;
+--kui-radius-sm: 6px;
+--kui-radius-md: 8px;
+--kui-radius-lg: 10px;
+--kui-radius-xl: 14px;
+--kui-radius-full: 9999px;
+```
+
+#### spacing.css
+
+```css
+--kui-space-1: 4px;
+--kui-space-2: 8px;
+--kui-space-3: 12px;
+--kui-space-4: 16px;
+--kui-space-5: 20px;
+--kui-space-6: 24px;
+--kui-space-8: 32px;
+--kui-space-12: 48px;
+--kui-space-16: 64px;
+```
 
 ---
 
@@ -182,7 +488,114 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 ## Content
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+### Import
+The CSS classes ship through the main stylesheet. Import the directive only when templates should bind variant or tone.
+#### angular.json
+
+```json
+"styles": [
+  "node_modules/@kikita-labs/ui/styles/kikita-ui.css",
+  "src/styles.scss"
+]
+```
+
+#### typography-example.ts
+
+```ts
+import { KuiTextDirective } from '@kikita-labs/ui';
+```
+
+### Usage
+Decorate native text elements. Typography classes and kuiText change presentation without replacing semantic HTML.
+#### typography-example.html
+
+```html
+<section aria-labelledby="project-title">
+  <p class="kui-overline kui-text-primary">Project profile</p>
+  <h2 id="project-title" class="kui-heading-lg kui-text-default">Workspace settings</h2>
+  <p class="kui-body kui-text-muted">Manage members, billing, and integrations.</p>
+  <small class="kui-caption kui-text-muted">Last updated 2 minutes ago</small>
+  <p class="kui-body-sm kui-text-danger">Slug is already used by another workspace.</p>
+  <p class="kui-body-sm">
+    Current slug: <code class="kui-code">workspace.slug</code>
+  </p>
+</section>
+```
+
+#### typography-directive-example.html
+
+```html
+<section aria-labelledby="project-title">
+  <p kuiText variant="overline" tone="primary">Project profile</p>
+  <h2 id="project-title" kuiText variant="heading-lg">Workspace settings</h2>
+  <p kuiText variant="body" tone="muted">Manage members, billing, and integrations.</p>
+  <small kuiText variant="caption" tone="muted">Last updated 2 minutes ago</small>
+  <p kuiText variant="body-sm" tone="danger">Slug is already used by another workspace.</p>
+  <p kuiText variant="body-sm">
+    Current slug: <code class="kui-code">workspace.slug</code>
+  </p>
+</section>
+```
+
+### Type roles
+Choose the role that matches the text's purpose, then keep the native element semantic.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| .kui-display | h1 | - | Rare docs or specification page title. |
+| .kui-heading-lg | h1 \| h2 | - | Main page or top-level section title. |
+| .kui-heading-md | h2 \| h3 | - | Panel, dialog, or drawer title. |
+| .kui-heading-sm | h3 \| h4 | - | Compact section, card, or table group title. |
+| .kui-title | h4 \| h5 \| span | - | Small emphasized UI title. |
+| .kui-body-lg | p | - | Relaxed paragraph text where space allows. |
+| .kui-body | p | - | Default product UI body text. |
+| .kui-body-sm | p \| span | - | Dense descriptions and table adjunct text. |
+| .kui-caption | small \| span | - | Hints, metadata, helper text, and timestamps. |
+| .kui-overline | span | - | Optional uppercase group label. Use sparingly. |
+| .kui-code | code \| span | - | Inline monospace code and token text. |
+
+### Tone utilities
+Tone utilities only set color. Pair status color with clear visible text when the state matters.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| .kui-text-default | default | - | Normal foreground text color. |
+| .kui-text-muted | muted | - | Secondary copy, descriptions, and metadata. |
+| .kui-text-disabled | disabled | - | Unavailable copy paired with a disabled control or state. |
+| .kui-text-primary | primary | - | Brand or primary action emphasis. |
+| .kui-text-success | success | - | Positive status text paired with visible status copy. |
+| .kui-text-warning | warning | - | Caution status text paired with visible status copy. |
+| .kui-text-danger | danger | - | Error or destructive status text paired with visible status copy. |
+
+### Directive API
+The kuiText directive is convenience sugar over the same public class contract.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| kuiText | attribute directive | - | Applies a semantic type role and text tone to a native text element. |
+| variant | KuiTextVariant | 'body' | Semantic typography role applied by the directive. |
+| tone | KuiTextTone | 'default' | Semantic text color tone applied by the directive. |
+| KuiTextVariant | 'display' \| 'heading-lg' \| 'heading-md' \| 'heading-sm' \| 'title' \| 'body-lg' \| 'body' \| 'body-sm' \| 'caption' \| 'overline' \| 'code' | - | Public type for the directive variant input. |
+| KuiTextTone | 'default' \| 'muted' \| 'disabled' \| 'primary' \| 'success' \| 'warning' \| 'danger' | - | Public type for the directive tone input. |
+
+### Tokens
+Each role exposes generated size, line-height, and weight tokens for theme-aware text scales.
+#### typography-tokens.css
+
+```css
+--kui-type-heading-md-size
+--kui-type-heading-md-line-height
+--kui-type-heading-md-weight
+```
+
+#### font-weight-tokens.css
+
+```css
+--kui-font-weight-regular
+--kui-font-weight-medium
+--kui-font-weight-semibold
+--kui-font-weight-bold
+```
+
+### Accessibility
+Typography should strengthen native semantics rather than replace them.
 
 ---
 
@@ -226,10 +639,216 @@ ng add @kikita-labs/ui
 
 Rendered at /components/accordion:
 
-- `appearance-accordion-example`
-- `basic-accordion-example`
-- `icon-accordion-example`
-- `multi-accordion-example`
+### appearance-accordion-example
+
+#### appearance-accordion-example.html
+
+```html
+<div class="appearance-accordion-example">
+  <div class="appearance-accordion-example__col">
+    <p class="appearance-accordion-example__label">bordered</p>
+    <kui-accordion appearance="bordered">
+      <kui-accordion-item id="bordered-general" header="General settings">
+        Configure display and behavior options.
+      </kui-accordion-item>
+      <kui-accordion-item id="bordered-security" header="Security">
+        Account security parameters.
+      </kui-accordion-item>
+    </kui-accordion>
+  </div>
+
+  <div class="appearance-accordion-example__col">
+    <p class="appearance-accordion-example__label">ghost</p>
+    <kui-accordion appearance="ghost">
+      <kui-accordion-item id="ghost-general" header="General settings">
+        Configure display and behavior options.
+      </kui-accordion-item>
+      <kui-accordion-item id="ghost-security" header="Security">
+        Account security parameters.
+      </kui-accordion-item>
+    </kui-accordion>
+  </div>
+</div>
+```
+
+#### appearance-accordion-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-appearance-accordion-example',
+  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
+  templateUrl: './appearance-accordion-example.html',
+  styleUrl: './appearance-accordion-example.scss',
+})
+export class AppearanceAccordionExample {}
+```
+
+#### appearance-accordion-example.scss
+
+```scss
+.appearance-accordion-example {
+  display: flex;
+  gap: var(--kui-space-6, 24px);
+  flex-wrap: wrap;
+}
+
+.appearance-accordion-example__col {
+  flex: 1;
+  min-width: 220px;
+}
+
+.appearance-accordion-example__label {
+  margin: 0 0 var(--kui-space-2, 8px);
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-xs-size, 11px);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+```
+
+### basic-accordion-example
+
+#### basic-accordion-example.html
+
+```html
+<kui-accordion mode="exclusive" appearance="default" size="md">
+  <kui-accordion-item id="general" header="General settings">
+    Configure display and behavior options.
+  </kui-accordion-item>
+
+  <kui-accordion-item id="notifications" header="Notifications">
+    Manage push notifications and email digests.
+  </kui-accordion-item>
+
+  <kui-accordion-item id="security" header="Security">
+    Account security parameters.
+  </kui-accordion-item>
+</kui-accordion>
+```
+
+#### basic-accordion-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-accordion-example',
+  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
+  templateUrl: './basic-accordion-example.html',
+  styleUrl: './basic-accordion-example.scss',
+})
+export class BasicAccordionExample {}
+```
+
+#### basic-accordion-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
+
+### icon-accordion-example
+
+#### icon-accordion-example.html
+
+```html
+<kui-accordion appearance="bordered">
+  <kui-accordion-item id="settings" header="Settings">
+    <ng-template kuiAccordionIcon>
+      <kui-icon [source]="settingsIcon" />
+    </ng-template>
+    Settings content with a leading icon slot.
+  </kui-accordion-item>
+
+  <kui-accordion-item id="disabled" header="Archived project" [disabled]="true">
+    This section is disabled and cannot be toggled.
+  </kui-accordion-item>
+</kui-accordion>
+```
+
+#### icon-accordion-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiAccordionComponent,
+  KuiAccordionIconDirective,
+  KuiAccordionItemComponent,
+  KuiIconComponent,
+} from '@kikita-labs/ui';
+
+const SETTINGS_ICON =
+  '<svg viewBox="0 0 24 24" fill="none"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.04.04a2 2 0 0 1-2.83 2.83l-.04-.04a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 0 1-4 0v-.06A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.88.34l-.04.04a2 2 0 0 1-2.83-2.83l.04-.04A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 0 1 0-4h.06A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.88l-.04-.04a2 2 0 1 1 2.83-2.83l.04.04A1.7 1.7 0 0 0 8.96 4.6 1.7 1.7 0 0 0 10 3.06V3a2 2 0 0 1 4 0v.06A1.7 1.7 0 0 0 15.04 4.6a1.7 1.7 0 0 0 1.88-.34l.04-.04a2 2 0 0 1 2.83 2.83l-.04.04a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.94 10H21a2 2 0 0 1 0 4h-.06A1.7 1.7 0 0 0 19.4 15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+
+@Component({
+  selector: 'app-icon-accordion-example',
+  imports: [
+    KuiAccordionComponent,
+    KuiAccordionIconDirective,
+    KuiAccordionItemComponent,
+    KuiIconComponent,
+  ],
+  templateUrl: './icon-accordion-example.html',
+  styleUrl: './icon-accordion-example.scss',
+})
+export class IconAccordionExample {
+  protected readonly settingsIcon = SETTINGS_ICON;
+}
+```
+
+#### icon-accordion-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
+
+### multi-accordion-example
+
+#### multi-accordion-example.html
+
+```html
+<kui-accordion mode="multi" [(expandedItems)]="expanded">
+  <kui-accordion-item id="profile" header="Profile">Profile content.</kui-accordion-item>
+  <kui-accordion-item id="billing" header="Billing">Billing content.</kui-accordion-item>
+  <kui-accordion-item id="team" header="Team members">Team content.</kui-accordion-item>
+</kui-accordion>
+```
+
+#### multi-accordion-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-multi-accordion-example',
+  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
+  templateUrl: './multi-accordion-example.html',
+  styleUrl: './multi-accordion-example.scss',
+})
+export class MultiAccordionExample {
+  protected readonly expanded = signal(['profile']);
+}
+```
+
+#### multi-accordion-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
 
 ## API
 
@@ -292,11 +911,226 @@ initials generated from `name`, then to the icon fallback when no initials are a
 
 Rendered at /components/avatar:
 
-- `avatar-button-example`
-- `avatar-group-example`
-- `avatar-sizes-shapes-example`
-- `avatar-status-example`
-- `basic-avatar-example`
+### avatar-button-example
+
+#### avatar-button-example.html
+
+```html
+<div class="avatar-button-example">
+  <button class="kui-avatar-action" type="button" aria-label="Open Nikita Repin profile">
+    <kui-avatar src="https://i.pravatar.cc/64?img=12" name="Nikita Repin" />
+  </button>
+</div>
+```
+
+#### avatar-button-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-avatar-button-example',
+  imports: [KuiAvatarComponent],
+  templateUrl: './avatar-button-example.html',
+  styleUrl: './avatar-button-example.scss',
+})
+export class AvatarButtonExample {}
+```
+
+#### avatar-button-example.scss
+
+```scss
+.avatar-button-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### avatar-group-example
+
+#### avatar-group-example.html
+
+```html
+<div class="avatar-group-example">
+  <kui-avatar-group [avatars]="members" [max]="4" size="sm" label="Project participants" />
+</div>
+```
+
+#### avatar-group-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarGroupComponent, type KuiAvatarItem } from '@kikita-labs/ui';
+
+const MEMBERS: readonly KuiAvatarItem[] = [
+  { src: 'https://i.pravatar.cc/64?img=12', name: 'Nikita Repin', status: 'online' },
+  { name: 'Anya Murashova', status: 'away' },
+  { name: 'Timur Ognev' },
+  { name: 'Vera Saltykova' },
+  { name: 'Ilya Denisov' },
+];
+
+@Component({
+  selector: 'app-avatar-group-example',
+  imports: [KuiAvatarGroupComponent],
+  templateUrl: './avatar-group-example.html',
+  styleUrl: './avatar-group-example.scss',
+})
+export class AvatarGroupExample {
+  protected readonly members = MEMBERS;
+}
+```
+
+#### avatar-group-example.scss
+
+```scss
+.avatar-group-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### avatar-sizes-shapes-example
+
+#### avatar-sizes-shapes-example.html
+
+```html
+<div class="avatar-sizes-shapes-example">
+  <div class="avatar-sizes-shapes-example__row">
+    <kui-avatar name="Nikita Repin" size="xs" />
+    <kui-avatar name="Nikita Repin" size="sm" />
+    <kui-avatar name="Nikita Repin" size="md" />
+    <kui-avatar name="Nikita Repin" size="lg" />
+    <kui-avatar name="Nikita Repin" size="xl" />
+    <kui-avatar name="Nikita Repin" size="2xl" />
+  </div>
+  <div class="avatar-sizes-shapes-example__row">
+    <kui-avatar name="Design Bot" shape="square" />
+    <kui-avatar name="Release Team" shape="square" size="lg" />
+  </div>
+</div>
+```
+
+#### avatar-sizes-shapes-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-avatar-sizes-shapes-example',
+  imports: [KuiAvatarComponent],
+  templateUrl: './avatar-sizes-shapes-example.html',
+  styleUrl: './avatar-sizes-shapes-example.scss',
+})
+export class AvatarSizesShapesExample {}
+```
+
+#### avatar-sizes-shapes-example.scss
+
+```scss
+.avatar-sizes-shapes-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+
+.avatar-sizes-shapes-example__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### avatar-status-example
+
+#### avatar-status-example.html
+
+```html
+<div class="avatar-status-example">
+  <kui-avatar name="Nikita Repin" status="online" />
+  <kui-avatar name="Anya Murashova" status="away" />
+  <kui-avatar name="Timur Ognev" status="busy" />
+  <kui-avatar name="Vera Saltykova" status="offline" />
+</div>
+```
+
+#### avatar-status-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-avatar-status-example',
+  imports: [KuiAvatarComponent],
+  templateUrl: './avatar-status-example.html',
+  styleUrl: './avatar-status-example.scss',
+})
+export class AvatarStatusExample {}
+```
+
+#### avatar-status-example.scss
+
+```scss
+.avatar-status-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### basic-avatar-example
+
+#### basic-avatar-example.html
+
+```html
+<div class="basic-avatar-example">
+  <kui-avatar src="https://i.pravatar.cc/64?img=12" name="Nikita Repin" status="online" />
+  <kui-avatar name="Anya Murashova" />
+  <kui-avatar />
+</div>
+```
+
+#### basic-avatar-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-avatar-example',
+  imports: [KuiAvatarComponent],
+  templateUrl: './basic-avatar-example.html',
+  styleUrl: './basic-avatar-example.scss',
+})
+export class BasicAvatarExample {}
+```
+
+#### basic-avatar-example.scss
+
+```scss
+.basic-avatar-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -369,9 +1203,130 @@ ng add @kikita-labs/ui
 
 Rendered at /components/badge:
 
-- `badge-appearance-example`
-- `badge-size-example`
-- `basic-badge-example`
+### badge-appearance-example
+
+#### badge-appearance-example.html
+
+```html
+<div class="badge-appearance-example">
+  <span kuiBadge appearance="neutral">Neutral</span>
+  <span kuiBadge appearance="primary">Primary</span>
+  <span kuiBadge appearance="success">Success</span>
+  <span kuiBadge appearance="warning">Warning</span>
+  <span kuiBadge appearance="danger">Danger</span>
+  <span kuiBadge appearance="info">Info</span>
+</div>
+```
+
+#### badge-appearance-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiBadgeDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-badge-appearance-example',
+  imports: [KuiBadgeDirective],
+  templateUrl: './badge-appearance-example.html',
+  styleUrl: './badge-appearance-example.scss',
+})
+export class BadgeAppearanceExample {}
+```
+
+#### badge-appearance-example.scss
+
+```scss
+.badge-appearance-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### badge-size-example
+
+#### badge-size-example.html
+
+```html
+<div class="badge-size-example">
+  <span kuiBadge size="xs" appearance="primary">Extra small</span>
+  <span kuiBadge size="sm" appearance="primary">Small</span>
+  <span kuiBadge size="md" appearance="primary">Medium</span>
+  <span kuiBadge size="lg" appearance="primary">Large</span>
+</div>
+```
+
+#### badge-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiBadgeDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-badge-size-example',
+  imports: [KuiBadgeDirective],
+  templateUrl: './badge-size-example.html',
+  styleUrl: './badge-size-example.scss',
+})
+export class BadgeSizeExample {}
+```
+
+#### badge-size-example.scss
+
+```scss
+.badge-size-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### basic-badge-example
+
+#### basic-badge-example.html
+
+```html
+<div class="badge-example">
+  <span kuiBadge>Neutral</span>
+  <strong kuiBadge appearance="success">Ready</strong>
+  <code kuiBadge appearance="warning">Review</code>
+  <a kuiBadge appearance="info" href="#api">API reference</a>
+</div>
+```
+
+#### basic-badge-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiBadgeDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-badge-example',
+  imports: [KuiBadgeDirective],
+  templateUrl: './basic-badge-example.html',
+  styleUrl: './basic-badge-example.scss',
+})
+export class BasicBadgeExample {}
+```
+
+#### basic-badge-example.scss
+
+```scss
+.badge-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -483,7 +1438,49 @@ The library does not enforce a single collapse strategy; pick the one that fits 
 
 Rendered at /components/breadcrumbs:
 
-- `basic-breadcrumbs-example`
+### basic-breadcrumbs-example
+
+#### basic-breadcrumbs-example.html
+
+```html
+<nav class="basic-breadcrumbs-example" aria-label="Breadcrumb">
+  <ol kuiBreadcrumbs>
+    <li><a kuiBreadcrumbItem href="/components">Components</a></li>
+    <li kuiBreadcrumbSeparator></li>
+    <li><span kuiBreadcrumbItem>Surfaces</span></li>
+    <li kuiBreadcrumbSeparator></li>
+    <li><span kuiBreadcrumbItem current>Breadcrumbs</span></li>
+  </ol>
+</nav>
+```
+
+#### basic-breadcrumbs-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiBreadcrumbItemDirective,
+  KuiBreadcrumbsDirective,
+  KuiBreadcrumbSeparatorComponent,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-breadcrumbs-example',
+  imports: [KuiBreadcrumbItemDirective, KuiBreadcrumbSeparatorComponent, KuiBreadcrumbsDirective],
+  templateUrl: './basic-breadcrumbs-example.html',
+  styleUrl: './basic-breadcrumbs-example.scss',
+})
+export class BasicBreadcrumbsExample {}
+```
+
+#### basic-breadcrumbs-example.scss
+
+```scss
+.basic-breadcrumbs-example {
+  min-width: 0;
+}
+```
 
 ## API
 
@@ -564,9 +1561,132 @@ Use `kui-icon` explicitly for icon content:
 
 Rendered at /components/button:
 
-- `basic-button-example`
-- `button-appearance-example`
-- `button-size-example`
+### basic-button-example
+
+#### basic-button-example.html
+
+```html
+<div class="button-example">
+  <button kuiButton type="button">Save changes</button>
+  <button kuiButton type="button" shape="soft">Cancel</button>
+  <a kuiButton routerLink="/components/button">Button docs</a>
+</div>
+```
+
+#### basic-button-example.ts
+
+```ts
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+import { KuiButtonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-button-example',
+  imports: [KuiButtonDirective, RouterLink],
+  templateUrl: './basic-button-example.html',
+  styleUrl: './basic-button-example.scss',
+})
+export class BasicButtonExample {}
+```
+
+#### basic-button-example.scss
+
+```scss
+.button-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### button-appearance-example
+
+#### button-appearance-example.html
+
+```html
+<div class="button-appearance-example">
+  <button kuiButton type="button">Solid</button>
+  <button kuiButton type="button" shape="soft">Soft</button>
+  <button kuiButton type="button" shape="outline">Outline</button>
+  <button kuiButton type="button" shape="ghost">Ghost</button>
+  <button kuiButton type="button" appearance="danger">Danger</button>
+  <button kuiButton type="button" shape="outline" appearance="danger">Outline danger</button>
+</div>
+```
+
+#### button-appearance-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-button-appearance-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './button-appearance-example.html',
+  styleUrl: './button-appearance-example.scss',
+})
+export class ButtonAppearanceExample {}
+```
+
+#### button-appearance-example.scss
+
+```scss
+.button-appearance-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### button-size-example
+
+#### button-size-example.html
+
+```html
+<div class="button-size-example">
+  <button kuiButton type="button" size="xs">Extra small</button>
+  <button kuiButton type="button" size="sm">Small</button>
+  <button kuiButton type="button" size="md">Medium</button>
+  <button kuiButton type="button" size="lg">Large</button>
+  <button kuiButton type="button" disabled>Disabled</button>
+  <button kuiButton type="button" loading>Loading</button>
+</div>
+```
+
+#### button-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-button-size-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './button-size-example.html',
+  styleUrl: './button-size-example.scss',
+})
+export class ButtonSizeExample {}
+```
+
+#### button-size-example.scss
+
+```scss
+.button-size-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -727,7 +1847,51 @@ Or override it for a single instance with the `locale` input, which takes preced
 
 Rendered at /components/calendar:
 
-- `basic-calendar-example`
+### basic-calendar-example
+
+#### basic-calendar-example.html
+
+```html
+<div class="basic-calendar-example">
+  <kui-calendar [(value)]="selectedDate" [minDate]="minDate" showFooter />
+
+  <kui-calendar mode="range" size="sm" [(value)]="sprintRange" locale="en-US" />
+</div>
+```
+
+#### basic-calendar-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiCalendarComponent, type KuiDateRange } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-calendar-example',
+  imports: [KuiCalendarComponent],
+  templateUrl: './basic-calendar-example.html',
+  styleUrl: './basic-calendar-example.scss',
+})
+export class BasicCalendarExample {
+  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));
+  protected readonly sprintRange = signal<KuiDateRange>({
+    start: new Date(2026, 6, 13),
+    end: new Date(2026, 6, 17),
+  });
+  protected readonly minDate = new Date(2026, 6, 1);
+}
+```
+
+#### basic-calendar-example.scss
+
+```scss
+.basic-calendar-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-5, 20px);
+  align-items: flex-start;
+}
+```
 
 ## API
 
@@ -809,10 +1973,185 @@ Use real semantic elements: `article`, `section`, `aside`, `button`, or `a` depe
 
 Rendered at /components/card:
 
-- `basic-card-example`
-- `card-appearance-example`
-- `card-interactive-example`
-- `card-size-example`
+### basic-card-example
+
+#### basic-card-example.html
+
+```html
+<article kuiCard>
+  <h3>Default surface</h3>
+  <p>Grouped content with Kikita border, radius, and surface tokens.</p>
+</article>
+```
+
+#### basic-card-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiCardDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-card-example',
+  imports: [KuiCardDirective],
+  templateUrl: './basic-card-example.html',
+  styleUrl: './basic-card-example.scss',
+})
+export class BasicCardExample {}
+```
+
+#### basic-card-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
+
+### card-appearance-example
+
+#### card-appearance-example.html
+
+```html
+<article kuiCard appearance="surface">
+  <h3>Surface</h3>
+  <p>Default flat card surface.</p>
+</article>
+<article kuiCard appearance="elevated">
+  <h3>Elevated</h3>
+  <p>Raised shadow for content that floats above the page.</p>
+</article>
+<article kuiCard appearance="sunken">
+  <h3>Sunken</h3>
+  <p>Inset surface for nested or secondary content.</p>
+</article>
+```
+
+#### card-appearance-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiCardDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-card-appearance-example',
+  imports: [KuiCardDirective],
+  templateUrl: './card-appearance-example.html',
+  styleUrl: './card-appearance-example.scss',
+})
+export class CardAppearanceExample {}
+```
+
+#### card-appearance-example.scss
+
+```scss
+:host {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  inline-size: 100%;
+}
+```
+
+### card-interactive-example
+
+#### card-interactive-example.html
+
+```html
+<button kuiCard interactive type="button" class="card-interactive-example__button">
+  <h3>Interactive card</h3>
+  <p>Hover and focus-visible affordances for a clickable card surface.</p>
+</button>
+<a kuiCard interactive href="https://kikita.dev" class="card-interactive-example__button">
+  <h3>Linked card</h3>
+  <p>Anchor host keeps native link semantics and keyboard behavior.</p>
+</a>
+```
+
+#### card-interactive-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiCardDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-card-interactive-example',
+  imports: [KuiCardDirective],
+  templateUrl: './card-interactive-example.html',
+  styleUrl: './card-interactive-example.scss',
+})
+export class CardInteractiveExample {}
+```
+
+#### card-interactive-example.scss
+
+```scss
+:host {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  inline-size: 100%;
+}
+
+.card-interactive-example__button {
+  display: block;
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}
+```
+
+### card-size-example
+
+#### card-size-example.html
+
+```html
+<article kuiCard size="xs">
+  <h3>Extra small</h3>
+</article>
+<article kuiCard size="sm">
+  <h3>Small</h3>
+</article>
+<article kuiCard size="md">
+  <h3>Medium</h3>
+</article>
+<article kuiCard size="lg">
+  <h3>Large</h3>
+</article>
+```
+
+#### card-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiCardDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-card-size-example',
+  imports: [KuiCardDirective],
+  templateUrl: './card-size-example.html',
+  styleUrl: './card-size-example.scss',
+})
+export class CardSizeExample {}
+```
+
+#### card-size-example.scss
+
+```scss
+:host {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  inline-size: 100%;
+}
+```
 
 ## API
 
@@ -872,8 +2211,122 @@ automatically. Keep the native label around the checkbox for the option text its
 
 Rendered at /components/checkbox:
 
-- `basic-checkbox-example`
-- `checkbox-size-example`
+### basic-checkbox-example
+
+#### basic-checkbox-example.html
+
+```html
+<kui-field label="Notifications" hint="Control product and release emails">
+  <label class="checkbox-option">
+    <input kuiCheckbox type="checkbox" [checked]="receiveUpdates()" />
+    <span>Receive updates</span>
+  </label>
+</kui-field>
+```
+
+#### basic-checkbox-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiCheckboxDirective, KuiFieldComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-checkbox-example',
+  imports: [KuiCheckboxDirective, KuiFieldComponent],
+  templateUrl: './basic-checkbox-example.html',
+  styleUrl: './basic-checkbox-example.scss',
+})
+export class BasicCheckboxExample {
+  protected readonly receiveUpdates = signal(true);
+}
+```
+
+#### basic-checkbox-example.scss
+
+```scss
+:host {
+  display: block;
+  inline-size: min(100%, 360px);
+}
+
+.checkbox-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
+
+### checkbox-size-example
+
+#### checkbox-size-example.html
+
+```html
+<div class="checkbox-size-example">
+  <label class="checkbox-option">
+    <input kuiCheckbox type="checkbox" size="xs" />
+    <span>Extra small</span>
+  </label>
+  <label class="checkbox-option">
+    <input kuiCheckbox type="checkbox" size="sm" checked />
+    <span>Small</span>
+  </label>
+  <label class="checkbox-option">
+    <input kuiCheckbox type="checkbox" size="md" checked />
+    <span>Medium</span>
+  </label>
+  <label class="checkbox-option">
+    <input kuiCheckbox type="checkbox" size="lg" />
+    <span>Large</span>
+  </label>
+  <label class="checkbox-option">
+    <input kuiCheckbox type="checkbox" disabled />
+    <span>Disabled</span>
+  </label>
+  <label class="checkbox-option">
+    <input kuiCheckbox type="checkbox" disabled checked />
+    <span>Disabled and checked</span>
+  </label>
+  <label class="checkbox-option">
+    <input kuiCheckbox type="checkbox" invalid />
+    <span>Invalid</span>
+  </label>
+</div>
+```
+
+#### checkbox-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiCheckboxDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-checkbox-size-example',
+  imports: [KuiCheckboxDirective],
+  templateUrl: './checkbox-size-example.html',
+  styleUrl: './checkbox-size-example.scss',
+})
+export class CheckboxSizeExample {}
+```
+
+#### checkbox-size-example.scss
+
+```scss
+.checkbox-size-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+
+.checkbox-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
 
 ## API
 
@@ -935,10 +2388,203 @@ ng add @kikita-labs/ui
 
 Rendered at /components/chip:
 
-- `basic-chip-example`
-- `chip-states-example`
-- `interactive-chip-example`
-- `removable-chip-example`
+### basic-chip-example
+
+#### basic-chip-example.html
+
+```html
+<div class="basic-chip-example">
+  <span kuiChip>Design</span>
+  <span kuiChip appearance="primary">Engineering</span>
+  <span kuiChip appearance="success">Shipped</span>
+</div>
+```
+
+#### basic-chip-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiChipDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-chip-example',
+  imports: [KuiChipDirective],
+  templateUrl: './basic-chip-example.html',
+  styleUrl: './basic-chip-example.scss',
+})
+export class BasicChipExample {}
+```
+
+#### basic-chip-example.scss
+
+```scss
+.basic-chip-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### chip-states-example
+
+#### chip-states-example.html
+
+```html
+<div class="chip-states-example">
+  <span kuiChip disabled>
+    <span class="kui-chip-label">Design</span>
+    <button kuiChipRemove type="button" aria-label="Remove Design"></button>
+  </span>
+  <span kuiChip invalid appearance="danger">Missing owner</span>
+</div>
+```
+
+#### chip-states-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-chip-states-example',
+  imports: [KuiChipDirective, KuiChipRemoveDirective],
+  templateUrl: './chip-states-example.html',
+  styleUrl: './chip-states-example.scss',
+})
+export class ChipStatesExample {}
+```
+
+#### chip-states-example.scss
+
+```scss
+.chip-states-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### interactive-chip-example
+
+#### interactive-chip-example.html
+
+```html
+<div class="interactive-chip-example">
+  <button
+    kuiChip
+    type="button"
+    [appearance]="selected() === 'all' ? 'primary' : 'neutral'"
+    (click)="select('all')"
+  >
+    All
+  </button>
+  <button
+    kuiChip
+    type="button"
+    [appearance]="selected() === 'open' ? 'primary' : 'neutral'"
+    (click)="select('open')"
+  >
+    Open
+  </button>
+  <button
+    kuiChip
+    type="button"
+    [appearance]="selected() === 'closed' ? 'primary' : 'neutral'"
+    (click)="select('closed')"
+  >
+    Closed
+  </button>
+</div>
+```
+
+#### interactive-chip-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiChipDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-interactive-chip-example',
+  imports: [KuiChipDirective],
+  templateUrl: './interactive-chip-example.html',
+  styleUrl: './interactive-chip-example.scss',
+})
+export class InteractiveChipExample {
+  protected readonly selected = signal<'all' | 'open' | 'closed'>('all');
+
+  protected select(filter: 'all' | 'open' | 'closed'): void {
+    this.selected.set(filter);
+  }
+}
+```
+
+#### interactive-chip-example.scss
+
+```scss
+.interactive-chip-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### removable-chip-example
+
+#### removable-chip-example.html
+
+```html
+<div class="removable-chip-example">
+  @for (tag of tags(); track tag) {
+    <span kuiChip appearance="primary" (removed)="removeTag(tag)">
+      <span class="kui-chip-label">{{ tag }}</span>
+      <button kuiChipRemove type="button" [attr.aria-label]="'Remove ' + tag"></button>
+    </span>
+  }
+</div>
+```
+
+#### removable-chip-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-removable-chip-example',
+  imports: [KuiChipDirective, KuiChipRemoveDirective],
+  templateUrl: './removable-chip-example.html',
+  styleUrl: './removable-chip-example.scss',
+})
+export class RemovableChipExample {
+  protected readonly tags = signal(['Design', 'Engineering', 'Product']);
+
+  protected removeTag(tag: string): void {
+    this.tags.update((current) => current.filter((existing) => existing !== tag));
+  }
+}
+```
+
+#### removable-chip-example.scss
+
+```scss
+.removable-chip-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -1028,7 +2674,48 @@ Hex values also enable the browser-native color picker from the swatch button:
 
 Rendered at /components/color-input:
 
-- `basic-color-input-example`
+### basic-color-input-example
+
+#### basic-color-input-example.html
+
+```html
+<div class="basic-color-input-example">
+  <kui-field label="Primary seed" hint="Hex and OKLCH values are supported.">
+    <input
+      kuiColorInput
+      value="#5b4fe0"
+      autocomplete="off"
+      swatchLabel="Open primary seed color picker"
+    />
+  </kui-field>
+</div>
+```
+
+#### basic-color-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiColorInputDirective, KuiFieldComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-color-input-example',
+  imports: [KuiColorInputDirective, KuiFieldComponent],
+  templateUrl: './basic-color-input-example.html',
+  styleUrl: './basic-color-input-example.scss',
+})
+export class BasicColorInputExample {}
+```
+
+#### basic-color-input-example.scss
+
+```scss
+.basic-color-input-example {
+  display: grid;
+  max-width: 28rem;
+  min-width: 0;
+}
+```
 
 ## API
 
@@ -1131,10 +2818,355 @@ invalid state, and field size.
 
 Rendered at /components/combobox:
 
-- `async-combobox-example`
-- `basic-combobox-example`
-- `combobox-field-states-example`
-- `free-combobox-example`
+### async-combobox-example
+
+#### async-combobox-example.html
+
+```html
+<kui-field label="Reviewer" hint="Simulates a remote lookup with a loading row">
+  <input
+    kuiCombobox
+    mode="async"
+    [(value)]="reviewer"
+    [(query)]="reviewerQuery"
+    [loading]="loading()"
+    [kuiLabelFn]="personLabel"
+    placeholder="Type to search..."
+    (search)="loadReviewers($event)"
+  />
+
+  <kui-dropdown>
+    @if (loading()) {
+      <div class="kui-combobox-loading-row">
+        <span class="kui-combobox-loader" aria-hidden="true"></span>
+        Loading people
+      </div>
+    } @else if (errorMessage(); as lookupError) {
+      <div class="kui-combobox-empty" role="alert">{{ lookupError }}</div>
+    } @else {
+      @for (person of reviewers(); track person.id) {
+        <button kuiOption [value]="person">{{ person.name }}</button>
+      } @empty {
+        <div class="kui-combobox-empty">No matches</div>
+      }
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+#### async-combobox-example.ts
+
+```ts
+import { Component, effect, inject, signal } from '@angular/core';
+
+import {
+  KuiComboboxDirective,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+import { ALL_REVIEWERS, type AsyncReviewer, AsyncReviewerService } from './async-reviewer.service';
+
+@Component({
+  selector: 'app-async-combobox-example',
+  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  providers: [AsyncReviewerService],
+  templateUrl: './async-combobox-example.html',
+  styleUrl: './async-combobox-example.scss',
+})
+export class AsyncComboboxExample {
+  private readonly reviewerLookup = inject(AsyncReviewerService);
+  private readonly requestedQuery = signal<string | null>(null);
+
+  protected readonly reviewer = signal<AsyncReviewer | null>(null);
+  protected readonly reviewerQuery = signal('');
+  protected readonly reviewers = signal<readonly AsyncReviewer[]>(ALL_REVIEWERS);
+  protected readonly loading = signal(false);
+  protected readonly errorMessage = signal<string | null>(null);
+
+  protected readonly personLabel = (person: AsyncReviewer) => person.name;
+
+  private readonly reviewerLookupEffect = effect((onCleanup) => {
+    const query = this.requestedQuery();
+
+    if (query === null) {
+      return;
+    }
+
+    this.loading.set(true);
+    this.errorMessage.set(null);
+
+    const subscription = this.reviewerLookup.search(query).subscribe({
+      next: (reviewers) => {
+        this.reviewers.set(reviewers);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.reviewers.set([]);
+        this.loading.set(false);
+        this.errorMessage.set('Reviewers could not be loaded. Try again.');
+      },
+    });
+
+    onCleanup(() => subscription.unsubscribe());
+  });
+
+  protected loadReviewers(query: string): void {
+    this.requestedQuery.set(query);
+  }
+}
+```
+
+#### async-reviewer.service.ts
+
+```ts
+import { Injectable } from '@angular/core';
+
+import { map, type Observable, timer } from 'rxjs';
+
+export interface AsyncReviewer {
+  readonly id: string;
+  readonly name: string;
+}
+
+const ALL_REVIEWERS: readonly AsyncReviewer[] = [
+  { id: 'amelia', name: 'Amelia Novak' },
+  { id: 'daniel', name: 'Daniel Kowalski' },
+  { id: 'harper', name: 'Harper Singh' },
+  { id: 'ines', name: 'Ines Delacroix' },
+  { id: 'ravi', name: 'Ravi Patel' },
+];
+
+@Injectable()
+export class AsyncReviewerService {
+  public search(query: string): Observable<readonly AsyncReviewer[]> {
+    return timer(400).pipe(
+      map(() => {
+        const normalizedQuery = query.toLocaleLowerCase();
+
+        return normalizedQuery
+          ? ALL_REVIEWERS.filter((reviewer) =>
+              reviewer.name.toLocaleLowerCase().includes(normalizedQuery),
+            )
+          : ALL_REVIEWERS;
+      }),
+    );
+  }
+}
+
+export { ALL_REVIEWERS };
+```
+
+#### async-combobox-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
+
+### basic-combobox-example
+
+#### basic-combobox-example.html
+
+```html
+<kui-field label="Assignee" hint="Type to filter projected options">
+  <input
+    kuiCombobox
+    [(value)]="assignee"
+    [(query)]="query"
+    [kuiLabelFn]="personLabel"
+    placeholder="Search people..."
+    (search)="query.set($event)"
+  />
+
+  <kui-dropdown>
+    @for (person of filteredPeople(); track person.id) {
+      <button kuiOption [value]="person">
+        <span class="kui-combobox-match-label">
+          @for (segment of person.name | kuiComboboxHighlight: query(); track $index) {
+            @if (segment.match) {
+              <mark class="kui-combobox-highlight">{{ segment.text }}</mark>
+            } @else {
+              <span>{{ segment.text }}</span>
+            }
+          }
+        </span>
+      </button>
+    } @empty {
+      <div class="kui-combobox-empty">No people found</div>
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+#### basic-combobox-example.ts
+
+```ts
+import { Component, computed, signal } from '@angular/core';
+
+import {
+  KuiComboboxDirective,
+  KuiComboboxHighlightPipe,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+interface Person {
+  readonly id: string;
+  readonly name: string;
+}
+
+const PEOPLE: readonly Person[] = [
+  { id: 'amelia', name: 'Amelia Novak' },
+  { id: 'daniel', name: 'Daniel Kowalski' },
+  { id: 'harper', name: 'Harper Singh' },
+  { id: 'ines', name: 'Ines Delacroix' },
+  { id: 'ravi', name: 'Ravi Patel' },
+];
+
+@Component({
+  selector: 'app-basic-combobox-example',
+  imports: [
+    KuiComboboxDirective,
+    KuiComboboxHighlightPipe,
+    KuiDropdownComponent,
+    KuiFieldComponent,
+    KuiOptionDirective,
+  ],
+  templateUrl: './basic-combobox-example.html',
+  styleUrl: './basic-combobox-example.scss',
+})
+export class BasicComboboxExample {
+  protected readonly assignee = signal<Person | null>(null);
+  protected readonly query = signal('');
+
+  protected readonly personLabel = (person: Person) => person.name;
+
+  protected readonly filteredPeople = computed(() => {
+    const q = this.query().toLocaleLowerCase();
+
+    return q ? PEOPLE.filter((person) => person.name.toLocaleLowerCase().includes(q)) : PEOPLE;
+  });
+}
+```
+
+#### basic-combobox-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
+
+### combobox-field-states-example
+
+#### combobox-field-states-example.html
+
+```html
+<div class="combobox-field-states-example">
+  <kui-field label="Owner" hint="Disabled prevents editing and opening the dropdown">
+    <input kuiCombobox disabled [(value)]="disabledOwner" placeholder="Search people..." />
+    <kui-dropdown>
+      <button kuiOption value="engineer">Software Engineer</button>
+      <button kuiOption value="designer">Designer</button>
+    </kui-dropdown>
+  </kui-field>
+
+  <kui-field label="Owner" error="Choose an owner before continuing">
+    <input kuiCombobox invalid [(value)]="invalidOwner" placeholder="Search people..." />
+    <kui-dropdown>
+      <button kuiOption value="engineer">Software Engineer</button>
+      <button kuiOption value="designer">Designer</button>
+    </kui-dropdown>
+  </kui-field>
+</div>
+```
+
+#### combobox-field-states-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiComboboxDirective,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-combobox-field-states-example',
+  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  templateUrl: './combobox-field-states-example.html',
+  styleUrl: './combobox-field-states-example.scss',
+})
+export class ComboboxFieldStatesExample {
+  protected readonly disabledOwner = signal<string | null>('engineer');
+  protected readonly invalidOwner = signal<string | null>(null);
+}
+```
+
+#### combobox-field-states-example.scss
+
+```scss
+.combobox-field-states-example {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  max-inline-size: 320px;
+}
+```
+
+### free-combobox-example
+
+#### free-combobox-example.html
+
+```html
+<kui-field label="Tag" hint="Type a custom tag or choose a suggestion">
+  <input kuiCombobox mode="free" [(value)]="tag" placeholder="Type or choose..." />
+  <kui-dropdown>
+    <button kuiOption value="Bug">Bug</button>
+    <button kuiOption value="Feature">Feature</button>
+    <button kuiOption value="Regression">Regression</button>
+  </kui-dropdown>
+</kui-field>
+```
+
+#### free-combobox-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiComboboxDirective,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-free-combobox-example',
+  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  templateUrl: './free-combobox-example.html',
+  styleUrl: './free-combobox-example.scss',
+})
+export class FreeComboboxExample {
+  protected readonly tag = signal<string | null>(null);
+}
+```
+
+#### free-combobox-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
 
 ## API
 
@@ -1242,7 +3274,114 @@ readonly groups: readonly KuiCommandGroup[] = [
 
 Rendered at /components/command-palette:
 
-- `basic-command-palette-example`
+### basic-command-palette-example
+
+#### basic-command-palette-example.html
+
+```html
+<div class="basic-command-palette-example">
+  <button kuiButton type="button" (click)="open.set(true)">Open command palette</button>
+
+  @if (selectedCommand(); as command) {
+    <p class="basic-command-palette-example__selection">Selected: {{ command }}</p>
+  }
+
+  <kui-command-palette
+    [(open)]="open"
+    [(query)]="query"
+    [groups]="groups"
+    (selected)="runCommand($event)"
+  />
+</div>
+```
+
+#### basic-command-palette-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  type KuiCommandGroup,
+  type KuiCommandItem,
+  KuiCommandPaletteComponent,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-command-palette-example',
+  imports: [KuiButtonDirective, KuiCommandPaletteComponent],
+  templateUrl: './basic-command-palette-example.html',
+  styleUrl: './basic-command-palette-example.scss',
+})
+export class BasicCommandPaletteExample {
+  protected readonly open = signal(false);
+  protected readonly query = signal('');
+  protected readonly selectedCommand = signal<string | null>(null);
+
+  protected readonly groups: readonly KuiCommandGroup[] = [
+    {
+      heading: 'Navigation',
+      items: [
+        {
+          id: 'projects',
+          label: 'Open projects',
+          description: 'Go to the project overview.',
+          shortcut: ['G', 'P'],
+          keywords: ['workspace'],
+        },
+        {
+          id: 'components',
+          label: 'Browse components',
+          description: 'Open the component index.',
+          shortcut: ['G', 'C'],
+          keywords: ['docs', 'ui'],
+        },
+      ],
+    },
+    {
+      heading: 'Project',
+      items: [
+        {
+          id: 'rename',
+          label: 'Rename project',
+          description: 'Update the display name.',
+          meta: 'Project',
+          badge: 'New',
+          shortcut: ['F2'],
+          icon: 'R',
+          keywords: ['edit', 'title'],
+        },
+        {
+          id: 'delete',
+          label: 'Delete project',
+          danger: true,
+          disabled: true,
+        },
+      ],
+    },
+  ];
+
+  protected runCommand(item: KuiCommandItem): void {
+    this.selectedCommand.set(item.label);
+  }
+}
+```
+
+#### basic-command-palette-example.scss
+
+```scss
+.basic-command-palette-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-command-palette-example__selection {
+  margin: 0;
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
 
 ## API
 
@@ -1329,7 +3468,65 @@ And on `kui-calendar`:
 
 Rendered at /components/date-picker:
 
-- `basic-date-picker-example`
+### basic-date-picker-example
+
+#### basic-date-picker-example.html
+
+```html
+<div class="basic-date-picker-example">
+  <kui-field label="Meeting date" hint="Type dd.mm.yyyy or choose from the calendar.">
+    <input
+      kuiDatePicker
+      [(value)]="meetingDate"
+      [(viewDate)]="viewDate"
+      [minDate]="minDate"
+      placeholder="dd.mm.yyyy"
+    />
+    <kui-dropdown panelRole="dialog" panelWidth="content" maxHeight="420px">
+      <kui-calendar
+        flat
+        showFooter
+        [(value)]="meetingDate"
+        [(viewDate)]="viewDate"
+        [minDate]="minDate"
+      />
+    </kui-dropdown>
+  </kui-field>
+</div>
+```
+
+#### basic-date-picker-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiCalendarComponent,
+  KuiDatePickerDirective,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-date-picker-example',
+  imports: [KuiCalendarComponent, KuiDatePickerDirective, KuiDropdownComponent, KuiFieldComponent],
+  templateUrl: './basic-date-picker-example.html',
+  styleUrl: './basic-date-picker-example.scss',
+})
+export class BasicDatePickerExample {
+  protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));
+  protected readonly viewDate = signal(new Date(2026, 6, 1));
+  protected readonly minDate = new Date(2026, 6, 1);
+}
+```
+
+#### basic-date-picker-example.scss
+
+```scss
+.basic-date-picker-example {
+  max-width: 22rem;
+}
+```
 
 ## API
 
@@ -1426,9 +3623,298 @@ class MyPage {
 
 Rendered at /components/dialog:
 
-- `basic-dialog-example`
-- `dialog-confirm-example`
-- `dialog-sizes-example`
+### basic-dialog-example
+
+#### basic-dialog-example.html
+
+```html
+<div class="basic-dialog-example">
+  <button kuiButton type="button" (click)="invite()">Invite teammate</button>
+  @if (lastResult()) {
+    <p class="basic-dialog-example__result">Last result: {{ lastResult() }}</p>
+  }
+</div>
+```
+
+#### invite-teammate-dialog.html
+
+```html
+<div class="kui-dialog-header">
+  <h2 class="kui-dialog-title">Invite to {{ dialogContext.data.teamName }}</h2>
+  @if (dialogContext.closable) {
+    <button class="kui-dialog-close" type="button" aria-label="Close" (click)="cancel()">
+      &times;
+    </button>
+  }
+</div>
+<div class="kui-dialog-body">
+  <label for="invite-teammate-email">Email address</label>
+  <input
+    id="invite-teammate-email"
+    kuiInput
+    type="email"
+    placeholder="teammate@company.com"
+    [value]="email()"
+    (input)="email.set($any($event.target).value)"
+  />
+</div>
+<div class="kui-dialog-footer">
+  <button kuiButton type="button" shape="outline" (click)="cancel()">Cancel</button>
+  <button kuiButton type="button" [disabled]="!email()" (click)="send()">Send invite</button>
+</div>
+```
+
+#### basic-dialog-example.ts
+
+```ts
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { KuiButtonDirective, kuiDialog } from '@kikita-labs/ui';
+
+import { InviteTeammateDialog } from './invite-teammate-dialog';
+
+@Component({
+  selector: 'app-basic-dialog-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './basic-dialog-example.html',
+  styleUrl: './basic-dialog-example.scss',
+})
+export class BasicDialogExample {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly openInvite = kuiDialog(InviteTeammateDialog, { size: 'sm' });
+
+  protected readonly lastResult = signal<string | null>(null);
+
+  protected invite(): void {
+    this.openInvite({ teamName: 'Docs' })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((result) => this.lastResult.set(result ?? 'dismissed'));
+  }
+}
+```
+
+#### invite-teammate-dialog.ts
+
+```ts
+import { Component, inject, signal } from '@angular/core';
+
+import {
+  KUI_DIALOG_CONTEXT,
+  KuiButtonDirective,
+  type KuiDialogContext,
+  type KuiDialogHost,
+  KuiInputDirective,
+} from '@kikita-labs/ui';
+
+export interface InviteTeammateData {
+  readonly teamName: string;
+}
+
+export type InviteTeammateResult = 'sent' | null;
+
+@Component({
+  selector: 'app-invite-teammate-dialog',
+  imports: [KuiButtonDirective, KuiInputDirective],
+  templateUrl: './invite-teammate-dialog.html',
+})
+export class InviteTeammateDialog implements KuiDialogHost<
+  InviteTeammateResult,
+  InviteTeammateData
+> {
+  public readonly dialogContext =
+    inject<KuiDialogContext<InviteTeammateResult, InviteTeammateData>>(KUI_DIALOG_CONTEXT);
+
+  protected readonly email = signal('');
+
+  protected send(): void {
+    this.dialogContext.close('sent');
+  }
+
+  protected cancel(): void {
+    this.dialogContext.close(null);
+  }
+}
+```
+
+#### basic-dialog-example.scss
+
+```scss
+.basic-dialog-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-dialog-example__result {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### dialog-confirm-example
+
+#### dialog-confirm-example.html
+
+```html
+<div class="dialog-confirm-example">
+  <button kuiButton type="button" appearance="danger" (click)="deleteRecord()">
+    Delete record
+  </button>
+  @if (lastResult()) {
+    <p class="dialog-confirm-example__result">Last result: {{ lastResult() }}</p>
+  }
+</div>
+```
+
+#### dialog-confirm-example.ts
+
+```ts
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { KuiButtonDirective, kuiConfirm } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-dialog-confirm-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './dialog-confirm-example.html',
+  styleUrl: './dialog-confirm-example.scss',
+})
+export class DialogConfirmExample {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly confirm = kuiConfirm();
+
+  protected readonly lastResult = signal<string | null>(null);
+
+  protected deleteRecord(): void {
+    this.confirm({
+      title: 'Delete record?',
+      message: 'This action cannot be undone.',
+      appearance: 'danger',
+      confirmLabel: 'Delete',
+    })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((ok) => this.lastResult.set(ok ? 'confirmed' : 'cancelled'));
+  }
+}
+```
+
+#### dialog-confirm-example.scss
+
+```scss
+.dialog-confirm-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.dialog-confirm-example__result {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### dialog-sizes-example
+
+#### dialog-sizes-example.html
+
+```html
+<div class="dialog-sizes-example">
+  @for (size of sizes; track size) {
+    <button kuiButton type="button" shape="outline" (click)="open(size)">{{ size }}</button>
+  }
+</div>
+```
+
+#### size-preview-dialog.html
+
+```html
+<div class="kui-dialog-header">
+  <h2 class="kui-dialog-title">size="{{ dialogContext.data.size }}"</h2>
+  <button class="kui-dialog-close" type="button" aria-label="Close" (click)="dialogContext.close()">
+    &times;
+  </button>
+</div>
+<div class="kui-dialog-body">
+  <p>
+    This panel was opened with <code>size: '{{ dialogContext.data.size }}'</code>.
+  </p>
+</div>
+<div class="kui-dialog-footer">
+  <button kuiButton type="button" (click)="dialogContext.close()">Close</button>
+</div>
+```
+
+#### dialog-sizes-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, kuiDialog, type KuiDialogSize } from '@kikita-labs/ui';
+
+import { SizePreviewDialog } from './size-preview-dialog';
+
+@Component({
+  selector: 'app-dialog-sizes-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './dialog-sizes-example.html',
+  styleUrl: './dialog-sizes-example.scss',
+})
+export class DialogSizesExample {
+  protected readonly sizes: readonly KuiDialogSize[] = ['auto', 'sm', 'md', 'lg'];
+
+  private readonly openers = new Map(
+    this.sizes.map((size) => [size, kuiDialog(SizePreviewDialog, { size })]),
+  );
+
+  protected open(size: KuiDialogSize): void {
+    this.openers.get(size)?.({ size });
+  }
+}
+```
+
+#### size-preview-dialog.ts
+
+```ts
+import { Component, inject } from '@angular/core';
+
+import {
+  KUI_DIALOG_CONTEXT,
+  KuiButtonDirective,
+  type KuiDialogContext,
+  type KuiDialogHost,
+} from '@kikita-labs/ui';
+
+export interface SizePreviewData {
+  readonly size: string;
+}
+
+@Component({
+  selector: 'app-size-preview-dialog',
+  imports: [KuiButtonDirective],
+  templateUrl: './size-preview-dialog.html',
+})
+export class SizePreviewDialog implements KuiDialogHost<void, SizePreviewData> {
+  public readonly dialogContext =
+    inject<KuiDialogContext<void, SizePreviewData>>(KUI_DIALOG_CONTEXT);
+}
+```
+
+#### dialog-sizes-example.scss
+
+```scss
+.dialog-sizes-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -1553,9 +4039,310 @@ function injectEditDrawer() {
 
 Rendered at /components/drawer:
 
-- `basic-drawer-example`
-- `drawer-sides-example`
-- `drawer-sizes-example`
+### basic-drawer-example
+
+#### basic-drawer-example.html
+
+```html
+<div class="basic-drawer-example">
+  <button kuiButton type="button" (click)="edit()">Edit item</button>
+  @if (lastResult()) {
+    <p class="basic-drawer-example__result">Last result: {{ lastResult() }}</p>
+  }
+</div>
+```
+
+#### edit-item-drawer.html
+
+```html
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">Edit item</h2>
+    <div class="kui-drawer-subtitle">{{ drawerContext.data.id }}</div>
+  </div>
+  <button
+    class="kui-drawer-close"
+    type="button"
+    aria-label="Close"
+    (click)="drawerContext.close('cancelled')"
+  >
+    &times;
+  </button>
+</div>
+<div class="kui-drawer-body">
+  <p>Edit fields for item {{ drawerContext.data.id }} here.</p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" shape="outline" (click)="drawerContext.close('cancelled')">
+    Cancel
+  </button>
+  <button kuiButton type="button" (click)="drawerContext.close('saved')">Save</button>
+</div>
+```
+
+#### basic-drawer-example.ts
+
+```ts
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { KuiButtonDirective, kuiDrawer } from '@kikita-labs/ui';
+
+import { EditItemDrawer } from './edit-item-drawer';
+
+@Component({
+  selector: 'app-basic-drawer-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './basic-drawer-example.html',
+  styleUrl: './basic-drawer-example.scss',
+})
+export class BasicDrawerExample {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly openEditItem = kuiDrawer(EditItemDrawer, { side: 'right', size: 'md' });
+
+  protected readonly lastResult = signal<string | null>(null);
+
+  protected edit(): void {
+    this.openEditItem({ id: 'item-42' })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((result) => this.lastResult.set(result ?? 'dismissed'));
+  }
+}
+```
+
+#### edit-item-drawer.ts
+
+```ts
+import { Component, inject } from '@angular/core';
+
+import {
+  KUI_DRAWER_CONTEXT,
+  KuiButtonDirective,
+  type KuiDrawerContext,
+  type KuiDrawerHost,
+} from '@kikita-labs/ui';
+
+export interface EditItemData {
+  readonly id: string;
+}
+
+export type EditItemResult = 'saved' | 'cancelled';
+
+@Component({
+  selector: 'app-edit-item-drawer',
+  imports: [KuiButtonDirective],
+  templateUrl: './edit-item-drawer.html',
+})
+export class EditItemDrawer implements KuiDrawerHost<EditItemResult, EditItemData> {
+  public readonly drawerContext =
+    inject<KuiDrawerContext<EditItemResult, EditItemData>>(KUI_DRAWER_CONTEXT);
+}
+```
+
+#### basic-drawer-example.scss
+
+```scss
+.basic-drawer-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-drawer-example__result {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### drawer-sides-example
+
+#### drawer-sides-example.html
+
+```html
+<div class="drawer-sides-example">
+  @for (side of sides; track side) {
+    <button kuiButton type="button" shape="outline" (click)="open(side)">{{ side }}</button>
+  }
+</div>
+```
+
+#### side-preview-drawer.html
+
+```html
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">side="{{ drawerContext.side }}"</h2>
+  </div>
+  <button class="kui-drawer-close" type="button" aria-label="Close" (click)="drawerContext.close()">
+    &times;
+  </button>
+</div>
+<div class="kui-drawer-body">
+  <p>
+    This panel was opened with <code>side: '{{ drawerContext.side }}'</code>.
+  </p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" (click)="drawerContext.close()">Close</button>
+</div>
+```
+
+#### drawer-sides-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, kuiDrawer, type KuiDrawerSide } from '@kikita-labs/ui';
+
+import { SidePreviewDrawer } from './side-preview-drawer';
+
+@Component({
+  selector: 'app-drawer-sides-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './drawer-sides-example.html',
+  styleUrl: './drawer-sides-example.scss',
+})
+export class DrawerSidesExample {
+  protected readonly sides: readonly KuiDrawerSide[] = ['top', 'right', 'bottom', 'left'];
+
+  private readonly openers = new Map(
+    this.sides.map((side) => [side, kuiDrawer(SidePreviewDrawer, { side, size: 'sm' })]),
+  );
+
+  protected open(side: KuiDrawerSide): void {
+    this.openers.get(side)?.(undefined);
+  }
+}
+```
+
+#### side-preview-drawer.ts
+
+```ts
+import { Component, inject } from '@angular/core';
+
+import {
+  KUI_DRAWER_CONTEXT,
+  KuiButtonDirective,
+  type KuiDrawerContext,
+  type KuiDrawerHost,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-side-preview-drawer',
+  imports: [KuiButtonDirective],
+  templateUrl: './side-preview-drawer.html',
+})
+export class SidePreviewDrawer implements KuiDrawerHost<void, void> {
+  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);
+}
+```
+
+#### drawer-sides-example.scss
+
+```scss
+.drawer-sides-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+```
+
+### drawer-sizes-example
+
+#### drawer-sizes-example.html
+
+```html
+<div class="drawer-sizes-example">
+  @for (size of sizes; track size) {
+    <button kuiButton type="button" shape="outline" (click)="open(size)">{{ size }}</button>
+  }
+</div>
+```
+
+#### size-preview-drawer.html
+
+```html
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">size="{{ drawerContext.size }}"</h2>
+  </div>
+  <button class="kui-drawer-close" type="button" aria-label="Close" (click)="drawerContext.close()">
+    &times;
+  </button>
+</div>
+<div class="kui-drawer-body">
+  <p>
+    This panel was opened with <code>size: '{{ drawerContext.size }}'</code>.
+  </p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" (click)="drawerContext.close()">Close</button>
+</div>
+```
+
+#### drawer-sizes-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';
+
+import { SizePreviewDrawer } from './size-preview-drawer';
+
+@Component({
+  selector: 'app-drawer-sizes-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './drawer-sizes-example.html',
+  styleUrl: './drawer-sizes-example.scss',
+})
+export class DrawerSizesExample {
+  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full'];
+
+  private readonly openers = new Map(
+    this.sizes.map((size) => [size, kuiDrawer(SizePreviewDrawer, { side: 'right', size })]),
+  );
+
+  protected open(size: KuiDrawerSize): void {
+    this.openers.get(size)?.(undefined);
+  }
+}
+```
+
+#### size-preview-drawer.ts
+
+```ts
+import { Component, inject } from '@angular/core';
+
+import {
+  KUI_DRAWER_CONTEXT,
+  KuiButtonDirective,
+  type KuiDrawerContext,
+  type KuiDrawerHost,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-size-preview-drawer',
+  imports: [KuiButtonDirective],
+  templateUrl: './size-preview-drawer.html',
+})
+export class SizePreviewDrawer implements KuiDrawerHost<void, void> {
+  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);
+}
+```
+
+#### drawer-sizes-example.scss
+
+```scss
+.drawer-sizes-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -1665,9 +4452,121 @@ and `aria-haspopup`.
 
 Rendered at /components/dropdown:
 
-- `field-dropdown-example`
-- `panel-width-dropdown-example`
-- `standalone-dropdown-example`
+### field-dropdown-example
+
+#### field-dropdown-example.html
+
+```html
+<kui-field label="Fruit">
+  <input kuiSelect [(value)]="fruit" placeholder="Pick..." />
+  <kui-dropdown>
+    <div kuiOption value="apple">Apple</div>
+    <div kuiOption value="banana">Banana</div>
+    <div kuiOption value="cherry">Cherry</div>
+  </kui-dropdown>
+</kui-field>
+```
+
+#### field-dropdown-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+  KuiSelectDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-field-dropdown-example',
+  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  templateUrl: './field-dropdown-example.html',
+})
+export class FieldDropdownExample {
+  protected readonly fruit = signal<string | null>(null);
+}
+```
+
+### panel-width-dropdown-example
+
+#### panel-width-dropdown-example.html
+
+```html
+<div class="panel-width-dropdown-example">
+  <button type="button" [kuiDropdownFor]="anchorPanel">panelWidth="anchor"</button>
+  <kui-dropdown #anchorPanel panelWidth="anchor">
+    <div kuiOption value="a">Matches trigger width</div>
+  </kui-dropdown>
+
+  <button type="button" [kuiDropdownFor]="contentPanel">panelWidth="content"</button>
+  <kui-dropdown #contentPanel panelWidth="content">
+    <div kuiOption value="b">Grows with a longer content line if needed</div>
+  </kui-dropdown>
+
+  <button type="button" [kuiDropdownFor]="explicitPanel">width="320px"</button>
+  <kui-dropdown #explicitPanel width="320px">
+    <div kuiOption value="c">Always exactly 320px wide</div>
+  </kui-dropdown>
+</div>
+```
+
+#### panel-width-dropdown-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-panel-width-dropdown-example',
+  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  templateUrl: './panel-width-dropdown-example.html',
+  styleUrl: './panel-width-dropdown-example.scss',
+})
+export class PanelWidthDropdownExample {}
+```
+
+#### panel-width-dropdown-example.scss
+
+```scss
+.panel-width-dropdown-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+}
+```
+
+### standalone-dropdown-example
+
+#### standalone-dropdown-example.html
+
+```html
+<div class="standalone-dropdown-example">
+  <button type="button" [kuiDropdownFor]="menu">Actions</button>
+
+  <kui-dropdown #menu [maxHeight]="null">
+    <div kuiOption value="edit">Edit</div>
+    <div kuiOption value="delete" [disabled]="true">Delete</div>
+  </kui-dropdown>
+</div>
+```
+
+#### standalone-dropdown-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-standalone-dropdown-example',
+  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  templateUrl: './standalone-dropdown-example.html',
+})
+export class StandaloneDropdownExample {}
+```
 
 ## API
 
@@ -1758,9 +4657,222 @@ ng add @kikita-labs/ui
 
 Rendered at /components/empty-state:
 
-- `basic-empty-state-example`
-- `empty-state-context-example`
-- `empty-state-size-example`
+### basic-empty-state-example
+
+#### basic-empty-state-example.html
+
+```html
+<div class="basic-empty-state-example">
+  <kui-empty-state
+    title="No projects yet"
+    description="Create the first project to start working with your team."
+  >
+    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="M21 8v13H3V8" />
+      <path d="M1 3h22v5H1z" />
+      <path d="M10 12h4" />
+    </svg>
+
+    <div kuiEmptyStateActions>
+      <button kuiButton type="button">Create project</button>
+      <button kuiButton shape="ghost" type="button">Import</button>
+    </div>
+  </kui-empty-state>
+</div>
+```
+
+#### basic-empty-state-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiEmptyStateActionsDirective,
+  KuiEmptyStateComponent,
+  KuiEmptyStateIconDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-empty-state-example',
+  imports: [
+    KuiButtonDirective,
+    KuiEmptyStateActionsDirective,
+    KuiEmptyStateComponent,
+    KuiEmptyStateIconDirective,
+  ],
+  templateUrl: './basic-empty-state-example.html',
+  styleUrl: './basic-empty-state-example.scss',
+})
+export class BasicEmptyStateExample {}
+```
+
+#### basic-empty-state-example.scss
+
+```scss
+.basic-empty-state-example {
+  display: flex;
+  justify-content: center;
+  inline-size: 100%;
+}
+```
+
+### empty-state-context-example
+
+#### empty-state-context-example.html
+
+```html
+<div class="empty-state-context-example">
+  <kui-empty-state
+    size="sm"
+    context="no-results"
+    title="No results"
+    description="Try a different search term or clear your filters."
+  >
+    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </svg>
+  </kui-empty-state>
+
+  <kui-empty-state
+    size="sm"
+    context="error"
+    title="Couldn't load projects"
+    description="Something went wrong while loading this list."
+  >
+    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 8v5" />
+      <path d="M12 16h.01" />
+    </svg>
+
+    <div kuiEmptyStateActions>
+      <button kuiButton shape="soft" type="button">Retry</button>
+    </div>
+  </kui-empty-state>
+
+  <kui-empty-state
+    size="sm"
+    context="no-access"
+    title="No access"
+    description="Ask a workspace admin for access to this project."
+  >
+    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="4" y="10" width="16" height="10" rx="2" />
+      <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+    </svg>
+  </kui-empty-state>
+
+  <kui-empty-state
+    size="sm"
+    context="success"
+    title="All caught up"
+    description="No pending reviews are waiting on you right now."
+  >
+    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8 12 3 3 5-6" />
+    </svg>
+  </kui-empty-state>
+</div>
+```
+
+#### empty-state-context-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiEmptyStateActionsDirective,
+  KuiEmptyStateComponent,
+  KuiEmptyStateIconDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-empty-state-context-example',
+  imports: [
+    KuiButtonDirective,
+    KuiEmptyStateActionsDirective,
+    KuiEmptyStateComponent,
+    KuiEmptyStateIconDirective,
+  ],
+  templateUrl: './empty-state-context-example.html',
+  styleUrl: './empty-state-context-example.scss',
+})
+export class EmptyStateContextExample {}
+```
+
+#### empty-state-context-example.scss
+
+```scss
+.empty-state-context-example {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--kui-space-4, 16px);
+  inline-size: 100%;
+}
+```
+
+### empty-state-size-example
+
+#### empty-state-size-example.html
+
+```html
+<div class="empty-state-size-example">
+  <kui-empty-state size="sm" title="No comments" description="Be the first to leave a comment.">
+    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path
+        d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+      />
+    </svg>
+  </kui-empty-state>
+
+  <kui-empty-state size="md" title="No comments" description="Be the first to leave a comment.">
+    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path
+        d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+      />
+    </svg>
+  </kui-empty-state>
+
+  <kui-empty-state size="lg" title="No comments" description="Be the first to leave a comment.">
+    <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path
+        d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+      />
+    </svg>
+  </kui-empty-state>
+</div>
+```
+
+#### empty-state-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiEmptyStateComponent, KuiEmptyStateIconDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-empty-state-size-example',
+  imports: [KuiEmptyStateComponent, KuiEmptyStateIconDirective],
+  templateUrl: './empty-state-size-example.html',
+  styleUrl: './empty-state-size-example.scss',
+})
+export class EmptyStateSizeExample {}
+```
+
+#### empty-state-size-example.scss
+
+```scss
+.empty-state-size-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+}
+```
 
 ## API
 
@@ -1832,7 +4944,47 @@ playground pages, or examples.
 
 Rendered at /components/field:
 
-- `basic-field-example`
+### basic-field-example
+
+#### basic-field-example.html
+
+```html
+<div class="basic-field-example">
+  <kui-field label="Email" hint="Use your work email">
+    <input kuiInput type="email" placeholder="mira@company.dev" />
+  </kui-field>
+
+  <kui-field label="Project" error="Project name is required" required>
+    <input kuiInput value="" />
+  </kui-field>
+</div>
+```
+
+#### basic-field-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-field-example',
+  imports: [KuiFieldComponent, KuiInputDirective],
+  templateUrl: './basic-field-example.html',
+  styleUrl: './basic-field-example.scss',
+})
+export class BasicFieldExample {}
+```
+
+#### basic-field-example.scss
+
+```scss
+.basic-field-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
+```
 
 ## API
 
@@ -1916,7 +5068,58 @@ A newly picked or dropped file lands in the model as `pending`; wire a
 
 Rendered at /components/file-upload:
 
-- `basic-file-upload-example`
+### basic-file-upload-example
+
+#### basic-file-upload-example.html
+
+```html
+<div class="basic-file-upload-example">
+  <kui-file-upload
+    acceptLabel="PNG, JPG, or PDF up to 10 MB"
+    [accept]="['image/png', 'image/jpeg', 'application/pdf']"
+    [maxSize]="10 * 1024 * 1024"
+    [maxCount]="3"
+    [(files)]="files"
+    (retry)="handleRetry($event)"
+  />
+</div>
+```
+
+#### basic-file-upload-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiFileUploadComponent, type KuiUploadFile } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-file-upload-example',
+  imports: [KuiFileUploadComponent],
+  templateUrl: './basic-file-upload-example.html',
+  styleUrl: './basic-file-upload-example.scss',
+})
+export class BasicFileUploadExample {
+  protected readonly files = signal<readonly KuiUploadFile[]>([]);
+
+  protected handleRetry(file: KuiUploadFile): void {
+    this.files.update((files) =>
+      files.map((entry) =>
+        entry.id === file.id ? { ...entry, status: 'pending', progress: 0 } : entry,
+      ),
+    );
+  }
+}
+```
+
+#### basic-file-upload-example.scss
+
+```scss
+.basic-file-upload-example {
+  display: grid;
+  min-width: 0;
+  max-width: 32rem;
+}
+```
 
 ## API
 
@@ -1990,10 +5193,232 @@ ng add @kikita-labs/ui
 
 Rendered at /components/group:
 
-- `basic-group-example`
-- `group-field-example`
-- `group-orientation-example`
-- `group-size-example`
+### basic-group-example
+
+#### basic-group-example.html
+
+```html
+<div class="basic-group-example">
+  <div kuiGroup collapsed>
+    <button kuiButton type="button" shape="outline">One</button>
+    <button kuiButton type="button" shape="outline">Two</button>
+    <button kuiIconButton type="button" shape="outline" aria-label="More options">
+      <kui-icon [source]="moreIcon" />
+    </button>
+  </div>
+</div>
+```
+
+#### basic-group-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiGroupDirective,
+  KuiIconButtonDirective,
+  KuiIconComponent,
+} from '@kikita-labs/ui';
+
+const MORE_ICON =
+  '<svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg>';
+
+@Component({
+  selector: 'app-basic-group-example',
+  imports: [KuiButtonDirective, KuiGroupDirective, KuiIconButtonDirective, KuiIconComponent],
+  templateUrl: './basic-group-example.html',
+  styleUrl: './basic-group-example.scss',
+})
+export class BasicGroupExample {
+  protected readonly moreIcon = MORE_ICON;
+}
+```
+
+#### basic-group-example.scss
+
+```scss
+.basic-group-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### group-field-example
+
+#### group-field-example.html
+
+```html
+<div class="group-field-example">
+  <div kuiGroup collapsed>
+    <input kuiInput placeholder="Search projects" />
+    <button kuiIconButton type="button" shape="outline" aria-label="Search">
+      <kui-icon [source]="searchIcon" />
+    </button>
+  </div>
+
+  <div kuiGroup collapsed size="sm">
+    <input kuiInput placeholder="Search" />
+    <button kuiButton type="button" shape="outline">Go</button>
+  </div>
+</div>
+```
+
+#### group-field-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiGroupDirective,
+  KuiIconButtonDirective,
+  KuiIconComponent,
+  KuiInputDirective,
+} from '@kikita-labs/ui';
+
+const SEARCH_ICON =
+  '<svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+
+@Component({
+  selector: 'app-group-field-example',
+  imports: [
+    KuiButtonDirective,
+    KuiGroupDirective,
+    KuiIconButtonDirective,
+    KuiIconComponent,
+    KuiInputDirective,
+  ],
+  templateUrl: './group-field-example.html',
+  styleUrl: './group-field-example.scss',
+})
+export class GroupFieldExample {
+  protected readonly searchIcon = SEARCH_ICON;
+}
+```
+
+#### group-field-example.scss
+
+```scss
+.group-field-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### group-orientation-example
+
+#### group-orientation-example.html
+
+```html
+<div class="group-orientation-example">
+  <div kuiGroup collapsed orientation="horizontal">
+    <button kuiButton type="button" shape="outline">Left</button>
+    <button kuiButton type="button" shape="outline">Center</button>
+    <button kuiButton type="button" shape="outline">Right</button>
+  </div>
+
+  <div kuiGroup collapsed orientation="vertical" class="group-orientation-example__vertical">
+    <button kuiButton type="button" shape="outline">Top</button>
+    <button kuiButton type="button" shape="outline">Middle</button>
+    <button kuiButton type="button" shape="outline">Bottom</button>
+  </div>
+</div>
+```
+
+#### group-orientation-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiGroupDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-group-orientation-example',
+  imports: [KuiButtonDirective, KuiGroupDirective],
+  templateUrl: './group-orientation-example.html',
+  styleUrl: './group-orientation-example.scss',
+})
+export class GroupOrientationExample {}
+```
+
+#### group-orientation-example.scss
+
+```scss
+.group-orientation-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-6, 24px);
+  align-items: center;
+  justify-content: center;
+}
+
+.group-orientation-example__vertical {
+  inline-size: fit-content;
+}
+```
+
+### group-size-example
+
+#### group-size-example.html
+
+```html
+<div class="group-size-example">
+  <div kuiGroup collapsed size="xs">
+    <button kuiButton type="button" shape="outline">One</button>
+    <button kuiButton type="button" shape="outline">Two</button>
+  </div>
+
+  <div kuiGroup collapsed size="sm">
+    <button kuiButton type="button" shape="outline">One</button>
+    <button kuiButton type="button" shape="outline">Two</button>
+  </div>
+
+  <div kuiGroup collapsed size="md">
+    <button kuiButton type="button" shape="outline">One</button>
+    <button kuiButton type="button" shape="outline">Two</button>
+  </div>
+
+  <div kuiGroup collapsed size="lg">
+    <button kuiButton type="button" shape="outline">One</button>
+    <button kuiButton type="button" shape="outline">Two</button>
+  </div>
+</div>
+```
+
+#### group-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiGroupDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-group-size-example',
+  imports: [KuiButtonDirective, KuiGroupDirective],
+  templateUrl: './group-size-example.html',
+  styleUrl: './group-size-example.scss',
+})
+export class GroupSizeExample {}
+```
+
+#### group-size-example.scss
+
+```scss
+.group-size-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -2050,7 +5475,62 @@ Omit `label` for decorative icons. Decorative icons render with `aria-hidden="tr
 
 Rendered at /components/icon:
 
-- `basic-icon-example`
+### basic-icon-example
+
+#### basic-icon-example.html
+
+```html
+<div class="basic-icon-example">
+  <span class="basic-icon-example__status">
+    <kui-icon [source]="checkIcon" label="Success" size="18px" />
+    Package verified
+  </span>
+
+  <button kuiIconButton type="button" shape="soft" aria-label="Run magic action">
+    <kui-icon [source]="sparkIcon" />
+  </button>
+</div>
+```
+
+#### basic-icon-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-icon-example',
+  imports: [KuiIconButtonDirective, KuiIconComponent],
+  templateUrl: './basic-icon-example.html',
+  styleUrl: './basic-icon-example.scss',
+})
+export class BasicIconExample {
+  protected readonly checkIcon =
+    '<svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  protected readonly sparkIcon =
+    '<svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.4 4 4.1 1.5-4.1 1.5-1.4 4-1.4-4L2.5 7l4.1-1.5L8 1.5z" stroke="currentColor" stroke-linejoin="round"/></svg>';
+}
+```
+
+#### basic-icon-example.scss
+
+```scss
+.basic-icon-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kui-space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.basic-icon-example__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
 
 ## API
 
@@ -2116,8 +5596,131 @@ ng add @kikita-labs/ui
 
 Rendered at /components/icon-button:
 
-- `icon-button-appearance-example`
-- `icon-button-size-example`
+### icon-button-appearance-example
+
+#### icon-button-appearance-example.html
+
+```html
+<div class="icon-button-appearance-example">
+  <button kuiIconButton type="button" aria-label="Add item">
+    <kui-icon [source]="plusIcon" />
+  </button>
+  <button kuiIconButton type="button" shape="soft" aria-label="Add item softly">
+    <kui-icon [source]="plusIcon" />
+  </button>
+  <button kuiIconButton type="button" shape="outline" aria-label="Add item with outline">
+    <kui-icon [source]="plusIcon" />
+  </button>
+  <button kuiIconButton type="button" shape="ghost" aria-label="Add item quietly">
+    <kui-icon [source]="plusIcon" />
+  </button>
+  <button kuiIconButton type="button" appearance="danger" aria-label="Delete item">
+    <kui-icon [source]="trashIcon" />
+  </button>
+  <button
+    kuiIconButton
+    type="button"
+    shape="outline"
+    appearance="danger"
+    aria-label="Delete item with outline"
+  >
+    <kui-icon [source]="trashIcon" />
+  </button>
+</div>
+```
+
+#### icon-button-appearance-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';
+
+const PLUS_ICON =
+  '<svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const TRASH_ICON =
+  '<svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7V4h6v3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+@Component({
+  selector: 'app-icon-button-appearance-example',
+  imports: [KuiIconButtonDirective, KuiIconComponent],
+  templateUrl: './icon-button-appearance-example.html',
+  styleUrl: './icon-button-appearance-example.scss',
+})
+export class IconButtonAppearanceExample {
+  protected readonly plusIcon = PLUS_ICON;
+  protected readonly trashIcon = TRASH_ICON;
+}
+```
+
+#### icon-button-appearance-example.scss
+
+```scss
+.icon-button-appearance-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### icon-button-size-example
+
+#### icon-button-size-example.html
+
+```html
+<div class="icon-button-size-example">
+  <button kuiIconButton type="button" size="xs" aria-label="Extra small settings">
+    <kui-icon [source]="settingsIcon" />
+  </button>
+  <button kuiIconButton type="button" size="sm" aria-label="Small settings">
+    <kui-icon [source]="settingsIcon" />
+  </button>
+  <button kuiIconButton type="button" size="md" aria-label="Medium settings">
+    <kui-icon [source]="settingsIcon" />
+  </button>
+  <button kuiIconButton type="button" size="lg" aria-label="Large settings">
+    <kui-icon [source]="settingsIcon" />
+  </button>
+  <button kuiIconButton type="button" disabled aria-label="Disabled settings">
+    <kui-icon [source]="settingsIcon" />
+  </button>
+</div>
+```
+
+#### icon-button-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';
+
+const SETTINGS_ICON =
+  '<svg viewBox="0 0 24 24" fill="none"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.04.04a2 2 0 0 1-2.83 2.83l-.04-.04a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 0 1-4 0v-.06A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.88.34l-.04.04a2 2 0 0 1-2.83-2.83l.04-.04A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 0 1 0-4h.06A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.88l-.04-.04a2 2 0 1 1 2.83-2.83l.04.04A1.7 1.7 0 0 0 8.96 4.6 1.7 1.7 0 0 0 10 3.06V3a2 2 0 0 1 4 0v.06A1.7 1.7 0 0 0 15.04 4.6a1.7 1.7 0 0 0 1.88-.34l.04-.04a2 2 0 0 1 2.83 2.83l-.04.04a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.94 10H21a2 2 0 0 1 0 4h-.06A1.7 1.7 0 0 0 19.4 15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+
+@Component({
+  selector: 'app-icon-button-size-example',
+  imports: [KuiIconButtonDirective, KuiIconComponent],
+  templateUrl: './icon-button-size-example.html',
+  styleUrl: './icon-button-size-example.scss',
+})
+export class IconButtonSizeExample {
+  protected readonly settingsIcon = SETTINGS_ICON;
+}
+```
+
+#### icon-button-size-example.scss
+
+```scss
+.icon-button-size-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -2177,8 +5780,86 @@ Use `textarea[kuiTextarea]` for multiline controls.
 
 Rendered at /components/input:
 
-- `basic-input-example`
-- `input-group-example`
+### basic-input-example
+
+#### basic-input-example.html
+
+```html
+<div class="basic-input-example">
+  <input kuiInput type="email" aria-label="Work email" placeholder="mira@company.dev" />
+  <input kuiInput aria-label="Project slug" value="kikita-ui" />
+  <input kuiInput invalid aria-label="Invalid project slug" value="Invalid value" />
+</div>
+```
+
+#### basic-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-input-example',
+  imports: [KuiInputDirective],
+  templateUrl: './basic-input-example.html',
+  styleUrl: './basic-input-example.scss',
+})
+export class BasicInputExample {}
+```
+
+#### basic-input-example.scss
+
+```scss
+.basic-input-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
+```
+
+### input-group-example
+
+#### input-group-example.html
+
+```html
+<kui-field label="Project URL" hint="Affixes are visual field chrome.">
+  <div class="kui-input-group input-group-example">
+    <span kuiFieldAffix>https://</span>
+    <input kuiInput aria-label="Project slug" value="kikita-ui" />
+    <span kuiFieldAffix>.dev</span>
+  </div>
+</kui-field>
+```
+
+#### input-group-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiFieldAffixDirective,
+  KuiFieldComponent,
+  KuiInputDirective,
+  KuiInputGroupDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-input-group-example',
+  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective, KuiInputGroupDirective],
+  templateUrl: './input-group-example.html',
+  styleUrl: './input-group-example.scss',
+})
+export class InputGroupExample {}
+```
+
+#### input-group-example.scss
+
+```scss
+.input-group-example {
+  inline-size: min(100%, 380px);
+}
+```
 
 ## API
 
@@ -2237,9 +5918,125 @@ The directive sets `role="status"` and `aria-live="polite"`.
 
 Rendered at /components/loader:
 
-- `basic-loader-example`
-- `loader-button-example`
-- `loader-size-example`
+### basic-loader-example
+
+#### basic-loader-example.html
+
+```html
+<div class="loader-example">
+  <span kuiLoader label="Loading"></span>
+</div>
+```
+
+#### basic-loader-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiLoaderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-loader-example',
+  imports: [KuiLoaderDirective],
+  templateUrl: './basic-loader-example.html',
+  styleUrl: './basic-loader-example.scss',
+})
+export class BasicLoaderExample {}
+```
+
+#### basic-loader-example.scss
+
+```scss
+.loader-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### loader-button-example
+
+#### loader-button-example.html
+
+```html
+<div class="loader-button-example">
+  <button kuiButton type="button" disabled>
+    <span kuiLoader size="sm" label="Saving"></span>
+    Saving
+  </button>
+
+  <button kuiButton type="button" loading>Saving</button>
+</div>
+```
+
+#### loader-button-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiLoaderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-loader-button-example',
+  imports: [KuiButtonDirective, KuiLoaderDirective],
+  templateUrl: './loader-button-example.html',
+  styleUrl: './loader-button-example.scss',
+})
+export class LoaderButtonExample {}
+```
+
+#### loader-button-example.scss
+
+```scss
+.loader-button-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### loader-size-example
+
+#### loader-size-example.html
+
+```html
+<div class="loader-size-example">
+  <span kuiLoader size="xs" label="Loading extra small"></span>
+  <span kuiLoader size="sm" label="Loading small"></span>
+  <span kuiLoader size="md" label="Loading medium"></span>
+  <span kuiLoader size="lg" label="Loading large"></span>
+</div>
+```
+
+#### loader-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiLoaderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-loader-size-example',
+  imports: [KuiLoaderDirective],
+  templateUrl: './loader-size-example.html',
+  styleUrl: './loader-size-example.scss',
+})
+export class LoaderSizeExample {}
+```
+
+#### loader-size-example.scss
+
+```scss
+.loader-size-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -2308,8 +6105,132 @@ ng add @kikita-labs/ui
 
 Rendered at /components/menu:
 
-- `basic-menu-example`
-- `menu-content-example`
+### basic-menu-example
+
+#### basic-menu-example.html
+
+```html
+<div class="basic-menu-example">
+  <button kuiButton type="button" [kuiMenuFor]="actionsMenu">Actions</button>
+
+  <kui-menu #actionsMenu ariaLabel="Project actions">
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__label">Edit</span>
+    </button>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__label">Copy</span>
+    </button>
+    <hr kuiSeparator spacing="xs" />
+    <button type="button" kuiMenuItem appearance="destructive">
+      <span class="kui-menu-item__label">Delete</span>
+    </button>
+  </kui-menu>
+</div>
+```
+
+#### basic-menu-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiMenuComponent,
+  KuiMenuForDirective,
+  KuiMenuItemDirective,
+  KuiSeparatorDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-menu-example',
+  imports: [
+    KuiButtonDirective,
+    KuiMenuComponent,
+    KuiMenuForDirective,
+    KuiMenuItemDirective,
+    KuiSeparatorDirective,
+  ],
+  templateUrl: './basic-menu-example.html',
+  styleUrl: './basic-menu-example.scss',
+})
+export class BasicMenuExample {}
+```
+
+#### basic-menu-example.scss
+
+```scss
+.basic-menu-example {
+  display: flex;
+  justify-content: center;
+}
+```
+
+### menu-content-example
+
+#### menu-content-example.html
+
+```html
+<div class="menu-content-example">
+  <button kuiButton type="button" shape="outline" [kuiMenuFor]="rowMenu">Row actions</button>
+
+  <kui-menu #rowMenu ariaLabel="Row actions" menuAlign="end" minWidth="220px">
+    <div kuiMenuHeader>Project</div>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__icon" aria-hidden="true">E</span>
+      <span class="kui-menu-item__label">Rename</span>
+      <span class="kui-menu-item__shortcut">F2</span>
+    </button>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__icon" aria-hidden="true">C</span>
+      <span class="kui-menu-item__label">Copy link</span>
+      <span class="kui-menu-item__shortcut">Ctrl C</span>
+    </button>
+    <hr kuiSeparator spacing="xs" />
+    <button type="button" kuiMenuItem disabled>
+      <span class="kui-menu-item__label">Archive</span>
+    </button>
+  </kui-menu>
+</div>
+```
+
+#### menu-content-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiMenuComponent,
+  KuiMenuForDirective,
+  KuiMenuHeaderDirective,
+  KuiMenuItemDirective,
+  KuiSeparatorDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-menu-content-example',
+  imports: [
+    KuiButtonDirective,
+    KuiMenuComponent,
+    KuiMenuForDirective,
+    KuiMenuHeaderDirective,
+    KuiMenuItemDirective,
+    KuiSeparatorDirective,
+  ],
+  templateUrl: './menu-content-example.html',
+  styleUrl: './menu-content-example.scss',
+})
+export class MenuContentExample {}
+```
+
+#### menu-content-example.scss
+
+```scss
+.menu-content-example {
+  display: flex;
+  justify-content: center;
+}
+```
 
 ## API
 
@@ -2392,10 +6313,203 @@ for most use cases. Variant A uses stacked arrows on the right and is more compa
 
 Rendered at /components/number-input:
 
-- `basic-number-input-example`
-- `compact-number-input-example`
-- `field-number-input-example`
-- `range-number-input-example`
+### basic-number-input-example
+
+#### basic-number-input-example.html
+
+```html
+<input type="number" kuiNumberInput min="0" max="100" aria-label="Quantity" value="4" />
+<input
+  type="number"
+  kuiNumberInput
+  size="sm"
+  min="0"
+  max="10"
+  aria-label="Small quantity"
+  value="2"
+/>
+<input
+  type="number"
+  kuiNumberInput
+  disabled
+  min="0"
+  max="10"
+  aria-label="Disabled quantity"
+  value="3"
+/>
+```
+
+#### basic-number-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiNumberInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-number-input-example',
+  imports: [KuiNumberInputDirective],
+  templateUrl: './basic-number-input-example.html',
+  styleUrl: './basic-number-input-example.scss',
+})
+export class BasicNumberInputExample {}
+```
+
+#### basic-number-input-example.scss
+
+```scss
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+```
+
+### compact-number-input-example
+
+#### compact-number-input-example.html
+
+```html
+<input
+  type="number"
+  kuiNumberInput
+  variant="a"
+  min="0"
+  max="99"
+  aria-label="Compact quantity"
+  value="12"
+/>
+<input
+  type="number"
+  kuiNumberInput
+  variant="b"
+  min="0"
+  max="99"
+  aria-label="Default quantity"
+  value="12"
+/>
+```
+
+#### compact-number-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiNumberInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-compact-number-input-example',
+  imports: [KuiNumberInputDirective],
+  templateUrl: './compact-number-input-example.html',
+  styleUrl: './compact-number-input-example.scss',
+})
+export class CompactNumberInputExample {}
+```
+
+#### compact-number-input-example.scss
+
+```scss
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+```
+
+### field-number-input-example
+
+#### field-number-input-example.html
+
+```html
+<kui-field label="Seats" hint="Choose between 1 and 10 seats">
+  <input type="number" kuiNumberInput min="1" max="10" value="4" />
+</kui-field>
+
+<kui-field label="Discount" error="Discount must be at least 0%" required>
+  <input type="number" kuiNumberInput invalid min="0" max="100" value="-5" />
+</kui-field>
+```
+
+#### field-number-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiNumberInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-field-number-input-example',
+  imports: [KuiFieldComponent, KuiNumberInputDirective],
+  templateUrl: './field-number-input-example.html',
+  styleUrl: './field-number-input-example.scss',
+})
+export class FieldNumberInputExample {}
+```
+
+#### field-number-input-example.scss
+
+```scss
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: flex-start;
+}
+```
+
+### range-number-input-example
+
+#### range-number-input-example.html
+
+```html
+<input
+  type="number"
+  kuiNumberInput
+  min="0"
+  max="20"
+  step="5"
+  aria-label="Step of five"
+  value="10"
+/>
+<input
+  type="number"
+  kuiNumberInput
+  invalid
+  min="1"
+  max="10"
+  aria-label="Invalid quantity"
+  value="0"
+/>
+```
+
+#### range-number-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiNumberInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-range-number-input-example',
+  imports: [KuiNumberInputDirective],
+  templateUrl: './range-number-input-example.html',
+  styleUrl: './range-number-input-example.scss',
+})
+export class RangeNumberInputExample {}
+```
+
+#### range-number-input-example.scss
+
+```scss
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+```
 
 ## API
 
@@ -2466,9 +6580,130 @@ ng add @kikita-labs/ui
 
 Rendered at /components/popover:
 
-- `action-popover-example`
-- `basic-popover-example`
-- `hover-popover-example`
+### action-popover-example
+
+#### action-popover-example.html
+
+```html
+<div class="action-popover-example">
+  <button [kuiPopoverFor]="confirmPop" kuiButton type="button" appearance="danger">Delete</button>
+
+  <kui-popover
+    #confirmPop
+    placement="bottom"
+    align="start"
+    [arrow]="true"
+    ariaLabel="Delete record"
+  >
+    <div class="kui-popover-title">Delete record?</div>
+    <div class="kui-popover-desc" style="margin-bottom: 12px">This cannot be undone.</div>
+    <div style="display: flex; gap: 8px; justify-content: flex-end">
+      <button kuiButton type="button" shape="outline" size="sm" (click)="confirmPop.close()">
+        Cancel
+      </button>
+      <button
+        kuiButton
+        type="button"
+        appearance="danger"
+        size="sm"
+        (click)="delete(); confirmPop.close()"
+      >
+        Delete
+      </button>
+    </div>
+  </kui-popover>
+
+  @if (deleted()) {
+    <span class="action-popover-example__status">Record deleted.</span>
+  }
+</div>
+```
+
+#### action-popover-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-action-popover-example',
+  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  templateUrl: './action-popover-example.html',
+})
+export class ActionPopoverExample {
+  protected readonly deleted = signal(false);
+
+  protected delete(): void {
+    this.deleted.set(true);
+  }
+}
+```
+
+### basic-popover-example
+
+#### basic-popover-example.html
+
+```html
+<div class="basic-popover-example">
+  <button [kuiPopoverFor]="myPop" kuiButton type="button">Open</button>
+
+  <kui-popover #myPop placement="bottom" [arrow]="true" ariaLabel="Details">
+    <div class="kui-popover-title">Title</div>
+    <div class="kui-popover-desc">Supporting text.</div>
+  </kui-popover>
+</div>
+```
+
+#### basic-popover-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-popover-example',
+  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  templateUrl: './basic-popover-example.html',
+})
+export class BasicPopoverExample {}
+```
+
+### hover-popover-example
+
+#### hover-popover-example.html
+
+```html
+<div class="hover-popover-example">
+  <button [kuiPopoverFor]="hoverPop" kuiButton type="button">Hover me</button>
+
+  <kui-popover
+    #hoverPop
+    placement="top"
+    triggerType="hover"
+    [arrow]="true"
+    ariaLabel="Hover details"
+  >
+    <div class="kui-popover-desc">Opens on hover. Mouse can travel to the panel.</div>
+  </kui-popover>
+</div>
+```
+
+#### hover-popover-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-hover-popover-example',
+  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  templateUrl: './hover-popover-example.html',
+})
+export class HoverPopoverExample {}
+```
 
 ## API
 
@@ -2537,9 +6772,159 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 
 Rendered at /components/progress:
 
-- `basic-progress-example`
-- `progress-circular-example`
-- `progress-color-size-example`
+### basic-progress-example
+
+#### basic-progress-example.html
+
+```html
+<div class="progress-example">
+  <div class="progress-example__item">
+    <span class="progress-example__label">Determinate (60%)</span>
+    <kui-progress [value]="60" aria-label="Upload progress" />
+  </div>
+  <div class="progress-example__item">
+    <span class="progress-example__label">Indeterminate</span>
+    <kui-progress aria-label="Loading" />
+  </div>
+</div>
+```
+
+#### basic-progress-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiProgressComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-progress-example',
+  imports: [KuiProgressComponent],
+  templateUrl: './basic-progress-example.html',
+  styleUrl: './basic-progress-example.scss',
+})
+export class BasicProgressExample {}
+```
+
+#### basic-progress-example.scss
+
+```scss
+.progress-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-4, 16px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+
+.progress-example__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-2, 8px);
+}
+
+.progress-example__label {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### progress-circular-example
+
+#### progress-circular-example.html
+
+```html
+<div class="progress-circular-example">
+  <kui-progress type="circular" size="lg" color="success" [value]="72" aria-label="72% complete">
+    72%
+  </kui-progress>
+  <kui-progress type="circular" aria-label="Loading" />
+</div>
+```
+
+#### progress-circular-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiProgressComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-progress-circular-example',
+  imports: [KuiProgressComponent],
+  templateUrl: './progress-circular-example.html',
+  styleUrl: './progress-circular-example.scss',
+})
+export class ProgressCircularExample {}
+```
+
+#### progress-circular-example.scss
+
+```scss
+.progress-circular-example {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### progress-color-size-example
+
+#### progress-color-size-example.html
+
+```html
+<div class="progress-color-size-example">
+  <div class="progress-color-size-example__group">
+    <kui-progress size="xs" [value]="40" aria-label="Extra small progress" />
+    <kui-progress size="sm" [value]="40" aria-label="Small progress" />
+    <kui-progress size="md" [value]="40" aria-label="Medium progress" />
+    <kui-progress size="lg" [value]="40" aria-label="Large progress" />
+    <kui-progress size="xl" [value]="40" aria-label="Extra large progress" />
+  </div>
+  <div class="progress-color-size-example__group">
+    <kui-progress color="primary" [value]="55" aria-label="Primary progress" />
+    <kui-progress color="success" [value]="55" aria-label="Success progress" />
+    <kui-progress color="warning" [value]="55" aria-label="Warning progress" />
+    <kui-progress color="danger" [value]="55" aria-label="Danger progress" />
+    <kui-progress color="neutral" [value]="55" aria-label="Neutral progress" />
+  </div>
+</div>
+```
+
+#### progress-color-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiProgressComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-progress-color-size-example',
+  imports: [KuiProgressComponent],
+  templateUrl: './progress-color-size-example.html',
+  styleUrl: './progress-color-size-example.scss',
+})
+export class ProgressColorSizeExample {}
+```
+
+#### progress-color-size-example.scss
+
+```scss
+.progress-color-size-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-5, 20px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+
+.progress-color-size-example__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-3, 12px);
+}
+```
 
 ## API
 
@@ -2610,10 +6995,248 @@ field-level label, hint, error, and description wiring; keep native labels for e
 
 Rendered at /components/radio:
 
-- `basic-radio-example`
-- `radio-disabled-example`
-- `radio-invalid-example`
-- `radio-size-example`
+### basic-radio-example
+
+#### basic-radio-example.html
+
+```html
+<kui-field label="Plan" hint="Choose a billing plan">
+  <div role="radiogroup" class="radio-group" aria-label="Plan">
+    <label class="radio-option">
+      <input
+        kuiRadio
+        type="radio"
+        name="plan"
+        value="starter"
+        [checked]="plan() === 'starter'"
+        (change)="plan.set('starter')"
+      />
+      <span>Starter</span>
+    </label>
+    <label class="radio-option">
+      <input
+        kuiRadio
+        type="radio"
+        name="plan"
+        value="pro"
+        [checked]="plan() === 'pro'"
+        (change)="plan.set('pro')"
+      />
+      <span>Pro</span>
+    </label>
+  </div>
+</kui-field>
+```
+
+#### basic-radio-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-radio-example',
+  imports: [KuiFieldComponent, KuiRadioDirective],
+  templateUrl: './basic-radio-example.html',
+  styleUrl: './basic-radio-example.scss',
+})
+export class BasicRadioExample {
+  protected readonly plan = signal('starter');
+}
+```
+
+#### basic-radio-example.scss
+
+```scss
+:host {
+  display: block;
+  inline-size: min(100%, 360px);
+}
+
+.radio-group {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
+
+### radio-disabled-example
+
+#### radio-disabled-example.html
+
+```html
+<div role="radiogroup" class="radio-group" aria-label="Delivery speed">
+  <label class="radio-option">
+    <input kuiRadio type="radio" name="delivery" value="standard" checked />
+    <span>Standard</span>
+  </label>
+  <label class="radio-option">
+    <input kuiRadio type="radio" name="delivery" value="express" />
+    <span>Express</span>
+  </label>
+  <label class="radio-option radio-option--disabled">
+    <input kuiRadio type="radio" name="delivery" value="same-day" disabled />
+    <span>Same day (unavailable in this region)</span>
+  </label>
+</div>
+```
+
+#### radio-disabled-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiRadioDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-radio-disabled-example',
+  imports: [KuiRadioDirective],
+  templateUrl: './radio-disabled-example.html',
+  styleUrl: './radio-disabled-example.scss',
+})
+export class RadioDisabledExample {}
+```
+
+#### radio-disabled-example.scss
+
+```scss
+.radio-group {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+
+.radio-option--disabled {
+  color: var(--kui-color-text-secondary);
+}
+```
+
+### radio-invalid-example
+
+#### radio-invalid-example.html
+
+```html
+<kui-field label="Payment method" error="Select a payment method to continue" required>
+  <div role="radiogroup" class="radio-group" aria-label="Payment method">
+    <label class="radio-option">
+      <input kuiRadio type="radio" name="payment" value="card" />
+      <span>Card</span>
+    </label>
+    <label class="radio-option">
+      <input kuiRadio type="radio" name="payment" value="bank-transfer" />
+      <span>Bank transfer</span>
+    </label>
+  </div>
+</kui-field>
+```
+
+#### radio-invalid-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-radio-invalid-example',
+  imports: [KuiFieldComponent, KuiRadioDirective],
+  templateUrl: './radio-invalid-example.html',
+  styleUrl: './radio-invalid-example.scss',
+})
+export class RadioInvalidExample {}
+```
+
+#### radio-invalid-example.scss
+
+```scss
+:host {
+  display: block;
+  inline-size: min(100%, 360px);
+}
+
+.radio-group {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
+
+### radio-size-example
+
+#### radio-size-example.html
+
+```html
+<div class="radio-size-example">
+  <label class="radio-option">
+    <input kuiRadio type="radio" name="radio-size-xs" size="xs" checked />
+    <span>Extra small</span>
+  </label>
+  <label class="radio-option">
+    <input kuiRadio type="radio" name="radio-size-sm" size="sm" checked />
+    <span>Small</span>
+  </label>
+  <label class="radio-option">
+    <input kuiRadio type="radio" name="radio-size-md" size="md" checked />
+    <span>Medium</span>
+  </label>
+  <label class="radio-option">
+    <input kuiRadio type="radio" name="radio-size-lg" size="lg" checked />
+    <span>Large</span>
+  </label>
+</div>
+```
+
+#### radio-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiRadioDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-radio-size-example',
+  imports: [KuiRadioDirective],
+  templateUrl: './radio-size-example.html',
+  styleUrl: './radio-size-example.scss',
+})
+export class RadioSizeExample {}
+```
+
+#### radio-size-example.scss
+
+```scss
+.radio-size-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
 
 ## API
 
@@ -2687,7 +7310,42 @@ Apply the class to the element that actually scrolls. Do not apply it to a child
 
 Rendered at /components/scrollbar:
 
-- `local-scroll-container-example`
+### local-scroll-container-example
+
+#### local-scroll-container-example.html
+
+```html
+<div class="kui-scroll local-scroll-container-example__region" tabindex="0">
+  <p>First paragraph of scrollable content.</p>
+  <p>Second paragraph of scrollable content.</p>
+  <p>Third paragraph of scrollable content.</p>
+  <p>Fourth paragraph of scrollable content.</p>
+  <p>Fifth paragraph of scrollable content.</p>
+</div>
+```
+
+#### local-scroll-container-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-local-scroll-container-example',
+  templateUrl: './local-scroll-container-example.html',
+  styleUrl: './local-scroll-container-example.scss',
+})
+export class LocalScrollContainerExample {}
+```
+
+#### local-scroll-container-example.scss
+
+```scss
+.local-scroll-container-example__region {
+  max-block-size: 160px;
+  overflow: auto;
+  padding-inline-end: var(--kui-space-2, 8px);
+}
+```
 
 ## API
 
@@ -2761,7 +7419,55 @@ ng add @kikita-labs/ui
 
 Rendered at /components/segmented:
 
-- `basic-segmented-example`
+### basic-segmented-example
+
+#### basic-segmented-example.html
+
+```html
+<div class="basic-segmented-example">
+  <kui-segmented [(selected)]="view" aria-label="Project view">
+    <button kuiSegment value="list">List</button>
+    <button kuiSegment value="board">Board</button>
+    <button kuiSegment value="timeline">Timeline</button>
+  </kui-segmented>
+
+  <p>Selected view: {{ view() }}</p>
+</div>
+```
+
+#### basic-segmented-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiSegmentDirective, KuiSegmentedComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-segmented-example',
+  imports: [KuiSegmentDirective, KuiSegmentedComponent],
+  templateUrl: './basic-segmented-example.html',
+  styleUrl: './basic-segmented-example.scss',
+})
+export class BasicSegmentedExample {
+  protected readonly view = signal('list');
+}
+```
+
+#### basic-segmented-example.scss
+
+```scss
+.basic-segmented-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-segmented-example p {
+  margin: 0;
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-font-size-sm);
+}
+```
 
 ## API
 
@@ -2826,8 +7532,122 @@ role = signal<string | null>(null);
 
 Rendered at /components/select:
 
-- `basic-select-example`
-- `multiple-select-example`
+### basic-select-example
+
+#### basic-select-example.html
+
+```html
+<kui-field label="Role" hint="Pick one role for the user">
+  <input kuiSelect [(value)]="role" placeholder="Select a role..." [clearable]="true" />
+  <kui-dropdown>
+    <div kuiOption value="engineer">Software Engineer</div>
+    <div kuiOption value="designer">Designer</div>
+    <div kuiOption value="manager">Product Manager</div>
+  </kui-dropdown>
+</kui-field>
+```
+
+#### basic-select-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+  KuiSelectDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-select-example',
+  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  templateUrl: './basic-select-example.html',
+  styleUrl: './basic-select-example.scss',
+})
+export class BasicSelectExample {
+  protected readonly role = signal<string | null>(null);
+}
+```
+
+#### basic-select-example.scss
+
+```scss
+:host {
+  display: block;
+  inline-size: min(100%, 360px);
+}
+```
+
+### multiple-select-example
+
+#### multiple-select-example.html
+
+```html
+<kui-field label="Roles" hint="Multiple mode renders selected values as chips">
+  <input
+    kuiSelect
+    multiple
+    [(value)]="roles"
+    [kuiLabelFn]="roleLabel"
+    [maxVisibleChips]="3"
+    placeholder="Select roles..."
+    [clearable]="true"
+  />
+  <kui-dropdown>
+    @for (role of roleOptions; track role.value) {
+      <div kuiOption [value]="role.value">{{ role.label }}</div>
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+#### multiple-select-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+  KuiSelectDirective,
+} from '@kikita-labs/ui';
+
+interface RoleOption {
+  readonly label: string;
+  readonly value: string;
+}
+
+@Component({
+  selector: 'app-multiple-select-example',
+  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  templateUrl: './multiple-select-example.html',
+  styleUrl: './multiple-select-example.scss',
+})
+export class MultipleSelectExample {
+  protected readonly roles = signal<readonly string[]>(['engineer']);
+
+  protected readonly roleOptions: readonly RoleOption[] = [
+    { label: 'Software Engineer', value: 'engineer' },
+    { label: 'Designer', value: 'designer' },
+    { label: 'Product Manager', value: 'manager' },
+    { label: 'Support Lead', value: 'support' },
+  ];
+
+  protected readonly roleLabel = (value: string): string =>
+    this.roleOptions.find((role) => role.value === value)?.label ?? value;
+}
+```
+
+#### multiple-select-example.scss
+
+```scss
+:host {
+  display: block;
+  inline-size: min(100%, 420px);
+}
+```
 
 ## API
 
@@ -2905,10 +7725,173 @@ unless a future primitive explicitly supports it.
 
 Rendered at /components/separator:
 
-- `basic-separator-example`
-- `separator-appearance-example`
-- `separator-spacing-example`
-- `separator-vertical-example`
+### basic-separator-example
+
+#### basic-separator-example.html
+
+```html
+<section>
+  <p>Account details</p>
+  <hr kuiSeparator />
+  <p>Billing details</p>
+</section>
+```
+
+#### basic-separator-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSeparatorDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-separator-example',
+  imports: [KuiSeparatorDirective],
+  templateUrl: './basic-separator-example.html',
+  styleUrl: './basic-separator-example.scss',
+})
+export class BasicSeparatorExample {}
+```
+
+#### basic-separator-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
+
+### separator-appearance-example
+
+#### separator-appearance-example.html
+
+```html
+<p>Subtle</p>
+<hr kuiSeparator appearance="subtle" />
+<p>Default</p>
+<hr kuiSeparator appearance="default" />
+<p>Strong</p>
+<hr kuiSeparator appearance="strong" />
+```
+
+#### separator-appearance-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSeparatorDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-separator-appearance-example',
+  imports: [KuiSeparatorDirective],
+  templateUrl: './separator-appearance-example.html',
+  styleUrl: './separator-appearance-example.scss',
+})
+export class SeparatorAppearanceExample {}
+```
+
+#### separator-appearance-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+
+p {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### separator-spacing-example
+
+#### separator-spacing-example.html
+
+```html
+<p>none</p>
+<hr kuiSeparator spacing="none" />
+<p>xs</p>
+<hr kuiSeparator spacing="xs" />
+<p>sm</p>
+<hr kuiSeparator spacing="sm" />
+<p>md</p>
+<hr kuiSeparator spacing="md" />
+<p>lg</p>
+<hr kuiSeparator spacing="lg" />
+```
+
+#### separator-spacing-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSeparatorDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-separator-spacing-example',
+  imports: [KuiSeparatorDirective],
+  templateUrl: './separator-spacing-example.html',
+  styleUrl: './separator-spacing-example.scss',
+})
+export class SeparatorSpacingExample {}
+```
+
+#### separator-spacing-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+
+p {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### separator-vertical-example
+
+#### separator-vertical-example.html
+
+```html
+<div class="separator-vertical-example__toolbar">
+  <button kuiButton type="button" shape="ghost">Bold</button>
+  <button kuiButton type="button" shape="ghost">Italic</button>
+  <hr kuiSeparator orientation="vertical" spacing="xs" />
+  <button kuiButton type="button" shape="ghost">Link</button>
+</div>
+```
+
+#### separator-vertical-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiSeparatorDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-separator-vertical-example',
+  imports: [KuiButtonDirective, KuiSeparatorDirective],
+  templateUrl: './separator-vertical-example.html',
+  styleUrl: './separator-vertical-example.scss',
+})
+export class SeparatorVerticalExample {}
+```
+
+#### separator-vertical-example.scss
+
+```scss
+.separator-vertical-example__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+}
+```
 
 ## API
 
@@ -2972,9 +7955,205 @@ region, not on every skeleton block.
 
 Rendered at /components/skeleton:
 
-- `skeleton-animation-example`
-- `skeleton-composition-example`
-- `skeleton-shapes-example`
+### skeleton-animation-example
+
+#### skeleton-animation-example.html
+
+```html
+<div class="skeleton-animation-example">
+  <div class="skeleton-animation-example__stack">
+    <span kuiSkeleton shape="heading" style="inline-size: 60%"></span>
+    <span kuiSkeleton shape="text" style="inline-size: 100%"></span>
+    <span kuiSkeleton shape="text" style="inline-size: 80%"></span>
+    <code>shimmer (default)</code>
+  </div>
+  <div class="skeleton-animation-example__stack">
+    <span kuiSkeleton shape="heading" animation="pulse" style="inline-size: 60%"></span>
+    <span kuiSkeleton shape="text" animation="pulse" style="inline-size: 100%"></span>
+    <span kuiSkeleton shape="text" animation="pulse" style="inline-size: 80%"></span>
+    <code>pulse</code>
+  </div>
+  <div class="skeleton-animation-example__stack">
+    <span kuiSkeleton shape="heading" animation="none" style="inline-size: 60%"></span>
+    <span kuiSkeleton shape="text" animation="none" style="inline-size: 100%"></span>
+    <span kuiSkeleton shape="text" animation="none" style="inline-size: 80%"></span>
+    <code>none</code>
+  </div>
+</div>
+```
+
+#### skeleton-animation-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSkeletonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-skeleton-animation-example',
+  imports: [KuiSkeletonDirective],
+  templateUrl: './skeleton-animation-example.html',
+  styleUrl: './skeleton-animation-example.scss',
+})
+export class SkeletonAnimationExample {}
+```
+
+#### skeleton-animation-example.scss
+
+```scss
+.skeleton-animation-example {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--kui-space-6, 24px);
+}
+
+.skeleton-animation-example__stack {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  align-content: start;
+}
+
+.skeleton-animation-example__stack code {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### skeleton-composition-example
+
+#### skeleton-composition-example.html
+
+```html
+<article kuiCard class="skeleton-composition-example" aria-busy="true">
+  <div class="skeleton-composition-example__row">
+    <span kuiSkeleton shape="circle" style="inline-size: 40px"></span>
+    <div class="skeleton-composition-example__stack">
+      <span kuiSkeleton shape="heading" style="inline-size: 45%"></span>
+      <span kuiSkeleton shape="text" style="inline-size: 70%"></span>
+    </div>
+  </div>
+
+  <div class="skeleton-composition-example__stack">
+    <span kuiSkeleton shape="text" style="inline-size: 100%"></span>
+    <span kuiSkeleton shape="text" style="inline-size: 88%"></span>
+    <span kuiSkeleton shape="text" style="inline-size: 64%"></span>
+  </div>
+
+  <span kuiSkeleton shape="button" style="inline-size: 100%"></span>
+</article>
+```
+
+#### skeleton-composition-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiCardDirective, KuiSkeletonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-skeleton-composition-example',
+  imports: [KuiCardDirective, KuiSkeletonDirective],
+  templateUrl: './skeleton-composition-example.html',
+  styleUrl: './skeleton-composition-example.scss',
+})
+export class SkeletonCompositionExample {}
+```
+
+#### skeleton-composition-example.scss
+
+```scss
+.skeleton-composition-example {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  max-inline-size: 320px;
+}
+
+.skeleton-composition-example__row {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-3, 12px);
+}
+
+.skeleton-composition-example__stack {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  inline-size: 100%;
+}
+```
+
+### skeleton-shapes-example
+
+#### skeleton-shapes-example.html
+
+```html
+<div class="skeleton-shapes-example">
+  <div class="skeleton-shapes-example__item">
+    <span kuiSkeleton shape="text" style="inline-size: 140px"></span>
+    <code>text</code>
+  </div>
+  <div class="skeleton-shapes-example__item">
+    <span kuiSkeleton shape="heading" style="inline-size: 180px"></span>
+    <code>heading</code>
+  </div>
+  <div class="skeleton-shapes-example__item">
+    <span kuiSkeleton shape="rect" style="inline-size: 140px; block-size: 64px"></span>
+    <code>rect</code>
+  </div>
+  <div class="skeleton-shapes-example__item">
+    <span kuiSkeleton shape="circle" style="inline-size: 40px"></span>
+    <code>circle</code>
+  </div>
+  <div class="skeleton-shapes-example__item">
+    <span kuiSkeleton shape="square" style="inline-size: 40px"></span>
+    <code>square</code>
+  </div>
+  <div class="skeleton-shapes-example__item">
+    <span kuiSkeleton shape="button" style="inline-size: 96px"></span>
+    <code>button</code>
+  </div>
+  <div class="skeleton-shapes-example__item">
+    <span kuiSkeleton shape="badge" style="inline-size: 64px"></span>
+    <code>badge</code>
+  </div>
+</div>
+```
+
+#### skeleton-shapes-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSkeletonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-skeleton-shapes-example',
+  imports: [KuiSkeletonDirective],
+  templateUrl: './skeleton-shapes-example.html',
+  styleUrl: './skeleton-shapes-example.scss',
+})
+export class SkeletonShapesExample {}
+```
+
+#### skeleton-shapes-example.scss
+
+```scss
+.skeleton-shapes-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-6, 24px);
+}
+
+.skeleton-shapes-example__item {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  justify-items: start;
+}
+
+.skeleton-shapes-example__item code {
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
 
 ## API
 
@@ -3047,10 +8226,201 @@ When projected inside `kui-field`, `kuiSlider` inherits the field id, `aria-desc
 
 Rendered at /components/slider:
 
-- `basic-slider-example`
-- `slider-disabled-example`
-- `slider-field-example`
-- `slider-range-example`
+### basic-slider-example
+
+#### basic-slider-example.html
+
+```html
+<div class="basic-slider-example">
+  <kui-field label="Volume" hint="Use arrow keys, Home, and End.">
+    <input type="range" kuiSlider min="0" max="100" value="60" />
+  </kui-field>
+
+  <input
+    type="range"
+    kuiSlider
+    color="success"
+    size="lg"
+    min="0"
+    max="100"
+    value="40"
+    minLabel="0"
+    maxLabel="100"
+    aria-label="Progress"
+  />
+</div>
+```
+
+#### basic-slider-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-slider-example',
+  imports: [KuiFieldComponent, KuiSliderDirective],
+  templateUrl: './basic-slider-example.html',
+  styleUrl: './basic-slider-example.scss',
+})
+export class BasicSliderExample {}
+```
+
+#### basic-slider-example.scss
+
+```scss
+.basic-slider-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+```
+
+### slider-disabled-example
+
+#### slider-disabled-example.html
+
+```html
+<div class="slider-disabled-example">
+  <kui-field label="Storage limit" hint="Disabled until a plan is selected.">
+    <input type="range" kuiSlider min="0" max="100" value="25" disabled />
+  </kui-field>
+
+  <input type="range" kuiSlider min="0" max="100" value="70" invalid aria-label="Invalid slider" />
+</div>
+```
+
+#### slider-disabled-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-slider-disabled-example',
+  imports: [KuiFieldComponent, KuiSliderDirective],
+  templateUrl: './slider-disabled-example.html',
+  styleUrl: './slider-disabled-example.scss',
+})
+export class SliderDisabledExample {}
+```
+
+#### slider-disabled-example.scss
+
+```scss
+.slider-disabled-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+```
+
+### slider-field-example
+
+#### slider-field-example.html
+
+```html
+<div class="slider-field-example">
+  <kui-field label="Volume" hint="Signal Forms native range binding">
+    <input type="range" kuiSlider [formField]="settingsForm.volume" />
+  </kui-field>
+</div>
+```
+
+#### slider-field-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+import { form, FormField, max, min } from '@angular/forms/signals';
+
+import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+
+interface SettingsModel {
+  readonly volume: number;
+}
+
+@Component({
+  selector: 'app-slider-field-example',
+  imports: [FormField, KuiFieldComponent, KuiSliderDirective],
+  templateUrl: './slider-field-example.html',
+  styleUrl: './slider-field-example.scss',
+})
+export class SliderFieldExample {
+  private readonly settingsModel = signal<SettingsModel>({ volume: 60 });
+
+  protected readonly settingsForm = form(this.settingsModel, (path) => {
+    min(path.volume, 0);
+    max(path.volume, 100);
+  });
+}
+```
+
+#### slider-field-example.scss
+
+```scss
+.slider-field-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+```
+
+### slider-range-example
+
+#### slider-range-example.html
+
+```html
+<div class="slider-range-example">
+  <kui-field label="Playback speed" hint="min 0.5, max 2, step 0.25">
+    <input
+      type="range"
+      kuiSlider
+      min="0.5"
+      max="2"
+      step="0.25"
+      value="1"
+      minLabel="0.5x"
+      maxLabel="2x"
+    />
+  </kui-field>
+
+  <kui-field label="Rating" hint="min 1, max 5, step 1">
+    <input type="range" kuiSlider min="1" max="5" step="1" value="3" minLabel="1" maxLabel="5" />
+  </kui-field>
+</div>
+```
+
+#### slider-range-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-slider-range-example',
+  imports: [KuiFieldComponent, KuiSliderDirective],
+  templateUrl: './slider-range-example.html',
+  styleUrl: './slider-range-example.scss',
+})
+export class SliderRangeExample {}
+```
+
+#### slider-range-example.scss
+
+```scss
+.slider-range-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+```
 
 ## API
 
@@ -3145,7 +8515,46 @@ Steps after an errored step automatically render as `disabled`.
 
 Rendered at /components/stepper:
 
-- `basic-stepper-example`
+### basic-stepper-example
+
+#### basic-stepper-example.html
+
+```html
+<div class="basic-stepper-example">
+  <kui-stepper [(currentIndex)]="currentIndex">
+    <kui-step label="Details" description="Project basics" />
+    <kui-step label="Team" description="Invite collaborators" />
+    <kui-step label="Review" description="Confirm settings" />
+  </kui-stepper>
+</div>
+```
+
+#### basic-stepper-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiStepComponent, KuiStepperComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-stepper-example',
+  imports: [KuiStepComponent, KuiStepperComponent],
+  templateUrl: './basic-stepper-example.html',
+  styleUrl: './basic-stepper-example.scss',
+})
+export class BasicStepperExample {
+  protected readonly currentIndex = signal(1);
+}
+```
+
+#### basic-stepper-example.scss
+
+```scss
+.basic-stepper-example {
+  display: grid;
+  min-width: 0;
+}
+```
 
 ## API
 
@@ -3217,8 +8626,108 @@ native label for the switch text itself.
 
 Rendered at /components/switch:
 
-- `basic-switch-example`
-- `switch-size-example`
+### basic-switch-example
+
+#### basic-switch-example.html
+
+```html
+<kui-field label="Notifications" hint="Control product and release notifications">
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" checked />
+    <span>Enable notifications</span>
+  </label>
+</kui-field>
+```
+
+#### basic-switch-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiSwitchDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-switch-example',
+  imports: [KuiFieldComponent, KuiSwitchDirective],
+  templateUrl: './basic-switch-example.html',
+  styleUrl: './basic-switch-example.scss',
+})
+export class BasicSwitchExample {}
+```
+
+#### basic-switch-example.scss
+
+```scss
+:host {
+  display: block;
+  inline-size: min(100%, 360px);
+}
+
+.switch-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
+
+### switch-size-example
+
+#### switch-size-example.html
+
+```html
+<div class="switch-size-example">
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" size="xs" />
+    <span>Extra small</span>
+  </label>
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" size="sm" checked />
+    <span>Small</span>
+  </label>
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" size="md" checked />
+    <span>Medium</span>
+  </label>
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" size="lg" />
+    <span>Large</span>
+  </label>
+</div>
+```
+
+#### switch-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSwitchDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-switch-size-example',
+  imports: [KuiSwitchDirective],
+  templateUrl: './switch-size-example.html',
+  styleUrl: './switch-size-example.scss',
+})
+export class SwitchSizeExample {}
+```
+
+#### switch-size-example.scss
+
+```scss
+.switch-size-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+
+.switch-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
 
 ## API
 
@@ -3289,10 +8798,407 @@ ng add @kikita-labs/ui
 
 Rendered at /components/table:
 
-- `basic-sortable-table-example`
-- `combined-table-example`
-- `row-selection-table-example`
-- `sticky-header-table-example`
+### basic-sortable-table-example
+
+#### basic-sortable-table-example.html
+
+```html
+<table kuiTable [data]="rows" #table="kuiTable">
+  <thead>
+    <tr kuiThGroup>
+      <th kuiTh sortKey="name">Name</th>
+      <th kuiTh sortKey="role">Role</th>
+      <th kuiTh sortKey="status">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of table.sortedData(); track row.id) {
+      <tr kuiRow [value]="row">
+        <td kuiCell>{{ row.name }}</td>
+        <td kuiCell>{{ row.role }}</td>
+        <td kuiCell>{{ row.status }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+```
+
+#### basic-sortable-table-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiCellDirective,
+  KuiRowDirective,
+  KuiTableDirective,
+  KuiThDirective,
+  KuiThGroupDirective,
+} from '@kikita-labs/ui';
+
+interface TeamMember {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly status: 'Active' | 'Invited' | 'Suspended';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  { id: '1', name: 'Ava Chen', role: 'Engineer', status: 'Active' },
+  { id: '2', name: 'Liam Osei', role: 'Designer', status: 'Invited' },
+  { id: '3', name: 'Noor Malik', role: 'Product Manager', status: 'Active' },
+  { id: '4', name: 'Priya Rao', role: 'Support', status: 'Suspended' },
+  { id: '5', name: 'Tomas Silva', role: 'Engineer', status: 'Active' },
+];
+
+@Component({
+  selector: 'app-basic-sortable-table-example',
+  imports: [
+    KuiCellDirective,
+    KuiRowDirective,
+    KuiTableDirective,
+    KuiThDirective,
+    KuiThGroupDirective,
+  ],
+  templateUrl: './basic-sortable-table-example.html',
+  styleUrl: './basic-sortable-table-example.scss',
+})
+export class BasicSortableTableExample {
+  protected readonly rows = TEAM_MEMBERS;
+}
+```
+
+#### basic-sortable-table-example.scss
+
+```scss
+:host {
+  display: block;
+  overflow-x: auto;
+}
+```
+
+### combined-table-example
+
+#### combined-table-example.html
+
+```html
+<div class="combined-table-example__scroll">
+  <table kuiTable [data]="rows" #table="kuiTable" (selectionChange)="onSelectionChange($event)">
+    <thead>
+      <tr kuiThGroup sticky>
+        <th kuiSelectTh ariaLabel="Select all team members"></th>
+        <th kuiTh sortKey="name" sticky>Name</th>
+        <th kuiTh sortKey="role">Role</th>
+        <th kuiTh sortKey="department">Department</th>
+        <th kuiTh sortKey="status">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of table.sortedData(); track row.id) {
+        <tr kuiRow [value]="row">
+          <td kuiSelectCell [ariaLabel]="'Select ' + row.name"></td>
+          <td kuiCell>{{ row.name }}</td>
+          <td kuiCell>{{ row.role }}</td>
+          <td kuiCell>{{ row.department }}</td>
+          <td kuiCell>{{ row.status }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+<p class="combined-table-example__note">{{ selected().length }} of {{ rows.length }} selected</p>
+```
+
+#### combined-table-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiCellDirective,
+  KuiRowDirective,
+  KuiSelectCellComponent,
+  KuiSelectThComponent,
+  KuiTableDirective,
+  KuiThDirective,
+  KuiThGroupDirective,
+} from '@kikita-labs/ui';
+
+interface TeamMember {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly department: string;
+  readonly status: 'Active' | 'Invited' | 'Suspended';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  { id: '1', name: 'Ava Chen', role: 'Engineer', department: 'Platform', status: 'Active' },
+  { id: '2', name: 'Liam Osei', role: 'Designer', department: 'Product', status: 'Invited' },
+  { id: '3', name: 'Noor Malik', role: 'Product Manager', department: 'Product', status: 'Active' },
+  { id: '4', name: 'Priya Rao', role: 'Support', department: 'Operations', status: 'Suspended' },
+  { id: '5', name: 'Tomas Silva', role: 'Engineer', department: 'Platform', status: 'Active' },
+];
+
+@Component({
+  selector: 'app-combined-table-example',
+  imports: [
+    KuiCellDirective,
+    KuiRowDirective,
+    KuiSelectCellComponent,
+    KuiSelectThComponent,
+    KuiTableDirective,
+    KuiThDirective,
+    KuiThGroupDirective,
+  ],
+  templateUrl: './combined-table-example.html',
+  styleUrl: './combined-table-example.scss',
+})
+export class CombinedTableExample {
+  protected readonly rows = TEAM_MEMBERS;
+  protected readonly selected = signal<readonly TeamMember[]>([]);
+
+  protected onSelectionChange(rows: readonly TeamMember[]): void {
+    this.selected.set(rows);
+  }
+}
+```
+
+#### combined-table-example.scss
+
+```scss
+.combined-table-example__scroll {
+  max-block-size: 220px;
+  overflow: auto;
+}
+
+.combined-table-example__note {
+  margin: var(--kui-space-2, 8px) 0 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### row-selection-table-example
+
+#### row-selection-table-example.html
+
+```html
+<table kuiTable [data]="rows" (selectionChange)="onSelectionChange($event)">
+  <thead>
+    <tr kuiThGroup>
+      <th kuiSelectTh ariaLabel="Select all team members"></th>
+      <th kuiTh sortKey="name">Name</th>
+      <th kuiTh sortKey="role">Role</th>
+      <th kuiTh sortKey="status">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows; track row.id) {
+      <tr kuiRow [value]="row">
+        <td kuiSelectCell [ariaLabel]="'Select ' + row.name"></td>
+        <td kuiCell>{{ row.name }}</td>
+        <td kuiCell>{{ row.role }}</td>
+        <td kuiCell>{{ row.status }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+<p class="row-selection-table-example__note">
+  {{ selected().length }} of {{ rows.length }} selected
+</p>
+```
+
+#### row-selection-table-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiCellDirective,
+  KuiRowDirective,
+  KuiSelectCellComponent,
+  KuiSelectThComponent,
+  KuiTableDirective,
+  KuiThDirective,
+  KuiThGroupDirective,
+} from '@kikita-labs/ui';
+
+interface TeamMember {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly status: 'Active' | 'Invited' | 'Suspended';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  { id: '1', name: 'Ava Chen', role: 'Engineer', status: 'Active' },
+  { id: '2', name: 'Liam Osei', role: 'Designer', status: 'Invited' },
+  { id: '3', name: 'Noor Malik', role: 'Product Manager', status: 'Active' },
+  { id: '4', name: 'Priya Rao', role: 'Support', status: 'Suspended' },
+  { id: '5', name: 'Tomas Silva', role: 'Engineer', status: 'Active' },
+];
+
+@Component({
+  selector: 'app-row-selection-table-example',
+  imports: [
+    KuiCellDirective,
+    KuiRowDirective,
+    KuiSelectCellComponent,
+    KuiSelectThComponent,
+    KuiTableDirective,
+    KuiThDirective,
+    KuiThGroupDirective,
+  ],
+  templateUrl: './row-selection-table-example.html',
+  styleUrl: './row-selection-table-example.scss',
+})
+export class RowSelectionTableExample {
+  protected readonly rows = TEAM_MEMBERS;
+  protected readonly selected = signal<readonly TeamMember[]>([]);
+
+  protected onSelectionChange(rows: readonly TeamMember[]): void {
+    this.selected.set(rows);
+  }
+}
+```
+
+#### row-selection-table-example.scss
+
+```scss
+:host {
+  display: block;
+  overflow-x: auto;
+}
+
+.row-selection-table-example__note {
+  margin: var(--kui-space-2, 8px) 0 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### sticky-header-table-example
+
+#### sticky-header-table-example.html
+
+```html
+<div class="sticky-header-table-example__scroll">
+  <table kuiTable [data]="rows" #table="kuiTable">
+    <thead>
+      <tr kuiThGroup sticky>
+        <th kuiTh sortKey="name" sticky>Name</th>
+        <th kuiTh sortKey="role">Role</th>
+        <th kuiTh sortKey="department">Department</th>
+        <th kuiTh sortKey="location">Location</th>
+        <th kuiTh sortKey="status">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of table.sortedData(); track row.id) {
+        <tr kuiRow [value]="row">
+          <td kuiCell>{{ row.name }}</td>
+          <td kuiCell>{{ row.role }}</td>
+          <td kuiCell>{{ row.department }}</td>
+          <td kuiCell>{{ row.location }}</td>
+          <td kuiCell>{{ row.status }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+```
+
+#### sticky-header-table-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiCellDirective,
+  KuiRowDirective,
+  KuiTableDirective,
+  KuiThDirective,
+  KuiThGroupDirective,
+} from '@kikita-labs/ui';
+
+interface TeamMember {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly department: string;
+  readonly location: string;
+  readonly status: 'Active' | 'Invited' | 'Suspended';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  {
+    id: '1',
+    name: 'Ava Chen',
+    role: 'Engineer',
+    department: 'Platform',
+    location: 'Remote',
+    status: 'Active',
+  },
+  {
+    id: '2',
+    name: 'Liam Osei',
+    role: 'Designer',
+    department: 'Product',
+    location: 'Berlin',
+    status: 'Invited',
+  },
+  {
+    id: '3',
+    name: 'Noor Malik',
+    role: 'Product Manager',
+    department: 'Product',
+    location: 'Remote',
+    status: 'Active',
+  },
+  {
+    id: '4',
+    name: 'Priya Rao',
+    role: 'Support',
+    department: 'Operations',
+    location: 'Singapore',
+    status: 'Suspended',
+  },
+  {
+    id: '5',
+    name: 'Tomas Silva',
+    role: 'Engineer',
+    department: 'Platform',
+    location: 'Lisbon',
+    status: 'Active',
+  },
+];
+
+@Component({
+  selector: 'app-sticky-header-table-example',
+  imports: [
+    KuiCellDirective,
+    KuiRowDirective,
+    KuiTableDirective,
+    KuiThDirective,
+    KuiThGroupDirective,
+  ],
+  templateUrl: './sticky-header-table-example.html',
+  styleUrl: './sticky-header-table-example.scss',
+})
+export class StickyHeaderTableExample {
+  protected readonly rows = TEAM_MEMBERS;
+}
+```
+
+#### sticky-header-table-example.scss
+
+```scss
+.sticky-header-table-example__scroll {
+  max-block-size: 220px;
+  overflow: auto;
+}
+```
 
 ## API
 
@@ -3401,10 +9307,179 @@ Use `controlsPanels="false"` when `kui-tabs` is used as navigation and the route
 
 Rendered at /components/tabs:
 
-- `basic-tabs-example`
-- `navigation-tabs-example`
-- `pill-tabs-example`
-- `vertical-tabs-example`
+### basic-tabs-example
+
+#### basic-tabs-example.html
+
+```html
+<kui-tabs [(selected)]="activeTab">
+  <button kuiTab value="overview">Overview</button>
+  <button kuiTab value="settings">Settings</button>
+  <button kuiTab value="logs">Logs</button>
+
+  <div kuiTabPanel value="overview">Overview content.</div>
+  <div kuiTabPanel value="settings">Settings content.</div>
+  <div kuiTabPanel value="logs">Log content.</div>
+</kui-tabs>
+```
+
+#### basic-tabs-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-tabs-example',
+  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  templateUrl: './basic-tabs-example.html',
+  styleUrl: './basic-tabs-example.scss',
+})
+export class BasicTabsExample {
+  protected readonly activeTab = signal('overview');
+}
+```
+
+#### basic-tabs-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
+
+### navigation-tabs-example
+
+#### navigation-tabs-example.html
+
+```html
+<kui-tabs [(selected)]="currentSection" [controlsPanels]="false" aria-label="Sections">
+  <button kuiTab value="/overview">Overview</button>
+  <button kuiTab value="/settings">Settings</button>
+  <button kuiTab value="/team">Team</button>
+</kui-tabs>
+
+<p class="navigation-tabs-example__note">
+  Selected value: <code>{{ currentSection() }}</code>
+</p>
+```
+
+#### navigation-tabs-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTabDirective, KuiTabsComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-navigation-tabs-example',
+  imports: [KuiTabDirective, KuiTabsComponent],
+  templateUrl: './navigation-tabs-example.html',
+  styleUrl: './navigation-tabs-example.scss',
+})
+export class NavigationTabsExample {
+  protected readonly currentSection = signal('/overview');
+}
+```
+
+#### navigation-tabs-example.scss
+
+```scss
+:host {
+  display: block;
+}
+
+.navigation-tabs-example__note {
+  margin: var(--kui-space-3, 12px) 0 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### pill-tabs-example
+
+#### pill-tabs-example.html
+
+```html
+<kui-tabs variant="pill" [(selected)]="activeTab">
+  <button kuiTab value="daily">Daily</button>
+  <button kuiTab value="weekly" hasError errorLabel="Contains validation errors">Weekly</button>
+  <button kuiTab value="monthly">Monthly</button>
+
+  <div kuiTabPanel value="daily">Daily report content.</div>
+  <div kuiTabPanel value="weekly">Weekly report content.</div>
+  <div kuiTabPanel value="monthly">Monthly report content.</div>
+</kui-tabs>
+```
+
+#### pill-tabs-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-pill-tabs-example',
+  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  templateUrl: './pill-tabs-example.html',
+  styleUrl: './pill-tabs-example.scss',
+})
+export class PillTabsExample {
+  protected readonly activeTab = signal('daily');
+}
+```
+
+#### pill-tabs-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
+
+### vertical-tabs-example
+
+#### vertical-tabs-example.html
+
+```html
+<kui-tabs orientation="vertical" [(selected)]="activeTab">
+  <button kuiTab value="profile">Profile</button>
+  <button kuiTab value="billing">Billing</button>
+  <button kuiTab value="security">Security</button>
+
+  <div kuiTabPanel value="profile">Profile content.</div>
+  <div kuiTabPanel value="billing">Billing content.</div>
+  <div kuiTabPanel value="security">Security content.</div>
+</kui-tabs>
+```
+
+#### vertical-tabs-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-vertical-tabs-example',
+  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  templateUrl: './vertical-tabs-example.html',
+  styleUrl: './vertical-tabs-example.scss',
+})
+export class VerticalTabsExample {
+  protected readonly activeTab = signal('profile');
+}
+```
+
+#### vertical-tabs-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
 
 ## API
 
@@ -3475,9 +9550,143 @@ ng add @kikita-labs/ui
 
 Rendered at /components/textarea:
 
-- `basic-textarea-example`
-- `textarea-invalid-example`
-- `textarea-size-example`
+### basic-textarea-example
+
+#### basic-textarea-example.html
+
+```html
+<div class="basic-textarea-example">
+  <kui-field label="Notes" hint="Internal project note">
+    <textarea kuiTextarea rows="4" placeholder="Write a note"></textarea>
+  </kui-field>
+</div>
+```
+
+#### basic-textarea-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiTextareaDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-textarea-example',
+  imports: [KuiFieldComponent, KuiTextareaDirective],
+  templateUrl: './basic-textarea-example.html',
+  styleUrl: './basic-textarea-example.scss',
+})
+export class BasicTextareaExample {}
+```
+
+#### basic-textarea-example.scss
+
+```scss
+.basic-textarea-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
+```
+
+### textarea-invalid-example
+
+#### textarea-invalid-example.html
+
+```html
+<div class="textarea-invalid-example">
+  <kui-field label="Summary" error="Summary must be at least 20 characters" required>
+    <textarea kuiTextarea rows="3" placeholder="Describe the change"></textarea>
+  </kui-field>
+
+  <kui-field label="Notes" hint="Standalone invalid state outside field error wiring">
+    <textarea kuiTextarea invalid rows="3" placeholder="Write a note"></textarea>
+  </kui-field>
+</div>
+```
+
+#### textarea-invalid-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiTextareaDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-textarea-invalid-example',
+  imports: [KuiFieldComponent, KuiTextareaDirective],
+  templateUrl: './textarea-invalid-example.html',
+  styleUrl: './textarea-invalid-example.scss',
+})
+export class TextareaInvalidExample {}
+```
+
+#### textarea-invalid-example.scss
+
+```scss
+.textarea-invalid-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
+```
+
+### textarea-size-example
+
+#### textarea-size-example.html
+
+```html
+<div class="textarea-size-example">
+  <label class="textarea-size-example__option">
+    <span>Extra small</span>
+    <textarea kuiTextarea size="xs" rows="2" placeholder="Extra small"></textarea>
+  </label>
+  <label class="textarea-size-example__option">
+    <span>Small</span>
+    <textarea kuiTextarea size="sm" rows="2" placeholder="Small"></textarea>
+  </label>
+  <label class="textarea-size-example__option">
+    <span>Medium</span>
+    <textarea kuiTextarea size="md" rows="2" placeholder="Medium (default)"></textarea>
+  </label>
+  <label class="textarea-size-example__option">
+    <span>Large</span>
+    <textarea kuiTextarea size="lg" rows="2" placeholder="Large"></textarea>
+  </label>
+</div>
+```
+
+#### textarea-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiTextareaDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-textarea-size-example',
+  imports: [KuiTextareaDirective],
+  templateUrl: './textarea-size-example.html',
+  styleUrl: './textarea-size-example.scss',
+})
+export class TextareaSizeExample {}
+```
+
+#### textarea-size-example.scss
+
+```scss
+.textarea-size-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
+
+.textarea-size-example__option {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
 
 ## API
 
@@ -3541,9 +9750,212 @@ export class MyComponent {
 
 Rendered at /components/toast:
 
-- `basic-toast-example`
-- `toast-action-example`
-- `toast-position-example`
+### basic-toast-example
+
+#### basic-toast-example.html
+
+```html
+<div class="basic-toast-example">
+  @for (trigger of triggers; track trigger.appearance) {
+    <button kuiButton type="button" shape="soft" (click)="show(trigger.appearance)">
+      {{ trigger.label }}
+    </button>
+  }
+</div>
+```
+
+#### basic-toast-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, kuiToast, type KuiToastAppearance } from '@kikita-labs/ui';
+
+interface ToastTrigger {
+  readonly label: string;
+  readonly appearance: KuiToastAppearance;
+}
+
+@Component({
+  selector: 'app-basic-toast-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './basic-toast-example.html',
+  styleUrl: './basic-toast-example.scss',
+})
+export class BasicToastExample {
+  private readonly toast = kuiToast();
+
+  protected readonly triggers: readonly ToastTrigger[] = [
+    { label: 'Neutral', appearance: 'neutral' },
+    { label: 'Success', appearance: 'success' },
+    { label: 'Warning', appearance: 'warning' },
+    { label: 'Danger', appearance: 'danger' },
+    { label: 'Info', appearance: 'info' },
+  ];
+
+  protected show(appearance: KuiToastAppearance): void {
+    this.toast.open({
+      title: this.titleFor(appearance),
+      message: this.messageFor(appearance),
+      appearance,
+      persistent: appearance === 'danger',
+    });
+  }
+
+  private titleFor(appearance: KuiToastAppearance): string {
+    switch (appearance) {
+      case 'success':
+        return 'Saved';
+      case 'danger':
+        return 'Failed to save';
+      case 'warning':
+        return 'Check your input';
+      case 'info':
+        return 'Heads up';
+      default:
+        return 'Notification';
+    }
+  }
+
+  private messageFor(appearance: KuiToastAppearance): string {
+    switch (appearance) {
+      case 'success':
+        return 'Your changes have been saved.';
+      case 'danger':
+        return 'Check your connection and try again.';
+      case 'warning':
+        return 'Some fields still need your attention.';
+      case 'info':
+        return 'A new version is available.';
+      default:
+        return 'Something happened.';
+    }
+  }
+}
+```
+
+#### basic-toast-example.scss
+
+```scss
+.basic-toast-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+}
+```
+
+### toast-action-example
+
+#### toast-action-example.html
+
+```html
+<button kuiButton type="button" shape="outline" appearance="danger" (click)="deleteMessage()">
+  Delete message
+</button>
+```
+
+#### toast-action-example.ts
+
+```ts
+import { Component, DestroyRef, inject } from '@angular/core';
+
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { KuiButtonDirective, kuiToast } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-toast-action-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './toast-action-example.html',
+  styleUrl: './toast-action-example.scss',
+})
+export class ToastActionExample {
+  private readonly toast = kuiToast();
+  private readonly destroyRef = inject(DestroyRef);
+
+  protected deleteMessage(): void {
+    const ref = this.toast.open({
+      title: 'Message deleted',
+      actionLabel: 'Undo',
+      duration: 6000,
+    });
+
+    ref.action$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.undoDelete());
+  }
+
+  private undoDelete(): void {
+    this.toast.open({ title: 'Delete undone', appearance: 'success' });
+  }
+}
+```
+
+#### toast-action-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
+
+### toast-position-example
+
+#### toast-position-example.html
+
+```html
+<div class="toast-position-example">
+  @for (position of positions; track position) {
+    <button kuiButton type="button" shape="soft" size="sm" (click)="show(position)">
+      {{ position }}
+    </button>
+  }
+</div>
+```
+
+#### toast-position-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, kuiToast, type KuiToastPosition } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-toast-position-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './toast-position-example.html',
+  styleUrl: './toast-position-example.scss',
+})
+export class ToastPositionExample {
+  private readonly toast = kuiToast();
+
+  protected readonly positions: readonly KuiToastPosition[] = [
+    'top-start',
+    'top-center',
+    'top-end',
+    'bottom-start',
+    'bottom-center',
+    'bottom-end',
+  ];
+
+  protected show(position: KuiToastPosition): void {
+    this.toast.setPosition(position);
+    this.toast.open({
+      title: position,
+      message: 'This toast opened at the selected position.',
+    });
+  }
+}
+```
+
+#### toast-position-example.scss
+
+```scss
+.toast-position-example {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--kui-space-2, 8px);
+  max-inline-size: 420px;
+}
+```
 
 ## API
 
@@ -3614,7 +10026,51 @@ The tooltip text is passed as the directive binding value. Empty or whitespace-o
 
 Rendered at /components/tooltip:
 
-- `basic-tooltip-example`
+### basic-tooltip-example
+
+#### basic-tooltip-example.html
+
+```html
+<div class="basic-tooltip-example">
+  <button kuiButton type="button" [kuiTooltip]="'Save the current draft'">Save</button>
+  <button
+    kuiButton
+    type="button"
+    shape="soft"
+    [kuiTooltip]="'Open advanced settings'"
+    placement="bottom"
+  >
+    Settings
+  </button>
+</div>
+```
+
+#### basic-tooltip-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiTooltipDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-tooltip-example',
+  imports: [KuiButtonDirective, KuiTooltipDirective],
+  templateUrl: './basic-tooltip-example.html',
+  styleUrl: './basic-tooltip-example.scss',
+})
+export class BasicTooltipExample {}
+```
+
+#### basic-tooltip-example.scss
+
+```scss
+.basic-tooltip-example {
+  display: flex;
+  justify-content: center;
+  gap: var(--kui-space-3, 12px);
+  flex-wrap: wrap;
+}
+```
 
 ## API
 
@@ -3683,7 +10139,68 @@ protected readonly selectedId = signal<string | null>(null);
 
 Rendered at /components/tree:
 
-- `basic-tree-example`
+### basic-tree-example
+
+#### basic-tree-example.html
+
+```html
+<div class="basic-tree-example">
+  <kui-tree
+    ariaLabel="Project files"
+    [data]="nodes"
+    [(selected)]="selectedId"
+    [(expandedIds)]="expandedIds"
+  />
+</div>
+```
+
+#### basic-tree-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiTreeComponent, type KuiTreeNode } from '@kikita-labs/ui';
+
+const PROJECT_NODES: readonly KuiTreeNode[] = [
+  {
+    id: 'src',
+    label: 'src',
+    icon: 'folder',
+    children: [
+      { id: 'main-ts', label: 'main.ts', icon: 'file' },
+      { id: 'styles', label: 'styles', icon: 'folder', children: [] },
+    ],
+  },
+  {
+    id: 'docs',
+    label: 'docs',
+    icon: 'folder',
+    children: [{ id: 'readme', label: 'README.md', icon: 'file' }],
+  },
+];
+
+@Component({
+  selector: 'app-basic-tree-example',
+  imports: [KuiTreeComponent],
+  templateUrl: './basic-tree-example.html',
+  styleUrl: './basic-tree-example.scss',
+})
+export class BasicTreeExample {
+  protected readonly nodes = PROJECT_NODES;
+  protected readonly selectedId = signal<string | null>('main-ts');
+  protected readonly expandedIds = signal<string[]>(['src']);
+}
+```
+
+#### basic-tree-example.scss
+
+```scss
+.basic-tree-example {
+  display: grid;
+  min-width: 0;
+  max-width: 24rem;
+}
+```
 
 ## API
 
@@ -3712,6 +10229,63 @@ nested children. `aria-expanded` on nodes with children, `aria-selected`
 ## Playground
 
 Available at /components/tree/playground.
+
+---
+
+<!-- route: /ai-support -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/resources/ai-support.md -->
+<!-- package: @kikita-labs/ui@0.4.4 -->
+
+# AI Support
+
+> Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.
+
+- Status: available
+- Route: /ai-support
+- Package: @kikita-labs/ui@0.4.4
+
+## Content
+
+### Context files
+Use llms.txt for a concise index and llms-full.txt when an agent needs the full public documentation context.
+#### agent-context.md
+
+```md
+Start with:
+https://kikita-labs.github.io/kikita-ui-docs/llms.txt
+
+Use full context only when the curated index is not enough:
+https://kikita-labs.github.io/kikita-ui-docs/llms-full.txt
+```
+
+### Local MCP
+Run the read-only stdio MCP server locally with npx. It exposes package docs, component examples, API sections, search, and prompt templates.
+#### mcp.json
+
+```json
+{
+  "mcpServers": {
+    "kikita-ui": {
+      "command": "npx",
+      "args": ["-y", "@kikita-labs/ui-mcp@latest"]
+    }
+  }
+}
+```
+
+### Agent instruction
+Give agents a short rule that keeps them on published package APIs and the generated Kikita documentation surface.
+#### agent-instructions.md
+
+```md
+Use Kikita UI docs through the kikita-ui MCP server.
+Prefer package APIs and examples returned by the server.
+Do not invent component inputs, outputs, CSS hooks, or imports.
+If MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/llms.txt first, then llms-full.txt when full context is needed.
+```
+
+### Version boundary
+The MCP package is generated from this docs site's installed @kikita-labs/ui version. If the package dependency changes, regenerate the agent surface before publishing docs or MCP data.
 
 ---
 

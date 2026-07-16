@@ -13,8 +13,10 @@ export function renderLlmsTxt(entries) {
   const home = entries.find((entry) => entry.kind === 'home');
   const foundations = entries.filter((entry) => entry.kind === 'foundation');
   const components = entries.filter((entry) => entry.kind === 'component');
+  const resources = entries.filter((entry) => entry.kind === 'resource');
   const startHere = foundations.filter((entry) => START_HERE_SLUGS.includes(entry.slug));
   const otherFoundations = foundations.filter((entry) => !START_HERE_SLUGS.includes(entry.slug));
+  const aiSupport = resources.find((entry) => entry.slug === 'ai-support');
 
   return [
     '# Kikita UI',
@@ -27,6 +29,7 @@ export function renderLlmsTxt(entries) {
     '## Start Here',
     '',
     ...startHere.map((entry) => renderLink(entry)),
+    aiSupport ? renderLink(aiSupport) : null,
     `- [Components overview](${markdownPathToUrl(home.markdownPath)}): Every available component with a link to its Markdown mirror.`,
     '',
     '## Foundations',
@@ -39,9 +42,12 @@ export function renderLlmsTxt(entries) {
     '',
     '## Optional',
     '',
+    ...resources.filter((entry) => entry.slug !== 'ai-support').map((entry) => renderLink(entry)),
     `- [Full context](${toSiteUrl('/llms-full.txt')}): Every public doc page concatenated with route/source metadata.`,
     '',
-  ].join('\n');
+  ]
+    .filter((line) => line !== null)
+    .join('\n');
 }
 
 /** Renders `llms-full.txt`: every page's Markdown, in the same order as `llms.txt`, separated. */

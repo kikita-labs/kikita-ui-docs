@@ -57,8 +57,8 @@ For a component named `<name>`:
 - `src/app/pages/components/<name>/playground/<name>-playground-page.*`
 - `src/app/pages/components/<name>/<name>.docs-manifest.ts` once the typed
   registry migration is available
-- generated Markdown mirror, agent manifest entry, `llms-full.txt`, and MCP data
-  after the agent-surface generator exists
+- generated Markdown mirror, agent manifest entry, `llms.txt` when curated,
+  `llms-full.txt`, and MCP data through `tools/generate-agent-surface.mjs`
 - local boundary `index.ts` files according to
   `.agents/imports-and-boundaries.md`
 - `src/app/core/navigation/app-route-path.ts`
@@ -432,9 +432,10 @@ Use this before calling the page done:
 - [ ] Migration/version notes are included when the installed package requires
       them.
 - [ ] Shared docs UI and Kikita UI primitives are used instead of ad hoc UI.
-- [ ] Agent-surface outputs were regenerated or the exact blocker was recorded:
-      Markdown mirror, agent manifest, `llms.txt` when curated, `llms-full.txt`,
-      and MCP data.
+- [ ] Agent-surface outputs were regenerated with `pnpm generate:agent-surface`
+      or the exact blocker was recorded: Markdown mirror, agent manifest,
+      `llms.txt` when curated, `llms-full.txt`, and MCP data.
+- [ ] `pnpm check:agent-surface` passes when generated agent files changed.
 - [ ] No sibling library source imports were added.
 - [ ] No unreleased behavior was documented as available.
 - [ ] Angular verification ran or the exact blocker is recorded.

@@ -43,7 +43,48 @@ Hex values also enable the browser-native color picker from the swatch button:
 
 Rendered at /components/color-input:
 
-- `basic-color-input-example`
+### basic-color-input-example
+
+#### basic-color-input-example.html
+
+```html
+<div class="basic-color-input-example">
+  <kui-field label="Primary seed" hint="Hex and OKLCH values are supported.">
+    <input
+      kuiColorInput
+      value="#5b4fe0"
+      autocomplete="off"
+      swatchLabel="Open primary seed color picker"
+    />
+  </kui-field>
+</div>
+```
+
+#### basic-color-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiColorInputDirective, KuiFieldComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-color-input-example',
+  imports: [KuiColorInputDirective, KuiFieldComponent],
+  templateUrl: './basic-color-input-example.html',
+  styleUrl: './basic-color-input-example.scss',
+})
+export class BasicColorInputExample {}
+```
+
+#### basic-color-input-example.scss
+
+```scss
+.basic-color-input-example {
+  display: grid;
+  max-width: 28rem;
+  min-width: 0;
+}
+```
 
 ## API
 

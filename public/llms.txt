@@ -11,6 +11,7 @@ Important notes:
 
 - [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
 - [Theming](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md): Theme provider setup and theme customization basics.
+- [AI Support](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/ai-support.md): Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.
 - [Components overview](https://kikita-labs.github.io/kikita-ui-docs/llms/index.md): Every available component with a link to its Markdown mirror.
 
 ## Foundations
@@ -68,4 +69,5 @@ Important notes:
 
 ## Optional
 
+- [Package Smoke](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md): External consumer verification for package imports, styles, and providers.
 - [Full context](https://kikita-labs.github.io/kikita-ui-docs/llms-full.txt): Every public doc page concatenated with route/source metadata.

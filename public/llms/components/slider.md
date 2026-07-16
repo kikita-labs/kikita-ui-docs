@@ -44,10 +44,201 @@ When projected inside `kui-field`, `kuiSlider` inherits the field id, `aria-desc
 
 Rendered at /components/slider:
 
-- `basic-slider-example`
-- `slider-disabled-example`
-- `slider-field-example`
-- `slider-range-example`
+### basic-slider-example
+
+#### basic-slider-example.html
+
+```html
+<div class="basic-slider-example">
+  <kui-field label="Volume" hint="Use arrow keys, Home, and End.">
+    <input type="range" kuiSlider min="0" max="100" value="60" />
+  </kui-field>
+
+  <input
+    type="range"
+    kuiSlider
+    color="success"
+    size="lg"
+    min="0"
+    max="100"
+    value="40"
+    minLabel="0"
+    maxLabel="100"
+    aria-label="Progress"
+  />
+</div>
+```
+
+#### basic-slider-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-slider-example',
+  imports: [KuiFieldComponent, KuiSliderDirective],
+  templateUrl: './basic-slider-example.html',
+  styleUrl: './basic-slider-example.scss',
+})
+export class BasicSliderExample {}
+```
+
+#### basic-slider-example.scss
+
+```scss
+.basic-slider-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+```
+
+### slider-disabled-example
+
+#### slider-disabled-example.html
+
+```html
+<div class="slider-disabled-example">
+  <kui-field label="Storage limit" hint="Disabled until a plan is selected.">
+    <input type="range" kuiSlider min="0" max="100" value="25" disabled />
+  </kui-field>
+
+  <input type="range" kuiSlider min="0" max="100" value="70" invalid aria-label="Invalid slider" />
+</div>
+```
+
+#### slider-disabled-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-slider-disabled-example',
+  imports: [KuiFieldComponent, KuiSliderDirective],
+  templateUrl: './slider-disabled-example.html',
+  styleUrl: './slider-disabled-example.scss',
+})
+export class SliderDisabledExample {}
+```
+
+#### slider-disabled-example.scss
+
+```scss
+.slider-disabled-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+```
+
+### slider-field-example
+
+#### slider-field-example.html
+
+```html
+<div class="slider-field-example">
+  <kui-field label="Volume" hint="Signal Forms native range binding">
+    <input type="range" kuiSlider [formField]="settingsForm.volume" />
+  </kui-field>
+</div>
+```
+
+#### slider-field-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+import { form, FormField, max, min } from '@angular/forms/signals';
+
+import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+
+interface SettingsModel {
+  readonly volume: number;
+}
+
+@Component({
+  selector: 'app-slider-field-example',
+  imports: [FormField, KuiFieldComponent, KuiSliderDirective],
+  templateUrl: './slider-field-example.html',
+  styleUrl: './slider-field-example.scss',
+})
+export class SliderFieldExample {
+  private readonly settingsModel = signal<SettingsModel>({ volume: 60 });
+
+  protected readonly settingsForm = form(this.settingsModel, (path) => {
+    min(path.volume, 0);
+    max(path.volume, 100);
+  });
+}
+```
+
+#### slider-field-example.scss
+
+```scss
+.slider-field-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+```
+
+### slider-range-example
+
+#### slider-range-example.html
+
+```html
+<div class="slider-range-example">
+  <kui-field label="Playback speed" hint="min 0.5, max 2, step 0.25">
+    <input
+      type="range"
+      kuiSlider
+      min="0.5"
+      max="2"
+      step="0.25"
+      value="1"
+      minLabel="0.5x"
+      maxLabel="2x"
+    />
+  </kui-field>
+
+  <kui-field label="Rating" hint="min 1, max 5, step 1">
+    <input type="range" kuiSlider min="1" max="5" step="1" value="3" minLabel="1" maxLabel="5" />
+  </kui-field>
+</div>
+```
+
+#### slider-range-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-slider-range-example',
+  imports: [KuiFieldComponent, KuiSliderDirective],
+  templateUrl: './slider-range-example.html',
+  styleUrl: './slider-range-example.scss',
+})
+export class SliderRangeExample {}
+```
+
+#### slider-range-example.scss
+
+```scss
+.slider-range-example {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+  max-inline-size: 360px;
+}
+```
 
 ## API
 

@@ -47,7 +47,42 @@ Apply the class to the element that actually scrolls. Do not apply it to a child
 
 Rendered at /components/scrollbar:
 
-- `local-scroll-container-example`
+### local-scroll-container-example
+
+#### local-scroll-container-example.html
+
+```html
+<div class="kui-scroll local-scroll-container-example__region" tabindex="0">
+  <p>First paragraph of scrollable content.</p>
+  <p>Second paragraph of scrollable content.</p>
+  <p>Third paragraph of scrollable content.</p>
+  <p>Fourth paragraph of scrollable content.</p>
+  <p>Fifth paragraph of scrollable content.</p>
+</div>
+```
+
+#### local-scroll-container-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-local-scroll-container-example',
+  templateUrl: './local-scroll-container-example.html',
+  styleUrl: './local-scroll-container-example.scss',
+})
+export class LocalScrollContainerExample {}
+```
+
+#### local-scroll-container-example.scss
+
+```scss
+.local-scroll-container-example__region {
+  max-block-size: 160px;
+  overflow: auto;
+  padding-inline-end: var(--kui-space-2, 8px);
+}
+```
 
 ## API
 

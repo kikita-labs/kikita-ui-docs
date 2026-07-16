@@ -8,7 +8,8 @@ export const DOCS_HOME_PATH = '/';
 export const DOCS_PATHS = {
   foundations: `/${DOCS_REGISTRY.sections.foundations.slug}`,
   components: `/${DOCS_REGISTRY.sections.components.slug}`,
-  smoke: docsResourcePath(DOCS_REGISTRY.resources[0].slug),
+  aiSupport: docsResourcePath('ai-support'),
+  smoke: docsResourcePath('smoke'),
 } as const;
 
 export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [

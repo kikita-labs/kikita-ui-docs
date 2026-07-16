@@ -11,6 +11,12 @@ import { KIKITA_UI_PACKAGE_VERSION } from '@core/package';
 import { DocsSearchStateService } from '@core/search';
 import { SMOKE_EXAMPLE_SOURCES } from '@generated/example-sources/smoke.generated';
 
+import {
+  AI_SUPPORT_AGENT_TABS,
+  AI_SUPPORT_DIRECT_TABS,
+  AI_SUPPORT_MCP_TABS,
+} from './ai-support/ai-support.docs-content';
+import { AiSupportPage } from './ai-support/ai-support-page';
 import { ComponentsOverviewPage } from './components/components-overview-page';
 import { DocsDraftPage } from './draft/docs-draft-page';
 import { HOME_INSTALL_TABS } from './home/home.docs-content';
@@ -34,6 +40,7 @@ describe('foundation resource pages', () => {
     await TestBed.configureTestingModule({
       imports: [
         ComponentsOverviewPage,
+        AiSupportPage,
         DocsDraftPage,
         DocsNotFoundPage,
         HomePage,
@@ -104,6 +111,18 @@ describe('foundation resource pages', () => {
       "from '@kikita-labs/ui';",
     );
     expect(SMOKE_API_ROWS.map((row) => row.name)).toContain('provideKikitaUi');
+  });
+
+  it('documents AI agent setup through llms files and the local MCP server', () => {
+    const root = createPage(AiSupportPage).nativeElement as HTMLElement;
+
+    expect(root.querySelector('h1')?.textContent?.trim()).toBe('AI Support');
+    expect(root.textContent).toContain('llms.txt');
+    expect(root.textContent).toContain('@kikita-labs/ui-mcp@latest');
+    expect(root.textContent).toContain(`@kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION}`);
+    expect(AI_SUPPORT_DIRECT_TABS[0].code).toContain('/llms.txt');
+    expect(AI_SUPPORT_MCP_TABS[0].code).toContain('"kikita-ui"');
+    expect(AI_SUPPORT_AGENT_TABS[0].code).toContain('Do not invent component inputs');
   });
 
   it('keeps landing setup snippets as named canonical records', () => {

@@ -37,7 +37,47 @@ playground pages, or examples.
 
 Rendered at /components/field:
 
-- `basic-field-example`
+### basic-field-example
+
+#### basic-field-example.html
+
+```html
+<div class="basic-field-example">
+  <kui-field label="Email" hint="Use your work email">
+    <input kuiInput type="email" placeholder="mira@company.dev" />
+  </kui-field>
+
+  <kui-field label="Project" error="Project name is required" required>
+    <input kuiInput value="" />
+  </kui-field>
+</div>
+```
+
+#### basic-field-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-field-example',
+  imports: [KuiFieldComponent, KuiInputDirective],
+  templateUrl: './basic-field-example.html',
+  styleUrl: './basic-field-example.scss',
+})
+export class BasicFieldExample {}
+```
+
+#### basic-field-example.scss
+
+```scss
+.basic-field-example {
+  display: grid;
+  inline-size: min(100%, 360px);
+  gap: var(--kui-space-4, 16px);
+}
+```
 
 ## API
 

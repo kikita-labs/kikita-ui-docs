@@ -30,9 +30,130 @@ ng add @kikita-labs/ui
 
 Rendered at /components/popover:
 
-- `action-popover-example`
-- `basic-popover-example`
-- `hover-popover-example`
+### action-popover-example
+
+#### action-popover-example.html
+
+```html
+<div class="action-popover-example">
+  <button [kuiPopoverFor]="confirmPop" kuiButton type="button" appearance="danger">Delete</button>
+
+  <kui-popover
+    #confirmPop
+    placement="bottom"
+    align="start"
+    [arrow]="true"
+    ariaLabel="Delete record"
+  >
+    <div class="kui-popover-title">Delete record?</div>
+    <div class="kui-popover-desc" style="margin-bottom: 12px">This cannot be undone.</div>
+    <div style="display: flex; gap: 8px; justify-content: flex-end">
+      <button kuiButton type="button" shape="outline" size="sm" (click)="confirmPop.close()">
+        Cancel
+      </button>
+      <button
+        kuiButton
+        type="button"
+        appearance="danger"
+        size="sm"
+        (click)="delete(); confirmPop.close()"
+      >
+        Delete
+      </button>
+    </div>
+  </kui-popover>
+
+  @if (deleted()) {
+    <span class="action-popover-example__status">Record deleted.</span>
+  }
+</div>
+```
+
+#### action-popover-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-action-popover-example',
+  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  templateUrl: './action-popover-example.html',
+})
+export class ActionPopoverExample {
+  protected readonly deleted = signal(false);
+
+  protected delete(): void {
+    this.deleted.set(true);
+  }
+}
+```
+
+### basic-popover-example
+
+#### basic-popover-example.html
+
+```html
+<div class="basic-popover-example">
+  <button [kuiPopoverFor]="myPop" kuiButton type="button">Open</button>
+
+  <kui-popover #myPop placement="bottom" [arrow]="true" ariaLabel="Details">
+    <div class="kui-popover-title">Title</div>
+    <div class="kui-popover-desc">Supporting text.</div>
+  </kui-popover>
+</div>
+```
+
+#### basic-popover-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-popover-example',
+  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  templateUrl: './basic-popover-example.html',
+})
+export class BasicPopoverExample {}
+```
+
+### hover-popover-example
+
+#### hover-popover-example.html
+
+```html
+<div class="hover-popover-example">
+  <button [kuiPopoverFor]="hoverPop" kuiButton type="button">Hover me</button>
+
+  <kui-popover
+    #hoverPop
+    placement="top"
+    triggerType="hover"
+    [arrow]="true"
+    ariaLabel="Hover details"
+  >
+    <div class="kui-popover-desc">Opens on hover. Mouse can travel to the panel.</div>
+  </kui-popover>
+</div>
+```
+
+#### hover-popover-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-hover-popover-example',
+  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  templateUrl: './hover-popover-example.html',
+})
+export class HoverPopoverExample {}
+```
 
 ## API
 

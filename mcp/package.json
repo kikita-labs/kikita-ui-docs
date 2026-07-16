@@ -1,0 +1,22 @@
+{
+  "name": "@kikita-labs/ui-mcp",
+  "version": "0.1.0",
+  "description": "Local read-only MCP server for Kikita UI documentation.",
+  "type": "module",
+  "bin": {
+    "kikita-ui-mcp": "src/index.js"
+  },
+  "files": [
+    "generated/kikita-agent-data.json",
+    "src/index.js"
+  ],
+  "scripts": {
+    "smoke": "node scripts/smoke.mjs",
+    "prepublishOnly": "npm run smoke",
+    "publish:npmjs": "npm publish --access public --@kikita-labs:registry=https://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

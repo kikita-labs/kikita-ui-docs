@@ -34,8 +34,108 @@ native label for the switch text itself.
 
 Rendered at /components/switch:
 
-- `basic-switch-example`
-- `switch-size-example`
+### basic-switch-example
+
+#### basic-switch-example.html
+
+```html
+<kui-field label="Notifications" hint="Control product and release notifications">
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" checked />
+    <span>Enable notifications</span>
+  </label>
+</kui-field>
+```
+
+#### basic-switch-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiSwitchDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-switch-example',
+  imports: [KuiFieldComponent, KuiSwitchDirective],
+  templateUrl: './basic-switch-example.html',
+  styleUrl: './basic-switch-example.scss',
+})
+export class BasicSwitchExample {}
+```
+
+#### basic-switch-example.scss
+
+```scss
+:host {
+  display: block;
+  inline-size: min(100%, 360px);
+}
+
+.switch-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
+
+### switch-size-example
+
+#### switch-size-example.html
+
+```html
+<div class="switch-size-example">
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" size="xs" />
+    <span>Extra small</span>
+  </label>
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" size="sm" checked />
+    <span>Small</span>
+  </label>
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" size="md" checked />
+    <span>Medium</span>
+  </label>
+  <label class="switch-option">
+    <input kuiSwitch type="checkbox" size="lg" />
+    <span>Large</span>
+  </label>
+</div>
+```
+
+#### switch-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSwitchDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-switch-size-example',
+  imports: [KuiSwitchDirective],
+  templateUrl: './switch-size-example.html',
+  styleUrl: './switch-size-example.scss',
+})
+export class SwitchSizeExample {}
+```
+
+#### switch-size-example.scss
+
+```scss
+.switch-size-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+
+.switch-option {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
 
 ## API
 

@@ -48,9 +48,132 @@ Use `kui-icon` explicitly for icon content:
 
 Rendered at /components/button:
 
-- `basic-button-example`
-- `button-appearance-example`
-- `button-size-example`
+### basic-button-example
+
+#### basic-button-example.html
+
+```html
+<div class="button-example">
+  <button kuiButton type="button">Save changes</button>
+  <button kuiButton type="button" shape="soft">Cancel</button>
+  <a kuiButton routerLink="/components/button">Button docs</a>
+</div>
+```
+
+#### basic-button-example.ts
+
+```ts
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+import { KuiButtonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-button-example',
+  imports: [KuiButtonDirective, RouterLink],
+  templateUrl: './basic-button-example.html',
+  styleUrl: './basic-button-example.scss',
+})
+export class BasicButtonExample {}
+```
+
+#### basic-button-example.scss
+
+```scss
+.button-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### button-appearance-example
+
+#### button-appearance-example.html
+
+```html
+<div class="button-appearance-example">
+  <button kuiButton type="button">Solid</button>
+  <button kuiButton type="button" shape="soft">Soft</button>
+  <button kuiButton type="button" shape="outline">Outline</button>
+  <button kuiButton type="button" shape="ghost">Ghost</button>
+  <button kuiButton type="button" appearance="danger">Danger</button>
+  <button kuiButton type="button" shape="outline" appearance="danger">Outline danger</button>
+</div>
+```
+
+#### button-appearance-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-button-appearance-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './button-appearance-example.html',
+  styleUrl: './button-appearance-example.scss',
+})
+export class ButtonAppearanceExample {}
+```
+
+#### button-appearance-example.scss
+
+```scss
+.button-appearance-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### button-size-example
+
+#### button-size-example.html
+
+```html
+<div class="button-size-example">
+  <button kuiButton type="button" size="xs">Extra small</button>
+  <button kuiButton type="button" size="sm">Small</button>
+  <button kuiButton type="button" size="md">Medium</button>
+  <button kuiButton type="button" size="lg">Large</button>
+  <button kuiButton type="button" disabled>Disabled</button>
+  <button kuiButton type="button" loading>Loading</button>
+</div>
+```
+
+#### button-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-button-size-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './button-size-example.html',
+  styleUrl: './button-size-example.scss',
+})
+export class ButtonSizeExample {}
+```
+
+#### button-size-example.scss
+
+```scss
+.button-size-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 

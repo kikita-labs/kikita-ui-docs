@@ -30,11 +30,226 @@ initials generated from `name`, then to the icon fallback when no initials are a
 
 Rendered at /components/avatar:
 
-- `avatar-button-example`
-- `avatar-group-example`
-- `avatar-sizes-shapes-example`
-- `avatar-status-example`
-- `basic-avatar-example`
+### avatar-button-example
+
+#### avatar-button-example.html
+
+```html
+<div class="avatar-button-example">
+  <button class="kui-avatar-action" type="button" aria-label="Open Nikita Repin profile">
+    <kui-avatar src="https://i.pravatar.cc/64?img=12" name="Nikita Repin" />
+  </button>
+</div>
+```
+
+#### avatar-button-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-avatar-button-example',
+  imports: [KuiAvatarComponent],
+  templateUrl: './avatar-button-example.html',
+  styleUrl: './avatar-button-example.scss',
+})
+export class AvatarButtonExample {}
+```
+
+#### avatar-button-example.scss
+
+```scss
+.avatar-button-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### avatar-group-example
+
+#### avatar-group-example.html
+
+```html
+<div class="avatar-group-example">
+  <kui-avatar-group [avatars]="members" [max]="4" size="sm" label="Project participants" />
+</div>
+```
+
+#### avatar-group-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarGroupComponent, type KuiAvatarItem } from '@kikita-labs/ui';
+
+const MEMBERS: readonly KuiAvatarItem[] = [
+  { src: 'https://i.pravatar.cc/64?img=12', name: 'Nikita Repin', status: 'online' },
+  { name: 'Anya Murashova', status: 'away' },
+  { name: 'Timur Ognev' },
+  { name: 'Vera Saltykova' },
+  { name: 'Ilya Denisov' },
+];
+
+@Component({
+  selector: 'app-avatar-group-example',
+  imports: [KuiAvatarGroupComponent],
+  templateUrl: './avatar-group-example.html',
+  styleUrl: './avatar-group-example.scss',
+})
+export class AvatarGroupExample {
+  protected readonly members = MEMBERS;
+}
+```
+
+#### avatar-group-example.scss
+
+```scss
+.avatar-group-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### avatar-sizes-shapes-example
+
+#### avatar-sizes-shapes-example.html
+
+```html
+<div class="avatar-sizes-shapes-example">
+  <div class="avatar-sizes-shapes-example__row">
+    <kui-avatar name="Nikita Repin" size="xs" />
+    <kui-avatar name="Nikita Repin" size="sm" />
+    <kui-avatar name="Nikita Repin" size="md" />
+    <kui-avatar name="Nikita Repin" size="lg" />
+    <kui-avatar name="Nikita Repin" size="xl" />
+    <kui-avatar name="Nikita Repin" size="2xl" />
+  </div>
+  <div class="avatar-sizes-shapes-example__row">
+    <kui-avatar name="Design Bot" shape="square" />
+    <kui-avatar name="Release Team" shape="square" size="lg" />
+  </div>
+</div>
+```
+
+#### avatar-sizes-shapes-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-avatar-sizes-shapes-example',
+  imports: [KuiAvatarComponent],
+  templateUrl: './avatar-sizes-shapes-example.html',
+  styleUrl: './avatar-sizes-shapes-example.scss',
+})
+export class AvatarSizesShapesExample {}
+```
+
+#### avatar-sizes-shapes-example.scss
+
+```scss
+.avatar-sizes-shapes-example {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+
+.avatar-sizes-shapes-example__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### avatar-status-example
+
+#### avatar-status-example.html
+
+```html
+<div class="avatar-status-example">
+  <kui-avatar name="Nikita Repin" status="online" />
+  <kui-avatar name="Anya Murashova" status="away" />
+  <kui-avatar name="Timur Ognev" status="busy" />
+  <kui-avatar name="Vera Saltykova" status="offline" />
+</div>
+```
+
+#### avatar-status-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-avatar-status-example',
+  imports: [KuiAvatarComponent],
+  templateUrl: './avatar-status-example.html',
+  styleUrl: './avatar-status-example.scss',
+})
+export class AvatarStatusExample {}
+```
+
+#### avatar-status-example.scss
+
+```scss
+.avatar-status-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### basic-avatar-example
+
+#### basic-avatar-example.html
+
+```html
+<div class="basic-avatar-example">
+  <kui-avatar src="https://i.pravatar.cc/64?img=12" name="Nikita Repin" status="online" />
+  <kui-avatar name="Anya Murashova" />
+  <kui-avatar />
+</div>
+```
+
+#### basic-avatar-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiAvatarComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-avatar-example',
+  imports: [KuiAvatarComponent],
+  templateUrl: './basic-avatar-example.html',
+  styleUrl: './basic-avatar-example.scss',
+})
+export class BasicAvatarExample {}
+```
+
+#### basic-avatar-example.scss
+
+```scss
+.basic-avatar-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 

@@ -29,7 +29,51 @@ The tooltip text is passed as the directive binding value. Empty or whitespace-o
 
 Rendered at /components/tooltip:
 
-- `basic-tooltip-example`
+### basic-tooltip-example
+
+#### basic-tooltip-example.html
+
+```html
+<div class="basic-tooltip-example">
+  <button kuiButton type="button" [kuiTooltip]="'Save the current draft'">Save</button>
+  <button
+    kuiButton
+    type="button"
+    shape="soft"
+    [kuiTooltip]="'Open advanced settings'"
+    placement="bottom"
+  >
+    Settings
+  </button>
+</div>
+```
+
+#### basic-tooltip-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiTooltipDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-tooltip-example',
+  imports: [KuiButtonDirective, KuiTooltipDirective],
+  templateUrl: './basic-tooltip-example.html',
+  styleUrl: './basic-tooltip-example.scss',
+})
+export class BasicTooltipExample {}
+```
+
+#### basic-tooltip-example.scss
+
+```scss
+.basic-tooltip-example {
+  display: flex;
+  justify-content: center;
+  gap: var(--kui-space-3, 12px);
+  flex-wrap: wrap;
+}
+```
 
 ## API
 

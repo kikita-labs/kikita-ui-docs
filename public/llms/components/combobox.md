@@ -66,10 +66,355 @@ invalid state, and field size.
 
 Rendered at /components/combobox:
 
-- `async-combobox-example`
-- `basic-combobox-example`
-- `combobox-field-states-example`
-- `free-combobox-example`
+### async-combobox-example
+
+#### async-combobox-example.html
+
+```html
+<kui-field label="Reviewer" hint="Simulates a remote lookup with a loading row">
+  <input
+    kuiCombobox
+    mode="async"
+    [(value)]="reviewer"
+    [(query)]="reviewerQuery"
+    [loading]="loading()"
+    [kuiLabelFn]="personLabel"
+    placeholder="Type to search..."
+    (search)="loadReviewers($event)"
+  />
+
+  <kui-dropdown>
+    @if (loading()) {
+      <div class="kui-combobox-loading-row">
+        <span class="kui-combobox-loader" aria-hidden="true"></span>
+        Loading people
+      </div>
+    } @else if (errorMessage(); as lookupError) {
+      <div class="kui-combobox-empty" role="alert">{{ lookupError }}</div>
+    } @else {
+      @for (person of reviewers(); track person.id) {
+        <button kuiOption [value]="person">{{ person.name }}</button>
+      } @empty {
+        <div class="kui-combobox-empty">No matches</div>
+      }
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+#### async-combobox-example.ts
+
+```ts
+import { Component, effect, inject, signal } from '@angular/core';
+
+import {
+  KuiComboboxDirective,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+import { ALL_REVIEWERS, type AsyncReviewer, AsyncReviewerService } from './async-reviewer.service';
+
+@Component({
+  selector: 'app-async-combobox-example',
+  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  providers: [AsyncReviewerService],
+  templateUrl: './async-combobox-example.html',
+  styleUrl: './async-combobox-example.scss',
+})
+export class AsyncComboboxExample {
+  private readonly reviewerLookup = inject(AsyncReviewerService);
+  private readonly requestedQuery = signal<string | null>(null);
+
+  protected readonly reviewer = signal<AsyncReviewer | null>(null);
+  protected readonly reviewerQuery = signal('');
+  protected readonly reviewers = signal<readonly AsyncReviewer[]>(ALL_REVIEWERS);
+  protected readonly loading = signal(false);
+  protected readonly errorMessage = signal<string | null>(null);
+
+  protected readonly personLabel = (person: AsyncReviewer) => person.name;
+
+  private readonly reviewerLookupEffect = effect((onCleanup) => {
+    const query = this.requestedQuery();
+
+    if (query === null) {
+      return;
+    }
+
+    this.loading.set(true);
+    this.errorMessage.set(null);
+
+    const subscription = this.reviewerLookup.search(query).subscribe({
+      next: (reviewers) => {
+        this.reviewers.set(reviewers);
+        this.loading.set(false);
+      },
+      error: () => {
+        this.reviewers.set([]);
+        this.loading.set(false);
+        this.errorMessage.set('Reviewers could not be loaded. Try again.');
+      },
+    });
+
+    onCleanup(() => subscription.unsubscribe());
+  });
+
+  protected loadReviewers(query: string): void {
+    this.requestedQuery.set(query);
+  }
+}
+```
+
+#### async-reviewer.service.ts
+
+```ts
+import { Injectable } from '@angular/core';
+
+import { map, type Observable, timer } from 'rxjs';
+
+export interface AsyncReviewer {
+  readonly id: string;
+  readonly name: string;
+}
+
+const ALL_REVIEWERS: readonly AsyncReviewer[] = [
+  { id: 'amelia', name: 'Amelia Novak' },
+  { id: 'daniel', name: 'Daniel Kowalski' },
+  { id: 'harper', name: 'Harper Singh' },
+  { id: 'ines', name: 'Ines Delacroix' },
+  { id: 'ravi', name: 'Ravi Patel' },
+];
+
+@Injectable()
+export class AsyncReviewerService {
+  public search(query: string): Observable<readonly AsyncReviewer[]> {
+    return timer(400).pipe(
+      map(() => {
+        const normalizedQuery = query.toLocaleLowerCase();
+
+        return normalizedQuery
+          ? ALL_REVIEWERS.filter((reviewer) =>
+              reviewer.name.toLocaleLowerCase().includes(normalizedQuery),
+            )
+          : ALL_REVIEWERS;
+      }),
+    );
+  }
+}
+
+export { ALL_REVIEWERS };
+```
+
+#### async-combobox-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
+
+### basic-combobox-example
+
+#### basic-combobox-example.html
+
+```html
+<kui-field label="Assignee" hint="Type to filter projected options">
+  <input
+    kuiCombobox
+    [(value)]="assignee"
+    [(query)]="query"
+    [kuiLabelFn]="personLabel"
+    placeholder="Search people..."
+    (search)="query.set($event)"
+  />
+
+  <kui-dropdown>
+    @for (person of filteredPeople(); track person.id) {
+      <button kuiOption [value]="person">
+        <span class="kui-combobox-match-label">
+          @for (segment of person.name | kuiComboboxHighlight: query(); track $index) {
+            @if (segment.match) {
+              <mark class="kui-combobox-highlight">{{ segment.text }}</mark>
+            } @else {
+              <span>{{ segment.text }}</span>
+            }
+          }
+        </span>
+      </button>
+    } @empty {
+      <div class="kui-combobox-empty">No people found</div>
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+#### basic-combobox-example.ts
+
+```ts
+import { Component, computed, signal } from '@angular/core';
+
+import {
+  KuiComboboxDirective,
+  KuiComboboxHighlightPipe,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+interface Person {
+  readonly id: string;
+  readonly name: string;
+}
+
+const PEOPLE: readonly Person[] = [
+  { id: 'amelia', name: 'Amelia Novak' },
+  { id: 'daniel', name: 'Daniel Kowalski' },
+  { id: 'harper', name: 'Harper Singh' },
+  { id: 'ines', name: 'Ines Delacroix' },
+  { id: 'ravi', name: 'Ravi Patel' },
+];
+
+@Component({
+  selector: 'app-basic-combobox-example',
+  imports: [
+    KuiComboboxDirective,
+    KuiComboboxHighlightPipe,
+    KuiDropdownComponent,
+    KuiFieldComponent,
+    KuiOptionDirective,
+  ],
+  templateUrl: './basic-combobox-example.html',
+  styleUrl: './basic-combobox-example.scss',
+})
+export class BasicComboboxExample {
+  protected readonly assignee = signal<Person | null>(null);
+  protected readonly query = signal('');
+
+  protected readonly personLabel = (person: Person) => person.name;
+
+  protected readonly filteredPeople = computed(() => {
+    const q = this.query().toLocaleLowerCase();
+
+    return q ? PEOPLE.filter((person) => person.name.toLocaleLowerCase().includes(q)) : PEOPLE;
+  });
+}
+```
+
+#### basic-combobox-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
+
+### combobox-field-states-example
+
+#### combobox-field-states-example.html
+
+```html
+<div class="combobox-field-states-example">
+  <kui-field label="Owner" hint="Disabled prevents editing and opening the dropdown">
+    <input kuiCombobox disabled [(value)]="disabledOwner" placeholder="Search people..." />
+    <kui-dropdown>
+      <button kuiOption value="engineer">Software Engineer</button>
+      <button kuiOption value="designer">Designer</button>
+    </kui-dropdown>
+  </kui-field>
+
+  <kui-field label="Owner" error="Choose an owner before continuing">
+    <input kuiCombobox invalid [(value)]="invalidOwner" placeholder="Search people..." />
+    <kui-dropdown>
+      <button kuiOption value="engineer">Software Engineer</button>
+      <button kuiOption value="designer">Designer</button>
+    </kui-dropdown>
+  </kui-field>
+</div>
+```
+
+#### combobox-field-states-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiComboboxDirective,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-combobox-field-states-example',
+  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  templateUrl: './combobox-field-states-example.html',
+  styleUrl: './combobox-field-states-example.scss',
+})
+export class ComboboxFieldStatesExample {
+  protected readonly disabledOwner = signal<string | null>('engineer');
+  protected readonly invalidOwner = signal<string | null>(null);
+}
+```
+
+#### combobox-field-states-example.scss
+
+```scss
+.combobox-field-states-example {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  max-inline-size: 320px;
+}
+```
+
+### free-combobox-example
+
+#### free-combobox-example.html
+
+```html
+<kui-field label="Tag" hint="Type a custom tag or choose a suggestion">
+  <input kuiCombobox mode="free" [(value)]="tag" placeholder="Type or choose..." />
+  <kui-dropdown>
+    <button kuiOption value="Bug">Bug</button>
+    <button kuiOption value="Feature">Feature</button>
+    <button kuiOption value="Regression">Regression</button>
+  </kui-dropdown>
+</kui-field>
+```
+
+#### free-combobox-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiComboboxDirective,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-free-combobox-example',
+  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  templateUrl: './free-combobox-example.html',
+  styleUrl: './free-combobox-example.scss',
+})
+export class FreeComboboxExample {
+  protected readonly tag = signal<string | null>(null);
+}
+```
+
+#### free-combobox-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
 
 ## API
 

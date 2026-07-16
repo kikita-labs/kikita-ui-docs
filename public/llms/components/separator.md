@@ -32,10 +32,173 @@ unless a future primitive explicitly supports it.
 
 Rendered at /components/separator:
 
-- `basic-separator-example`
-- `separator-appearance-example`
-- `separator-spacing-example`
-- `separator-vertical-example`
+### basic-separator-example
+
+#### basic-separator-example.html
+
+```html
+<section>
+  <p>Account details</p>
+  <hr kuiSeparator />
+  <p>Billing details</p>
+</section>
+```
+
+#### basic-separator-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSeparatorDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-separator-example',
+  imports: [KuiSeparatorDirective],
+  templateUrl: './basic-separator-example.html',
+  styleUrl: './basic-separator-example.scss',
+})
+export class BasicSeparatorExample {}
+```
+
+#### basic-separator-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+```
+
+### separator-appearance-example
+
+#### separator-appearance-example.html
+
+```html
+<p>Subtle</p>
+<hr kuiSeparator appearance="subtle" />
+<p>Default</p>
+<hr kuiSeparator appearance="default" />
+<p>Strong</p>
+<hr kuiSeparator appearance="strong" />
+```
+
+#### separator-appearance-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSeparatorDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-separator-appearance-example',
+  imports: [KuiSeparatorDirective],
+  templateUrl: './separator-appearance-example.html',
+  styleUrl: './separator-appearance-example.scss',
+})
+export class SeparatorAppearanceExample {}
+```
+
+#### separator-appearance-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+
+p {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### separator-spacing-example
+
+#### separator-spacing-example.html
+
+```html
+<p>none</p>
+<hr kuiSeparator spacing="none" />
+<p>xs</p>
+<hr kuiSeparator spacing="xs" />
+<p>sm</p>
+<hr kuiSeparator spacing="sm" />
+<p>md</p>
+<hr kuiSeparator spacing="md" />
+<p>lg</p>
+<hr kuiSeparator spacing="lg" />
+```
+
+#### separator-spacing-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiSeparatorDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-separator-spacing-example',
+  imports: [KuiSeparatorDirective],
+  templateUrl: './separator-spacing-example.html',
+  styleUrl: './separator-spacing-example.scss',
+})
+export class SeparatorSpacingExample {}
+```
+
+#### separator-spacing-example.scss
+
+```scss
+:host {
+  display: block;
+  max-inline-size: 320px;
+}
+
+p {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### separator-vertical-example
+
+#### separator-vertical-example.html
+
+```html
+<div class="separator-vertical-example__toolbar">
+  <button kuiButton type="button" shape="ghost">Bold</button>
+  <button kuiButton type="button" shape="ghost">Italic</button>
+  <hr kuiSeparator orientation="vertical" spacing="xs" />
+  <button kuiButton type="button" shape="ghost">Link</button>
+</div>
+```
+
+#### separator-vertical-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiSeparatorDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-separator-vertical-example',
+  imports: [KuiButtonDirective, KuiSeparatorDirective],
+  templateUrl: './separator-vertical-example.html',
+  styleUrl: './separator-vertical-example.scss',
+})
+export class SeparatorVerticalExample {}
+```
+
+#### separator-vertical-example.scss
+
+```scss
+.separator-vertical-example__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+}
+```
 
 ## API
 

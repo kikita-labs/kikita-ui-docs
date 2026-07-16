@@ -54,7 +54,58 @@ A newly picked or dropped file lands in the model as `pending`; wire a
 
 Rendered at /components/file-upload:
 
-- `basic-file-upload-example`
+### basic-file-upload-example
+
+#### basic-file-upload-example.html
+
+```html
+<div class="basic-file-upload-example">
+  <kui-file-upload
+    acceptLabel="PNG, JPG, or PDF up to 10 MB"
+    [accept]="['image/png', 'image/jpeg', 'application/pdf']"
+    [maxSize]="10 * 1024 * 1024"
+    [maxCount]="3"
+    [(files)]="files"
+    (retry)="handleRetry($event)"
+  />
+</div>
+```
+
+#### basic-file-upload-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiFileUploadComponent, type KuiUploadFile } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-file-upload-example',
+  imports: [KuiFileUploadComponent],
+  templateUrl: './basic-file-upload-example.html',
+  styleUrl: './basic-file-upload-example.scss',
+})
+export class BasicFileUploadExample {
+  protected readonly files = signal<readonly KuiUploadFile[]>([]);
+
+  protected handleRetry(file: KuiUploadFile): void {
+    this.files.update((files) =>
+      files.map((entry) =>
+        entry.id === file.id ? { ...entry, status: 'pending', progress: 0 } : entry,
+      ),
+    );
+  }
+}
+```
+
+#### basic-file-upload-example.scss
+
+```scss
+.basic-file-upload-example {
+  display: grid;
+  min-width: 0;
+  max-width: 32rem;
+}
+```
 
 ## API
 

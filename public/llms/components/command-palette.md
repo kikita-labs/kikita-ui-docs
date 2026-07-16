@@ -51,7 +51,114 @@ readonly groups: readonly KuiCommandGroup[] = [
 
 Rendered at /components/command-palette:
 
-- `basic-command-palette-example`
+### basic-command-palette-example
+
+#### basic-command-palette-example.html
+
+```html
+<div class="basic-command-palette-example">
+  <button kuiButton type="button" (click)="open.set(true)">Open command palette</button>
+
+  @if (selectedCommand(); as command) {
+    <p class="basic-command-palette-example__selection">Selected: {{ command }}</p>
+  }
+
+  <kui-command-palette
+    [(open)]="open"
+    [(query)]="query"
+    [groups]="groups"
+    (selected)="runCommand($event)"
+  />
+</div>
+```
+
+#### basic-command-palette-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  type KuiCommandGroup,
+  type KuiCommandItem,
+  KuiCommandPaletteComponent,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-command-palette-example',
+  imports: [KuiButtonDirective, KuiCommandPaletteComponent],
+  templateUrl: './basic-command-palette-example.html',
+  styleUrl: './basic-command-palette-example.scss',
+})
+export class BasicCommandPaletteExample {
+  protected readonly open = signal(false);
+  protected readonly query = signal('');
+  protected readonly selectedCommand = signal<string | null>(null);
+
+  protected readonly groups: readonly KuiCommandGroup[] = [
+    {
+      heading: 'Navigation',
+      items: [
+        {
+          id: 'projects',
+          label: 'Open projects',
+          description: 'Go to the project overview.',
+          shortcut: ['G', 'P'],
+          keywords: ['workspace'],
+        },
+        {
+          id: 'components',
+          label: 'Browse components',
+          description: 'Open the component index.',
+          shortcut: ['G', 'C'],
+          keywords: ['docs', 'ui'],
+        },
+      ],
+    },
+    {
+      heading: 'Project',
+      items: [
+        {
+          id: 'rename',
+          label: 'Rename project',
+          description: 'Update the display name.',
+          meta: 'Project',
+          badge: 'New',
+          shortcut: ['F2'],
+          icon: 'R',
+          keywords: ['edit', 'title'],
+        },
+        {
+          id: 'delete',
+          label: 'Delete project',
+          danger: true,
+          disabled: true,
+        },
+      ],
+    },
+  ];
+
+  protected runCommand(item: KuiCommandItem): void {
+    this.selectedCommand.set(item.label);
+  }
+}
+```
+
+#### basic-command-palette-example.scss
+
+```scss
+.basic-command-palette-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-command-palette-example__selection {
+  margin: 0;
+  color: var(--kui-color-text-muted);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
 
 ## API
 

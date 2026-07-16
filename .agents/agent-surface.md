@@ -120,6 +120,20 @@ Required MCP prompts:
 Tools must remain read-only at first. Any future write tool must require a
 separate plan, explicit user confirmation, clear input schemas, and tests.
 
+Publish the local MCP package from this docs repo through the root script:
+
+```bash
+npm run publish:mcp
+```
+
+The script regenerates the agent surface, runs the MCP smoke check, and publishes
+`./mcp` to npmjs with an explicit `@kikita-labs` registry override. Use this dry
+run before changing MCP packaging:
+
+```bash
+npm run publish:mcp -- --dry-run
+```
+
 ## SSR Safety
 
 Agent-surface work must not introduce browser globals outside platform adapters.

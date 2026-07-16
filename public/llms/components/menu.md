@@ -38,8 +38,132 @@ ng add @kikita-labs/ui
 
 Rendered at /components/menu:
 
-- `basic-menu-example`
-- `menu-content-example`
+### basic-menu-example
+
+#### basic-menu-example.html
+
+```html
+<div class="basic-menu-example">
+  <button kuiButton type="button" [kuiMenuFor]="actionsMenu">Actions</button>
+
+  <kui-menu #actionsMenu ariaLabel="Project actions">
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__label">Edit</span>
+    </button>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__label">Copy</span>
+    </button>
+    <hr kuiSeparator spacing="xs" />
+    <button type="button" kuiMenuItem appearance="destructive">
+      <span class="kui-menu-item__label">Delete</span>
+    </button>
+  </kui-menu>
+</div>
+```
+
+#### basic-menu-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiMenuComponent,
+  KuiMenuForDirective,
+  KuiMenuItemDirective,
+  KuiSeparatorDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-menu-example',
+  imports: [
+    KuiButtonDirective,
+    KuiMenuComponent,
+    KuiMenuForDirective,
+    KuiMenuItemDirective,
+    KuiSeparatorDirective,
+  ],
+  templateUrl: './basic-menu-example.html',
+  styleUrl: './basic-menu-example.scss',
+})
+export class BasicMenuExample {}
+```
+
+#### basic-menu-example.scss
+
+```scss
+.basic-menu-example {
+  display: flex;
+  justify-content: center;
+}
+```
+
+### menu-content-example
+
+#### menu-content-example.html
+
+```html
+<div class="menu-content-example">
+  <button kuiButton type="button" shape="outline" [kuiMenuFor]="rowMenu">Row actions</button>
+
+  <kui-menu #rowMenu ariaLabel="Row actions" menuAlign="end" minWidth="220px">
+    <div kuiMenuHeader>Project</div>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__icon" aria-hidden="true">E</span>
+      <span class="kui-menu-item__label">Rename</span>
+      <span class="kui-menu-item__shortcut">F2</span>
+    </button>
+    <button type="button" kuiMenuItem>
+      <span class="kui-menu-item__icon" aria-hidden="true">C</span>
+      <span class="kui-menu-item__label">Copy link</span>
+      <span class="kui-menu-item__shortcut">Ctrl C</span>
+    </button>
+    <hr kuiSeparator spacing="xs" />
+    <button type="button" kuiMenuItem disabled>
+      <span class="kui-menu-item__label">Archive</span>
+    </button>
+  </kui-menu>
+</div>
+```
+
+#### menu-content-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiMenuComponent,
+  KuiMenuForDirective,
+  KuiMenuHeaderDirective,
+  KuiMenuItemDirective,
+  KuiSeparatorDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-menu-content-example',
+  imports: [
+    KuiButtonDirective,
+    KuiMenuComponent,
+    KuiMenuForDirective,
+    KuiMenuHeaderDirective,
+    KuiMenuItemDirective,
+    KuiSeparatorDirective,
+  ],
+  templateUrl: './menu-content-example.html',
+  styleUrl: './menu-content-example.scss',
+})
+export class MenuContentExample {}
+```
+
+#### menu-content-example.scss
+
+```scss
+.menu-content-example {
+  display: flex;
+  justify-content: center;
+}
+```
 
 ## API
 

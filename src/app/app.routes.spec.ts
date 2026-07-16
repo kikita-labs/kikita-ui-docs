@@ -82,7 +82,7 @@ describe('app routes', () => {
       DOCS_ROUTE_SEGMENTS.home,
       DOCS_ROUTE_SEGMENTS.foundations,
       DOCS_ROUTE_SEGMENTS.components,
-      DOCS_REGISTRY.resources[0].slug,
+      ...DOCS_REGISTRY.resources.map((resource) => resource.slug),
       DOCS_ROUTE_SEGMENTS.notFound,
     ]);
   });
@@ -122,6 +122,7 @@ describe('app routes', () => {
       ...FOUNDATION_SLUGS.map((slug) => `/foundations/${slug}`),
       '/components',
       ...componentPaths,
+      '/ai-support',
       '/smoke',
       DOCS_ROUTE_SEGMENTS.notFound,
     ].sort();

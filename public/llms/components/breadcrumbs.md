@@ -76,7 +76,49 @@ The library does not enforce a single collapse strategy; pick the one that fits 
 
 Rendered at /components/breadcrumbs:
 
-- `basic-breadcrumbs-example`
+### basic-breadcrumbs-example
+
+#### basic-breadcrumbs-example.html
+
+```html
+<nav class="basic-breadcrumbs-example" aria-label="Breadcrumb">
+  <ol kuiBreadcrumbs>
+    <li><a kuiBreadcrumbItem href="/components">Components</a></li>
+    <li kuiBreadcrumbSeparator></li>
+    <li><span kuiBreadcrumbItem>Surfaces</span></li>
+    <li kuiBreadcrumbSeparator></li>
+    <li><span kuiBreadcrumbItem current>Breadcrumbs</span></li>
+  </ol>
+</nav>
+```
+
+#### basic-breadcrumbs-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiBreadcrumbItemDirective,
+  KuiBreadcrumbsDirective,
+  KuiBreadcrumbSeparatorComponent,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-breadcrumbs-example',
+  imports: [KuiBreadcrumbItemDirective, KuiBreadcrumbSeparatorComponent, KuiBreadcrumbsDirective],
+  templateUrl: './basic-breadcrumbs-example.html',
+  styleUrl: './basic-breadcrumbs-example.scss',
+})
+export class BasicBreadcrumbsExample {}
+```
+
+#### basic-breadcrumbs-example.scss
+
+```scss
+.basic-breadcrumbs-example {
+  min-width: 0;
+}
+```
 
 ## API
 

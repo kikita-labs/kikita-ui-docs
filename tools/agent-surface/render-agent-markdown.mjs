@@ -20,11 +20,11 @@ export function renderAgentMarkdown(entry, context = {}) {
     case 'home':
       return renderHome(entry, context.allEntries ?? []);
     case 'foundation':
-      return renderFoundation(entry);
+      return renderFoundation(entry, context);
     case 'component':
       return renderComponent(entry, context);
     case 'resource':
-      return renderResource(entry);
+      return renderResource(entry, context);
     default:
       throw new Error(`Unknown agent doc kind: ${entry.kind}`);
   }
@@ -84,7 +84,9 @@ function renderHome(entry, allEntries) {
   ].join('\n');
 }
 
-function renderFoundation(entry) {
+function renderFoundation(entry, context) {
+  const sections = context.foundationSections ?? [];
+
   return [
     `# ${entry.label}`,
     '',
@@ -94,12 +96,14 @@ function renderFoundation(entry) {
     '',
     '## Content',
     '',
-    SITE_ROUTE_NOTE,
+    sections.length > 0 ? renderDocSections(sections) : SITE_ROUTE_NOTE,
     '',
   ].join('\n');
 }
 
-function renderResource(entry) {
+function renderResource(entry, context) {
+  const sections = context.resourceSections ?? [];
+
   return [
     `# ${entry.label}`,
     '',
@@ -109,7 +113,7 @@ function renderResource(entry) {
     '',
     '## Content',
     '',
-    SITE_ROUTE_NOTE,
+    sections.length > 0 ? renderDocSections(sections) : SITE_ROUTE_NOTE,
     '',
   ].join('\n');
 }
@@ -117,6 +121,7 @@ function renderResource(entry) {
 function renderComponent(entry, context) {
   const sourceSections = context.sourceDocSections ?? new Map();
   const apiRows = context.apiRows ?? [];
+  const exampleSources = context.exampleSources ?? new Map();
 
   return [
     `# ${entry.label}`,
@@ -138,7 +143,7 @@ function renderComponent(entry, context) {
     '',
     '## Examples',
     '',
-    renderExamplesSection(entry),
+    renderExamplesSection(entry, exampleSources),
     '',
     '## API',
     '',
@@ -157,14 +162,61 @@ function renderComponent(entry, context) {
   ].join('\n');
 }
 
-function renderExamplesSection(entry) {
+function renderDocSections(sections) {
+  return sections
+    .map((section) =>
+      [
+        `### ${section.heading}`,
+        '',
+        section.description,
+        '',
+        renderCodeTabs(section.codeTabs ?? []),
+        '',
+        section.apiRows?.length > 0 ? renderApiTable(section.apiRows) : '',
+      ]
+        .filter((line) => line !== '')
+        .join('\n'),
+    )
+    .join('\n\n');
+}
+
+function renderExamplesSection(entry, exampleSources) {
   if (entry.exampleIds.length === 0) {
     return 'No rendered examples yet.';
   }
 
-  const lines = entry.exampleIds.map((exampleId) => `- \`${exampleId}\``);
+  const lines = [`Rendered at ${entry.route}:`];
 
-  return [`Rendered at ${entry.route}:`, '', ...lines].join('\n');
+  for (const exampleId of entry.exampleIds) {
+    const tabs = exampleSources.get(exampleId) ?? [];
+
+    lines.push('', `### ${exampleId}`, '');
+
+    if (tabs.length === 0) {
+      lines.push(`- Example source is not generated yet.`);
+      continue;
+    }
+
+    lines.push(renderCodeTabs(tabs));
+  }
+
+  return lines.join('\n');
+}
+
+function renderCodeTabs(tabs) {
+  if (tabs.length === 0) return '';
+
+  return tabs
+    .map((tab) =>
+      [
+        `#### ${tab.filename ?? tab.label}`,
+        '',
+        `\`\`\`${tab.language ?? ''}`,
+        escapeCodeFence(tab.code ?? ''),
+        '```',
+      ].join('\n'),
+    )
+    .join('\n\n');
 }
 
 function renderApiTable(apiRows) {
@@ -183,5 +235,9 @@ function renderApiTable(apiRows) {
 }
 
 function escapeCell(value) {
-  return value.replaceAll('|', '\\|').replaceAll('\n', ' ');
+  return (value ?? '-').replaceAll('|', '\\|').replaceAll('\n', ' ');
+}
+
+function escapeCodeFence(value) {
+  return value.replaceAll('```', '``\\`');
 }

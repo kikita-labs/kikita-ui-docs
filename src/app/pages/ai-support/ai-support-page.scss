@@ -1,0 +1,9 @@
+@use '../../shared/styles/mixins/doc-page' as *;
+
+.ai-support-page {
+  @include doc-page-layout;
+}
+
+.ai-support-page__notes {
+  @include doc-page-notes;
+}

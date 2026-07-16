@@ -126,7 +126,51 @@ Or override it for a single instance with the `locale` input, which takes preced
 
 Rendered at /components/calendar:
 
-- `basic-calendar-example`
+### basic-calendar-example
+
+#### basic-calendar-example.html
+
+```html
+<div class="basic-calendar-example">
+  <kui-calendar [(value)]="selectedDate" [minDate]="minDate" showFooter />
+
+  <kui-calendar mode="range" size="sm" [(value)]="sprintRange" locale="en-US" />
+</div>
+```
+
+#### basic-calendar-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiCalendarComponent, type KuiDateRange } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-calendar-example',
+  imports: [KuiCalendarComponent],
+  templateUrl: './basic-calendar-example.html',
+  styleUrl: './basic-calendar-example.scss',
+})
+export class BasicCalendarExample {
+  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));
+  protected readonly sprintRange = signal<KuiDateRange>({
+    start: new Date(2026, 6, 13),
+    end: new Date(2026, 6, 17),
+  });
+  protected readonly minDate = new Date(2026, 6, 1);
+}
+```
+
+#### basic-calendar-example.scss
+
+```scss
+.basic-calendar-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-5, 20px);
+  align-items: flex-start;
+}
+```
 
 ## API
 

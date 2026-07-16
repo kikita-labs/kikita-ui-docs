@@ -41,10 +41,203 @@ for most use cases. Variant A uses stacked arrows on the right and is more compa
 
 Rendered at /components/number-input:
 
-- `basic-number-input-example`
-- `compact-number-input-example`
-- `field-number-input-example`
-- `range-number-input-example`
+### basic-number-input-example
+
+#### basic-number-input-example.html
+
+```html
+<input type="number" kuiNumberInput min="0" max="100" aria-label="Quantity" value="4" />
+<input
+  type="number"
+  kuiNumberInput
+  size="sm"
+  min="0"
+  max="10"
+  aria-label="Small quantity"
+  value="2"
+/>
+<input
+  type="number"
+  kuiNumberInput
+  disabled
+  min="0"
+  max="10"
+  aria-label="Disabled quantity"
+  value="3"
+/>
+```
+
+#### basic-number-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiNumberInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-number-input-example',
+  imports: [KuiNumberInputDirective],
+  templateUrl: './basic-number-input-example.html',
+  styleUrl: './basic-number-input-example.scss',
+})
+export class BasicNumberInputExample {}
+```
+
+#### basic-number-input-example.scss
+
+```scss
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+```
+
+### compact-number-input-example
+
+#### compact-number-input-example.html
+
+```html
+<input
+  type="number"
+  kuiNumberInput
+  variant="a"
+  min="0"
+  max="99"
+  aria-label="Compact quantity"
+  value="12"
+/>
+<input
+  type="number"
+  kuiNumberInput
+  variant="b"
+  min="0"
+  max="99"
+  aria-label="Default quantity"
+  value="12"
+/>
+```
+
+#### compact-number-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiNumberInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-compact-number-input-example',
+  imports: [KuiNumberInputDirective],
+  templateUrl: './compact-number-input-example.html',
+  styleUrl: './compact-number-input-example.scss',
+})
+export class CompactNumberInputExample {}
+```
+
+#### compact-number-input-example.scss
+
+```scss
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+```
+
+### field-number-input-example
+
+#### field-number-input-example.html
+
+```html
+<kui-field label="Seats" hint="Choose between 1 and 10 seats">
+  <input type="number" kuiNumberInput min="1" max="10" value="4" />
+</kui-field>
+
+<kui-field label="Discount" error="Discount must be at least 0%" required>
+  <input type="number" kuiNumberInput invalid min="0" max="100" value="-5" />
+</kui-field>
+```
+
+#### field-number-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiFieldComponent, KuiNumberInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-field-number-input-example',
+  imports: [KuiFieldComponent, KuiNumberInputDirective],
+  templateUrl: './field-number-input-example.html',
+  styleUrl: './field-number-input-example.scss',
+})
+export class FieldNumberInputExample {}
+```
+
+#### field-number-input-example.scss
+
+```scss
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: flex-start;
+}
+```
+
+### range-number-input-example
+
+#### range-number-input-example.html
+
+```html
+<input
+  type="number"
+  kuiNumberInput
+  min="0"
+  max="20"
+  step="5"
+  aria-label="Step of five"
+  value="10"
+/>
+<input
+  type="number"
+  kuiNumberInput
+  invalid
+  min="1"
+  max="10"
+  aria-label="Invalid quantity"
+  value="0"
+/>
+```
+
+#### range-number-input-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiNumberInputDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-range-number-input-example',
+  imports: [KuiNumberInputDirective],
+  templateUrl: './range-number-input-example.html',
+  styleUrl: './range-number-input-example.scss',
+})
+export class RangeNumberInputExample {}
+```
+
+#### range-number-input-example.scss
+
+```scss
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+}
+```
 
 ## API
 

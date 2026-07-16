@@ -29,7 +29,62 @@ Omit `label` for decorative icons. Decorative icons render with `aria-hidden="tr
 
 Rendered at /components/icon:
 
-- `basic-icon-example`
+### basic-icon-example
+
+#### basic-icon-example.html
+
+```html
+<div class="basic-icon-example">
+  <span class="basic-icon-example__status">
+    <kui-icon [source]="checkIcon" label="Success" size="18px" />
+    Package verified
+  </span>
+
+  <button kuiIconButton type="button" shape="soft" aria-label="Run magic action">
+    <kui-icon [source]="sparkIcon" />
+  </button>
+</div>
+```
+
+#### basic-icon-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-icon-example',
+  imports: [KuiIconButtonDirective, KuiIconComponent],
+  templateUrl: './basic-icon-example.html',
+  styleUrl: './basic-icon-example.scss',
+})
+export class BasicIconExample {
+  protected readonly checkIcon =
+    '<svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  protected readonly sparkIcon =
+    '<svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5l1.4 4 4.1 1.5-4.1 1.5-1.4 4-1.4-4L2.5 7l4.1-1.5L8 1.5z" stroke="currentColor" stroke-linejoin="round"/></svg>';
+}
+```
+
+#### basic-icon-example.scss
+
+```scss
+.basic-icon-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--kui-space-3, 12px);
+  flex-wrap: wrap;
+}
+
+.basic-icon-example__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+}
+```
 
 ## API
 

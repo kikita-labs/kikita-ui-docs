@@ -50,7 +50,65 @@ And on `kui-calendar`:
 
 Rendered at /components/date-picker:
 
-- `basic-date-picker-example`
+### basic-date-picker-example
+
+#### basic-date-picker-example.html
+
+```html
+<div class="basic-date-picker-example">
+  <kui-field label="Meeting date" hint="Type dd.mm.yyyy or choose from the calendar.">
+    <input
+      kuiDatePicker
+      [(value)]="meetingDate"
+      [(viewDate)]="viewDate"
+      [minDate]="minDate"
+      placeholder="dd.mm.yyyy"
+    />
+    <kui-dropdown panelRole="dialog" panelWidth="content" maxHeight="420px">
+      <kui-calendar
+        flat
+        showFooter
+        [(value)]="meetingDate"
+        [(viewDate)]="viewDate"
+        [minDate]="minDate"
+      />
+    </kui-dropdown>
+  </kui-field>
+</div>
+```
+
+#### basic-date-picker-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiCalendarComponent,
+  KuiDatePickerDirective,
+  KuiDropdownComponent,
+  KuiFieldComponent,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-date-picker-example',
+  imports: [KuiCalendarComponent, KuiDatePickerDirective, KuiDropdownComponent, KuiFieldComponent],
+  templateUrl: './basic-date-picker-example.html',
+  styleUrl: './basic-date-picker-example.scss',
+})
+export class BasicDatePickerExample {
+  protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));
+  protected readonly viewDate = signal(new Date(2026, 6, 1));
+  protected readonly minDate = new Date(2026, 6, 1);
+}
+```
+
+#### basic-date-picker-example.scss
+
+```scss
+.basic-date-picker-example {
+  max-width: 22rem;
+}
+```
 
 ## API
 

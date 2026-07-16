@@ -63,4 +63,5 @@
 
 ## Resources
 
+- [AI Support](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/ai-support.md): Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.
 - [Package Smoke](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md): External consumer verification for package imports, styles, and providers.

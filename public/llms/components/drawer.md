@@ -70,9 +70,310 @@ function injectEditDrawer() {
 
 Rendered at /components/drawer:
 
-- `basic-drawer-example`
-- `drawer-sides-example`
-- `drawer-sizes-example`
+### basic-drawer-example
+
+#### basic-drawer-example.html
+
+```html
+<div class="basic-drawer-example">
+  <button kuiButton type="button" (click)="edit()">Edit item</button>
+  @if (lastResult()) {
+    <p class="basic-drawer-example__result">Last result: {{ lastResult() }}</p>
+  }
+</div>
+```
+
+#### edit-item-drawer.html
+
+```html
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">Edit item</h2>
+    <div class="kui-drawer-subtitle">{{ drawerContext.data.id }}</div>
+  </div>
+  <button
+    class="kui-drawer-close"
+    type="button"
+    aria-label="Close"
+    (click)="drawerContext.close('cancelled')"
+  >
+    &times;
+  </button>
+</div>
+<div class="kui-drawer-body">
+  <p>Edit fields for item {{ drawerContext.data.id }} here.</p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" shape="outline" (click)="drawerContext.close('cancelled')">
+    Cancel
+  </button>
+  <button kuiButton type="button" (click)="drawerContext.close('saved')">Save</button>
+</div>
+```
+
+#### basic-drawer-example.ts
+
+```ts
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
+import { KuiButtonDirective, kuiDrawer } from '@kikita-labs/ui';
+
+import { EditItemDrawer } from './edit-item-drawer';
+
+@Component({
+  selector: 'app-basic-drawer-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './basic-drawer-example.html',
+  styleUrl: './basic-drawer-example.scss',
+})
+export class BasicDrawerExample {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly openEditItem = kuiDrawer(EditItemDrawer, { side: 'right', size: 'md' });
+
+  protected readonly lastResult = signal<string | null>(null);
+
+  protected edit(): void {
+    this.openEditItem({ id: 'item-42' })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((result) => this.lastResult.set(result ?? 'dismissed'));
+  }
+}
+```
+
+#### edit-item-drawer.ts
+
+```ts
+import { Component, inject } from '@angular/core';
+
+import {
+  KUI_DRAWER_CONTEXT,
+  KuiButtonDirective,
+  type KuiDrawerContext,
+  type KuiDrawerHost,
+} from '@kikita-labs/ui';
+
+export interface EditItemData {
+  readonly id: string;
+}
+
+export type EditItemResult = 'saved' | 'cancelled';
+
+@Component({
+  selector: 'app-edit-item-drawer',
+  imports: [KuiButtonDirective],
+  templateUrl: './edit-item-drawer.html',
+})
+export class EditItemDrawer implements KuiDrawerHost<EditItemResult, EditItemData> {
+  public readonly drawerContext =
+    inject<KuiDrawerContext<EditItemResult, EditItemData>>(KUI_DRAWER_CONTEXT);
+}
+```
+
+#### basic-drawer-example.scss
+
+```scss
+.basic-drawer-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: center;
+}
+
+.basic-drawer-example__result {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### drawer-sides-example
+
+#### drawer-sides-example.html
+
+```html
+<div class="drawer-sides-example">
+  @for (side of sides; track side) {
+    <button kuiButton type="button" shape="outline" (click)="open(side)">{{ side }}</button>
+  }
+</div>
+```
+
+#### side-preview-drawer.html
+
+```html
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">side="{{ drawerContext.side }}"</h2>
+  </div>
+  <button class="kui-drawer-close" type="button" aria-label="Close" (click)="drawerContext.close()">
+    &times;
+  </button>
+</div>
+<div class="kui-drawer-body">
+  <p>
+    This panel was opened with <code>side: '{{ drawerContext.side }}'</code>.
+  </p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" (click)="drawerContext.close()">Close</button>
+</div>
+```
+
+#### drawer-sides-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, kuiDrawer, type KuiDrawerSide } from '@kikita-labs/ui';
+
+import { SidePreviewDrawer } from './side-preview-drawer';
+
+@Component({
+  selector: 'app-drawer-sides-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './drawer-sides-example.html',
+  styleUrl: './drawer-sides-example.scss',
+})
+export class DrawerSidesExample {
+  protected readonly sides: readonly KuiDrawerSide[] = ['top', 'right', 'bottom', 'left'];
+
+  private readonly openers = new Map(
+    this.sides.map((side) => [side, kuiDrawer(SidePreviewDrawer, { side, size: 'sm' })]),
+  );
+
+  protected open(side: KuiDrawerSide): void {
+    this.openers.get(side)?.(undefined);
+  }
+}
+```
+
+#### side-preview-drawer.ts
+
+```ts
+import { Component, inject } from '@angular/core';
+
+import {
+  KUI_DRAWER_CONTEXT,
+  KuiButtonDirective,
+  type KuiDrawerContext,
+  type KuiDrawerHost,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-side-preview-drawer',
+  imports: [KuiButtonDirective],
+  templateUrl: './side-preview-drawer.html',
+})
+export class SidePreviewDrawer implements KuiDrawerHost<void, void> {
+  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);
+}
+```
+
+#### drawer-sides-example.scss
+
+```scss
+.drawer-sides-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+```
+
+### drawer-sizes-example
+
+#### drawer-sizes-example.html
+
+```html
+<div class="drawer-sizes-example">
+  @for (size of sizes; track size) {
+    <button kuiButton type="button" shape="outline" (click)="open(size)">{{ size }}</button>
+  }
+</div>
+```
+
+#### size-preview-drawer.html
+
+```html
+<div class="kui-drawer-header">
+  <div class="kui-drawer-header-text">
+    <h2 class="kui-drawer-title">size="{{ drawerContext.size }}"</h2>
+  </div>
+  <button class="kui-drawer-close" type="button" aria-label="Close" (click)="drawerContext.close()">
+    &times;
+  </button>
+</div>
+<div class="kui-drawer-body">
+  <p>
+    This panel was opened with <code>size: '{{ drawerContext.size }}'</code>.
+  </p>
+</div>
+<div class="kui-drawer-footer">
+  <button kuiButton type="button" (click)="drawerContext.close()">Close</button>
+</div>
+```
+
+#### drawer-sizes-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';
+
+import { SizePreviewDrawer } from './size-preview-drawer';
+
+@Component({
+  selector: 'app-drawer-sizes-example',
+  imports: [KuiButtonDirective],
+  templateUrl: './drawer-sizes-example.html',
+  styleUrl: './drawer-sizes-example.scss',
+})
+export class DrawerSizesExample {
+  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full'];
+
+  private readonly openers = new Map(
+    this.sizes.map((size) => [size, kuiDrawer(SizePreviewDrawer, { side: 'right', size })]),
+  );
+
+  protected open(size: KuiDrawerSize): void {
+    this.openers.get(size)?.(undefined);
+  }
+}
+```
+
+#### size-preview-drawer.ts
+
+```ts
+import { Component, inject } from '@angular/core';
+
+import {
+  KUI_DRAWER_CONTEXT,
+  KuiButtonDirective,
+  type KuiDrawerContext,
+  type KuiDrawerHost,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-size-preview-drawer',
+  imports: [KuiButtonDirective],
+  templateUrl: './size-preview-drawer.html',
+})
+export class SizePreviewDrawer implements KuiDrawerHost<void, void> {
+  public readonly drawerContext = inject<KuiDrawerContext<void, void>>(KUI_DRAWER_CONTEXT);
+}
+```
+
+#### drawer-sizes-example.scss
+
+```scss
+.drawer-sizes-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  justify-content: center;
+}
+```
 
 ## API
 

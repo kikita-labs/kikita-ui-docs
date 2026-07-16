@@ -5,6 +5,7 @@ import type {
   DocsResourceManifest,
 } from '@core/docs-registry';
 import { defineDocsRegistry, docsComponentPath } from '@core/docs-registry';
+import { AI_SUPPORT_DOCS_MANIFEST } from '@pages/ai-support/ai-support.docs-manifest';
 import { ACCORDION_DOCS_MANIFEST } from '@pages/components/accordion/accordion.docs-manifest';
 import { AVATAR_DOCS_MANIFEST } from '@pages/components/avatar/avatar.docs-manifest';
 import { BADGE_DOCS_MANIFEST } from '@pages/components/badge/badge.docs-manifest';
@@ -164,7 +165,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     SCROLLBAR_DOCS_MANIFEST,
     TREE_DOCS_MANIFEST,
   ],
-  resources: [SMOKE_DOCS_MANIFEST],
+  resources: [AI_SUPPORT_DOCS_MANIFEST, SMOKE_DOCS_MANIFEST],
 });
 
 export const DOCS_ROUTE_SEGMENTS = {

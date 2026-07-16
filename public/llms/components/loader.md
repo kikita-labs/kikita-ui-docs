@@ -32,9 +32,125 @@ The directive sets `role="status"` and `aria-live="polite"`.
 
 Rendered at /components/loader:
 
-- `basic-loader-example`
-- `loader-button-example`
-- `loader-size-example`
+### basic-loader-example
+
+#### basic-loader-example.html
+
+```html
+<div class="loader-example">
+  <span kuiLoader label="Loading"></span>
+</div>
+```
+
+#### basic-loader-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiLoaderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-loader-example',
+  imports: [KuiLoaderDirective],
+  templateUrl: './basic-loader-example.html',
+  styleUrl: './basic-loader-example.scss',
+})
+export class BasicLoaderExample {}
+```
+
+#### basic-loader-example.scss
+
+```scss
+.loader-example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### loader-button-example
+
+#### loader-button-example.html
+
+```html
+<div class="loader-button-example">
+  <button kuiButton type="button" disabled>
+    <span kuiLoader size="sm" label="Saving"></span>
+    Saving
+  </button>
+
+  <button kuiButton type="button" loading>Saving</button>
+</div>
+```
+
+#### loader-button-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButtonDirective, KuiLoaderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-loader-button-example',
+  imports: [KuiButtonDirective, KuiLoaderDirective],
+  templateUrl: './loader-button-example.html',
+  styleUrl: './loader-button-example.scss',
+})
+export class LoaderButtonExample {}
+```
+
+#### loader-button-example.scss
+
+```scss
+.loader-button-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### loader-size-example
+
+#### loader-size-example.html
+
+```html
+<div class="loader-size-example">
+  <span kuiLoader size="xs" label="Loading extra small"></span>
+  <span kuiLoader size="sm" label="Loading small"></span>
+  <span kuiLoader size="md" label="Loading medium"></span>
+  <span kuiLoader size="lg" label="Loading large"></span>
+</div>
+```
+
+#### loader-size-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiLoaderDirective } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-loader-size-example',
+  imports: [KuiLoaderDirective],
+  templateUrl: './loader-size-example.html',
+  styleUrl: './loader-size-example.scss',
+})
+export class LoaderSizeExample {}
+```
+
+#### loader-size-example.scss
+
+```scss
+.loader-size-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-4, 16px);
+  align-items: center;
+  justify-content: center;
+}
+```
 
 ## API
 

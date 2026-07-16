@@ -44,10 +44,407 @@ ng add @kikita-labs/ui
 
 Rendered at /components/table:
 
-- `basic-sortable-table-example`
-- `combined-table-example`
-- `row-selection-table-example`
-- `sticky-header-table-example`
+### basic-sortable-table-example
+
+#### basic-sortable-table-example.html
+
+```html
+<table kuiTable [data]="rows" #table="kuiTable">
+  <thead>
+    <tr kuiThGroup>
+      <th kuiTh sortKey="name">Name</th>
+      <th kuiTh sortKey="role">Role</th>
+      <th kuiTh sortKey="status">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of table.sortedData(); track row.id) {
+      <tr kuiRow [value]="row">
+        <td kuiCell>{{ row.name }}</td>
+        <td kuiCell>{{ row.role }}</td>
+        <td kuiCell>{{ row.status }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+```
+
+#### basic-sortable-table-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiCellDirective,
+  KuiRowDirective,
+  KuiTableDirective,
+  KuiThDirective,
+  KuiThGroupDirective,
+} from '@kikita-labs/ui';
+
+interface TeamMember {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly status: 'Active' | 'Invited' | 'Suspended';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  { id: '1', name: 'Ava Chen', role: 'Engineer', status: 'Active' },
+  { id: '2', name: 'Liam Osei', role: 'Designer', status: 'Invited' },
+  { id: '3', name: 'Noor Malik', role: 'Product Manager', status: 'Active' },
+  { id: '4', name: 'Priya Rao', role: 'Support', status: 'Suspended' },
+  { id: '5', name: 'Tomas Silva', role: 'Engineer', status: 'Active' },
+];
+
+@Component({
+  selector: 'app-basic-sortable-table-example',
+  imports: [
+    KuiCellDirective,
+    KuiRowDirective,
+    KuiTableDirective,
+    KuiThDirective,
+    KuiThGroupDirective,
+  ],
+  templateUrl: './basic-sortable-table-example.html',
+  styleUrl: './basic-sortable-table-example.scss',
+})
+export class BasicSortableTableExample {
+  protected readonly rows = TEAM_MEMBERS;
+}
+```
+
+#### basic-sortable-table-example.scss
+
+```scss
+:host {
+  display: block;
+  overflow-x: auto;
+}
+```
+
+### combined-table-example
+
+#### combined-table-example.html
+
+```html
+<div class="combined-table-example__scroll">
+  <table kuiTable [data]="rows" #table="kuiTable" (selectionChange)="onSelectionChange($event)">
+    <thead>
+      <tr kuiThGroup sticky>
+        <th kuiSelectTh ariaLabel="Select all team members"></th>
+        <th kuiTh sortKey="name" sticky>Name</th>
+        <th kuiTh sortKey="role">Role</th>
+        <th kuiTh sortKey="department">Department</th>
+        <th kuiTh sortKey="status">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of table.sortedData(); track row.id) {
+        <tr kuiRow [value]="row">
+          <td kuiSelectCell [ariaLabel]="'Select ' + row.name"></td>
+          <td kuiCell>{{ row.name }}</td>
+          <td kuiCell>{{ row.role }}</td>
+          <td kuiCell>{{ row.department }}</td>
+          <td kuiCell>{{ row.status }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+<p class="combined-table-example__note">{{ selected().length }} of {{ rows.length }} selected</p>
+```
+
+#### combined-table-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiCellDirective,
+  KuiRowDirective,
+  KuiSelectCellComponent,
+  KuiSelectThComponent,
+  KuiTableDirective,
+  KuiThDirective,
+  KuiThGroupDirective,
+} from '@kikita-labs/ui';
+
+interface TeamMember {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly department: string;
+  readonly status: 'Active' | 'Invited' | 'Suspended';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  { id: '1', name: 'Ava Chen', role: 'Engineer', department: 'Platform', status: 'Active' },
+  { id: '2', name: 'Liam Osei', role: 'Designer', department: 'Product', status: 'Invited' },
+  { id: '3', name: 'Noor Malik', role: 'Product Manager', department: 'Product', status: 'Active' },
+  { id: '4', name: 'Priya Rao', role: 'Support', department: 'Operations', status: 'Suspended' },
+  { id: '5', name: 'Tomas Silva', role: 'Engineer', department: 'Platform', status: 'Active' },
+];
+
+@Component({
+  selector: 'app-combined-table-example',
+  imports: [
+    KuiCellDirective,
+    KuiRowDirective,
+    KuiSelectCellComponent,
+    KuiSelectThComponent,
+    KuiTableDirective,
+    KuiThDirective,
+    KuiThGroupDirective,
+  ],
+  templateUrl: './combined-table-example.html',
+  styleUrl: './combined-table-example.scss',
+})
+export class CombinedTableExample {
+  protected readonly rows = TEAM_MEMBERS;
+  protected readonly selected = signal<readonly TeamMember[]>([]);
+
+  protected onSelectionChange(rows: readonly TeamMember[]): void {
+    this.selected.set(rows);
+  }
+}
+```
+
+#### combined-table-example.scss
+
+```scss
+.combined-table-example__scroll {
+  max-block-size: 220px;
+  overflow: auto;
+}
+
+.combined-table-example__note {
+  margin: var(--kui-space-2, 8px) 0 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### row-selection-table-example
+
+#### row-selection-table-example.html
+
+```html
+<table kuiTable [data]="rows" (selectionChange)="onSelectionChange($event)">
+  <thead>
+    <tr kuiThGroup>
+      <th kuiSelectTh ariaLabel="Select all team members"></th>
+      <th kuiTh sortKey="name">Name</th>
+      <th kuiTh sortKey="role">Role</th>
+      <th kuiTh sortKey="status">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of rows; track row.id) {
+      <tr kuiRow [value]="row">
+        <td kuiSelectCell [ariaLabel]="'Select ' + row.name"></td>
+        <td kuiCell>{{ row.name }}</td>
+        <td kuiCell>{{ row.role }}</td>
+        <td kuiCell>{{ row.status }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+<p class="row-selection-table-example__note">
+  {{ selected().length }} of {{ rows.length }} selected
+</p>
+```
+
+#### row-selection-table-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiCellDirective,
+  KuiRowDirective,
+  KuiSelectCellComponent,
+  KuiSelectThComponent,
+  KuiTableDirective,
+  KuiThDirective,
+  KuiThGroupDirective,
+} from '@kikita-labs/ui';
+
+interface TeamMember {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly status: 'Active' | 'Invited' | 'Suspended';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  { id: '1', name: 'Ava Chen', role: 'Engineer', status: 'Active' },
+  { id: '2', name: 'Liam Osei', role: 'Designer', status: 'Invited' },
+  { id: '3', name: 'Noor Malik', role: 'Product Manager', status: 'Active' },
+  { id: '4', name: 'Priya Rao', role: 'Support', status: 'Suspended' },
+  { id: '5', name: 'Tomas Silva', role: 'Engineer', status: 'Active' },
+];
+
+@Component({
+  selector: 'app-row-selection-table-example',
+  imports: [
+    KuiCellDirective,
+    KuiRowDirective,
+    KuiSelectCellComponent,
+    KuiSelectThComponent,
+    KuiTableDirective,
+    KuiThDirective,
+    KuiThGroupDirective,
+  ],
+  templateUrl: './row-selection-table-example.html',
+  styleUrl: './row-selection-table-example.scss',
+})
+export class RowSelectionTableExample {
+  protected readonly rows = TEAM_MEMBERS;
+  protected readonly selected = signal<readonly TeamMember[]>([]);
+
+  protected onSelectionChange(rows: readonly TeamMember[]): void {
+    this.selected.set(rows);
+  }
+}
+```
+
+#### row-selection-table-example.scss
+
+```scss
+:host {
+  display: block;
+  overflow-x: auto;
+}
+
+.row-selection-table-example__note {
+  margin: var(--kui-space-2, 8px) 0 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+```
+
+### sticky-header-table-example
+
+#### sticky-header-table-example.html
+
+```html
+<div class="sticky-header-table-example__scroll">
+  <table kuiTable [data]="rows" #table="kuiTable">
+    <thead>
+      <tr kuiThGroup sticky>
+        <th kuiTh sortKey="name" sticky>Name</th>
+        <th kuiTh sortKey="role">Role</th>
+        <th kuiTh sortKey="department">Department</th>
+        <th kuiTh sortKey="location">Location</th>
+        <th kuiTh sortKey="status">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of table.sortedData(); track row.id) {
+        <tr kuiRow [value]="row">
+          <td kuiCell>{{ row.name }}</td>
+          <td kuiCell>{{ row.role }}</td>
+          <td kuiCell>{{ row.department }}</td>
+          <td kuiCell>{{ row.location }}</td>
+          <td kuiCell>{{ row.status }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+```
+
+#### sticky-header-table-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiCellDirective,
+  KuiRowDirective,
+  KuiTableDirective,
+  KuiThDirective,
+  KuiThGroupDirective,
+} from '@kikita-labs/ui';
+
+interface TeamMember {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly department: string;
+  readonly location: string;
+  readonly status: 'Active' | 'Invited' | 'Suspended';
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  {
+    id: '1',
+    name: 'Ava Chen',
+    role: 'Engineer',
+    department: 'Platform',
+    location: 'Remote',
+    status: 'Active',
+  },
+  {
+    id: '2',
+    name: 'Liam Osei',
+    role: 'Designer',
+    department: 'Product',
+    location: 'Berlin',
+    status: 'Invited',
+  },
+  {
+    id: '3',
+    name: 'Noor Malik',
+    role: 'Product Manager',
+    department: 'Product',
+    location: 'Remote',
+    status: 'Active',
+  },
+  {
+    id: '4',
+    name: 'Priya Rao',
+    role: 'Support',
+    department: 'Operations',
+    location: 'Singapore',
+    status: 'Suspended',
+  },
+  {
+    id: '5',
+    name: 'Tomas Silva',
+    role: 'Engineer',
+    department: 'Platform',
+    location: 'Lisbon',
+    status: 'Active',
+  },
+];
+
+@Component({
+  selector: 'app-sticky-header-table-example',
+  imports: [
+    KuiCellDirective,
+    KuiRowDirective,
+    KuiTableDirective,
+    KuiThDirective,
+    KuiThGroupDirective,
+  ],
+  templateUrl: './sticky-header-table-example.html',
+  styleUrl: './sticky-header-table-example.scss',
+})
+export class StickyHeaderTableExample {
+  protected readonly rows = TEAM_MEMBERS;
+}
+```
+
+#### sticky-header-table-example.scss
+
+```scss
+.sticky-header-table-example__scroll {
+  max-block-size: 220px;
+  overflow: auto;
+}
+```
 
 ## API
 
