@@ -9,7 +9,6 @@
 ## Content
 
 ### Baseline rules
-
 These requirements apply to primitives, docs examples, and consumer verification pages.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -19,7 +18,6 @@ These requirements apply to primitives, docs examples, and consumer verification
 | Contrast | WCAG AA | - | Text, icons, focus, disabled, invalid, selected, and loading states must remain distinguishable. |
 
 ### Review levels
-
 A clean automated scan is only a smoke test. Do not mark a primitive fully audited without keyboard and assistive-technology review.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -29,13 +27,10 @@ A clean automated scan is only a smoke test. Do not mark a primitive fully audit
 | Visual review | Manual | - | Checks responsive layout, 200% zoom, reduced motion, forced colors, and contrast. |
 
 ### Docs examples
-
 Examples should use Kikita field wiring and native state attributes instead of compensating for broken markup with custom ARIA.
-
 #### field-example.html
 
 ```html
-
 <kui-field label="Email" hint="Use your work address.">
   <input kuiInput type="email" autocomplete="email" />
 </kui-field>
@@ -50,9 +45,7 @@ Examples should use Kikita field wiring and native state attributes instead of c
 ```
 
 ### Coverage notes
-
 Record the actual level of review. Be explicit when only DOM smoke has run.
-
 #### state-coverage.md
 
 ```md

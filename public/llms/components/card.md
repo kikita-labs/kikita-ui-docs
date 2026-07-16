@@ -214,11 +214,11 @@ export class CardSizeExample {}
 
 ## API
 
-| Name        | Type                                | Default   | Description                                                                                                                                                            |
-|-------------|-------------------------------------|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| appearance  | 'surface' \| 'elevated' \| 'sunken' | 'surface' | Visual surface treatment: flat surface, elevated shadow, or sunken inset.                                                                                              |
-| size        | 'xs' \| 'sm' \| 'md' \| 'lg'        | 'md'      | Card padding size, mapped to the shared Kikita size scale.                                                                                                             |
-| interactive | boolean                             | false     | Enables hover and focus-visible affordances for clickable cards. Does not add semantics or keyboard behavior; choose an interactive host element (button, a) for that. |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| appearance | 'surface' \| 'elevated' \| 'sunken' | 'surface' | Visual surface treatment: flat surface, elevated shadow, or sunken inset. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Card padding size, mapped to the shared Kikita size scale. |
+| interactive | boolean | false | Enables hover and focus-visible affordances for clickable cards. Does not add semantics or keyboard behavior; choose an interactive host element (button, a) for that. |
 
 ## Accessibility
 

@@ -18,7 +18,6 @@ ng add @kikita-labs/ui
 ## Usage
 
 ```html
-
 <kui-accordion mode="exclusive" appearance="default" size="md">
   <kui-accordion-item id="general" header="General settings">
     Configure display and behavior options.
@@ -39,7 +38,6 @@ Rendered at /components/accordion:
 #### appearance-accordion-example.html
 
 ```html
-
 <div class="appearance-accordion-example">
   <div class="appearance-accordion-example__col">
     <p class="appearance-accordion-example__label">bordered</p>
@@ -80,8 +78,7 @@ import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/u
   templateUrl: './appearance-accordion-example.html',
   styleUrl: './appearance-accordion-example.scss',
 })
-export class AppearanceAccordionExample {
-}
+export class AppearanceAccordionExample {}
 ```
 
 #### appearance-accordion-example.scss
@@ -112,7 +109,6 @@ export class AppearanceAccordionExample {
 #### basic-accordion-example.html
 
 ```html
-
 <kui-accordion mode="exclusive" appearance="default" size="md">
   <kui-accordion-item id="general" header="General settings">
     Configure display and behavior options.
@@ -141,8 +137,7 @@ import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/u
   templateUrl: './basic-accordion-example.html',
   styleUrl: './basic-accordion-example.scss',
 })
-export class BasicAccordionExample {
-}
+export class BasicAccordionExample {}
 ```
 
 #### basic-accordion-example.scss
@@ -158,7 +153,6 @@ export class BasicAccordionExample {
 #### icon-accordion-example.html
 
 ```html
-
 <kui-accordion appearance="bordered">
   <kui-accordion-item id="settings" header="Settings">
     <ng-template kuiAccordionIcon>
@@ -217,7 +211,6 @@ export class IconAccordionExample {
 #### multi-accordion-example.html
 
 ```html
-
 <kui-accordion mode="multi" [(expandedItems)]="expanded">
   <kui-accordion-item id="profile" header="Profile">Profile content.</kui-accordion-item>
   <kui-accordion-item id="billing" header="Billing">Billing content.</kui-accordion-item>
@@ -253,16 +246,16 @@ export class MultiAccordionExample {
 
 ## API
 
-| Name             | Type                               | Default        | Description                                                                                                                                           |
-|------------------|------------------------------------|----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| mode             | 'exclusive' \| 'multi'             | 'exclusive'    | Toggle mode. exclusive keeps a single section open at a time; multi allows any number of sections open simultaneously. Two-way bindable.              |
-| appearance       | 'default' \| 'bordered' \| 'ghost' | 'default'      | Container and divider treatment: default uses bottom borders between items, bordered wraps each item in its own bordered block, ghost has no borders. |
-| size             | 'xs' \| 'sm' \| 'md' \| 'lg'       | 'md'           | Trigger height and text size.                                                                                                                         |
-| expandedItems    | string[]                           | []             | IDs of currently expanded items. Supports two-way binding with [(expandedItems)]; mutations are reflected back through the model.                     |
-| header           | string                             | ''             | kui-accordion-item: trigger label text.                                                                                                               |
-| id               | string                             | auto-generated | kui-accordion-item: stable ID used for state tracking and ARIA wiring.                                                                                |
-| disabled         | boolean                            | false          | kui-accordion-item: removes the trigger from tab order and prevents toggling the section.                                                             |
-| kuiAccordionIcon | -                                  | -              | Marker directive for an ng-template projected into a kui-accordion-item trigger, before the label text.                                               |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| mode | 'exclusive' \| 'multi' | 'exclusive' | Toggle mode. exclusive keeps a single section open at a time; multi allows any number of sections open simultaneously. Two-way bindable. |
+| appearance | 'default' \| 'bordered' \| 'ghost' | 'default' | Container and divider treatment: default uses bottom borders between items, bordered wraps each item in its own bordered block, ghost has no borders. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Trigger height and text size. |
+| expandedItems | string[] | [] | IDs of currently expanded items. Supports two-way binding with [(expandedItems)]; mutations are reflected back through the model. |
+| header | string | '' | kui-accordion-item: trigger label text. |
+| id | string | auto-generated | kui-accordion-item: stable ID used for state tracking and ARIA wiring. |
+| disabled | boolean | false | kui-accordion-item: removes the trigger from tab order and prevents toggling the section. |
+| kuiAccordionIcon | - | - | Marker directive for an ng-template projected into a kui-accordion-item trigger, before the label text. |
 
 ## Accessibility
 

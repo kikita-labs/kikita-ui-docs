@@ -88,13 +88,13 @@ export class BasicColorInputExample {}
 
 ## API
 
-| Name          | Type                         | Default             | Description                                                                  |
-|---------------|------------------------------|---------------------|------------------------------------------------------------------------------|
-| kuiColorInput | directive                    | -                   | Applies Kikita color-input styling and picker affordances to a native input. |
-| size          | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md'                | Control height matched to Kikita UI size tokens.                             |
-| invalid       | boolean                      | false               | Applies an error border and inherits invalid state from parent kui-field.    |
-| id            | string \| undefined          | field id            | Native input id override.                                                    |
-| swatchLabel   | string                       | 'Open color picker' | Accessible label for the swatch button.                                      |
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| kuiColorInput | directive | - | Applies Kikita color-input styling and picker affordances to a native input. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height matched to Kikita UI size tokens. |
+| invalid | boolean | false | Applies an error border and inherits invalid state from parent kui-field. |
+| id | string \| undefined | field id | Native input id override. |
+| swatchLabel | string | 'Open color picker' | Accessible label for the swatch button. |
 
 ## Accessibility
 

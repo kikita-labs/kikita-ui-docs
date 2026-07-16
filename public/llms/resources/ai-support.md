@@ -9,9 +9,7 @@
 ## Content
 
 ### Context files
-
 Use llms.txt for a concise index and llms-full.txt when an agent needs the full public documentation context.
-
 #### agent-context.md
 
 ```md
@@ -23,9 +21,7 @@ https://kikita-labs.github.io/kikita-ui-docs/llms-full.txt
 ```
 
 ### Local MCP
-
 Run the read-only stdio MCP server locally with npx. It exposes package docs, component examples, API sections, search, and prompt templates.
-
 #### mcp.json
 
 ```json
@@ -33,19 +29,14 @@ Run the read-only stdio MCP server locally with npx. It exposes package docs, co
   "mcpServers": {
     "kikita-ui": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@kikita-labs/ui-mcp@latest"
-      ]
+      "args": ["-y", "@kikita-labs/ui-mcp@latest"]
     }
   }
 }
 ```
 
 ### Agent instruction
-
 Give agents a short rule that keeps them on published package APIs and the generated Kikita documentation surface.
-
 #### agent-instructions.md
 
 ```md
@@ -56,5 +47,4 @@ If MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/llms.txt
 ```
 
 ### Version boundary
-
 The MCP package is generated from this docs site's installed @kikita-labs/ui version. If the package dependency changes, regenerate the agent surface before publishing docs or MCP data.
