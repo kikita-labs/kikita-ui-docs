@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/chip
-- Package: @kikita-labs/ui@0.6.2
+- Package: @kikita-labs/ui@0.6.3
 - Import: KuiChipDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/chip.md
 

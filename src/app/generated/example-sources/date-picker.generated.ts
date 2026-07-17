@@ -9,7 +9,7 @@ export const DATE_PICKER_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-date-picker-example.html",
       language: "html",
-      code: "<div class=\"basic-date-picker-example\">\n  <kui-field label=\"Meeting date\" hint=\"Type dd.mm.yyyy or choose from the calendar.\">\n    <input\n      kuiDatePicker\n      [(value)]=\"meetingDate\"\n      [(viewDate)]=\"viewDate\"\n      [minDate]=\"minDate\"\n      placeholder=\"dd.mm.yyyy\"\n    />\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"content\" maxHeight=\"420px\">\n      <kui-calendar\n        flat\n        showFooter\n        [(value)]=\"meetingDate\"\n        [(viewDate)]=\"viewDate\"\n        [minDate]=\"minDate\"\n      />\n    </kui-dropdown>\n  </kui-field>\n</div>",
+      code: "<div class=\"basic-date-picker-example\">\n  <kui-field label=\"Meeting date\" hint=\"Type dd.mm.yyyy or choose from the calendar.\">\n    <input\n      kuiDatePicker\n      [(value)]=\"meetingDate\"\n      [(viewDate)]=\"viewDate\"\n      [minDate]=\"minDate\"\n      placeholder=\"dd.mm.yyyy\"\n    />\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"auto\" maxHeight=\"420px\">\n      <kui-calendar\n        flat\n        showFooter\n        [(value)]=\"meetingDate\"\n        [(viewDate)]=\"viewDate\"\n        [minDate]=\"minDate\"\n      />\n    </kui-dropdown>\n  </kui-field>\n</div>",
     },
     {
       label: "TS",

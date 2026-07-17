@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/date-picker
-- Package: @kikita-labs/ui@0.6.2
+- Package: @kikita-labs/ui@0.6.3
 - Import: KuiDatePickerDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/date-picker.md
 
@@ -20,7 +20,7 @@ ng add @kikita-labs/ui
 ```html
 <kui-field label="Meeting date">
   <input kuiDatePicker [(value)]="date" />
-  <kui-dropdown panelRole="dialog" panelWidth="content" maxHeight="420px">
+  <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
     <kui-calendar flat [(value)]="date" [showFooter]="true" />
   </kui-dropdown>
 </kui-field>
@@ -29,7 +29,7 @@ ng add @kikita-labs/ui
 Three things on `kui-dropdown` matter here, all different from its default (listbox) usage:
 
 - `panelRole="dialog"` — the panel holds a calendar grid, not a list of options.
-- `panelWidth="content"` — sizes the panel to the calendar's own width (296px by default)
+- `panelWidth="auto"` — sizes the panel to the calendar's own width (296px by default)
   instead of clipping it to the (usually narrower) field. This is why the popover is often
   wider than the input — that's intentional, not a bug: `kui-calendar` has a fixed width
   (`--kui-calendar-width`, 296px by default) because its day grid needs a minimum amount of
@@ -64,7 +64,7 @@ Rendered at /components/date-picker:
       [minDate]="minDate"
       placeholder="dd.mm.yyyy"
     />
-    <kui-dropdown panelRole="dialog" panelWidth="content" maxHeight="420px">
+    <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
       <kui-calendar
         flat
         showFooter

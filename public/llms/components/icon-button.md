@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/icon-button
-- Package: @kikita-labs/ui@0.6.2
+- Package: @kikita-labs/ui@0.6.3
 - Import: KuiIconButtonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon-button.md
 

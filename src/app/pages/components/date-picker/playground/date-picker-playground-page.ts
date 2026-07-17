@@ -75,7 +75,7 @@ export class DatePickerPlaygroundPage {
         language: 'html',
         code: `<kui-field label="${values.label}">
   <input kuiDatePicker [(value)]="date" [(viewDate)]="viewDate"${inputAttrs} />
-  <kui-dropdown panelRole="dialog" panelWidth="content" maxHeight="420px">
+  <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
     <kui-calendar flat [(value)]="date" [(viewDate)]="viewDate"${calendarAttrs} />
   </kui-dropdown>
 </kui-field>`,
