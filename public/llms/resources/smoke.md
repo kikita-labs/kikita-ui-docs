@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /smoke
-- Package: @kikita-labs/ui@0.6.1
+- Package: @kikita-labs/ui@0.6.2
 
 ## Content
 

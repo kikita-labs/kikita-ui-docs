@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/tree
-- Package: @kikita-labs/ui@0.6.1
+- Package: @kikita-labs/ui@0.6.2
 - Import: KuiTreeComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/tree.md
 

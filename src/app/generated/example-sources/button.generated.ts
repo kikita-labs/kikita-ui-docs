@@ -69,7 +69,7 @@ export const BUTTON_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "button-icon-example.html",
       language: "html",
-      code: "<div class=\"button-icon-example\">\n  <button kuiButton appearance=\"success\" iconStart=\"check\" type=\"button\">Save</button>\n  <button kuiButton shape=\"outline\" iconEnd=\"arrow-right\" type=\"button\">Continue</button>\n  <button\n    kuiIconButton\n    shape=\"soft\"\n    appearance=\"danger\"\n    icon=\"trash-2\"\n    aria-label=\"Delete\"\n    type=\"button\"\n  ></button>\n</div>",
+      code: "<div class=\"button-icon-example\">\n  <button kuiButton shape=\"soft\" appearance=\"success\" iconStart=\"check\" type=\"button\">Save</button>\n  <button kuiButton shape=\"outline\" iconEnd=\"arrow-right\" type=\"button\">Continue</button>\n  <button\n    kuiIconButton\n    shape=\"soft\"\n    appearance=\"danger\"\n    icon=\"trash-2\"\n    aria-label=\"Delete\"\n    type=\"button\"\n  ></button>\n</div>",
     },
     {
       label: "TS",

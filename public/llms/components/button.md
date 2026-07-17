@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/button
-- Package: @kikita-labs/ui@0.6.1
+- Package: @kikita-labs/ui@0.6.2
 - Import: KuiButtonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/button.md
 
@@ -188,7 +188,7 @@ export class ButtonSizeExample {}
 
 ```html
 <div class="button-icon-example">
-  <button kuiButton appearance="success" iconStart="check" type="button">Save</button>
+  <button kuiButton shape="soft" appearance="success" iconStart="check" type="button">Save</button>
   <button kuiButton shape="outline" iconEnd="arrow-right" type="button">Continue</button>
   <button
     kuiIconButton

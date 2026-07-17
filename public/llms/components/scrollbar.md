@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/scrollbar
-- Package: @kikita-labs/ui@0.6.1
+- Package: @kikita-labs/ui@0.6.2
 - Import: .kui-scroll from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/scrollbar.md
 

@@ -27,7 +27,7 @@ test('search opens from the keyboard, selects a registry result, and restores fo
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/components\/table$/);
 
-  const trigger = page.locator('.docs-header__search');
+  const trigger = page.getByRole('banner').getByRole('button', { name: 'Search' });
   await trigger.click();
   await page.keyboard.press('Escape');
   await expect(trigger).toBeFocused();
