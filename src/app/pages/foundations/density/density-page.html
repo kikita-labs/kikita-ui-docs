@@ -14,14 +14,14 @@
 
   <app-doc-section
     heading="Global defaults"
-    description="Set app-wide density through the Kikita provider. Keep docs examples on regular density unless the example is explicitly about density."
+    description="Set density through theme seeds. Use provideKikitaUi defaults.size for app-wide control size, not for density."
   >
     <app-code-tabs [tabs]="providerTabs" />
   </app-doc-section>
 
   <app-doc-section
     heading="Control recommendations"
-    description="Height is controlled only by data-kui-size. data-kui-density rebinds horizontal padding only."
+    description="Height follows the size cascade. Density rebinds horizontal padding and spacing rhythm only."
   >
     <app-api-table label="Recommended control dimensions" [rows]="controlRows" />
   </app-doc-section>

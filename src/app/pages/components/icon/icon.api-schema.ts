@@ -34,9 +34,10 @@ export const ICON_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'size',
-    type: 'string',
+    type: `'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | string | number`,
     defaultValue: `'1em'`,
-    description: 'CSS size applied to the square icon box, for example 16px, 1.25rem, or 2em.',
+    description:
+      'Named presets map to Kikita icon-size tokens. Numeric values become pixels, and arbitrary CSS size strings pass through.',
   },
   {
     name: 'provideKuiIcons(icons)',

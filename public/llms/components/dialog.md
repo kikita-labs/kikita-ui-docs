@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/dialog
-- Package: @kikita-labs/ui@0.7.0
+- Package: @kikita-labs/ui@1.0.0
 - Import: kuiDialog from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/dialog.md
 

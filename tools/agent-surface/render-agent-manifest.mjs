@@ -1,7 +1,6 @@
 /**
  * Renders `public/llms/agent-manifest.json`: a generated index of every `AgentDocEntry` for the MCP
- * data bundle, drift tests, and future search/indexing, per
- * `.local-notes/AGENT-SURFACE-SSR-MCP-PLAN.md` Phase 6.
+ * data bundle, drift tests, and future search/indexing.
  */
 export function renderAgentManifest(entries) {
   const packageVersion = entries[0]?.packageVersion ?? null;

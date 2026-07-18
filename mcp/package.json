@@ -1,6 +1,6 @@
 {
   "name": "@kikita-labs/ui-mcp",
-  "version": "0.1.9",
+  "version": "1.0.0",
   "description": "Local read-only MCP server for Kikita UI documentation.",
   "type": "module",
   "homepage": "https://kikita-labs.github.io/kikita-ui-docs/ai-support",

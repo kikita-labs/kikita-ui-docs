@@ -5,8 +5,7 @@
  * It is not imported at runtime by that generator (tools scripts stay plain Node/ESM and parse
  * `.docs-manifest.ts` / `.api-schema.ts` source text directly, matching
  * `tools/generate-example-sources.mjs`), but it is the reviewable, checked definition of the
- * output shape referenced from `.agents/agent-surface.md` and Phase 3 of
- * `.local-notes/AGENT-SURFACE-SSR-MCP-PLAN.md`.
+ * output shape referenced from `.agents/agent-surface.md`.
  *
  * Boundary choice: this model lives under `tools/agent-surface/`, not `src/app/core/agent-content/`,
  * because it is build-time only data derived by a Node script, not an Angular runtime concern.

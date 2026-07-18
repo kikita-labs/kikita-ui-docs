@@ -54,4 +54,18 @@ export const BUTTON_API_ROWS: readonly ApiTableRow[] = [
     description:
       'Renders a kui-icon resolved by name after the projected content, without hand-projecting kui-icon.',
   },
+  {
+    name: 'kuiProvideButtonOptions(options)',
+    type: 'Provider',
+    defaultValue: '-',
+    description:
+      'Scopes repeated defaults for kuiButton and kuiIconButton. Local inputs win over button options, and button options win over root defaults.size.',
+  },
+  {
+    name: 'KUI_BUTTON_OPTIONS',
+    type: 'InjectionToken<KuiButtonOptions>',
+    defaultValue: '-',
+    description:
+      'Provider token behind button-family defaults, with separate button and iconButton branches.',
+  },
 ];

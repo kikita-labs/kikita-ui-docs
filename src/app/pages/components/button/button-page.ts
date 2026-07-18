@@ -9,7 +9,12 @@ import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
 import { BUTTON_API_ROWS } from './button.api-schema';
-import { BUTTON_API_DESCRIPTION, BUTTON_IMPORT_TABS, BUTTON_STATUS } from './button.docs-content';
+import {
+  BUTTON_API_DESCRIPTION,
+  BUTTON_IMPORT_TABS,
+  BUTTON_PROVIDER_TABS,
+  BUTTON_STATUS,
+} from './button.docs-content';
 import {
   BasicButtonExample,
   ButtonAppearanceExample,
@@ -43,6 +48,7 @@ export class ButtonPage {
   protected readonly appearanceTabs = BUTTON_EXAMPLE_SOURCES['button-appearance-example'];
   protected readonly sizeTabs = BUTTON_EXAMPLE_SOURCES['button-size-example'];
   protected readonly iconTabs = BUTTON_EXAMPLE_SOURCES['button-icon-example'];
+  protected readonly providerTabs = BUTTON_PROVIDER_TABS;
 
   protected readonly apiRows = BUTTON_API_ROWS;
 }

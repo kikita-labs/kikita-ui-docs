@@ -3,23 +3,7 @@ import type { CodeTab } from '@shared/docs-ui/code-tabs';
 
 export const DENSITY_PROVIDER_TABS = [
   {
-    label: 'Global density',
-    filename: 'app.config.ts',
-    language: 'ts',
-    code: `import { provideKikitaUi } from '@kikita-labs/ui';
-
-export const appConfig = {
-  providers: [
-    provideKikitaUi({
-      defaults: {
-        density: 'regular',
-      },
-    }),
-  ],
-};`,
-  },
-  {
-    label: 'Theme seed',
+    label: 'Theme density',
     filename: 'app.config.ts',
     language: 'ts',
     code: `import { DEFAULT_KUI_THEME, provideKikitaUi } from '@kikita-labs/ui';
@@ -30,6 +14,18 @@ provideKikitaUi({
       ...DEFAULT_KUI_THEME.seeds,
       density: 'regular',
     },
+  },
+});`,
+  },
+  {
+    label: 'Root size default',
+    filename: 'app.config.ts',
+    language: 'ts',
+    code: `import { provideKikitaUi } from '@kikita-labs/ui';
+
+provideKikitaUi({
+  defaults: {
+    size: 'sm',
   },
 });`,
   },
@@ -60,7 +56,7 @@ export const DENSITY_CONTROL_ROWS = [
     name: 'Control height (xs / sm / md / lg)',
     type: '28px / 32px / 40px / 44px',
     description:
-      'Set only by data-kui-size on Input, Button, Icon-Button, Segmented, Tabs, and Group. Density does not affect height.',
+      'Set by local size inputs, component providers, or provideKikitaUi defaults.size. Density does not affect height.',
   },
   {
     name: 'Button x padding',
@@ -88,6 +84,7 @@ export const DENSITY_TOKEN_TABS = [
 --kui-control-height-lg
 --kui-btn-height
 --kui-btn-px
---kui-input-px`,
+--kui-input-px
+--kui-default-size`,
   },
 ] as const satisfies readonly CodeTab[];

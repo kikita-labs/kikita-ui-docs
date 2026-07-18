@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/loader
-- Package: @kikita-labs/ui@0.7.0
+- Package: @kikita-labs/ui@1.0.0
 - Import: KuiLoaderDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/loader.md
 

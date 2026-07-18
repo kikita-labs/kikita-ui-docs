@@ -52,9 +52,11 @@ describe('ButtonPage', () => {
       'appearances',
       'sizes-and-states',
       'icon-composition',
+      'provider-defaults',
       'api',
       'accessibility',
     ]);
+    expect(root.textContent).toContain('kuiProvideButtonOptions');
     expect(buttons.map((button) => button.textContent?.trim())).toEqual([
       'Save changes',
       'Cancel',

@@ -3,8 +3,7 @@
  * `.github/workflows/deploy.yml` publishes to GitHub Pages with
  * `--base-href "/${{ github.event.repository.name }}/"`, and this origin is live (verified via
  * `curl https://kikita-labs.github.io/kikita-ui-docs/` returning 200), so absolute canonical URLs
- * are used per `.local-notes/AGENT-SURFACE-SSR-MCP-PLAN.md` Phase 5 ("switch to absolute canonical
- * URLs only when production origin is known").
+ * are used only because the production origin is known.
  */
 export const SITE_BASE_URL = 'https://kikita-labs.github.io/kikita-ui-docs';
 

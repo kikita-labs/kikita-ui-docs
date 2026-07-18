@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/button
-- Package: @kikita-labs/ui@0.7.0
+- Package: @kikita-labs/ui@1.0.0
 - Import: KuiButtonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/button.md
 
@@ -241,6 +241,8 @@ export class ButtonIconExample {}
 | loading | boolean | false | Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled. |
 | iconStart | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name before the projected content, without hand-projecting kui-icon. |
 | iconEnd | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name after the projected content, without hand-projecting kui-icon. |
+| kuiProvideButtonOptions(options) | Provider | - | Scopes repeated defaults for kuiButton and kuiIconButton. Local inputs win over button options, and button options win over root defaults.size. |
+| KUI_BUTTON_OPTIONS | InjectionToken<KuiButtonOptions> | - | Provider token behind button-family defaults, with separate button and iconButton branches. |
 
 ## Accessibility
 

@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/file-upload
-- Package: @kikita-labs/ui@0.7.0
+- Package: @kikita-labs/ui@1.0.0
 - Import: KuiFileUploadComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/file-upload.md
 

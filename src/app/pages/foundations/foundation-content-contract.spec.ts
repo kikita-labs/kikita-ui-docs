@@ -55,6 +55,12 @@ const DENSITY_THEME_CONTRACT = {
   },
 } as const satisfies KikitaUiOptions;
 
+const ROOT_SIZE_DEFAULT_CONTRACT = {
+  defaults: {
+    size: 'sm',
+  },
+} as const satisfies KikitaUiOptions;
+
 describe('foundation content contracts', () => {
   it('stores authored snippets as named canonical source records', () => {
     for (const tab of ALL_FOUNDATION_CODE_TABS) {
@@ -92,7 +98,10 @@ describe('foundation content contracts', () => {
 
     expect(densityValues).toEqual(['compact', 'regular', 'comfortable']);
     expect(DENSITY_THEME_CONTRACT.theme.seeds.density).toBe('regular');
-    expect(DENSITY_PROVIDER_TABS[1].code).toContain('...DEFAULT_KUI_THEME.seeds');
+    expect(ROOT_SIZE_DEFAULT_CONTRACT.defaults.size).toBe('sm');
+    expect(DENSITY_PROVIDER_TABS[0].code).toContain('...DEFAULT_KUI_THEME.seeds');
+    expect(DENSITY_PROVIDER_TABS[1].code).toContain("size: 'sm'");
+    expect(DENSITY_PROVIDER_TABS[1].code).not.toContain('density');
     expect(THEMING_UTILITY_ROWS.map((row) => row.name)).toEqual([
       'createKuiTheme',
       'createKuiThemeVariableMap',
