@@ -32,6 +32,7 @@ describe('DocsRouteStateService', () => {
 
     expect(routeState.path()).toBe('/components/button/playground');
     expect(routeState.breadcrumbs()).toEqual([
+      { label: 'Kikita UI', path: '/' },
       { label: 'Components', path: '/components' },
       { label: 'Actions' },
       { label: 'Button', path: '/components/button' },

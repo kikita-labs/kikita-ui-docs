@@ -29,16 +29,6 @@
   text-decoration: none;
 }
 
-.sidebar-nav__brand-mark {
-  display: grid;
-  inline-size: 22px;
-  block-size: 22px;
-  place-items: center;
-  border-radius: 7px;
-  background: var(--kui-color-primary-soft-bg);
-  color: var(--kui-color-primary-fill);
-}
-
 .sidebar-nav__sublist {
   display: grid;
   margin: 0;

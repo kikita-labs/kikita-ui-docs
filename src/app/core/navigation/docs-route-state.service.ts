@@ -6,7 +6,7 @@ import { filter } from 'rxjs';
 
 import { DOCS_REGISTRY, findDocsComponentByPath } from '@generated/index';
 
-import { DOCS_NAVIGATION_ITEMS, DOCS_PATHS } from './docs-navigation-items';
+import { DOCS_HOME_PATH, DOCS_NAVIGATION_ITEMS, DOCS_PATHS } from './docs-navigation-items';
 
 export interface DocsBreadcrumb {
   readonly label: string;
@@ -67,6 +67,8 @@ export class DocsRouteStateService {
   });
 
   private createBreadcrumbs(path: string): readonly DocsBreadcrumb[] {
+    const home: DocsBreadcrumb = { label: 'Kikita UI', path: DOCS_HOME_PATH };
+
     if (path.startsWith('/components/')) {
       const isPlayground = path.endsWith('/playground');
       const componentPath = isPlayground ? path.slice(0, -'/playground'.length) : path;
@@ -78,6 +80,7 @@ export class DocsRouteStateService {
         );
 
         return [
+          home,
           { label: 'Components', path: DOCS_PATHS.components },
           { label: category?.label ?? 'Components' },
           isPlayground
@@ -90,16 +93,16 @@ export class DocsRouteStateService {
 
     for (const item of DOCS_NAVIGATION_ITEMS) {
       if (item.path === path) {
-        return [{ label: item.label }];
+        return [home, { label: item.label }];
       }
 
       const child = item.children?.find((navigationChild) => navigationChild.path === path);
 
       if (child) {
-        return [{ label: item.label, path: item.path }, { label: child.label }];
+        return [home, { label: item.label, path: item.path }, { label: child.label }];
       }
     }
 
-    return [{ label: 'Kikita UI' }];
+    return [home];
   }
 }
