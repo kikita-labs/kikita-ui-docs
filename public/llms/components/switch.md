@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/switch
-- Package: @kikita-labs/ui@0.6.3
+- Package: @kikita-labs/ui@0.7.0
 - Import: KuiSwitchDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/switch.md
 

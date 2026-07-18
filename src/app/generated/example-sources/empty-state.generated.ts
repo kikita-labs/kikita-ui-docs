@@ -9,7 +9,7 @@ export const EMPTY_STATE_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-empty-state-example.html",
       language: "html",
-      code: "<div class=\"basic-empty-state-example\">\n  <kui-empty-state\n    title=\"No projects yet\"\n    description=\"Create the first project to start working with your team.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"package\" />\n\n    <div kuiEmptyStateActions>\n      <button kuiButton type=\"button\">Create project</button>\n      <button kuiButton shape=\"ghost\" type=\"button\">Import</button>\n    </div>\n  </kui-empty-state>\n</div>",
+      code: "<div class=\"basic-empty-state-example\">\n  <kui-empty-state\n    heading=\"No projects yet\"\n    description=\"Create the first project to start working with your team.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"package\" />\n\n    <div kuiEmptyStateActions>\n      <button kuiButton type=\"button\">Create project</button>\n      <button kuiButton shape=\"ghost\" type=\"button\">Import</button>\n    </div>\n  </kui-empty-state>\n</div>",
     },
     {
       label: "TS",
@@ -29,7 +29,7 @@ export const EMPTY_STATE_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "empty-state-context-example.html",
       language: "html",
-      code: "<div class=\"empty-state-context-example\">\n  <kui-empty-state\n    size=\"sm\"\n    context=\"no-results\"\n    title=\"No results\"\n    description=\"Try a different search term or clear your filters.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"search\" />\n  </kui-empty-state>\n\n  <kui-empty-state\n    size=\"sm\"\n    context=\"error\"\n    title=\"Couldn't load projects\"\n    description=\"Something went wrong while loading this list.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"circle-alert\" />\n\n    <div kuiEmptyStateActions>\n      <button kuiButton shape=\"soft\" type=\"button\">Retry</button>\n    </div>\n  </kui-empty-state>\n\n  <kui-empty-state\n    size=\"sm\"\n    context=\"no-access\"\n    title=\"No access\"\n    description=\"Ask a workspace admin for access to this project.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"lock\" />\n  </kui-empty-state>\n\n  <kui-empty-state\n    size=\"sm\"\n    context=\"success\"\n    title=\"All caught up\"\n    description=\"No pending reviews are waiting on you right now.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"circle-check\" />\n  </kui-empty-state>\n</div>",
+      code: "<div class=\"empty-state-context-example\">\n  <kui-empty-state\n    size=\"sm\"\n    context=\"no-results\"\n    heading=\"No results\"\n    description=\"Try a different search term or clear your filters.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"search\" />\n  </kui-empty-state>\n\n  <kui-empty-state\n    size=\"sm\"\n    context=\"error\"\n    heading=\"Couldn't load projects\"\n    description=\"Something went wrong while loading this list.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"circle-alert\" />\n\n    <div kuiEmptyStateActions>\n      <button kuiButton shape=\"soft\" type=\"button\">Retry</button>\n    </div>\n  </kui-empty-state>\n\n  <kui-empty-state\n    size=\"sm\"\n    context=\"no-access\"\n    heading=\"No access\"\n    description=\"Ask a workspace admin for access to this project.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"lock\" />\n  </kui-empty-state>\n\n  <kui-empty-state\n    size=\"sm\"\n    context=\"success\"\n    heading=\"All caught up\"\n    description=\"No pending reviews are waiting on you right now.\"\n  >\n    <kui-icon kuiEmptyStateIcon name=\"circle-check\" />\n  </kui-empty-state>\n</div>",
     },
     {
       label: "TS",
@@ -49,7 +49,7 @@ export const EMPTY_STATE_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "empty-state-size-example.html",
       language: "html",
-      code: "<div class=\"empty-state-size-example\">\n  <kui-empty-state size=\"sm\" title=\"No comments\" description=\"Be the first to leave a comment.\">\n    <kui-icon kuiEmptyStateIcon name=\"message-circle\" />\n  </kui-empty-state>\n\n  <kui-empty-state size=\"md\" title=\"No comments\" description=\"Be the first to leave a comment.\">\n    <kui-icon kuiEmptyStateIcon name=\"message-circle\" />\n  </kui-empty-state>\n\n  <kui-empty-state size=\"lg\" title=\"No comments\" description=\"Be the first to leave a comment.\">\n    <kui-icon kuiEmptyStateIcon name=\"message-circle\" />\n  </kui-empty-state>\n</div>",
+      code: "<div class=\"empty-state-size-example\">\n  <kui-empty-state size=\"sm\" heading=\"No comments\" description=\"Be the first to leave a comment.\">\n    <kui-icon kuiEmptyStateIcon name=\"message-circle\" />\n  </kui-empty-state>\n\n  <kui-empty-state size=\"md\" heading=\"No comments\" description=\"Be the first to leave a comment.\">\n    <kui-icon kuiEmptyStateIcon name=\"message-circle\" />\n  </kui-empty-state>\n\n  <kui-empty-state size=\"lg\" heading=\"No comments\" description=\"Be the first to leave a comment.\">\n    <kui-icon kuiEmptyStateIcon name=\"message-circle\" />\n  </kui-empty-state>\n</div>",
     },
     {
       label: "TS",

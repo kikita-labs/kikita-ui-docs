@@ -50,7 +50,7 @@ describe('EmptyStatePlaygroundPage', () => {
     expect(preview?.getAttribute('data-kui-context')).toBe('no-results');
     expect(preview?.getAttribute('data-kui-size')).toBe('lg');
     expect(preview?.textContent).toContain('No invoices');
-    expect(snippet?.textContent).toContain('title="No invoices"');
+    expect(snippet?.textContent).toContain('heading="No invoices"');
     expect(snippet?.textContent).toContain('context="no-results"');
     expect(snippet?.textContent).toContain('size="lg"');
   });

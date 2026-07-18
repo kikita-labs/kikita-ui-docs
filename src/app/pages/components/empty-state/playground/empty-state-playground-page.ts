@@ -23,7 +23,7 @@ import { EMPTY_STATE_API_ROWS } from '../empty-state.api-schema';
 import { EMPTY_STATE_API_DESCRIPTION } from '../empty-state.docs-content';
 
 const EMPTY_STATE_PLAYGROUND_CONTROLS = definePlaygroundControls([
-  { key: 'title', label: 'title', kind: 'string', defaultValue: 'No projects yet' },
+  { key: 'heading', label: 'heading', kind: 'string', defaultValue: 'No projects yet' },
   {
     key: 'description',
     label: 'description',
@@ -72,14 +72,14 @@ export class EmptyStatePlaygroundPage {
   protected readonly buildPlaygroundSnippet = (
     values: EmptyStatePlaygroundValues,
   ): readonly CodeTab[] => {
-    const title = values.title;
+    const title = values.heading;
     const description = values.description;
     const context = values.context;
     const size = values.size;
     const showActions = values.showActions;
 
     const attrs = [
-      `title="${escapePlaygroundHtml(title || 'No projects yet')}"`,
+      `heading="${escapePlaygroundHtml(title || 'No projects yet')}"`,
       description ? `description="${escapePlaygroundHtml(description)}"` : null,
       context !== 'no-data' ? `context="${context}"` : null,
       size !== 'md' ? `size="${size}"` : null,
@@ -106,9 +106,9 @@ export class EmptyStatePlaygroundPage {
   };
 
   protected titleOf(values: EmptyStatePlaygroundValues): string {
-    const title = values.title;
+    const heading = values.heading;
 
-    return title || 'No projects yet';
+    return heading || 'No projects yet';
   }
 
   protected descriptionOf(values: EmptyStatePlaygroundValues): string | null {

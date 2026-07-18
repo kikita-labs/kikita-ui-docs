@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/input
-- Package: @kikita-labs/ui@0.6.3
+- Package: @kikita-labs/ui@0.7.0
 - Import: KuiInputDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/input.md
 

@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/dropdown
-- Package: @kikita-labs/ui@0.6.3
+- Package: @kikita-labs/ui@0.7.0
 - Import: KuiDropdownComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/dropdown.md
 

@@ -2,10 +2,10 @@ import { type ApiTableRow } from '@shared/docs-ui/api-table';
 
 export const EMPTY_STATE_API_ROWS: readonly ApiTableRow[] = [
   {
-    name: 'title',
+    name: 'heading',
     type: 'string',
     defaultValue: '-',
-    description: 'Required empty-state title text. Visual text only, not a forced heading level.',
+    description: 'Required empty-state heading text. Visual text only, not a forced heading level.',
   },
   {
     name: 'description',

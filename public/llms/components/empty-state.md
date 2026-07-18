@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/empty-state
-- Package: @kikita-labs/ui@0.6.3
+- Package: @kikita-labs/ui@0.7.0
 - Import: KuiEmptyStateComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/empty-state.md
 
@@ -19,7 +19,7 @@ ng add @kikita-labs/ui
 
 ```html
 <kui-empty-state
-  title="No projects yet"
+  heading="No projects yet"
   description="Create the first project to start working with your team."
 >
   <svg kuiEmptyStateIcon viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -46,7 +46,7 @@ Rendered at /components/empty-state:
 ```html
 <div class="basic-empty-state-example">
   <kui-empty-state
-    title="No projects yet"
+    heading="No projects yet"
     description="Create the first project to start working with your team."
   >
     <kui-icon kuiEmptyStateIcon name="package" />
@@ -106,7 +106,7 @@ export class BasicEmptyStateExample {}
   <kui-empty-state
     size="sm"
     context="no-results"
-    title="No results"
+    heading="No results"
     description="Try a different search term or clear your filters."
   >
     <kui-icon kuiEmptyStateIcon name="search" />
@@ -115,7 +115,7 @@ export class BasicEmptyStateExample {}
   <kui-empty-state
     size="sm"
     context="error"
-    title="Couldn't load projects"
+    heading="Couldn't load projects"
     description="Something went wrong while loading this list."
   >
     <kui-icon kuiEmptyStateIcon name="circle-alert" />
@@ -128,7 +128,7 @@ export class BasicEmptyStateExample {}
   <kui-empty-state
     size="sm"
     context="no-access"
-    title="No access"
+    heading="No access"
     description="Ask a workspace admin for access to this project."
   >
     <kui-icon kuiEmptyStateIcon name="lock" />
@@ -137,7 +137,7 @@ export class BasicEmptyStateExample {}
   <kui-empty-state
     size="sm"
     context="success"
-    title="All caught up"
+    heading="All caught up"
     description="No pending reviews are waiting on you right now."
   >
     <kui-icon kuiEmptyStateIcon name="circle-check" />
@@ -190,15 +190,15 @@ export class EmptyStateContextExample {}
 
 ```html
 <div class="empty-state-size-example">
-  <kui-empty-state size="sm" title="No comments" description="Be the first to leave a comment.">
+  <kui-empty-state size="sm" heading="No comments" description="Be the first to leave a comment.">
     <kui-icon kuiEmptyStateIcon name="message-circle" />
   </kui-empty-state>
 
-  <kui-empty-state size="md" title="No comments" description="Be the first to leave a comment.">
+  <kui-empty-state size="md" heading="No comments" description="Be the first to leave a comment.">
     <kui-icon kuiEmptyStateIcon name="message-circle" />
   </kui-empty-state>
 
-  <kui-empty-state size="lg" title="No comments" description="Be the first to leave a comment.">
+  <kui-empty-state size="lg" heading="No comments" description="Be the first to leave a comment.">
     <kui-icon kuiEmptyStateIcon name="message-circle" />
   </kui-empty-state>
 </div>
@@ -239,7 +239,7 @@ export class EmptyStateSizeExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| title | string | - | Required empty-state title text. Visual text only, not a forced heading level. |
+| heading | string | - | Required empty-state heading text. Visual text only, not a forced heading level. |
 | description | string \| null | null | Optional supporting text rendered below the title. |
 | context | 'no-data' \| 'no-results' \| 'error' \| 'no-access' \| 'success' | 'no-data' | Semantic context. Only changes the icon accent, not layout. |
 | size | 'sm' \| 'md' \| 'lg' | 'md' | Empty-state layout size. Small uses a compact horizontal layout. |
@@ -248,7 +248,7 @@ export class EmptyStateSizeExample {}
 
 ## Accessibility
 
-- Use surrounding page structure for heading hierarchy. The built-in title is visual text, not a
+- Use surrounding page structure for heading hierarchy. The built-in heading is visual text, not a
   forced heading level.
 - Decorative icons should use `[kuiEmptyStateIcon]`.
 - Use `role="status"` on the `kui-empty-state` host when a no-results state appears dynamically
