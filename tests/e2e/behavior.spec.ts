@@ -177,7 +177,7 @@ test('keeps representative simple, form, overlay, and table playgrounds interact
   await expect(page.locator('.kui-toast').filter({ hasText: 'Saved profile' })).toBeVisible();
 
   await gotoReady(page, '/components/empty-state/playground');
-  await page.getByLabel('title', { exact: true }).fill('No invoices');
+  await page.getByLabel('heading', { exact: true }).fill('No invoices');
   await page.getByRole('radio', { name: 'no-results', exact: true }).click();
   await page.getByRole('radio', { name: 'lg', exact: true }).click();
   const emptyStatePreview = page.getByRole('region', { name: 'Empty state playground' });
