@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/dialog
-- Package: @kikita-labs/ui@1.0.0
+- Package: @kikita-labs/ui@1.1.0
 - Import: kuiDialog from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/dialog.md
 
@@ -66,11 +66,6 @@ Rendered at /components/dialog:
 ```html
 <div class="kui-dialog-header">
   <h2 class="kui-dialog-title">Invite to {{ dialogContext.data.teamName }}</h2>
-  @if (dialogContext.closable) {
-    <button class="kui-dialog-close" type="button" aria-label="Close" (click)="cancel()">
-      &times;
-    </button>
-  }
 </div>
 <div class="kui-dialog-body">
   <label for="invite-teammate-email">Email address</label>
@@ -261,9 +256,6 @@ export class DialogConfirmExample {
 ```html
 <div class="kui-dialog-header">
   <h2 class="kui-dialog-title">size="{{ dialogContext.data.size }}"</h2>
-  <button class="kui-dialog-close" type="button" aria-label="Close" (click)="dialogContext.close()">
-    &times;
-  </button>
 </div>
 <div class="kui-dialog-body">
   <p>
@@ -349,14 +341,14 @@ export class SizePreviewDialog implements KuiDialogHost<void, SizePreviewData> {
 | KuiDialogHost<TResult, TData> | interface | - | Contract your dialog component implements. Requires a dialogContext property injected from KUI_DIALOG_CONTEXT. |
 | KUI_DIALOG_CONTEXT | InjectionToken<KuiDialogContext<TResult, TData>> | - | Injected inside the dialog component to read data and close the dialog. |
 | dialogContext.data | TData | - | Data passed via the opener call, e.g. openDialog(data). |
-| dialogContext.closable | boolean | - | Mirrors KuiDialogConfig.closable, for conditionally rendering a close button. |
+| dialogContext.closable | boolean | - | Mirrors KuiDialogConfig.closable. Informational only -- the container renders .kui-dialog-close itself when true. |
 | dialogContext.appearance | KuiDialogAppearance | - | Mirrors KuiDialogConfig.appearance, for coloring a custom icon if needed. |
 | dialogContext.close(result?) | (result?: TResult) => void | - | Closes the dialog, optionally emitting a typed result to the opener subscription. |
 | KuiDialogConfig.data | TData | undefined | Available on the low-level config type; kuiDialog() passes feature data through the returned opener function instead. |
 | KuiDialogConfig.size | 'auto' \| 'sm' \| 'md' \| 'lg' | 'md' | Panel width preset: auto (min 320px), sm (400px), md (560px), lg (720px). |
 | KuiDialogConfig.appearance | 'default' \| 'danger' \| 'warning' | 'default' | Colors .kui-dialog-icon via a CSS variable. Has no other visual effect. |
 | KuiDialogConfig.dismissable | boolean | true | Allows Escape and backdrop click to close the dialog. |
-| KuiDialogConfig.closable | boolean | true | Exposed on dialogContext.closable for the component to render a close button. |
+| KuiDialogConfig.closable | boolean | true | Shows the .kui-dialog-close button the container renders automatically, absolutely positioned top-right of the panel. |
 | KuiDialogRef<TResult> | class | - | Return type of kuiDialog(component, config). Calling it with data opens the dialog and returns Observable<TResult \| undefined>. |
 | kuiConfirm() | () => (config: KuiConfirmConfig) => Observable<boolean> | - | Inject-function for a pre-built confirmation dialog. No custom component required. |
 | KuiConfirmConfig.title | string | required | Header text. |

@@ -15,7 +15,7 @@ export const DIALOG_EXAMPLE_SOURCES = {
       label: "invite-teammate-dialog.html",
       filename: "invite-teammate-dialog.html",
       language: "html",
-      code: "<div class=\"kui-dialog-header\">\n  <h2 class=\"kui-dialog-title\">Invite to {{ dialogContext.data.teamName }}</h2>\n  @if (dialogContext.closable) {\n    <button class=\"kui-dialog-close\" type=\"button\" aria-label=\"Close\" (click)=\"cancel()\">\n      &times;\n    </button>\n  }\n</div>\n<div class=\"kui-dialog-body\">\n  <label for=\"invite-teammate-email\">Email address</label>\n  <input\n    id=\"invite-teammate-email\"\n    kuiInput\n    type=\"email\"\n    placeholder=\"teammate@company.com\"\n    [value]=\"email()\"\n    (input)=\"email.set($any($event.target).value)\"\n  />\n</div>\n<div class=\"kui-dialog-footer\">\n  <button kuiButton type=\"button\" shape=\"outline\" (click)=\"cancel()\">Cancel</button>\n  <button kuiButton type=\"button\" [disabled]=\"!email()\" (click)=\"send()\">Send invite</button>\n</div>",
+      code: "<div class=\"kui-dialog-header\">\n  <h2 class=\"kui-dialog-title\">Invite to {{ dialogContext.data.teamName }}</h2>\n</div>\n<div class=\"kui-dialog-body\">\n  <label for=\"invite-teammate-email\">Email address</label>\n  <input\n    id=\"invite-teammate-email\"\n    kuiInput\n    type=\"email\"\n    placeholder=\"teammate@company.com\"\n    [value]=\"email()\"\n    (input)=\"email.set($any($event.target).value)\"\n  />\n</div>\n<div class=\"kui-dialog-footer\">\n  <button kuiButton type=\"button\" shape=\"outline\" (click)=\"cancel()\">Cancel</button>\n  <button kuiButton type=\"button\" [disabled]=\"!email()\" (click)=\"send()\">Send invite</button>\n</div>",
     },
     {
       label: "basic-dialog-example.ts",
@@ -67,7 +67,7 @@ export const DIALOG_EXAMPLE_SOURCES = {
       label: "size-preview-dialog.html",
       filename: "size-preview-dialog.html",
       language: "html",
-      code: "<div class=\"kui-dialog-header\">\n  <h2 class=\"kui-dialog-title\">size=\"{{ dialogContext.data.size }}\"</h2>\n  <button class=\"kui-dialog-close\" type=\"button\" aria-label=\"Close\" (click)=\"dialogContext.close()\">\n    &times;\n  </button>\n</div>\n<div class=\"kui-dialog-body\">\n  <p>\n    This panel was opened with <code>size: '{{ dialogContext.data.size }}'</code>.\n  </p>\n</div>\n<div class=\"kui-dialog-footer\">\n  <button kuiButton type=\"button\" (click)=\"dialogContext.close()\">Close</button>\n</div>",
+      code: "<div class=\"kui-dialog-header\">\n  <h2 class=\"kui-dialog-title\">size=\"{{ dialogContext.data.size }}\"</h2>\n</div>\n<div class=\"kui-dialog-body\">\n  <p>\n    This panel was opened with <code>size: '{{ dialogContext.data.size }}'</code>.\n  </p>\n</div>\n<div class=\"kui-dialog-footer\">\n  <button kuiButton type=\"button\" (click)=\"dialogContext.close()\">Close</button>\n</div>",
     },
     {
       label: "dialog-sizes-example.ts",

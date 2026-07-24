@@ -74,8 +74,9 @@
       </li>
       <li>Page scroll is blocked via the CDK block scroll strategy while any dialog is open.</li>
       <li>
-        <code>closable</code> only toggles <code>dialogContext.closable</code>; your component is
-        responsible for rendering (or omitting) the close button based on that flag.
+        The panel renders <code>.kui-dialog-close</code> itself, top-right of the header, when
+        <code>closable</code> is <code>true</code> (the default); the header reserves space for it
+        automatically. <code>dialogContext.closable</code> is retained for informational use only.
       </li>
     </ul>
   </app-doc-section>

@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /foundations/density
-- Package: @kikita-labs/ui@1.0.0
+- Package: @kikita-labs/ui@1.1.0
 
 ## Content
 

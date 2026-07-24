@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/calendar
-- Package: @kikita-labs/ui@1.0.0
+- Package: @kikita-labs/ui@1.1.0
 - Import: KuiCalendarComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/calendar.md
 

@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/slider
-- Package: @kikita-labs/ui@1.0.0
+- Package: @kikita-labs/ui@1.1.0
 - Import: KuiSliderDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/slider.md
 

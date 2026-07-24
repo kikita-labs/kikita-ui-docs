@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/segmented
-- Package: @kikita-labs/ui@1.0.0
+- Package: @kikita-labs/ui@1.1.0
 - Import: KuiSegmentedComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/segmented.md
 
