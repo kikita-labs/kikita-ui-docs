@@ -37,12 +37,9 @@
         @for (item of foundationItems; track item.path) {
           <li>
             <a
-              #foundationLink="routerLinkActive"
               class="sidebar-nav__item"
               [routerLink]="item.path"
-              routerLinkActive
-              [routerLinkActiveOptions]="activeOptions"
-              [attr.aria-current]="foundationLink.isActive ? 'page' : null"
+              [attr.aria-current]="isItemActive(item.path, true) ? 'page' : null"
             >
               {{ item.label }}
             </a>
@@ -63,12 +60,9 @@
         @for (item of resourceItems; track item.path) {
           <li>
             <a
-              #resourceLink="routerLinkActive"
               class="sidebar-nav__item"
               [routerLink]="item.path"
-              routerLinkActive
-              [routerLinkActiveOptions]="activeOptions"
-              [attr.aria-current]="resourceLink.isActive ? 'page' : null"
+              [attr.aria-current]="isItemActive(item.path, true) ? 'page' : null"
             >
               {{ item.label }}
             </a>
@@ -90,12 +84,9 @@
           @for (component of category.components; track component.name) {
             <li>
               <a
-                #componentLink="routerLinkActive"
                 class="sidebar-nav__item"
                 [routerLink]="component.routePath"
-                routerLinkActive
-                [routerLinkActiveOptions]="componentActiveOptions"
-                [attr.aria-current]="componentLink.isActive ? 'page' : null"
+                [attr.aria-current]="isItemActive(component.routePath, false) ? 'page' : null"
               >
                 <span>{{ component.name }}</span>
                 @if (component.status === 'docs-pending') {
