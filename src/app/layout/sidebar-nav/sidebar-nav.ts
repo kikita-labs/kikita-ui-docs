@@ -1,5 +1,5 @@
 import { Component, computed, inject, output, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, startWith } from 'rxjs';
@@ -26,6 +26,7 @@ import { SearchTrigger } from '@shared/docs-ui/search-trigger';
     KuiIconButtonDirective,
     KuiIconComponent,
     RouterLink,
+    RouterLinkActive,
     SearchTrigger,
   ],
   templateUrl: './sidebar-nav.html',
