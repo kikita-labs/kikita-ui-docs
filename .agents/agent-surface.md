@@ -120,7 +120,14 @@ Required MCP prompts:
 Tools must remain read-only at first. Any future write tool must require a
 separate plan, explicit user confirmation, clear input schemas, and tests.
 
-Publish the local MCP package from this docs repo through the root script:
+Publish through `.github/workflows/publish-mcp.yml`: pushing a `mcp-v*` tag runs
+CI (checkout, install, regenerate agent surface, MCP smoke check, `npm publish
+./mcp`) and authenticates via npm Trusted Publishing (GitHub Actions OIDC, no
+`NPM_TOKEN`). Bump `mcp/package.json` first, then tag and push
+(`git tag mcp-v<version> && git push origin mcp-v<version>`).
+
+For a manual or dry-run publish from this docs repo, use the root script
+instead:
 
 ```bash
 npm run publish:mcp
