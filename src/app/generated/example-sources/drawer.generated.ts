@@ -15,7 +15,7 @@ export const DRAWER_EXAMPLE_SOURCES = {
       label: "edit-item-drawer.html",
       filename: "edit-item-drawer.html",
       language: "html",
-      code: "<div class=\"kui-drawer-header\">\n  <div class=\"kui-drawer-header-text\">\n    <h2 class=\"kui-drawer-title\">Edit item</h2>\n    <div class=\"kui-drawer-subtitle\">{{ drawerContext.data.id }}</div>\n  </div>\n  <button\n    class=\"kui-drawer-close\"\n    type=\"button\"\n    aria-label=\"Close\"\n    (click)=\"drawerContext.close('cancelled')\"\n  >\n    &times;\n  </button>\n</div>\n<div class=\"kui-drawer-body\">\n  <p>Edit fields for item {{ drawerContext.data.id }} here.</p>\n</div>\n<div class=\"kui-drawer-footer\">\n  <button kuiButton type=\"button\" shape=\"outline\" (click)=\"drawerContext.close('cancelled')\">\n    Cancel\n  </button>\n  <button kuiButton type=\"button\" (click)=\"drawerContext.close('saved')\">Save</button>\n</div>",
+      code: "<div class=\"kui-drawer-header\">\n  <div class=\"kui-drawer-header-text\">\n    <h2 class=\"kui-drawer-title\">Edit item</h2>\n    <div class=\"kui-drawer-subtitle\">{{ drawerContext.data.id }}</div>\n  </div>\n</div>\n<div class=\"kui-drawer-body\">\n  <p>Edit fields for item {{ drawerContext.data.id }} here.</p>\n</div>\n<div class=\"kui-drawer-footer\">\n  <button kuiButton type=\"button\" shape=\"outline\" (click)=\"drawerContext.close('cancelled')\">\n    Cancel\n  </button>\n  <button kuiButton type=\"button\" (click)=\"drawerContext.close('saved')\">Save</button>\n</div>",
     },
     {
       label: "basic-drawer-example.ts",
@@ -47,7 +47,7 @@ export const DRAWER_EXAMPLE_SOURCES = {
       label: "side-preview-drawer.html",
       filename: "side-preview-drawer.html",
       language: "html",
-      code: "<div class=\"kui-drawer-header\">\n  <div class=\"kui-drawer-header-text\">\n    <h2 class=\"kui-drawer-title\">side=\"{{ drawerContext.side }}\"</h2>\n  </div>\n  <button class=\"kui-drawer-close\" type=\"button\" aria-label=\"Close\" (click)=\"drawerContext.close()\">\n    &times;\n  </button>\n</div>\n<div class=\"kui-drawer-body\">\n  <p>\n    This panel was opened with <code>side: '{{ drawerContext.side }}'</code>.\n  </p>\n</div>\n<div class=\"kui-drawer-footer\">\n  <button kuiButton type=\"button\" (click)=\"drawerContext.close()\">Close</button>\n</div>",
+      code: "<div class=\"kui-drawer-header\">\n  <div class=\"kui-drawer-header-text\">\n    <h2 class=\"kui-drawer-title\">side=\"{{ drawerContext.side }}\"</h2>\n  </div>\n</div>\n<div class=\"kui-drawer-body\">\n  <p>\n    This panel was opened with <code>side: '{{ drawerContext.side }}'</code>.\n  </p>\n</div>\n<div class=\"kui-drawer-footer\">\n  <button kuiButton type=\"button\" (click)=\"drawerContext.close()\">Close</button>\n</div>",
     },
     {
       label: "drawer-sides-example.ts",
@@ -79,13 +79,13 @@ export const DRAWER_EXAMPLE_SOURCES = {
       label: "size-preview-drawer.html",
       filename: "size-preview-drawer.html",
       language: "html",
-      code: "<div class=\"kui-drawer-header\">\n  <div class=\"kui-drawer-header-text\">\n    <h2 class=\"kui-drawer-title\">size=\"{{ drawerContext.size }}\"</h2>\n  </div>\n  <button class=\"kui-drawer-close\" type=\"button\" aria-label=\"Close\" (click)=\"drawerContext.close()\">\n    &times;\n  </button>\n</div>\n<div class=\"kui-drawer-body\">\n  <p>\n    This panel was opened with <code>size: '{{ drawerContext.size }}'</code>.\n  </p>\n</div>\n<div class=\"kui-drawer-footer\">\n  <button kuiButton type=\"button\" (click)=\"drawerContext.close()\">Close</button>\n</div>",
+      code: "<div class=\"kui-drawer-header\">\n  <div class=\"kui-drawer-header-text\">\n    <h2 class=\"kui-drawer-title\">size=\"{{ drawerContext.size }}\"</h2>\n  </div>\n</div>\n<div class=\"kui-drawer-body\">\n  <p>\n    This panel was opened with <code>size: '{{ drawerContext.size }}'</code>.\n  </p>\n</div>\n<div class=\"kui-drawer-footer\">\n  <button kuiButton type=\"button\" (click)=\"drawerContext.close()\">Close</button>\n</div>",
     },
     {
       label: "drawer-sizes-example.ts",
       filename: "drawer-sizes-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';\n\nimport { SizePreviewDrawer } from './size-preview-drawer';\n\n@Component({\n  selector: 'app-drawer-sizes-example',\n  imports: [KuiButtonDirective],\n  templateUrl: './drawer-sizes-example.html',\n  styleUrl: './drawer-sizes-example.scss',\n})\nexport class DrawerSizesExample {\n  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full'];\n\n  private readonly openers = new Map(\n    this.sizes.map((size) => [size, kuiDrawer(SizePreviewDrawer, { side: 'right', size })]),\n  );\n\n  protected open(size: KuiDrawerSize): void {\n    this.openers.get(size)?.(undefined);\n  }\n}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';\n\nimport { SizePreviewDrawer } from './size-preview-drawer';\n\n@Component({\n  selector: 'app-drawer-sizes-example',\n  imports: [KuiButtonDirective],\n  templateUrl: './drawer-sizes-example.html',\n  styleUrl: './drawer-sizes-example.scss',\n})\nexport class DrawerSizesExample {\n  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full', 'auto'];\n\n  private readonly openers = new Map(\n    this.sizes.map((size) => [size, kuiDrawer(SizePreviewDrawer, { side: 'right', size })]),\n  );\n\n  protected open(size: KuiDrawerSize): void {\n    this.openers.get(size)?.(undefined);\n  }\n}",
     },
     {
       label: "size-preview-drawer.ts",

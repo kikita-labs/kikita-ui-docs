@@ -37,7 +37,7 @@
 
   <app-doc-section
     heading="Sizes"
-    description="size selects a width preset for left/right drawers and a height preset for top/bottom drawers: sm, md (default), lg, or full."
+    description="size selects a width preset for left/right drawers and a height preset for top/bottom drawers: sm, md (default), lg, full, or auto. auto sizes the panel to its content (min 320px width for left/right, min 200px height for top/bottom)."
   >
     <app-live-preview previewLabel="Size presets">
       <app-drawer-sizes-example />
@@ -68,8 +68,9 @@
         default unless <code>closeOnBackdropClick: false</code>. Disable both for required actions.
       </li>
       <li>
-        <code>closable</code> only mirrors onto <code>drawerContext.closable</code>; your component
-        is responsible for rendering (or omitting) the close button based on that flag.
+        The panel renders <code>.kui-drawer-close</code> itself, top-right of the header, when
+        <code>closable</code> is <code>true</code> (the default); the header reserves space for it
+        automatically. <code>drawerContext.closable</code> is retained for informational use only.
       </li>
     </ul>
   </app-doc-section>

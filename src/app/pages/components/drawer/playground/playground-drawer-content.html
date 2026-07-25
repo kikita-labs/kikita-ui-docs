@@ -5,16 +5,6 @@
       {{ drawerContext.side }} &middot; {{ drawerContext.size }}
     </div>
   </div>
-  @if (drawerContext.closable) {
-    <button
-      class="kui-drawer-close"
-      type="button"
-      aria-label="Close"
-      (click)="drawerContext.close(null)"
-    >
-      &times;
-    </button>
-  }
 </div>
 <div class="kui-drawer-body">
   <p>{{ drawerContext.data.message }}</p>

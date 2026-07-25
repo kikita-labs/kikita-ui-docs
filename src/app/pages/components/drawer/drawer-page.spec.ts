@@ -43,7 +43,7 @@ describe('DrawerPage', () => {
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Drawer');
     expect(sectionIds).toEqual(['import', 'usage', 'sides', 'sizes', 'api', 'accessibility']);
-    expect(root.querySelectorAll('app-live-preview button[kuiButton]')).toHaveLength(9);
+    expect(root.querySelectorAll('app-live-preview button[kuiButton]')).toHaveLength(10);
     expect(root.querySelector('app-basic-drawer-example')).not.toBeNull();
     expect(root.querySelector('app-drawer-sides-example')).not.toBeNull();
   });

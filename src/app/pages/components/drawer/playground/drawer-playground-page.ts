@@ -42,7 +42,7 @@ const DRAWER_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'size',
     label: 'size',
     kind: 'enum',
-    options: ['sm', 'md', 'lg', 'full'],
+    options: ['sm', 'md', 'lg', 'full', 'auto'],
     defaultValue: 'md',
   },
   {

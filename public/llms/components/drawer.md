@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/drawer
-- Package: @kikita-labs/ui@1.1.0
+- Package: @kikita-labs/ui@1.2.0
 - Import: kuiDrawer from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/drawer.md
 
@@ -32,14 +32,6 @@ type EditResult = 'saved' | 'cancelled';
         <h2 class="kui-drawer-title">Edit item</h2>
         <div class="kui-drawer-subtitle">{{ drawerContext.data.id }}</div>
       </div>
-      <button
-        class="kui-drawer-close"
-        type="button"
-        aria-label="Close"
-        (click)="drawerContext.close('cancelled')"
-      >
-        ...
-      </button>
     </div>
     <div class="kui-drawer-body">...</div>
     <div class="kui-drawer-footer">
@@ -91,14 +83,6 @@ Rendered at /components/drawer:
     <h2 class="kui-drawer-title">Edit item</h2>
     <div class="kui-drawer-subtitle">{{ drawerContext.data.id }}</div>
   </div>
-  <button
-    class="kui-drawer-close"
-    type="button"
-    aria-label="Close"
-    (click)="drawerContext.close('cancelled')"
-  >
-    &times;
-  </button>
 </div>
 <div class="kui-drawer-body">
   <p>Edit fields for item {{ drawerContext.data.id }} here.</p>
@@ -206,9 +190,6 @@ export class EditItemDrawer implements KuiDrawerHost<EditItemResult, EditItemDat
   <div class="kui-drawer-header-text">
     <h2 class="kui-drawer-title">side="{{ drawerContext.side }}"</h2>
   </div>
-  <button class="kui-drawer-close" type="button" aria-label="Close" (click)="drawerContext.close()">
-    &times;
-  </button>
 </div>
 <div class="kui-drawer-body">
   <p>
@@ -300,9 +281,6 @@ export class SidePreviewDrawer implements KuiDrawerHost<void, void> {
   <div class="kui-drawer-header-text">
     <h2 class="kui-drawer-title">size="{{ drawerContext.size }}"</h2>
   </div>
-  <button class="kui-drawer-close" type="button" aria-label="Close" (click)="drawerContext.close()">
-    &times;
-  </button>
 </div>
 <div class="kui-drawer-body">
   <p>
@@ -330,7 +308,7 @@ import { SizePreviewDrawer } from './size-preview-drawer';
   styleUrl: './drawer-sizes-example.scss',
 })
 export class DrawerSizesExample {
-  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full'];
+  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full', 'auto'];
 
   private readonly openers = new Map(
     this.sizes.map((size) => [size, kuiDrawer(SizePreviewDrawer, { side: 'right', size })]),
@@ -385,18 +363,17 @@ export class SizePreviewDrawer implements KuiDrawerHost<void, void> {
 | drawerContext.data | TData | - | Data passed via the opener call, e.g. openDrawer(data). |
 | drawerContext.side | KuiDrawerSide | - | Drawer side resolved from KuiDrawerConfig.side, read-only. |
 | drawerContext.size | KuiDrawerSize | - | Drawer size preset resolved from KuiDrawerConfig.size, read-only. |
-| drawerContext.closable | boolean | - | Mirrors KuiDrawerConfig.closable, for conditionally rendering a close button. |
+| drawerContext.closable | boolean | - | Mirrors KuiDrawerConfig.closable. Informational only -- the container renders .kui-drawer-close itself when true. |
 | drawerContext.close(result?) | (result?: TResult) => void | - | Closes the drawer, optionally emitting a typed result to the opener subscription. |
 | KuiDrawerConfig.data | TData | undefined | Available on the low-level config type; kuiDrawer() passes feature data through the returned opener function instead. |
 | KuiDrawerConfig.side | 'right' \| 'left' \| 'bottom' \| 'top' | 'right' | Edge from which the drawer enters and docks. |
-| KuiDrawerConfig.size | 'sm' \| 'md' \| 'lg' \| 'full' | 'md' | Width for left/right drawers, height for top/bottom drawers. |
+| KuiDrawerConfig.size | 'sm' \| 'md' \| 'lg' \| 'full' \| 'auto' | 'md' | Width for left/right drawers, height for top/bottom drawers. 'auto' sizes to content (min 320px width for left/right, min 200px height for top/bottom). |
 | KuiDrawerConfig.closeOnBackdropClick | boolean | true | Closes the drawer on backdrop click. Disable for required actions. |
 | KuiDrawerConfig.closeOnEscape | boolean | true | Closes the drawer on Escape. Disable for required actions. |
-| KuiDrawerConfig.closable | boolean | true | Passed to the content context for close-button rendering; your component decides whether to render it. |
+| KuiDrawerConfig.closable | boolean | true | Shows the .kui-drawer-close button the container renders automatically, absolutely positioned top-right of the panel. |
 | KuiDrawerRef<TResult> | class | - | Return type of kuiDrawer(component, config). Calling it with data opens the drawer and returns Observable<TResult \| undefined>. |
 | .kui-drawer-header / .kui-drawer-title / .kui-drawer-subtitle | CSS classes | - | Header structure classes. .kui-drawer-title is wired as aria-labelledby automatically when present. |
 | .kui-drawer-body / .kui-drawer-footer | CSS classes | - | Scrollable content region and action row classes. |
-| .kui-drawer-close | CSS class | - | Close-button class for the header, shown conditionally on drawerContext.closable. |
 | --kui-drawer-bg | CSS custom property | - | Panel background color. |
 | --kui-drawer-border | CSS custom property | - | Panel border color. |
 | --kui-drawer-radius | CSS custom property | - | Panel corner radius. |

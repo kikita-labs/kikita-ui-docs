@@ -11,7 +11,7 @@ import { SizePreviewDrawer } from './size-preview-drawer';
   styleUrl: './drawer-sizes-example.scss',
 })
 export class DrawerSizesExample {
-  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full'];
+  protected readonly sizes: readonly KuiDrawerSize[] = ['sm', 'md', 'lg', 'full', 'auto'];
 
   private readonly openers = new Map(
     this.sizes.map((size) => [size, kuiDrawer(SizePreviewDrawer, { side: 'right', size })]),

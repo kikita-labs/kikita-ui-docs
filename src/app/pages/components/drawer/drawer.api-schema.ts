@@ -43,7 +43,8 @@ export const DRAWER_API_ROWS: readonly ApiTableRow[] = [
     name: 'drawerContext.closable',
     type: 'boolean',
     defaultValue: '-',
-    description: 'Mirrors KuiDrawerConfig.closable, for conditionally rendering a close button.',
+    description:
+      'Mirrors KuiDrawerConfig.closable. Informational only -- the container renders .kui-drawer-close itself when true.',
   },
   {
     name: 'drawerContext.close(result?)',
@@ -67,9 +68,10 @@ export const DRAWER_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'KuiDrawerConfig.size',
-    type: `'sm' | 'md' | 'lg' | 'full'`,
+    type: `'sm' | 'md' | 'lg' | 'full' | 'auto'`,
     defaultValue: `'md'`,
-    description: 'Width for left/right drawers, height for top/bottom drawers.',
+    description:
+      "Width for left/right drawers, height for top/bottom drawers. 'auto' sizes to content (min 320px width for left/right, min 200px height for top/bottom).",
   },
   {
     name: 'KuiDrawerConfig.closeOnBackdropClick',
@@ -88,7 +90,7 @@ export const DRAWER_API_ROWS: readonly ApiTableRow[] = [
     type: 'boolean',
     defaultValue: 'true',
     description:
-      'Passed to the content context for close-button rendering; your component decides whether to render it.',
+      'Shows the .kui-drawer-close button the container renders automatically, absolutely positioned top-right of the panel.',
   },
   {
     name: 'KuiDrawerRef<TResult>',
@@ -109,13 +111,6 @@ export const DRAWER_API_ROWS: readonly ApiTableRow[] = [
     type: 'CSS classes',
     defaultValue: '-',
     description: 'Scrollable content region and action row classes.',
-  },
-  {
-    name: '.kui-drawer-close',
-    type: 'CSS class',
-    defaultValue: '-',
-    description:
-      'Close-button class for the header, shown conditionally on drawerContext.closable.',
   },
   {
     name: '--kui-drawer-bg',
