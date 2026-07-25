@@ -121,9 +121,12 @@ Tools must remain read-only at first. Any future write tool must require a
 separate plan, explicit user confirmation, clear input schemas, and tests.
 
 Publish through `.github/workflows/publish-mcp.yml`: pushing a `mcp-v*` tag runs
-CI (checkout, install, regenerate agent surface, MCP smoke check, `npm publish
-./mcp`) and authenticates via npm Trusted Publishing (GitHub Actions OIDC, no
-`NPM_TOKEN`). Bump `mcp/package.json` first, then tag and push
+CI (checkout, install, MCP smoke check, `npm publish ./mcp`) and authenticates
+via npm Trusted Publishing (GitHub Actions OIDC, no `NPM_TOKEN`). CI does not
+regenerate the agent surface -- that reads sibling-repo source docs
+(`../kikita-ui/docs`) this checkout doesn't have. Run
+`npm run generate:agent-surface` locally and commit the result _before_
+tagging, then bump `mcp/package.json` and tag and push
 (`git tag mcp-v<version> && git push origin mcp-v<version>`).
 
 For a manual or dry-run publish from this docs repo, use the root script
