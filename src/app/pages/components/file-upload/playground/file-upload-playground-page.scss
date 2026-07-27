@@ -1,15 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
 .file-upload-playground-page {
-  display: grid;
-  gap: var(--kui-space-6);
-  min-width: 0;
+  @include playground-page-layout;
 }
 
-.file-upload-playground-page__header h1 {
-  margin: 0;
+.file-upload-playground-page__header {
+  @include playground-page-header;
 }
 
 .file-upload-playground-page__note {
-  color: var(--kui-color-text-secondary);
-  font-size: var(--kui-text-sm-size);
-  margin: 0;
+  @include playground-page-note;
 }

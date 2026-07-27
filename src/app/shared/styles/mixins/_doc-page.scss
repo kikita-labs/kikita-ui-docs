@@ -6,6 +6,37 @@
   gap: clamp(32px, 6vw, 56px);
 }
 
+// Shared layout for component playground pages (`<name>-playground-page.scss`):
+// unlike doc-page-layout, this stretches full-width so the resizable preview
+// stage can grow to the viewport width instead of being capped at a reading
+// line length.
+@mixin playground-page-layout {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+  inline-size: 100%;
+}
+
+// Shared header block used at the top of playground pages.
+@mixin playground-page-header {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  justify-items: start;
+
+  h1 {
+    margin: 0;
+    color: var(--kui-color-text);
+    font-size: 24px;
+    font-weight: 700;
+  }
+}
+
+// Shared note paragraph used at the bottom of playground pages.
+@mixin playground-page-note {
+  margin: 0;
+  color: var(--kui-color-text-secondary);
+  font-size: var(--kui-text-sm-size, 13px);
+}
+
 // Shared "notes" bullet list used in Accessibility/API sections across doc pages.
 @mixin doc-page-notes {
   display: grid;

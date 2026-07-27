@@ -1,13 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
 .breadcrumbs-playground-page {
-  display: grid;
-  gap: var(--kui-space-6, 24px);
+  @include playground-page-layout;
 }
 
-.breadcrumbs-playground-page__header h1 {
-  margin: 0;
+.breadcrumbs-playground-page__header {
+  @include playground-page-header;
 }
 
 .breadcrumbs-playground-page__note {
-  margin: 0;
-  color: var(--kui-color-text-muted);
+  @include playground-page-note;
 }
