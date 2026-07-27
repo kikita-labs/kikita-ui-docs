@@ -21,6 +21,7 @@ export const ICON_IMPORT_TABS: readonly CodeTab[] = [
 export const appConfig = {
   providers: [
     // 'lucide' is the default: unregistered names resolve against Lucide via jsDelivr.
+    // Also registers the built-in brand set (KUI_BRAND_ICONS, e.g. 'kikita-brand').
     provideKikitaUi({ icons: 'lucide' }),
     provideKuiIcons({
       check: '<svg viewBox="0 0 16 16"><path d="M3 8l3 3 7-7" /></svg>',
@@ -36,7 +37,8 @@ export const appConfig = {
 
 export const appConfig = {
   providers: [
-    // Opt out of the bundled Lucide/jsDelivr resolver entirely.
+    // Opt out of the bundled Lucide/jsDelivr resolver -- also skips the built-in brand set
+    // (e.g. 'kikita-brand'), since both register through the same icons option.
     provideKikitaUi({ icons: false }),
   ],
 };`,

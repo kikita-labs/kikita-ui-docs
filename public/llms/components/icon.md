@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/icon
-- Package: @kikita-labs/ui@1.2.0
+- Package: @kikita-labs/ui@1.3.0
 - Import: KuiIconComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon.md
 
@@ -186,7 +186,7 @@ export class SwapIconSetExample {}
 | size | '2xs' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| string \| number | '1em' | Named presets map to Kikita icon-size tokens. Numeric values become pixels, and arbitrary CSS size strings pass through. |
 | provideKuiIcons(icons) | EnvironmentProviders | - | Registers a static map of trusted SVG strings, or an async KuiIconResolver function, for name-based icon lookup. Later registrations take precedence for names both define. Route-level only; component providers cannot accept EnvironmentProviders. |
 | KUI_ICONS | InjectionToken<readonly KuiIconRegistry[]> | - | The multi-provider token behind provideKuiIcons(). Provide it directly in a component's own providers ({ provide: KUI_ICONS, multi: true, useValue }) to scope an icon-set override to that subtree. |
-| provideKikitaUi({ icons }) | 'lucide' \| false | 'lucide' | Default icon set kui-icon resolves against when a name is not matched locally. Lazily fetches Lucide SVG markup from the jsDelivr CDN; set to false to opt out. |
+| provideKikitaUi({ icons }) | 'lucide' \| false | 'lucide' | Registers kui-icon's default resolvers: Lucide (lazily fetched SVG markup from the jsDelivr CDN) and the built-in KUI_BRAND_ICONS set (currently just the 'kikita-brand' wordmark, resolved locally). Set to false to opt out of both. |
 
 ## Accessibility
 

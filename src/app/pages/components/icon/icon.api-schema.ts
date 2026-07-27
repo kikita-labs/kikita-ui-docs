@@ -58,6 +58,6 @@ export const ICON_API_ROWS: readonly ApiTableRow[] = [
     type: `'lucide' | false`,
     defaultValue: `'lucide'`,
     description:
-      'Default icon set kui-icon resolves against when a name is not matched locally. Lazily fetches Lucide SVG markup from the jsDelivr CDN; set to false to opt out.',
+      "Registers kui-icon's default resolvers: Lucide (lazily fetched SVG markup from the jsDelivr CDN) and the built-in KUI_BRAND_ICONS set (currently just the 'kikita-brand' wordmark, resolved locally). Set to false to opt out of both.",
   },
 ];

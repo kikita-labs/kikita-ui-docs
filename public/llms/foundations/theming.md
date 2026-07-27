@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /foundations/theming
-- Package: @kikita-labs/ui@1.2.0
+- Package: @kikita-labs/ui@1.3.0
 
 ## Content
 

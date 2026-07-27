@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /foundations/typography
-- Package: @kikita-labs/ui@1.2.0
+- Package: @kikita-labs/ui@1.3.0
 
 ## Content
 
@@ -58,7 +58,7 @@ Decorate native text elements. Typography classes and kuiText change presentatio
 ```
 
 ### Type roles
-Choose the role that matches the text's purpose, then keep the native element semantic.
+Choose the role that matches the text's purpose, then keep the native element semantic. Each role resets margin to 0; control vertical spacing explicitly with gap or layout primitives instead of relying on the host tag's default margin.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | .kui-display | h1 | - | Rare docs or specification page title. |
