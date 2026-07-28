@@ -38,7 +38,7 @@
 
   <app-doc-section
     heading="Size"
-    description="Size (data-kui-size) drives control height directly; data-kui-density no longer affects height. Default md matches kui-input at 40px."
+    description="Size (data-kui-size) drives control height directly; data-kui-density no longer affects height. Default md matches kui-input at 40px. loading replaces the icon with a centered kui-loader spinner and behaves like disabled."
   >
     <app-live-preview previewLabel="Size options">
       <app-icon-button-size-example />
@@ -72,6 +72,10 @@
         anchors.
       </li>
       <li>Prefer visible text buttons when the icon meaning is not widely understood.</li>
+      <li>
+        <code>loading</code> sets <code>aria-busy="true"</code> and behaves like
+        <code>disabled</code> until it clears.
+      </li>
     </ul>
   </app-doc-section>
 
@@ -80,11 +84,6 @@
     description="Differences from the sibling Button API worth calling out."
   >
     <ul class="icon-button-page__notes">
-      <li>
-        <code>kuiIconButton</code> does not expose a <code>loading</code> input. Only
-        <code>kuiButton</code> has <code>loading</code> as of
-        <code>&#64;kikita-labs/ui</code> 0.3.0.
-      </li>
       <li>
         Since 0.2.0, control height is driven only by
         <code>size</code> (<code>data-kui-size</code>). <code>data-kui-density</code> no longer

@@ -29,6 +29,13 @@ export const ICON_BUTTON_API_ROWS: readonly ApiTableRow[] = [
       'Disables native button behavior. Anchor icon buttons receive aria-disabled and leave tab order.',
   },
   {
+    name: 'loading',
+    type: 'boolean',
+    defaultValue: 'false',
+    description:
+      'Replaces the icon (and any projected content) with a centered kui-loader spinner, sets aria-busy, and behaves like disabled.',
+  },
+  {
     name: 'icon',
     type: 'KuiIconName | undefined',
     defaultValue: 'undefined',

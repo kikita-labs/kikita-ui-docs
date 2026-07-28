@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/icon-button
-- Package: @kikita-labs/ui@1.3.1
+- Package: @kikita-labs/ui@1.4.0
 - Import: KuiIconButtonDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/icon-button.md
 
@@ -40,6 +40,12 @@ Project `kui-icon` directly when the icon needs `source` or `src` instead of a r
 <button kuiIconButton aria-label="Close">
   <kui-icon [source]="closeIcon" />
 </button>
+```
+
+Use `loading` to show a spinner in place of the icon while an action is pending:
+
+```html
+<button kuiIconButton icon="check" loading aria-label="Save"></button>
 ```
 
 ## Examples
@@ -136,6 +142,9 @@ export class IconButtonAppearanceExample {
   <button kuiIconButton type="button" disabled aria-label="Disabled settings">
     <kui-icon [source]="settingsIcon" />
   </button>
+  <button kuiIconButton type="button" loading aria-label="Loading settings">
+    <kui-icon [source]="settingsIcon" />
+  </button>
 </div>
 ```
 
@@ -227,6 +236,7 @@ export class IconButtonIconExample {}
 | appearance | 'primary' \| 'danger' \| 'success' \| 'warning' \| null | null | Semantic color intent. Without an explicit value, solid/soft use primary colors and outline/ghost use neutral defaults. |
 | size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Square control size mapped to Kikita control height tokens (matches kui-input height at md). |
 | disabled | boolean | false | Disables native button behavior. Anchor icon buttons receive aria-disabled and leave tab order. |
+| loading | boolean | false | Replaces the icon (and any projected content) with a centered kui-loader spinner, sets aria-busy, and behaves like disabled. |
 | icon | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name as the button content, prepended before any other projected content, without hand-projecting kui-icon. |
 
 ## Accessibility

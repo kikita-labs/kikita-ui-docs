@@ -121,6 +121,25 @@ describe('IconButtonPlaygroundPage', () => {
     );
   });
 
+  it('keeps loading behavior disabled and busy in preview and snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const toggles = [
+      ...root.querySelectorAll<HTMLInputElement>('.api-playground__toggle-row input'),
+    ];
+
+    toggles.at(1)?.click();
+    fixture.detectChanges();
+
+    const button = previewButton();
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(button?.disabled).toBe(true);
+    expect(button?.getAttribute('aria-busy')).toBe('true');
+    expect(snippet?.textContent).toBe(
+      '<button kuiIconButton type="button" appearance="primary" loading aria-label="Settings">\n  <kui-icon [source]="settingsIcon" />\n</button>',
+    );
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });

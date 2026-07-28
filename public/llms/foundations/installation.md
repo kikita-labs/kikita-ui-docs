@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /foundations/installation
-- Package: @kikita-labs/ui@1.3.1
+- Package: @kikita-labs/ui@1.4.0
 
 ## Content
 

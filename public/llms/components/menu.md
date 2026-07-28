@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/menu
-- Package: @kikita-labs/ui@1.3.1
+- Package: @kikita-labs/ui@1.4.0
 - Import: KuiMenuComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/menu.md
 

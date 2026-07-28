@@ -55,7 +55,7 @@ describe('IconButtonPage', () => {
       'accessibility',
       'known-gaps',
     ]);
-    expect(buttons).toHaveLength(20);
+    expect(buttons).toHaveLength(21);
     expect(buttons.every((button) => button.hasAttribute('aria-label'))).toBe(true);
     expect(
       buttons.find((button) => button.getAttribute('aria-label') === 'Disabled settings')?.disabled,

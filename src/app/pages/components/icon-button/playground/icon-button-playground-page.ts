@@ -48,6 +48,7 @@ const ICON_BUTTON_PLAYGROUND_CONTROLS = definePlaygroundControls([
     defaultValue: 'md',
   },
   { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
+  { key: 'loading', label: 'loading', kind: 'boolean', defaultValue: false },
 ] as const);
 
 type IconButtonPlaygroundValues = PlaygroundValues<typeof ICON_BUTTON_PLAYGROUND_CONTROLS>;
@@ -76,6 +77,7 @@ export class IconButtonPlaygroundPage {
       },
       { name: 'size', value: values.size, defaultValue: 'md' },
       { name: 'disabled', value: values.disabled },
+      { name: 'loading', value: values.loading },
     ]);
     const ariaLabel = values.ariaLabel;
     const escapedLabel = escapePlaygroundHtml(ariaLabel || 'Settings');
@@ -111,5 +113,9 @@ export class IconButtonPlaygroundPage {
 
   protected disabledOf(values: IconButtonPlaygroundValues): boolean {
     return values.disabled;
+  }
+
+  protected loadingOf(values: IconButtonPlaygroundValues): boolean {
+    return values.loading;
   }
 }

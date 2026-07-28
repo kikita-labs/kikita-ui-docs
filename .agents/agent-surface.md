@@ -127,22 +127,8 @@ regenerate the agent surface -- that reads sibling-repo source docs
 (`../kikita-ui/docs`) this checkout doesn't have. Run
 `npm run generate:agent-surface` locally and commit the result _before_
 tagging, then bump `mcp/package.json` and tag and push
-(`git tag mcp-v<version> && git push origin mcp-v<version>`).
-
-For a manual or dry-run publish from this docs repo, use the root script
-instead:
-
-```bash
-npm run publish:mcp
-```
-
-The script regenerates the agent surface, runs the MCP smoke check, and publishes
-`./mcp` to npmjs with an explicit `@kikita-labs` registry override. Use this dry
-run before changing MCP packaging:
-
-```bash
-npm run publish:mcp -- --dry-run
-```
+(`git tag mcp-v<version> && git push origin mcp-v<version>`). Pushing the tag
+is what triggers the publish -- there is no separate manual publish step.
 
 ## SSR Safety
 

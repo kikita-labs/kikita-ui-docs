@@ -88,10 +88,13 @@ pnpm generate:agent-surface
 pnpm check:agent-surface
 ```
 
-The local MCP server is published from `./mcp`:
+The local MCP server is published from `./mcp`. Publishing is automatic: pushing
+a `mcp-v*` tag runs `.github/workflows/publish-mcp.yml`, which publishes `./mcp`
+to npmjs via npm Trusted Publishing. Regenerate and commit the agent surface
+locally first, bump `mcp/package.json`, then:
 
 ```bash
-npm run publish:mcp
+git tag mcp-v<version> && git push origin mcp-v<version>
 ```
 
 Users can install it with:
