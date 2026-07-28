@@ -1,13 +1,13 @@
 {
   "reference": {
-    "package": "@kikita-labs/ui@1.3.1",
-    "initialRawBytes": 887520,
-    "lazyChunks": 176,
-    "note": "SSR migration (ng add @angular/ssr) added a parallel server bundle, which roughly doubles lazyJavaScriptChunks and shikiThemeChunks since the build now emits both browser (.js) and server (.mjs) variants of the same route chunks. initialJavaScriptBytes dropped sharply because outputMode: server moves most of the former main bundle into finer-grained lazy chunks. The @kikita-labs/ui@0.4.6 sync moved docs shell navigation onto published Kikita accordion/tabs primitives, raising initial CSS by less than 1 kB. The @kikita-labs/ui@1.3.1 sync added kuiGroup+kui-field subgrid layout CSS and invalid-control stacking-context rules, raising initial CSS to 165084 bytes; limit raised to 165500 with headroom, not to hide a regression but to reflect this reviewed upstream fix."
+    "package": "@kikita-labs/ui@1.4.0",
+    "initialRawBytes": 906620,
+    "lazyChunks": 177,
+    "note": "SSR migration (ng add @angular/ssr) added a parallel server bundle, which roughly doubles lazyJavaScriptChunks and shikiThemeChunks since the build now emits both browser (.js) and server (.mjs) variants of the same route chunks. initialJavaScriptBytes dropped sharply because outputMode: server moves most of the former main bundle into finer-grained lazy chunks. The @kikita-labs/ui@0.4.6 sync moved docs shell navigation onto published Kikita accordion/tabs primitives, raising initial CSS by less than 1 kB. The @kikita-labs/ui@1.3.1 sync added kuiGroup+kui-field subgrid layout CSS and invalid-control stacking-context rules, raising initial CSS to 165084 bytes; limit raised to 165500 with headroom, not to hide a regression but to reflect this reviewed upstream fix. The @kikita-labs/ui@1.4.0 sync added kuiIconButton loading-state CSS (spinner slot, matching kuiButton), raising initial CSS to 165578 bytes; limit raised to 166000 with headroom, not to hide a regression but to reflect this reviewed upstream addition."
   },
   "limits": {
     "initialJavaScriptBytes": 60000,
-    "initialCssBytes": 165500,
+    "initialCssBytes": 166000,
     "initialTotalBytes": 220000,
     "lazyJavaScriptChunks": 185,
     "largestRouteChunkBytes": 30000,
