@@ -14,7 +14,7 @@ export class DocsKeyboardShortcutService {
     }
 
     const listener = (event: KeyboardEvent) => {
-      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+      if ((event.ctrlKey || event.metaKey) && event.code === 'KeyK') {
         event.preventDefault();
         onOpen();
       }

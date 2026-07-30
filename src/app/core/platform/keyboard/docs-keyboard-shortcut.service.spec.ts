@@ -12,7 +12,7 @@ describe('DocsKeyboardShortcutService', () => {
     TestBed.configureTestingModule({ providers: [DocsKeyboardShortcutService] });
     const onOpen = vi.fn();
     const registration = TestBed.inject(DocsKeyboardShortcutService).registerCommandPalette(onOpen);
-    const event = new KeyboardEvent('keydown', { ctrlKey: true, key: 'k' });
+    const event = new KeyboardEvent('keydown', { ctrlKey: true, code: 'KeyK' });
 
     document.dispatchEvent(event);
     expect(onOpen).toHaveBeenCalledOnce();
@@ -21,7 +21,17 @@ describe('DocsKeyboardShortcutService', () => {
       registration.value();
     }
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { metaKey: true, key: 'k' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { metaKey: true, code: 'KeyK' }));
+    expect(onOpen).toHaveBeenCalledOnce();
+  });
+
+  it('triggers regardless of keyboard layout, using the physical key code', () => {
+    TestBed.configureTestingModule({ providers: [DocsKeyboardShortcutService] });
+    const onOpen = vi.fn();
+    TestBed.inject(DocsKeyboardShortcutService).registerCommandPalette(onOpen);
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { ctrlKey: true, key: 'л', code: 'KeyK' }));
+
     expect(onOpen).toHaveBeenCalledOnce();
   });
 
