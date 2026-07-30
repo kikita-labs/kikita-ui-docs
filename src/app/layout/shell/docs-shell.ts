@@ -12,7 +12,9 @@ import {
 import { RouterOutlet } from '@angular/router';
 
 import { DocsRouteStateService } from '@core/navigation';
+import { DocsAnchorNavigationService } from '@core/platform/anchor';
 import { DocsDocumentStyleService } from '@core/platform/document';
+import { DocsSectionRegistryService } from '@core/platform/heading';
 
 import { DocsHeader } from '../header/docs-header';
 import { PageToc } from '../page-toc/page-toc';
@@ -32,6 +34,9 @@ export class DocsShell {
   private readonly mainContent = viewChild<ElementRef<HTMLElement>>('mainContent');
   private readonly routeState = inject(DocsRouteStateService);
   private readonly documentStyle = inject(DocsDocumentStyleService);
+  private readonly anchorNavigation = inject(DocsAnchorNavigationService);
+  private readonly sectionRegistry = inject(DocsSectionRegistryService);
+  private scrolledFragmentUrl: string | null = null;
 
   protected readonly activePage = this.routeState.activePage;
   protected readonly isNavigationOpen = signal(false);
@@ -43,8 +48,25 @@ export class DocsShell {
   });
 
   private readonly routeFocusEffect = afterRenderEffect(() => {
-    if (!this.activePage().url.includes('#')) {
+    const url = this.activePage().url;
+    const fragmentIndex = url.indexOf('#');
+
+    if (fragmentIndex === -1) {
       this.focusContentElement();
+      return;
+    }
+
+    const fragment = url.slice(fragmentIndex + 1);
+
+    // Registered sections mirror rendered headings, so waiting for the target section
+    // confirms the route's lazy-loaded content actually reached the DOM before scrolling.
+    const targetRegistered = this.sectionRegistry
+      .sections()
+      .some((section) => section.id === fragment);
+
+    if (fragment && targetRegistered && this.scrolledFragmentUrl !== url) {
+      this.scrolledFragmentUrl = url;
+      untracked(() => void this.anchorNavigation.navigate(fragment));
     }
   });
 

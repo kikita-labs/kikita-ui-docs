@@ -105,6 +105,7 @@ describe('docs registry', () => {
       ...DOCS_REGISTRY.foundations.map((foundation) => docsFoundationPath(foundation.slug)),
       '/components',
       ...expectedCategoryPaths,
+      '/resources',
       ...DOCS_REGISTRY.resources.map((resource) => docsResourcePath(resource.slug)),
     ];
 

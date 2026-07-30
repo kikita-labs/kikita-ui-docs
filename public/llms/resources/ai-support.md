@@ -3,7 +3,7 @@
 > Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.
 
 - Status: available
-- Route: /ai-support
+- Route: /resources/ai-support
 - Package: @kikita-labs/ui@1.4.0
 
 ## Content

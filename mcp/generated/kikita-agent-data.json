@@ -1216,9 +1216,9 @@
         "slug": "ai-support",
         "label": "AI Support",
         "description": "Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.",
-        "route": "/ai-support",
+        "route": "/resources/ai-support",
         "markdownPath": "public/llms/resources/ai-support.md",
-        "htmlUrlPath": "/ai-support",
+        "htmlUrlPath": "/resources/ai-support",
         "status": "available",
         "packageName": "@kikita-labs/ui",
         "packageVersion": "1.4.0",
@@ -1229,7 +1229,7 @@
         "apiSchemaPath": null,
         "hasPlayground": false
       },
-      "markdown": "# AI Support\n\n> Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.\n\n- Status: available\n- Route: /ai-support\n- Package: @kikita-labs/ui@1.4.0\n\n## Content\n\n### Context files\nUse llms.txt for a concise index and llms-full.txt when an agent needs the full public documentation context.\n#### agent-context.md\n\n```md\nStart with:\nhttps://kikita-labs.github.io/kikita-ui-docs/llms.txt\n\nUse full context only when the curated index is not enough:\nhttps://kikita-labs.github.io/kikita-ui-docs/llms-full.txt\n```\n\n### Local MCP\nRun the read-only stdio MCP server locally with npx. It exposes package docs, component examples, API sections, search, and prompt templates.\n#### mcp.json\n\n```json\n{\n  \"mcpServers\": {\n    \"kikita-ui\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@kikita-labs/ui-mcp@latest\"]\n    }\n  }\n}\n```\n\n### Agent instruction\nGive agents a short rule that keeps them on published package APIs and the generated Kikita documentation surface.\n#### agent-instructions.md\n\n```md\nUse Kikita UI docs through the kikita-ui MCP server.\nPrefer package APIs and examples returned by the server.\nDo not invent component inputs, outputs, CSS hooks, or imports.\nIf MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/llms.txt first, then llms-full.txt when full context is needed.\n```\n\n### Version boundary\nThe MCP package is generated from this docs site's installed @kikita-labs/ui version. If the package dependency changes, regenerate the agent surface before publishing docs or MCP data.\n"
+      "markdown": "# AI Support\n\n> Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.\n\n- Status: available\n- Route: /resources/ai-support\n- Package: @kikita-labs/ui@1.4.0\n\n## Content\n\n### Context files\nUse llms.txt for a concise index and llms-full.txt when an agent needs the full public documentation context.\n#### agent-context.md\n\n```md\nStart with:\nhttps://kikita-labs.github.io/kikita-ui-docs/llms.txt\n\nUse full context only when the curated index is not enough:\nhttps://kikita-labs.github.io/kikita-ui-docs/llms-full.txt\n```\n\n### Local MCP\nRun the read-only stdio MCP server locally with npx. It exposes package docs, component examples, API sections, search, and prompt templates.\n#### mcp.json\n\n```json\n{\n  \"mcpServers\": {\n    \"kikita-ui\": {\n      \"command\": \"npx\",\n      \"args\": [\"-y\", \"@kikita-labs/ui-mcp@latest\"]\n    }\n  }\n}\n```\n\n### Agent instruction\nGive agents a short rule that keeps them on published package APIs and the generated Kikita documentation surface.\n#### agent-instructions.md\n\n```md\nUse Kikita UI docs through the kikita-ui MCP server.\nPrefer package APIs and examples returned by the server.\nDo not invent component inputs, outputs, CSS hooks, or imports.\nIf MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/llms.txt first, then llms-full.txt when full context is needed.\n```\n\n### Version boundary\nThe MCP package is generated from this docs site's installed @kikita-labs/ui version. If the package dependency changes, regenerate the agent surface before publishing docs or MCP data.\n"
     },
     "public/llms/resources/smoke.md": {
       "entry": {
@@ -1237,9 +1237,9 @@
         "slug": "smoke",
         "label": "Package Smoke",
         "description": "External consumer verification for package imports, styles, and providers.",
-        "route": "/smoke",
+        "route": "/resources/smoke",
         "markdownPath": "public/llms/resources/smoke.md",
-        "htmlUrlPath": "/smoke",
+        "htmlUrlPath": "/resources/smoke",
         "status": "available",
         "packageName": "@kikita-labs/ui",
         "packageVersion": "1.4.0",
@@ -1252,7 +1252,7 @@
         "apiSchemaPath": null,
         "hasPlayground": false
       },
-      "markdown": "# Package Smoke\n\n> External consumer verification for package imports, styles, and providers.\n\n- Status: available\n- Route: /smoke\n- Package: @kikita-labs/ui@1.4.0\n\n## Content\n\nRendered documentation, interactive examples, and the playground live at the HTML route above.\n"
+      "markdown": "# Package Smoke\n\n> External consumer verification for package imports, styles, and providers.\n\n- Status: available\n- Route: /resources/smoke\n- Package: @kikita-labs/ui@1.4.0\n\n## Content\n\nRendered documentation, interactive examples, and the playground live at the HTML route above.\n"
     }
   },
   "entries": [
@@ -2317,9 +2317,9 @@
       "slug": "ai-support",
       "label": "AI Support",
       "description": "Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.",
-      "route": "/ai-support",
+      "route": "/resources/ai-support",
       "markdownPath": "public/llms/resources/ai-support.md",
-      "htmlUrlPath": "/ai-support",
+      "htmlUrlPath": "/resources/ai-support",
       "status": "available",
       "packageName": "@kikita-labs/ui",
       "packageVersion": "1.4.0",
@@ -2335,9 +2335,9 @@
       "slug": "smoke",
       "label": "Package Smoke",
       "description": "External consumer verification for package imports, styles, and providers.",
-      "route": "/smoke",
+      "route": "/resources/smoke",
       "markdownPath": "public/llms/resources/smoke.md",
-      "htmlUrlPath": "/smoke",
+      "htmlUrlPath": "/resources/smoke",
       "status": "available",
       "packageName": "@kikita-labs/ui",
       "packageVersion": "1.4.0",

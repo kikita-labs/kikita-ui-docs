@@ -20,7 +20,7 @@ describe('DocsAnchorNavigationService', () => {
     TestBed.configureTestingModule({
       providers: [
         DocsAnchorNavigationService,
-        { provide: Router, useValue: { navigate } },
+        { provide: Router, useValue: { navigate, url: '/current' } },
         { provide: ViewportScroller, useValue: { getScrollPosition, scrollToPosition } },
         { provide: DocsMediaService, useValue: { prefersReducedMotion } },
       ],
@@ -73,6 +73,23 @@ describe('DocsAnchorNavigationService', () => {
     expect(scrollToPosition).toHaveBeenCalledWith(expect.any(Array), { behavior: 'auto' });
   });
 
+  it('scrolls straight to the target when the URL already carries that fragment', async () => {
+    const heading = document.createElement('h2');
+
+    heading.id = 'target';
+    document.body.appendChild(heading);
+
+    TestBed.overrideProvider(Router, {
+      useValue: { navigate, url: '/current#target' },
+    });
+
+    const result = await TestBed.inject(DocsAnchorNavigationService).navigate('target');
+
+    expect(result.ok).toBe(true);
+    expect(navigate).not.toHaveBeenCalled();
+    expect(scrollToPosition).toHaveBeenCalled();
+  });
+
   it('builds a stable absolute fragment URL', () => {
     const result = TestBed.inject(DocsAnchorNavigationService).urlFor('target');
 
@@ -86,7 +103,7 @@ describe('DocsAnchorNavigationService', () => {
         DocsAnchorNavigationService,
         { provide: PLATFORM_ID, useValue: 'server' },
         { provide: DOCUMENT, useValue: document },
-        { provide: Router, useValue: { navigate } },
+        { provide: Router, useValue: { navigate, url: '/current' } },
         { provide: ViewportScroller, useValue: { getScrollPosition, scrollToPosition } },
         { provide: DocsMediaService, useValue: { prefersReducedMotion } },
       ],

@@ -8,8 +8,7 @@ export const DOCS_HOME_PATH = '/';
 export const DOCS_PATHS = {
   foundations: `/${DOCS_REGISTRY.sections.foundations.slug}`,
   components: `/${DOCS_REGISTRY.sections.components.slug}`,
-  aiSupport: docsResourcePath('ai-support'),
-  smoke: docsResourcePath('smoke'),
+  resources: `/${DOCS_REGISTRY.sections.resources.slug}`,
 } as const;
 
 export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
@@ -31,9 +30,13 @@ export const DOCS_NAVIGATION_ITEMS: readonly DocsNavigationItem[] = [
       description: component.description,
     })),
   },
-  ...DOCS_REGISTRY.resources.map((resource) => ({
-    label: resource.label,
-    path: docsResourcePath(resource.slug),
-    description: resource.description,
-  })),
+  {
+    ...DOCS_REGISTRY.sections.resources,
+    path: DOCS_PATHS.resources,
+    children: DOCS_REGISTRY.resources.map((resource) => ({
+      label: resource.label,
+      path: docsResourcePath(resource.slug),
+      description: resource.description,
+    })),
+  },
 ];

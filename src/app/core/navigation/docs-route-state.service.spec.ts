@@ -15,6 +15,7 @@ describe('DocsRouteStateService', () => {
         provideRouter([
           { path: '', component: RouteTestPage },
           { path: 'components/button/playground', component: RouteTestPage },
+          { path: 'resources/ai-support', component: RouteTestPage },
           {
             path: 'missing',
             component: RouteTestPage,
@@ -46,6 +47,18 @@ describe('DocsRouteStateService', () => {
       path: '/components/button/playground',
       url: '/components/button/playground',
     });
+  });
+
+  it('nests resource pages under a Resources breadcrumb segment', async () => {
+    const routeState = TestBed.inject(DocsRouteStateService);
+
+    await TestBed.inject(Router).navigateByUrl('/resources/ai-support');
+
+    expect(routeState.breadcrumbs()).toEqual([
+      { label: 'Kikita UI', path: '/' },
+      { label: 'Resources', path: '/resources' },
+      { label: 'AI Support' },
+    ]);
   });
 
   it('derives the shell layout from leaf route data', async () => {

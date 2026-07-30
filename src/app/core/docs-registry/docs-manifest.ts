@@ -7,7 +7,7 @@ export type DocsComponentStatus = 'available' | 'docs-pending';
 export type DocsPageId = 'home' | 'draft' | 'components-overview' | 'not-found';
 
 export interface DocsSectionManifest {
-  readonly slug: 'foundations' | 'components';
+  readonly slug: 'foundations' | 'components' | 'resources';
   readonly label: string;
   readonly description: string;
 }
@@ -78,6 +78,7 @@ export interface DocsRegistry {
   readonly sections: {
     readonly foundations: DocsSectionManifest;
     readonly components: DocsSectionManifest;
+    readonly resources: DocsSectionManifest;
   };
   readonly categories: readonly DocsComponentCategoryManifest[];
   readonly foundations: readonly DocsFoundationManifest[];

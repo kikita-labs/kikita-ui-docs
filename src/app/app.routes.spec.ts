@@ -1,5 +1,5 @@
 import { DOCS_COMPONENT_CATEGORIES } from '@core/components';
-import { DOCS_REGISTRY, DOCS_ROUTE_SEGMENTS } from '@generated/index';
+import { DOCS_ROUTE_SEGMENTS } from '@generated/index';
 
 import { routes } from './app.routes';
 
@@ -82,7 +82,7 @@ describe('app routes', () => {
       DOCS_ROUTE_SEGMENTS.home,
       DOCS_ROUTE_SEGMENTS.foundations,
       DOCS_ROUTE_SEGMENTS.components,
-      ...DOCS_REGISTRY.resources.map((resource) => resource.slug),
+      DOCS_ROUTE_SEGMENTS.resources,
       DOCS_ROUTE_SEGMENTS.notFound,
     ]);
   });
@@ -122,8 +122,9 @@ describe('app routes', () => {
       ...FOUNDATION_SLUGS.map((slug) => `/foundations/${slug}`),
       '/components',
       ...componentPaths,
-      '/ai-support',
-      '/smoke',
+      '/resources',
+      '/resources/ai-support',
+      '/resources/smoke',
       DOCS_ROUTE_SEGMENTS.notFound,
     ].sort();
 

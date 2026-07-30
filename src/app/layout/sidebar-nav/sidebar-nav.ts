@@ -50,9 +50,7 @@ export class SidebarNav {
 
   protected readonly foundationItems = DOCS_NAVIGATION_ITEMS[0]?.children ?? [];
   protected readonly componentCategories = DOCS_COMPONENT_CATEGORIES;
-  protected readonly resourceItems: readonly DocsNavigationItem[] = DOCS_NAVIGATION_ITEMS[2]
-    ? [DOCS_NAVIGATION_ITEMS[2]]
-    : [];
+  protected readonly resourceItems = DOCS_NAVIGATION_ITEMS[2]?.children ?? [];
   protected readonly activeOptions = { exact: true };
   protected readonly componentActiveOptions = { exact: false };
   protected readonly expandedGroupIds = signal([

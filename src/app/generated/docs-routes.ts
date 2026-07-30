@@ -47,6 +47,12 @@ const foundationsDraft: DocsDraftPageData = {
   description: DOCS_REGISTRY.sections.foundations.description,
 };
 
+const resourcesDraft: DocsDraftPageData = {
+  title: DOCS_REGISTRY.sections.resources.label,
+  eyebrow: 'Planned section',
+  description: DOCS_REGISTRY.sections.resources.description,
+};
+
 export const DOCS_ROUTES: Routes = [
   {
     path: DOCS_ROUTE_SEGMENTS.home,
@@ -74,10 +80,16 @@ export const DOCS_ROUTES: Routes = [
       ...componentRoutes,
     ],
   },
-  ...DOCS_RESOURCE_MANIFESTS.map((resource): Route => ({
-    path: resource.slug,
-    loadComponent: resource.loadPage,
-  })),
+  {
+    path: DOCS_ROUTE_SEGMENTS.resources,
+    children: [
+      { path: '', pathMatch: 'full', loadComponent: loadDraftPage, data: resourcesDraft },
+      ...DOCS_RESOURCE_MANIFESTS.map((resource): Route => ({
+        path: resource.slug,
+        loadComponent: resource.loadPage,
+      })),
+    ],
+  },
   {
     path: DOCS_ROUTE_SEGMENTS.notFound,
     data: DOCS_REGISTRY.pages['not-found'].routeData,

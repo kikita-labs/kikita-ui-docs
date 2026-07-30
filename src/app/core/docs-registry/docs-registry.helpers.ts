@@ -19,5 +19,5 @@ export function docsPlaygroundPath(slug: string): string {
 }
 
 export function docsResourcePath(slug: string): string {
-  return `/${slug}`;
+  return `/resources/${slug}`;
 }

@@ -10420,7 +10420,7 @@ Available at /components/tree/playground.
 
 ---
 
-<!-- route: /ai-support -->
+<!-- route: /resources/ai-support -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/resources/ai-support.md -->
 <!-- package: @kikita-labs/ui@1.4.0 -->
 
@@ -10429,7 +10429,7 @@ Available at /components/tree/playground.
 > Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.
 
 - Status: available
-- Route: /ai-support
+- Route: /resources/ai-support
 - Package: @kikita-labs/ui@1.4.0
 
 ## Content
@@ -10477,7 +10477,7 @@ The MCP package is generated from this docs site's installed @kikita-labs/ui ver
 
 ---
 
-<!-- route: /smoke -->
+<!-- route: /resources/smoke -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md -->
 <!-- package: @kikita-labs/ui@1.4.0 -->
 
@@ -10486,7 +10486,7 @@ The MCP package is generated from this docs site's installed @kikita-labs/ui ver
 > External consumer verification for package imports, styles, and providers.
 
 - Status: available
-- Route: /smoke
+- Route: /resources/smoke
 - Package: @kikita-labs/ui@1.4.0
 
 ## Content

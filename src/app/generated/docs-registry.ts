@@ -64,6 +64,7 @@ import { SMOKE_DOCS_MANIFEST } from '@pages/smoke/smoke.docs-manifest';
 const DOCS_SECTION_SEGMENTS = {
   foundations: 'foundations',
   components: 'components',
+  resources: 'resources',
 } as const;
 
 export const DOCS_REGISTRY = defineDocsRegistry({
@@ -83,6 +84,11 @@ export const DOCS_REGISTRY = defineDocsRegistry({
       slug: DOCS_SECTION_SEGMENTS.components,
       label: 'Components',
       description: 'Consumer-safe component documentation built from package APIs.',
+    },
+    resources: {
+      slug: DOCS_SECTION_SEGMENTS.resources,
+      label: 'Resources',
+      description: 'Agent support and package health checks.',
     },
   },
   categories: [
@@ -172,6 +178,7 @@ export const DOCS_ROUTE_SEGMENTS = {
   home: DOCS_REGISTRY.pages.home.routeSegment,
   foundations: DOCS_REGISTRY.sections.foundations.slug,
   components: DOCS_REGISTRY.sections.components.slug,
+  resources: DOCS_REGISTRY.sections.resources.slug,
   playground: 'playground',
   notFound: DOCS_REGISTRY.pages['not-found'].routeSegment,
 } as const;

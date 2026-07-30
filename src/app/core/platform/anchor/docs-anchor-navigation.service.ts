@@ -21,13 +21,17 @@ export class DocsAnchorNavigationService {
     }
 
     try {
-      const navigated = await this.router.navigate([], {
-        fragment,
-        queryParamsHandling: 'preserve',
-      });
+      const currentFragment = this.router.url.split('#')[1];
 
-      if (!navigated) {
-        return docsPlatformFailure('failed');
+      if (currentFragment !== fragment) {
+        const navigated = await this.router.navigate([], {
+          fragment,
+          queryParamsHandling: 'preserve',
+        });
+
+        if (!navigated) {
+          return docsPlatformFailure('failed');
+        }
       }
 
       const target = this.document.getElementById(fragment);

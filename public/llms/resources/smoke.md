@@ -3,7 +3,7 @@
 > External consumer verification for package imports, styles, and providers.
 
 - Status: available
-- Route: /smoke
+- Route: /resources/smoke
 - Package: @kikita-labs/ui@1.4.0
 
 ## Content
