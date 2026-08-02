@@ -109,6 +109,14 @@ on npm is now stale relative to the repo.
 Never publish `@kikita-labs/ui-mcp` (or any package) silently, and never bury a
 pending-publish decision inside a longer report. Stop and ask the user
 explicitly — a standalone question, not a trailing bullet in a summary — before
-bumping `mcp/package.json` or running `npm run publish:mcp` /
-`npm publish ./mcp`. This applies every time the sync detects drift, even if a
-prior sync in the same session already asked and was told yes.
+bumping `mcp/package.json` or publishing. This applies every time the sync
+detects drift, even if a prior sync in the same session already asked and was
+told yes.
+
+Publishing happens through `.github/workflows/publish-mcp.yml` (Trusted
+Publishing / OIDC), triggered by pushing a `mcp-v*` tag — not by running
+`npm publish` locally. A local publish will fail (a stale `~/.npmrc` npm token
+surfaces as a misleading 404, not 401) and is not how this package is meant to
+ship. After the user confirms, the flow is: bump `mcp/package.json`, commit,
+push to `main`, then `git tag mcp-v<version>` and
+`git push origin mcp-v<version>`.
