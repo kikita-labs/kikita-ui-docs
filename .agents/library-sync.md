@@ -99,3 +99,16 @@ The generator owns:
 
 Do not hand-edit those files. Fix the source manifest, source docs, examples,
 API schema, foundation page, or generator instead.
+
+## MCP Package Republishing
+
+`pnpm generate:agent-surface` writes `mcp/generated/kikita-agent-data.json`. If
+that file changed (`git status --short mcp/`), the `@kikita-labs/ui-mcp` package
+on npm is now stale relative to the repo.
+
+Never publish `@kikita-labs/ui-mcp` (or any package) silently, and never bury a
+pending-publish decision inside a longer report. Stop and ask the user
+explicitly — a standalone question, not a trailing bullet in a summary — before
+bumping `mcp/package.json` or running `npm run publish:mcp` /
+`npm publish ./mcp`. This applies every time the sync detects drift, even if a
+prior sync in the same session already asked and was told yes.
