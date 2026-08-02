@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/card
-- Package: @kikita-labs/ui@1.4.0
+- Package: @kikita-labs/ui@1.4.1
 - Import: KuiCardDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/card.md
 

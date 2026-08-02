@@ -29,13 +29,13 @@ export const INPUT_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "input-group-example.html",
       language: "html",
-      code: "<kui-field label=\"Project URL\" hint=\"Affixes are visual field chrome.\">\n  <div class=\"kui-input-group input-group-example\">\n    <span kuiFieldAffix>https://</span>\n    <input kuiInput aria-label=\"Project slug\" value=\"kikita-ui\" />\n    <span kuiFieldAffix>.dev</span>\n  </div>\n</kui-field>",
+      code: "<kui-field label=\"Project URL\" hint=\"Affixes are visual field chrome.\" class=\"input-group-example\">\n  <span kuiFieldAffix>https://</span>\n  <input kuiInput aria-label=\"Project slug\" value=\"kikita-ui\" />\n  <span kuiFieldAffix>.dev</span>\n</kui-field>",
     },
     {
       label: "TS",
       filename: "input-group-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiFieldAffixDirective,\n  KuiFieldComponent,\n  KuiInputDirective,\n  KuiInputGroupDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-input-group-example',\n  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective, KuiInputGroupDirective],\n  templateUrl: './input-group-example.html',\n  styleUrl: './input-group-example.scss',\n})\nexport class InputGroupExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-input-group-example',\n  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective],\n  templateUrl: './input-group-example.html',\n  styleUrl: './input-group-example.scss',\n})\nexport class InputGroupExample {}",
     },
     {
       label: "SCSS",

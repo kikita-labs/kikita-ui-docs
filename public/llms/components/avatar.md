@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/avatar
-- Package: @kikita-labs/ui@1.4.0
+- Package: @kikita-labs/ui@1.4.1
 - Import: KuiAvatarComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/avatar.md
 

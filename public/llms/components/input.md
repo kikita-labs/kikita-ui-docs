@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/input
-- Package: @kikita-labs/ui@1.4.0
+- Package: @kikita-labs/ui@1.4.1
 - Import: KuiInputDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/input.md
 
@@ -71,12 +71,10 @@ export class BasicInputExample {}
 #### input-group-example.html
 
 ```html
-<kui-field label="Project URL" hint="Affixes are visual field chrome.">
-  <div class="kui-input-group input-group-example">
-    <span kuiFieldAffix>https://</span>
-    <input kuiInput aria-label="Project slug" value="kikita-ui" />
-    <span kuiFieldAffix>.dev</span>
-  </div>
+<kui-field label="Project URL" hint="Affixes are visual field chrome." class="input-group-example">
+  <span kuiFieldAffix>https://</span>
+  <input kuiInput aria-label="Project slug" value="kikita-ui" />
+  <span kuiFieldAffix>.dev</span>
 </kui-field>
 ```
 
