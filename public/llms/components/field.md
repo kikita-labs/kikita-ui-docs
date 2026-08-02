@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/field
-- Package: @kikita-labs/ui@1.4.1
+- Package: @kikita-labs/ui@1.4.2
 - Import: KuiFieldComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/field.md
 

@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/select
-- Package: @kikita-labs/ui@1.4.1
+- Package: @kikita-labs/ui@1.4.2
 - Import: KuiSelectDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/select.md
 

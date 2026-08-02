@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/input
-- Package: @kikita-labs/ui@1.4.1
+- Package: @kikita-labs/ui@1.4.2
 - Import: KuiInputDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/input.md
 
@@ -83,16 +83,11 @@ export class BasicInputExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiFieldAffixDirective,
-  KuiFieldComponent,
-  KuiInputDirective,
-  KuiInputGroupDirective,
-} from '@kikita-labs/ui';
+import { KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-input-group-example',
-  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective, KuiInputGroupDirective],
+  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective],
   templateUrl: './input-group-example.html',
   styleUrl: './input-group-example.scss',
 })

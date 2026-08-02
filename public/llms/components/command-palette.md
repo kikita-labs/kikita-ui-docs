@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/command-palette
-- Package: @kikita-labs/ui@1.4.1
+- Package: @kikita-labs/ui@1.4.2
 - Import: KuiCommandPaletteComponent from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/command-palette.md
 
