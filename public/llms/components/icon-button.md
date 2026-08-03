@@ -6,7 +6,7 @@
 - Route: /components/icon-button
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiIconButtonDirective from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/icon-button.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/icon-button.md
 
 ## Install
 

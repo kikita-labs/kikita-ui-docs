@@ -6,7 +6,7 @@
 - Route: /components/popover
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiPopoverComponent from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/popover.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/popover.md
 
 ## Install
 

@@ -6,7 +6,7 @@
 - Route: /components/accordion
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiAccordionComponent from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/accordion.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/accordion.md
 
 ## Install
 

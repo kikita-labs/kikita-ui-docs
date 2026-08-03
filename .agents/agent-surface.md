@@ -30,12 +30,17 @@ Use these sources in this order:
 3. Docs manifests under `src/app/pages/**/**/*.docs-manifest.ts`.
 4. API schemas under `src/app/pages/components/**/**/*.api-schema.ts`.
 5. Real example files under `examples/` and generated example source modules.
-6. Sibling library docs under `../kikita-ui/docs/*.md`.
-7. Sibling library release notes and status files.
+6. The published library's authored docs, fetched over the network from
+   `kikita-labs/kikita-ui`'s GitHub release tag matching the installed
+   `@kikita-labs/ui` version (`raw.githubusercontent.com/kikita-labs/kikita-ui/v<version>/docs/<slug>.md`),
+   never from a local sibling checkout.
+7. The published library's release notes and status files, fetched the same
+   way when needed.
 
-Never publish unreleased sibling library behavior as available. If the sibling
-source has newer APIs than the installed package, mark the agent-surface update
-blocked until the package dependency is updated.
+Never publish unreleased library behavior as available. This repo has no
+access to unreleased library source -- only to what the matching release tag
+actually shipped -- so there is nothing to accidentally leak ahead of a
+release.
 
 ## Required Updates
 
@@ -123,8 +128,8 @@ separate plan, explicit user confirmation, clear input schemas, and tests.
 Publish through `.github/workflows/publish-mcp.yml`: pushing a `mcp-v*` tag runs
 CI (checkout, install, MCP smoke check, `npm publish ./mcp`) and authenticates
 via npm Trusted Publishing (GitHub Actions OIDC, no `NPM_TOKEN`). CI does not
-regenerate the agent surface -- that reads sibling-repo source docs
-(`../kikita-ui/docs`) this checkout doesn't have. Run
+regenerate the agent surface -- it publishes exactly what was reviewed and
+committed, so a tag can't silently ship an unreviewed regeneration. Run
 `npm run generate:agent-surface` locally and commit the result _before_
 tagging, then bump `mcp/package.json` and tag and push
 (`git tag mcp-v<version> && git push origin mcp-v<version>`). Pushing the tag

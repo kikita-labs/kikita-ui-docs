@@ -12,11 +12,12 @@ Before writing code, collect the component facts from source-of-truth files:
 - Installed package version:
   - `package.json`
   - `pnpm-lock.yaml`
-- Library docs and status:
-  - `../kikita-ui/CHANGELOG.md`
-  - `../kikita-ui/docs/<primitive>.md`
-  - `../kikita-ui/docs/component-roadmap.md`
-  - `../kikita-ui/docs/state-coverage.md`
+- Library docs and status, fetched over the network from the public
+  `kikita-labs/kikita-ui` repository (never a local sibling checkout):
+  - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/main/CHANGELOG.md`
+  - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/<primitive>.md`
+  - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/component-roadmap.md`
+  - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/state-coverage.md`
 
 Do not document unreleased library behavior as available in the docs app. If the
 library source has a newer API than the installed `@kikita-labs/ui` package,
@@ -377,7 +378,8 @@ consumer-visible change that affects examples.
 
 Use it for:
 
-- Breaking changes in `../kikita-ui/CHANGELOG.md`.
+- Breaking changes in `kikita-labs/kikita-ui`'s `CHANGELOG.md` (fetched over
+  the network, see Required Inputs above).
 - API renames.
 - Input value moves, such as `appearance` values moving to `shape`.
 - Behavior differences between installed package and unreleased source.

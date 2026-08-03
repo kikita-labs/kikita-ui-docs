@@ -26,13 +26,17 @@ Always read:
 
 For Angular work, use `angularCliKikitaDocs.list_projects` first.
 
-For docs that describe library primitives, also read the source-of-truth files in
-the sibling library repository:
+For docs that describe library primitives, also fetch the source-of-truth files
+from the public `kikita-labs/kikita-ui` GitHub repository over the network --
+never from a local sibling checkout:
 
-- `../kikita-ui/CHANGELOG.md`
-- `../kikita-ui/docs/<primitive>.md`
-- `../kikita-ui/docs/component-roadmap.md`
-- `../kikita-ui/docs/state-coverage.md`
+- `https://raw.githubusercontent.com/kikita-labs/kikita-ui/main/CHANGELOG.md`
+- `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/<primitive>.md`
+- `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/component-roadmap.md`
+- `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/state-coverage.md`
+
+`<installed-version>` is the `@kikita-labs/ui` version from `package.json`;
+`kikita-labs/kikita-ui` tags every release `v<version>`.
 
 For component documentation page work, also read:
 
@@ -93,11 +97,11 @@ not silently fall back to guesses.
 
 ## Source Of Truth
 
-The sibling library repository remains the implementation source of truth:
-
-```text
-../kikita-ui
-```
+The published `@kikita-labs/ui` package remains the implementation source of
+truth. This repo never depends on a local checkout of the library repo --
+fetch `kikita-labs/kikita-ui` docs/changelog content over the network when
+needed (see above), and rely on `node_modules/@kikita-labs/ui` for the
+installed package's own typings and metadata.
 
 The docs app is the external consumer proof. It must verify package imports,
 styles, providers, and examples through the installed `@kikita-labs/ui` package.

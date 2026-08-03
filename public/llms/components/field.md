@@ -6,7 +6,7 @@
 - Route: /components/field
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiFieldComponent from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/field.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/field.md
 
 ## Install
 

@@ -8,5 +8,5 @@
 - Do not commit unless the user asks for a commit or the current task explicitly
   includes committing.
 - Before committing, check whether the docs change depends on a library release.
-- If docs were updated because of `../kikita-ui/CHANGELOG.md`, mention that in
-  the commit body without adding AI attribution.
+- If docs were updated because of a `kikita-labs/kikita-ui` changelog entry,
+  mention that in the commit body without adding AI attribution.

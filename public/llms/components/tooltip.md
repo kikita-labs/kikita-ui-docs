@@ -6,7 +6,7 @@
 - Route: /components/tooltip
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiTooltipDirective from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/tooltip.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/tooltip.md
 
 ## Install
 

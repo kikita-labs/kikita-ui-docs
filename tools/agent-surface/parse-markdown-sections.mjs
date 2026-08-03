@@ -1,8 +1,9 @@
 /**
  * Splits a Markdown document into its top-level `## ` sections. Used to pull structured facts
- * (Usage, Accessibility) out of the sibling library's authored `../kikita-ui/docs/<slug>.md`
- * files instead of scraping rendered Angular templates, per `.agents/agent-surface.md`'s
- * "prefer structured generators over scraping rendered HTML" rule.
+ * (Usage, Accessibility) out of the published library's authored source doc -- fetched over the
+ * network from `kikita-labs/kikita-ui`'s release tag, never a local checkout -- instead of
+ * scraping rendered Angular templates, per `.agents/agent-surface.md`'s "prefer structured
+ * generators over scraping rendered HTML" rule.
  *
  * @param {string} source
  * @returns {Map<string, string>} heading text (without `## `) -> trimmed section body

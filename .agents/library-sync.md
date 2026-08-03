@@ -1,10 +1,8 @@
 # Library Sync Rules
 
-The sibling library repository is the source of truth:
-
-```text
-../kikita-ui
-```
+The published `kikita-labs/kikita-ui` package and its GitHub repository are the
+source of truth. Never depend on a local sibling checkout -- fetch what's
+needed over the network.
 
 The docs app is an external consumer. It must track the published package, not
 private source state.
@@ -20,12 +18,14 @@ Before creating or changing docs for a Kikita UI primitive:
    published version:
    - `npm view @kikita-labs/ui version license dist-tags.latest --@kikita-labs:registry=https://registry.npmjs.org`
    - `npm view @kikita-labs/ui versions --json --@kikita-labs:registry=https://registry.npmjs.org`
-3. Check the sibling library changelog:
-   - `../kikita-ui/CHANGELOG.md`
-4. Check source documentation in the library:
-   - `../kikita-ui/docs/<primitive>.md`
-   - `../kikita-ui/docs/component-roadmap.md`
-   - `../kikita-ui/docs/state-coverage.md`
+3. Check the library changelog:
+   - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/main/CHANGELOG.md`
+4. Check source documentation in the library, at the release tag matching the
+   installed version (`kikita-labs/kikita-ui` tags every release
+   `v<version>`):
+   - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/<primitive>.md`
+   - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/component-roadmap.md`
+   - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/state-coverage.md`
 
 The latest metadata must match the target version and license, and
 `versions --json` must include the target version. If npm CLI metadata appears
@@ -60,7 +60,8 @@ version changes, update that line in the same commit.
 
 ## Changelog Handling
 
-Use `../kikita-ui/CHANGELOG.md` to detect user-visible library changes. If a
+Use `https://raw.githubusercontent.com/kikita-labs/kikita-ui/main/CHANGELOG.md`
+to detect user-visible library changes. If a
 change affects docs examples, API tables, migration notes, installation, theme
 setup, or component behavior, update the docs in the same docs-site task.
 

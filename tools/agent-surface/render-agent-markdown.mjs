@@ -4,8 +4,8 @@
  * package version, status, import, source doc link, then Install/Usage/Examples/API/
  * Accessibility/Playground sections for components.
  *
- * Usage and Accessibility prose comes from the sibling library's authored
- * `../kikita-ui/docs/<slug>.md` (via `parse-markdown-sections.mjs`) when available, never from
+ * Usage and Accessibility prose comes from the published library's authored source doc, fetched
+ * from its GitHub release tag (via `parse-markdown-sections.mjs`) when available, never from
  * scraping this app's Angular templates. API rows come from the local `.api-schema.ts` module (via
  * `parse-api-schema.mjs`), which is this repo's own verified source of truth for public API facts.
  */
@@ -41,8 +41,8 @@ function renderMetaList(entry) {
     lines.push(`- Import: ${entry.publicImportName} from ${entry.packageName}`);
   }
 
-  if (entry.sourceDocPath) {
-    lines.push(`- Source docs: ${entry.sourceDocPath}`);
+  if (entry.sourceDocUrl) {
+    lines.push(`- Source docs: ${entry.sourceDocUrl}`);
   }
 
   return lines.join('\n');

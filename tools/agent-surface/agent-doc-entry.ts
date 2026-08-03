@@ -31,8 +31,13 @@ export interface AgentDocEntry {
   readonly packageName: string;
   /** Installed `@kikita-labs/ui` version at generation time. */
   readonly packageVersion: string;
-  /** Repo-relative path to the sibling library source doc, or `null` when the kind has none. */
-  readonly sourceDocPath: string | null;
+  /**
+   * Public GitHub blob URL to the library's authored source doc at the release tag matching
+   * `packageVersion`, or `null` when the kind has none or the library repo has no doc for it.
+   */
+  readonly sourceDocUrl: string | null;
+  /** Raw Markdown fetched from `sourceDocUrl`, or `null` when `sourceDocUrl` is `null`. */
+  readonly sourceDocContent: string | null;
   /** Public `@kikita-labs/ui` import name, components only. */
   readonly publicImportName: string | null;
   /** Component category id, components only. */

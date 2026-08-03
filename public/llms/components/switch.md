@@ -6,7 +6,7 @@
 - Route: /components/switch
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiSwitchDirective from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/switch.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/switch.md
 
 ## Install
 

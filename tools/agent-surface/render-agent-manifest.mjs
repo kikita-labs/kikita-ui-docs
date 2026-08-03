@@ -12,7 +12,7 @@ export function renderAgentManifest(entries) {
     packageVersion,
     generatedFrom: {
       docsRegistry: 'src/app/generated/docs-registry.ts',
-      sourceDocs: '../kikita-ui/docs',
+      sourceDocs: `https://github.com/kikita-labs/kikita-ui/tree/v${packageVersion}/docs`,
     },
     entries,
   };

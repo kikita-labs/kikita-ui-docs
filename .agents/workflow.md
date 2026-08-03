@@ -9,12 +9,13 @@ Follow this workflow for every non-trivial docs-site change.
 3. Run `git status --short` and identify unrelated user changes. Do not revert
    or rewrite unrelated changes.
 4. Use `angularCliKikitaDocs.list_projects` first for Angular workspace context.
-5. Before documenting or changing any Kikita UI primitive, inspect the sibling
-   library repository:
-   - `../kikita-ui/docs/<primitive>.md`
-   - `../kikita-ui/docs/component-roadmap.md`
-   - `../kikita-ui/docs/state-coverage.md`
-   - `../kikita-ui/CHANGELOG.md`
+5. Before documenting or changing any Kikita UI primitive, fetch the published
+   library's docs over the network from `kikita-labs/kikita-ui` (never a local
+   sibling checkout):
+   - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/<primitive>.md`
+   - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/component-roadmap.md`
+   - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/v<installed-version>/docs/state-coverage.md`
+   - `https://raw.githubusercontent.com/kikita-labs/kikita-ui/main/CHANGELOG.md`
 6. Verify the installed `@kikita-labs/ui` package version in `package.json` and
    lockfile before writing examples that depend on newly released APIs.
 7. Use Kikita UI public package imports only. Do not import source files from the

@@ -2,15 +2,23 @@ import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import { relative, resolve } from 'node:path';
 
+const LIBRARY_REPO = 'kikita-labs/kikita-ui';
+
 /**
  * Derives the agent surface entry list from `DOCS_REGISTRY` inputs: component/foundation/resource
- * docs manifests, API schema files, sibling library docs, and the installed package version.
+ * docs manifests, API schema files, the published library's release docs, and the installed
+ * package version.
  *
  * Parses `.docs-manifest.ts` source text with the same regex approach as
  * `tools/generate-example-sources.mjs` instead of importing the TypeScript modules, so this stays a
  * plain Node script with no Angular/TypeScript compilation step and never risks evaluating a
  * `loadPage`/`loadPlayground` dynamic import. See `tools/agent-surface/agent-doc-entry.ts` for the
  * output shape.
+ *
+ * Component source docs come from the library's GitHub release tag matching the installed
+ * `@kikita-labs/ui` version (`raw.githubusercontent.com/${LIBRARY_REPO}/v<version>/docs/<slug>.md`),
+ * never from a local sibling checkout -- this repo must build and generate on its own, with only
+ * network access to the public library repo.
  *
  * @returns {Promise<import('./agent-doc-entry.js').AgentDocEntry[]>}
  */
@@ -49,7 +57,8 @@ async function collectHomeEntry(workspace, packageName, packageVersion) {
     status: 'available',
     packageName,
     packageVersion,
-    sourceDocPath: null,
+    sourceDocUrl: null,
+    sourceDocContent: null,
     publicImportName: null,
     category: null,
     exampleIds: [],
@@ -78,7 +87,8 @@ async function collectFoundationEntries(workspace, packageName, packageVersion) 
         status: 'available',
         packageName,
         packageVersion,
-        sourceDocPath: null,
+        sourceDocUrl: null,
+        sourceDocContent: null,
         publicImportName: null,
         category: null,
         exampleIds: [],
@@ -100,7 +110,7 @@ async function collectComponentEntries(workspace, packageName, packageVersion) {
       const source = await readFile(manifestPath, 'utf8');
       const status = matchRequired(source, /\bstatus:\s*'([^']+)'/, manifestPath);
       const apiSchemaPath = resolve(featureRoot, `${slug}.api-schema.ts`);
-      const sourceDocPath = resolve(workspace, '../kikita-ui/docs', `${slug}.md`);
+      const sourceDoc = await fetchLibrarySourceDoc(packageVersion, slug);
 
       return {
         kind: 'component',
@@ -113,7 +123,8 @@ async function collectComponentEntries(workspace, packageName, packageVersion) {
         status,
         packageName,
         packageVersion,
-        sourceDocPath: existsSync(sourceDocPath) ? toPosixRelative(workspace, sourceDocPath) : null,
+        sourceDocUrl: sourceDoc.url,
+        sourceDocContent: sourceDoc.content,
         publicImportName: matchRequired(source, /\bimportName:\s*'([^']+)'/, manifestPath),
         category: matchRequired(source, /\bcategory:\s*'([^']+)'/, manifestPath),
         exampleIds: matchExampleIds(source),
@@ -122,6 +133,32 @@ async function collectComponentEntries(workspace, packageName, packageVersion) {
       };
     }),
   );
+}
+
+/**
+ * Fetches a component's authored doc from the published library's GitHub release tag, which
+ * always matches the installed `@kikita-labs/ui` version (`kikita-labs/kikita-ui` tags every
+ * release `v<version>`). Returns `{ url: null, content: null }` when the library repo has no doc
+ * for this slug (a 404 is expected, not an error). Any other fetch failure throws, since a silent
+ * `null` there would make the agent surface look complete when it actually couldn't reach GitHub.
+ */
+async function fetchLibrarySourceDoc(packageVersion, slug) {
+  const tag = `v${packageVersion}`;
+  const rawUrl = `https://raw.githubusercontent.com/${LIBRARY_REPO}/${tag}/docs/${slug}.md`;
+  const response = await fetch(rawUrl);
+
+  if (response.status === 404) {
+    return { url: null, content: null };
+  }
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${rawUrl}: ${response.status} ${response.statusText}`);
+  }
+
+  return {
+    url: `https://github.com/${LIBRARY_REPO}/blob/${tag}/docs/${slug}.md`,
+    content: await response.text(),
+  };
 }
 
 async function collectResourceEntries(workspace, packageName, packageVersion) {
@@ -155,7 +192,8 @@ async function collectResourceEntries(workspace, packageName, packageVersion) {
       status: 'available',
       packageName,
       packageVersion,
-      sourceDocPath: null,
+      sourceDocUrl: null,
+      sourceDocContent: null,
       publicImportName: null,
       category: null,
       exampleIds: matchExampleIds(source),

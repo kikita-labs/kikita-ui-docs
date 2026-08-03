@@ -104,8 +104,8 @@ async function buildEntryContext(entry, workspaceRoot) {
   const apiRows = entry.apiSchemaPath
     ? parseApiSchemaRows(await readFile(resolve(workspaceRoot, entry.apiSchemaPath), 'utf8'))
     : [];
-  const sourceDocSections = entry.sourceDocPath
-    ? splitMarkdownSections(await readFile(resolve(workspaceRoot, entry.sourceDocPath), 'utf8'))
+  const sourceDocSections = entry.sourceDocContent
+    ? splitMarkdownSections(entry.sourceDocContent)
     : new Map();
   const exampleSources = await collectExampleSources(entry, workspaceRoot);
 
@@ -307,8 +307,8 @@ function checkEntryConsistency(allEntries) {
       failures.push(`component "${entry.slug}" is missing category`);
     }
 
-    if (entry.kind === 'component' && entry.status === 'available' && !entry.sourceDocPath) {
-      failures.push(`available component "${entry.slug}" is missing sourceDocPath`);
+    if (entry.kind === 'component' && entry.status === 'available' && !entry.sourceDocContent) {
+      failures.push(`available component "${entry.slug}" is missing sourceDocContent`);
     }
 
     if (entry.kind === 'component' && entry.status === 'available' && !entry.apiSchemaPath) {

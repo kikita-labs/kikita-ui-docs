@@ -34,9 +34,8 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       # mcp/generated/kikita-agent-data.json is committed, not regenerated
-      # here: generation reads sibling-repo source docs (../kikita-ui/docs)
-      # that this checkout doesn't have. Regenerate and commit it locally
-      # before tagging a release.
+      # here, so a tag always publishes exactly what was reviewed. Regenerate
+      # and commit it locally (pnpm generate:agent-surface) before tagging.
       - run: npm run check:mcp
 
       - run: npm publish ./mcp --access public --@kikita-labs:registry=https://registry.npmjs.org/

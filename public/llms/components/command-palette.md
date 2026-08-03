@@ -6,7 +6,7 @@
 - Route: /components/command-palette
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiCommandPaletteComponent from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/command-palette.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/command-palette.md
 
 ## Install
 

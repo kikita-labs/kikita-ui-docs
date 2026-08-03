@@ -6,7 +6,7 @@
 - Route: /components/card
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiCardDirective from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/card.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/card.md
 
 ## Install
 

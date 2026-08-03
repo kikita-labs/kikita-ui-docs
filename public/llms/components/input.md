@@ -6,7 +6,7 @@
 - Route: /components/input
 - Package: @kikita-labs/ui@1.4.4
 - Import: KuiInputDirective from @kikita-labs/ui
-- Source docs: ../kikita-ui/docs/input.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/input.md
 
 ## Install
 

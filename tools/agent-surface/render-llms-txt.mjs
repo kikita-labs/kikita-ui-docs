@@ -60,7 +60,7 @@ export function renderLlmsFullTxt(entries, contentByMarkdownPath) {
       '',
       `<!-- route: ${entry.route} -->`,
       `<!-- markdown: ${markdownPathToUrl(entry.markdownPath)} -->`,
-      entry.sourceDocPath ? `<!-- source: ${entry.sourceDocPath} -->` : null,
+      entry.sourceDocUrl ? `<!-- source: ${entry.sourceDocUrl} -->` : null,
       `<!-- package: ${entry.packageName}@${entry.packageVersion} -->`,
       '',
       content.trim(),
