@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/chip
-- Package: @kikita-labs/ui@1.4.4
+- Package: @kikita-labs/ui@1.5.0
 - Import: KuiChipDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/chip.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.5.0/docs/chip.md
 
 ## Install
 

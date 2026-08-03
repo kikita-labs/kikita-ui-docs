@@ -30,6 +30,25 @@
   </app-doc-section>
 
   <app-doc-section
+    heading="Version notes"
+    description="Changes introduced in @kikita-labs/ui v1.5.0 that affect existing markup."
+  >
+    <ul class="segmented-page__notes">
+      <li>
+        Segmented now implements <code>FormValueControl&lt;string&gt;</code> and accepts
+        <code>[formField]</code> directly on <code>kui-segmented</code> for Signal Forms
+        integration.
+      </li>
+      <li>
+        The <code>selected</code>/<code>selectedChange</code> model is deprecated in favor of
+        <code>value</code>/<code>valueChange</code>. Existing <code>[(selected)]</code> bindings
+        keep working and stay in sync with <code>value</code>, but are planned for removal in the
+        next major version. New markup should use <code>[(value)]</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
     heading="Accessibility"
     description="Segmented uses radiogroup semantics while preserving native button focus."
   >

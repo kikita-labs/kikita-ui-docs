@@ -44,7 +44,7 @@ describe('SegmentedPage', () => {
     const segments = [...root.querySelectorAll<HTMLButtonElement>('app-live-preview button')];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Segmented');
-    expect(sectionIds).toEqual(['import', 'usage', 'api', 'accessibility']);
+    expect(sectionIds).toEqual(['import', 'usage', 'api', 'version-notes', 'accessibility']);
     expect(group?.getAttribute('role')).toBe('radiogroup');
     expect(segments.map((segment) => segment.getAttribute('role'))).toContain('radio');
   });

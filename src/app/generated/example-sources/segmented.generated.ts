@@ -9,7 +9,7 @@ export const SEGMENTED_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-segmented-example.html",
       language: "html",
-      code: "<div class=\"basic-segmented-example\">\n  <kui-segmented [(selected)]=\"view\" aria-label=\"Project view\">\n    <button kuiSegment value=\"list\">List</button>\n    <button kuiSegment value=\"board\">Board</button>\n    <button kuiSegment value=\"timeline\">Timeline</button>\n  </kui-segmented>\n\n  <p>Selected view: {{ view() }}</p>\n</div>",
+      code: "<div class=\"basic-segmented-example\">\n  <kui-segmented [(value)]=\"view\" aria-label=\"Project view\">\n    <button kuiSegment value=\"list\">List</button>\n    <button kuiSegment value=\"board\">Board</button>\n    <button kuiSegment value=\"timeline\">Timeline</button>\n  </kui-segmented>\n\n  <p>Selected view: {{ view() }}</p>\n</div>",
     },
     {
       label: "TS",

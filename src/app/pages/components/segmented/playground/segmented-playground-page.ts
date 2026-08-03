@@ -19,7 +19,7 @@ const SEGMENTED_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'size',
     label: 'size',
     kind: 'enum',
-    options: ['sm', 'md', 'lg'],
+    options: ['xs', 'sm', 'md', 'lg'],
     defaultValue: 'md',
   },
   { key: 'disabledTimeline', label: 'disabled timeline', kind: 'boolean', defaultValue: false },
@@ -51,7 +51,7 @@ export class SegmentedPlaygroundPage {
       {
         label: 'HTML',
         language: 'html',
-        code: `<kui-segmented [(selected)]="view" aria-label="Project view"${attrString}>
+        code: `<kui-segmented [(value)]="view" aria-label="Project view"${attrString}>
   <button kuiSegment value="list">List</button>
   <button kuiSegment value="board">Board</button>
   <button kuiSegment value="timeline"${disabledAttr}>Timeline</button>

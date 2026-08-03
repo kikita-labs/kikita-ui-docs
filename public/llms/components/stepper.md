@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/stepper
-- Package: @kikita-labs/ui@1.4.4
+- Package: @kikita-labs/ui@1.5.0
 - Import: KuiStepperComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.4.4/docs/stepper.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.5.0/docs/stepper.md
 
 ## Install
 
