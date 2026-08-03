@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, signal, untracked } from '@angular/core';
 
 import {
   KuiAccordionComponent,
@@ -40,9 +40,8 @@ export class PageToc {
 
   private readonly headingObservationEffect = effect((onCleanup) => {
     const links = this.links();
-    const activeLinkId = this.activeLinkId();
 
-    if (!links.some((link) => link.id === activeLinkId)) {
+    if (!links.some((link) => link.id === untracked(this.activeLinkId))) {
       this.activeLinkId.set(links[0]?.id ?? null);
     }
 

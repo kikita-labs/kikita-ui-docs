@@ -1,6 +1,5 @@
-import { isPlatformBrowser, ViewportScroller } from '@angular/common';
+import { isPlatformBrowser, Location, ViewportScroller } from '@angular/common';
 import { DOCUMENT, inject, Injectable, PLATFORM_ID } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { DocsMediaService } from '../media';
 import { docsPlatformFailure, type DocsPlatformResult, docsPlatformSuccess } from '../result';
@@ -11,8 +10,8 @@ const DOCS_ANCHOR_OFFSET = 84;
 export class DocsAnchorNavigationService {
   private readonly document = inject(DOCUMENT);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly location = inject(Location);
   private readonly media = inject(DocsMediaService);
-  private readonly router = inject(Router);
   private readonly viewportScroller = inject(ViewportScroller);
 
   public async navigate(fragment: string): Promise<DocsPlatformResult<void>> {
@@ -21,17 +20,16 @@ export class DocsAnchorNavigationService {
     }
 
     try {
-      const currentFragment = this.router.url.split('#')[1];
+      const currentPath = this.location.path(true);
+      const currentFragment = currentPath.split('#')[1];
 
       if (currentFragment !== fragment) {
-        const navigated = await this.router.navigate([], {
-          fragment,
-          queryParamsHandling: 'preserve',
-        });
+        const [pathWithoutFragment] = currentPath.split('#');
 
-        if (!navigated) {
-          return docsPlatformFailure('failed');
-        }
+        // Location.go() updates the URL without a Router navigation, so the
+        // Router's own scroll-position-restoration (which resets to top on
+        // every navigation) never fires and can't race our manual scroll below.
+        this.location.go(`${pathWithoutFragment}#${fragment}`);
       }
 
       const target = this.document.getElementById(fragment);

@@ -1,26 +1,27 @@
-import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { DOCUMENT, Location, ViewportScroller } from '@angular/common';
 import { PLATFORM_ID, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 
 import { DocsMediaService } from '../media';
 import { DocsAnchorNavigationService } from './docs-anchor-navigation.service';
 
 describe('DocsAnchorNavigationService', () => {
-  const navigate = vi.fn().mockResolvedValue(true);
+  const go = vi.fn();
+  const path = vi.fn().mockReturnValue('/current');
   const getScrollPosition = vi.fn().mockReturnValue([0, 100]);
   const scrollToPosition = vi.fn();
   const prefersReducedMotion = signal(false);
 
   beforeEach(() => {
-    navigate.mockClear();
+    go.mockClear();
+    path.mockClear().mockReturnValue('/current');
     getScrollPosition.mockClear();
     scrollToPosition.mockClear();
     prefersReducedMotion.set(false);
     TestBed.configureTestingModule({
       providers: [
         DocsAnchorNavigationService,
-        { provide: Router, useValue: { navigate, url: '/current' } },
+        { provide: Location, useValue: { go, path } },
         { provide: ViewportScroller, useValue: { getScrollPosition, scrollToPosition } },
         { provide: DocsMediaService, useValue: { prefersReducedMotion } },
       ],
@@ -53,10 +54,7 @@ describe('DocsAnchorNavigationService', () => {
     const result = await TestBed.inject(DocsAnchorNavigationService).navigate('target');
 
     expect(result.ok).toBe(true);
-    expect(navigate).toHaveBeenCalledWith([], {
-      fragment: 'target',
-      queryParamsHandling: 'preserve',
-    });
+    expect(go).toHaveBeenCalledWith('/current#target');
     expect(scrollToPosition).toHaveBeenCalledWith([0, 36], { behavior: 'smooth' });
     expect(focus).toHaveBeenCalledWith({ preventScroll: true });
   });
@@ -78,15 +76,12 @@ describe('DocsAnchorNavigationService', () => {
 
     heading.id = 'target';
     document.body.appendChild(heading);
-
-    TestBed.overrideProvider(Router, {
-      useValue: { navigate, url: '/current#target' },
-    });
+    path.mockReturnValue('/current#target');
 
     const result = await TestBed.inject(DocsAnchorNavigationService).navigate('target');
 
     expect(result.ok).toBe(true);
-    expect(navigate).not.toHaveBeenCalled();
+    expect(go).not.toHaveBeenCalled();
     expect(scrollToPosition).toHaveBeenCalled();
   });
 
@@ -103,7 +98,7 @@ describe('DocsAnchorNavigationService', () => {
         DocsAnchorNavigationService,
         { provide: PLATFORM_ID, useValue: 'server' },
         { provide: DOCUMENT, useValue: document },
-        { provide: Router, useValue: { navigate, url: '/current' } },
+        { provide: Location, useValue: { go, path } },
         { provide: ViewportScroller, useValue: { getScrollPosition, scrollToPosition } },
         { provide: DocsMediaService, useValue: { prefersReducedMotion } },
       ],

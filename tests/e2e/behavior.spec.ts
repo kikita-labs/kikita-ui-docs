@@ -352,7 +352,7 @@ test('keeps draft, not-found, and installed-package smoke routes recoverable', a
   await expect(page.getByText('Docs coming soon')).toBeVisible();
   await expect(page.getByRole('heading', { level: 1, name: 'Foundations' })).toBeFocused();
 
-  await gotoReady(page, '/smoke');
+  await gotoReady(page, '/resources/smoke');
   await expect(page.getByRole('heading', { level: 1, name: 'Package Smoke' })).toBeFocused();
   await expect(page.getByText('Package loaded')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Verified import' })).toBeVisible();
