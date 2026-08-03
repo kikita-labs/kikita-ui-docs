@@ -51,6 +51,13 @@ checks, installs, and publishes. A user-level `.npmrc` scope override can beat a
 plain `--registry` flag and accidentally send `@kikita-labs/*` to GitHub
 Packages.
 
+## Keep README In Sync
+
+`README.md`'s "Package Sync" section hard-codes the installed
+`@kikita-labs/ui` version in a fenced code block. Nothing checks this string
+automatically, so it silently drifts if skipped. Whenever the dependency
+version changes, update that line in the same commit.
+
 ## Changelog Handling
 
 Use `../kikita-ui/CHANGELOG.md` to detect user-visible library changes. If a
