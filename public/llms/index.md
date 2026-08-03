@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /
-- Package: @kikita-labs/ui@1.4.3
+- Package: @kikita-labs/ui@1.4.4
 
 ## Foundations
 

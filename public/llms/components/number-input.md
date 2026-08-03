@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/number-input
-- Package: @kikita-labs/ui@1.4.3
+- Package: @kikita-labs/ui@1.4.4
 - Import: KuiNumberInputDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/number-input.md
 

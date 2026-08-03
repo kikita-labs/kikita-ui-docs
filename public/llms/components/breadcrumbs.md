@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /components/breadcrumbs
-- Package: @kikita-labs/ui@1.4.3
+- Package: @kikita-labs/ui@1.4.4
 - Import: KuiBreadcrumbsDirective from @kikita-labs/ui
 - Source docs: ../kikita-ui/docs/breadcrumbs.md
 
