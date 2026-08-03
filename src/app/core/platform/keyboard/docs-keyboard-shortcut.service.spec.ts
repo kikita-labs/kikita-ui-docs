@@ -30,7 +30,9 @@ describe('DocsKeyboardShortcutService', () => {
     const onOpen = vi.fn();
     TestBed.inject(DocsKeyboardShortcutService).registerCommandPalette(onOpen);
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { ctrlKey: true, key: 'л', code: 'KeyK' }));
+    document.dispatchEvent(
+      new KeyboardEvent('keydown', { ctrlKey: true, key: '\u043b', code: 'KeyK' }),
+    );
 
     expect(onOpen).toHaveBeenCalledOnce();
   });
