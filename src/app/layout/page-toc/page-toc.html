@@ -33,8 +33,7 @@
         orientation="vertical"
         inverted
         [controlsPanels]="false"
-        [selected]="activeLinkId() ?? ''"
-        (selectedChange)="scrollToSelectedLink($event)"
+        [(value)]="selectedTabValue"
         aria-label="Page sections"
       >
         @for (link of links(); track link.id) {

@@ -16,9 +16,9 @@
             </span>
             <kui-segmented
               size="sm"
-              [selected]="stringValue(control.key)"
+              [value]="stringValue(control.key)"
               [attr.aria-labelledby]="controlLabelId(control.key)"
-              (selectedChange)="setValue(control.key, $event)"
+              (valueChange)="setValue(control.key, $event)"
             >
               @for (option of control.options; track option) {
                 <button kuiSegment type="button" [value]="option">{{ option }}</button>

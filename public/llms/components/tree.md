@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/tree
-- Package: @kikita-labs/ui@1.5.0
+- Package: @kikita-labs/ui@1.6.0
 - Import: KuiTreeComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.5.0/docs/tree.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.6.0/docs/tree.md
 
 ## Install
 
@@ -18,7 +18,7 @@ ng add @kikita-labs/ui
 ## Usage
 
 ```html
-<kui-tree ariaLabel="Project explorer" [data]="nodes" [(selected)]="selectedId" />
+<kui-tree ariaLabel="Project explorer" [data]="nodes" [(value)]="selectedId" />
 ```
 
 ```ts
@@ -49,7 +49,7 @@ Rendered at /components/tree:
   <kui-tree
     ariaLabel="Project files"
     [data]="nodes"
-    [(selected)]="selectedId"
+    [(value)]="selectedId"
     [(expandedIds)]="expandedIds"
   />
 </div>
@@ -112,7 +112,8 @@ export class BasicTreeExample {
 | data | readonly KuiTreeNode[] | [] | Root nodes rendered by the tree. |
 | ariaLabel | string | 'Tree' | Accessible name for the role="tree" container. |
 | mobile | boolean | false | Increases toggle hit targets to support touch layouts. |
-| [(selected)] | string \| null | null | Controlled selected node id in display mode. |
+| [(value)] | string \| null | null | Controlled selected node id in display mode. |
+| [(selected)] | string \| null | null | Deprecated alias for value, kept in sync with it. Use value instead; planned for removal in the next major version. |
 | [(checkedIds)] | string[] | [] | Controlled checked node ids in checkable mode. |
 | [(expandedIds)] | string[] | [] | Controlled expanded node ids. |
 | loadChildren | (node: KuiTreeNode) => Promise<readonly KuiTreeNode[]> | - | Lazy child loader called once for nodes marked lazy. |

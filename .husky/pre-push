@@ -1,5 +1,6 @@
 pnpm lint
 pnpm check:generated
 pnpm check:migration-debt
+pnpm test
 pnpm build
 pnpm check:performance

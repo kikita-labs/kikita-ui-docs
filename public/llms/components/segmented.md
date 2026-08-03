@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/segmented
-- Package: @kikita-labs/ui@1.5.0
+- Package: @kikita-labs/ui@1.6.0
 - Import: KuiSegmentedComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.5.0/docs/segmented.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.6.0/docs/segmented.md
 
 ## Install
 

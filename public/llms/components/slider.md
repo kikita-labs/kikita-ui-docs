@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/slider
-- Package: @kikita-labs/ui@1.5.0
+- Package: @kikita-labs/ui@1.6.0
 - Import: KuiSliderDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.5.0/docs/slider.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.6.0/docs/slider.md
 
 ## Install
 

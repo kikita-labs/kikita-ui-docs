@@ -98,7 +98,7 @@ export class TabsPlaygroundPage {
   <div kuiTabPanel value="logs">${escapePlaygroundHtml(tab3Label)} content.</div>`
       : '';
 
-    const code = `<kui-tabs [(selected)]="activeTab"${tabsAttrs ? ` ${tabsAttrs}` : ''}>
+    const code = `<kui-tabs [(value)]="activeTab"${tabsAttrs ? ` ${tabsAttrs}` : ''}>
   <button kuiTab value="overview">${escapePlaygroundHtml(tab1Label)}</button>
   <button kuiTab value="settings"${showError ? ` hasError errorLabel="Contains errors"` : ''}>${escapePlaygroundHtml(tab2Label)}</button>
   <button kuiTab value="logs">${escapePlaygroundHtml(tab3Label)}</button>${panels}

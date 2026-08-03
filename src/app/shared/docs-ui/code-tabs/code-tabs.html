@@ -4,9 +4,8 @@
       <kui-segmented
         class="code-tabs__segments"
         size="xs"
-        [selected]="selectedValue()"
+        [(value)]="selectedValue"
         [attr.aria-label]="label()"
-        (selectedChange)="selectTabValue($event)"
       >
         @for (tab of tabs(); track tab.label; let index = $index) {
           <button

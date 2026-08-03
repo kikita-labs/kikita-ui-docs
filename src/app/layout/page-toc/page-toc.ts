@@ -1,4 +1,13 @@
-import { Component, computed, effect, inject, input, signal, untracked } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  input,
+  linkedSignal,
+  signal,
+  untracked,
+} from '@angular/core';
 
 import {
   KuiAccordionComponent,
@@ -37,6 +46,7 @@ export class PageToc {
   protected readonly activeLinkLabel = computed(
     () => this.links().find((link) => link.id === this.activeLinkId())?.label ?? 'Sections',
   );
+  protected readonly selectedTabValue = linkedSignal<string>(() => this.activeLinkId() ?? '');
 
   private readonly headingObservationEffect = effect((onCleanup) => {
     const links = this.links();
@@ -53,18 +63,17 @@ export class PageToc {
     );
   });
 
-  protected scrollToLink(link: DocsSectionRegistration, event: MouseEvent): void {
-    event.preventDefault();
-    this.activateLink(link);
-  }
-
-  protected scrollToSelectedLink(linkId: string): void {
+  private readonly selectedTabEffect = effect(() => {
+    const linkId = this.selectedTabValue();
     const link = this.links().find((candidate) => candidate.id === linkId);
 
-    if (!link) {
-      return;
+    if (link) {
+      this.activateLink(link);
     }
+  });
 
+  protected scrollToLink(link: DocsSectionRegistration, event: MouseEvent): void {
+    event.preventDefault();
     this.activateLink(link);
   }
 

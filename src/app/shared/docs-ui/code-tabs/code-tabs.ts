@@ -5,6 +5,7 @@ import {
   type ElementRef,
   inject,
   input,
+  linkedSignal,
   signal,
   viewChildren,
 } from '@angular/core';
@@ -45,9 +46,13 @@ export class CodeTabs {
 
   protected readonly id = `code-tabs-${++nextCodeTabsId}`;
   protected readonly tabButtons = viewChildren<ElementRef<HTMLButtonElement>>('tabButton');
-  protected readonly selectedIndex = signal(0);
+  protected readonly selectedValue = linkedSignal<string>(() => this.tabs()[0]?.label ?? '');
+  protected readonly selectedIndex = computed(() => {
+    const index = this.tabs().findIndex((tab) => tab.label === this.selectedValue());
+
+    return index >= 0 ? index : 0;
+  });
   protected readonly selectedTab = computed(() => this.tabs()[this.selectedIndex()]);
-  protected readonly selectedValue = computed(() => this.selectedTab()?.label ?? '');
   protected readonly hasMultipleTabs = computed(() => this.tabs().length > 1);
   protected readonly headerLabel = computed(() => {
     const tab = this.selectedTab();
@@ -99,14 +104,10 @@ export class CodeTabs {
   }
 
   protected selectTab(index: number): void {
-    this.selectedIndex.set(index);
-  }
+    const tab = this.tabs()[index];
 
-  protected selectTabValue(value: string): void {
-    const index = this.tabs().findIndex((tab) => tab.label === value);
-
-    if (index >= 0) {
-      this.selectTab(index);
+    if (tab) {
+      this.selectedValue.set(tab.label);
     }
   }
 

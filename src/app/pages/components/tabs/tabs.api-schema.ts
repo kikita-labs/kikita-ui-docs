@@ -35,10 +35,17 @@ export const TABS_API_ROWS: readonly ApiTableRow[] = [
       'Whether tabs expose aria-controls links to projected kuiTabPanel elements. Set to false when tabs are used as navigation and content is rendered elsewhere, such as a router-outlet.',
   },
   {
-    name: 'selected',
+    name: '[(value)]',
     type: 'string',
     defaultValue: '-',
-    description: 'Value of the active tab. Two-way bindable with [(selected)].',
+    description: 'Value of the active tab.',
+  },
+  {
+    name: '[(selected)]',
+    type: 'string',
+    defaultValue: '-',
+    description:
+      'Deprecated alias for value, kept in sync with it. Use value instead; planned for removal in the next major version.',
   },
   {
     name: '[kuiTab] value',
@@ -65,7 +72,7 @@ export const TABS_API_ROWS: readonly ApiTableRow[] = [
     type: 'string',
     defaultValue: '-',
     description:
-      'Identifier matching a [kuiTab] value. Panel is shown when its value matches selected.',
+      'Identifier matching a [kuiTab] value. Panel is shown when its value matches the tabs value.',
   },
   {
     name: '--kui-tabs-gap',

@@ -2,9 +2,11 @@ import {
   afterNextRender,
   Component,
   computed,
+  effect,
   type ElementRef,
   inject,
   input,
+  linkedSignal,
   signal,
   viewChild,
 } from '@angular/core';
@@ -66,7 +68,7 @@ export class ApiPlaygroundViewport {
     this.previewIsDark() ? 'Use light preview theme' : 'Use dark preview theme',
   );
   protected readonly previewWidth = signal(MAX_PREVIEW_WIDTH);
-  protected readonly activePreset = computed<PlaygroundViewport | ''>(() => {
+  protected readonly activePreset = linkedSignal<PlaygroundViewport | ''>(() => {
     const width = this.previewWidth();
     const desktopWidth = this.maxPreviewWidth();
 
@@ -96,6 +98,10 @@ export class ApiPlaygroundViewport {
   constructor() {
     afterNextRender(() => {
       this.previewWidth.set(this.maxPreviewWidth());
+    });
+
+    effect(() => {
+      this.setViewportPreset(this.activePreset());
     });
   }
 

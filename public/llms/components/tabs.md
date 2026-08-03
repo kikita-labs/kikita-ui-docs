@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/tabs
-- Package: @kikita-labs/ui@1.5.0
+- Package: @kikita-labs/ui@1.6.0
 - Import: KuiTabsComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.5.0/docs/tabs.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.6.0/docs/tabs.md
 
 ## Install
 
@@ -18,7 +18,7 @@ ng add @kikita-labs/ui
 ## Usage
 
 ```html
-<kui-tabs [(selected)]="activeTab">
+<kui-tabs [(value)]="activeTab">
   <button kuiTab value="overview">Overview</button>
   <button kuiTab value="settings">Settings</button>
   <button kuiTab value="logs">Logs</button>
@@ -32,7 +32,7 @@ ng add @kikita-labs/ui
 ### Pill Variant
 
 ```html
-<kui-tabs variant="pill" [(selected)]="activeTab"> ... </kui-tabs>
+<kui-tabs variant="pill" [(value)]="activeTab"> ... </kui-tabs>
 ```
 
 ### Inverted Edge
@@ -43,7 +43,7 @@ the top edge. Vertical tabs render panels before the tab list and place the line
 indicator on the start edge.
 
 ```html
-<kui-tabs inverted [(selected)]="activeTab">
+<kui-tabs inverted [(value)]="activeTab">
   <button kuiTab value="details">Details</button>
   <button kuiTab value="history">History</button>
 
@@ -51,7 +51,7 @@ indicator on the start edge.
   <div kuiTabPanel value="history">History content</div>
 </kui-tabs>
 
-<kui-tabs orientation="vertical" inverted [(selected)]="activeTab">
+<kui-tabs orientation="vertical" inverted [(value)]="activeTab">
   <button kuiTab value="details">Details</button>
   <button kuiTab value="history">History</button>
 
@@ -65,7 +65,7 @@ indicator on the start edge.
 Use `controlsPanels="false"` when `kui-tabs` is used as navigation and the routed page content is rendered by `router-outlet` instead of local `kuiTabPanel` elements.
 
 ```html
-<kui-tabs [(selected)]="currentRoute" [controlsPanels]="false" aria-label="Sections">
+<kui-tabs [(value)]="currentRoute" [controlsPanels]="false" aria-label="Sections">
   <button kuiTab value="/overview">Overview</button>
   <button kuiTab value="/settings">Settings</button>
 </kui-tabs>
@@ -80,7 +80,7 @@ Rendered at /components/tabs:
 #### basic-tabs-example.html
 
 ```html
-<kui-tabs [(selected)]="activeTab">
+<kui-tabs [(value)]="activeTab">
   <button kuiTab value="overview">Overview</button>
   <button kuiTab value="settings">Settings</button>
   <button kuiTab value="logs">Logs</button>
@@ -122,7 +122,7 @@ export class BasicTabsExample {
 #### navigation-tabs-example.html
 
 ```html
-<kui-tabs [(selected)]="currentSection" [controlsPanels]="false" aria-label="Sections">
+<kui-tabs [(value)]="currentSection" [controlsPanels]="false" aria-label="Sections">
   <button kuiTab value="/overview">Overview</button>
   <button kuiTab value="/settings">Settings</button>
   <button kuiTab value="/team">Team</button>
@@ -170,7 +170,7 @@ export class NavigationTabsExample {
 #### pill-tabs-example.html
 
 ```html
-<kui-tabs variant="pill" [(selected)]="activeTab">
+<kui-tabs variant="pill" [(value)]="activeTab">
   <button kuiTab value="daily">Daily</button>
   <button kuiTab value="weekly" hasError errorLabel="Contains validation errors">Weekly</button>
   <button kuiTab value="monthly">Monthly</button>
@@ -212,7 +212,7 @@ export class PillTabsExample {
 #### vertical-tabs-example.html
 
 ```html
-<kui-tabs orientation="vertical" [(selected)]="activeTab">
+<kui-tabs orientation="vertical" [(value)]="activeTab">
   <button kuiTab value="profile">Profile</button>
   <button kuiTab value="billing">Billing</button>
   <button kuiTab value="security">Security</button>
@@ -258,11 +258,12 @@ export class VerticalTabsExample {
 | orientation | 'horizontal' \| 'vertical' | 'horizontal' | Layout direction of the tab list. Vertical stacks triggers in a column with the indicator on the side edge. |
 | inverted | boolean | false | Flips the tab edge. Horizontal tabs render panels above and the indicator on top; vertical tabs render panels before the list and the indicator on the start edge. |
 | controlsPanels | boolean | true | Whether tabs expose aria-controls links to projected kuiTabPanel elements. Set to false when tabs are used as navigation and content is rendered elsewhere, such as a router-outlet. |
-| selected | string | - | Value of the active tab. Two-way bindable with [(selected)]. |
+| [(value)] | string | - | Value of the active tab. |
+| [(selected)] | string | - | Deprecated alias for value, kept in sync with it. Use value instead; planned for removal in the next major version. |
 | [kuiTab] value | string | - | Identifier for this tab trigger. Must match a kuiTabPanel value when controlsPanels is true. |
 | [kuiTab] hasError | boolean | false | Shows a small danger dot next to the tab label without changing the selected state or tab color. |
 | [kuiTab] errorLabel | string | '' | Screen-reader-only text announced alongside the error dot. |
-| [kuiTabPanel] value | string | - | Identifier matching a [kuiTab] value. Panel is shown when its value matches selected. |
+| [kuiTabPanel] value | string | - | Identifier matching a [kuiTab] value. Panel is shown when its value matches the tabs value. |
 | --kui-tabs-gap | CSS length | 2px | Gap between tab triggers in the list. |
 | --kui-tabs-border | CSS color | var(--kui-color-border) | Border color of the tab list edge (bottom for horizontal, side for vertical). |
 | --kui-tabs-panel-gap | CSS length | var(--kui-space-4) | Gap between the tab list and the active panel. |

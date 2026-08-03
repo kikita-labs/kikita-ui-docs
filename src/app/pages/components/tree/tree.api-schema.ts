@@ -32,10 +32,17 @@ export const TREE_API_ROWS: readonly ApiTableRow[] = [
     description: 'Increases toggle hit targets to support touch layouts.',
   },
   {
-    name: '[(selected)]',
+    name: '[(value)]',
     type: 'string | null',
     defaultValue: 'null',
     description: 'Controlled selected node id in display mode.',
+  },
+  {
+    name: '[(selected)]',
+    type: 'string | null',
+    defaultValue: 'null',
+    description:
+      'Deprecated alias for value, kept in sync with it. Use value instead; planned for removal in the next major version.',
   },
   {
     name: '[(checkedIds)]',

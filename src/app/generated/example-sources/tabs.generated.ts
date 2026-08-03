@@ -9,7 +9,7 @@ export const TABS_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-tabs-example.html",
       language: "html",
-      code: "<kui-tabs [(selected)]=\"activeTab\">\n  <button kuiTab value=\"overview\">Overview</button>\n  <button kuiTab value=\"settings\">Settings</button>\n  <button kuiTab value=\"logs\">Logs</button>\n\n  <div kuiTabPanel value=\"overview\">Overview content.</div>\n  <div kuiTabPanel value=\"settings\">Settings content.</div>\n  <div kuiTabPanel value=\"logs\">Log content.</div>\n</kui-tabs>",
+      code: "<kui-tabs [(value)]=\"activeTab\">\n  <button kuiTab value=\"overview\">Overview</button>\n  <button kuiTab value=\"settings\">Settings</button>\n  <button kuiTab value=\"logs\">Logs</button>\n\n  <div kuiTabPanel value=\"overview\">Overview content.</div>\n  <div kuiTabPanel value=\"settings\">Settings content.</div>\n  <div kuiTabPanel value=\"logs\">Log content.</div>\n</kui-tabs>",
     },
     {
       label: "TS",
@@ -29,7 +29,7 @@ export const TABS_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "navigation-tabs-example.html",
       language: "html",
-      code: "<kui-tabs [(selected)]=\"currentSection\" [controlsPanels]=\"false\" aria-label=\"Sections\">\n  <button kuiTab value=\"/overview\">Overview</button>\n  <button kuiTab value=\"/settings\">Settings</button>\n  <button kuiTab value=\"/team\">Team</button>\n</kui-tabs>\n\n<p class=\"navigation-tabs-example__note\">\n  Selected value: <code>{{ currentSection() }}</code>\n</p>",
+      code: "<kui-tabs [(value)]=\"currentSection\" [controlsPanels]=\"false\" aria-label=\"Sections\">\n  <button kuiTab value=\"/overview\">Overview</button>\n  <button kuiTab value=\"/settings\">Settings</button>\n  <button kuiTab value=\"/team\">Team</button>\n</kui-tabs>\n\n<p class=\"navigation-tabs-example__note\">\n  Selected value: <code>{{ currentSection() }}</code>\n</p>",
     },
     {
       label: "TS",
@@ -49,7 +49,7 @@ export const TABS_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "pill-tabs-example.html",
       language: "html",
-      code: "<kui-tabs variant=\"pill\" [(selected)]=\"activeTab\">\n  <button kuiTab value=\"daily\">Daily</button>\n  <button kuiTab value=\"weekly\" hasError errorLabel=\"Contains validation errors\">Weekly</button>\n  <button kuiTab value=\"monthly\">Monthly</button>\n\n  <div kuiTabPanel value=\"daily\">Daily report content.</div>\n  <div kuiTabPanel value=\"weekly\">Weekly report content.</div>\n  <div kuiTabPanel value=\"monthly\">Monthly report content.</div>\n</kui-tabs>",
+      code: "<kui-tabs variant=\"pill\" [(value)]=\"activeTab\">\n  <button kuiTab value=\"daily\">Daily</button>\n  <button kuiTab value=\"weekly\" hasError errorLabel=\"Contains validation errors\">Weekly</button>\n  <button kuiTab value=\"monthly\">Monthly</button>\n\n  <div kuiTabPanel value=\"daily\">Daily report content.</div>\n  <div kuiTabPanel value=\"weekly\">Weekly report content.</div>\n  <div kuiTabPanel value=\"monthly\">Monthly report content.</div>\n</kui-tabs>",
     },
     {
       label: "TS",
@@ -69,7 +69,7 @@ export const TABS_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "vertical-tabs-example.html",
       language: "html",
-      code: "<kui-tabs orientation=\"vertical\" [(selected)]=\"activeTab\">\n  <button kuiTab value=\"profile\">Profile</button>\n  <button kuiTab value=\"billing\">Billing</button>\n  <button kuiTab value=\"security\">Security</button>\n\n  <div kuiTabPanel value=\"profile\">Profile content.</div>\n  <div kuiTabPanel value=\"billing\">Billing content.</div>\n  <div kuiTabPanel value=\"security\">Security content.</div>\n</kui-tabs>",
+      code: "<kui-tabs orientation=\"vertical\" [(value)]=\"activeTab\">\n  <button kuiTab value=\"profile\">Profile</button>\n  <button kuiTab value=\"billing\">Billing</button>\n  <button kuiTab value=\"security\">Security</button>\n\n  <div kuiTabPanel value=\"profile\">Profile content.</div>\n  <div kuiTabPanel value=\"billing\">Billing content.</div>\n  <div kuiTabPanel value=\"security\">Security content.</div>\n</kui-tabs>",
     },
     {
       label: "TS",

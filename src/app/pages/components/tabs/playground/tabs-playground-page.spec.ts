@@ -83,7 +83,7 @@ describe('TabsPlaygroundPage', () => {
     expect(preview?.hasAttribute('data-kui-inverted')).toBe(true);
     expect(errorTab?.querySelector('.kui-tab-error-dot')).not.toBeNull();
     expect(snippet?.textContent).toContain(
-      '<kui-tabs [(selected)]="activeTab" variant="pill" size="lg" orientation="vertical" inverted>',
+      '<kui-tabs [(value)]="activeTab" variant="pill" size="lg" orientation="vertical" inverted>',
     );
     expect(snippet?.textContent).toContain('hasError errorLabel="Contains errors"');
   });

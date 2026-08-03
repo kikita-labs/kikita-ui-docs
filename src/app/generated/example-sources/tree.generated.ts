@@ -9,7 +9,7 @@ export const TREE_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-tree-example.html",
       language: "html",
-      code: "<div class=\"basic-tree-example\">\n  <kui-tree\n    ariaLabel=\"Project files\"\n    [data]=\"nodes\"\n    [(selected)]=\"selectedId\"\n    [(expandedIds)]=\"expandedIds\"\n  />\n</div>",
+      code: "<div class=\"basic-tree-example\">\n  <kui-tree\n    ariaLabel=\"Project files\"\n    [data]=\"nodes\"\n    [(value)]=\"selectedId\"\n    [(expandedIds)]=\"expandedIds\"\n  />\n</div>",
     },
     {
       label: "TS",

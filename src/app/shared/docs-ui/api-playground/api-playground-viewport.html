@@ -1,6 +1,6 @@
 <div class="api-playground-viewport">
   <div class="api-playground-viewport__toolbar">
-    <kui-segmented [selected]="activePreset()" (selectedChange)="setViewportPreset($event)">
+    <kui-segmented [(value)]="activePreset">
       @for (preset of viewportPresets; track preset.key) {
         <button kuiSegment type="button" [value]="preset.key">
           {{ preset.label }}
