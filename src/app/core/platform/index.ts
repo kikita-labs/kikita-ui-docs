@@ -7,6 +7,7 @@ export { DocsKeyboardShortcutService } from './keyboard';
 export { DocsMediaService } from './media';
 export { DocsLocalOverlayContainer } from './overlay';
 export { DocsPointerDragService } from './pointer';
+export { DocsStaleBuildReloadService } from './reload';
 export type { DocsPlatformFailureReason, DocsPlatformResult } from './result';
 export { docsPlatformFailure, docsPlatformSuccess } from './result';
 export type { DocsStorageKey } from './storage';

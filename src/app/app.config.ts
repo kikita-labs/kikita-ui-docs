@@ -1,10 +1,11 @@
-import { type ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { type ApplicationConfig, inject, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideRouter, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withInMemoryScrolling, withNavigationErrorHandler } from '@angular/router';
 
 import { provideKikitaUi } from '@kikita-labs/ui';
 
 import { routes } from './app.routes';
+import { DocsStaleBuildReloadService } from './core/platform';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,9 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         anchorScrolling: 'disabled',
         scrollPositionRestoration: 'enabled',
+      }),
+      withNavigationErrorHandler(({ error }) => {
+        inject(DocsStaleBuildReloadService).reloadIfStaleChunk(error);
       }),
     ),
     provideKikitaUi({
