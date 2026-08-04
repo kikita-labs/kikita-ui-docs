@@ -65,6 +65,14 @@ export class PageToc {
 
   private readonly selectedTabEffect = effect(() => {
     const linkId = this.selectedTabValue();
+
+    // selectedTabValue is a linkedSignal derived from activeLinkId, so scroll-driven
+    // active-section changes echo back here too. Only an explicit tab click sets
+    // selectedTabValue ahead of activeLinkId, which is what should trigger navigation.
+    if (linkId === untracked(this.activeLinkId)) {
+      return;
+    }
+
     const link = this.links().find((candidate) => candidate.id === linkId);
 
     if (link) {
