@@ -4,8 +4,9 @@ import { provideRouter, withInMemoryScrolling, withNavigationErrorHandler } from
 
 import { provideKikitaUi } from '@kikita-labs/ui';
 
+import { DocsStaleBuildReloadService } from '@core/platform';
+
 import { routes } from './app.routes';
-import { DocsStaleBuildReloadService } from './core/platform';
 
 export const appConfig: ApplicationConfig = {
   providers: [
