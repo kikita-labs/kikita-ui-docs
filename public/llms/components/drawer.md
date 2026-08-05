@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/drawer
-- Package: @kikita-labs/ui@1.6.0
+- Package: @kikita-labs/ui@1.6.1
 - Import: kuiDrawer from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.6.0/docs/drawer.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.6.1/docs/drawer.md
 
 ## Install
 
