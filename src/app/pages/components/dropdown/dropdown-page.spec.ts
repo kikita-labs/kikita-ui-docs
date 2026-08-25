@@ -45,12 +45,13 @@ describe('DropdownPage', () => {
     expect(sectionIds).toEqual([
       'import',
       'usage',
+      'controlled-open',
       'field-composition',
       'panel-width',
       'api',
       'accessibility',
     ]);
-    expect(root.querySelectorAll('app-live-preview kui-dropdown')).toHaveLength(5);
+    expect(root.querySelectorAll('app-live-preview kui-dropdown')).toHaveLength(6);
     expect(root.querySelector('app-standalone-dropdown-example')).not.toBeNull();
     expect(root.querySelector('app-field-dropdown-example')).not.toBeNull();
   });
@@ -68,6 +69,7 @@ describe('DropdownPage', () => {
       'field-dropdown-example',
       'panel-width-dropdown-example',
       'standalone-dropdown-example',
+      'controlled-open-dropdown-example',
     ]);
     expect(Object.keys(DROPDOWN_EXAMPLE_SOURCES).sort()).toEqual(
       [...DROPDOWN_DOCS_MANIFEST.exampleIds].sort(),

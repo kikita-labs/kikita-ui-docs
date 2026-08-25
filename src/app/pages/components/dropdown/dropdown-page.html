@@ -26,6 +26,17 @@
   </app-doc-section>
 
   <app-doc-section
+    anchor="controlled-open"
+    heading="Controlled open state"
+    description="Bind [(open)] when the parent owns visibility. Dropdown keeps the signal synchronized when it closes because of Escape, outside interaction, or an off-screen anchor."
+  >
+    <app-live-preview previewLabel="Controlled dropdown open state">
+      <app-controlled-open-dropdown-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="controlledOpenTabs" />
+  </app-doc-section>
+
+  <app-doc-section
     anchor="field-composition"
     heading="Inside kui-field"
     description="kui-field detects a nested dropdown, sets itself as the anchor, and toggles the panel when the field is clicked. This is the normal pattern behind input[kuiSelect]."

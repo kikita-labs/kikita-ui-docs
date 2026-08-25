@@ -15,6 +15,7 @@ import {
   DROPDOWN_STATUS,
 } from './dropdown.docs-content';
 import {
+  ControlledOpenDropdownExample,
   FieldDropdownExample,
   PanelWidthDropdownExample,
   StandaloneDropdownExample,
@@ -25,6 +26,7 @@ import {
   imports: [
     ApiTable,
     CodeTabs,
+    ControlledOpenDropdownExample,
     DocSection,
     FieldDropdownExample,
     LivePreview,
@@ -48,4 +50,7 @@ export class DropdownPage {
   protected readonly fieldTabs = DROPDOWN_EXAMPLE_SOURCES['field-dropdown-example'];
 
   protected readonly panelWidthTabs = DROPDOWN_EXAMPLE_SOURCES['panel-width-dropdown-example'];
+
+  protected readonly controlledOpenTabs =
+    DROPDOWN_EXAMPLE_SOURCES['controlled-open-dropdown-example'];
 }

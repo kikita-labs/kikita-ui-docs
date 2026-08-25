@@ -12,6 +12,7 @@ export const DROPDOWN_DOCS_MANIFEST = {
     'field-dropdown-example',
     'panel-width-dropdown-example',
     'standalone-dropdown-example',
+    'controlled-open-dropdown-example',
   ],
   loadPage: () => import('./dropdown-page').then((module) => module.DropdownPage),
   loadPlayground: () =>

@@ -14,13 +14,15 @@ npm-debug.log
 yarn-error.log
 
 # IDEs and editors
-.idea/
 .project
 .classpath
 .c9/
 *.launch
 .settings/
 *.sublime-workspace
+.idea/*
+!.idea/icon.svg
+!.idea/icon_dark.svg
 
 # Visual Studio Code
 .vscode/*
@@ -37,6 +39,7 @@ yarn-error.log
 /connect.lock
 /coverage
 /playwright-report
+/.playwright-cli/
 /test-results
 /libpeerconnection.log
 testem.log

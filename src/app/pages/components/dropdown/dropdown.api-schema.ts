@@ -19,7 +19,14 @@ export const DROPDOWN_API_ROWS: readonly ApiTableRow[] = [
     type: 'boolean (model)',
     defaultValue: 'true',
     description:
-      'Closes the panel when a selectable option is clicked. Two-way bindable via closeOnSelectChange.',
+      'Closes the panel after an enabled option is selected with a pointer or Enter/Space. Two-way bindable via closeOnSelectChange.',
+  },
+  {
+    name: 'open',
+    type: 'ModelSignal<boolean>',
+    defaultValue: 'false',
+    description:
+      'Controlled open state. Bind with [(open)] to keep parent state synchronized with Escape, outside-click, and off-screen-anchor dismissal. Imperative open(), close(), and toggle() remain available.',
   },
   {
     name: 'panelRole',

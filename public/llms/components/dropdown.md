@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/dropdown
-- Package: @kikita-labs/ui@1.6.1
+- Package: @kikita-labs/ui@1.7.0
 - Import: KuiDropdownComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.6.1/docs/dropdown.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.0/docs/dropdown.md
 
 ## Install
 
@@ -51,6 +51,25 @@ correct.
 For non-button triggers, the host element must already be focusable and handle
 keyboard activation. The directive only wires click toggling, `aria-expanded`,
 and `aria-haspopup`.
+
+### Controlled open state
+
+Use the `open` model when the parent owns when the panel should be visible. The
+dropdown updates the bound signal when it closes itself because of Escape, an
+outside click, or an off-screen anchor.
+
+```ts
+readonly resultsOpen = signal(false);
+```
+
+```html
+<kui-dropdown [(open)]="resultsOpen" panelWidth="anchor" [panelRole]="null">
+  <!-- Projected search results. -->
+</kui-dropdown>
+```
+
+The existing `open()`, `close()`, and `toggle()` methods remain available for
+imperative integrations.
 
 ## Examples
 
@@ -99,17 +118,17 @@ export class FieldDropdownExample {
 
 ```html
 <div class="panel-width-dropdown-example">
-  <button type="button" [kuiDropdownFor]="anchorPanel">panelWidth="anchor"</button>
+  <button kuiButton type="button" [kuiDropdownFor]="anchorPanel">panelWidth="anchor"</button>
   <kui-dropdown #anchorPanel panelWidth="anchor">
     <div kuiOption value="a">Matches trigger width</div>
   </kui-dropdown>
 
-  <button type="button" [kuiDropdownFor]="contentPanel">panelWidth="content"</button>
+  <button kuiButton type="button" [kuiDropdownFor]="contentPanel">panelWidth="content"</button>
   <kui-dropdown #contentPanel panelWidth="content">
     <div kuiOption value="b">Grows with a longer content line if needed</div>
   </kui-dropdown>
 
-  <button type="button" [kuiDropdownFor]="explicitPanel">width="320px"</button>
+  <button kuiButton type="button" [kuiDropdownFor]="explicitPanel">width="320px"</button>
   <kui-dropdown #explicitPanel width="320px">
     <div kuiOption value="c">Always exactly 320px wide</div>
   </kui-dropdown>
@@ -121,11 +140,16 @@ export class FieldDropdownExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+import {
+  KuiButtonDirective,
+  KuiDropdownComponent,
+  KuiDropdownForDirective,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-panel-width-dropdown-example',
-  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
   templateUrl: './panel-width-dropdown-example.html',
   styleUrl: './panel-width-dropdown-example.scss',
 })
@@ -148,7 +172,7 @@ export class PanelWidthDropdownExample {}
 
 ```html
 <div class="standalone-dropdown-example">
-  <button type="button" [kuiDropdownFor]="menu">Actions</button>
+  <button kuiButton type="button" [kuiDropdownFor]="menu">Actions</button>
 
   <kui-dropdown #menu [maxHeight]="null">
     <div kuiOption value="edit">Edit</div>
@@ -162,14 +186,74 @@ export class PanelWidthDropdownExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+import {
+  KuiButtonDirective,
+  KuiDropdownComponent,
+  KuiDropdownForDirective,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-standalone-dropdown-example',
-  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
   templateUrl: './standalone-dropdown-example.html',
 })
 export class StandaloneDropdownExample {}
+```
+
+### controlled-open-dropdown-example
+
+#### controlled-open-dropdown-example.html
+
+```html
+<div class="controlled-open-dropdown-example">
+  <div class="controlled-open-dropdown-example__actions">
+    <button kuiButton type="button" [kuiDropdownFor]="results">Show results</button>
+    <button kuiButton type="button" shape="soft" (click)="resultsOpen.set(true)">
+      Open from parent
+    </button>
+  </div>
+
+  <kui-dropdown #results [(open)]="resultsOpen" panelWidth="anchor" [panelRole]="null">
+    <div kuiOption value="alpha">Alpha result</div>
+    <div kuiOption value="beta">Beta result</div>
+  </kui-dropdown>
+</div>
+```
+
+#### controlled-open-dropdown-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiButtonDirective,
+  KuiDropdownComponent,
+  KuiDropdownForDirective,
+  KuiOptionDirective,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-controlled-open-dropdown-example',
+  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  templateUrl: './controlled-open-dropdown-example.html',
+  styleUrl: './controlled-open-dropdown-example.scss',
+})
+export class ControlledOpenDropdownExample {
+  protected readonly resultsOpen = signal(false);
+}
+```
+
+#### controlled-open-dropdown-example.scss
+
+```scss
+.controlled-open-dropdown-example {
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
 ```
 
 ## API
@@ -178,7 +262,8 @@ export class StandaloneDropdownExample {}
 | --- | --- | --- | --- |
 | maxHeight | string \| null | '240px' | Preferred max height of the panel before it scrolls. Always additionally clamped to the viewport so the panel can never render taller than the screen. null removes only the preferred cap, not the viewport clamp. |
 | offset | number | 4 | Gap in px between the anchor and the panel edge. |
-| closeOnSelect | boolean (model) | true | Closes the panel when a selectable option is clicked. Two-way bindable via closeOnSelectChange. |
+| closeOnSelect | boolean (model) | true | Closes the panel after an enabled option is selected with a pointer or Enter/Space. Two-way bindable via closeOnSelectChange. |
+| open | ModelSignal<boolean> | false | Controlled open state. Bind with [(open)] to keep parent state synchronized with Escape, outside-click, and off-screen-anchor dismissal. Imperative open(), close(), and toggle() remain available. |
 | panelRole | 'listbox' \| 'dialog' \| 'grid' \| null | 'listbox' | ARIA role rendered on the panel. Set to dialog (or null to omit the role) for non-listbox projected content, e.g. kui-calendar. |
 | panelWidth | 'anchor' \| 'content' \| 'auto' | 'anchor' | anchor matches the trigger's width exactly (listboxes). content grows with the panel's own content but never below the trigger's width. auto ignores the trigger's width and sizes purely to content. |
 | width | string \| null | null | Explicit panel width (any CSS width, e.g. 320px). Overrides panelWidth entirely when set. |
@@ -206,8 +291,8 @@ export class StandaloneDropdownExample {}
 - Select-style hosts should expose `role="combobox"`, `aria-expanded`,
   `aria-controls`, and `aria-describedby` through their own directive.
 - Options use `role="option"` inside the dropdown `role="listbox"` panel.
-- Escape closes the panel. Enter/Space selects an option. Tab closes without
-  stealing focus back from the next tabbable element.
+- Escape closes the panel. Enter/Space selects an option and, by default, closes
+  it. Tab closes without stealing focus back from the next tabbable element.
 
 ## Playground
 

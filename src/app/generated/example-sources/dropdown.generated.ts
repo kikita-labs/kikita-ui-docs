@@ -23,13 +23,13 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "panel-width-dropdown-example.html",
       language: "html",
-      code: "<div class=\"panel-width-dropdown-example\">\n  <button type=\"button\" [kuiDropdownFor]=\"anchorPanel\">panelWidth=\"anchor\"</button>\n  <kui-dropdown #anchorPanel panelWidth=\"anchor\">\n    <div kuiOption value=\"a\">Matches trigger width</div>\n  </kui-dropdown>\n\n  <button type=\"button\" [kuiDropdownFor]=\"contentPanel\">panelWidth=\"content\"</button>\n  <kui-dropdown #contentPanel panelWidth=\"content\">\n    <div kuiOption value=\"b\">Grows with a longer content line if needed</div>\n  </kui-dropdown>\n\n  <button type=\"button\" [kuiDropdownFor]=\"explicitPanel\">width=\"320px\"</button>\n  <kui-dropdown #explicitPanel width=\"320px\">\n    <div kuiOption value=\"c\">Always exactly 320px wide</div>\n  </kui-dropdown>\n</div>",
+      code: "<div class=\"panel-width-dropdown-example\">\n  <button kuiButton type=\"button\" [kuiDropdownFor]=\"anchorPanel\">panelWidth=\"anchor\"</button>\n  <kui-dropdown #anchorPanel panelWidth=\"anchor\">\n    <div kuiOption value=\"a\">Matches trigger width</div>\n  </kui-dropdown>\n\n  <button kuiButton type=\"button\" [kuiDropdownFor]=\"contentPanel\">panelWidth=\"content\"</button>\n  <kui-dropdown #contentPanel panelWidth=\"content\">\n    <div kuiOption value=\"b\">Grows with a longer content line if needed</div>\n  </kui-dropdown>\n\n  <button kuiButton type=\"button\" [kuiDropdownFor]=\"explicitPanel\">width=\"320px\"</button>\n  <kui-dropdown #explicitPanel width=\"320px\">\n    <div kuiOption value=\"c\">Always exactly 320px wide</div>\n  </kui-dropdown>\n</div>",
     },
     {
       label: "TS",
       filename: "panel-width-dropdown-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-panel-width-dropdown-example',\n  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './panel-width-dropdown-example.html',\n  styleUrl: './panel-width-dropdown-example.scss',\n})\nexport class PanelWidthDropdownExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiDropdownComponent,\n  KuiDropdownForDirective,\n  KuiOptionDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-panel-width-dropdown-example',\n  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './panel-width-dropdown-example.html',\n  styleUrl: './panel-width-dropdown-example.scss',\n})\nexport class PanelWidthDropdownExample {}",
     },
     {
       label: "SCSS",
@@ -43,13 +43,33 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "standalone-dropdown-example.html",
       filename: "standalone-dropdown-example.html",
       language: "html",
-      code: "<div class=\"standalone-dropdown-example\">\n  <button type=\"button\" [kuiDropdownFor]=\"menu\">Actions</button>\n\n  <kui-dropdown #menu [maxHeight]=\"null\">\n    <div kuiOption value=\"edit\">Edit</div>\n    <div kuiOption value=\"delete\" [disabled]=\"true\">Delete</div>\n  </kui-dropdown>\n</div>",
+      code: "<div class=\"standalone-dropdown-example\">\n  <button kuiButton type=\"button\" [kuiDropdownFor]=\"menu\">Actions</button>\n\n  <kui-dropdown #menu [maxHeight]=\"null\">\n    <div kuiOption value=\"edit\">Edit</div>\n    <div kuiOption value=\"delete\" [disabled]=\"true\">Delete</div>\n  </kui-dropdown>\n</div>",
     },
     {
       label: "standalone-dropdown-example.ts",
       filename: "standalone-dropdown-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-standalone-dropdown-example',\n  imports: [KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './standalone-dropdown-example.html',\n})\nexport class StandaloneDropdownExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiDropdownComponent,\n  KuiDropdownForDirective,\n  KuiOptionDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-standalone-dropdown-example',\n  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './standalone-dropdown-example.html',\n})\nexport class StandaloneDropdownExample {}",
+    },
+  ],
+  "controlled-open-dropdown-example": [
+    {
+      label: "HTML",
+      filename: "controlled-open-dropdown-example.html",
+      language: "html",
+      code: "<div class=\"controlled-open-dropdown-example\">\n  <div class=\"controlled-open-dropdown-example__actions\">\n    <button kuiButton type=\"button\" [kuiDropdownFor]=\"results\">Show results</button>\n    <button kuiButton type=\"button\" shape=\"soft\" (click)=\"resultsOpen.set(true)\">\n      Open from parent\n    </button>\n  </div>\n\n  <kui-dropdown #results [(open)]=\"resultsOpen\" panelWidth=\"anchor\" [panelRole]=\"null\">\n    <div kuiOption value=\"alpha\">Alpha result</div>\n    <div kuiOption value=\"beta\">Beta result</div>\n  </kui-dropdown>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "controlled-open-dropdown-example.ts",
+      language: "ts",
+      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiDropdownComponent,\n  KuiDropdownForDirective,\n  KuiOptionDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-controlled-open-dropdown-example',\n  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './controlled-open-dropdown-example.html',\n  styleUrl: './controlled-open-dropdown-example.scss',\n})\nexport class ControlledOpenDropdownExample {\n  protected readonly resultsOpen = signal(false);\n}",
+    },
+    {
+      label: "SCSS",
+      filename: "controlled-open-dropdown-example.scss",
+      language: "scss",
+      code: ".controlled-open-dropdown-example {\n  &__actions {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 0.5rem;\n  }\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

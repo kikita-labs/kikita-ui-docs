@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/textarea
-- Package: @kikita-labs/ui@1.6.1
+- Package: @kikita-labs/ui@1.7.0
 - Import: KuiTextareaDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.6.1/docs/textarea.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.0/docs/textarea.md
 
 ## Install
 

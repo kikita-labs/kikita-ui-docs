@@ -1,0 +1,13 @@
+<div class="controlled-open-dropdown-example">
+  <div class="controlled-open-dropdown-example__actions">
+    <button kuiButton type="button" [kuiDropdownFor]="results">Show results</button>
+    <button kuiButton type="button" shape="soft" (click)="resultsOpen.set(true)">
+      Open from parent
+    </button>
+  </div>
+
+  <kui-dropdown #results [(open)]="resultsOpen" panelWidth="anchor" [panelRole]="null">
+    <div kuiOption value="alpha">Alpha result</div>
+    <div kuiOption value="beta">Beta result</div>
+  </kui-dropdown>
+</div>
