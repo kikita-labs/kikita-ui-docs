@@ -54,7 +54,7 @@ pnpm check:performance
 The installed package version is the docs source of truth:
 
 ```text
-@kikita-labs/ui@1.7.0
+@kikita-labs/ui@1.7.1
 ```
 
 When `@kikita-labs/ui` is released:

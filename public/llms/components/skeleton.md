@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/skeleton
-- Package: @kikita-labs/ui@1.7.0
+- Package: @kikita-labs/ui@1.7.1
 - Import: KuiSkeletonDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.0/docs/skeleton.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/skeleton.md
 
 ## Install
 
