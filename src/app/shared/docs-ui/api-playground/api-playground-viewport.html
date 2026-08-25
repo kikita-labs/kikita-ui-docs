@@ -9,20 +9,18 @@
     </kui-segmented>
     <div class="api-playground-viewport__actions">
       <kui-field class="api-playground-viewport__width-field">
-        <div class="kui-input-group">
-          <input
-            #previewWidthInput
-            kuiInput
-            type="number"
-            inputmode="numeric"
-            aria-label="Preview width"
-            [min]="320"
-            [max]="maxPreviewWidth()"
-            [value]="previewWidthValue()"
-            (input)="setPreviewWidth(previewWidthInput.value)"
-          />
-          <span kuiFieldAffix>px</span>
-        </div>
+        <input
+          #previewWidthInput
+          kuiInput
+          type="number"
+          inputmode="numeric"
+          aria-label="Preview width"
+          [min]="320"
+          [max]="maxPreviewWidth()"
+          [value]="previewWidthValue()"
+          (input)="setPreviewWidth(previewWidthInput.value)"
+        />
+        <span kuiFieldAffix>px</span>
       </kui-field>
 
       <button
