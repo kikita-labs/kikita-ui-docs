@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/file-upload
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: KuiFileUploadComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/file-upload.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/file-upload.md
 
 ## Install
 

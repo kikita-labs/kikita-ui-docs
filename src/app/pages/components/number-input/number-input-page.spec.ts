@@ -52,6 +52,7 @@ describe('NumberInputPage', () => {
       'min-max-step',
       'field-composition',
       'signal-forms',
+      'css-custom-properties',
       'api',
       'accessibility',
     ]);

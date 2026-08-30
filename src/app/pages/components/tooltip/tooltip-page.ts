@@ -13,6 +13,7 @@ import { TOOLTIP_API_ROWS } from './tooltip.api-schema';
 import {
   TOOLTIP_API_DESCRIPTION,
   TOOLTIP_IMPORT_TABS,
+  TOOLTIP_PROVIDER_TABS,
   TOOLTIP_STATUS,
 } from './tooltip.docs-content';
 
@@ -35,5 +36,6 @@ export class TooltipPage {
   protected readonly apiDescription = TOOLTIP_API_DESCRIPTION;
   protected readonly apiRows = TOOLTIP_API_ROWS;
   protected readonly importTabs = TOOLTIP_IMPORT_TABS;
+  protected readonly providerTabs = TOOLTIP_PROVIDER_TABS;
   protected readonly basicTabs = TOOLTIP_EXAMPLE_SOURCES['basic-tooltip-example'];
 }

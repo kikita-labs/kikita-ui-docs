@@ -24,3 +24,17 @@ export const NUMBER_INPUT_SIGNAL_FORMS_TABS: readonly CodeTab[] = [
 </kui-field>`,
   },
 ];
+
+export const NUMBER_INPUT_CSS_TABS: readonly CodeTab[] = [
+  {
+    label: 'SCSS',
+    filename: 'number-input.scss',
+    language: 'scss',
+    code: `input[kuiNumberInput] {
+  --kui-input-bg: var(--kui-color-surface);
+  --kui-input-border: var(--kui-color-border);
+  --kui-input-radius: var(--kui-radius-md);
+  --kui-number-input-btn-bg-hover: var(--kui-color-surface-elevated);
+}`,
+  },
+];

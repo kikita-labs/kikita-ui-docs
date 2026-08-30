@@ -51,6 +51,7 @@ describe('TooltipPlaygroundPage', () => {
     const optionButtons = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
 
     optionButtons.find((button) => button.textContent?.trim() === 'right')?.click();
+    optionButtons.find((button) => button.textContent?.trim() === 'none')?.click();
     setTextControl(root, 'text', 'Save changes');
     fixture.detectChanges();
 
@@ -61,6 +62,7 @@ describe('TooltipPlaygroundPage', () => {
 
     expect(trigger?.textContent?.trim()).toBe('Save');
     expect(snippet?.textContent).toContain('placement="right"');
+    expect(snippet?.textContent).toContain('triggerType="none"');
     expect(snippet?.textContent).toContain('Save changes');
   });
 

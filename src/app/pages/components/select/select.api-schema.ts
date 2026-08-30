@@ -72,6 +72,48 @@ export const SELECT_API_ROWS: readonly ApiTableRow[] = [
     description: 'Shows a clear button when a value is selected; falls back to provider options.',
   },
   {
+    name: '--kui-select-bg',
+    type: 'CSS custom property',
+    defaultValue: '--kui-input-bg',
+    description:
+      'Deprecated in 1.x; use --kui-input-bg instead. Retained for compatibility until v2.',
+  },
+  {
+    name: '--kui-select-border',
+    type: 'CSS custom property',
+    defaultValue: '--kui-input-border',
+    description:
+      'Deprecated in 1.x; use --kui-input-border instead. Retained for compatibility until v2.',
+  },
+  {
+    name: '--kui-select-border-hover',
+    type: 'CSS custom property',
+    defaultValue: '--kui-input-border-hover',
+    description:
+      'Deprecated in 1.x; use --kui-input-border-hover instead. Retained for compatibility until v2.',
+  },
+  {
+    name: '--kui-select-border-focus',
+    type: 'CSS custom property',
+    defaultValue: '--kui-input-border-focus',
+    description:
+      'Deprecated in 1.x; use --kui-input-border-focus instead. Retained for compatibility until v2.',
+  },
+  {
+    name: '--kui-select-border-error',
+    type: 'CSS custom property',
+    defaultValue: '--kui-input-border-error',
+    description:
+      'Deprecated in 1.x; use --kui-input-border-error instead. Retained for compatibility until v2.',
+  },
+  {
+    name: '--kui-select-radius',
+    type: 'CSS custom property',
+    defaultValue: '--kui-input-radius',
+    description:
+      'Deprecated in 1.x; use --kui-input-radius instead. Retained for compatibility until v2.',
+  },
+  {
     name: 'touch',
     type: 'output',
     description: 'Emitted after an opened dropdown closes for Signal Forms support.',

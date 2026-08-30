@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/number-input
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: KuiNumberInputDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/number-input.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/number-input.md
 
 ## Install
 
@@ -252,7 +252,18 @@ export class RangeNumberInputExample {}
 | step | string \| number | 1 | Native HTML attribute. Amount the generated buttons and arrow keys step by. |
 | disabled | boolean | false | Native HTML attribute. Sets data-kui-disabled on the container and disables both generated buttons. |
 | readonly | boolean | false | Native HTML attribute. Sets data-kui-readonly on the container and disables both generated buttons. |
-| --kui-number-input-border | CSS custom property | --kui-color-border | Border color in the default state. |
+| --kui-input-height | CSS custom property | var(--kui-control-height-md) | Shared control height used by the number-input wrapper. |
+| --kui-input-border | CSS custom property | ButtonBorder | Shared border color used when --kui-number-input-border is not overridden. |
+| --kui-input-radius | CSS custom property | 8px | Shared corner radius for the number-input wrapper. |
+| --kui-input-bg | CSS custom property | Field | Shared control background color. |
+| --kui-input-bg-disabled | CSS custom property | var(--kui-input-bg) | Shared background color used for disabled and readonly states. |
+| --kui-input-color | CSS custom property | FieldText | Shared control text color. |
+| --kui-input-placeholder-color | CSS custom property | GrayText | Shared placeholder text color. |
+| --kui-input-border-hover | CSS custom property | ButtonBorder | Shared border color on hover. |
+| --kui-input-border-focus | CSS custom property | Highlight | Shared border color when the control has focus. |
+| --kui-input-focus-ring | CSS custom property | 0 0 0 3px Highlight | Shared focus ring applied when the control has focus. |
+| --kui-input-border-error | CSS custom property | Mark | Shared invalid-state border color. |
+| --kui-number-input-border | CSS custom property | --kui-input-border | Optional number-input border override; falls back to the shared input border. |
 | --kui-number-input-divider | CSS custom property | --kui-color-border | Divider color between the buttons and the native input. |
 | --kui-number-input-btn-bg | CSS custom property | transparent | Generated button background in the default state. |
 | --kui-number-input-btn-bg-hover | CSS custom property | --kui-color-surface-elevated | Generated button background on hover. |

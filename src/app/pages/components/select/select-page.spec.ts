@@ -50,6 +50,7 @@ describe('SelectPage', () => {
       'usage',
       'multiple',
       'provider-defaults',
+      'migration-notes',
       'api',
       'accessibility',
     ]);

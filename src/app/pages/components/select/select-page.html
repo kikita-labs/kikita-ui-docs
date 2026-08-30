@@ -43,6 +43,20 @@
     <app-code-tabs [tabs]="providerTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    heading="Migration notes"
+    description="The legacy Select chrome tokens remain available for 1.x compatibility, but current input[kuiSelect] styles use the shared input tokens. Migrate before v2 removes the legacy names."
+  >
+    <ul class="select-page__notes">
+      <li><code>--kui-select-bg</code> becomes <code>--kui-input-bg</code>.</li>
+      <li><code>--kui-select-border</code> becomes <code>--kui-input-border</code>.</li>
+      <li><code>--kui-select-border-hover</code> becomes <code>--kui-input-border-hover</code>.</li>
+      <li><code>--kui-select-border-focus</code> becomes <code>--kui-input-border-focus</code>.</li>
+      <li><code>--kui-select-border-error</code> becomes <code>--kui-input-border-error</code>.</li>
+      <li><code>--kui-select-radius</code> becomes <code>--kui-input-radius</code>.</li>
+    </ul>
+  </app-doc-section>
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Select API" [rows]="apiRows" />
   </app-doc-section>

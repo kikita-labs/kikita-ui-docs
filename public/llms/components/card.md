@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/card
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: KuiCardDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/card.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/card.md
 
 ## Install
 

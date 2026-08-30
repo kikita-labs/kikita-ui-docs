@@ -13,3 +13,25 @@ export const TOOLTIP_IMPORT_TABS: readonly CodeTab[] = [
     code: `import { KuiTooltipDirective } from '@kikita-labs/ui';`,
   },
 ];
+
+export const TOOLTIP_PROVIDER_TABS: readonly CodeTab[] = [
+  {
+    label: 'app.config.ts',
+    filename: 'app.config.ts',
+    language: 'ts',
+    code: `import { type ApplicationConfig } from '@angular/core';
+
+import {
+  KuiTooltipTriggerType,
+  kuiProvideTooltipOptions,
+  provideKikitaUi,
+} from '@kikita-labs/ui';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideKikitaUi({ tooltip: { triggerType: KuiTooltipTriggerType.Auto } })],
+};
+
+// In a component or route subtree instead:
+// providers: [kuiProvideTooltipOptions({ triggerType: KuiTooltipTriggerType.Hover })]`,
+  },
+];

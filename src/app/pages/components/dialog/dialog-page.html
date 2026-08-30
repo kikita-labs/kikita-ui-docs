@@ -72,6 +72,10 @@
         <code>dismissable: false</code> for actions the user must explicitly resolve, as
         <code>kuiConfirm()</code> does.
       </li>
+      <li>
+        Backdrop dismissal only applies when the pointer interaction starts on the backdrop;
+        selecting text or dragging from inside the panel cannot close the dialog accidentally.
+      </li>
       <li>Page scroll is blocked via the CDK block scroll strategy while any dialog is open.</li>
       <li>
         The panel renders <code>.kui-dialog-close</code> itself, top-right of the header, when

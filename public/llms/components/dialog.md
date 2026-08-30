@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/dialog
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: kuiDialog from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/dialog.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/dialog.md
 
 ## Install
 
@@ -371,6 +371,8 @@ export class SizePreviewDialog implements KuiDialogHost<void, SizePreviewData> {
 - Focus is trapped inside the dialog via CDK `cdkTrapFocus`.
 - Focus returns to the opener after the dialog closes.
 - Escape closes when `dismissable: true`.
+- Backdrop dismissal only applies when the pointer interaction starts on the backdrop;
+  selecting text or dragging from inside the panel cannot dismiss the dialog.
 - Page scroll is blocked via CDK block scroll strategy while open.
 
 ## Playground

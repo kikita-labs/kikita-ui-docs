@@ -63,6 +63,13 @@
     <app-code-tabs [tabs]="signalFormsTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    heading="CSS custom properties"
+    description="Number Input uses the shared --kui-input-* control-chrome tokens for height, border, radius, background, text, placeholder, focus, and invalid states. Number-specific tokens remain available for the increment and decrement controls."
+  >
+    <app-code-tabs [tabs]="cssTabs" />
+  </app-doc-section>
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Number Input API" [rows]="apiRows" />
   </app-doc-section>

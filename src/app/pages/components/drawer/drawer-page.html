@@ -68,6 +68,10 @@
         default unless <code>closeOnBackdropClick: false</code>. Disable both for required actions.
       </li>
       <li>
+        Backdrop dismissal only applies when the pointer interaction starts on the backdrop;
+        selecting text or dragging from inside the drawer cannot close it accidentally.
+      </li>
+      <li>
         The panel renders <code>.kui-drawer-close</code> itself, top-right of the header, when
         <code>closable</code> is <code>true</code> (the default); the header reserves space for it
         automatically. <code>drawerContext.closable</code> is retained for informational use only.

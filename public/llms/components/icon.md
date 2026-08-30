@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/icon
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: KuiIconComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/icon.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/icon.md
 
 ## Install
 

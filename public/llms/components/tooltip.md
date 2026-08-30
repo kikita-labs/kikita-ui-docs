@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/tooltip
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: KuiTooltipDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/tooltip.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/tooltip.md
 
 ## Install
 
@@ -23,7 +23,36 @@ ng add @kikita-labs/ui
 <button kuiButton [kuiTooltip]="'Delete item'" placement="bottom">Delete</button>
 ```
 
-The tooltip text is passed as the directive binding value. Empty or whitespace-only strings are ignored, and no tooltip is rendered.
+The tooltip text is passed as the directive binding value. Empty or whitespace-only strings are ignored, and no tooltip is rendered. `auto` is the default trigger: it uses hover/focus for mouse input and tap for touch input while keeping the tooltip surface and `role="tooltip"`.
+
+For short, non-interactive information triggers, keep the tooltip surface and opt into adaptive tap behavior:
+
+```html
+<button
+  kuiIconButton
+  type="button"
+  aria-label="Billing information"
+  triggerType="auto"
+  [kuiTooltip]="'Your plan renews automatically on the date shown here.'"
+>
+  <kui-icon name="info" />
+</button>
+```
+
+Configure the default at application or component scope. The local `triggerType` input takes precedence over the provider:
+
+```ts
+// app.config.ts
+providers: [provideKikitaUi({ tooltip: { triggerType: KuiTooltipTriggerType.Auto } })];
+
+// A component or route subtree
+providers: [kuiProvideTooltipOptions({ triggerType: KuiTooltipTriggerType.Hover })];
+```
+
+Use `providers` when the default should apply to the component's subtree and projected content.
+Use `viewProviders` when it should apply only to the component's own view. The helper merges with
+the nearest parent tooltip options; a direct `KUI_TOOLTIP_OPTIONS` provider replaces the complete
+options object at that injector level.
 
 ## Examples
 
@@ -81,13 +110,21 @@ export class BasicTooltipExample {}
 | --- | --- | --- | --- |
 | [kuiTooltip] | string | '' | Tooltip text content. Empty or whitespace-only text does not render a tooltip. |
 | placement | 'top' \| 'bottom' \| 'left' \| 'right' | 'top' | Preferred placement relative to the trigger. The CDK overlay can still adjust. |
+| triggerType | 'auto' \| 'hover' \| 'click' \| 'none' | 'auto' | Local interaction override. auto uses hover/focus for mouse input and tap for touch input. |
+| KuiTooltipTriggerType | enum: Auto \| Hover \| Click \| None | Auto | Enum values accepted by triggerType and tooltip provider options. |
+| KUI_TOOLTIP_OPTIONS | InjectionToken<KuiTooltipOptions> | { triggerType: auto } | Injection token for app-wide and scoped tooltip trigger defaults. |
+| kuiProvideTooltipOptions(options) | (options: KuiTooltipOptions) => Provider | - | Provides merged tooltip defaults for a component or route subtree; local triggerType wins. |
+| provideKikitaUi({ tooltip }) | KikitaUiOptions.tooltip?: KuiTooltipOptions | { triggerType: auto } | Sets the root tooltip trigger default through the main Kikita UI provider. |
 | role | 'tooltip' | 'tooltip' | The floating element is exposed as a tooltip while it exists. |
 | aria-describedby | string \| null | null | Applied only while the tooltip is visible, preventing stale removed ids. |
 | CSS variables | --kui-tooltip-* | - | Controls padding, radius, colors, and shadow through documented tooltip tokens. |
 
 ## Accessibility
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+- Use a native interactive element, normally a `<button>`, for an information trigger.
+- Keep tooltip content short, supplemental, and non-interactive.
+- The trigger receives `aria-describedby` only while the tooltip is rendered.
+- Tap-open tooltips remain available until the user taps again, moves focus outside, taps outside, or presses Escape.
 
 ## Playground
 

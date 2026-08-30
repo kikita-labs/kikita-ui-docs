@@ -15,7 +15,7 @@
 
   <app-doc-section
     heading="Usage"
-    description="Provide short text and choose a preferred placement when the default top placement is not ideal."
+    description="Provide short text and choose a preferred placement. The default adaptive trigger uses hover/focus for mouse input and tap for touch input."
   >
     <app-playground-route-button docSectionActions />
 
@@ -27,17 +27,33 @@
 
   <app-doc-section
     heading="Behavior"
-    description="Tooltip is transient, pointer-safe, and keyboard-aware."
+    description="Tooltip is transient, pointer-safe, keyboard-aware, and configurable at app, subtree, or instance scope."
   >
     <ul class="tooltip-page__notes">
-      <li>Shows on hover and keyboard focus-visible, then hides on leave and blur.</li>
+      <li>
+        With <code>triggerType="auto"</code>, it shows on hover and keyboard focus for mouse input.
+      </li>
+      <li>With <code>triggerType="auto"</code>, it toggles on tap for touch input.</li>
+      <li>
+        Use <code>hover</code> to disable touch taps, <code>click</code> to toggle on every device,
+        or <code>none</code> to disable it.
+      </li>
       <li>Whitespace-only tooltip text is ignored.</li>
       <li>Tooltip content renders through CDK Overlay and layers above floating panels.</li>
-      <li>
-        Touch does not show a tooltip; use a popover, sheet, or visible helper text on mobile.
-      </li>
     </ul>
   </app-doc-section>
+
+  <app-doc-section
+    heading="Provider defaults"
+    description="Set the default trigger at the root with provideKikitaUi or for a component subtree with kuiProvideTooltipOptions. A local triggerType input takes precedence."
+  >
+    <app-code-tabs [tabs]="providerTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Migration"
+    description="The default now opens the existing tooltip surface on touch taps. Set triggerType=hover to preserve the previous touch-disabled behavior, or triggerType=none to disable the tooltip on all devices."
+  />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Tooltip API" [rows]="apiRows" />

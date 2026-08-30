@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/toast
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: KuiToastService from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/toast.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/toast.md
 
 ## Install
 
@@ -253,7 +253,7 @@ export class ToastPositionExample {
 | appearance | 'neutral' \| 'success' \| 'warning' \| 'danger' \| 'info' | 'neutral' | Visual intent. Controls the accent bar and icon color; neutral renders no icon. |
 | actionLabel | string \| undefined | - | Label for the inline action button. Clicking it emits once on KuiToastRef.action$. |
 | duration | number | 5000 | Auto-dismiss delay in ms. Ignored when persistent is true. App-wide default overridable via provideKuiToastOptions. |
-| persistent | boolean | false | Keeps the toast open until the user closes it explicitly. |
+| persistent | boolean \| Signal<boolean> | false | Keeps the toast open until it is closed explicitly. A signal can start or pause the auto-dismiss timer reactively. |
 | closable | boolean | true | Shows the close button. App-wide default overridable via provideKuiToastOptions. |
 | showIcon | boolean | true | Shows the appearance icon. App-wide default overridable via provideKuiToastOptions. |
 | showProgress | boolean | false | Shows a progress bar tracking time until auto-dismiss. App-wide default overridable via provideKuiToastOptions. |
@@ -261,8 +261,12 @@ export class ToastPositionExample {
 | KuiToastService.open(config) | (config: KuiToastConfig) => KuiToastRef | - | Shows a toast notification and returns a ref for programmatic control. |
 | KuiToastService.setPosition(position) | (position: KuiToastPosition) => void | - | Changes the shared toast region position at runtime. Intended for interactive demos; prefer provideKuiToastOptions for app-level configuration. |
 | KuiToastRef.close() | () => void | - | Closes this toast programmatically and plays the exit animation. |
+| KuiToastRef.id | number | - | Stable identifier for this toast within its owning toast service. |
+| KuiToastRef.update(config) | (config: Partial<KuiToastConfig>) => void | - | Updates this toast in place and re-evaluates its auto-dismiss timer. |
 | KuiToastRef.closed$ | Observable<void> | - | Emits once after the close animation finishes, then completes. |
 | KuiToastRef.action$ | Observable<void> | - | Emits once when the action button is clicked, then completes. |
+| KuiToastService.dismiss(id) | (id: number) => void | - | Dismisses one toast created by this service using its stable reference id. |
+| KuiToastService.dismissAll() | () => void | - | Dismisses all active toasts created by this service. |
 | provideKuiToastOptions(options) | (options: KuiToastOptions) => Provider | - | App or route-level provider for global toast defaults: position, duration, maxVisible, showProgress, closable, showIcon. |
 | position | 'top-start' \| 'top-center' \| 'top-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end' | 'bottom-center' | Global region position. Set app-wide via provideKuiToastOptions, or at runtime via KuiToastService.setPosition for demos. |
 | maxVisible | number | 3 | Max simultaneous toasts, set via provideKuiToastOptions. The oldest visible toast is evicted when exceeded. Not changeable at runtime. |

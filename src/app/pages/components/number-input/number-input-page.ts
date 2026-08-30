@@ -17,6 +17,7 @@ import {
 import { NUMBER_INPUT_API_ROWS } from './number-input.api-schema';
 import {
   NUMBER_INPUT_API_DESCRIPTION,
+  NUMBER_INPUT_CSS_TABS,
   NUMBER_INPUT_IMPORT_TABS,
   NUMBER_INPUT_SIGNAL_FORMS_TABS,
   NUMBER_INPUT_STATUS,
@@ -55,4 +56,6 @@ export class NumberInputPage {
   protected readonly fieldTabs = NUMBER_INPUT_EXAMPLE_SOURCES['field-number-input-example'];
 
   protected readonly signalFormsTabs = NUMBER_INPUT_SIGNAL_FORMS_TABS;
+
+  protected readonly cssTabs = NUMBER_INPUT_CSS_TABS;
 }

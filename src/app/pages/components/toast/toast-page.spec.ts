@@ -54,6 +54,7 @@ describe('ToastPage', () => {
     expect(sectionIds).toEqual([
       'import',
       'usage',
+      'persistent-lifecycle',
       'with-action',
       'positions',
       'global-defaults',

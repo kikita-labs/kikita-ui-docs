@@ -35,9 +35,10 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'persistent',
-    type: 'boolean',
+    type: 'boolean | Signal<boolean>',
     defaultValue: 'false',
-    description: 'Keeps the toast open until the user closes it explicitly.',
+    description:
+      'Keeps the toast open until it is closed explicitly. A signal can start or pause the auto-dismiss timer reactively.',
   },
   {
     name: 'closable',
@@ -86,6 +87,18 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
     description: 'Closes this toast programmatically and plays the exit animation.',
   },
   {
+    name: 'KuiToastRef.id',
+    type: 'number',
+    defaultValue: '-',
+    description: 'Stable identifier for this toast within its owning toast service.',
+  },
+  {
+    name: 'KuiToastRef.update(config)',
+    type: '(config: Partial<KuiToastConfig>) => void',
+    defaultValue: '-',
+    description: 'Updates this toast in place and re-evaluates its auto-dismiss timer.',
+  },
+  {
     name: 'KuiToastRef.closed$',
     type: 'Observable<void>',
     defaultValue: '-',
@@ -96,6 +109,18 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
     type: 'Observable<void>',
     defaultValue: '-',
     description: 'Emits once when the action button is clicked, then completes.',
+  },
+  {
+    name: 'KuiToastService.dismiss(id)',
+    type: '(id: number) => void',
+    defaultValue: '-',
+    description: 'Dismisses one toast created by this service using its stable reference id.',
+  },
+  {
+    name: 'KuiToastService.dismissAll()',
+    type: '() => void',
+    defaultValue: '-',
+    description: 'Dismisses all active toasts created by this service.',
   },
   {
     name: 'provideKuiToastOptions(options)',

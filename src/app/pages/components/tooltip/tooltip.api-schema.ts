@@ -14,6 +14,38 @@ export const TOOLTIP_API_ROWS: readonly ApiTableRow[] = [
     description: 'Preferred placement relative to the trigger. The CDK overlay can still adjust.',
   },
   {
+    name: 'triggerType',
+    type: `'auto' | 'hover' | 'click' | 'none'`,
+    defaultValue: `'auto'`,
+    description:
+      'Local interaction override. auto uses hover/focus for mouse input and tap for touch input.',
+  },
+  {
+    name: 'KuiTooltipTriggerType',
+    type: 'enum: Auto | Hover | Click | None',
+    defaultValue: 'Auto',
+    description: 'Enum values accepted by triggerType and tooltip provider options.',
+  },
+  {
+    name: 'KUI_TOOLTIP_OPTIONS',
+    type: 'InjectionToken<KuiTooltipOptions>',
+    defaultValue: '{ triggerType: auto }',
+    description: 'Injection token for app-wide and scoped tooltip trigger defaults.',
+  },
+  {
+    name: 'kuiProvideTooltipOptions(options)',
+    type: '(options: KuiTooltipOptions) => Provider',
+    defaultValue: '-',
+    description:
+      'Provides merged tooltip defaults for a component or route subtree; local triggerType wins.',
+  },
+  {
+    name: 'provideKikitaUi({ tooltip })',
+    type: 'KikitaUiOptions.tooltip?: KuiTooltipOptions',
+    defaultValue: '{ triggerType: auto }',
+    description: 'Sets the root tooltip trigger default through the main Kikita UI provider.',
+  },
+  {
     name: 'role',
     type: `'tooltip'`,
     defaultValue: `'tooltip'`,

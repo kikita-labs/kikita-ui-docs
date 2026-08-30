@@ -37,6 +37,40 @@ export class ToastPage {
 
   protected readonly basicTabs = TOAST_EXAMPLE_SOURCES['basic-toast-example'];
 
+  protected readonly lifecycleTabs: readonly CodeTab[] = [
+    {
+      label: 'TS',
+      filename: 'toast-lifecycle.ts',
+      language: 'ts',
+      code: `import { signal } from '@angular/core';
+
+import { kuiToast } from '@kikita-labs/ui';
+
+export class UploadComponent {
+  private readonly toast = kuiToast();
+  protected readonly persistent = signal(true);
+
+  protected startUpload(): void {
+    const ref = this.toast.open({
+      title: 'Uploading...',
+      message: 'This toast is controlled by a signal.',
+      persistent: this.persistent,
+    });
+
+    // Start the configured auto-dismiss timer when the upload begins.
+    this.persistent.set(false);
+
+    // Update in place when an async operation completes.
+    ref.update({ title: 'Uploaded', appearance: 'success', duration: 3000 });
+
+    // Later, close one ref by id or every toast owned by this service.
+    this.toast.dismiss(ref.id);
+    this.toast.dismissAll();
+  }
+}`,
+    },
+  ];
+
   protected readonly actionTabs = TOAST_EXAMPLE_SOURCES['toast-action-example'];
 
   protected readonly positionTabs = TOAST_EXAMPLE_SOURCES['toast-position-example'];

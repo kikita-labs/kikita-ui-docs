@@ -43,9 +43,17 @@ describe('TooltipPage', () => {
     const triggers = [...root.querySelectorAll<HTMLButtonElement>('app-live-preview button')];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Tooltip');
-    expect(sectionIds).toEqual(['import', 'usage', 'behavior', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'behavior',
+      'provider-defaults',
+      'migration',
+      'api',
+      'accessibility',
+    ]);
     expect(triggers).toHaveLength(2);
-    expect(root.textContent).toContain('focus-visible');
+    expect(root.textContent).toContain('touch input');
   });
 
   it('keeps manifest loaders and generated example ownership aligned', async () => {

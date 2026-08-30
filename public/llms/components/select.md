@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/select
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: KuiSelectDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/select.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/select.md
 
 ## Install
 
@@ -170,6 +170,12 @@ export class MultipleSelectExample {
 | kuiLabelFn | (item: T) => string | - | Maps selected object values to display text. |
 | placeholder | string | - | Placeholder on the readonly input. |
 | clearable | boolean \| undefined | - | Shows a clear button when a value is selected; falls back to provider options. |
+| --kui-select-bg | CSS custom property | --kui-input-bg | Deprecated in 1.x; use --kui-input-bg instead. Retained for compatibility until v2. |
+| --kui-select-border | CSS custom property | --kui-input-border | Deprecated in 1.x; use --kui-input-border instead. Retained for compatibility until v2. |
+| --kui-select-border-hover | CSS custom property | --kui-input-border-hover | Deprecated in 1.x; use --kui-input-border-hover instead. Retained for compatibility until v2. |
+| --kui-select-border-focus | CSS custom property | --kui-input-border-focus | Deprecated in 1.x; use --kui-input-border-focus instead. Retained for compatibility until v2. |
+| --kui-select-border-error | CSS custom property | --kui-input-border-error | Deprecated in 1.x; use --kui-input-border-error instead. Retained for compatibility until v2. |
+| --kui-select-radius | CSS custom property | --kui-input-radius | Deprecated in 1.x; use --kui-input-radius instead. Retained for compatibility until v2. |
 | touch | output | - | Emitted after an opened dropdown closes for Signal Forms support. |
 
 ## Accessibility

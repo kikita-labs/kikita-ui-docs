@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/drawer
-- Package: @kikita-labs/ui@1.7.1
+- Package: @kikita-labs/ui@1.7.2
 - Import: kuiDrawer from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.1/docs/drawer.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/drawer.md
 
 ## Install
 
@@ -389,7 +389,9 @@ export class SizePreviewDrawer implements KuiDrawerHost<void, void> {
 - Focus returns to the previously focused element after close.
 - If `.kui-drawer-title` exists, it is wired as `aria-labelledby`.
 - Escape closes by default unless `closeOnEscape` is `false`.
-- Backdrop click closes by default unless `closeOnBackdropClick` is `false`.
+- Backdrop click closes by default unless `closeOnBackdropClick` is `false`, and only when
+  the pointer interaction starts on the backdrop. Selecting text or dragging from inside the
+  drawer cannot dismiss it.
 
 ## Playground
 

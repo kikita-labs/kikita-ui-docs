@@ -26,6 +26,14 @@
   </app-doc-section>
 
   <app-doc-section
+    anchor="persistent-lifecycle"
+    heading="Persistent and reactive lifecycle"
+    description="Use persistent for messages that must stay open, pass a signal when the lifecycle is controlled by application state, and use the returned ref for in-place updates or programmatic dismissal."
+  >
+    <app-code-tabs [tabs]="lifecycleTabs" />
+  </app-doc-section>
+
+  <app-doc-section
     anchor="with-action"
     heading="With action button"
     description="Set actionLabel to render an inline action button. Clicking it emits once on the returned ref's action$ observable, which completes after emitting."
@@ -79,6 +87,11 @@
       <li>
         Set <code>persistent</code> for errors or messages requiring a response instead of relying
         on the default 5 second auto-dismiss.
+      </li>
+      <li>
+        A persistent toast can still be dismissed by its close button, by
+        <code>KuiToastRef.close()</code>, or by the owning service's <code>dismiss()</code> and
+        <code>dismissAll()</code> methods.
       </li>
       <li>
         <code>prefers-reduced-motion</code> replaces slide animations with an opacity-only fade.

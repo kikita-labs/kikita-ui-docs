@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, KuiTooltipDirective, type KuiTooltipPlacement } from '@kikita-labs/ui';
+import {
+  KuiButtonDirective,
+  KuiTooltipDirective,
+  type KuiTooltipPlacement,
+  type KuiTooltipTrigger,
+} from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
@@ -23,6 +28,13 @@ const TOOLTIP_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['top', 'bottom', 'left', 'right'],
     defaultValue: 'top',
   },
+  {
+    key: 'triggerType',
+    label: 'triggerType',
+    kind: 'enum',
+    options: ['auto', 'hover', 'click', 'none'],
+    defaultValue: 'auto',
+  },
   { key: 'text', label: 'text', kind: 'string', defaultValue: 'Save the current draft' },
 ] as const);
 
@@ -44,6 +56,7 @@ export class TooltipPlaygroundPage {
   ): readonly CodeTab[] => {
     const attrString = serializePlaygroundAttributes([
       { name: 'placement', value: values.placement, defaultValue: 'top' },
+      { name: 'triggerType', value: values.triggerType, defaultValue: 'auto' },
     ]);
 
     return [
@@ -63,5 +76,9 @@ export class TooltipPlaygroundPage {
 
   protected textOf(values: TooltipPlaygroundValues): string {
     return values.text;
+  }
+
+  protected triggerTypeOf(values: TooltipPlaygroundValues): KuiTooltipTrigger {
+    return values.triggerType;
   }
 }
