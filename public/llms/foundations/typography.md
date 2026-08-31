@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /foundations/typography
-- Package: @kikita-labs/ui@1.7.3
+- Package: @kikita-labs/ui@1.7.4
 
 ## Content
 
