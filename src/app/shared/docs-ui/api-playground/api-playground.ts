@@ -13,15 +13,14 @@ import {
 
 import { DocsLocalOverlayContainer } from '@core/platform/overlay';
 
-import { CodeTabs } from '../code-tabs/code-tabs';
+import { CodeTabs } from '../code-tabs';
 import { ApiPlaygroundViewport } from './api-playground-viewport';
+import { createPlaygroundValues, parsePlaygroundNumber } from './helpers';
 import {
-  createPlaygroundValues,
-  parsePlaygroundNumber,
   type PlaygroundControl,
   type PlaygroundSnippetBuilder,
   type PlaygroundValue,
-} from './playground-control';
+} from './types';
 
 @Component({
   selector: 'app-api-playground',

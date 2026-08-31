@@ -10,7 +10,7 @@ import { DocsThemeService } from '@core/theme';
 import { CodeHighlighterService } from '../code-tabs';
 import { expectNoAxeViolations } from '../testing/axe';
 import { ApiPlayground } from './api-playground';
-import { definePlaygroundControls } from './playground-control';
+import { definePlaygroundControls } from './helpers';
 
 const CONTROLS = definePlaygroundControls([
   { key: 'shape', label: 'shape', kind: 'enum', options: ['solid', 'soft'], defaultValue: 'solid' },

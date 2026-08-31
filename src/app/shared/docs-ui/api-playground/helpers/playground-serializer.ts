@@ -1,8 +1,4 @@
-export interface PlaygroundHtmlAttribute {
-  readonly name: string;
-  readonly value: boolean | number | string | null | undefined;
-  readonly defaultValue?: boolean | number | string | null;
-}
+import { type PlaygroundHtmlAttribute } from '../interfaces';
 
 export function escapePlaygroundHtml(value: string): string {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');

@@ -4,7 +4,7 @@ import { provideKikitaUi } from '@kikita-labs/ui';
 
 import { DocsPointerDragService } from '@core/platform/pointer';
 
-import { expectNoAxeViolations } from '../testing/axe';
+import { expectNoAxeViolations } from '../../testing/axe';
 import { ApiPlaygroundViewport } from './api-playground-viewport';
 
 describe('ApiPlaygroundViewport', () => {
