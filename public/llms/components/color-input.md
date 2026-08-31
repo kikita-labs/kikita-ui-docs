@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/color-input
-- Package: @kikita-labs/ui@1.7.2
+- Package: @kikita-labs/ui@1.7.3
 - Import: KuiColorInputDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/color-input.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.3/docs/color-input.md
 
 ## Install
 

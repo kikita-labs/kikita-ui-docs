@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/combobox
-- Package: @kikita-labs/ui@1.7.2
+- Package: @kikita-labs/ui@1.7.3
 - Import: KuiComboboxDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.2/docs/combobox.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.3/docs/combobox.md
 
 ## Install
 
