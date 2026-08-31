@@ -8,7 +8,7 @@ import {
   KuiThGroupDirective,
 } from '@kikita-labs/ui';
 
-import { type ApiTableRow } from './api-table-row';
+import { type ApiTableRow } from './interfaces';
 
 @Component({
   selector: 'app-api-table',

@@ -2,7 +2,7 @@ import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { expectNoAxeViolations } from '../testing/axe';
 import { ApiTable } from './api-table';
-import { type ApiTableRow } from './api-table-row';
+import { type ApiTableRow } from './interfaces';
 
 const ROWS: readonly ApiTableRow[] = [
   {
