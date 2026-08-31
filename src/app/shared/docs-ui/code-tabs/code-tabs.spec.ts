@@ -7,9 +7,9 @@ import { DocsClipboardService } from '@core/platform/clipboard';
 import { DocsThemeService } from '@core/theme';
 
 import { expectNoAxeViolations } from '../testing/axe';
-import { CodeHighlighterService } from './code-highlighter.service';
-import { type CodeTab } from './code-tab';
 import { CodeTabs } from './code-tabs';
+import { type CodeTab } from './interfaces';
+import { CodeHighlighterService } from './services';
 
 const TABS: readonly CodeTab[] = [
   { label: 'HTML', filename: 'example.html', language: 'html', code: '<button>Save</button>' },

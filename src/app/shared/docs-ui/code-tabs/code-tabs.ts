@@ -22,8 +22,8 @@ import {
 import { DocsClipboardService } from '@core/platform/clipboard';
 import { DocsThemeService } from '@core/theme';
 
-import { CodeHighlighterService } from './code-highlighter.service';
-import { type CodeTab } from './code-tab';
+import { type CodeTab } from './interfaces';
+import { CodeHighlighterService } from './services';
 
 let nextCodeTabsId = 0;
 

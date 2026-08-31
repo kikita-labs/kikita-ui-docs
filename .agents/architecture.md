@@ -103,6 +103,49 @@ src/app/
 `bootstrap/` is the final target for root configuration. Moving the existing
 root files is optional until it can be done as a dedicated verified slice.
 
+## Kind Folders Inside A Component
+
+This app follows the component-internal layout defined by
+`kikita-create-angular-app`'s `templates/.agents/architecture/folder-structure.md`
+and `aliases-and-barrels.md`. Every `core/<capability>/`, `shared/docs-ui/<component>/`,
+`layout/<component>/`, and `pages/components/<component>/` folder splits its
+implementation files by kind instead of leaving them flat next to the primary
+`.ts`/`.html`/`.scss`:
+
+- `interfaces/` -- `interface` declarations;
+- `types/` -- `type` alias declarations (unions, mapped types, ...);
+- `constants/` -- exported constant values and lookup tables;
+- `helpers/` -- plain, non-Angular functions;
+- `services/` -- an Angular service that only this component uses;
+- `enums/`, `tokens/` -- when the component has either.
+
+Rules:
+
+- No inline interfaces, type aliases, constants, or free functions inside a
+  component or service implementation file. Extract to the matching kind
+  folder. See `angular-code-style.md` and `imports-and-boundaries.md`.
+- A kind folder is only for something with its own file; do not create one
+  for a single one-line symbol that is clearer written at the point of use in
+  its own kind-folder file once it stops being a private implementation
+  detail. A single-use private constant/type internal to one file may stay in
+  that file.
+- Single-consumer code stays co-located inside the owning component's own
+  kind folder, including its own `services/` -- a component's service (e.g.
+  `code-tabs/services/code-highlighter.service.ts`) lives there as long as
+  only that component uses it directly.
+- Promote to `shared/docs-ui/` root or a registry-level location only once
+  2+ _components_ need direct access to the symbol, with a doc entry at the
+  promoted location. A component that is merely composed inside another
+  component's template (e.g. `CodeTabs` used by `ApiPlayground`) is not by
+  itself a reason to promote `CodeTabs`'s internals; promote only what a
+  second component needs to import directly.
+- Every kind folder gets its own `index.ts` barrel. Files outside that kind
+  folder import through its barrel (`from './interfaces'`, `from '../types'`),
+  never a deep path into one of its files. See `imports-and-boundaries.md`.
+
+Reference implementation: `shared/docs-ui/code-tabs/` (`interfaces/`, `types/`,
+`constants/`, `helpers/`, `services/`, each with an `index.ts`).
+
 ## Typed Documentation Registry
 
 The current route enum, path object, navigation tree, component categories,

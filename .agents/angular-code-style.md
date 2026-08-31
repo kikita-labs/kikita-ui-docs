@@ -197,6 +197,14 @@ Shared controls should expose value-centric outputs where possible.
 - Keep `.ts`, `.html`, and `.scss` together for non-trivial components.
 - Inline templates are acceptable only for very small, behavior-light
   components and examples.
+- Do not declare an `interface`, a `type` alias, an exported constant, or a
+  free (non-Angular) function inline inside a component or service
+  implementation file. Extract each to its component's matching kind folder
+  (`interfaces/`, `types/`, `constants/`, `helpers/`) per
+  `architecture.md`'s "Kind Folders Inside A Component" and
+  `imports-and-boundaries.md`. A private, single-use symbol with no meaning
+  outside the file it lives in (e.g. a one-line local narrowing type) is the
+  only exception.
 
 ## Comments
 

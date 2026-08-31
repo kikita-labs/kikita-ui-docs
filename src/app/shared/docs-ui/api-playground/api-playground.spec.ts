@@ -7,7 +7,7 @@ import { DocsClipboardService } from '@core/platform/clipboard';
 import { DocsPointerDragService } from '@core/platform/pointer';
 import { DocsThemeService } from '@core/theme';
 
-import { CodeHighlighterService } from '../code-tabs/code-highlighter.service';
+import { CodeHighlighterService } from '../code-tabs';
 import { expectNoAxeViolations } from '../testing/axe';
 import { ApiPlayground } from './api-playground';
 import { definePlaygroundControls } from './playground-control';

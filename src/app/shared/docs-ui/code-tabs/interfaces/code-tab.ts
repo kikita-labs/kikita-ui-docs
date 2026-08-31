@@ -1,4 +1,4 @@
-import { type CodeTabLanguage } from './code-tab-language';
+import { type CodeTabLanguage } from '../types';
 
 export interface CodeTab {
   readonly label: string;
