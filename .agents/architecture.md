@@ -143,8 +143,17 @@ Rules:
   folder import through its barrel (`from './interfaces'`, `from '../types'`),
   never a deep path into one of its files. See `imports-and-boundaries.md`.
 
-Reference implementation: `shared/docs-ui/code-tabs/` (`interfaces/`, `types/`,
-`constants/`, `helpers/`, `services/`, each with an `index.ts`).
+A second Angular component private to one component (single consumer, not
+exported from the owning component's barrel) gets its own nested
+`<name>/` folder with the same internal shape, rather than sitting flat next
+to its owner -- e.g. `api-playground/api-playground-viewport/`, which owns
+its own `types/` and `constants/` for symbols only it needs
+(`PlaygroundViewport`, `VIEWPORT_WIDTH`, ...).
+
+Reference implementations: `shared/docs-ui/code-tabs/` (`interfaces/`,
+`types/`, `constants/`, `helpers/`, `services/`, each with an `index.ts`);
+`shared/docs-ui/api-playground/` (`interfaces/`, `types/`, `helpers/`, plus
+the nested private `api-playground-viewport/`).
 
 ## Typed Documentation Registry
 
