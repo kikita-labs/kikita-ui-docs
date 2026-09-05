@@ -28,7 +28,7 @@
   <app-doc-section
     anchor="removable"
     heading="Removable chip"
-    description="Nest a button[kuiChipRemove] inside the chip and listen for (removed) to drop a value from a collection."
+    description="Set removable and listen for (removed) to drop a value from a collection. Provide removeLabel with a value-specific name so screen reader users know which chip a given remove button clears."
   >
     <app-live-preview previewLabel="Removable chips">
       <app-removable-chip-example />
@@ -70,8 +70,10 @@
       <li>Use a non-interactive host such as <code>span</code> for a static chip.</li>
       <li>Use a native <code>button</code> or <code>a</code> for an interactive chip.</li>
       <li>
-        The remove action must be a native <code>button[kuiChipRemove]</code> with its own
-        accessible name, for example <code>aria-label="Remove Design"</code>.
+        Prefer <code>removable</code> with a value-specific <code>removeLabel</code>, for example
+        <code>removeLabel="Remove Design"</code>. Use a projected
+        <code>button[kuiChipRemove]</code> with its own accessible name only when the default button
+        isn't enough; do not combine both on the same chip.
       </li>
       <li>
         Disabled chips mark the remove button <code>aria-disabled="true"</code> and

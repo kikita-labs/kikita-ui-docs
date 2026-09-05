@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/calendar
-- Package: @kikita-labs/ui@1.7.4
+- Package: @kikita-labs/ui@1.8.0
 - Import: KuiCalendarComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.4/docs/calendar.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/calendar.md
 
 ## Install
 

@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';
+import { KuiChipDirective } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-removable-chip-example',
-  imports: [KuiChipDirective, KuiChipRemoveDirective],
+  imports: [KuiChipDirective],
   templateUrl: './removable-chip-example.html',
   styleUrl: './removable-chip-example.scss',
 })

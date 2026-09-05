@@ -69,13 +69,13 @@ export const CHIP_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "removable-chip-example.html",
       language: "html",
-      code: "<div class=\"removable-chip-example\">\n  @for (tag of tags(); track tag) {\n    <span kuiChip appearance=\"primary\" (removed)=\"removeTag(tag)\">\n      <span class=\"kui-chip-label\">{{ tag }}</span>\n      <button kuiChipRemove type=\"button\" [attr.aria-label]=\"'Remove ' + tag\"></button>\n    </span>\n  }\n</div>",
+      code: "<div class=\"removable-chip-example\">\n  @for (tag of tags(); track tag) {\n    <span\n      kuiChip\n      appearance=\"primary\"\n      removable\n      [removeLabel]=\"'Remove ' + tag\"\n      (removed)=\"removeTag(tag)\"\n    >\n      <span class=\"kui-chip-label\">{{ tag }}</span>\n    </span>\n  }\n</div>",
     },
     {
       label: "TS",
       filename: "removable-chip-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-removable-chip-example',\n  imports: [KuiChipDirective, KuiChipRemoveDirective],\n  templateUrl: './removable-chip-example.html',\n  styleUrl: './removable-chip-example.scss',\n})\nexport class RemovableChipExample {\n  protected readonly tags = signal(['Design', 'Engineering', 'Product']);\n\n  protected removeTag(tag: string): void {\n    this.tags.update((current) => current.filter((existing) => existing !== tag));\n  }\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiChipDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-removable-chip-example',\n  imports: [KuiChipDirective],\n  templateUrl: './removable-chip-example.html',\n  styleUrl: './removable-chip-example.scss',\n})\nexport class RemovableChipExample {\n  protected readonly tags = signal(['Design', 'Engineering', 'Product']);\n\n  protected removeTag(tag: string): void {\n    this.tags.update((current) => current.filter((existing) => existing !== tag));\n  }\n}",
     },
     {
       label: "SCSS",

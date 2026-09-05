@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/chip
-- Package: @kikita-labs/ui@1.7.4
+- Package: @kikita-labs/ui@1.8.0
 - Import: KuiChipDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.7.4/docs/chip.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/chip.md
 
 ## Install
 
@@ -20,13 +20,41 @@ ng add @kikita-labs/ui
 ```html
 <span kuiChip>Design</span>
 
-<span kuiChip size="sm" appearance="primary" (removed)="removeTag('design')">
+<!-- Primary way to make a chip removable: the `removable` input renders a default
+     crossmark button and wires up `removed` for you. -->
+<span
+  kuiChip
+  size="sm"
+  appearance="primary"
+  removable
+  removeLabel="Remove Design"
+  (removed)="removeTag('design')"
+>
   <span class="kui-chip-label">Design</span>
-  <button kuiChipRemove aria-label="Remove Design">...</button>
 </span>
 
 <button kuiChip type="button">Filter</button>
 ```
+
+Only reach for `button[kuiChipRemove]` when the default button in `removable` isn't
+enough — a custom icon, extra markup, or a design that needs a fully custom remove
+control. It's a behavior-only directive (click handling, ARIA wiring) with no visual
+of its own: project whatever content you want as the button's children, for example a
+`kuiIconButton`:
+
+```html
+<span kuiChip size="sm" appearance="primary" (removed)="removeTag('design')">
+  <span class="kui-chip-label">Design</span>
+  <button kuiChipRemove kuiIconButton icon="x" size="xs" aria-label="Remove Design"></button>
+</span>
+```
+
+`kuiIconButton` is its own directive; import `KuiIconButtonDirective` alongside
+`KuiChipDirective`/`KuiChipRemoveDirective` to use this pattern. See [Icon
+Button](icon-button.md).
+
+Do not combine `removable` and a projected `button[kuiChipRemove]` on the same chip —
+pick one.
 
 ## Examples
 
@@ -188,9 +216,14 @@ export class InteractiveChipExample {
 ```html
 <div class="removable-chip-example">
   @for (tag of tags(); track tag) {
-    <span kuiChip appearance="primary" (removed)="removeTag(tag)">
+    <span
+      kuiChip
+      appearance="primary"
+      removable
+      [removeLabel]="'Remove ' + tag"
+      (removed)="removeTag(tag)"
+    >
       <span class="kui-chip-label">{{ tag }}</span>
-      <button kuiChipRemove type="button" [attr.aria-label]="'Remove ' + tag"></button>
     </span>
   }
 </div>
@@ -201,11 +234,11 @@ export class InteractiveChipExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';
+import { KuiChipDirective } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-removable-chip-example',
-  imports: [KuiChipDirective, KuiChipRemoveDirective],
+  imports: [KuiChipDirective],
   templateUrl: './removable-chip-example.html',
   styleUrl: './removable-chip-example.scss',
 })
@@ -238,8 +271,10 @@ export class RemovableChipExample {
 | size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Chip size. sm is the size used inside Select and Combobox controls. |
 | disabled | boolean | false | Reduces opacity and makes the nested remove action inert. |
 | invalid | boolean | false | Shows the invalid border treatment. |
-| removed | output: void | - | Emitted when a nested button[kuiChipRemove] is clicked. |
-| kuiChipRemove | directive on button | - | Marks a native button as the chip remove action. Needs its own aria-label, for example "Remove Design". |
+| removable | boolean | false | Renders a default remove button (crossmark icon) as the last child. Primary way to make a chip removable; use kuiChipRemove instead only for a custom icon or extra content. |
+| removeLabel | string \| undefined | 'Remove' | Accessible name for the default remove button rendered by removable. Provide a value-specific label, for example "Remove Design". |
+| removed | output: void | - | Emitted when the default remove button or a nested button[kuiChipRemove] is activated. |
+| kuiChipRemove | directive on button | - | Marks a native button as the chip remove action. Use only when the default removable button is not enough (custom icon, extra content); do not combine both on the same chip. Needs its own aria-label, for example "Remove Design". |
 | --kui-chip-bg | CSS color | - | Chip background color. |
 | --kui-chip-bg-hover | CSS color | - | Chip background color on hover for interactive chips. |
 | --kui-chip-border | CSS color | - | Chip border color. |
@@ -257,8 +292,11 @@ export class RemovableChipExample {
 
 - Static chip: use a non-interactive host such as `span`.
 - Interactive chip: use a native `button` or `a`.
-- Remove action must be a native `button[kuiChipRemove]`.
-- Remove buttons need an accessible name such as `aria-label="Remove Design"`.
+- Remove action is a native `<button>`, either the `removable` default or a projected
+  `button[kuiChipRemove]`.
+- Give the remove button an accessible name: `removeLabel` for `removable`, or an
+  explicit `aria-label` such as `aria-label="Remove Design"` on a custom
+  `button[kuiChipRemove]`.
 - Disabled chips mark remove buttons as `aria-disabled="true"` and `tabindex="-1"`.
 - Select and Combobox own keyboard behavior for Delete/Backspace selected-value removal.
 

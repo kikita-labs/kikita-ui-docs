@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 
-import {
-  type KuiChipAppearance,
-  KuiChipDirective,
-  KuiChipRemoveDirective,
-  type KuiSize,
-} from '@kikita-labs/ui';
+import { type KuiChipAppearance, KuiChipDirective, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -44,7 +39,7 @@ type ChipPlaygroundValues = PlaygroundValues<typeof CHIP_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-chip-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiChipDirective, KuiChipRemoveDirective],
+  imports: [ApiPlayground, ApiTable, KuiChipDirective],
   templateUrl: './chip-playground-page.html',
   styleUrl: './chip-playground-page.scss',
 })
@@ -64,20 +59,23 @@ export class ChipPlaygroundPage {
     const invalid = values.invalid;
     const removable = values.removable;
 
+    const escapedLabel = escapePlaygroundHtml(label || 'Design');
+
     const attrs = [
       appearance !== 'neutral' ? `appearance="${appearance}"` : null,
       size !== 'md' ? `size="${size}"` : null,
       disabled ? 'disabled' : null,
       invalid ? 'invalid' : null,
+      removable ? 'removable' : null,
+      removable ? `removeLabel="Remove ${escapedLabel}"` : null,
+      removable ? '(removed)="removeTag()"' : null,
     ].filter((attr): attr is string => attr !== null);
 
     const attrString = attrs.length > 0 ? ` ${attrs.join(' ')}` : '';
-    const escapedLabel = escapePlaygroundHtml(label || 'Design');
 
     const code = removable
-      ? `<span kuiChip${attrString} (removed)="removeTag()">
+      ? `<span kuiChip${attrString}>
   <span class="kui-chip-label">${escapedLabel}</span>
-  <button kuiChipRemove type="button" aria-label="Remove ${escapedLabel}"></button>
 </span>`
       : `<span kuiChip${attrString}>${escapedLabel}</span>`;
 

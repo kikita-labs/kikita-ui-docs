@@ -15,15 +15,10 @@
       [size]="sizeOf(playground.values())"
       [disabled]="disabledOf(playground.values())"
       [invalid]="invalidOf(playground.values())"
+      [removable]="removableOf(playground.values())"
+      [removeLabel]="'Remove ' + labelOf(playground.values())"
     >
       <span class="kui-chip-label">{{ labelOf(playground.values()) }}</span>
-      @if (removableOf(playground.values())) {
-        <button
-          kuiChipRemove
-          type="button"
-          [attr.aria-label]="'Remove ' + labelOf(playground.values())"
-        ></button>
-      }
     </span>
   </app-api-playground>
 

@@ -26,17 +26,32 @@ export const CHIP_API_ROWS: readonly ApiTableRow[] = [
     description: 'Shows the invalid border treatment.',
   },
   {
+    name: 'removable',
+    type: 'boolean',
+    defaultValue: 'false',
+    description:
+      'Renders a default remove button (crossmark icon) as the last child. Primary way to make a chip removable; use kuiChipRemove instead only for a custom icon or extra content.',
+  },
+  {
+    name: 'removeLabel',
+    type: 'string | undefined',
+    defaultValue: `'Remove'`,
+    description:
+      'Accessible name for the default remove button rendered by removable. Provide a value-specific label, for example "Remove Design".',
+  },
+  {
     name: 'removed',
     type: 'output: void',
     defaultValue: '-',
-    description: 'Emitted when a nested button[kuiChipRemove] is clicked.',
+    description:
+      'Emitted when the default remove button or a nested button[kuiChipRemove] is activated.',
   },
   {
     name: 'kuiChipRemove',
     type: 'directive on button',
     defaultValue: '-',
     description:
-      'Marks a native button as the chip remove action. Needs its own aria-label, for example "Remove Design".',
+      'Marks a native button as the chip remove action. Use only when the default removable button is not enough (custom icon, extra content); do not combine both on the same chip. Needs its own aria-label, for example "Remove Design".',
   },
   {
     name: '--kui-chip-bg',
