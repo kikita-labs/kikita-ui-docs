@@ -1,26 +1,17 @@
 @if (isSwitchable()) {
-  <button
-    kuiButton
-    class="version-switcher__button"
-    type="button"
-    shape="outline"
-    size="sm"
-    [kuiMenuFor]="versionMenu"
-    [attr.aria-label]="'Documentation version, current ' + current().label"
-  >
-    {{ current().label }}
-  </button>
-
-  <kui-menu #versionMenu ariaLabel="Documentation version" menuAlign="end">
-    @for (item of items(); track item.version.id) {
-      <a
-        kuiMenuItem
-        [href]="item.href"
-        [attr.aria-current]="item.isCurrent ? 'true' : null"
-        (click)="select($event, item)"
-      >
-        <span class="kui-menu-item__label">{{ item.version.label }}</span>
-      </a>
-    }
-  </kui-menu>
+  <kui-field class="version-switcher__field">
+    <input
+      kuiSelect
+      aria-label="Documentation version"
+      [value]="current().id"
+      [kuiLabelFn]="versionLabel"
+      [clearable]="false"
+      (valueChange)="select($event)"
+    />
+    <kui-dropdown>
+      @for (version of versions(); track version.id) {
+        <div kuiOption [value]="version.id">{{ version.label }}</div>
+      }
+    </kui-dropdown>
+  </kui-field>
 }

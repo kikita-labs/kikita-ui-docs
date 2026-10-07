@@ -144,10 +144,12 @@ stable. The version prefix is irrelevant to the page.
 - `DocsVersionsService` (`@core/versions`) loads `versions.json` from the site
   root in the browser only and validates it. An invalid or missing file leaves
   only the current build in the list.
-- `VersionSwitcher` (header) shows a menu of versions only when two or more
-  exist. Entries are real links to the same page in the other version. A plain
-  click probes the target with a HEAD request and falls back to that version's
-  home when the page does not exist; modified clicks keep native behavior.
+- `VersionSwitcher` (header) is a `kuiSelect` (named "Documentation version")
+  shown only when two or more versions exist. Choosing another version goes
+  through `DocsVersionNavigationService`, which probes the same page there with
+  a HEAD request and falls back to that version's home when the page does not
+  exist. Options are not links, so middle-click and open-in-new-tab are
+  intentionally unavailable there (the banner link keeps native link behavior).
 - `VersionBanner` (shell) appears for any non-latest version and links to the
   same page in the latest version, with the same fallback.
 - Both components are behind `@defer (on idle)` to protect the initial bundle.
