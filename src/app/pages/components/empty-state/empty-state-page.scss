@@ -7,3 +7,7 @@
 .empty-state-page__notes {
   @include doc-page-notes;
 }
+
+.empty-state-page__note {
+  @include doc-page-note;
+}

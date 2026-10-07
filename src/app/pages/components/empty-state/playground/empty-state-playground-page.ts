@@ -44,6 +44,7 @@ const EMPTY_STATE_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['sm', 'md', 'lg'],
     defaultValue: 'md',
   },
+  { key: 'showIcon', label: 'showIcon', kind: 'boolean', defaultValue: true },
   { key: 'showActions', label: 'showActions', kind: 'boolean', defaultValue: true },
 ] as const);
 
@@ -77,9 +78,10 @@ export class EmptyStatePlaygroundPage {
     const context = values.context;
     const size = values.size;
     const showActions = values.showActions;
+    const iconBlock = values.showIcon ? '  <kui-icon kuiEmptyStateIcon name="package" />' : '';
 
     const attrs = [
-      `heading="${escapePlaygroundHtml(title || 'No projects yet')}"`,
+      title ? `heading="${escapePlaygroundHtml(title)}"` : null,
       description ? `description="${escapePlaygroundHtml(description)}"` : null,
       context !== 'no-data' ? `context="${context}"` : null,
       size !== 'md' ? `size="${size}"` : null,
@@ -99,16 +101,18 @@ export class EmptyStatePlaygroundPage {
         label: 'HTML',
         language: 'html',
         code: `<kui-empty-state ${attrs.join(' ')}>
-  <kui-icon kuiEmptyStateIcon name="package" />${actionsBlock}
+${iconBlock}${actionsBlock}
 </kui-empty-state>`,
       },
     ];
   };
 
-  protected titleOf(values: EmptyStatePlaygroundValues): string {
-    const heading = values.heading;
+  protected titleOf(values: EmptyStatePlaygroundValues): string | undefined {
+    return values.heading || undefined;
+  }
 
-    return heading || 'No projects yet';
+  protected showIconOf(values: EmptyStatePlaygroundValues): boolean {
+    return values.showIcon;
   }
 
   protected descriptionOf(values: EmptyStatePlaygroundValues): string | null {

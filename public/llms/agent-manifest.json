@@ -530,7 +530,8 @@
       "exampleIds": [
         "basic-empty-state-example",
         "empty-state-context-example",
-        "empty-state-size-example"
+        "empty-state-size-example",
+        "empty-state-description-example"
       ],
       "apiSchemaPath": "src/app/pages/components/empty-state/empty-state.api-schema.ts",
       "hasPlayground": true

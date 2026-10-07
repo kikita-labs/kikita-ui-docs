@@ -15,7 +15,9 @@
       [context]="contextOf(playground.values())"
       [size]="sizeOf(playground.values())"
     >
-      <kui-icon kuiEmptyStateIcon name="package" />
+      @if (showIconOf(playground.values())) {
+        <kui-icon kuiEmptyStateIcon name="package" />
+      }
 
       @if (showActionsOf(playground.values())) {
         <div kuiEmptyStateActions>

@@ -64,6 +64,26 @@ export const EMPTY_STATE_EXAMPLE_SOURCES = {
       code: ".empty-state-size-example {\n  display: flex;\n  flex-direction: column;\n  gap: var(--kui-space-6, 24px);\n  inline-size: 100%;\n}",
     },
   ],
+  "empty-state-description-example": [
+    {
+      label: "HTML",
+      filename: "empty-state-description-example.html",
+      language: "html",
+      code: "<kui-empty-state size=\"sm\" description=\"No results match the current filters.\" />",
+    },
+    {
+      label: "TS",
+      filename: "empty-state-description-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiEmptyState } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-empty-state-description-example',\n  imports: [KuiEmptyState],\n  templateUrl: './empty-state-description-example.html',\n  styleUrl: './empty-state-description-example.scss',\n})\nexport class EmptyStateDescriptionExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "empty-state-description-example.scss",
+      language: "scss",
+      code: ":host {\n  display: block;\n}",
+    },
+  ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;
 
 export type EmptyStateExampleId = keyof typeof EMPTY_STATE_EXAMPLE_SOURCES;

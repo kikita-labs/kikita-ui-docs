@@ -3,9 +3,10 @@ import { type ApiTableRow } from '@shared/docs-ui/api-table';
 export const EMPTY_STATE_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'heading',
-    type: 'string',
+    type: 'string | undefined',
     defaultValue: '-',
-    description: 'Required empty-state heading text. Visual text only, not a forced heading level.',
+    description:
+      'Optional empty-state heading text; omit it for a description-only state. Visual text only, not a forced heading level.',
   },
   {
     name: 'description',
@@ -23,7 +24,8 @@ export const EMPTY_STATE_API_ROWS: readonly ApiTableRow[] = [
     name: 'size',
     type: `'sm' | 'md' | 'lg'`,
     defaultValue: `'md'`,
-    description: 'Empty-state layout size. Small uses a compact horizontal layout.',
+    description:
+      'Empty-state layout size. Small uses a compact horizontal layout. Falls back to defaults.emptyState.size, then the global defaults.size.',
   },
   {
     name: '[kuiEmptyStateIcon]',
@@ -38,5 +40,11 @@ export const EMPTY_STATE_API_ROWS: readonly ApiTableRow[] = [
     defaultValue: '-',
     description:
       'Marks projected content as the action slot for native buttons, links, or Kikita button directives.',
+  },
+  {
+    name: 'KuiEmptyStateOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.emptyState: size.',
   },
 ];

@@ -5360,16 +5360,49 @@ export class EmptyStateSizeExample {}
 }
 ```
 
+### empty-state-description-example
+
+#### empty-state-description-example.html
+
+```html
+<kui-empty-state size="sm" description="No results match the current filters." />
+```
+
+#### empty-state-description-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiEmptyState } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-empty-state-description-example',
+  imports: [KuiEmptyState],
+  templateUrl: './empty-state-description-example.html',
+  styleUrl: './empty-state-description-example.scss',
+})
+export class EmptyStateDescriptionExample {}
+```
+
+#### empty-state-description-example.scss
+
+```scss
+:host {
+  display: block;
+}
+```
+
 ## API
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| heading | string | - | Required empty-state heading text. Visual text only, not a forced heading level. |
+| heading | string \| undefined | - | Optional empty-state heading text; omit it for a description-only state. Visual text only, not a forced heading level. |
 | description | string \| null | null | Optional supporting text rendered below the title. |
 | context | 'no-data' \| 'no-results' \| 'error' \| 'no-access' \| 'success' | 'no-data' | Semantic context. Only changes the icon accent, not layout. |
-| size | 'sm' \| 'md' \| 'lg' | 'md' | Empty-state layout size. Small uses a compact horizontal layout. |
+| size | 'sm' \| 'md' \| 'lg' | 'md' | Empty-state layout size. Small uses a compact horizontal layout. Falls back to defaults.emptyState.size, then the global defaults.size. |
 | [kuiEmptyStateIcon] | KuiEmptyStateIcon | - | Marks projected visual content as the decorative icon slot. Kikita marks it aria-hidden. |
 | [kuiEmptyStateActions] | KuiEmptyStateActions | - | Marks projected content as the action slot for native buttons, links, or Kikita button directives. |
+| KuiEmptyStateOptions | interface | - | Shape of defaults.emptyState: size. |
 
 ## Accessibility
 

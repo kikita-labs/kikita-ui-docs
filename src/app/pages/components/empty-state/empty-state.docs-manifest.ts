@@ -12,6 +12,7 @@ export const EMPTY_STATE_DOCS_MANIFEST = {
     'basic-empty-state-example',
     'empty-state-context-example',
     'empty-state-size-example',
+    'empty-state-description-example',
   ],
   loadPage: () => import('./empty-state-page').then((module) => module.EmptyStatePage),
   loadPlayground: () =>

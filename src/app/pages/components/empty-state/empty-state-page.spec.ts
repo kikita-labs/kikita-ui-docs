@@ -43,7 +43,18 @@ describe('EmptyStatePage', () => {
     const emptyStates = [...root.querySelectorAll<HTMLElement>('app-live-preview kui-empty-state')];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Empty State');
-    expect(sectionIds).toEqual(['import', 'usage', 'contexts', 'sizes', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'contexts',
+      'sizes',
+      'description-only',
+      'provider-defaults',
+      'theming-tokens',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(emptyStates.length).toBeGreaterThanOrEqual(8);
     expect(root.querySelectorAll('[kuiEmptyStateIcon]').length).toBeGreaterThanOrEqual(8);
     expect(root.querySelectorAll('[kuiEmptyStateActions] button').length).toBeGreaterThanOrEqual(3);
@@ -68,6 +79,7 @@ describe('EmptyStatePage', () => {
       'basic-empty-state-example',
       'empty-state-context-example',
       'empty-state-size-example',
+      'empty-state-description-example',
     ]);
     expect(Object.keys(EMPTY_STATE_EXAMPLE_SOURCES).sort()).toEqual(
       [...EMPTY_STATE_DOCS_MANIFEST.exampleIds].sort(),

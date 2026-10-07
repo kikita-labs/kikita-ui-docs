@@ -45,6 +45,25 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    anchor="description-only"
+    heading="Description only"
+    description="heading is optional: omit it when the supporting description is enough, for example in a small filtered list."
+  >
+    <app-live-preview previewLabel="Description-only empty state">
+      <app-empty-state-description-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="descriptionTabs" />
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Empty State"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Empty State API" [rows]="apiRows" />
   </app-doc-section>
@@ -69,6 +88,28 @@
       <li>
         Actions projected through <code>[kuiEmptyStateActions]</code> remain normal interactive
         elements; use native buttons or links, or Kikita's button directives.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Empty State."
+  >
+    <ul class="empty-state-page__notes">
+      <li>
+        The classes are <code>KuiEmptyState</code>, <code>KuiEmptyStateIcon</code> and
+        <code>KuiEmptyStateActions</code> (they had a <code>Component</code> or
+        <code>Directive</code> suffix); <code>ng update @kikita-labs/ui</code> renames the imports.
+      </li>
+      <li>
+        <code>heading</code> is optional now, and the default size comes from
+        <code>defaults.emptyState.size</code>.
+      </li>
+      <li>
+        The title weight is semibold (600, it was 650), body text uses the shared line heights, and
+        the error, success and no-access icon colors are tokens.
       </li>
     </ul>
   </app-doc-section>
