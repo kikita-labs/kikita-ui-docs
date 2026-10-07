@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
-import { readFileSync } from 'node:fs';
 
 import { gotoReady } from './support/page-ready';
+import { CURRENT_ID, NEWER_ID, VERSIONS_MANIFEST } from './support/versions-manifest';
 
 test('navigates from the landing page into foundations and components', async ({ page }) => {
   await gotoReady(page, '/');
@@ -370,19 +370,6 @@ test('keeps draft, not-found, and installed-package smoke routes recoverable', a
   await expect(page).toHaveURL(/\/components$/);
 });
 
-// The page under test documents the installed library major; the mocked manifest pretends that a
-// newer major exists, so the suite keeps working across library majors.
-const PACKAGE_JSON: { dependencies: Record<string, string> } = JSON.parse(
-  readFileSync('package.json', 'utf8'),
-);
-const CURRENT_MAJOR = Number.parseInt(PACKAGE_JSON.dependencies['@kikita-labs/ui'], 10);
-const CURRENT_ID = `v${CURRENT_MAJOR}`;
-const NEWER_ID = `v${CURRENT_MAJOR + 1}`;
-const VERSIONS_MANIFEST = [
-  { id: NEWER_ID, label: NEWER_ID, path: '/', status: 'latest' },
-  { id: CURRENT_ID, label: CURRENT_ID, path: `/${CURRENT_ID}/`, status: 'maintained' },
-];
-
 test('publishes one canonical URL per page and none on not-found', async ({ page }) => {
   await gotoReady(page, '/components/button');
   const canonical = page.locator('link[rel="canonical"]');
@@ -396,7 +383,7 @@ test('publishes one canonical URL per page and none on not-found', async ({ page
 test('hides the version controls while no valid versions.json is published', async ({ page }) => {
   await gotoReady(page, '/components/button');
 
-  await expect(page.getByRole('button', { name: /^Documentation version/ })).toHaveCount(0);
+  await expect(page.getByRole('combobox', { name: 'Documentation version' })).toHaveCount(0);
   await expect(page.getByRole('note', { name: 'Documentation version notice' })).toHaveCount(0);
 });
 
@@ -408,23 +395,32 @@ test('switches versions and warns on an older version using versions.json', asyn
   await expect(notice).toContainText('older version');
   await expect(notice.getByRole('link')).toHaveAttribute('href', '/components/button');
 
-  const trigger = page.getByRole('button', {
-    name: `Documentation version, current ${CURRENT_ID}`,
-  });
-  await trigger.click();
-  const menu = page.getByRole('menu', { name: 'Documentation version' });
-  await expect(menu.getByRole('menuitem', { name: NEWER_ID })).toHaveAttribute(
-    'href',
-    '/components/button',
-  );
-  await expect(menu.getByRole('menuitem', { name: CURRENT_ID })).toHaveAttribute(
-    'href',
-    `/${CURRENT_ID}/components/button`,
-  );
-  await expect(menu.getByRole('menuitem', { name: CURRENT_ID })).toHaveAttribute(
-    'aria-current',
+  const select = page.getByRole('combobox', { name: 'Documentation version' });
+  await expect(select).toHaveValue(CURRENT_ID);
+  await select.click();
+  await expect(page.getByRole('option', { name: CURRENT_ID })).toHaveAttribute(
+    'aria-selected',
     'true',
   );
+  await expect(page.getByRole('option', { name: NEWER_ID })).toHaveAttribute(
+    'aria-selected',
+    'false',
+  );
+});
+
+test('opens the home of another version from the select when the page is missing there', async ({
+  page,
+}) => {
+  await page.route('**/versions.json', (route) => route.fulfill({ json: VERSIONS_MANIFEST }));
+  await page.route('**/components/button', (route) =>
+    route.request().method() === 'HEAD' ? route.fulfill({ status: 404 }) : route.continue(),
+  );
+  await gotoReady(page, '/components/button');
+
+  await page.getByRole('combobox', { name: 'Documentation version' }).click();
+  await page.getByRole('option', { name: NEWER_ID }).click();
+
+  await expect(page).toHaveURL(/\/$/);
 });
 
 test('falls back to the version home when the page is missing there', async ({ page }) => {
