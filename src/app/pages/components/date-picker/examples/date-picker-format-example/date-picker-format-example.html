@@ -1,0 +1,15 @@
+<div class="date-picker-format-example">
+  <kui-field label="Locale layout" hint="Follows the locale of the nearest i18n level.">
+    <input kuiDatePicker [(value)]="localeDate" />
+    <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
+      <kui-calendar flat />
+    </kui-dropdown>
+  </kui-field>
+
+  <kui-field label="Pinned layout" hint="format pins dd.MM.yyyy whatever the locale is.">
+    <input kuiDatePicker format="dd.MM.yyyy" [(value)]="pinnedDate" />
+    <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
+      <kui-calendar flat />
+    </kui-dropdown>
+  </kui-field>
+</div>

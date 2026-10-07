@@ -15,7 +15,7 @@
 
   <app-doc-section
     heading="Usage"
-    description="Bind the input and calendar to the same Date signal so typed and clicked values stay synchronized."
+    description="Place a kui-calendar in a dropdown next to the input inside the same kui-field: the directive wires value, viewDate, minDate and maxDate into it, so a clicked day updates the input and a typed date moves the calendar."
   >
     <app-playground-route-button docSectionActions />
 
@@ -23,6 +23,63 @@
       <app-basic-date-picker-example />
     </app-live-preview>
     <app-code-tabs [tabs]="basicTabs" />
+    <p class="date-picker-page__note">
+      Manual binding of <code>value</code>, <code>viewDate</code> and the bounds on the calendar
+      still works and is not deprecated; both patterns converge on the same state without looping.
+    </p>
+    <app-code-tabs [tabs]="manualTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="format-and-locale"
+    heading="Format and locale"
+    description="Text is parsed and formatted with the numeric layout of the locale, or with the format input."
+  >
+    <app-live-preview previewLabel="Locale and pinned formats">
+      <app-date-picker-format-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="formatTabs" />
+    <ul class="date-picker-page__notes">
+      <li>
+        The layout follows the locale of the nearest i18n level: <code>10/03/2026</code> in
+        <code>en-US</code>, <code>03.10.2026</code> in <code>ru-RU</code> and
+        <code>2026/10/03</code> in <code>ja-JP</code>. The placeholder is built from the
+        <code>dayPlaceholder</code>, <code>monthPlaceholder</code> and
+        <code>yearPlaceholder</code> messages in the same order and separators.
+      </li>
+      <li>
+        <code>format</code> takes <code>d</code>/<code>dd</code>, <code>M</code>/<code>MM</code> and
+        <code>yyyy</code> tokens such as <code>dd.MM.yyyy</code> and resolves as the input, then
+        <code>defaults.datePicker.format</code>, then the locale.
+      </li>
+      <li>
+        Parsing reads three digit groups in the layout's order, so <code>3.1.2026</code> is accepted
+        where <code>03.01.2026</code> is shown. Surrounding whitespace is trimmed and four-digit
+        years from <code>0000</code> through <code>9999</code> are preserved.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="validation"
+    heading="Bounds and validation"
+    description="minDate and maxDate are inclusive local calendar-day boundaries; their time portions are ignored, like kui-calendar."
+  >
+    <ul class="date-picker-page__notes">
+      <li>
+        Typing an out-of-format value sets <code>aria-invalid</code> and
+        <code>data-kui-invalid</code> without replacing the last parsed <code>value</code>.
+      </li>
+      <li>
+        A parseable date outside the bounds updates <code>value</code> and <code>viewDate</code> to
+        the typed date but keeps the field invalid, while the linked calendar disables the cells
+        outside the range. Typing a valid in-range date clears the invalid state.
+      </li>
+      <li>
+        <code>readonly</code> shows the value but never opens the popover;
+        <code>clearable</code> defaults to true and shows a clear button once there is a value.
+      </li>
+    </ul>
   </app-doc-section>
 
   <app-doc-section
@@ -38,10 +95,24 @@
       </li>
       <li>Use <code>maxHeight</code> as a viewport safety cap for constrained spaces.</li>
       <li>
+        The panel is wider than the field on purpose: the calendar has a fixed width
+        (<code>--kui-calendar-width</code>, 296px) that <code>panelWidth="auto"</code> keeps.
+      </li>
+      <li>
         Use <code>flat</code> on the calendar to avoid a double border inside the dropdown panel.
       </li>
     </ul>
   </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Date Picker"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Date Picker API" [rows]="apiRows" />
@@ -56,7 +127,12 @@
         The input exposes <code>role="combobox"</code>, dialog popup state, and invalid state.
       </li>
       <li>ArrowDown opens the popover; a second ArrowDown moves focus into the calendar grid.</li>
-      <li>Escape closes the popover while keeping focus in the field.</li>
+      <li>Escape closes the popover and returns focus to the field.</li>
+      <li>
+        Choosing a date in the calendar returns focus to the control, and with Angular Signal Forms
+        the field gates the required error and <code>aria-invalid</code> until the control is
+        touched.
+      </li>
       <li>
         Use <code>kui-field</code> labels and hints so the native input has a clear accessible name
         and description.
@@ -72,7 +148,33 @@
     <ul class="date-picker-page__notes">
       <li>Range date picking is not implemented for <code>input[kuiDatePicker]</code>.</li>
       <li>The mobile bottom-sheet date picker variant is not implemented.</li>
-      <li>The display mask is fixed to <code>dd.MM.yyyy</code>; there is no format input.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Date Picker."
+  >
+    <ul class="date-picker-page__notes">
+      <li>
+        The class is <code>KuiDatePicker</code> (it was <code>KuiDatePickerDirective</code>);
+        <code>ng update @kikita-labs/ui</code> renames the imports of the directive, calendar,
+        dropdown and field.
+      </li>
+      <li>
+        The display and parse layout follows the locale (it was a fixed <code>dd.MM.yyyy</code>);
+        set <code>format=&quot;dd.MM.yyyy&quot;</code> or <code>defaults.datePicker.format</code> to
+        keep the old layout. The placeholder is built from messages in the locale's order.
+      </li>
+      <li>
+        A sibling <code>kui-calendar</code> in the same field is wired automatically (value,
+        viewDate and the bounds); manual binding keeps working.
+      </li>
+      <li>
+        <code>clearable</code> resolves as local input &gt; <code>defaults.datePicker</code> &gt;
+        <code>defaults.field</code>; <code>kuiProvideFieldOptions</code> is deprecated until 3.0.
+      </li>
     </ul>
   </app-doc-section>
 </article>

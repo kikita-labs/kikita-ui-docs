@@ -10,6 +10,6 @@ import { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/
 })
 export class BasicDatePickerExample {
   protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));
-  protected readonly viewDate = signal(new Date(2026, 6, 1));
   protected readonly minDate = new Date(2026, 6, 1);
+  protected readonly maxDate = new Date(2026, 6, 31);
 }

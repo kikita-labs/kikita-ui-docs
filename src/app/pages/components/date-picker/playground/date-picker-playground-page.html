@@ -13,27 +13,26 @@
       <kui-field [label]="labelOf(playground.values())">
         <input
           kuiDatePicker
-          [(value)]="date"
-          [(viewDate)]="viewDate"
+          [value]="date()"
+          (valueChange)="onValueChange($event)"
           [placeholder]="placeholderOf(playground.values())"
+          [format]="formatOf(playground.values())"
+          [messages]="messagesOf(playground.values())"
           [clearable]="clearableOf(playground.values())"
           [disabled]="disabledOf(playground.values())"
           [readonly]="readonlyOf(playground.values())"
           [invalid]="invalidOf(playground.values())"
           [minDate]="minDateOf(playground.values())"
+          [maxDate]="maxDateOf(playground.values())"
         />
         <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
-          <kui-calendar
-            flat
-            [(value)]="date"
-            [(viewDate)]="viewDate"
-            [showFooter]="showFooterOf(playground.values())"
-            [minDate]="minDateOf(playground.values())"
-          />
+          <kui-calendar flat [showFooter]="showFooterOf(playground.values())" />
         </kui-dropdown>
       </kui-field>
     </div>
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Date picker events" />
 
   <app-api-table label="Date Picker API" [rows]="apiRows" />
   <p class="date-picker-playground-page__note">{{ apiDescription }}</p>

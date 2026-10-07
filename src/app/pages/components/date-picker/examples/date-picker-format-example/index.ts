@@ -1,2 +1,1 @@
-export { BasicDatePickerExample } from './basic-date-picker-example';
 export { DatePickerFormatExample } from './date-picker-format-example';

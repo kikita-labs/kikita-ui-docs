@@ -45,10 +45,16 @@ describe('DatePickerPage', () => {
     expect(sectionIds).toEqual([
       'import',
       'usage',
+      'format-and-locale',
+      'validation',
       'composition',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
       'known-gaps',
+      'migration',
     ]);
     expect(root.querySelector('app-live-preview input[kuiDatePicker]')).not.toBeNull();
     expect(root.textContent).toContain('dialog');
@@ -62,7 +68,10 @@ describe('DatePickerPage', () => {
 
     expect(pageType).toBe(DatePickerPage);
     expect(isStandalone(playgroundType)).toBe(true);
-    expect(DATE_PICKER_DOCS_MANIFEST.exampleIds).toEqual(['basic-date-picker-example']);
+    expect(DATE_PICKER_DOCS_MANIFEST.exampleIds).toEqual([
+      'basic-date-picker-example',
+      'date-picker-format-example',
+    ]);
     expect(Object.keys(DATE_PICKER_EXAMPLE_SOURCES).sort()).toEqual(
       [...DATE_PICKER_DOCS_MANIFEST.exampleIds].sort(),
     );

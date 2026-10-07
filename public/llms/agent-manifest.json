@@ -436,7 +436,8 @@
       "publicImportName": "KuiDatePicker",
       "category": "forms",
       "exampleIds": [
-        "basic-date-picker-example"
+        "basic-date-picker-example",
+        "date-picker-format-example"
       ],
       "apiSchemaPath": "src/app/pages/components/date-picker/date-picker.api-schema.ts",
       "hasPlayground": true

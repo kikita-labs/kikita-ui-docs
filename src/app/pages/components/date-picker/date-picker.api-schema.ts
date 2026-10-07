@@ -57,9 +57,10 @@ export const DATE_PICKER_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'placeholder',
-    type: 'string',
-    defaultValue: `'dd.mm.yyyy'`,
-    description: 'Native input placeholder for the fixed display mask.',
+    type: 'string | undefined',
+    defaultValue: 'locale layout',
+    description:
+      'Native input placeholder. Defaults to the day, month and year placeholder messages in the order and separators of the locale (mm/dd/yyyy, dd.mm.yyyy).',
   },
   {
     name: 'id',
@@ -78,5 +79,26 @@ export const DATE_PICKER_API_ROWS: readonly ApiTableRow[] = [
     type: 'boolean',
     defaultValue: 'false',
     description: 'Use flat inside the dropdown so the calendar does not draw a second frame.',
+  },
+  {
+    name: 'format',
+    type: 'string | undefined',
+    defaultValue: `'locale'`,
+    description:
+      'Display and parse layout: d/dd, M/MM and yyyy tokens such as dd.MM.yyyy pin it. Resolves as the input, then defaults.datePicker.format, then the locale layout.',
+  },
+  {
+    name: 'messages',
+    type: 'Partial<KuiDatePickerMessages> | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Per-instance text overrides (openCalendar, closeCalendar and the day, month and year placeholder tokens). They win over scoped and root messages.',
+  },
+  {
+    name: 'KuiDatePickerOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.datePicker: clearable, format, chevronIcon and clearIcon (they take precedence over defaults.icons.pickerChevron and defaults.icons.clear).',
   },
 ];

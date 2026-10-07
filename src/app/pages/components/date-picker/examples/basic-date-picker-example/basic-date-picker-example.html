@@ -1,20 +1,11 @@
 <div class="basic-date-picker-example">
-  <kui-field label="Meeting date" hint="Type dd.mm.yyyy or choose from the calendar.">
-    <input
-      kuiDatePicker
-      [(value)]="meetingDate"
-      [(viewDate)]="viewDate"
-      [minDate]="minDate"
-      placeholder="dd.mm.yyyy"
-    />
+  <kui-field
+    label="Meeting date"
+    hint="Type the date in your locale's layout or choose from the calendar."
+  >
+    <input kuiDatePicker [(value)]="meetingDate" [minDate]="minDate" [maxDate]="maxDate" />
     <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
-      <kui-calendar
-        flat
-        showFooter
-        [(value)]="meetingDate"
-        [(viewDate)]="viewDate"
-        [minDate]="minDate"
-      />
+      <kui-calendar flat showFooter />
     </kui-dropdown>
   </kui-field>
 </div>

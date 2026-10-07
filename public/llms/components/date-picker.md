@@ -76,22 +76,13 @@ Rendered at /components/date-picker:
 
 ```html
 <div class="basic-date-picker-example">
-  <kui-field label="Meeting date" hint="Type dd.mm.yyyy or choose from the calendar.">
-    <input
-      kuiDatePicker
-      [(value)]="meetingDate"
-      [(viewDate)]="viewDate"
-      [minDate]="minDate"
-      placeholder="dd.mm.yyyy"
-    />
+  <kui-field
+    label="Meeting date"
+    hint="Type the date in your locale's layout or choose from the calendar."
+  >
+    <input kuiDatePicker [(value)]="meetingDate" [minDate]="minDate" [maxDate]="maxDate" />
     <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
-      <kui-calendar
-        flat
-        showFooter
-        [(value)]="meetingDate"
-        [(viewDate)]="viewDate"
-        [minDate]="minDate"
-      />
+      <kui-calendar flat showFooter />
     </kui-dropdown>
   </kui-field>
 </div>
@@ -112,8 +103,8 @@ import { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/
 })
 export class BasicDatePickerExample {
   protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));
-  protected readonly viewDate = signal(new Date(2026, 6, 1));
   protected readonly minDate = new Date(2026, 6, 1);
+  protected readonly maxDate = new Date(2026, 6, 31);
 }
 ```
 
@@ -122,6 +113,57 @@ export class BasicDatePickerExample {
 ```scss
 .basic-date-picker-example {
   max-width: 22rem;
+}
+```
+
+### date-picker-format-example
+
+#### date-picker-format-example.html
+
+```html
+<div class="date-picker-format-example">
+  <kui-field label="Locale layout" hint="Follows the locale of the nearest i18n level.">
+    <input kuiDatePicker [(value)]="localeDate" />
+    <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
+      <kui-calendar flat />
+    </kui-dropdown>
+  </kui-field>
+
+  <kui-field label="Pinned layout" hint="format pins dd.MM.yyyy whatever the locale is.">
+    <input kuiDatePicker format="dd.MM.yyyy" [(value)]="pinnedDate" />
+    <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
+      <kui-calendar flat />
+    </kui-dropdown>
+  </kui-field>
+</div>
+```
+
+#### date-picker-format-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-date-picker-format-example',
+  imports: [KuiCalendar, KuiDatePicker, KuiDropdown, KuiField],
+  templateUrl: './date-picker-format-example.html',
+  styleUrl: './date-picker-format-example.scss',
+})
+export class DatePickerFormatExample {
+  protected readonly localeDate = signal<Date | null>(new Date(2026, 9, 3));
+  protected readonly pinnedDate = signal<Date | null>(new Date(2026, 9, 3));
+}
+```
+
+#### date-picker-format-example.scss
+
+```scss
+.date-picker-format-example {
+  display: grid;
+  gap: var(--kui-space-5, 20px);
+  inline-size: min(100%, 22rem);
 }
 ```
 
@@ -138,10 +180,13 @@ export class BasicDatePickerExample {
 | readonly | boolean | false | Keeps the value readable while preventing popover opening. |
 | invalid | boolean | false | Reflects validation state from Signal Forms or direct binding. |
 | errors / touched / touch | Signal Forms control contract | - | Integrates with Angular Signal Forms validation and touched state. |
-| placeholder | string | 'dd.mm.yyyy' | Native input placeholder for the fixed display mask. |
+| placeholder | string \| undefined | locale layout | Native input placeholder. Defaults to the day, month and year placeholder messages in the order and separators of the locale (mm/dd/yyyy, dd.mm.yyyy). |
 | id | string \| undefined | field control id | Input id. Falls back to the parent kui-field control id when present. |
 | kui-dropdown panelRole | 'dialog' \| 'listbox' \| 'grid' \| null | 'listbox' | Use dialog for the calendar popover because the panel is not a listbox. |
 | kui-calendar flat | boolean | false | Use flat inside the dropdown so the calendar does not draw a second frame. |
+| format | string \| undefined | 'locale' | Display and parse layout: d/dd, M/MM and yyyy tokens such as dd.MM.yyyy pin it. Resolves as the input, then defaults.datePicker.format, then the locale layout. |
+| messages | Partial<KuiDatePickerMessages> \| undefined | undefined | Per-instance text overrides (openCalendar, closeCalendar and the day, month and year placeholder tokens). They win over scoped and root messages. |
+| KuiDatePickerOptions | interface | - | Shape of defaults.datePicker: clearable, format, chevronIcon and clearIcon (they take precedence over defaults.icons.pickerChevron and defaults.icons.clear). |
 
 ## Accessibility
 

@@ -9,19 +9,39 @@ export const DATE_PICKER_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-date-picker-example.html",
       language: "html",
-      code: "<div class=\"basic-date-picker-example\">\n  <kui-field label=\"Meeting date\" hint=\"Type dd.mm.yyyy or choose from the calendar.\">\n    <input\n      kuiDatePicker\n      [(value)]=\"meetingDate\"\n      [(viewDate)]=\"viewDate\"\n      [minDate]=\"minDate\"\n      placeholder=\"dd.mm.yyyy\"\n    />\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"auto\" maxHeight=\"420px\">\n      <kui-calendar\n        flat\n        showFooter\n        [(value)]=\"meetingDate\"\n        [(viewDate)]=\"viewDate\"\n        [minDate]=\"minDate\"\n      />\n    </kui-dropdown>\n  </kui-field>\n</div>",
+      code: "<div class=\"basic-date-picker-example\">\n  <kui-field\n    label=\"Meeting date\"\n    hint=\"Type the date in your locale's layout or choose from the calendar.\"\n  >\n    <input kuiDatePicker [(value)]=\"meetingDate\" [minDate]=\"minDate\" [maxDate]=\"maxDate\" />\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"auto\" maxHeight=\"420px\">\n      <kui-calendar flat showFooter />\n    </kui-dropdown>\n  </kui-field>\n</div>",
     },
     {
       label: "TS",
       filename: "basic-date-picker-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-date-picker-example',\n  imports: [KuiCalendar, KuiDatePicker, KuiDropdown, KuiField],\n  templateUrl: './basic-date-picker-example.html',\n  styleUrl: './basic-date-picker-example.scss',\n})\nexport class BasicDatePickerExample {\n  protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly viewDate = signal(new Date(2026, 6, 1));\n  protected readonly minDate = new Date(2026, 6, 1);\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-date-picker-example',\n  imports: [KuiCalendar, KuiDatePicker, KuiDropdown, KuiField],\n  templateUrl: './basic-date-picker-example.html',\n  styleUrl: './basic-date-picker-example.scss',\n})\nexport class BasicDatePickerExample {\n  protected readonly meetingDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly minDate = new Date(2026, 6, 1);\n  protected readonly maxDate = new Date(2026, 6, 31);\n}",
     },
     {
       label: "SCSS",
       filename: "basic-date-picker-example.scss",
       language: "scss",
       code: ".basic-date-picker-example {\n  max-width: 22rem;\n}",
+    },
+  ],
+  "date-picker-format-example": [
+    {
+      label: "HTML",
+      filename: "date-picker-format-example.html",
+      language: "html",
+      code: "<div class=\"date-picker-format-example\">\n  <kui-field label=\"Locale layout\" hint=\"Follows the locale of the nearest i18n level.\">\n    <input kuiDatePicker [(value)]=\"localeDate\" />\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"auto\" maxHeight=\"420px\">\n      <kui-calendar flat />\n    </kui-dropdown>\n  </kui-field>\n\n  <kui-field label=\"Pinned layout\" hint=\"format pins dd.MM.yyyy whatever the locale is.\">\n    <input kuiDatePicker format=\"dd.MM.yyyy\" [(value)]=\"pinnedDate\" />\n    <kui-dropdown panelRole=\"dialog\" panelWidth=\"auto\" maxHeight=\"420px\">\n      <kui-calendar flat />\n    </kui-dropdown>\n  </kui-field>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "date-picker-format-example.ts",
+      language: "ts",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-date-picker-format-example',\n  imports: [KuiCalendar, KuiDatePicker, KuiDropdown, KuiField],\n  templateUrl: './date-picker-format-example.html',\n  styleUrl: './date-picker-format-example.scss',\n})\nexport class DatePickerFormatExample {\n  protected readonly localeDate = signal<Date | null>(new Date(2026, 9, 3));\n  protected readonly pinnedDate = signal<Date | null>(new Date(2026, 9, 3));\n}",
+    },
+    {
+      label: "SCSS",
+      filename: "date-picker-format-example.scss",
+      language: "scss",
+      code: ".date-picker-format-example {\n  display: grid;\n  gap: var(--kui-space-5, 20px);\n  inline-size: min(100%, 22rem);\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;
