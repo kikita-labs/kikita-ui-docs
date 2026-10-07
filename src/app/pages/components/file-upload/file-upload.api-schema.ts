@@ -67,4 +67,25 @@ export const FILE_UPLOAD_API_ROWS: readonly ApiTableRow[] = [
     defaultValue: '-',
     description: 'Per-file state written by the component initially and then by the consumer.',
   },
+  {
+    name: 'messages',
+    type: 'Partial<KuiFileUploadMessages> | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Per-instance text overrides: prompt, buttons, statuses and errors. Sizes and percentages are formatted with the locale (2.5 MB, 340 kB). They win over scoped and root messages.',
+  },
+  {
+    name: 'KuiUploadFile.errorKind',
+    type: `'type' | 'size'`,
+    defaultValue: '-',
+    description:
+      'Set by the component when client-side validation rejects a file; the displayed text then follows the active messages. Omit it for errors you set yourself.',
+  },
+  {
+    name: 'KuiFileUploadOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.fileUpload: size, variant, mode and removeIcon (takes precedence over defaults.icons.remove).',
+  },
 ];

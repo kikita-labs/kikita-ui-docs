@@ -122,6 +122,9 @@ export class BasicFileUploadExample {
 | [(files)] | readonly KuiUploadFile[] | [] | Controlled file list. Consumers own upload status and progress after picking. |
 | (retry) | KuiUploadFile | - | Emits when an errored item retry action is activated. |
 | KuiUploadFile.status | 'pending' \| 'uploading' \| 'success' \| 'error' | - | Per-file state written by the component initially and then by the consumer. |
+| messages | Partial<KuiFileUploadMessages> \| undefined | undefined | Per-instance text overrides: prompt, buttons, statuses and errors. Sizes and percentages are formatted with the locale (2.5 MB, 340 kB). They win over scoped and root messages. |
+| KuiUploadFile.errorKind | 'type' \| 'size' | - | Set by the component when client-side validation rejects a file; the displayed text then follows the active messages. Omit it for errors you set yourself. |
+| KuiFileUploadOptions | interface | - | Shape of defaults.fileUpload: size, variant, mode and removeIcon (takes precedence over defaults.icons.remove). |
 
 ## Accessibility
 

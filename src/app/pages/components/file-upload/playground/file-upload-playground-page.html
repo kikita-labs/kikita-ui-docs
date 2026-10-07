@@ -16,13 +16,17 @@
       [size]="sizeOf(playground.values())"
       [disabled]="disabledOf(playground.values())"
       [acceptLabel]="acceptLabelOf(playground.values())"
-      [accept]="['image/png', 'image/jpeg', 'application/pdf']"
-      [maxSize]="10 * 1024 * 1024"
+      [accept]="acceptOf(playground.values())"
+      [maxSize]="maxSizeOf(playground.values())"
       [maxCount]="maxCountOf(playground.values())"
-      [(files)]="files"
+      [messages]="messagesOf(playground.values())"
+      [files]="files()"
+      (filesChange)="onFilesChange($event)"
       (retry)="handleRetry($event)"
     />
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="File upload events" />
 
   <app-api-table label="File Upload API" [rows]="apiRows" />
   <p class="file-upload-playground-page__note">{{ apiDescription }}</p>

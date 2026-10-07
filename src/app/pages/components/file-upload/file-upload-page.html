@@ -37,8 +37,24 @@
         The retry output only reports intent; restart the upload and write new state yourself.
       </li>
       <li>Use compact variant for dense forms and dropzone when drag-and-drop is useful.</li>
+      <li>
+        Files rejected by client validation carry <code>errorKind</code> (<code>type</code> or
+        <code>size</code>), so their error text follows the active messages; static
+        <code>maxSize</code> and <code>maxCount</code> values are coerced and an invalid or
+        non-positive value omits the limit.
+      </li>
     </ul>
   </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="File Upload"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="File Upload API" [rows]="apiRows" />
@@ -50,10 +66,47 @@
   >
     <ul class="file-upload-page__notes">
       <li>Keep the visible acceptLabel specific so the dropzone aria-label is meaningful.</li>
-      <li>Use Enter or Space on the dropzone or compact trigger to open the native picker.</li>
+      <li>
+        Use Enter or Space on the dropzone or the compact <code>Attach file</code> button to open
+        the native picker. The native file input is <code>aria-hidden</code> and out of the tab
+        order: the dropzone or the compact button is the control.
+      </li>
+      <li>
+        The small <code>Choose file</code> label inside the dropzone is presentational
+        (<code>aria-hidden</code>), not a second button, so a click on it reaches the dropzone and
+        no interactive control is nested inside another.
+      </li>
       <li>Tab reaches file rows and actions; Delete or Backspace removes a focused file item.</li>
       <li>
         File Upload is not a Signal Forms control; compose required state around the files model.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for File Upload."
+  >
+    <ul class="file-upload-page__notes">
+      <li>
+        The class is <code>KuiFileUpload</code> (it was <code>KuiFileUploadComponent</code>);
+        <code>ng update @kikita-labs/ui</code> renames the import.
+      </li>
+      <li>
+        Size, variant and mode fall back to <code>defaults.fileUpload</code>; static numeric
+        <code>maxSize</code> and <code>maxCount</code> attributes are coerced. Sizes use
+        <code>Intl</code> units (<code>kB</code>, it was <code>KB</code>), and the too-many-files
+        error reads <code>Maximum 1 file</code> for one.
+      </li>
+      <li>
+        The native input and the small label inside the dropzone are <code>aria-hidden</code>, so
+        the dropzone is the only interactive element and the axe nested-interactive violation is
+        gone.
+      </li>
+      <li>
+        Rejected files carry the new <code>errorKind</code> field so their message follows the
+        active messages.
       </li>
     </ul>
   </app-doc-section>

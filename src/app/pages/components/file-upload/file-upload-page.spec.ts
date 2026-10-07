@@ -41,7 +41,17 @@ describe('FileUploadPage', () => {
     );
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('File Upload');
-    expect(sectionIds).toEqual(['import', 'usage', 'states', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'states',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(root.querySelector('app-live-preview kui-file-upload')).not.toBeNull();
     expect(root.textContent).toContain('never uploads bytes by itself');
   });

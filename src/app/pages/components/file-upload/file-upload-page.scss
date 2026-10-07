@@ -7,3 +7,7 @@
 .file-upload-page__notes {
   @include doc-page-notes;
 }
+
+.file-upload-page__note {
+  @include doc-page-note;
+}
