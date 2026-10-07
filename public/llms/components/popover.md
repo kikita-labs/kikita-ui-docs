@@ -159,13 +159,13 @@ export class HoverPopoverExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| placement | 'top' \| 'bottom' \| 'left' \| 'right' | 'bottom' | Preferred side of the anchor. Auto-flips to the opposite side to fit the viewport. |
-| align | 'start' \| 'center' \| 'end' | 'center' | Alignment of the panel along the anchor edge. Preserved after a placement flip. |
-| arrow | boolean | false | Shows the arrow caret pointing to the anchor. |
-| triggerType | 'click' \| 'hover' | 'click' | click toggles the panel on click and closes on outside click or ESC. hover opens on mouseenter and closes on mouseleave. |
-| ariaLabel | string | 'Popover' | Accessible name for the role="dialog" panel. Prefer content-specific text. |
-| hoverDelay | number | 100 | Delay in ms before closing on mouseleave in hover mode. Lets the mouse travel from trigger to panel. |
-| offset | number | 8 | Gap in px between the anchor and the panel. The arrow adds 6px automatically. |
+| placement | 'top' \| 'bottom' \| 'left' \| 'right' \| undefined | undefined | Preferred side of the anchor (defaults.popover.placement, then bottom). Auto-flips to the opposite side to fit the viewport. |
+| align | 'start' \| 'center' \| 'end' \| undefined | undefined | Alignment of the panel along the anchor edge (defaults.popover.align, then center). Preserved after a placement flip. |
+| arrow | boolean \| undefined | undefined | Shows the arrow caret pointing to the anchor. Falls back to defaults.popover.arrow, then false. |
+| triggerType | 'click' \| 'hover' \| undefined | undefined | Falls back to defaults.popover.triggerType, then click. click toggles the panel on click and closes on outside click or ESC. hover opens on mouseenter and closes on mouseleave. |
+| ariaLabel | string \| undefined | undefined | Accessible name for the role="dialog" panel. Falls back to the popover.label message (Popover); prefer content-specific text. |
+| hoverDelay | number \| undefined | undefined | Delay in ms before closing on mouseleave in hover mode (defaults.popover.hoverDelay, then 100). Lets the mouse travel from trigger to panel. |
+| offset | number \| undefined | undefined | Gap in px between the anchor and the panel (defaults.popover.offset, then 8). The arrow adds 6px automatically. A static numeric string is coerced. |
 | trapFocus | boolean | false | Traps focus inside the panel and auto-focuses the first focusable element on open. |
 | open | boolean (model) | false | Current open state exposed for trigger integrations via openChange. Not intended as a standalone controlled API. |
 | [kuiPopoverFor] | KuiPopover \| undefined | - | Wires any element as a trigger for a kui-popover. Sets aria-expanded and aria-haspopup="dialog" automatically. |
@@ -180,7 +180,13 @@ export class HoverPopoverExample {}
 | --kui-popover-min-width | CSS custom property | 160px | Minimum panel width. |
 | --kui-popover-max-width | CSS custom property | 320px | Maximum panel width. |
 | --kui-popover-arrow-size | CSS custom property | 10px | Arrow caret size. |
-| --kui-z-popover | CSS custom property | 400 | Panel z-index, between Dropdown (300) and Dialog (500). |
+| --kui-z-popover | CSS custom property | 400 | Panel z-index in browsers without the Popover API. |
+| openFor(anchor) | (anchor: Element) => void | - | Opens the popover anchored to the given element. |
+| toggleFor(anchor) | (anchor: Element) => void | - | Toggles the popover for a trigger and reopens immediately when an exit animation is running. |
+| close() | () => void | - | Closes the popover with the exit animation. |
+| scheduleClose(delay) | (delay: number) => void | - | Schedules a close after delay ms (hover mode). |
+| cancelClose() | () => void | - | Cancels a pending scheduled close. |
+| KuiPopoverOptions | interface | - | Shape of defaults.popover: placement, offset, align, arrow, triggerType and hoverDelay. |
 
 ## Accessibility
 

@@ -25,7 +25,12 @@ const POPOVER_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'triggerLabel', label: 'trigger label', kind: 'string', defaultValue: 'Open' },
   { key: 'title', label: 'title', kind: 'string', defaultValue: 'Title' },
   { key: 'description', label: 'description', kind: 'string', defaultValue: 'Supporting text.' },
-  { key: 'ariaLabel', label: 'ariaLabel', kind: 'string', defaultValue: 'Popover' },
+  {
+    key: 'ariaLabel',
+    label: 'ariaLabel (empty = popover.label message)',
+    kind: 'string',
+    defaultValue: '',
+  },
   {
     key: 'placement',
     label: 'placement',
@@ -87,9 +92,7 @@ export class PopoverPlaygroundPage {
       align !== 'center' ? `align="${align}"` : null,
       arrow ? `[arrow]="true"` : null,
       triggerType !== 'click' ? `triggerType="${triggerType}"` : null,
-      ariaLabel && ariaLabel !== 'Popover'
-        ? `ariaLabel="${escapePlaygroundHtml(ariaLabel)}"`
-        : null,
+      ariaLabel ? `ariaLabel="${escapePlaygroundHtml(ariaLabel)}"` : null,
       hoverDelay !== 100 ? `[hoverDelay]="${hoverDelay}"` : null,
       offset !== 8 ? `[offset]="${offset}"` : null,
       trapFocus ? `[trapFocus]="true"` : null,
@@ -125,8 +128,8 @@ export class PopoverPlaygroundPage {
     return values.description || 'Supporting text.';
   }
 
-  protected ariaLabelOf(values: PopoverPlaygroundValues): string {
-    return values.ariaLabel || 'Popover';
+  protected ariaLabelOf(values: PopoverPlaygroundValues): string | undefined {
+    return values.ariaLabel || undefined;
   }
 
   protected placementOf(values: PopoverPlaygroundValues): KuiPopoverPlacement {

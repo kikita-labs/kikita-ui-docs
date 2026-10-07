@@ -46,6 +46,16 @@
     <app-code-tabs [tabs]="hoverTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Popover"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Popover API" [rows]="apiRows" />
   </app-doc-section>
@@ -57,8 +67,8 @@
     <ul class="popover-page__notes">
       <li>
         The panel renders <code>role="dialog"</code> with <code>aria-label</code> set from
-        <code>ariaLabel</code>. Prefer content-specific text over the default
-        <code>'Popover'</code>.
+        <code>ariaLabel</code>. Prefer content-specific text over the
+        <code>popover.label</code> message (<code>Popover</code>) used when it is unset.
       </li>
       <li>
         <code>[kuiPopoverFor]</code> sets <code>aria-expanded</code> and
@@ -74,6 +84,9 @@
         panel cancels.
       </li>
       <li>
+        With <code>prefers-reduced-motion</code> the panel animates opacity only, with no slide.
+      </li>
+      <li>
         Set <code>[trapFocus]="true"</code> when the panel contains a form or multiple interactive
         elements that need focus contained inside the panel while open.
       </li>
@@ -81,6 +94,30 @@
         Popover covers keyboard dismissal, ARIA dialog semantics, and focus return. Full screen
         reader and other assistive-technology verification has not been completed for this primitive
         yet; see <code>state-coverage.md</code> in the library repository for current review status.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Popover."
+  >
+    <ul class="popover-page__notes">
+      <li>
+        The classes are <code>KuiPopover</code> and <code>KuiPopoverFor</code>; the
+        <code>Component</code> and <code>Directive</code> suffixes are gone.
+      </li>
+      <li>
+        Placement, offset, alignment, arrow, trigger type and hover delay defaults moved to
+        <code>provideKuiDefaults({{ '{' }} popover: {{ '{' }} ... {{ '}' }} {{ '}' }})</code>; the
+        matching inputs are now <code>undefined</code> until set.
+      </li>
+      <li>The default <code>ariaLabel</code> comes from the <code>popover.label</code> message.</li>
+      <li>Static numeric <code>offset</code> and <code>hoverDelay</code> values are coerced.</li>
+      <li>
+        The panel text, title and description colours and font sizes have tokens, and
+        <code>--kui-z-popover</code> only applies in browsers without the Popover API.
       </li>
     </ul>
   </app-doc-section>

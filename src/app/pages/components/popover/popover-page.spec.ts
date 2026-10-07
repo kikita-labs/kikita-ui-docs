@@ -47,8 +47,12 @@ describe('PopoverPage', () => {
       'usage',
       'action-content',
       'hover-trigger',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview button[kuiButton]')).toHaveLength(3);
     expect(root.querySelector('app-hover-popover-example kui-popover')).not.toBeNull();
