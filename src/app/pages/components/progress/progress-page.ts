@@ -1,12 +1,19 @@
 import { Component } from '@angular/core';
 
 import { PROGRESS_EXAMPLE_SOURCES } from '@generated/example-sources/progress.generated';
+import {
+  PROGRESS_COLOR_TOKEN_ROWS,
+  PROGRESS_DEFAULTS,
+  PROGRESS_GEOMETRY_TOKEN_ROWS,
+} from '@generated/library-tables/progress.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
 import {
   BasicProgressExample,
@@ -23,6 +30,8 @@ import {
 @Component({
   selector: 'app-progress-page',
   imports: [
+    ProviderDefaultsSection,
+    TokenTablesSection,
     ApiTable,
     BasicProgressExample,
     CodeTabs,
@@ -48,5 +57,8 @@ export class ProgressPage {
 
   protected readonly colorSizeTabs = PROGRESS_EXAMPLE_SOURCES['progress-color-size-example'];
 
+  protected readonly defaults = PROGRESS_DEFAULTS;
+  protected readonly colorTokenRows = PROGRESS_COLOR_TOKEN_ROWS;
+  protected readonly geometryTokenRows = PROGRESS_GEOMETRY_TOKEN_ROWS;
   protected readonly apiRows = PROGRESS_API_ROWS;
 }

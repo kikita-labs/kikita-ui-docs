@@ -7828,10 +7828,11 @@ export class ProgressColorSizeExample {}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | type | 'linear' \| 'circular' | 'linear' | Progress shape. |
-| value | number \| null | null | Progress value from 0 to 100. Values are clamped visually. null renders the indeterminate animation. |
-| color | 'primary' \| 'success' \| 'warning' \| 'danger' \| 'neutral' | 'primary' | Semantic color. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' | 'md' | Linear thickness or circular diameter. |
+| value | number \| null | null | Progress value from 0 to 100. Values are clamped visually. A static numeric attribute is coerced; null or an invalid value renders the indeterminate animation. |
+| color | 'primary' \| 'success' \| 'warning' \| 'danger' \| 'neutral' \| undefined | undefined | Semantic color of the filled part. Falls back to defaults.progress.color, then primary. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| undefined | undefined | Linear thickness or circular diameter. Falls back to defaults.progress.size, then the root size default, then md. |
 | content projection | text \| template | - | Projected content is rendered centered inside circular progress. |
+| KuiProgressOptions | interface | - | Shape of defaults.progress: size and color. |
 
 ## Accessibility
 

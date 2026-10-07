@@ -45,6 +45,14 @@
     <app-code-tabs [tabs]="colorSizeTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Progress"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Progress API" [rows]="apiRows" />
   </app-doc-section>
@@ -64,8 +72,40 @@
         <code>aria-valuenow</code>, matching native indeterminate semantics.
       </li>
       <li>
+        Progress is covered by the library forced-colors stylesheet (<code
+          >@media (forced-colors: active)</code
+        >), so the indicator stays visible.
+      </li>
+      <li>
         Always provide an accessible name with <code>aria-label</code> or
         <code>aria-labelledby</code>. Progress does not infer one from projected content.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Progress."
+  >
+    <ul class="progress-page__notes">
+      <li>
+        The component class is <code>KuiProgress</code>; the <code>Component</code> suffix is gone.
+      </li>
+      <li>
+        Size and colour defaults moved to
+        <code
+          >provideKuiDefaults({{ '{' }} progress: {{ '{' }} size, color {{ '}' }} {{ '}' }})</code
+        >; the inputs are now <code>undefined</code> until set.
+      </li>
+      <li>
+        A static numeric <code>value</code> attribute is coerced and an invalid value renders the
+        indeterminate state.
+      </li>
+      <li>Progress supports <code>forced-colors</code>.</li>
+      <li>
+        The linear thickness is <code>--kui-progress-height</code> and the circular label colour is
+        <code>--kui-progress-circular-label-color</code>.
       </li>
     </ul>
   </app-doc-section>

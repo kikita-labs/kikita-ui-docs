@@ -50,8 +50,11 @@ describe('ProgressPage', () => {
       'usage',
       'circular',
       'colors-and-sizes',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(progressBars.length).toBeGreaterThanOrEqual(10);
     expect(progressBars.every((bar) => bar.getAttribute('aria-valuemin') === '0')).toBe(true);
