@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
 
 import { CARD_EXAMPLE_SOURCES } from '@generated/example-sources/card.generated';
+import { CARD_COLOR_TOKEN_ROWS, CARD_DEFAULTS } from '@generated/library-tables/card.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
 import { CARD_API_ROWS } from './card.api-schema';
 import { CARD_API_DESCRIPTION, CARD_IMPORT_TABS, CARD_STATUS } from './card.docs-content';
@@ -20,6 +23,8 @@ import {
 @Component({
   selector: 'app-card-page',
   imports: [
+    ProviderDefaultsSection,
+    TokenTablesSection,
     ApiTable,
     BasicCardExample,
     CardAppearanceExample,
@@ -48,5 +53,7 @@ export class CardPage {
 
   protected readonly interactiveTabs = CARD_EXAMPLE_SOURCES['card-interactive-example'];
 
+  protected readonly defaults = CARD_DEFAULTS;
+  protected readonly colorTokenRows = CARD_COLOR_TOKEN_ROWS;
   protected readonly apiRows = CARD_API_ROWS;
 }

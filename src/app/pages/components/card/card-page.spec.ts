@@ -48,8 +48,11 @@ describe('CardPage', () => {
       'appearances',
       'sizes',
       'interactive',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview .kui-card').length).toBeGreaterThanOrEqual(10);
     expect(root.querySelectorAll('app-card-interactive-example button.kui-card')).toHaveLength(1);

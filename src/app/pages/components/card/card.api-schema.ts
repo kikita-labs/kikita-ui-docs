@@ -5,13 +5,15 @@ export const CARD_API_ROWS: readonly ApiTableRow[] = [
     name: 'appearance',
     type: `'surface' | 'elevated' | 'sunken'`,
     defaultValue: `'surface'`,
-    description: 'Visual surface treatment: flat surface, elevated shadow, or sunken inset.',
+    description:
+      'Visual surface treatment: flat surface, elevated shadow, or sunken inset. Falls back to defaults.card.appearance.',
   },
   {
     name: 'size',
     type: `'xs' | 'sm' | 'md' | 'lg'`,
     defaultValue: `'md'`,
-    description: 'Card padding size, mapped to the shared Kikita size scale.',
+    description:
+      'Card padding size, mapped to the shared Kikita size scale. An explicit local size wins, then defaults.card.size, then the global defaults.size.',
   },
   {
     name: 'interactive',

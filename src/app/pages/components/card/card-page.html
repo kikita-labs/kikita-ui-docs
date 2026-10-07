@@ -56,6 +56,10 @@
     <app-code-tabs [tabs]="interactiveTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Card" [colorRows]="colorTokenRows" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Card API" [rows]="apiRows" />
   </app-doc-section>
@@ -78,6 +82,27 @@
       <li>
         Keep a real heading element inside the card for the card's accessible structure instead of
         relying on visual styling alone.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Card."
+  >
+    <ul class="card-page__notes">
+      <li>
+        The class is <code>KuiCard</code> (it was <code>KuiCardDirective</code>); the selector and
+        inputs are unchanged. <code>ng update @kikita-labs/ui</code> renames the import.
+      </li>
+      <li>
+        <code>size</code> and <code>appearance</code> fall back to <code>defaults.card</code>, then
+        (for the size) the global <code>defaults.size</code>.
+      </li>
+      <li>
+        Card tokens are optional hooks that now take effect on any ancestor; the component no longer
+        sets its public tokens on its own element.
       </li>
     </ul>
   </app-doc-section>
