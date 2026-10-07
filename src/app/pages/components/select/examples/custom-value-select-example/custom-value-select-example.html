@@ -1,0 +1,18 @@
+<kui-field label="Roles" hint="A kuiSelectValue template replaces the default chip">
+  <input kuiSelect multiple [(value)]="roles" [kuiLabelFn]="roleLabel" />
+
+  <ng-template kuiSelectValue let-label="label" let-remove="remove">
+    <span kuiChip appearance="primary" size="sm">
+      <span class="kui-chip-label">{{ label }}</span>
+      <button kuiChipRemove type="button" [attr.aria-label]="'Remove ' + label" (click)="remove()">
+        x
+      </button>
+    </span>
+  </ng-template>
+
+  <kui-dropdown>
+    @for (role of roleOptions; track role.value) {
+      <div kuiOption [value]="role.value">{{ role.label }}</div>
+    }
+  </kui-dropdown>
+</kui-field>

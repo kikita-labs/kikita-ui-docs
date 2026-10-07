@@ -871,7 +871,9 @@
       "category": "forms",
       "exampleIds": [
         "basic-select-example",
-        "multiple-select-example"
+        "multiple-select-example",
+        "object-value-select-example",
+        "custom-value-select-example"
       ],
       "apiSchemaPath": "src/app/pages/components/select/select.api-schema.ts",
       "hasPlayground": true

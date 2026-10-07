@@ -37,25 +37,36 @@
   </app-doc-section>
 
   <app-doc-section
-    heading="Provider defaults"
-    description="Use provider defaults for app-wide select behavior. Local inputs still win."
+    anchor="object-values"
+    heading="Object values"
+    description="Select works with object values. Map the selected object to its display text with kuiLabelFn; options keep the object as their value."
   >
-    <app-code-tabs [tabs]="providerTabs" />
+    <app-live-preview previewLabel="Object value select">
+      <app-object-value-select-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="objectTabs" />
   </app-doc-section>
 
   <app-doc-section
-    heading="Migration notes"
-    description="The legacy Select chrome tokens remain available for 1.x compatibility, but current input[kuiSelect] styles use the shared input tokens. Migrate before v2 removes the legacy names."
+    anchor="custom-value"
+    heading="Custom selected value"
+    description="Default multiple mode renders removable kuiChip values. Use ng-template[kuiSelectValue] only when the selected value needs custom markup, per-item appearance or a different remove affordance. The template receives item, label and remove, and hidden values still collapse into the default +N chip."
   >
-    <ul class="select-page__notes">
-      <li><code>--kui-select-bg</code> becomes <code>--kui-input-bg</code>.</li>
-      <li><code>--kui-select-border</code> becomes <code>--kui-input-border</code>.</li>
-      <li><code>--kui-select-border-hover</code> becomes <code>--kui-input-border-hover</code>.</li>
-      <li><code>--kui-select-border-focus</code> becomes <code>--kui-input-border-focus</code>.</li>
-      <li><code>--kui-select-border-error</code> becomes <code>--kui-input-border-error</code>.</li>
-      <li><code>--kui-select-radius</code> becomes <code>--kui-input-radius</code>.</li>
-    </ul>
+    <app-live-preview previewLabel="Custom selected value template">
+      <app-custom-value-select-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="customValueTabs" />
   </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Select"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Select API" [rows]="apiRows" />
@@ -69,7 +80,63 @@
       <li>The trigger input uses combobox semantics and reflects dropdown expanded state.</li>
       <li>Dropdown panel uses listbox semantics; each <code>kuiOption</code> is an option.</li>
       <li>Use <code>kui-field</code> for label, hint, error, and described-by wiring.</li>
-      <li>Clear affordance is a native button with an accessible label.</li>
+      <li>
+        Each <code>kuiOption</code> exposes <code>aria-selected</code> and
+        <code>aria-disabled</code>.
+      </li>
+      <li>
+        The clear affordance is a native button named <code>Clear</code>, and the options toggle is
+        named by the <code>kuiSelect.openOptions</code> and <code>kuiSelect.closeOptions</code>
+        messages.
+      </li>
+      <li>
+        <code>Enter</code> or <code>Space</code> opens the dropdown and then selects the focused
+        option; <code>ArrowDown</code> and <code>ArrowUp</code> open it and focus the first or last
+        option; <code>Escape</code> closes it; <code>Tab</code> closes it through the focused option
+        flow.
+      </li>
+      <li>
+        Multiple selected values render removable chip buttons named by the
+        <code>kuiSelect.removeItem</code> message. <code>maxVisibleChips</code> is count-based and
+        does not measure the field width.
+      </li>
+      <li>
+        <code>touch</code> is emitted after an opened dropdown closes, which marks the control
+        touched for Signal Forms.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Select."
+  >
+    <ul class="select-page__notes">
+      <li>
+        The classes are <code>KuiSelect</code>, <code>KuiSelectValue</code>,
+        <code>KuiOption</code> and <code>KuiDropdown</code>; the <code>Directive</code> and
+        <code>Component</code> suffixes are gone.
+      </li>
+      <li>
+        <code>kuiProvideSelectOptions</code> and <code>KUI_SELECT_OPTIONS</code> are replaced by
+        <code>provideKuiDefaults({{ '{' }} select: {{ '{' }} ... {{ '}' }} {{ '}' }})</code>;
+        <code>clearable</code> resolves as local input, then <code>defaults.select</code>, then
+        <code>defaults.field</code>, then <code>false</code>.
+      </li>
+      <li>
+        The legacy tokens <code>--kui-select-bg</code>, <code>--kui-select-border</code>,
+        <code>--kui-select-border-hover</code>, <code>--kui-select-border-focus</code>,
+        <code>--kui-select-border-error</code> and <code>--kui-select-radius</code> were removed;
+        use the shared <code>--kui-input-*</code> tokens.
+      </li>
+      <li>
+        <code>chevronIcon</code> and <code>clearIcon</code> defaults set the glyphs of the options
+        toggle and the clear button.
+      </li>
+      <li>
+        The open, close and chip remove button names come from the <code>kuiSelect</code> messages.
+      </li>
     </ul>
   </app-doc-section>
 </article>

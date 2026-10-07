@@ -8,7 +8,12 @@ export const SELECT_DOCS_MANIFEST = {
   description: 'Dropdown-backed selection control for single and multiple values.',
   importName: 'KuiSelect',
   status: 'available',
-  exampleIds: ['basic-select-example', 'multiple-select-example'],
+  exampleIds: [
+    'basic-select-example',
+    'multiple-select-example',
+    'object-value-select-example',
+    'custom-value-select-example',
+  ],
   loadPage: () => import('./select-page').then((module) => module.SelectPage),
   loadPlayground: () =>
     import('./playground/select-playground-page').then((module) => module.SelectPlaygroundPage),

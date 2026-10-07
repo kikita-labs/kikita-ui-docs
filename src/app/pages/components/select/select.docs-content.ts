@@ -19,22 +19,3 @@ export const SELECT_IMPORT_TABS: readonly CodeTab[] = [
 } from '@kikita-labs/ui';`,
   },
 ];
-
-export const SELECT_PROVIDER_TABS: readonly CodeTab[] = [
-  {
-    label: 'app.config.ts',
-    language: 'ts',
-    code: `import { provideKikitaUi } from '@kikita-labs/ui';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideKikitaUi({
-      defaults: { select: { clearable: true, maxVisibleChips: 2 } },
-    }),
-  ],
-};
-
-// In a component or route subtree instead:
-// providers: [provideKuiDefaults({ select: { clearable: true } })]`,
-  },
-];

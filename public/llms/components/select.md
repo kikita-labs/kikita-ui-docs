@@ -142,6 +142,129 @@ export class MultipleSelectExample {
 }
 ```
 
+### object-value-select-example
+
+#### object-value-select-example.html
+
+```html
+<kui-field label="Role" hint="Object values are shown through kuiLabelFn">
+  <input kuiSelect [(value)]="role" [kuiLabelFn]="roleLabel" placeholder="Select a role..." />
+  <kui-dropdown>
+    @for (role of roles; track role.id) {
+      <div kuiOption [value]="role">{{ role.label }}</div>
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+#### object-value-select-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';
+
+interface Role {
+  readonly id: number;
+  readonly label: string;
+}
+
+@Component({
+  selector: 'app-object-value-select-example',
+  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],
+  templateUrl: './object-value-select-example.html',
+  styleUrl: './object-value-select-example.scss',
+})
+export class ObjectValueSelectExample {
+  protected readonly roles: readonly Role[] = [
+    { id: 1, label: 'Software Engineer' },
+    { id: 2, label: 'Designer' },
+    { id: 3, label: 'Product Manager' },
+  ];
+
+  protected readonly role = signal<Role | null>(this.roles[0] ?? null);
+
+  protected readonly roleLabel = (role: Role): string => role.label;
+}
+```
+
+#### object-value-select-example.scss
+
+```scss
+
+```
+
+### custom-value-select-example
+
+#### custom-value-select-example.html
+
+```html
+<kui-field label="Roles" hint="A kuiSelectValue template replaces the default chip">
+  <input kuiSelect multiple [(value)]="roles" [kuiLabelFn]="roleLabel" />
+
+  <ng-template kuiSelectValue let-label="label" let-remove="remove">
+    <span kuiChip appearance="primary" size="sm">
+      <span class="kui-chip-label">{{ label }}</span>
+      <button kuiChipRemove type="button" [attr.aria-label]="'Remove ' + label" (click)="remove()">
+        x
+      </button>
+    </span>
+  </ng-template>
+
+  <kui-dropdown>
+    @for (role of roleOptions; track role.value) {
+      <div kuiOption [value]="role.value">{{ role.label }}</div>
+    }
+  </kui-dropdown>
+</kui-field>
+```
+
+#### custom-value-select-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import {
+  KuiChip,
+  KuiChipRemove,
+  KuiDropdown,
+  KuiField,
+  KuiOption,
+  KuiSelect,
+  KuiSelectValue,
+} from '@kikita-labs/ui';
+
+interface RoleOption {
+  readonly label: string;
+  readonly value: string;
+}
+
+@Component({
+  selector: 'app-custom-value-select-example',
+  imports: [KuiChip, KuiChipRemove, KuiDropdown, KuiField, KuiOption, KuiSelect, KuiSelectValue],
+  templateUrl: './custom-value-select-example.html',
+  styleUrl: './custom-value-select-example.scss',
+})
+export class CustomValueSelectExample {
+  protected readonly roles = signal<readonly string[]>(['engineer', 'designer']);
+
+  protected readonly roleOptions: readonly RoleOption[] = [
+    { label: 'Software Engineer', value: 'engineer' },
+    { label: 'Designer', value: 'designer' },
+    { label: 'Product Manager', value: 'manager' },
+  ];
+
+  protected readonly roleLabel = (value: string): string =>
+    this.roleOptions.find((role) => role.value === value)?.label ?? value;
+}
+```
+
+#### custom-value-select-example.scss
+
+```scss
+
+```
+
 ## API
 
 | Name | Type | Default | Description |
@@ -154,19 +277,15 @@ export class MultipleSelectExample {
 | touched | boolean | - | Touched state set by Signal Forms. |
 | id | string | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
 | multiple | boolean | - | Enables array values and keeps the dropdown open on option selection. |
-| maxVisibleChips | number \| undefined | - | Maximum selected chips shown before collapsed +N overflow. |
+| maxVisibleChips | number \| undefined | - | Maximum selected chips shown before collapsed +N overflow. Falls back to defaults.select.maxVisibleChips, then 3. |
 | multipleDisplay | 'chips' \| 'text' | - | Renders multiple selections as field chips or plain joined text. |
 | multipleTextFn | (items: readonly T[]) => string | - | Formats native input text when multipleDisplay is text. |
 | kuiLabelFn | (item: T) => string | - | Maps selected object values to display text. |
 | placeholder | string | - | Placeholder on the readonly input. |
-| clearable | boolean \| undefined | - | Shows a clear button when a value is selected; falls back to provider options. |
-| --kui-select-bg | CSS custom property | --kui-input-bg | Deprecated in 1.x; use --kui-input-bg instead. Retained for compatibility until v2. |
-| --kui-select-border | CSS custom property | --kui-input-border | Deprecated in 1.x; use --kui-input-border instead. Retained for compatibility until v2. |
-| --kui-select-border-hover | CSS custom property | --kui-input-border-hover | Deprecated in 1.x; use --kui-input-border-hover instead. Retained for compatibility until v2. |
-| --kui-select-border-focus | CSS custom property | --kui-input-border-focus | Deprecated in 1.x; use --kui-input-border-focus instead. Retained for compatibility until v2. |
-| --kui-select-border-error | CSS custom property | --kui-input-border-error | Deprecated in 1.x; use --kui-input-border-error instead. Retained for compatibility until v2. |
-| --kui-select-radius | CSS custom property | --kui-input-radius | Deprecated in 1.x; use --kui-input-radius instead. Retained for compatibility until v2. |
+| clearable | boolean \| undefined | - | Shows a clear button when a value is selected. Resolved as local input, defaults.select.clearable, defaults.field.clearable, then false. |
 | touch | output | - | Emitted after an opened dropdown closes for Signal Forms support. |
+| ng-template[kuiSelectValue] | context: { $implicit: T; label: string; remove: () => void } | - | Replaces the default chip for each visible selected item in multiple mode. Call remove from a native button to make the item removable. |
+| KuiSelectOptions | interface | - | Shape of defaults.select: clearable, multipleDisplay, maxVisibleChips, chevronIcon and clearIcon. |
 
 ## Accessibility
 

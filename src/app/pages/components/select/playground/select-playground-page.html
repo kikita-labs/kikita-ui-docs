@@ -13,7 +13,8 @@
       <input
         kuiSelect
         [value]="value()"
-        (valueChange)="value.set($event)"
+        (valueChange)="onValueChange($event)"
+        (touch)="onTouch()"
         [multiple]="multipleOf(playground.values())"
         [multipleDisplay]="multipleDisplayOf(playground.values())"
         [maxVisibleChips]="maxVisibleChipsOf(playground.values())"
@@ -21,6 +22,7 @@
         [clearable]="clearableOf(playground.values())"
         [disabled]="disabledOf(playground.values())"
         [readonly]="readonlyOf(playground.values())"
+        [invalid]="invalidOf(playground.values())"
       />
       <kui-dropdown>
         @for (role of roleOptions; track role.value) {
@@ -29,6 +31,8 @@
       </kui-dropdown>
     </kui-field>
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Select events" />
 
   <app-api-table label="Select API" [rows]="apiRows" />
   <p class="select-playground-page__note">{{ apiDescription }}</p>

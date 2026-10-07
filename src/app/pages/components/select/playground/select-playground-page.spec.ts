@@ -104,6 +104,21 @@ describe('SelectPlaygroundPage', () => {
     expect(snippet?.textContent).toContain('readonly');
   });
 
+  it('marks the trigger invalid and adds the touch binding to the snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    toggleSwitch(root, 'invalid');
+    fixture.detectChanges();
+
+    const trigger = root.querySelector<HTMLInputElement>(
+      '.api-playground-viewport__resizable input[kuiSelect]',
+    );
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(trigger?.getAttribute('aria-invalid')).toBe('true');
+    expect(snippet?.textContent).toContain('invalid (touch)="onTouch()"');
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });

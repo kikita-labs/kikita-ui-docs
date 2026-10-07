@@ -44,6 +44,46 @@ export const SELECT_EXAMPLE_SOURCES = {
       code: ":host {\n  display: block;\n  inline-size: min(100%, 420px);\n}",
     },
   ],
+  "object-value-select-example": [
+    {
+      label: "HTML",
+      filename: "object-value-select-example.html",
+      language: "html",
+      code: "<kui-field label=\"Role\" hint=\"Object values are shown through kuiLabelFn\">\n  <input kuiSelect [(value)]=\"role\" [kuiLabelFn]=\"roleLabel\" placeholder=\"Select a role...\" />\n  <kui-dropdown>\n    @for (role of roles; track role.id) {\n      <div kuiOption [value]=\"role\">{{ role.label }}</div>\n    }\n  </kui-dropdown>\n</kui-field>",
+    },
+    {
+      label: "TS",
+      filename: "object-value-select-example.ts",
+      language: "ts",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';\n\ninterface Role {\n  readonly id: number;\n  readonly label: string;\n}\n\n@Component({\n  selector: 'app-object-value-select-example',\n  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],\n  templateUrl: './object-value-select-example.html',\n  styleUrl: './object-value-select-example.scss',\n})\nexport class ObjectValueSelectExample {\n  protected readonly roles: readonly Role[] = [\n    { id: 1, label: 'Software Engineer' },\n    { id: 2, label: 'Designer' },\n    { id: 3, label: 'Product Manager' },\n  ];\n\n  protected readonly role = signal<Role | null>(this.roles[0] ?? null);\n\n  protected readonly roleLabel = (role: Role): string => role.label;\n}",
+    },
+    {
+      label: "SCSS",
+      filename: "object-value-select-example.scss",
+      language: "scss",
+      code: "",
+    },
+  ],
+  "custom-value-select-example": [
+    {
+      label: "HTML",
+      filename: "custom-value-select-example.html",
+      language: "html",
+      code: "<kui-field label=\"Roles\" hint=\"A kuiSelectValue template replaces the default chip\">\n  <input kuiSelect multiple [(value)]=\"roles\" [kuiLabelFn]=\"roleLabel\" />\n\n  <ng-template kuiSelectValue let-label=\"label\" let-remove=\"remove\">\n    <span kuiChip appearance=\"primary\" size=\"sm\">\n      <span class=\"kui-chip-label\">{{ label }}</span>\n      <button kuiChipRemove type=\"button\" [attr.aria-label]=\"'Remove ' + label\" (click)=\"remove()\">\n        x\n      </button>\n    </span>\n  </ng-template>\n\n  <kui-dropdown>\n    @for (role of roleOptions; track role.value) {\n      <div kuiOption [value]=\"role.value\">{{ role.label }}</div>\n    }\n  </kui-dropdown>\n</kui-field>",
+    },
+    {
+      label: "TS",
+      filename: "custom-value-select-example.ts",
+      language: "ts",
+      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiChip,\n  KuiChipRemove,\n  KuiDropdown,\n  KuiField,\n  KuiOption,\n  KuiSelect,\n  KuiSelectValue,\n} from '@kikita-labs/ui';\n\ninterface RoleOption {\n  readonly label: string;\n  readonly value: string;\n}\n\n@Component({\n  selector: 'app-custom-value-select-example',\n  imports: [KuiChip, KuiChipRemove, KuiDropdown, KuiField, KuiOption, KuiSelect, KuiSelectValue],\n  templateUrl: './custom-value-select-example.html',\n  styleUrl: './custom-value-select-example.scss',\n})\nexport class CustomValueSelectExample {\n  protected readonly roles = signal<readonly string[]>(['engineer', 'designer']);\n\n  protected readonly roleOptions: readonly RoleOption[] = [\n    { label: 'Software Engineer', value: 'engineer' },\n    { label: 'Designer', value: 'designer' },\n    { label: 'Product Manager', value: 'manager' },\n  ];\n\n  protected readonly roleLabel = (value: string): string =>\n    this.roleOptions.find((role) => role.value === value)?.label ?? value;\n}",
+    },
+    {
+      label: "SCSS",
+      filename: "custom-value-select-example.scss",
+      language: "scss",
+      code: "",
+    },
+  ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;
 
 export type SelectExampleId = keyof typeof SELECT_EXAMPLE_SOURCES;

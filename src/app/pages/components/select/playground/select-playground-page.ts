@@ -4,7 +4,10 @@ import { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
+  createPlaygroundEventLog,
   definePlaygroundControls,
+  playgroundEvent,
+  PlaygroundEventLogView,
   type PlaygroundValues,
   serializePlaygroundAttributes,
 } from '@shared/docs-ui/api-playground';
@@ -30,6 +33,7 @@ const SELECT_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'multiple', label: 'multiple', kind: 'boolean', defaultValue: false },
   { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
   { key: 'readonly', label: 'readonly', kind: 'boolean', defaultValue: false },
+  { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
   { key: 'clearable', label: 'clearable', kind: 'boolean', defaultValue: false },
   { key: 'maxVisibleChips', label: 'maxVisibleChips', kind: 'number', defaultValue: 3 },
   {
@@ -45,7 +49,15 @@ type SelectPlaygroundValues = PlaygroundValues<typeof SELECT_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-select-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiDropdown, KuiField, KuiOption, KuiSelect],
+  imports: [
+    ApiPlayground,
+    ApiTable,
+    KuiDropdown,
+    KuiField,
+    KuiOption,
+    KuiSelect,
+    PlaygroundEventLogView,
+  ],
   templateUrl: './select-playground-page.html',
   styleUrl: './select-playground-page.scss',
 })
@@ -55,6 +67,7 @@ export class SelectPlaygroundPage {
   protected readonly roleOptions = ROLE_OPTIONS;
   protected readonly value = signal<string | readonly string[] | null>(null);
 
+  protected readonly eventLog = createPlaygroundEventLog();
   protected readonly playgroundControls = SELECT_PLAYGROUND_CONTROLS;
 
   protected readonly buildPlaygroundSnippet = (
@@ -76,6 +89,8 @@ export class SelectPlaygroundPage {
       { name: '[clearable]', value: values.clearable ? 'true' : null },
       { name: 'disabled', value: values.disabled },
       { name: 'readonly', value: values.readonly },
+      { name: 'invalid', value: values.invalid },
+      playgroundEvent('touch', 'onTouch()'),
     ]);
     return [
       {
@@ -95,6 +110,19 @@ export class SelectPlaygroundPage {
 
   protected placeholderOf(values: SelectPlaygroundValues): string {
     return values.placeholder;
+  }
+
+  protected invalidOf(values: SelectPlaygroundValues): boolean {
+    return values.invalid;
+  }
+
+  protected onValueChange(value: string | readonly string[] | null): void {
+    this.value.set(value);
+    this.eventLog.log('valueChange', Array.isArray(value) ? value.join(', ') : String(value));
+  }
+
+  protected onTouch(): void {
+    this.eventLog.log('touch', '');
   }
 
   protected multipleOf(values: SelectPlaygroundValues): boolean {

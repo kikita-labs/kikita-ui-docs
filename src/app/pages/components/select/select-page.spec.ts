@@ -49,10 +49,14 @@ describe('SelectPage', () => {
       'import',
       'usage',
       'multiple',
+      'object-values',
+      'custom-value',
       'provider-defaults',
-      'migration-notes',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(triggers.length).toBeGreaterThanOrEqual(2);
     expect(triggers.every((trigger) => trigger.getAttribute('role') === 'combobox')).toBe(true);
@@ -70,6 +74,8 @@ describe('SelectPage', () => {
     expect(SELECT_DOCS_MANIFEST.exampleIds).toEqual([
       'basic-select-example',
       'multiple-select-example',
+      'object-value-select-example',
+      'custom-value-select-example',
     ]);
     expect(Object.keys(SELECT_EXAMPLE_SOURCES).sort()).toEqual(
       [...SELECT_DOCS_MANIFEST.exampleIds].sort(),

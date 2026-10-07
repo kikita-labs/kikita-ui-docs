@@ -1,0 +1,8 @@
+<kui-field label="Role" hint="Object values are shown through kuiLabelFn">
+  <input kuiSelect [(value)]="role" [kuiLabelFn]="roleLabel" placeholder="Select a role..." />
+  <kui-dropdown>
+    @for (role of roles; track role.id) {
+      <div kuiOption [value]="role">{{ role.label }}</div>
+    }
+  </kui-dropdown>
+</kui-field>

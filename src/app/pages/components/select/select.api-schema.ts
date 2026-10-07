@@ -44,7 +44,8 @@ export const SELECT_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'maxVisibleChips',
     type: 'number | undefined',
-    description: 'Maximum selected chips shown before collapsed +N overflow.',
+    description:
+      'Maximum selected chips shown before collapsed +N overflow. Falls back to defaults.select.maxVisibleChips, then 3.',
   },
   {
     name: 'multipleDisplay',
@@ -69,53 +70,26 @@ export const SELECT_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'clearable',
     type: 'boolean | undefined',
-    description: 'Shows a clear button when a value is selected; falls back to provider options.',
-  },
-  {
-    name: '--kui-select-bg',
-    type: 'CSS custom property',
-    defaultValue: '--kui-input-bg',
     description:
-      'Deprecated in 1.x; use --kui-input-bg instead. Retained for compatibility until v2.',
-  },
-  {
-    name: '--kui-select-border',
-    type: 'CSS custom property',
-    defaultValue: '--kui-input-border',
-    description:
-      'Deprecated in 1.x; use --kui-input-border instead. Retained for compatibility until v2.',
-  },
-  {
-    name: '--kui-select-border-hover',
-    type: 'CSS custom property',
-    defaultValue: '--kui-input-border-hover',
-    description:
-      'Deprecated in 1.x; use --kui-input-border-hover instead. Retained for compatibility until v2.',
-  },
-  {
-    name: '--kui-select-border-focus',
-    type: 'CSS custom property',
-    defaultValue: '--kui-input-border-focus',
-    description:
-      'Deprecated in 1.x; use --kui-input-border-focus instead. Retained for compatibility until v2.',
-  },
-  {
-    name: '--kui-select-border-error',
-    type: 'CSS custom property',
-    defaultValue: '--kui-input-border-error',
-    description:
-      'Deprecated in 1.x; use --kui-input-border-error instead. Retained for compatibility until v2.',
-  },
-  {
-    name: '--kui-select-radius',
-    type: 'CSS custom property',
-    defaultValue: '--kui-input-radius',
-    description:
-      'Deprecated in 1.x; use --kui-input-radius instead. Retained for compatibility until v2.',
+      'Shows a clear button when a value is selected. Resolved as local input, defaults.select.clearable, defaults.field.clearable, then false.',
   },
   {
     name: 'touch',
     type: 'output',
     description: 'Emitted after an opened dropdown closes for Signal Forms support.',
+  },
+  {
+    name: 'ng-template[kuiSelectValue]',
+    type: 'context: { $implicit: T; label: string; remove: () => void }',
+    defaultValue: '-',
+    description:
+      'Replaces the default chip for each visible selected item in multiple mode. Call remove from a native button to make the item removable.',
+  },
+  {
+    name: 'KuiSelectOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.select: clearable, multipleDisplay, maxVisibleChips, chevronIcon and clearIcon.',
   },
 ];
