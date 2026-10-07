@@ -19,6 +19,21 @@ export class DocsDocumentStyleService {
     return docsPlatformSuccess(undefined);
   }
 
+  /** Sets the explicit contrast profile, or removes it so the system preference decides. */
+  public setRootContrast(contrast: string | null): DocsPlatformResult<void> {
+    if (!this.isBrowser) {
+      return docsPlatformFailure('unavailable');
+    }
+
+    if (contrast === null) {
+      delete this.document.documentElement.dataset['kuiContrast'];
+    } else {
+      this.document.documentElement.dataset['kuiContrast'] = contrast;
+    }
+
+    return docsPlatformSuccess(undefined);
+  }
+
   public setRootScrollLocked(locked: boolean): DocsPlatformResult<void> {
     if (!this.isBrowser) {
       return docsPlatformFailure('unavailable');

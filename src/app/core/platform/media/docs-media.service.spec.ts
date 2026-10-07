@@ -9,8 +9,8 @@ describe('DocsMediaService', () => {
   it('projects injected media observations to readonly signals', () => {
     const observe = vi.fn((query: string) =>
       of({
-        breakpoints: { [query]: query.includes('color-scheme') },
-        matches: query.includes('color-scheme'),
+        breakpoints: { [query]: query.includes('color-scheme') || query.includes('contrast') },
+        matches: query.includes('color-scheme') || query.includes('contrast'),
       }),
     );
 
@@ -22,6 +22,7 @@ describe('DocsMediaService', () => {
 
     expect(media.prefersDarkScheme()).toBe(true);
     expect(media.prefersReducedMotion()).toBe(false);
-    expect(observe).toHaveBeenCalledTimes(2);
+    expect(media.prefersMoreContrast()).toBe(true);
+    expect(observe).toHaveBeenCalledTimes(3);
   });
 });

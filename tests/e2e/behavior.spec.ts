@@ -434,3 +434,22 @@ test('falls back to the version home when the page is missing there', async ({ p
 
   await expect(page).toHaveURL(/\/$/);
 });
+
+test('uses soft contrast by default and persists an explicit contrast choice', async ({ page }) => {
+  await gotoReady(page, '/components/button');
+  await expect(page.locator('html')).not.toHaveAttribute('data-kui-contrast', /.*/);
+
+  await page.getByRole('button', { name: 'Theming' }).click();
+  const strict = page.getByRole('radio', { name: 'Strict' });
+  await expect(page.getByRole('radio', { name: 'Soft' })).toBeChecked();
+
+  await strict.click();
+  await expect(page.locator('html')).toHaveAttribute('data-kui-contrast', 'strict');
+
+  await gotoReady(page, '/components/button');
+  await expect(page.locator('html')).toHaveAttribute('data-kui-contrast', 'strict');
+
+  await page.getByRole('button', { name: 'Theming' }).click();
+  await page.getByRole('button', { name: 'Reset to defaults' }).last().click();
+  await expect(page.locator('html')).not.toHaveAttribute('data-kui-contrast', /.*/);
+});

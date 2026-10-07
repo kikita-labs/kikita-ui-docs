@@ -1,5 +1,7 @@
 import { createKuiTheme, DEFAULT_KUI_THEME } from '@kikita-labs/ui';
 
+import { DOCS_DEFAULT_CONTRAST } from './docs-contrast';
+
 export const DOCS_DEFAULT_SEED_COLORS = {
   primary: '#5b4fe0',
   neutral: '#8f8a80',
@@ -15,6 +17,7 @@ export type DocsSeedColors = Readonly<Record<DocsSeedColorName, string>>;
 export function createDocsTheme(seedColors: DocsSeedColors): ReturnType<typeof createKuiTheme> {
   return createKuiTheme({
     ...DEFAULT_KUI_THEME,
+    contrast: DOCS_DEFAULT_CONTRAST,
     seeds: {
       ...DEFAULT_KUI_THEME.seeds,
       color: seedColors,

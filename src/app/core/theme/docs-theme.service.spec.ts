@@ -8,6 +8,7 @@ describe('DocsThemeService', () => {
   beforeEach(() => {
     window.localStorage.clear();
     document.documentElement.removeAttribute('data-kui-theme');
+    document.documentElement.removeAttribute('data-kui-contrast');
     TestBed.configureTestingModule({
       providers: [DocsThemeService],
     });
@@ -28,6 +29,29 @@ describe('DocsThemeService', () => {
 
     expect(service.mode()).toBe(DocsThemeMode.Dark);
     expect(document.documentElement.dataset['kuiTheme']).toBe(DocsThemeMode.Dark);
+  });
+
+  it('builds the theme with the soft contrast profile and no explicit attribute', () => {
+    const service = TestBed.inject(DocsThemeService);
+    TestBed.tick();
+
+    expect(service.contrast()).toBe('soft');
+    expect(document.documentElement.hasAttribute('data-kui-contrast')).toBe(false);
+    expect(document.getElementById('kui-theme')?.textContent).toContain(
+      '[data-kui-contrast="strict"]',
+    );
+  });
+
+  it('writes the contrast attribute only after an explicit choice and removes it on reset', () => {
+    const service = TestBed.inject(DocsThemeService);
+
+    service.setContrast('strict');
+    TestBed.tick();
+    expect(document.documentElement.dataset['kuiContrast']).toBe('strict');
+
+    service.resetContrast();
+    TestBed.tick();
+    expect(document.documentElement.hasAttribute('data-kui-contrast')).toBe(false);
   });
 
   it('applies and persists seed colors', () => {

@@ -1,0 +1,21 @@
+<div class="kui-popover-title">Contrast</div>
+
+<div class="contrast__group">
+  <span class="contrast__label" id="docs-contrast-label">Control borders</span>
+  <kui-segmented
+    size="sm"
+    aria-labelledby="docs-contrast-label"
+    [value]="theme.contrast()"
+    (valueChange)="select($event)"
+  >
+    @for (option of options; track option.id) {
+      <button kuiSegment type="button" [value]="option.id">{{ option.label }}</button>
+    }
+  </kui-segmented>
+  <p class="contrast__hint">Soft borders read quieter and fall below 3:1 against the surface.</p>
+</div>
+
+<button kuiButton class="contrast__reset" type="button" shape="ghost" size="xs" (click)="reset()">
+  <kui-icon name="rotate-ccw" size="15px" />
+  Reset to defaults
+</button>

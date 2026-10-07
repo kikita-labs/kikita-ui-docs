@@ -6,6 +6,7 @@ import { map } from 'rxjs';
 
 const DARK_SCHEME_QUERY = '(prefers-color-scheme: dark)';
 const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)';
+const MORE_CONTRAST_QUERY = '(prefers-contrast: more)';
 
 @Injectable({ providedIn: 'root' })
 export class DocsMediaService {
@@ -19,6 +20,12 @@ export class DocsMediaService {
     { initialValue: false },
   );
 
+  private readonly moreContrastState = toSignal(
+    this.breakpointObserver.observe(MORE_CONTRAST_QUERY).pipe(map((state) => state.matches)),
+    { initialValue: false },
+  );
+
   public readonly prefersDarkScheme = computed(() => this.darkSchemeState());
   public readonly prefersReducedMotion = computed(() => this.reducedMotionState());
+  public readonly prefersMoreContrast = computed(() => this.moreContrastState());
 }

@@ -6,6 +6,7 @@ import { DocsDocumentStyleService } from './docs-document-style.service';
 describe('DocsDocumentStyleService', () => {
   afterEach(() => {
     document.documentElement.removeAttribute('data-kui-theme');
+    document.documentElement.removeAttribute('data-kui-contrast');
     document.documentElement.classList.remove('docs-scroll-locked');
     document.documentElement.style.removeProperty('color-scheme');
     document.getElementById('test-theme')?.remove();
@@ -17,6 +18,10 @@ describe('DocsDocumentStyleService', () => {
     const styles = TestBed.inject(DocsDocumentStyleService);
 
     expect(styles.setRootTheme('dark').ok).toBe(true);
+    expect(styles.setRootContrast('soft').ok).toBe(true);
+    expect(document.documentElement.dataset['kuiContrast']).toBe('soft');
+    expect(styles.setRootContrast(null).ok).toBe(true);
+    expect(document.documentElement.hasAttribute('data-kui-contrast')).toBe(false);
     expect(styles.setRootScrollLocked(true).ok).toBe(true);
     expect(styles.applyStyleSheet('test-theme', ':root { --test: 1; }').ok).toBe(true);
     expect(document.documentElement.dataset['kuiTheme']).toBe('dark');
@@ -31,6 +36,7 @@ describe('DocsDocumentStyleService', () => {
     const styles = TestBed.inject(DocsDocumentStyleService);
 
     expect(styles.setRootTheme('dark')).toEqual({ ok: false, reason: 'unavailable' });
+    expect(styles.setRootContrast('soft')).toEqual({ ok: false, reason: 'unavailable' });
     expect(styles.setRootScrollLocked(true)).toEqual({ ok: false, reason: 'unavailable' });
     expect(styles.applyStyleSheet('test-theme', 'body {}')).toEqual({
       ok: false,

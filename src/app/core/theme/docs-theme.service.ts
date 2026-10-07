@@ -1,10 +1,11 @@
 import { computed, effect, inject, Injectable } from '@angular/core';
 
-import { createKuiThemeStyleSheet } from '@kikita-labs/ui';
+import { createKuiThemeStyleSheet, type KuiThemeContrast } from '@kikita-labs/ui';
 
 import { DocsDocumentStyleService } from '@core/platform/document';
 
 import { DocsCodeThemePreferenceService } from './docs-code-theme-preference.service';
+import { DocsContrastService } from './docs-contrast.service';
 import { createDocsTheme, type DocsSeedColorName } from './docs-seed-colors';
 import { DocsSeedColorsService } from './docs-seed-colors.service';
 import { DocsThemeMode } from './docs-theme-mode';
@@ -15,12 +16,14 @@ const KUI_THEME_STYLE_ID = 'kui-theme';
 @Injectable({ providedIn: 'root' })
 export class DocsThemeService {
   private readonly codeThemePreference = inject(DocsCodeThemePreferenceService);
+  private readonly contrastState = inject(DocsContrastService);
   private readonly documentStyle = inject(DocsDocumentStyleService);
   private readonly modeState = inject(DocsThemeModeService);
   private readonly seedColorState = inject(DocsSeedColorsService);
 
   public readonly mode = this.modeState.mode;
   public readonly seedColors = this.seedColorState.seedColors;
+  public readonly contrast = this.contrastState.contrast;
   public readonly codeThemeIdByMode = this.codeThemePreference.codeThemeIdByMode;
   public readonly codeThemeId = this.codeThemePreference.codeThemeId;
   public readonly isDark = computed(() => this.mode() === DocsThemeMode.Dark);
@@ -32,6 +35,10 @@ export class DocsThemeService {
   constructor() {
     effect(() => {
       this.documentStyle.setRootTheme(this.mode());
+    });
+
+    effect(() => {
+      this.documentStyle.setRootContrast(this.contrastState.choice());
     });
 
     effect(() => {
@@ -51,6 +58,14 @@ export class DocsThemeService {
 
   public resetSeedColors(): void {
     this.seedColorState.reset();
+  }
+
+  public setContrast(contrast: KuiThemeContrast): void {
+    this.contrastState.set(contrast);
+  }
+
+  public resetContrast(): void {
+    this.contrastState.reset();
   }
 
   public setCodeThemeId(id: string): void {

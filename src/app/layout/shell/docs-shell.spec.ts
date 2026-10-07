@@ -57,6 +57,7 @@ describe('DocsShell', () => {
             applyStyleSheet: vi.fn(),
             setRootScrollLocked,
             setRootTheme: vi.fn(),
+            setRootContrast: vi.fn(),
           },
         },
       ],
