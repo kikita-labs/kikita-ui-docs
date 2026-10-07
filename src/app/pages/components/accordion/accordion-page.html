@@ -56,6 +56,19 @@
     <app-code-tabs [tabs]="iconTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [defaultsKey]="defaultsKey" [rows]="defaultsRows">
+    <p class="accordion-page__note">
+      <code>disclosureIcon</code> replaces the expand icon of every trigger and takes precedence
+      over <code>defaults.icons.disclosure</code>.
+    </p>
+  </app-provider-defaults-section>
+
+  <app-token-tables-section
+    name="Accordion"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Accordion API" [rows]="apiRows" />
   </app-doc-section>
@@ -75,7 +88,7 @@
         order.
       </li>
       <li>
-        Activating a trigger with a click, <kbd>Enter</kbd>, or <kbd>Space</kbd> toggles the
+        Activating a trigger with a click, <code>Enter</code>, or <code>Space</code> toggles the
         section.
       </li>
       <li>
@@ -83,10 +96,38 @@
         override arrow-key focus.
       </li>
       <li>
+        Trigger focus is a solid 2px outline in <code>--kui-color-focus</code>
+        (<code>--kui-accordion-trigger-focus-ring-color</code>).
+      </li>
+      <li>
         Accordion covers native disclosure semantics and static ARIA review. Screen reader and other
         assistive-technology verification has not been completed for this primitive yet; see
         <code>state-coverage.md</code> in the library repository for current review status.
       </li>
     </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for the accordion."
+  >
+    <ul class="accordion-page__notes">
+      <li>
+        The classes are <code>KuiAccordion</code>, <code>KuiAccordionItem</code> and
+        <code>KuiAccordionIcon</code> (they had a <code>Component</code> or
+        <code>Directive</code> suffix). <code>ng update @kikita-labs/ui</code> renames the imports.
+      </li>
+      <li>
+        <code>mode</code>, <code>appearance</code> and <code>size</code> are plain configuration
+        inputs and no longer two-way models; only <code>expandedItems</code> is two-way bindable.
+      </li>
+      <li>
+        Defaults come from <code>defaults.accordion</code>. Body text uses a line height of 1.6 (it
+        was 1.65), and the trigger minimum heights of the small and large sizes are tokens.
+      </li>
+      <li>The expand chevron is drawn by the shared structural icon renderer.</li>
+    </ul>
+    <app-code-tabs [tabs]="migrationTabs" />
   </app-doc-section>
 </article>

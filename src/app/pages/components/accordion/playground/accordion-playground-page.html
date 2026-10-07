@@ -13,12 +13,18 @@
       [mode]="modeOf(playground.values())"
       [appearance]="appearanceOf(playground.values())"
       [size]="sizeOf(playground.values())"
-      [(expandedItems)]="expandedItems"
+      [expandedItems]="expandedItems()"
+      (expandedItemsChange)="onExpandedItemsChange($event)"
     >
       <kui-accordion-item
         id="general"
         [header]="labelOf(playground.values(), 'item1Header', 'General settings')"
       >
+        @if (showIconOf(playground.values())) {
+          <ng-template kuiAccordionIcon>
+            <kui-icon name="settings" />
+          </ng-template>
+        }
         Configure display and behavior options.
       </kui-accordion-item>
       <kui-accordion-item
@@ -36,6 +42,8 @@
       </kui-accordion-item>
     </kui-accordion>
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Accordion events" />
 
   <app-api-table label="Accordion API" [rows]="apiRows" />
   <p class="accordion-playground-page__note">{{ apiDescription }}</p>

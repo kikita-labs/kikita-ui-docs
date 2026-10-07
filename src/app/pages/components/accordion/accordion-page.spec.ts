@@ -48,8 +48,11 @@ describe('AccordionPage', () => {
       'multi-mode',
       'appearance',
       'composition',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview .kui-accordion')).toHaveLength(5);
     expect(root.querySelectorAll('app-icon-accordion-example .kui-accordion-icon')).toHaveLength(1);

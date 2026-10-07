@@ -759,7 +759,7 @@ export class BasicAccordionExample {}
 <kui-accordion appearance="bordered">
   <kui-accordion-item id="settings" header="Settings">
     <ng-template kuiAccordionIcon>
-      <kui-icon [source]="settingsIcon" />
+      <kui-icon name="settings" />
     </ng-template>
     Settings content with a leading icon slot.
   </kui-accordion-item>
@@ -777,18 +777,13 @@ import { Component } from '@angular/core';
 
 import { KuiAccordion, KuiAccordionIcon, KuiAccordionItem, KuiIcon } from '@kikita-labs/ui';
 
-const SETTINGS_ICON =
-  '<svg viewBox="0 0 24 24" fill="none"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.04.04a2 2 0 0 1-2.83 2.83l-.04-.04a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 0 1-4 0v-.06A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.88.34l-.04.04a2 2 0 0 1-2.83-2.83l.04-.04A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 0 1 0-4h.06A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.88l-.04-.04a2 2 0 1 1 2.83-2.83l.04.04A1.7 1.7 0 0 0 8.96 4.6 1.7 1.7 0 0 0 10 3.06V3a2 2 0 0 1 4 0v.06A1.7 1.7 0 0 0 15.04 4.6a1.7 1.7 0 0 0 1.88-.34l.04-.04a2 2 0 0 1 2.83 2.83l-.04.04a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.94 10H21a2 2 0 0 1 0 4h-.06A1.7 1.7 0 0 0 19.4 15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
-
 @Component({
   selector: 'app-icon-accordion-example',
   imports: [KuiAccordion, KuiAccordionIcon, KuiAccordionItem, KuiIcon],
   templateUrl: './icon-accordion-example.html',
   styleUrl: './icon-accordion-example.scss',
 })
-export class IconAccordionExample {
-  protected readonly settingsIcon = SETTINGS_ICON;
-}
+export class IconAccordionExample {}
 ```
 
 #### icon-accordion-example.scss
@@ -841,14 +836,17 @@ export class MultiAccordionExample {
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| mode | 'exclusive' \| 'multi' | 'exclusive' | Toggle mode. exclusive keeps a single section open at a time; multi allows any number of sections open simultaneously. Two-way bindable. |
-| appearance | 'default' \| 'bordered' \| 'ghost' | 'default' | Container and divider treatment: default uses bottom borders between items, bordered wraps each item in its own bordered block, ghost has no borders. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Trigger height and text size. |
-| expandedItems | string[] | [] | IDs of currently expanded items. Supports two-way binding with [(expandedItems)]; mutations are reflected back through the model. |
+| mode | 'exclusive' \| 'multi' | 'exclusive' | Toggle mode. exclusive keeps a single section open at a time; multi allows any number of sections open simultaneously. A plain input, not two-way bindable. Falls back to defaults.accordion.mode. |
+| appearance | 'default' \| 'bordered' \| 'ghost' | 'default' | Container and divider treatment: default uses bottom borders between items, bordered wraps each item in its own bordered block, ghost has no borders. A plain input; falls back to defaults.accordion.appearance. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Trigger height and text size. A plain input; falls back to defaults.accordion.size, then the global defaults.size. |
+| expandedItems | string[] | [] | IDs of currently expanded items. The only mutable state of the accordion and the only two-way bindable one: use [(expandedItems)] or listen to (expandedItemsChange). |
 | header | string | '' | kui-accordion-item: trigger label text. |
-| id | string | auto-generated | kui-accordion-item: stable ID used for state tracking and ARIA wiring. |
+| id | string | auto-generated | kui-accordion-item: stable ID used for state tracking and ARIA wiring. The generated default is numbered per Angular application, so server-rendered ids match the browser. |
 | disabled | boolean | false | kui-accordion-item: removes the trigger from tab order and prevents toggling the section. |
 | kuiAccordionIcon | - | - | Marker directive for an ng-template projected into a kui-accordion-item trigger, before the label text. |
+| provideKuiDefaults({ accordion }) | (defaults: KuiComponentDefaults) => Provider | - | Sets size, mode, appearance and disclosureIcon for a subtree; provideKikitaUi({ defaults }) does it for the whole application. |
+| KuiAccordionOptions | interface | - | Shape of defaults.accordion. disclosureIcon takes precedence over defaults.icons.disclosure. |
+| KuiAccordionMode / KuiAccordionAppearance | type aliases | - | Public unions of the mode and appearance values. |
 
 ## Accessibility
 

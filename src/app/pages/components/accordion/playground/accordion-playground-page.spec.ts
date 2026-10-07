@@ -82,6 +82,26 @@ describe('AccordionPlaygroundPage', () => {
     expect(preview?.querySelectorAll('button[aria-expanded="true"]').length).toBeGreaterThan(1);
   });
 
+  it('logs expandedItemsChange and projects the icon slot into the first item', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const iconSwitch = [
+      ...root.querySelectorAll<HTMLInputElement>('.api-playground__toggle-row input'),
+    ].find((input) => input.closest('label')?.textContent?.includes('item 1 icon'));
+    const preview = root.querySelector<HTMLElement>('app-api-playground-viewport');
+
+    preview?.querySelector<HTMLButtonElement>('button[aria-controls*="notifications"]')?.click();
+    iconSwitch?.click();
+    fixture.detectChanges();
+
+    expect(root.querySelector('app-playground-event-log')?.textContent).toContain(
+      'expandedItemsChange',
+    );
+    expect(preview?.querySelectorAll('.kui-accordion-icon')).toHaveLength(1);
+    expect(root.querySelector<HTMLElement>('.code-tabs__fallback code')?.textContent).toContain(
+      '<kui-icon name="settings" />',
+    );
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });
