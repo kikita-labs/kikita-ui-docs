@@ -56,6 +56,10 @@
     <app-code-tabs [tabs]="iconTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Icon Button" [geometryRows]="geometryTokenRows" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Icon button API" [rows]="apiRows" />
   </app-doc-section>
@@ -88,6 +92,29 @@
         Since 0.2.0, control height is driven only by
         <code>size</code> (<code>data-kui-size</code>). <code>data-kui-density</code> no longer
         changes icon button height.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Icon Button."
+  >
+    <ul class="icon-button-page__notes">
+      <li>
+        The directive class is <code>KuiIconButton</code>; the <code>Component</code> suffix is
+        gone.
+      </li>
+      <li>
+        Defaults moved from the button provider options to
+        <code>provideKuiDefaults({{ '{' }} iconButton: {{ '{' }} ... {{ '}' }} {{ '}' }})</code>;
+        <code>appearance: null</code> keeps each shape's neutral colours.
+      </li>
+      <li>
+        Icon button size now has geometry tokens, so a theme can tune
+        <code>--kui-icon-button-size-xs</code>, <code>-sm</code> and <code>-lg</code> without
+        overriding control heights.
       </li>
     </ul>
   </app-doc-section>

@@ -81,7 +81,7 @@ describe('IconButtonPlaygroundPage', () => {
     );
   });
 
-  it('orders shape and appearance controls like the button playground without none', () => {
+  it('orders shape and appearance controls like the button playground, with none first', () => {
     const root = fixture.nativeElement as HTMLElement;
     const groups = [...root.querySelectorAll<HTMLElement>('.api-playground__group')];
     const shapeOptions = groups
@@ -98,6 +98,7 @@ describe('IconButtonPlaygroundPage', () => {
       'ghost',
     ]);
     expect([...(appearanceOptions ?? [])].map((button) => button.textContent?.trim())).toEqual([
+      'none',
       'primary',
       'danger',
       'success',
@@ -116,9 +117,7 @@ describe('IconButtonPlaygroundPage', () => {
     const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
 
     expect(button?.disabled).toBe(true);
-    expect(snippet?.textContent).toContain(
-      '<button kuiIconButton type="button" appearance="primary" disabled',
-    );
+    expect(snippet?.textContent).toContain('<button kuiIconButton type="button" disabled');
   });
 
   it('keeps loading behavior disabled and busy in preview and snippet', () => {
@@ -136,8 +135,33 @@ describe('IconButtonPlaygroundPage', () => {
     expect(button?.disabled).toBe(true);
     expect(button?.getAttribute('aria-busy')).toBe('true');
     expect(snippet?.textContent).toBe(
-      '<button kuiIconButton type="button" appearance="primary" loading aria-label="Settings">\n  <kui-icon [source]="settingsIcon" />\n</button>',
+      '<button kuiIconButton type="button" loading aria-label="Settings">\n  <kui-icon [source]="settingsIcon" />\n</button>',
     );
+  });
+
+  it('starts from the runtime default appearance, so the snippet has no appearance', () => {
+    const snippet = (fixture.nativeElement as HTMLElement).querySelector<HTMLElement>(
+      '.code-tabs__fallback code',
+    );
+
+    expect(previewButton()?.hasAttribute('data-kui-appearance')).toBe(false);
+    expect(snippet?.textContent).not.toContain('appearance');
+  });
+
+  it('renders a registered icon through the icon input instead of projected content', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')]
+      .find((button) => button.textContent?.trim() === 'check')
+      ?.click();
+    fixture.detectChanges();
+
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(snippet?.textContent).toBe(
+      '<button kuiIconButton type="button" icon="check" aria-label="Settings"></button>',
+    );
+    expect(previewButton()?.querySelector('kui-icon')).not.toBeNull();
   });
 
   it('has no automated accessibility violations', async () => {

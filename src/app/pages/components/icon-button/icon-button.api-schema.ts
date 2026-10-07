@@ -42,4 +42,11 @@ export const ICON_BUTTON_API_ROWS: readonly ApiTableRow[] = [
     description:
       'Renders a kui-icon resolved by name as the button content, prepended before any other projected content, without hand-projecting kui-icon.',
   },
+  {
+    name: 'KuiButtonOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.iconButton: shape, appearance and size. The old { button, iconButton } pair is KuiButtonProviderOptions and is deprecated.',
+  },
 ];

@@ -15,11 +15,14 @@
       [shape]="shapeOf(playground.values())"
       [appearance]="appearanceOf(playground.values())"
       [size]="sizeOf(playground.values())"
+      [icon]="iconOf(playground.values())"
       [disabled]="disabledOf(playground.values())"
       [loading]="loadingOf(playground.values())"
       [attr.aria-label]="ariaLabelOf(playground.values())"
     >
-      <kui-icon [source]="settingsIcon" />
+      @if (projectsIcon(playground.values())) {
+        <kui-icon [source]="settingsIcon" />
+      }
     </button>
   </app-api-playground>
 

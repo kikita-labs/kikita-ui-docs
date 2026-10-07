@@ -51,9 +51,12 @@ describe('IconButtonPage', () => {
       'appearance',
       'size',
       'icon-composition',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
       'known-gaps',
+      'migration',
     ]);
     expect(buttons).toHaveLength(21);
     expect(buttons.every((button) => button.hasAttribute('aria-label'))).toBe(true);

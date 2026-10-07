@@ -5,6 +5,7 @@ import {
   type KuiButtonShape,
   KuiIcon,
   KuiIconButton,
+  type KuiIconName,
   type KuiSize,
 } from '@kikita-labs/ui';
 
@@ -12,6 +13,7 @@ import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
   definePlaygroundControls,
   escapePlaygroundHtml,
+  playgroundOptionOrUndefined,
   type PlaygroundValues,
   serializePlaygroundAttributes,
 } from '@shared/docs-ui/api-playground';
@@ -23,6 +25,8 @@ import { ICON_BUTTON_API_DESCRIPTION } from '../icon-button.docs-content';
 
 const SETTINGS_ICON =
   '<svg viewBox="0 0 24 24" fill="none"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.04.04a2 2 0 0 1-2.83 2.83l-.04-.04a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 0 1-4 0v-.06A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.88.34l-.04.04a2 2 0 0 1-2.83-2.83l.04-.04A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 0 1 0-4h.06A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.88l-.04-.04a2 2 0 1 1 2.83-2.83l.04.04A1.7 1.7 0 0 0 8.96 4.6 1.7 1.7 0 0 0 10 3.06V3a2 2 0 0 1 4 0v.06A1.7 1.7 0 0 0 15.04 4.6a1.7 1.7 0 0 0 1.88-.34l.04-.04a2 2 0 0 1 2.83 2.83l-.04.04a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.94 10H21a2 2 0 0 1 0 4h-.06A1.7 1.7 0 0 0 19.4 15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+
+const ICON_BUTTON_PLAYGROUND_ICONS = ['none', 'check', 'plus', 'trash-2'] as const;
 
 const ICON_BUTTON_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'ariaLabel', label: 'aria-label', kind: 'string', defaultValue: 'Settings' },
@@ -37,8 +41,8 @@ const ICON_BUTTON_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'appearance',
     label: 'appearance',
     kind: 'enum',
-    options: ['primary', 'danger', 'success', 'warning'],
-    defaultValue: 'primary',
+    options: ['none', 'primary', 'danger', 'success', 'warning'],
+    defaultValue: 'none',
   },
   {
     key: 'size',
@@ -46,6 +50,13 @@ const ICON_BUTTON_PLAYGROUND_CONTROLS = definePlaygroundControls([
     kind: 'enum',
     options: ['xs', 'sm', 'md', 'lg'],
     defaultValue: 'md',
+  },
+  {
+    key: 'icon',
+    label: 'icon',
+    kind: 'enum',
+    options: ICON_BUTTON_PLAYGROUND_ICONS,
+    defaultValue: 'none',
   },
   { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
   { key: 'loading', label: 'loading', kind: 'boolean', defaultValue: false },
@@ -73,8 +84,9 @@ export class IconButtonPlaygroundPage {
       { name: 'shape', value: values.shape, defaultValue: 'ghost' },
       {
         name: 'appearance',
-        value: values.appearance,
+        value: playgroundOptionOrUndefined(values.appearance),
       },
+      { name: 'icon', value: playgroundOptionOrUndefined(values.icon) },
       { name: 'size', value: values.size, defaultValue: 'md' },
       { name: 'disabled', value: values.disabled },
       { name: 'loading', value: values.loading },
@@ -86,9 +98,12 @@ export class IconButtonPlaygroundPage {
       {
         label: 'HTML',
         language: 'html',
-        code: `<button kuiIconButton type="button"${attrString} aria-label="${escapedLabel}">
+        code:
+          values.icon === 'none'
+            ? `<button kuiIconButton type="button"${attrString} aria-label="${escapedLabel}">
   <kui-icon [source]="settingsIcon" />
-</button>`,
+</button>`
+            : `<button kuiIconButton type="button"${attrString} aria-label="${escapedLabel}"></button>`,
       },
     ];
   };
@@ -103,8 +118,16 @@ export class IconButtonPlaygroundPage {
     return values.shape;
   }
 
-  protected appearanceOf(values: IconButtonPlaygroundValues): KuiButtonAppearance {
-    return values.appearance;
+  protected appearanceOf(values: IconButtonPlaygroundValues): KuiButtonAppearance | null {
+    return playgroundOptionOrUndefined(values.appearance) ?? null;
+  }
+
+  protected iconOf(values: IconButtonPlaygroundValues): KuiIconName | undefined {
+    return playgroundOptionOrUndefined(values.icon);
+  }
+
+  protected projectsIcon(values: IconButtonPlaygroundValues): boolean {
+    return values.icon === 'none';
   }
 
   protected sizeOf(values: IconButtonPlaygroundValues): KuiSize {

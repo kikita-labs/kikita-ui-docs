@@ -7,3 +7,7 @@
 .icon-button-page__notes {
   @include doc-page-notes;
 }
+
+.icon-button-page__note {
+  @include doc-page-note;
+}

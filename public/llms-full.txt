@@ -6602,6 +6602,7 @@ export class IconButtonIconExample {}
 | disabled | boolean | false | Disables native button behavior. Anchor icon buttons receive aria-disabled and leave tab order. |
 | loading | boolean | false | Replaces the icon (and any projected content) with a centered kui-loader spinner, sets aria-busy, and behaves like disabled. |
 | icon | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name as the button content, prepended before any other projected content, without hand-projecting kui-icon. |
+| KuiButtonOptions | interface | - | Shape of defaults.iconButton: shape, appearance and size. The old { button, iconButton } pair is KuiButtonProviderOptions and is deprecated. |
 
 ## Accessibility
 
