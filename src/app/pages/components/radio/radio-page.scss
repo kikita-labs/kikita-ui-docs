@@ -7,3 +7,7 @@
 .radio-page__notes {
   @include doc-page-notes;
 }
+
+.radio-page__note {
+  @include doc-page-note;
+}

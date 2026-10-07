@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 
 import { RADIO_EXAMPLE_SOURCES } from '@generated/example-sources/radio.generated';
+import { RADIO_DEFAULTS } from '@generated/library-tables/radio.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
 
 import {
   BasicRadioExample,
@@ -25,6 +27,7 @@ import {
 @Component({
   selector: 'app-radio-page',
   imports: [
+    ProviderDefaultsSection,
     ApiTable,
     BasicRadioExample,
     CodeTabs,
@@ -42,6 +45,7 @@ import {
 export class RadioPage {
   protected readonly status = RADIO_STATUS;
   protected readonly apiDescription = RADIO_API_DESCRIPTION;
+  protected readonly defaults = RADIO_DEFAULTS;
   protected readonly apiRows = RADIO_API_ROWS;
   protected readonly importTabs = RADIO_IMPORT_TABS;
 

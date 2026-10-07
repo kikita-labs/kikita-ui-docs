@@ -8140,9 +8140,10 @@ export class RadioSizeExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Radio size mapped to Kikita radio tokens. |
-| invalid | boolean | - | Marks the radio invalid outside a kui-field error state. |
-| id | string \| undefined | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Radio size mapped to Kikita radio tokens. Resolved from defaults.radio.size, then the parent field, then the global defaults.size, then md. |
+| invalid | boolean | false | Marks the radio invalid outside a kui-field error state. With [formField] the Field state wins. |
+| id | string \| undefined | undefined | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| KuiRadioOptions | interface | - | Shape of defaults.radio: size. |
 
 ## Accessibility
 

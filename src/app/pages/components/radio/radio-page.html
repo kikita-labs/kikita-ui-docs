@@ -63,6 +63,8 @@
     <app-code-tabs [tabs]="signalFormsTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Radio API" [rows]="apiRows" />
   </app-doc-section>
@@ -85,6 +87,34 @@
       <li>Use <code>kui-field</code> for group label, hint, error, and described-by wiring.</li>
       <li>Use native checked and disabled states; do not replace the input with a custom role.</li>
       <li>Use <code>invalid</code> only when the radio is outside a field error state.</li>
+      <li>
+        A required <code>kui-field</code> exposes <code>aria-required</code> on the radio inputs,
+        and a checked radio stays visible under <code>forced-colors: active</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Radio."
+  >
+    <ul class="radio-page__notes">
+      <li>
+        The directive class is <code>KuiRadio</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        The default size moved to
+        <code>provideKuiDefaults({{ '{' }} radio: {{ '{' }} size {{ '}' }} {{ '}' }})</code>; the
+        input is now <code>undefined</code> until set.
+      </li>
+      <li>
+        A required <code>kui-field</code> sets <code>aria-required</code> on the radio inputs.
+      </li>
+      <li>
+        The checked radio is covered by the forced-colors stylesheet, and disabled radios use the
+        shared <code>--kui-opacity-disabled</code>.
+      </li>
     </ul>
   </app-doc-section>
 </article>

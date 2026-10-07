@@ -50,8 +50,10 @@ describe('RadioPage', () => {
       'disabled',
       'invalid',
       'signal-forms',
+      'provider-defaults',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(radios).toHaveLength(11);
     expect(radios.every((radio) => radio.type === 'radio')).toBe(true);
