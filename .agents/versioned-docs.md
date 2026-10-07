@@ -167,6 +167,9 @@ stable. The version prefix is irrelevant to the page.
 - Do not use `noindex` or `robots.txt` to hide archived versions. Google
   recommends canonical signals, and `robots.txt` does not hide URLs from the
   index.
+- The Google Search Console ownership file `public/google<token>.html` is
+  published at the site root. Never delete it: Google re-checks it, and
+  `check:versioned-output` exempts it from the page checks.
 - `robots.txt` is only read at the origin root. This site is a project page
   under `/kikita-ui-docs/`, so a `robots.txt` shipped here is ignored; do not
   add one. Submit the sitemap through Search Console instead.

@@ -9,3 +9,4 @@
 /src/app/generated/example-sources/*.generated.ts
 /public/llms
 /mcp/generated
+/public/google*.html

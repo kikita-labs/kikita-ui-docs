@@ -14,6 +14,8 @@ const baseHref = readOption('--base-href') ?? resolveBaseHref();
 const siteBaseUrl = readOption('--site-url') ?? resolveSiteBaseUrl();
 /** App-shell copies that are not canonical pages and carry no canonical link. */
 const NON_PAGE_FILES = new Set(['404.html', 'index.csr.html']);
+/** Google Search Console ownership file; it must stay published and is not an app page. */
+const SEARCH_CONSOLE_FILE = /^google[0-9a-f]+\.html$/;
 /** Demo links rendered inside component examples; they are sample data, not site navigation. */
 const DEMO_HREFS = new Set(['/components', '/users/nikita.png']);
 const failures = [];
@@ -45,8 +47,13 @@ if (failures.length > 0) {
 }
 
 async function checkHtmlFile(file) {
-  const html = await readFile(file, 'utf8');
   const name = relative(outputDir, file).split(sep).join('/');
+
+  if (SEARCH_CONSOLE_FILE.test(name)) {
+    return;
+  }
+
+  const html = await readFile(file, 'utf8');
   const baseMatch = /<base href="([^"]*)"/.exec(html);
 
   if (baseMatch?.[1] !== baseHref) {
