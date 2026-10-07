@@ -1,0 +1,4 @@
+# Store and check out text files with LF on every OS so Prettier, ESLint and generated files
+# agree. Without this, Windows autocrlf produces CRLF working copies that look modified after
+# any formatter or generator run.
+* text=auto eol=lf
