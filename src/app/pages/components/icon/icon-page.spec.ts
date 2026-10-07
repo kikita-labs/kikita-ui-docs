@@ -45,12 +45,14 @@ describe('IconPage', () => {
     expect(sectionIds).toEqual([
       'import',
       'usage',
+      'glyph-data-and-stroke',
       'swap-the-icon-set',
       'security',
       'api',
       'accessibility',
+      'migration',
     ]);
-    expect(root.querySelectorAll('app-live-preview kui-icon')).toHaveLength(5);
+    expect(root.querySelectorAll('app-live-preview kui-icon')).toHaveLength(9);
     expect(root.textContent).toContain('provideKuiIcons');
   });
 
@@ -62,7 +64,11 @@ describe('IconPage', () => {
 
     expect(pageType).toBe(IconPage);
     expect(isStandalone(playgroundType)).toBe(true);
-    expect(ICON_DOCS_MANIFEST.exampleIds).toEqual(['basic-icon-example', 'swap-icon-set-example']);
+    expect(ICON_DOCS_MANIFEST.exampleIds).toEqual([
+      'basic-icon-example',
+      'icon-glyph-example',
+      'swap-icon-set-example',
+    ]);
     expect(Object.keys(ICON_EXAMPLE_SOURCES).sort()).toEqual(
       [...ICON_DOCS_MANIFEST.exampleIds].sort(),
     );

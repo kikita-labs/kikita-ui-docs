@@ -8,7 +8,7 @@ import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
-import { BasicIconExample, SwapIconSetExample } from './examples';
+import { BasicIconExample, IconGlyphExample, SwapIconSetExample } from './examples';
 import { ICON_API_ROWS } from './icon.api-schema';
 import { ICON_API_DESCRIPTION, ICON_IMPORT_TABS, ICON_STATUS } from './icon.docs-content';
 
@@ -18,6 +18,7 @@ import { ICON_API_DESCRIPTION, ICON_IMPORT_TABS, ICON_STATUS } from './icon.docs
     ApiTable,
     BasicIconExample,
     CodeTabs,
+    IconGlyphExample,
     DocSection,
     LivePreview,
     PageHeader,
@@ -33,5 +34,6 @@ export class IconPage {
   protected readonly apiRows = ICON_API_ROWS;
   protected readonly importTabs = ICON_IMPORT_TABS;
   protected readonly basicTabs = ICON_EXAMPLE_SOURCES['basic-icon-example'];
+  protected readonly glyphTabs = ICON_EXAMPLE_SOURCES['icon-glyph-example'];
   protected readonly swapIconSetTabs = ICON_EXAMPLE_SOURCES['swap-icon-set-example'];
 }

@@ -61,6 +61,28 @@ describe('IconPlaygroundPage', () => {
     expect(snippet?.textContent).toContain('size="32px"');
   });
 
+  it('draws glyph data and applies the stroke inputs to the preview and the snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const glyph = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')].find(
+      (button) => button.textContent?.trim() === 'glyph',
+    );
+    const toggle = root.querySelector<HTMLInputElement>('.api-playground__toggle-row input');
+
+    glyph?.click();
+    setTextControl(root, 'strokeWidth (0 = unset)', '2.5');
+    toggle?.click();
+    fixture.detectChanges();
+
+    const icon = root.querySelector<HTMLElement>('.api-playground-viewport__resizable kui-icon');
+    const snippets = [...root.querySelectorAll<HTMLElement>('.code-tabs__fallback code')];
+
+    expect(icon?.querySelector('svg path')).not.toBeNull();
+    expect(icon?.getAttribute('style')).toContain('--kui-icon-stroke-width');
+    expect(snippets[0]?.textContent).toContain('[source]="gauge"');
+    expect(snippets[0]?.textContent).toContain('[strokeWidth]="2.5"');
+    expect(snippets[0]?.textContent).toContain('absoluteStrokeWidth');
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });

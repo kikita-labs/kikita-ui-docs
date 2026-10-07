@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
-import { KuiIcon } from '@kikita-labs/ui';
+import { KuiIcon, type KuiIconGlyph } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
   definePlaygroundControls,
   escapePlaygroundHtmlAttribute,
+  playgroundBinding,
   type PlaygroundValues,
   serializePlaygroundAttributes,
 } from '@shared/docs-ui/api-playground';
@@ -20,12 +21,19 @@ const ICON_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'mode',
     label: 'source',
     kind: 'enum',
-    options: ['name', 'inline', 'image'],
+    options: ['name', 'glyph', 'inline', 'image'],
     defaultValue: 'name',
   },
   { key: 'iconName', label: 'name (Lucide icon name)', kind: 'string', defaultValue: 'settings' },
   { key: 'size', label: 'size', kind: 'string', defaultValue: '24px' },
   { key: 'label', label: 'label (accessible name)', kind: 'string', defaultValue: 'Success' },
+  { key: 'strokeWidth', label: 'strokeWidth (0 = unset)', kind: 'number', defaultValue: 0 },
+  {
+    key: 'absoluteStrokeWidth',
+    label: 'absoluteStrokeWidth',
+    kind: 'boolean',
+    defaultValue: false,
+  },
   {
     key: 'decorative',
     label: 'decorative (hide from screen readers)',
@@ -38,6 +46,18 @@ type IconPlaygroundValues = PlaygroundValues<typeof ICON_PLAYGROUND_CONTROLS>;
 
 const INLINE_ICON =
   '<svg viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const GLYPH_ICON: KuiIconGlyph = {
+  node: [
+    ['path', { d: 'M12 14l4-4' }],
+    ['path', { d: 'M3.34 19a10 10 0 1 1 17.32 0' }],
+  ],
+};
+const GLYPH_ICON_SOURCE = `protected readonly gauge: KuiIconGlyph = {
+  node: [
+    ['path', { d: 'M12 14l4-4' }],
+    ['path', { d: 'M3.34 19a10 10 0 1 1 17.32 0' }],
+  ],
+};`;
 const IMAGE_ICON =
   'data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Ccircle%20cx%3D%228%22%20cy%3D%228%22%20r%3D%226%22%20fill%3D%22currentColor%22/%3E%3C/svg%3E';
 
@@ -56,59 +76,80 @@ export class IconPlaygroundPage {
   protected readonly apiRows = ICON_API_ROWS;
   protected readonly playgroundControls = ICON_PLAYGROUND_CONTROLS;
   protected readonly inlineIcon = INLINE_ICON;
+  protected readonly glyphIcon = GLYPH_ICON;
   protected readonly imageIcon = IMAGE_ICON;
 
   protected readonly buildPlaygroundSnippet = (
     values: IconPlaygroundValues,
   ): readonly CodeTab[] => {
     const label = iconLabelOf(values);
-
-    if (values.mode === 'name') {
-      const attrString = serializePlaygroundAttributes([
-        { name: 'name', value: values.iconName },
-        { name: 'label', value: label },
-        { name: 'size', value: values.size, defaultValue: '1em' },
-      ]);
-
-      return [
-        {
-          label: 'HTML',
-          language: 'html',
-          code: `<kui-icon${attrString} />`,
-        },
-      ];
-    }
-
-    const attrString = serializePlaygroundAttributes([
-      {
-        name: values.mode === 'inline' ? '[source]' : 'src',
-        value: values.mode === 'inline' ? 'checkIcon' : IMAGE_ICON,
-      },
+    const shared = [
       { name: 'label', value: label },
       { name: 'size', value: values.size, defaultValue: '1em' },
-    ]);
-    const html = `<kui-icon${attrString} />`;
-
-    return [
-      {
-        label: 'HTML',
-        language: 'html',
-        code: html.replace('"checkIcon"', 'checkIcon'),
-      },
-      {
-        label: 'TS',
-        language: 'ts',
-        code: `protected readonly checkIcon = '${escapePlaygroundHtmlAttribute(INLINE_ICON)}';`,
-      },
+      playgroundBinding('strokeWidth', values.strokeWidth > 0 ? String(values.strokeWidth) : null),
+      { name: 'absoluteStrokeWidth', value: values.absoluteStrokeWidth },
     ];
+
+    switch (values.mode) {
+      case 'name':
+        return [
+          {
+            label: 'HTML',
+            language: 'html',
+            code: `<kui-icon${serializePlaygroundAttributes([{ name: 'name', value: values.iconName }, ...shared])} />`,
+          },
+        ];
+      case 'glyph':
+        return [
+          {
+            label: 'HTML',
+            language: 'html',
+            code: `<kui-icon${serializePlaygroundAttributes([playgroundBinding('source', 'gauge'), ...shared])} />`,
+          },
+          { label: 'TS', language: 'ts', code: GLYPH_ICON_SOURCE },
+        ];
+      case 'inline':
+        return [
+          {
+            label: 'HTML',
+            language: 'html',
+            code: `<kui-icon${serializePlaygroundAttributes([playgroundBinding('source', 'checkIcon'), ...shared])} />`,
+          },
+          {
+            label: 'TS',
+            language: 'ts',
+            code: `protected readonly checkIcon = '${escapePlaygroundHtmlAttribute(INLINE_ICON)}';`,
+          },
+        ];
+      case 'image':
+        return [
+          {
+            label: 'HTML',
+            language: 'html',
+            code: `<kui-icon${serializePlaygroundAttributes([{ name: 'src', value: IMAGE_ICON }, ...shared])} />`,
+          },
+        ];
+    }
   };
 
   protected nameOf(values: IconPlaygroundValues): string | undefined {
     return values.mode === 'name' ? values.iconName.trim() || undefined : undefined;
   }
 
-  protected sourceOf(values: IconPlaygroundValues): string | undefined {
+  protected sourceOf(values: IconPlaygroundValues): string | KuiIconGlyph | undefined {
+    if (values.mode === 'glyph') {
+      return GLYPH_ICON;
+    }
+
     return values.mode === 'inline' ? INLINE_ICON : undefined;
+  }
+
+  protected strokeWidthOf(values: IconPlaygroundValues): number | undefined {
+    return values.strokeWidth > 0 ? values.strokeWidth : undefined;
+  }
+
+  protected absoluteStrokeWidthOf(values: IconPlaygroundValues): boolean {
+    return values.absoluteStrokeWidth;
   }
 
   protected srcOf(values: IconPlaygroundValues): string | undefined {

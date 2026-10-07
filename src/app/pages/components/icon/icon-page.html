@@ -2,13 +2,13 @@
   <app-page-header
     eyebrow="Data and Identity"
     heading="Icon"
-    description="Render trusted SVG icons with accessible decorative and meaningful states."
+    description="Render icons from a name, glyph data, trusted SVG markup or an image URL, with accessible decorative and meaningful states. The icons components draw for themselves are a separate, structural system."
     [status]="status"
   />
 
   <app-doc-section
     heading="Import"
-    description="Use the component directly. Named icons resolve against Lucide by default via provideKikitaUi(); register your own set with provideKuiIcons() to override or opt out entirely."
+    description="Use the component directly. Named icons resolve against a pinned Lucide set by default via provideKikitaUi(); register your own set with provideKuiIcons(), host the Lucide files yourself, or opt out entirely."
   >
     <app-code-tabs [tabs]="importTabs" />
   </app-doc-section>
@@ -26,8 +26,35 @@
   </app-doc-section>
 
   <app-doc-section
+    anchor="glyph-data-and-stroke"
+    heading="Glyph data and stroke width"
+    description="An icon is either glyph data (drawn from an allowlist of elements and attributes, safe from any source, rendered synchronously, also on the server) or trusted SVG markup. strokeWidth and absoluteStrokeWidth restyle stroke-based icons."
+  >
+    <app-live-preview previewLabel="Glyph data with stroke widths">
+      <app-icon-glyph-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="glyphTabs" />
+    <ul class="icon-page__notes">
+      <li>
+        A glyph is <code>{{ '{' }} node, viewBox? {{ '}' }}</code
+        >, where <code>node</code> lists drawing elements in paint order in the icon-node layout of
+        Lucide; only <code>path</code>, <code>line</code>, <code>polyline</code>,
+        <code>polygon</code>, <code>circle</code>, <code>ellipse</code> and <code>rect</code> are
+        drawn, and an unknown element invalidates the glyph.
+      </li>
+      <li>
+        <code>strokeWidth</code> sets <code>--kui-icon-stroke-width</code> in glyph-grid units (24
+        by 24 for Lucide) and <code>absoluteStrokeWidth</code> keeps the stroke the same number of
+        pixels at any size (<code>--kui-icon-vector-effect: non-scaling-stroke</code>). Both are
+        plain CSS custom properties, so they also work on <code>:root</code> or a subtree. Filled
+        shapes and markup with an inline <code>stroke-width</code> style are not affected.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
     heading="Swap the icon set"
-    description="Override the resolved icon set anywhere in the tree with provideKuiIcons() in a component's own providers; later registrations win for names they both define."
+    description="Register an icon set for the application or a route with provideKuiIcons() (it returns environment providers), or scope one to a component subtree by providing the KUI_ICONS multi token in that component's providers. Later registrations win for names they both define."
   >
     <app-live-preview previewLabel="Same icon name resolved by three different sets">
       <app-swap-icon-set-example />
@@ -37,20 +64,31 @@
 
   <app-doc-section
     heading="Security"
-    description="Inline SVG inputs are trusted-code APIs, not user-content APIs."
+    description="Glyph data is safe from any source; trusted SVG markup is a trusted-code API, not a user-content API."
   >
     <ul class="icon-page__notes">
       <li>
-        Register SVG strings from static application code with <code>provideKuiIcons()</code>.
+        The default Lucide set is read at a pinned <code>lucide-static</code> version
+        (<code>KUI_LUCIDE_STATIC_VERSION</code>, 1.51.0), so a library release always draws the same
+        icons. The fetched file is converted to glyph data with the allowlist instead of being
+        inserted as HTML: a replaced or compromised file cannot inject script or load another
+        resource, and a file with anything else (script, <code>use</code>, text) is rejected and the
+        icon stays empty. Names that are not Lucide kebab-case names resolve to nothing without a
+        request.
       </li>
-      <li>Pass only trusted static SVG to <code>[source]</code>.</li>
-      <li>Do not pass user-generated SVG markup into the registry or direct source input.</li>
-      <li>Use <code>src</code> for normal image URLs when you do not need inline SVG styling.</li>
       <li>
-        The default Lucide resolver fetches SVG markup from the jsDelivr CDN by name; set
-        <code>provideKikitaUi({{ '{' }} icons: false {{ '}' }})</code> to avoid that network
-        dependency, or override with your own registry.
+        Allow <code>connect-src https://cdn.jsdelivr.net</code> in a Content Security Policy, host
+        the files yourself with <code>createKuiLucideResolver({{ '{' }} baseUrl {{ '}' }})</code>,
+        or set <code>provideKikitaUi({{ '{' }} icons: false {{ '}' }})</code> to make no request at
+        all. Names resolved through the default set need a request, so they render when it settles;
+        a name found in a static registry renders on the first pass.
       </li>
+      <li>
+        Register SVG strings from static application code only and pass only trusted static SVG to
+        <code>[source]</code>; return glyph data from a custom resolver so a response cannot carry
+        markup, and never resolve a name to a URL built from user input.
+      </li>
+      <li>Use <code>src</code> for normal image URLs when you do not need inline SVG styling.</li>
     </ul>
   </app-doc-section>
 
@@ -73,6 +111,36 @@
         Prefer visible text next to icons for actions; icon-only buttons need an accessible name.
       </li>
       <li>Keep icon sizing proportional to surrounding text or control height.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for icons."
+  >
+    <ul class="icon-page__notes">
+      <li>
+        The class is <code>KuiIcon</code> (it was <code>KuiIconComponent</code>);
+        <code>ng update @kikita-labs/ui</code> renames the import.
+      </li>
+      <li>
+        The default Lucide set moved from the floating <code>lucide-static@1</code> to a pinned
+        version, is converted to glyph data and may need <code>connect-src</code> in your CSP.
+        <code>KuiIconSource</code> stays the markup string type; registries and resolvers may also
+        return <code>KuiIconGlyph</code> data.
+      </li>
+      <li>
+        <code>provideKuiIcons()</code> returns environment providers: put it in the application
+        config, a route or an environment injector. A static registry answers on the first pass
+        without a promise, and names are matched against the registry's own keys only, so
+        <code>name="constructor"</code> no longer returns a function.
+      </li>
+      <li>
+        New inputs <code>strokeWidth</code> and <code>absoluteStrokeWidth</code>, and a
+        <code>kui.components</code> layer stylesheet: <code>kui-icon</code> needs
+        <code>kikita-ui.css</code> like every other component.
+      </li>
     </ul>
   </app-doc-section>
 </article>

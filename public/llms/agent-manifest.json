@@ -622,6 +622,7 @@
       "category": "data-identity",
       "exampleIds": [
         "basic-icon-example",
+        "icon-glyph-example",
         "swap-icon-set-example"
       ],
       "apiSchemaPath": "src/app/pages/components/icon/icon.api-schema.ts",

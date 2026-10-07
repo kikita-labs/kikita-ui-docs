@@ -6193,6 +6193,55 @@ export class BasicIconExample {
 }
 ```
 
+### icon-glyph-example
+
+#### icon-glyph-example.html
+
+```html
+<div class="icon-glyph-example">
+  <kui-icon [source]="gauge" label="Gauge" size="32px" />
+  <kui-icon [source]="gauge" label="Gauge, thin stroke" size="32px" [strokeWidth]="1" />
+  <kui-icon [source]="gauge" label="Gauge, heavy stroke" size="32px" [strokeWidth]="3" />
+  <kui-icon [source]="gauge" label="Large gauge, constant stroke" size="64px" absoluteStrokeWidth />
+</div>
+```
+
+#### icon-glyph-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiIcon, type KuiIconGlyph } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-icon-glyph-example',
+  imports: [KuiIcon],
+  templateUrl: './icon-glyph-example.html',
+  styleUrl: './icon-glyph-example.scss',
+})
+export class IconGlyphExample {
+  /** Glyph data is plain data drawn through an allowlist, so it is safe from any source. */
+  protected readonly gauge: KuiIconGlyph = {
+    node: [
+      ['path', { d: 'M12 14l4-4' }],
+      ['path', { d: 'M3.34 19a10 10 0 1 1 17.32 0' }],
+    ],
+  };
+}
+```
+
+#### icon-glyph-example.scss
+
+```scss
+.icon-glyph-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-5, 20px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
 ### swap-icon-set-example
 
 #### swap-icon-set-example.html
@@ -6283,14 +6332,20 @@ export class SwapIconSetExample {}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | kui-icon | Component | - | Renders an icon from a registered name, trusted inline SVG source, or image URL. |
-| name | KuiIconName \| undefined | undefined | Icon name resolved from icons registered with provideKuiIcons(), falling back to the default Lucide resolver unless disabled. |
-| source | KuiIconSource \| undefined | undefined | Trusted static inline SVG markup. It takes precedence over name. |
+| name | KuiIconName \| undefined | undefined | Icon name resolved from icons registered with provideKuiIcons(), falling back to the default pinned Lucide resolver unless disabled. A name in a static registry renders on the first pass; others render when the async resolver settles. |
+| source | KuiIconContent \| undefined | undefined | Direct icon content: KuiIconGlyph data (safe from any source) or trusted static inline SVG markup. It takes precedence over name and renders synchronously. |
 | src | string \| undefined | undefined | External image URL used when no source or registered name is provided. |
 | label | string \| undefined | undefined | Accessible name for meaningful icons. Omit it for decorative icons. |
 | size | '2xs' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' \| string \| number | '1em' | Named presets map to Kikita icon-size tokens. Numeric values become pixels, and arbitrary CSS size strings pass through. |
 | provideKuiIcons(icons) | EnvironmentProviders | - | Registers a static map of trusted SVG strings, or an async KuiIconResolver function, for name-based icon lookup. Later registrations take precedence for names both define. Route-level only; component providers cannot accept EnvironmentProviders. |
 | KUI_ICONS | InjectionToken<readonly KuiIconRegistry[]> | - | The multi-provider token behind provideKuiIcons(). Provide it directly in a component's own providers ({ provide: KUI_ICONS, multi: true, useValue }) to scope an icon-set override to that subtree. |
 | provideKikitaUi({ icons }) | 'lucide' \| false | 'lucide' | Registers kui-icon's default resolvers: Lucide (lazily fetched SVG markup from the jsDelivr CDN) and the built-in KUI_BRAND_ICONS set (currently just the 'kikita-brand' wordmark, resolved locally). Set to false to opt out of both. |
+| strokeWidth | number \| string \| undefined | undefined | Stroke width in glyph-grid units (24 by 24 for Lucide). Sets --kui-icon-stroke-width on the host; unset keeps the icon weight or the token of an ancestor. |
+| absoluteStrokeWidth | boolean | false | Keeps the stroke the same number of pixels at any icon size. Sets --kui-icon-vector-effect: non-scaling-stroke on the host. |
+| KuiIconGlyph / KuiIconContent | types | - | Glyph data { node, viewBox? } drawn through an allowlist, and the union of glyph data and trusted SVG markup accepted by source and by registries. |
+| createKuiLucideResolver(options?) | (options?: KuiLucideResolverOptions) => KuiIconResolver | - | The safe Lucide resolver for another lucide-static version or for files you host (baseUrl, no trailing slash). Fetched text is converted to glyph data, never inserted as markup. |
+| KUI_LUCIDE_STATIC_VERSION | string | '1.51.0' | The exact lucide-static version of the default resolver. It changes only with a library release. |
+| --kui-icon-stroke-width / --kui-icon-vector-effect | CSS custom properties | - | Set by strokeWidth and absoluteStrokeWidth; set them on :root or a subtree to restyle every stroke-based icon, structural icons included. |
 
 ## Accessibility
 

@@ -24,6 +24,26 @@ export const ICON_EXAMPLE_SOURCES = {
       code: ".basic-icon-example {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: var(--kui-space-3, 12px);\n  flex-wrap: wrap;\n}\n\n.basic-icon-example__status {\n  display: inline-flex;\n  align-items: center;\n  gap: var(--kui-space-2, 8px);\n  color: var(--kui-color-text);\n}",
     },
   ],
+  "icon-glyph-example": [
+    {
+      label: "HTML",
+      filename: "icon-glyph-example.html",
+      language: "html",
+      code: "<div class=\"icon-glyph-example\">\n  <kui-icon [source]=\"gauge\" label=\"Gauge\" size=\"32px\" />\n  <kui-icon [source]=\"gauge\" label=\"Gauge, thin stroke\" size=\"32px\" [strokeWidth]=\"1\" />\n  <kui-icon [source]=\"gauge\" label=\"Gauge, heavy stroke\" size=\"32px\" [strokeWidth]=\"3\" />\n  <kui-icon [source]=\"gauge\" label=\"Large gauge, constant stroke\" size=\"64px\" absoluteStrokeWidth />\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "icon-glyph-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiIcon, type KuiIconGlyph } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-icon-glyph-example',\n  imports: [KuiIcon],\n  templateUrl: './icon-glyph-example.html',\n  styleUrl: './icon-glyph-example.scss',\n})\nexport class IconGlyphExample {\n  /** Glyph data is plain data drawn through an allowlist, so it is safe from any source. */\n  protected readonly gauge: KuiIconGlyph = {\n    node: [\n      ['path', { d: 'M12 14l4-4' }],\n      ['path', { d: 'M3.34 19a10 10 0 1 1 17.32 0' }],\n    ],\n  };\n}",
+    },
+    {
+      label: "SCSS",
+      filename: "icon-glyph-example.scss",
+      language: "scss",
+      code: ".icon-glyph-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-5, 20px);\n  align-items: center;\n  justify-content: center;\n}",
+    },
+  ],
   "swap-icon-set-example": [
     {
       label: "HTML",
