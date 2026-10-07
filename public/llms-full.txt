@@ -8934,9 +8934,10 @@ export class SeparatorVerticalExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| appearance | 'subtle' \| 'default' \| 'strong' | 'default' | Visual divider emphasis. |
-| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Divider direction. Vertical separators set aria-orientation="vertical" and stretch to the parent block size. |
-| spacing | 'none' \| 'xs' \| 'sm' \| 'md' \| 'lg' | 'sm' | Outer spacing around the divider line. |
+| appearance | 'subtle' \| 'default' \| 'strong' \| undefined | undefined | Visual divider emphasis. Falls back to defaults.separator.appearance, then default. |
+| orientation | 'horizontal' \| 'vertical' \| undefined | undefined | Divider direction (defaults.separator.orientation, then horizontal). Vertical separators set aria-orientation="vertical" and stretch to the parent block size. |
+| spacing | 'none' \| 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Outer spacing around the divider line. Falls back to defaults.separator.spacing, then sm. |
+| KuiSeparatorOptions | interface | - | Shape of defaults.separator: appearance, orientation and spacing. |
 
 ## Accessibility
 

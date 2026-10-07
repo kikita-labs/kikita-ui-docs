@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 
 import { SEPARATOR_EXAMPLE_SOURCES } from '@generated/example-sources/separator.generated';
+import { SEPARATOR_DEFAULTS } from '@generated/library-tables/separator.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
 
 import {
   BasicSeparatorExample,
@@ -24,6 +26,7 @@ import {
 @Component({
   selector: 'app-separator-page',
   imports: [
+    ProviderDefaultsSection,
     ApiTable,
     BasicSeparatorExample,
     CodeTabs,
@@ -52,5 +55,6 @@ export class SeparatorPage {
 
   protected readonly verticalTabs = SEPARATOR_EXAMPLE_SOURCES['separator-vertical-example'];
 
+  protected readonly defaults = SEPARATOR_DEFAULTS;
   protected readonly apiRows = SEPARATOR_API_ROWS;
 }

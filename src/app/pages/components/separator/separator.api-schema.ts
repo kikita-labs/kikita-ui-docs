@@ -3,21 +3,29 @@ import { type ApiTableRow } from '@shared/docs-ui/api-table';
 export const SEPARATOR_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'appearance',
-    type: `'subtle' | 'default' | 'strong'`,
-    defaultValue: `'default'`,
-    description: 'Visual divider emphasis.',
+    type: `'subtle' | 'default' | 'strong' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Visual divider emphasis. Falls back to defaults.separator.appearance, then default.',
   },
   {
     name: 'orientation',
-    type: `'horizontal' | 'vertical'`,
-    defaultValue: `'horizontal'`,
+    type: `'horizontal' | 'vertical' | undefined`,
+    defaultValue: 'undefined',
     description:
-      'Divider direction. Vertical separators set aria-orientation="vertical" and stretch to the parent block size.',
+      'Divider direction (defaults.separator.orientation, then horizontal). Vertical separators set aria-orientation="vertical" and stretch to the parent block size.',
   },
   {
     name: 'spacing',
-    type: `'none' | 'xs' | 'sm' | 'md' | 'lg'`,
-    defaultValue: `'sm'`,
-    description: 'Outer spacing around the divider line.',
+    type: `'none' | 'xs' | 'sm' | 'md' | 'lg' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Outer spacing around the divider line. Falls back to defaults.separator.spacing, then sm.',
+  },
+  {
+    name: 'KuiSeparatorOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.separator: appearance, orientation and spacing.',
   },
 ];

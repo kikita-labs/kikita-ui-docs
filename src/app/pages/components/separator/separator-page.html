@@ -56,6 +56,8 @@
     <app-code-tabs [tabs]="verticalTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Separator API" [rows]="apiRows" />
   </app-doc-section>
@@ -77,6 +79,23 @@
       <li>
         Do not add labels by default. Named separators should be rare structural boundaries, not a
         default pattern.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Separator."
+  >
+    <ul class="separator-page__notes">
+      <li>
+        The directive class is <code>KuiSeparator</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        Appearance, orientation and spacing defaults moved to
+        <code>provideKuiDefaults({{ '{' }} separator: {{ '{' }} ... {{ '}' }} {{ '}' }})</code>; the
+        inputs are now <code>undefined</code> until set.
       </li>
     </ul>
   </app-doc-section>

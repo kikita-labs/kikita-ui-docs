@@ -48,8 +48,10 @@ describe('SeparatorPage', () => {
       'appearances',
       'spacing',
       'vertical',
+      'provider-defaults',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview hr[kuiSeparator]')).toHaveLength(10);
     expect(root.querySelector('app-separator-vertical-example')).not.toBeNull();
