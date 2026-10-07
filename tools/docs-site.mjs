@@ -6,6 +6,7 @@ import {
   readDocsVersionId,
   resolveBaseHref,
   resolveSiteBaseUrl,
+  writeVersionPathPrefix,
 } from './docs-site-config.mjs';
 
 const COMMANDS = {
@@ -17,6 +18,9 @@ const COMMANDS = {
       .map((entry) => entry.id)
       .join('\n'),
   'path-prefix': () => readDocsSiteConfig().versionPathPrefix,
+  'set-version-prefix': () => {
+    writeVersionPathPrefix(`/${readDocsVersionId()}`);
+  },
 };
 
 const handler = COMMANDS[process.argv[2]];

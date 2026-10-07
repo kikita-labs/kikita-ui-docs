@@ -1,0 +1,67 @@
+name: Cut docs release branch
+
+# Run this when a new major of @kikita-labs/ui is about to replace the current one on main, BEFORE
+# updating the dependency. It turns the current docs into release/<version id>, which archives them
+# under /<version id>/. If the dependency was already updated, pass the last commit that still
+# documents the old major as source_ref.
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: Commit or branch whose docs describe the major version to archive
+        required: true
+        default: main
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  cut:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref }}
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Resolve the version being archived
+        id: version
+        run: echo "id=$(node tools/docs-site.mjs version-id)" >> "$GITHUB_OUTPUT"
+
+      - name: Refuse to overwrite an existing release branch
+        run: |
+          if git ls-remote --exit-code --heads origin "release/${{ steps.version.outputs.id }}" > /dev/null; then
+            echo "release/${{ steps.version.outputs.id }} already exists. Fix that version by pushing to it."
+            exit 1
+          fi
+
+      - name: Point the docs at their own path
+        run: |
+          node tools/docs-site.mjs set-version-prefix
+          node tools/generate-agent-surface.mjs
+          pnpm run check:site-config
+          pnpm run check:agent-surface
+
+      - name: Create and push the release branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "release/${{ steps.version.outputs.id }}"
+          git add -A
+          git commit -m "chore(docs): publish ${{ steps.version.outputs.id }} documentation under /${{ steps.version.outputs.id }}/"
+          git push origin "release/${{ steps.version.outputs.id }}"
+
+      # Pushes made with the workflow token do not trigger other workflows, so start it explicitly.
+      - name: Archive the documentation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run archive-docs.yml --ref "release/${{ steps.version.outputs.id }}"

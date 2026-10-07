@@ -59,16 +59,24 @@ release/v2 ...    same pattern for each older major
 
 Example: `@kikita-labs/ui` 2.0.0 is published and v1 becomes an archive.
 
-1. Create `release/v1` from the last `main` commit that documents v1.
-2. On `release/v1` set `versionPathPrefix` to `"/v1"`, run
-   `pnpm generate:agent-surface` (absolute URLs gain `/v1`), run the gates,
-   commit, push. Wait for `archive-docs.yml` to publish the `docs-v1` release.
-3. On `main`, sync the library to 2.x (see `.agents/library-sync.md`), add
+1. **Before** updating the library on `main`: GitHub Actions -> "Cut docs
+   release branch" -> Run workflow (`source_ref` = `main`). It creates
+   `release/v1` with `versionPathPrefix` `"/v1"` and regenerated agent surface,
+   pushes it, and starts "Archive documentation version", which publishes the
+   `docs-v1` release.
+2. On `main`, sync the library to 2.x (see `.agents/library-sync.md`) and add
    `{ "id": "v1", "label": "v1", "status": "maintained" }` to
-   `docs-archive.json`, regenerate the agent surface, push. `deploy.yml` now
-   publishes v2 at the root and v1 under `/v1/`.
-4. Submit `https://kikita-labs.github.io/kikita-ui-docs/sitemap.xml` in Google
-   Search Console once (see SEO below).
+   `docs-archive.json`. Push. `deploy.yml` publishes v2 at the root and v1 under
+   `/v1/`.
+3. One-time, after the first deployment with this setup: submit
+   `https://kikita-labs.github.io/kikita-ui-docs/sitemap.xml` in Google Search
+   Console (optional; crawlers also discover pages by following links).
+
+Nothing here has to be remembered. `pnpm check:site-config` (pre-push hook and
+quality gate) fails on `main` when the installed major is N and
+`docs-archive.json` has no `v<N-1>` entry, and the message says what to run. If
+the library was already updated, run the workflow with `source_ref` set to the
+last commit that still documents the old major.
 
 The `ai-support` page and the agent surface derive their URLs and MCP package
 specifier (`@latest-1` on an archived branch) from the site config, so nothing
@@ -94,8 +102,9 @@ at runtime, so the archived build is not rebuilt.
 
 - **No `/next/` channel.** Docs are built from the published npm package and
   must not describe unreleased behavior, and `@kikita-labs/ui` publishes no
-  prerelease dist-tag (only `latest`). There is nothing to build a `/next/`
-  from. Revisit only if the library starts publishing `next` or release
+  prerelease dist-tag (only `latest`; a prerelease would be a version such as
+  `2.0.0-rc.1` published to npm under the `next` tag so people can try it before
+  the release). There is nothing to build a `/next/` from. Revisit only if the library starts publishing `next` or release
   candidates to npm.
 - **Archived versions stay published.** Pages are static and cost nothing to
   keep, links must not rot, and the 1 GB Pages limit allows dozens of 20 MB
@@ -107,6 +116,22 @@ at runtime, so the archived build is not rebuilt.
 - **No `robots.txt`.** It is read only at the origin root, so a file under a
   project page is ignored, and everything is crawlable by default. The sitemap
   is submitted in Search Console instead.
+
+## Route Stability
+
+The switcher maps the current route onto the other version by path, so the part
+of the route below the version root (`/components/button`) is what must stay
+stable. The version prefix is irrelevant to the page.
+
+- Keep a page's route when it still exists in the next major. This follows
+  `.agents/architecture.md`: public URLs and section anchors are compatibility
+  contracts.
+- A page that moves or is renamed in a new major still works for visitors: the
+  switch and the banner fall back to the other version's home page. External
+  links to the old path, however, break, so prefer keeping the old route
+  (redirect or alias) when renaming.
+- Routes are derived from the docs registry (component slugs, foundation and
+  resource slugs), so changing a slug changes its route in that version.
 
 ## Runtime Behavior
 

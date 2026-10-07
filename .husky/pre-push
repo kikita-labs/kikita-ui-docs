@@ -5,3 +5,4 @@ pnpm check:migration-debt
 pnpm test
 pnpm build
 pnpm check:performance
+pnpm check:site-config

@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const CONFIG_PATH = resolve('src/app/core/site/constants/docs-site-config.json');
@@ -18,6 +18,17 @@ export function readDocsSiteConfig() {
     siteBasePath: config.siteBasePath,
     versionPathPrefix: config.versionPathPrefix,
   };
+}
+
+/** Points this branch at its own `/<version id>/` directory (used when cutting a release branch). */
+export function writeVersionPathPrefix(versionPathPrefix) {
+  const config = JSON.parse(readFileSync(CONFIG_PATH, 'utf8'));
+
+  writeFileSync(
+    CONFIG_PATH,
+    `${JSON.stringify({ ...config, versionPathPrefix }, null, 2)}
+`,
+  );
 }
 
 export function readDocsArchive() {

@@ -50,6 +50,21 @@ for (const entry of archived) {
   }
 }
 
+// The branch that publishes the latest docs must not drop the previous major: when the library
+// moves to a new major, the old docs have to be cut into a release branch and archived first.
+const previousMajor = Number(versionId.slice(1)) - 1;
+
+if (config.versionPathPrefix === '' && previousMajor >= 1 && !seen.has(`v${previousMajor}`)) {
+  failures.push(
+    `The installed @kikita-labs/ui is ${versionId}, but docs-archive.json has no v${previousMajor} ` +
+      `entry. Run the "Cut docs release branch" workflow for v${previousMajor} (source_ref = the ` +
+      `last commit that documents v${previousMajor}), wait for "Archive documentation version" ` +
+      `to publish the docs-v${previousMajor} release, then add ` +
+      `{ "id": "v${previousMajor}", "label": "v${previousMajor}", "status": "maintained" } to ` +
+      `docs-archive.json. See .agents/versioned-docs.md.`,
+  );
+}
+
 if (failures.length > 0) {
   console.error(`Docs site config check failed:\n- ${failures.join('\n- ')}`);
   process.exitCode = 1;
