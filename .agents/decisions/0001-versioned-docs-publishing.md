@@ -33,7 +33,7 @@ no `noindex` or `robots.txt` for canonicalization).
 
 1. Version by `@kikita-labs/ui` major. Latest at the site root, older majors at
    `/<id>/`.
-2. Each older major has a `release/v<major>` branch. Pushing it builds that
+2. Each older major has a `release/<major>.x` branch. Pushing it builds that
    branch for its `/<id>/` path and stores the result as the `docs-<id>`
    GitHub release asset, then redeploys.
 3. `main` deploys the latest version, downloads every archived asset listed in
@@ -97,7 +97,7 @@ no `noindex` or `robots.txt` for canonicalization).
 
 `@kikita-labs/ui-mcp` bundles the agent data of one library version, so it
 follows the library's majors: `ui-mcp` 2.x for ui 2.x (`latest`), and 1.x fixes
-published from `release/v1` under the `latest-1` dist-tag. Publishing without
+published from `release/1.x` under the `latest-1` dist-tag. Publishing without
 `--tag` moves `latest`, so `publish-mcp.yml` chooses the tag from the version and
 the registry's current `latest`. npm rejects tag names that begin with a number
 or `v` (`v1` is a valid semver range), hence `latest-<major>`.

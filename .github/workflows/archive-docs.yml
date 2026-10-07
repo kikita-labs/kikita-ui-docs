@@ -1,11 +1,11 @@
 name: Archive documentation version
 
-# A release branch (release/v1, release/v2, ...) documents one older major version of
+# A release branch (release/1.x, release/2.x, ...) documents one older major version of
 # @kikita-labs/ui. Every push builds that branch for its own /<version id>/ directory, stores the
 # result as a release asset, and redeploys the site. Other versions are never rebuilt.
 on:
   push:
-    branches: ['release/v*']
+    branches: ['release/*.x']
   workflow_dispatch:
 
 permissions:

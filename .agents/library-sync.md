@@ -132,11 +132,11 @@ push to `main`, then `git tag mcp-v<version>` and
 ## Older Major Versions (Release Branches)
 
 Each older major of `@kikita-labs/ui` is documented from its own
-`release/v<major>` branch; see `.agents/versioned-docs.md`.
+`release/<major>.x` branch (the same naming as the library); see `.agents/versioned-docs.md`.
 
 - `main` always tracks the newest published major. A new major is a library
   sync on `main` plus the release-day runbook, not a normal sync.
-- On `release/v<major>` pin `@kikita-labs/ui` to that major (`1.x`). Only sync
+- On `release/<major>.x` pin `@kikita-labs/ui` to that major (`1.x`). Only sync
   patch and minor releases of the same major there, and only critical fixes
   unless the owner asks for more.
 - Fetch library docs from the release tag matching the version installed on

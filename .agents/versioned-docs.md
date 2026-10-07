@@ -38,14 +38,14 @@ them through `tools/docs-site-config.mjs` (Node) or `@core/site` (Angular).
 
 ```text
 main              latest version, base href /kikita-ui-docs/
-release/v1        v1 docs, versionPathPrefix "/v1", base href /kikita-ui-docs/v1/
-release/v2 ...    same pattern for each older major
+release/1.x        v1 docs, versionPathPrefix "/v1", base href /kikita-ui-docs/v1/
+release/2.x ...      same pattern (named like the library's release branches) for each older major
 ```
 
 - `deploy.yml` (push to `main`): quality gate, build for the published base
   href, `check:versioned-output`, download every archived version from the
   `docs-<id>` GitHub release, `assemble:site` into `_site`, deploy.
-- `archive-docs.yml` (push to `release/v*`): quality gate, build for
+- `archive-docs.yml` (push to `release/*.x`): quality gate, build for
   `/<id>/`, `check:versioned-output`, upload `docs-<id>.tar.gz` to the
   `docs-<id>` release (`--clobber`), then dispatch `deploy.yml` on `main`.
 - Archived builds are release assets, not git history, because every build
@@ -61,7 +61,7 @@ Example: `@kikita-labs/ui` 2.0.0 is published and v1 becomes an archive.
 
 1. **Before** updating the library on `main`: GitHub Actions -> "Cut docs
    release branch" -> Run workflow (`source_ref` = `main`). It creates
-   `release/v1` with `versionPathPrefix` `"/v1"` and regenerated agent surface,
+   `release/1.x` with `versionPathPrefix` `"/v1"` and regenerated agent surface,
    pushes it, and starts "Archive documentation version", which publishes the
    `docs-v1` release.
 2. On `main`, sync the library to 2.x (see `.agents/library-sync.md`) and add
@@ -88,7 +88,7 @@ release fails the deployment loudly instead of publishing a broken link.
 
 ## Runbook: Fix An Older Version
 
-1. Check out `release/v1`.
+1. Check out `release/1.x`.
 2. Update `@kikita-labs/ui` to the new 1.x patch, fix the docs, run the gates.
 3. Push. `archive-docs.yml` rebuilds only `/v1/` and redeploys.
 4. If the fix changes behavior documented on the latest version too, apply it on
@@ -168,7 +168,7 @@ stable. The version prefix is irrelevant to the page.
 - Root `/llms.txt` and `/llms-full.txt` always belong to the latest version.
   Archived versions publish theirs under `/<id>/`.
 - `@kikita-labs/ui-mcp` follows the library's majors: ui 2.x docs ship `ui-mcp`
-  2.x as `latest`; a fix for the 1.x line ships `ui-mcp` 1.x from `release/v1`
+  2.x as `latest`; a fix for the 1.x line ships `ui-mcp` 1.x from `release/1.x`
   under the `latest-1` dist-tag (`npx @kikita-labs/ui-mcp@latest-1`).
   `publish-mcp.yml` picks the dist-tag automatically (older major than the
   registry's `latest` -> `latest-<major>`, prerelease -> `next`) and refuses a

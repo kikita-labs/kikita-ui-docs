@@ -131,7 +131,7 @@ Read these permanent agent instructions before large docs work:
 One documentation version exists per `@kikita-labs/ui` major. The latest version
 is served from the site root; older majors are served from `/<version id>/`
 (for example `/v1/`) and can be switched from the header. Older versions are
-built from `release/v<major>` branches and stored as GitHub release assets, so
+built from `release/<major>.x` branches and stored as GitHub release assets, so
 they can still receive critical fixes after a new major ships.
 
 Read [.agents/versioned-docs.md](.agents/versioned-docs.md) before changing

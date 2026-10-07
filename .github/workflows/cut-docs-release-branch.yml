@@ -1,7 +1,7 @@
 name: Cut docs release branch
 
 # Run this when a new major of @kikita-labs/ui is about to replace the current one on main, BEFORE
-# updating the dependency. It turns the current docs into release/<version id>, which archives them
+# updating the dependency. It turns the current docs into release/<major>.x (the same naming as the library), which archives them
 # under /<version id>/. If the dependency was already updated, pass the last commit that still
 # documents the old major as source_ref.
 on:
@@ -35,12 +35,15 @@ jobs:
 
       - name: Resolve the version being archived
         id: version
-        run: echo "id=$(node tools/docs-site.mjs version-id)" >> "$GITHUB_OUTPUT"
+        run: |
+          id=$(node tools/docs-site.mjs version-id)
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          echo "branch=release/${id#v}.x" >> "$GITHUB_OUTPUT"
 
       - name: Refuse to overwrite an existing release branch
         run: |
-          if git ls-remote --exit-code --heads origin "release/${{ steps.version.outputs.id }}" > /dev/null; then
-            echo "release/${{ steps.version.outputs.id }} already exists. Fix that version by pushing to it."
+          if git ls-remote --exit-code --heads origin "${{ steps.version.outputs.branch }}" > /dev/null; then
+            echo "${{ steps.version.outputs.branch }} already exists. Fix that version by pushing to it."
             exit 1
           fi
 
@@ -55,13 +58,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git switch -c "release/${{ steps.version.outputs.id }}"
+          git switch -c "${{ steps.version.outputs.branch }}"
           git add -A
           git commit -m "chore(docs): publish ${{ steps.version.outputs.id }} documentation under /${{ steps.version.outputs.id }}/"
-          git push origin "release/${{ steps.version.outputs.id }}"
+          git push origin "${{ steps.version.outputs.branch }}"
 
       # Pushes made with the workflow token do not trigger other workflows, so start it explicitly.
       - name: Archive the documentation
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh workflow run archive-docs.yml --ref "release/${{ steps.version.outputs.id }}"
+        run: gh workflow run archive-docs.yml --ref "${{ steps.version.outputs.branch }}"

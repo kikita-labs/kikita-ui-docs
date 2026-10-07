@@ -137,7 +137,7 @@ is what triggers the publish -- there is no separate manual publish step.
 
 The workflow picks the npm dist-tag from the version: the newest major gets
 `latest`, an older major gets `latest-<major>` (for example a 1.x fix from
-`release/v1` after 2.0 shipped), and a prerelease gets `next`. It also fails when
+`release/1.x` after 2.0 shipped), and a prerelease gets `next`. It also fails when
 the tag does not match `mcp/package.json`. See `.agents/versioned-docs.md`.
 
 ## SSR Safety
