@@ -34,11 +34,18 @@ pnpm check:generated
 pnpm check:inventory
 pnpm check:package-consumer
 pnpm check:migration-debt
+pnpm check:site-config
 pnpm check:agent-surface
 pnpm build
 pnpm check:performance
 pnpm test:browser
 ```
+
+After the gate, deployment builds with the published base href and runs
+`pnpm check:versioned-output` (see `.agents/versioned-docs.md`). That check
+needs a build made with `--base-href`; on Windows Git Bash prefix it with
+`MSYS_NO_PATHCONV=1`. Both `deploy.yml` and `archive-docs.yml` run the gate
+through `.github/actions/quality-gate`; add new gates there.
 
 `pnpm test:browser` serves the current production output from
 `dist/kikita-ui-docs/browser`. Run `pnpm build` first. Its four Playwright

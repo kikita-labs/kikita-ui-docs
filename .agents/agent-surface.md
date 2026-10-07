@@ -135,6 +135,11 @@ tagging, then bump `mcp/package.json` and tag and push
 (`git tag mcp-v<version> && git push origin mcp-v<version>`). Pushing the tag
 is what triggers the publish -- there is no separate manual publish step.
 
+The workflow picks the npm dist-tag from the version: the newest major gets
+`latest`, an older major gets `latest-<major>` (for example a 1.x fix from
+`release/v1` after 2.0 shipped), and a prerelease gets `next`. It also fails when
+the tag does not match `mcp/package.json`. See `.agents/versioned-docs.md`.
+
 ## SSR Safety
 
 Agent-surface work must not introduce browser globals outside platform adapters.
@@ -161,3 +166,27 @@ Agent-surface changes must run or explicitly record the blocker for:
 
 Do not claim that a route, Markdown mirror, or MCP resource is current unless
 the generator and drift checks passed.
+
+## Versioned Sites
+
+Absolute URLs in generated agent files come from the shared site config
+(`src/app/core/site/constants/docs-site-config.json`, read through
+`tools/docs-site-config.mjs`), not from a constant in the generator.
+
+- On `main` (`versionPathPrefix: ""`) links point at the site root, which is the
+  latest version.
+- On a release branch (`versionPathPrefix: "/<id>"`) every link points at that
+  version's own `/<id>/` copy. Regenerate the agent surface after changing the
+  prefix.
+- Root `/llms.txt` and `/llms-full.txt` always describe the latest version.
+- `pnpm check:versioned-output` fails when `llms.txt` or `llms-full.txt`
+  contains an absolute site URL outside the version's own path.
+
+Version-dependent page text (the `llms.txt` URLs and the MCP package specifier on
+the AI Support page) is written once with `{{siteUrl}}` and `{{mcpPackage}}`
+tokens in `*.docs-content.ts`. The page resolves them at runtime
+(`resolveDocsSiteTokens`) and the generator resolves them when writing the
+Markdown mirror, so both always agree. Do not write literal site URLs in doc
+content.
+
+See `.agents/versioned-docs.md` for the publishing model.

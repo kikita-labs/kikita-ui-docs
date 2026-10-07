@@ -12,6 +12,7 @@ Public documentation, examples, SSR surface, and AI-agent context for
 - UI package: https://www.npmjs.com/package/@kikita-labs/ui
 - Local MCP package: https://www.npmjs.com/package/@kikita-labs/ui-mcp
 - Source library: https://github.com/kikita-labs/kikita-ui
+- Sitemap (latest version): https://kikita-labs.github.io/kikita-ui-docs/sitemap.xml
 
 ## Purpose
 
@@ -46,6 +47,7 @@ pnpm lint
 pnpm test
 pnpm check:package-consumer
 pnpm check:agent-surface
+pnpm check:site-config
 pnpm check:performance
 ```
 
@@ -124,8 +126,20 @@ Read these permanent agent instructions before large docs work:
 - [Testing and quality](.agents/testing-and-quality.md)
 - [Workflow](.agents/workflow.md)
 
+## Versioned Documentation
+
+One documentation version exists per `@kikita-labs/ui` major. The latest version
+is served from the site root; older majors are served from `/<version id>/`
+(for example `/v1/`) and can be switched from the header. Older versions are
+built from `release/v<major>` branches and stored as GitHub release assets, so
+they can still receive critical fixes after a new major ships.
+
+Read [.agents/versioned-docs.md](.agents/versioned-docs.md) before changing
+deployment, site URLs, or release branches. The decision record is
+[.agents/decisions/0001-versioned-docs-publishing.md](.agents/decisions/0001-versioned-docs-publishing.md).
+
 ## Deployment
 
 GitHub Actions deploys `main` to GitHub Pages after the full verification suite
-passes. The local pre-push hook runs lint, generated checks, production build,
+passes, together with every archived version. The local pre-push hook runs lint, generated checks, production build,
 and performance budgets so common CI failures are caught before pushing.

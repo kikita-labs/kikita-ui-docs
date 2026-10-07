@@ -12,6 +12,7 @@ Always read:
 
 - `.agents/workflow.md`
 - `.agents/library-sync.md`
+- `.agents/versioned-docs.md`
 - `.agents/git-policy.md`
 - `.agents/architecture.md`
 - `.agents/angular-code-style.md`
@@ -77,6 +78,8 @@ For component documentation page work, also read:
 - Structural refactors must be delivered as small verified slices. Do not mix
   broad architecture moves with unrelated visual or documentation-content
   changes.
+- Never hardcode the site origin, base path, or a documentation version path.
+  Follow `.agents/versioned-docs.md`: read them from the shared site config.
 - Never add `Co-authored-by`, `Generated-by`, AI attribution, or assistant
   attribution lines to commit messages.
 - Never claim co-authorship for Claude, Codex, ChatGPT, or any other AI tool.

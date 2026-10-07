@@ -128,3 +128,24 @@ surfaces as a misleading 404, not 401) and is not how this package is meant to
 ship. After the user confirms, the flow is: bump `mcp/package.json`, commit,
 push to `main`, then `git tag mcp-v<version>` and
 `git push origin mcp-v<version>`.
+
+## Older Major Versions (Release Branches)
+
+Each older major of `@kikita-labs/ui` is documented from its own
+`release/v<major>` branch; see `.agents/versioned-docs.md`.
+
+- `main` always tracks the newest published major. A new major is a library
+  sync on `main` plus the release-day runbook, not a normal sync.
+- On `release/v<major>` pin `@kikita-labs/ui` to that major (`1.x`). Only sync
+  patch and minor releases of the same major there, and only critical fixes
+  unless the owner asks for more.
+- Fetch library docs from the release tag matching the version installed on
+  that branch, never from `main`'s version.
+- Pushing a release branch rebuilds and republishes only its own
+  `/<id>/` directory. Do not run the sync flow for it on `main`.
+- A change that applies to several versions is made on each branch separately.
+- `@kikita-labs/ui-mcp` follows the same majors. A release-branch sync that
+  changes `mcp/generated/kikita-agent-data.json` needs a 1.x MCP release from
+  that branch; `publish-mcp.yml` publishes it under `latest-<major>` so `latest`
+  stays on the newest major. The explicit-confirmation rule below still applies
+  before any bump or tag.

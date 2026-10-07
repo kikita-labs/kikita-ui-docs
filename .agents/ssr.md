@@ -34,7 +34,10 @@ The server/prerendered response for a docs page must include:
 - API rows;
 - code example text;
 - accessibility notes;
-- canonical links and useful meta tags when implemented.
+- a self-referencing absolute `<link rel="canonical">` (implemented by
+  `DocsCanonicalLinkService`, absent on not-found pages; see
+  `.agents/versioned-docs.md`);
+- other useful meta tags when implemented.
 
 The response may defer enhanced interactions, syntax highlighting decoration,
 copy buttons, theme controls, and playground editing until hydration, as long as
