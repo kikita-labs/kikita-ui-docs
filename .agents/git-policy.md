@@ -6,7 +6,8 @@
 - Commit messages must be concise, English, and focused on the user-visible or
   technical change.
 - Do not commit unless the user asks for a commit or the current task explicitly
-  includes committing.
+  includes committing. A sync request (`.agents/library-sync-runbook.md`)
+  explicitly includes committing and pushing once the gates pass.
 - Before committing, check whether the docs change depends on a library release.
 - If docs were updated because of a `kikita-labs/kikita-ui` changelog entry,
   mention that in the commit body without adding AI attribution.

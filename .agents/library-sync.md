@@ -1,5 +1,8 @@
 # Library Sync Rules
 
+The order of work for a sync request is in `.agents/library-sync-runbook.md`;
+this file holds the rules it relies on.
+
 The published `kikita-labs/kikita-ui` package and its GitHub repository are the
 source of truth. Never depend on a local sibling checkout -- fetch what's
 needed over the network.

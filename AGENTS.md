@@ -43,6 +43,17 @@ For component documentation page work, also read:
 
 - `.agents/component-doc-page.md`
 
+For sync requests ("sync", "sync with the library", "синхронизируй",
+`/library-sync`, or a "Sync docs to @kikita-labs/ui ..." issue), also read and
+follow end to end:
+
+- `.agents/library-sync-runbook.md`
+
+A sync request authorizes committing and pushing to the current branch after the
+gates pass. Skills and prompts are optional shortcuts; this repository's
+`.agents/` documents are the complete instructions, so any agent on any machine
+can do the work without a skill.
+
 ## Non-Negotiable Rules
 
 - Angular 22+ only.
@@ -78,6 +89,9 @@ For component documentation page work, also read:
 - Structural refactors must be delivered as small verified slices. Do not mix
   broad architecture moves with unrelated visual or documentation-content
   changes.
+- When tooling, CI, deployment, or release behavior changes, update the matching
+  `.agents/*.md` document in the same change; documentation must always describe
+  how the repository actually works.
 - Never hardcode the site origin, base path, or a documentation version path.
   Follow `.agents/versioned-docs.md`: read them from the shared site config.
 - Never add `Co-authored-by`, `Generated-by`, AI attribution, or assistant

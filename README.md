@@ -59,16 +59,14 @@ The installed package version is the docs source of truth:
 @kikita-labs/ui@1.8.0
 ```
 
-When `@kikita-labs/ui` is released:
+When `@kikita-labs/ui` is released, ask an agent to "sync" (or run
+`/library-sync`). Any agent follows
+[.agents/library-sync-runbook.md](.agents/library-sync-runbook.md): update the
+dependency, apply the changelog to docs, regenerate examples and the agent
+surface, bump the MCP version when its data changed, verify, commit and push.
+Deployment and the MCP release then happen automatically.
 
-1. Update the dependency in `package.json`.
-2. Run the library sync workflow.
-3. Regenerate examples and agent surface.
-4. Verify package-consumer, generated, agent-surface, build, and performance
-   checks.
-5. Publish `@kikita-labs/ui-mcp` when the agent surface changed.
-
-See [.agents/library-sync.md](.agents/library-sync.md) and
+See also [.agents/library-sync.md](.agents/library-sync.md) and
 [.agents/agent-surface.md](.agents/agent-surface.md).
 
 ## AI Agent Surface
