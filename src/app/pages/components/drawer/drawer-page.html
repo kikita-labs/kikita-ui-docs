@@ -45,6 +45,16 @@
     <app-code-tabs [tabs]="sizesTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Drawer"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Drawer API" [rows]="apiRows" />
   </app-doc-section>
@@ -75,6 +85,29 @@
         The panel renders <code>.kui-drawer-close</code> itself, top-right of the header, when
         <code>closable</code> is <code>true</code> (the default); the header reserves space for it
         automatically. <code>drawerContext.closable</code> is retained for informational use only.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Drawer."
+  >
+    <ul class="drawer-page__notes">
+      <li>
+        The imports are <code>KuiButton</code> and the rest of the renamed classes;
+        <code>ng update @kikita-labs/ui</code> renames them. <code>KuiDrawerContext</code>,
+        <code>KUI_DRAWER_CONTEXT</code> and <code>kuiDrawer()</code> keep their names.
+      </li>
+      <li>
+        Defaults come from <code>defaults.drawer</code> and are read each time a drawer opens; the
+        close icon takes precedence over <code>defaults.icons.close</code>.
+      </li>
+      <li>
+        The backdrop and layers follow the new scrim and layer tokens, the close button reserves its
+        space for titles rendered through a component portal, and the accessible name comes from the
+        <code>drawer</code> messages.
       </li>
     </ul>
   </app-doc-section>

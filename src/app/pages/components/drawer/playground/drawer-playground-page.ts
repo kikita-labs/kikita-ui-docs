@@ -10,7 +10,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { KuiButton, kuiDrawer } from '@kikita-labs/ui';
 
-import { ApiPlayground } from '@shared/docs-ui/api-playground';
+import {
+  ApiPlayground,
+  createPlaygroundEventLog,
+  PlaygroundEventLogView,
+} from '@shared/docs-ui/api-playground';
 import {
   definePlaygroundControls,
   escapePlaygroundSingleQuotedString,
@@ -59,7 +63,7 @@ type DrawerPlaygroundValues = PlaygroundValues<typeof DRAWER_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-drawer-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButton],
+  imports: [ApiPlayground, ApiTable, KuiButton, PlaygroundEventLogView],
   templateUrl: './drawer-playground-page.html',
   styleUrl: './drawer-playground-page.scss',
 })
@@ -71,6 +75,7 @@ export class DrawerPlaygroundPage {
   protected readonly apiRows = DRAWER_API_ROWS;
 
   protected readonly playgroundControls = DRAWER_PLAYGROUND_CONTROLS;
+  protected readonly eventLog = createPlaygroundEventLog();
 
   protected openDrawer(values: DrawerPlaygroundValues): void {
     const side = values.side;
@@ -91,7 +96,10 @@ export class DrawerPlaygroundPage {
       }),
     );
 
-    open({ title, message }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
+    this.eventLog.log('opened', `${values.side}, ${values.size}`);
+    open({ title, message })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((result) => this.eventLog.log('closed', result));
   }
 
   protected readonly buildPlaygroundSnippet = (

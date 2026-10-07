@@ -381,6 +381,7 @@ export class SizePreviewDrawer implements KuiDrawerHost<void, void> {
 | --kui-drawer-width-sm / -md / -lg | CSS custom properties | - | Width presets used by left/right drawers. |
 | --kui-drawer-height-sm / -md / -lg | CSS custom properties | - | Height presets used by top/bottom drawers. |
 | --kui-drawer-duration-open / -close | CSS custom properties | - | Enter/exit animation durations. |
+| KuiDrawerOptions / KuiModalSurfaceOptions | interfaces | - | Shape of defaults.drawer (closable, side, size, closeOnBackdropClick, closeOnEscape, closeIcon), built on the base interface shared with the dialog. Options are read each time a drawer opens. |
 
 ## Accessibility
 

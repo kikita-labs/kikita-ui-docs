@@ -17,6 +17,8 @@
     <button kuiButton type="button" (click)="openDrawer(playground.values())">Open drawer</button>
   </app-api-playground>
 
+  <app-playground-event-log [log]="eventLog" label="Drawer events" />
+
   <app-api-table label="Drawer API" [rows]="apiRows" />
   <p class="drawer-playground-page__note">{{ apiDescription }}</p>
 </article>

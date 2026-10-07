@@ -3,7 +3,7 @@ import { type CodeTab } from '@shared/docs-ui/code-tabs';
 
 export const DRAWER_STATUS = `Stable - @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION}`;
 
-export const DRAWER_API_DESCRIPTION = `API verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
+export const DRAWER_API_DESCRIPTION = `API, provider defaults (every KuiDrawerConfig field falls back to defaults.drawer) and tokens verified against @kikita-labs/ui v${KIKITA_UI_PACKAGE_VERSION} public typings.`;
 
 export const DRAWER_IMPORT_TABS: readonly CodeTab[] = [
   {

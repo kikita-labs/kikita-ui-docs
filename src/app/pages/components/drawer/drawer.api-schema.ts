@@ -154,4 +154,11 @@ export const DRAWER_API_ROWS: readonly ApiTableRow[] = [
     defaultValue: '-',
     description: 'Enter/exit animation durations.',
   },
+  {
+    name: 'KuiDrawerOptions / KuiModalSurfaceOptions',
+    type: 'interfaces',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.drawer (closable, side, size, closeOnBackdropClick, closeOnEscape, closeIcon), built on the base interface shared with the dialog. Options are read each time a drawer opens.',
+  },
 ];
