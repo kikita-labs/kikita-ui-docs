@@ -36,6 +36,20 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    anchor="signal-forms"
+    heading="Signal Forms"
+    description="Bind Angular Signal Forms with [formField] on the same native checkbox; the field gates the invalid state until the control is touched and exposes aria-required."
+  >
+    <app-code-tabs [tabs]="formsTabs" />
+    <p class="checkbox-page__note">
+      For custom checkbox-like components prefer the Angular Signal Forms
+      <code>FormCheckboxControl</code> contract over a ControlValueAccessor.
+    </p>
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Checkbox API" [rows]="apiRows" />
   </app-doc-section>
@@ -50,9 +64,46 @@
       <li>Use native checked and disabled states; do not replace the input with a custom role.</li>
       <li>Use <code>invalid</code> only when the checkbox is outside a field error state.</li>
       <li>
+        Inside <code>kui-field</code> the control receives the field id and
+        <code>aria-describedby</code>, and an explicit <code>required</code> on the field or a
+        Signal Forms <code>required(...)</code> validator is exposed as <code>aria-required</code>.
+      </li>
+      <li>
+        Focus is a solid 2px outline in <code>--kui-color-focus</code>. Disabled checkboxes dim to
+        the shared 0.5 opacity, and checked and indeterminate states keep system colours in forced
+        colors mode.
+      </li>
+      <li>
         <code>.kui-checkbox</code> styles the native <code>:indeterminate</code> pseudo-class (a
         dash mark instead of a checkmark). <code>indeterminate</code> is a DOM property, not an HTML
         attribute, so set it imperatively on the element.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Checkbox."
+  >
+    <ul class="checkbox-page__notes">
+      <li>
+        The class is <code>KuiCheckbox</code> (it was <code>KuiCheckboxDirective</code>); the
+        selector and inputs are unchanged. <code>ng update @kikita-labs/ui</code> renames the
+        import.
+      </li>
+      <li>
+        The size comes from the parent field, then <code>defaults.checkbox.size</code>, then the
+        global <code>defaults.size</code>.
+      </li>
+      <li>
+        The control reads its host id, invalid state and <code>aria-describedby</code> from one
+        internal helper and, inside <code>kui-field</code>, no longer pulls the whole field into
+        your bundle.
+      </li>
+      <li>
+        The focus ring is a 2px outline, disabled controls dim to the shared 0.5 opacity, and
+        checked and indeterminate states have forced-colors styling.
       </li>
     </ul>
   </app-doc-section>

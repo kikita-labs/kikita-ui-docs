@@ -13,3 +13,17 @@ export const CHECKBOX_IMPORT_TABS: readonly CodeTab[] = [
     code: `import { KuiCheckbox, KuiField } from '@kikita-labs/ui';`,
   },
 ];
+
+export const CHECKBOX_FORMS_TABS: readonly CodeTab[] = [
+  {
+    label: 'Signal Forms',
+    filename: 'settings.html',
+    language: 'html',
+    code: `<kui-field label="Notifications" hint="Control product and release emails">
+  <label>
+    <input kuiCheckbox type="checkbox" [formField]="settingsForm.receiveUpdates" />
+    Receive updates
+  </label>
+</kui-field>`,
+  },
+];

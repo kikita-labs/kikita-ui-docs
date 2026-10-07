@@ -66,7 +66,7 @@ describe('CheckboxPlaygroundPage', () => {
 
     setTextInput(root, 'label', '<Updates>');
     optionButtons.find((button) => button.textContent?.trim() === 'lg')?.click();
-    toggles.at(1)?.click();
+    toggles.at(2)?.click();
     fixture.detectChanges();
 
     const checkbox = previewCheckbox();
@@ -87,7 +87,7 @@ describe('CheckboxPlaygroundPage', () => {
       ...root.querySelectorAll<HTMLInputElement>('.api-playground__toggle-row input'),
     ];
 
-    toggles.at(2)?.click();
+    toggles.at(3)?.click();
     fixture.detectChanges();
 
     const checkbox = previewCheckbox();
@@ -95,6 +95,25 @@ describe('CheckboxPlaygroundPage', () => {
 
     expect(checkbox?.disabled).toBe(true);
     expect(snippet?.textContent).toContain('disabled');
+  });
+
+  it('sets the indeterminate property and shows it in the snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const toggles = [
+      ...root.querySelectorAll<HTMLInputElement>('.api-playground__toggle-row input'),
+    ];
+
+    toggles.at(1)?.click();
+    fixture.detectChanges();
+
+    const checkbox = root.querySelector<HTMLInputElement>(
+      'app-api-playground-viewport input[type="checkbox"]',
+    );
+
+    expect(checkbox?.indeterminate).toBe(true);
+    expect(root.querySelector<HTMLElement>('.code-tabs__fallback code')?.textContent).toContain(
+      '[indeterminate]="true"',
+    );
   });
 
   it('has no automated accessibility violations', async () => {

@@ -25,6 +25,7 @@ const CHECKBOX_PLAYGROUND_CONTROLS = definePlaygroundControls([
     defaultValue: 'md',
   },
   { key: 'checked', label: 'checked', kind: 'boolean', defaultValue: true },
+  { key: 'indeterminate', label: 'indeterminate', kind: 'boolean', defaultValue: false },
   { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
   { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
 ] as const);
@@ -50,6 +51,7 @@ export class CheckboxPlaygroundPage {
     const attrString = serializePlaygroundAttributes([
       { name: 'size', value: values.size, defaultValue: 'md' },
       { name: 'checked', value: values.checked },
+      { name: '[indeterminate]', value: values.indeterminate ? 'true' : null },
       { name: 'invalid', value: values.invalid },
       { name: 'disabled', value: values.disabled },
     ]);
@@ -79,6 +81,10 @@ export class CheckboxPlaygroundPage {
 
   protected checkedOf(values: CheckboxPlaygroundValues): boolean {
     return values.checked;
+  }
+
+  protected indeterminateOf(values: CheckboxPlaygroundValues): boolean {
+    return values.indeterminate;
   }
 
   protected invalidOf(values: CheckboxPlaygroundValues): boolean {

@@ -45,7 +45,16 @@ describe('CheckboxPage', () => {
     ];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Checkbox');
-    expect(sectionIds).toEqual(['import', 'usage', 'sizes', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'sizes',
+      'signal-forms',
+      'provider-defaults',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(checkboxes).toHaveLength(8);
     expect(checkboxes[0]?.checked).toBe(true);
     expect(checkboxes.some((checkbox) => checkbox.disabled)).toBe(true);
