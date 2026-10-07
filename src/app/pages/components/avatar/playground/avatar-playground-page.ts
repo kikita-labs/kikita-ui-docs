@@ -6,7 +6,9 @@ import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
   definePlaygroundControls,
   escapePlaygroundHtml,
+  playgroundBinding,
   type PlaygroundValues,
+  serializePlaygroundAttributes,
 } from '@shared/docs-ui/api-playground';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { type CodeTab } from '@shared/docs-ui/code-tabs';
@@ -25,6 +27,8 @@ const GROUP_MEMBERS: readonly KuiAvatarItem[] = [
 const AVATAR_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'name', label: 'name', kind: 'string', defaultValue: 'Nikita Repin' },
   { key: 'initials', label: 'initials', kind: 'string', defaultValue: '' },
+  { key: 'alt', label: 'alt', kind: 'string', defaultValue: '' },
+  { key: 'paletteIndex', label: 'paletteIndex (0 = auto)', kind: 'number', defaultValue: 0 },
   { key: 'useImage', label: 'src (sample image)', kind: 'boolean', defaultValue: true },
   {
     key: 'size',
@@ -50,7 +54,28 @@ const AVATAR_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'loading', label: 'loading', kind: 'boolean', defaultValue: false },
 ] as const);
 
+const AVATAR_GROUP_PLAYGROUND_CONTROLS = definePlaygroundControls([
+  { key: 'label', label: 'label', kind: 'string', defaultValue: 'Project participants' },
+  { key: 'count', label: 'avatars (sample count)', kind: 'number', defaultValue: 5 },
+  { key: 'max', label: 'max', kind: 'number', defaultValue: 4 },
+  {
+    key: 'size',
+    label: 'size',
+    kind: 'enum',
+    options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+    defaultValue: 'sm',
+  },
+  {
+    key: 'shape',
+    label: 'shape',
+    kind: 'enum',
+    options: ['circle', 'square'],
+    defaultValue: 'circle',
+  },
+] as const);
+
 type AvatarPlaygroundValues = PlaygroundValues<typeof AVATAR_PLAYGROUND_CONTROLS>;
+type AvatarGroupPlaygroundValues = PlaygroundValues<typeof AVATAR_GROUP_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-avatar-playground-page',
@@ -61,9 +86,8 @@ type AvatarPlaygroundValues = PlaygroundValues<typeof AVATAR_PLAYGROUND_CONTROLS
 export class AvatarPlaygroundPage {
   protected readonly apiDescription = AVATAR_API_DESCRIPTION;
   protected readonly apiRows = AVATAR_API_ROWS;
-  protected readonly groupMembers = GROUP_MEMBERS;
-
   protected readonly playgroundControls = AVATAR_PLAYGROUND_CONTROLS;
+  protected readonly groupControls = AVATAR_GROUP_PLAYGROUND_CONTROLS;
 
   protected readonly buildPlaygroundSnippet = (
     values: AvatarPlaygroundValues,
@@ -75,11 +99,15 @@ export class AvatarPlaygroundPage {
     const shape = values.shape;
     const status = values.status;
     const loading = values.loading;
+    const alt = values.alt;
+    const paletteIndex = values.paletteIndex;
 
     const attrs = [
       useImage ? `src="/users/nikita.png"` : null,
       name ? `name="${escapePlaygroundHtml(name)}"` : null,
       initials ? `initials="${escapePlaygroundHtml(initials)}"` : null,
+      alt ? `alt="${escapePlaygroundHtml(alt)}"` : null,
+      paletteIndex > 0 ? `[paletteIndex]="${paletteIndex}"` : null,
       size !== 'md' ? `size="${size}"` : null,
       shape !== 'circle' ? `shape="${shape}"` : null,
       status !== 'none' ? `status="${status}"` : null,
@@ -96,6 +124,50 @@ export class AvatarPlaygroundPage {
       },
     ];
   };
+
+  protected readonly buildGroupSnippet = (
+    values: AvatarGroupPlaygroundValues,
+  ): readonly CodeTab[] => {
+    const attrString = serializePlaygroundAttributes([
+      playgroundBinding('avatars', 'members'),
+      playgroundBinding('max', values.max === 4 ? null : String(values.max)),
+      { name: 'size', value: values.size, defaultValue: 'md' },
+      { name: 'shape', value: values.shape, defaultValue: 'circle' },
+      { name: 'label', value: values.label },
+    ]);
+
+    return [{ label: 'HTML', language: 'html', code: `<kui-avatar-group${attrString} />` }];
+  };
+
+  protected altOf(values: AvatarPlaygroundValues): string | undefined {
+    return values.alt || undefined;
+  }
+
+  protected paletteIndexOf(values: AvatarPlaygroundValues): number | undefined {
+    return values.paletteIndex > 0 ? values.paletteIndex : undefined;
+  }
+
+  protected membersOf(values: AvatarGroupPlaygroundValues): readonly KuiAvatarItem[] {
+    return GROUP_MEMBERS.slice(0, Math.max(0, Math.min(values.count, GROUP_MEMBERS.length)));
+  }
+
+  protected groupMaxOf(values: AvatarGroupPlaygroundValues): number {
+    return values.max;
+  }
+
+  protected groupSizeOf(values: AvatarGroupPlaygroundValues): AvatarGroupPlaygroundValues['size'] {
+    return values.size;
+  }
+
+  protected groupShapeOf(
+    values: AvatarGroupPlaygroundValues,
+  ): AvatarGroupPlaygroundValues['shape'] {
+    return values.shape;
+  }
+
+  protected groupLabelOf(values: AvatarGroupPlaygroundValues): string {
+    return values.label;
+  }
 
   protected nameOf(values: AvatarPlaygroundValues): string | undefined {
     const name = values.name;

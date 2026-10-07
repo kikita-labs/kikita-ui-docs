@@ -1125,17 +1125,20 @@ export class BasicAvatarExample {}
 | name | string \| undefined | undefined | Used to derive initials, the palette hash, and the accessible label. |
 | initials | string \| undefined | auto | Explicit one or two character initials, overriding the value derived from name. |
 | alt | string \| undefined | name | Image alt text and accessible label override. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' | 'md' | Fixed avatar size. |
-| shape | 'circle' \| 'square' | 'circle' | circle is intended for people; square is intended for entities such as bots, teams, or projects. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl' | 'md' | Fixed avatar size. Falls back to defaults.avatar.size, then the global defaults.size. |
+| shape | 'circle' \| 'square' | 'circle' | circle is intended for people; square is intended for entities such as bots, teams, or projects. Falls back to defaults.avatar.shape. |
 | status | 'online' \| 'away' \| 'busy' \| 'offline' \| undefined | undefined | Optional presence indicator. Appended to the accessible label; the dot itself is decorative. |
-| paletteIndex | number \| undefined | auto | Palette slot from 1 to 7 used for the fallback background and text color. Clamped when explicit. |
+| paletteIndex | number \| undefined | auto | Palette slot from 1 to 7 used for the fallback background and text color. A static numeric attribute is coerced and finite values clamp to 1-7. |
 | loading | boolean | false | Renders the avatar using the internal [kuiSkeleton] loading treatment and hides avatar content. |
 | kui-avatar-group avatars | readonly KuiAvatarItem[] | [] | Items rendered by the group. Each item accepts the same fields as kui-avatar. |
-| kui-avatar-group max | number | 4 | Maximum visible avatars before the group collapses the rest into a +N overflow avatar. |
-| kui-avatar-group size | KuiAvatarSize | 'md' | Size applied to every avatar in the group, including the overflow avatar. |
-| kui-avatar-group shape | KuiAvatarShape | 'circle' | Shape applied to every avatar in the group, including the overflow avatar. |
-| kui-avatar-group label | string | 'Avatar group' | Accessible label for the group container. |
+| kui-avatar-group max | number | 4 | Maximum visible avatars before the group collapses the rest into a +N overflow avatar. Falls back to defaults.avatarGroup.max; a static numeric attribute is coerced, and an invalid or less-than-one value resolves to 1. |
+| kui-avatar-group size | KuiAvatarSize | 'md' | Size applied to every avatar in the group, including the overflow avatar. Falls back to defaults.avatarGroup.size, then the global defaults.size. |
+| kui-avatar-group shape | KuiAvatarShape | 'circle' | Shape applied to every avatar in the group, including the overflow avatar. Falls back to defaults.avatarGroup.shape. |
+| kui-avatar-group label | string \| undefined | 'Avatar group' | Accessible label for the group container. Undefined when omitted: the rendered text comes from the avatarGroup.label message. |
 | .kui-avatar-action | CSS class | - | Applied to an external native button wrapping a kui-avatar to make it interactive. kui-avatar itself must not be made clickable. |
+| KuiAvatarItem | interface | - | Item of kui-avatar-group avatars: the same fields as kui-avatar (src, name, initials, alt, status, paletteIndex). |
+| KuiAvatarOptions / KuiAvatarGroupOptions | interfaces | - | Shapes of defaults.avatar (size, shape) and defaults.avatarGroup (size, shape, max). |
+| KuiAvatarMessages / KuiAvatarGroupMessages | interfaces | - | Typed messages of the avatar (fallback name, status words, name with status) and of the group (label, overflow text). |
 
 ## Accessibility
 

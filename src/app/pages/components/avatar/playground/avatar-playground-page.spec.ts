@@ -95,6 +95,37 @@ describe('AvatarPlaygroundPage', () => {
     expect(snippet?.textContent).not.toContain('shape="circle"');
   });
 
+  it('drives the avatar group preview and snippet from its own controls', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    setTextInput(root, 'max', '2');
+    setTextInput(root, 'label', 'Core team');
+    fixture.detectChanges();
+
+    const group = root.querySelector<HTMLElement>('app-api-playground-viewport kui-avatar-group');
+    const snippets = [...root.querySelectorAll<HTMLElement>('.code-tabs__fallback code')];
+
+    expect(group?.getAttribute('aria-label')).toBe('Core team');
+    expect(group?.querySelectorAll('kui-avatar')).toHaveLength(2);
+    expect(group?.textContent).toContain('+3');
+    expect(snippets.at(-1)?.textContent).toBe(
+      '<kui-avatar-group [avatars]="members" [max]="2" size="sm" label="Core team" />',
+    );
+  });
+
+  it('adds alt and an explicit palette slot to the avatar snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    setTextInput(root, 'alt', 'Portrait of Nikita');
+    setTextInput(root, 'paletteIndex (0 = auto)', '3');
+    fixture.detectChanges();
+
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(snippet?.textContent).toContain('alt="Portrait of Nikita"');
+    expect(snippet?.textContent).toContain('[paletteIndex]="3"');
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });

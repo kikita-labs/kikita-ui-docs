@@ -66,6 +66,19 @@
     <app-code-tabs [tabs]="buttonTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Avatar" [geometryRows]="geometryTokenRows" />
+
+  <app-messages-section [groups]="messageGroups">
+    <p class="avatar-page__note">
+      The status words are appended to the accessible name of an avatar with a status, and the group
+      label and overflow text come from the <code>avatarGroup</code> messages. The
+      <code>label</code> input of the group is undefined when omitted.
+    </p>
+    <app-code-tabs [tabs]="migrationTabs" />
+  </app-messages-section>
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Avatar API" [rows]="apiRows" />
   </app-doc-section>
@@ -95,6 +108,31 @@
       <li>
         Avatar group overflow exposes a <code>+N</code> avatar with an accessible label such as
         <code>2 more</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for avatars."
+  >
+    <ul class="avatar-page__notes">
+      <li>
+        The classes are <code>KuiAvatar</code> and <code>KuiAvatarGroup</code> (they had a
+        <code>Component</code> suffix). <code>ng update @kikita-labs/ui</code> renames the imports.
+      </li>
+      <li>
+        Size, shape and the group's maximum come from <code>defaults.avatar</code> and
+        <code>defaults.avatarGroup</code>; the inputs are undefined when omitted.
+      </li>
+      <li>
+        Static numeric attributes (<code>paletteIndex</code>, <code>max</code>) are coerced, and an
+        invalid group maximum falls back to a safe value instead of reaching the markup.
+      </li>
+      <li>
+        Avatar text moved to messages, so translations go through the <code>messages</code> option
+        of <code>provideKikitaUi</code> instead of per-instance inputs.
       </li>
     </ul>
   </app-doc-section>

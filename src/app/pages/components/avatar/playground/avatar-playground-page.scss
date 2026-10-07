@@ -8,13 +8,7 @@
   @include playground-page-header;
 }
 
-.avatar-playground-page__group-demo {
-  display: grid;
-  gap: var(--kui-space-3, 12px);
-  justify-items: start;
-}
-
-.avatar-playground-page__group-demo h2 {
+.avatar-playground-page__subheading {
   margin: 0;
   color: var(--kui-color-text);
   font-size: 16px;

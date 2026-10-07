@@ -49,8 +49,12 @@ describe('AvatarPage', () => {
       'status',
       'avatar-group',
       'interactive-avatar',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview kui-avatar').length).toBeGreaterThanOrEqual(18);
     expect(root.querySelector('app-live-preview kui-avatar-group')).not.toBeNull();
