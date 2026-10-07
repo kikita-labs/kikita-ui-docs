@@ -5,12 +5,16 @@ import {
   type KuiCommandGroup,
   type KuiCommandItem,
   KuiCommandPalette,
+  type KuiCommandPaletteMessages,
 } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
+  createPlaygroundEventLog,
   definePlaygroundControls,
   escapePlaygroundSingleQuotedString,
+  PLAYGROUND_MESSAGES_CONTROL,
+  PlaygroundEventLogView,
   type PlaygroundValues,
 } from '@shared/docs-ui/api-playground';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -18,6 +22,7 @@ import { type CodeTab } from '@shared/docs-ui/code-tabs';
 
 import { COMMAND_PALETTE_API_ROWS } from '../command-palette.api-schema';
 import { COMMAND_PALETTE_API_DESCRIPTION } from '../command-palette.docs-content';
+import { COMMAND_PALETTE_PLAYGROUND_MESSAGES } from './constants';
 
 const PLAYGROUND_GROUPS: readonly KuiCommandGroup[] = [
   {
@@ -66,14 +71,10 @@ const EMPTY_GROUPS: readonly KuiCommandGroup[] = [];
 const PLAYGROUND_GROUPS_SOURCE = JSON.stringify(PLAYGROUND_GROUPS, null, 2);
 
 const COMMAND_PALETTE_PLAYGROUND_CONTROLS = definePlaygroundControls([
-  { key: 'label', label: 'label', kind: 'string', defaultValue: 'Command palette' },
-  {
-    key: 'placeholder',
-    label: 'placeholder',
-    kind: 'string',
-    defaultValue: 'Type a command or search...',
-  },
-  { key: 'emptyText', label: 'emptyText', kind: 'string', defaultValue: 'No commands found' },
+  { key: 'label', label: 'label (empty = message)', kind: 'string', defaultValue: '' },
+  { key: 'placeholder', label: 'placeholder (empty = message)', kind: 'string', defaultValue: '' },
+  { key: 'emptyText', label: 'emptyText (empty = message)', kind: 'string', defaultValue: '' },
+  PLAYGROUND_MESSAGES_CONTROL,
   {
     key: 'groupsPreset',
     label: 'groups',
@@ -88,7 +89,7 @@ type CommandPalettePlaygroundValues = PlaygroundValues<typeof COMMAND_PALETTE_PL
 
 @Component({
   selector: 'app-command-palette-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButton, KuiCommandPalette],
+  imports: [ApiPlayground, ApiTable, KuiButton, KuiCommandPalette, PlaygroundEventLogView],
   templateUrl: './command-palette-playground-page.html',
   styleUrl: './command-palette-playground-page.scss',
 })
@@ -99,6 +100,7 @@ export class CommandPalettePlaygroundPage {
   protected readonly open = signal(false);
   protected readonly query = signal('');
   protected readonly selectedCommand = signal<string | null>(null);
+  protected readonly eventLog = createPlaygroundEventLog();
 
   protected readonly playgroundControls = COMMAND_PALETTE_PLAYGROUND_CONTROLS;
 
@@ -112,15 +114,10 @@ export class CommandPalettePlaygroundPage {
     const loading = values.loading;
 
     const attrs = [
-      label !== 'Command palette'
-        ? `[label]="'${escapePlaygroundSingleQuotedString(label)}'"`
-        : null,
-      placeholder !== 'Type a command or search...'
-        ? `[placeholder]="'${escapePlaygroundSingleQuotedString(placeholder)}'"`
-        : null,
-      emptyText !== 'No commands found'
-        ? `[emptyText]="'${escapePlaygroundSingleQuotedString(emptyText)}'"`
-        : null,
+      label ? `[label]="'${escapePlaygroundSingleQuotedString(label)}'"` : null,
+      placeholder ? `[placeholder]="'${escapePlaygroundSingleQuotedString(placeholder)}'"` : null,
+      emptyText ? `[emptyText]="'${escapePlaygroundSingleQuotedString(emptyText)}'"` : null,
+      values.messages === 'custom' ? '[messages]="messages"' : null,
       loading ? '[loading]="true"' : null,
     ].filter((attr): attr is string => attr !== null);
 
@@ -148,16 +145,32 @@ export class CommandPalettePlaygroundPage {
     ];
   };
 
-  protected labelOf(values: CommandPalettePlaygroundValues): string {
-    return values.label;
+  protected labelOf(values: CommandPalettePlaygroundValues): string | undefined {
+    return values.label || undefined;
   }
 
-  protected placeholderOf(values: CommandPalettePlaygroundValues): string {
-    return values.placeholder;
+  protected placeholderOf(values: CommandPalettePlaygroundValues): string | undefined {
+    return values.placeholder || undefined;
   }
 
-  protected emptyTextOf(values: CommandPalettePlaygroundValues): string {
-    return values.emptyText;
+  protected emptyTextOf(values: CommandPalettePlaygroundValues): string | undefined {
+    return values.emptyText || undefined;
+  }
+
+  protected messagesOf(
+    values: CommandPalettePlaygroundValues,
+  ): Partial<KuiCommandPaletteMessages> | undefined {
+    return values.messages === 'custom' ? COMMAND_PALETTE_PLAYGROUND_MESSAGES : undefined;
+  }
+
+  protected onQueryChange(query: string): void {
+    this.query.set(query);
+    this.eventLog.log('queryChange', query);
+  }
+
+  protected onOpenChange(open: boolean): void {
+    this.open.set(open);
+    this.eventLog.log('openChange', open);
   }
 
   protected loadingOf(values: CommandPalettePlaygroundValues): boolean {
@@ -170,5 +183,6 @@ export class CommandPalettePlaygroundPage {
 
   protected runCommand(item: KuiCommandItem): void {
     this.selectedCommand.set(item.label);
+    this.eventLog.log('selected', item.id);
   }
 }

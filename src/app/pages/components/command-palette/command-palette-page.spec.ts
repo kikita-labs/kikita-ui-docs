@@ -45,7 +45,17 @@ describe('CommandPalettePage', () => {
     ];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Command Palette');
-    expect(sectionIds).toEqual(['import', 'usage', 'item-data', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'item-data',
+      'command-identity',
+      'theming-tokens',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(triggers.some((trigger) => trigger.textContent?.includes('Open command palette'))).toBe(
       true,
     );

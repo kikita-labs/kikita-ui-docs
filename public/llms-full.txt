@@ -3809,11 +3809,13 @@ export class BasicCommandPaletteExample {
 | open | ModelSignal<boolean> | - | Two-way model controlling overlay visibility. |
 | groups | readonly KuiCommandGroup[] | - | Command groups rendered in the list. |
 | loading | boolean | - | Renders skeleton rows and sets aria-busy. |
-| placeholder | string | - | Search input placeholder. |
-| label | string | - | Accessible label for the modal dialog and search input. |
-| emptyText | string | - | Empty-state title when no command matches. |
+| placeholder | string \| undefined | - | Search input placeholder. Undefined when omitted: the text comes from the commandPalette.placeholder message. |
+| label | string \| undefined | - | Accessible label for the modal dialog and search input. Defaults to the commandPalette.label message. |
+| emptyText | string \| undefined | - | Empty-state title when no command matches. Defaults to the commandPalette.empty message. |
 | query | ModelSignal<string> | - | Two-way model for the current search value. |
 | selected | OutputEmitterRef<KuiCommandItem> | - | Emits the selected command item. |
+| messages | Partial<KuiCommandPaletteMessages> \| undefined | undefined | Per-instance text overrides (placeholder, label, empty, emptyDescription, clearSearch, key hints and the rest). They win over scoped and root messages. |
+| KuiCommandItem.id | string | - | Required stable key, unique across every group of one palette. Development builds report empty, whitespace-containing and duplicate ids. |
 
 ## Accessibility
 

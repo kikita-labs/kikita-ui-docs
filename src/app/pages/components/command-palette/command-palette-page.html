@@ -31,6 +31,41 @@
     <app-code-tabs [tabs]="itemTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    anchor="command-identity"
+    heading="Command identity"
+    description="Every command needs a stable, non-empty id without whitespace, unique across all groups of one palette, including disabled and filtered-out commands."
+  >
+    <ul class="command-palette-page__notes">
+      <li>
+        Use domain keys such as <code>file.open</code> and <code>project.open</code>; both may show
+        the label "Open". Keep keys unchanged when you translate labels or recreate item objects,
+        and never derive them from labels, array positions or per-render random values.
+      </li>
+      <li>
+        Development builds report invalid or duplicate ids. Production does not repair invalid data
+        or generate replacement keys, so uniqueness is yours to keep.
+      </li>
+      <li>
+        <code>selected</code> emits the original complete item, not an id string: use
+        <code>item.id</code> to dispatch the application action.
+      </li>
+      <li>
+        Changing the groups or the query resets keyboard activity to the first enabled match, and an
+        empty result clears the active descendant. Separate palette instances namespace their option
+        ids.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-token-tables-section
+    name="Command Palette"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Command palette API" [rows]="apiRows" />
   </app-doc-section>
@@ -52,6 +87,10 @@
         The search input exposes combobox and listbox relationships through
         <code>aria-controls</code> and <code>aria-activedescendant</code>.
       </li>
+      <li>
+        Focus moves to the search input after the overlay has rendered, on every open, including
+        when another control had focus.
+      </li>
       <li>Arrow keys move the active option; <code>Enter</code> selects it.</li>
       <li><code>Escape</code> closes the palette and restores focus.</li>
       <li>Disabled commands are skipped by keyboard navigation and cannot be selected.</li>
@@ -64,6 +103,30 @@
         <code>state-coverage.md</code>; only static and browser smoke review have been completed so
         far.
       </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Command Palette."
+  >
+    <ul class="command-palette-page__notes">
+      <li>
+        The class is <code>KuiCommandPalette</code> (it was
+        <code>KuiCommandPaletteComponent</code>); <code>ng update @kikita-labs/ui</code> renames the
+        import.
+      </li>
+      <li>
+        The <code>placeholder</code> and <code>label</code> inputs are undefined when omitted: the
+        rendered text comes from the <code>commandPalette</code> messages, which you can translate
+        through <code>provideKikitaUi({{ '{' }} messages {{ '}' }})</code> or the per-instance
+        <code>messages</code> input.
+      </li>
+      <li>
+        Command ids must be stable, unique and non-empty; development builds report violations.
+      </li>
+      <li>The search input is focused after the overlay renders instead of in a microtask.</li>
     </ul>
   </app-doc-section>
 </article>

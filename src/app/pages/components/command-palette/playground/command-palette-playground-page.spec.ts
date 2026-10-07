@@ -67,9 +67,9 @@ describe('CommandPalettePlaygroundPage', () => {
     const root = fixture.nativeElement as HTMLElement;
     const optionButtons = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
 
-    setTextInput(root, 'label', 'Command <hub>');
-    setTextInput(root, 'placeholder', "Find Nikita's action");
-    setTextInput(root, 'emptyText', 'Nothing here');
+    setTextInput(root, 'label (empty = message)', 'Command <hub>');
+    setTextInput(root, 'placeholder (empty = message)', "Find Nikita's action");
+    setTextInput(root, 'emptyText (empty = message)', 'Nothing here');
     optionButtons.find((button) => button.textContent?.trim() === 'no matches')?.click();
     toggleSwitch(root, 'loading');
     fixture.detectChanges();
@@ -85,6 +85,26 @@ describe('CommandPalettePlaygroundPage', () => {
     expect(snippet?.textContent).toContain(`[emptyText]="'Nothing here'"`);
     expect(snippet?.textContent).toContain('[loading]="true"');
     expect(snippet?.textContent).toContain('[groups]="groups"');
+  });
+
+  it('passes custom messages to the palette and the snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const custom = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')].find(
+      (button) => button.textContent?.trim() === 'custom',
+    );
+
+    custom?.click();
+    fixture.detectChanges();
+
+    expect(root.querySelector<HTMLElement>('.code-tabs__fallback code')?.textContent).toContain(
+      '[messages]="messages"',
+    );
+  });
+
+  it('shows the event log region for palette events', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    expect(root.querySelector('app-playground-event-log [role="log"]')).not.toBeNull();
   });
 
   it('has no automated accessibility violations', async () => {

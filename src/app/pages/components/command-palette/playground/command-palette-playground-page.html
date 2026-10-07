@@ -18,16 +18,21 @@
     </div>
 
     <kui-command-palette
-      [(open)]="open"
-      [(query)]="query"
+      [open]="open()"
+      (openChange)="onOpenChange($event)"
+      [query]="query()"
+      (queryChange)="onQueryChange($event)"
       [groups]="groupsOf(playground.values())"
       [label]="labelOf(playground.values())"
       [placeholder]="placeholderOf(playground.values())"
       [emptyText]="emptyTextOf(playground.values())"
+      [messages]="messagesOf(playground.values())"
       [loading]="loadingOf(playground.values())"
       (selected)="runCommand($event)"
     />
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Command palette events" />
 
   <app-api-table label="Command palette API" [rows]="apiRows" />
   <p class="command-palette-playground-page__note">{{ apiDescription }}</p>
