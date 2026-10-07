@@ -41,9 +41,20 @@ describe('CalendarPage', () => {
     );
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Calendar');
-    expect(sectionIds).toEqual(['import', 'usage', 'states', 'api', 'accessibility']);
-    expect(root.querySelectorAll('app-live-preview kui-calendar')).toHaveLength(1);
-    expect(root.querySelectorAll('app-live-preview kui-calendar-range')).toHaveLength(1);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'states',
+      'locale-and-messages',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
+    expect(root.querySelectorAll('app-live-preview kui-calendar')).toHaveLength(6);
+    expect(root.querySelectorAll('app-live-preview kui-calendar-range')).toHaveLength(0);
   });
 
   it('keeps manifest loaders and generated example ownership aligned', async () => {
@@ -54,7 +65,11 @@ describe('CalendarPage', () => {
 
     expect(pageType).toBe(CalendarPage);
     expect(isStandalone(playgroundType)).toBe(true);
-    expect(CALENDAR_DOCS_MANIFEST.exampleIds).toEqual(['basic-calendar-example']);
+    expect(CALENDAR_DOCS_MANIFEST.exampleIds).toEqual([
+      'basic-calendar-example',
+      'calendar-states-example',
+      'calendar-locale-example',
+    ]);
     expect(Object.keys(CALENDAR_EXAMPLE_SOURCES).sort()).toEqual(
       [...CALENDAR_DOCS_MANIFEST.exampleIds].sort(),
     );

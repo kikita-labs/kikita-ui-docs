@@ -9,19 +9,59 @@ export const CALENDAR_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-calendar-example.html",
       language: "html",
-      code: "<div class=\"basic-calendar-example\">\n  <kui-calendar [(value)]=\"selectedDate\" [minDate]=\"minDate\" showFooter />\n\n  <kui-calendar-range size=\"sm\" [(value)]=\"sprintRange\" locale=\"en-US\" />\n</div>",
+      code: "<div class=\"basic-calendar-example\">\n  <kui-calendar [(value)]=\"selectedDate\" [minDate]=\"minDate\" showFooter />\n\n  <kui-calendar size=\"sm\" flat [(value)]=\"selectedDate\" />\n</div>",
     },
     {
       label: "TS",
       filename: "basic-calendar-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendar, KuiCalendarRange, type KuiDateRange } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-calendar-example',\n  imports: [KuiCalendar, KuiCalendarRange],\n  templateUrl: './basic-calendar-example.html',\n  styleUrl: './basic-calendar-example.scss',\n})\nexport class BasicCalendarExample {\n  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly sprintRange = signal<KuiDateRange>({\n    start: new Date(2026, 6, 13),\n    end: new Date(2026, 6, 17),\n  });\n  protected readonly minDate = new Date(2026, 6, 1);\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendar } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-calendar-example',\n  imports: [KuiCalendar],\n  templateUrl: './basic-calendar-example.html',\n  styleUrl: './basic-calendar-example.scss',\n})\nexport class BasicCalendarExample {\n  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly minDate = new Date(2026, 6, 1);\n}",
     },
     {
       label: "SCSS",
       filename: "basic-calendar-example.scss",
       language: "scss",
       code: ".basic-calendar-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-5, 20px);\n  align-items: flex-start;\n}",
+    },
+  ],
+  "calendar-states-example": [
+    {
+      label: "HTML",
+      filename: "calendar-states-example.html",
+      language: "html",
+      code: "<div class=\"calendar-states-example\">\n  <kui-calendar\n    [(value)]=\"selectedDate\"\n    [minDate]=\"minDate\"\n    [maxDate]=\"maxDate\"\n    [disabledDates]=\"holidays\"\n  />\n\n  <kui-calendar [(value)]=\"selectedDate\" [disabledDates]=\"isWeekend\" [showWeekend]=\"false\" />\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "calendar-states-example.ts",
+      language: "ts",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendar } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-calendar-states-example',\n  imports: [KuiCalendar],\n  templateUrl: './calendar-states-example.html',\n  styleUrl: './calendar-states-example.scss',\n})\nexport class CalendarStatesExample {\n  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly minDate = new Date(2026, 6, 6);\n  protected readonly maxDate = new Date(2026, 6, 24);\n  protected readonly holidays = [new Date(2026, 6, 15), new Date(2026, 6, 20)];\n\n  protected readonly isWeekend = (date: Date): boolean =>\n    date.getDay() === 0 || date.getDay() === 6;\n}",
+    },
+    {
+      label: "SCSS",
+      filename: "calendar-states-example.scss",
+      language: "scss",
+      code: ".calendar-states-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-5, 20px);\n  align-items: flex-start;\n}",
+    },
+  ],
+  "calendar-locale-example": [
+    {
+      label: "HTML",
+      filename: "calendar-locale-example.html",
+      language: "html",
+      code: "<div class=\"calendar-locale-example\">\n  <kui-calendar locale=\"ja-JP\" size=\"sm\" [(value)]=\"selectedDate\" />\n\n  <kui-calendar\n    locale=\"de-DE\"\n    size=\"sm\"\n    showFooter\n    [messages]=\"messages\"\n    [(value)]=\"selectedDate\"\n  />\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "calendar-locale-example.ts",
+      language: "ts",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendar, type KuiCalendarMessages } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-calendar-locale-example',\n  imports: [KuiCalendar],\n  templateUrl: './calendar-locale-example.html',\n  styleUrl: './calendar-locale-example.scss',\n})\nexport class CalendarLocaleExample {\n  protected readonly selectedDate = signal<Date | null>(new Date(2026, 9, 3));\n  protected readonly messages: Partial<KuiCalendarMessages> = {\n    label: 'Booking calendar',\n    today: 'Jump to today',\n  };\n}",
+    },
+    {
+      label: "SCSS",
+      filename: "calendar-locale-example.scss",
+      language: "scss",
+      code: ".calendar-locale-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-5, 20px);\n  align-items: flex-start;\n}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

@@ -1,0 +1,10 @@
+<div class="calendar-states-example">
+  <kui-calendar
+    [(value)]="selectedDate"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    [disabledDates]="holidays"
+  />
+
+  <kui-calendar [(value)]="selectedDate" [disabledDates]="isWeekend" [showWeekend]="false" />
+</div>

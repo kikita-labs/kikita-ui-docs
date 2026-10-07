@@ -28,24 +28,77 @@
   <app-doc-section
     anchor="states"
     heading="States and composition"
-    description="The installed API covers disabled dates, locale, footer, and popover-friendly flat mode."
+    description="The installed API covers disabled dates, bounds, the footer, a hidden navigation control and popover-friendly flat mode."
   >
+    <app-live-preview previewLabel="Bounds and disabled dates">
+      <app-calendar-states-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="statesTabs" />
     <ul class="calendar-page__notes">
       <li>
         Use <code>kui-calendar-range</code> (<code>KuiCalendarRange</code>) when the value is a
         <code>KuiDateRange</code>; <code>kui-calendar</code> selects a single date.
       </li>
       <li>
-        Use <code>minDate</code>, <code>maxDate</code>, or <code>disabledDates</code> to block days.
+        <code>minDate</code>, <code>maxDate</code> and <code>disabledDates</code> block days;
+        <code>disabledDates</code> takes dates or a predicate. <code>minDate</code> and
+        <code>maxDate</code> are models, so a paired date picker can wire them for you.
       </li>
       <li>
-        Use <code>flat</code> inside <code>kui-dropdown</code> so panel chrome is not doubled.
+        Use <code>flat</code> inside <code>kui-dropdown</code> so panel chrome is not doubled, and
+        <code>size="sm"</code> for tight sidebars. The width is
+        <code>--kui-calendar-width</code> (296px).
       </li>
       <li>
-        Use <code>locale</code> or <code>provideKuiLocale()</code> for month names and week start.
+        <code>viewDate</code> (a first-of-month date, two-way) moves the displayed month from the
+        outside. <code>showPrevNav</code> and <code>showNextNav</code> hide one navigation control
+        for two linked calendars a month apart.
+      </li>
+      <li>
+        Placed next to <code>input[kuiDatePicker]</code> in the same <code>kui-field</code>, the
+        directive wires <code>value</code>, <code>viewDate</code> and the bounds automatically; see
+        Date Picker.
       </li>
     </ul>
   </app-doc-section>
+
+  <app-doc-section
+    anchor="locale-and-messages"
+    heading="Locale and messages"
+    description="Month and weekday names, the heading order, the first day of the week and the weekend come from Intl for the locale of the nearest i18n level, with no bundled locale data."
+  >
+    <app-live-preview previewLabel="Locale and message overrides">
+      <app-calendar-locale-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="localeExampleTabs" />
+    <ul class="calendar-page__notes">
+      <li>
+        The locale starts from the app-wide <code>KUI_LOCALE</code> (the browser language, or the
+        request's Accept-Language on the server), falls back to <code>en-US</code>, and is
+        overridden per instance by the <code>locale</code> input.
+      </li>
+      <li>
+        Day buttons are named with the full localized date, for example
+        <code>Saturday, October 3, 2026</code>, and the weekend follows the locale (a Friday and
+        Saturday weekend in <code>he-IL</code>).
+      </li>
+      <li>
+        <code>messages</code> overrides the calendar texts for one instance; it wins over scoped and
+        root messages. Names use the Gregorian calendar and Latin digits.
+      </li>
+    </ul>
+    <app-code-tabs [tabs]="localeProviderTabs" />
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Calendar"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Calendar API" [rows]="apiRows" />
@@ -56,16 +109,63 @@
     description="Calendar owns grid semantics and roving focus; consumers provide context around the picker."
   >
     <ul class="calendar-page__notes">
-      <li>The day grid uses <code>role="grid"</code> with one focusable day at a time.</li>
       <li>
-        Selected days expose <code>aria-selected</code>; today exposes
-        <code>aria-current="date"</code>.
+        The day grid is a complete ARIA grid: <code>role="grid"</code> holds the weekday header row
+        (<code>columnheader</code> cells carry the full weekday name as <code>abbr</code>) and six
+        week <code>row</code>s of seven <code>gridcell</code>s, each wrapping one day button.
       </li>
-      <li>Arrow keys, Home, End, PageUp, PageDown, Enter, and Space are handled by the grid.</li>
+      <li>
+        <code>aria-selected</code> sits on the selected gridcell, not on the button; today exposes
+        <code>aria-current="date"</code> and disabled dates <code>aria-disabled</code>.
+      </li>
+      <li>
+        One day is in the tab order at a time: the selected date when it is in the displayed month,
+        otherwise today when visible, otherwise the first day of the month.
+      </li>
+      <li>
+        Keyboard: <code>ArrowLeft</code> and <code>ArrowRight</code> move a day,
+        <code>ArrowUp</code> and <code>ArrowDown</code> a week, <code>Home</code> and
+        <code>End</code> the start and end of the week, <code>PageUp</code> and
+        <code>PageDown</code> a month (with <code>Shift</code> a year), and <code>Enter</code> or
+        <code>Space</code> selects. Focus follows into the next month.
+      </li>
+      <li>
+        Month and year changes are announced through an <code>aria-live="polite"</code> region.
+      </li>
       <li>
         Provide nearby text or a surrounding field label when the calendar appears in a larger form.
       </li>
       <li>Assistive-technology review is still pending for the newest date primitives.</li>
     </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for the calendar."
+  >
+    <ul class="calendar-page__notes">
+      <li>
+        The class is <code>KuiCalendar</code> (it was <code>KuiCalendarComponent</code>);
+        <code>ng update @kikita-labs/ui</code> renames the import.
+      </li>
+      <li>
+        <code>kui-calendar</code> is single-date only: the <code>mode</code> input and the
+        <code>Date | KuiDateRange | null</code> value union are gone. Range selection moved to
+        <code>kui-calendar-range</code>.
+      </li>
+      <li>
+        <code>kuiProvideLocale</code> is <code>provideKuiLocale</code> and returns an array of
+        providers; the locale is checked against the runtime's Intl and falls back to
+        <code>en-US</code>.
+      </li>
+      <li>
+        The grid markup is a full ARIA grid. CSS that targets
+        <code>.kui-calendar-grid &gt; .kui-calendar-day</code> must target
+        <code>.kui-calendar-day</code> or the new week and cell wrappers; tests that look up a day
+        button by its bare number must use the full date as its name.
+      </li>
+    </ul>
+    <app-code-tabs [tabs]="migrationTabs" />
   </app-doc-section>
 </article>

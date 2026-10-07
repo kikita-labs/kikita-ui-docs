@@ -277,7 +277,9 @@
       "publicImportName": "KuiCalendar",
       "category": "forms",
       "exampleIds": [
-        "basic-calendar-example"
+        "basic-calendar-example",
+        "calendar-states-example",
+        "calendar-locale-example"
       ],
       "apiSchemaPath": "src/app/pages/components/calendar/calendar.api-schema.ts",
       "hasPlayground": true

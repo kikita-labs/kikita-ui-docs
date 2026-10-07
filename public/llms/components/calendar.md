@@ -137,7 +137,7 @@ Rendered at /components/calendar:
 <div class="basic-calendar-example">
   <kui-calendar [(value)]="selectedDate" [minDate]="minDate" showFooter />
 
-  <kui-calendar-range size="sm" [(value)]="sprintRange" locale="en-US" />
+  <kui-calendar size="sm" flat [(value)]="selectedDate" />
 </div>
 ```
 
@@ -146,20 +146,16 @@ Rendered at /components/calendar:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiCalendar, KuiCalendarRange, type KuiDateRange } from '@kikita-labs/ui';
+import { KuiCalendar } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-calendar-example',
-  imports: [KuiCalendar, KuiCalendarRange],
+  imports: [KuiCalendar],
   templateUrl: './basic-calendar-example.html',
   styleUrl: './basic-calendar-example.scss',
 })
 export class BasicCalendarExample {
   protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));
-  protected readonly sprintRange = signal<KuiDateRange>({
-    start: new Date(2026, 6, 13),
-    end: new Date(2026, 6, 17),
-  });
   protected readonly minDate = new Date(2026, 6, 1);
 }
 ```
@@ -175,23 +171,130 @@ export class BasicCalendarExample {
 }
 ```
 
+### calendar-states-example
+
+#### calendar-states-example.html
+
+```html
+<div class="calendar-states-example">
+  <kui-calendar
+    [(value)]="selectedDate"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    [disabledDates]="holidays"
+  />
+
+  <kui-calendar [(value)]="selectedDate" [disabledDates]="isWeekend" [showWeekend]="false" />
+</div>
+```
+
+#### calendar-states-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiCalendar } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-calendar-states-example',
+  imports: [KuiCalendar],
+  templateUrl: './calendar-states-example.html',
+  styleUrl: './calendar-states-example.scss',
+})
+export class CalendarStatesExample {
+  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));
+  protected readonly minDate = new Date(2026, 6, 6);
+  protected readonly maxDate = new Date(2026, 6, 24);
+  protected readonly holidays = [new Date(2026, 6, 15), new Date(2026, 6, 20)];
+
+  protected readonly isWeekend = (date: Date): boolean =>
+    date.getDay() === 0 || date.getDay() === 6;
+}
+```
+
+#### calendar-states-example.scss
+
+```scss
+.calendar-states-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-5, 20px);
+  align-items: flex-start;
+}
+```
+
+### calendar-locale-example
+
+#### calendar-locale-example.html
+
+```html
+<div class="calendar-locale-example">
+  <kui-calendar locale="ja-JP" size="sm" [(value)]="selectedDate" />
+
+  <kui-calendar
+    locale="de-DE"
+    size="sm"
+    showFooter
+    [messages]="messages"
+    [(value)]="selectedDate"
+  />
+</div>
+```
+
+#### calendar-locale-example.ts
+
+```ts
+import { Component, signal } from '@angular/core';
+
+import { KuiCalendar, type KuiCalendarMessages } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-calendar-locale-example',
+  imports: [KuiCalendar],
+  templateUrl: './calendar-locale-example.html',
+  styleUrl: './calendar-locale-example.scss',
+})
+export class CalendarLocaleExample {
+  protected readonly selectedDate = signal<Date | null>(new Date(2026, 9, 3));
+  protected readonly messages: Partial<KuiCalendarMessages> = {
+    label: 'Booking calendar',
+    today: 'Jump to today',
+  };
+}
+```
+
+#### calendar-locale-example.scss
+
+```scss
+.calendar-locale-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-5, 20px);
+  align-items: flex-start;
+}
+```
+
 ## API
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| [(value)] | Date \| null | null | Selected date. For a start and end pair use kui-calendar-range, whose value is a KuiDateRange \| null. |
+| [(value)] | Date \| null | null | Selected date. For a start and end pair use kui-calendar-range, whose value is a KuiDateRange \| null. Next to input[kuiDatePicker] in the same field the directive wires it for you. |
+| messages | Partial<KuiCalendarMessages> \| undefined | undefined | Per-instance text overrides (label, today, previousMonth, nextMonth, previousYear, nextYear, previousDecade, nextDecade). They win over scoped and root messages. |
 | [(viewDate)] | Date | current month | First-of-month date that controls the visible month. |
 | size | 'md' \| 'sm' | 'md' | Calendar density. Use sm when embedding in tighter sidebars or panels. |
 | flat | boolean | false | Removes the calendar frame for dropdown or popover panel composition. |
-| showWeekend | boolean | true | Mutes Saturday and Sunday labels when enabled. |
+| showWeekend | boolean | true | Mutes the weekend days of the locale (Saturday and Sunday in en-US) when enabled. |
 | showFooter | boolean | false | Shows the built-in value summary and Today shortcut. |
-| minDate / maxDate | Date \| undefined | undefined | Inclusive lower and upper bounds for selectable days. |
+| [(minDate)] / [(maxDate)] | Date \| undefined | undefined | Inclusive lower and upper bounds for selectable days. Models, so a paired input[kuiDatePicker] can wire them from its own bounds. |
 | disabledDates | Date[] \| ((date: Date) => boolean) \| undefined | undefined | Individual disabled dates or a predicate evaluated for each rendered date. |
-| locale | string \| undefined | KUI_LOCALE | BCP 47 locale override for month names, weekday names, and week start. |
+| locale | string \| undefined | KUI_LOCALE | BCP 47 locale override for month names, weekday names, the heading, week start and weekend. It wins over the locale of the nearest KuiI18n level. |
 | showPrevNav / showNextNav | boolean | true | Hide one header navigation control for linked multi-calendar layouts. |
 | [kuiCalendarHeader] / [kuiCalendarFooter] | projected content | - | Replace the default header or footer with consumer-owned content. |
-| provideKuiLocale(locale) | Provider | - | Provides the default app or subtree locale used by date-aware components. |
+| provideKuiLocale(locale) | Provider[] | - | Sets the locale of a subtree (a tag, a Signal or a function). Use provideKikitaUi({ locale }) for the whole application. |
 | --kui-calendar-width | CSS custom property | 296px | Overrides the fixed calendar width while keeping the day grid predictable. |
+| KuiCalendarOptions / KuiCalendarViewOptions | interfaces | - | Shape of defaults.calendar (size, flat, showWeekend, showFooter, showPrevNav, showNextNav, previousIcon, nextIcon), shared with kui-calendar-range. |
+| KuiCalendarMessages | interface | - | Typed messages of the calendar and the calendar range, with English defaults. |
+| kui-picked | DOM event | - | Bubbling event the calendar dispatches after a date pick, so an enclosing kui-dropdown can close. |
 
 ## Accessibility
 

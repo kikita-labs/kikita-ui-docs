@@ -8,7 +8,7 @@ export const CALENDAR_DOCS_MANIFEST = {
   description: 'Date grid.',
   importName: 'KuiCalendar',
   status: 'available',
-  exampleIds: ['basic-calendar-example'],
+  exampleIds: ['basic-calendar-example', 'calendar-states-example', 'calendar-locale-example'],
   loadPage: () => import('./calendar-page').then((module) => module.CalendarPage),
   loadPlayground: () =>
     import('./playground/calendar-playground-page').then((module) => module.CalendarPlaygroundPage),

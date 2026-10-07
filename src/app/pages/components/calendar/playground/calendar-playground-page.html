@@ -9,28 +9,25 @@
     [controls]="playgroundControls"
     [snippet]="buildPlaygroundSnippet"
   >
-    @if (modeOf(playground.values()) === 'range') {
-      <kui-calendar-range
-        [(value)]="selectedRange"
-        [size]="sizeOf(playground.values())"
-        [showFooter]="showFooterOf(playground.values())"
-        [flat]="flatOf(playground.values())"
-        [showWeekend]="showWeekendOf(playground.values())"
-        [locale]="localeOf(playground.values())"
-        [minDate]="minDateOf(playground.values())"
-      />
-    } @else {
-      <kui-calendar
-        [(value)]="selectedDate"
-        [size]="sizeOf(playground.values())"
-        [showFooter]="showFooterOf(playground.values())"
-        [flat]="flatOf(playground.values())"
-        [showWeekend]="showWeekendOf(playground.values())"
-        [locale]="localeOf(playground.values())"
-        [minDate]="minDateOf(playground.values())"
-      />
-    }
+    <kui-calendar
+      [value]="selectedDate()"
+      (valueChange)="onValueChange($event)"
+      (viewDateChange)="onViewDateChange($event)"
+      [size]="sizeOf(playground.values())"
+      [showFooter]="showFooterOf(playground.values())"
+      [flat]="flatOf(playground.values())"
+      [showWeekend]="showWeekendOf(playground.values())"
+      [showPrevNav]="showPrevNavOf(playground.values())"
+      [showNextNav]="showNextNavOf(playground.values())"
+      [locale]="localeOf(playground.values())"
+      [messages]="messagesOf(playground.values())"
+      [minDate]="minDateOf(playground.values())"
+      [maxDate]="maxDateOf(playground.values())"
+      [disabledDates]="disabledDatesOf(playground.values())"
+    />
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Calendar events" />
 
   <app-api-table label="Calendar API" [rows]="apiRows" />
   <p class="calendar-playground-page__note">{{ apiDescription }}</p>
