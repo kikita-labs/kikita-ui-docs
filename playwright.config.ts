@@ -7,7 +7,8 @@ export default defineConfig({
   fullyParallel: false,
   forbidOnly: Boolean(process.env['CI']),
   retries: process.env['CI'] ? 2 : 0,
-  workers: process.env['CI'] ? 2 : 1,
+  // Public GitHub runners have 4 vCPUs; locally one worker keeps screenshots stable.
+  workers: process.env['CI'] ? 4 : 1,
   reporter: process.env['CI'] ? [['github'], ['html', { open: 'never' }]] : 'list',
   snapshotPathTemplate: '{testDir}/__screenshots__/{arg}{ext}',
   expect: {

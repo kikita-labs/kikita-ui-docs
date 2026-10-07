@@ -18,15 +18,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  quality:
+    uses: ./.github/workflows/quality-gate.yml
+
+  # Builds the site that is published. It runs next to the quality gate and only deploys when the
+  # gate passes.
+  site:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/quality-gate
+      - uses: ./.github/actions/setup-workspace
 
-      # The gate above builds for the site root so the browser suites can serve it. The published
-      # build must use the base href this branch is published under.
       - name: Build for the published base href
         run: pnpm exec ng build --base-href "$(node tools/docs-site.mjs base-href)"
 
@@ -51,7 +54,7 @@ jobs:
           path: _site
 
   deploy:
-    needs: build
+    needs: [quality, site]
     runs-on: ubuntu-latest
     environment:
       name: github-pages

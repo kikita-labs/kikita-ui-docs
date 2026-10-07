@@ -17,12 +17,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  quality:
+    uses: ./.github/workflows/quality-gate.yml
+
   archive:
+    needs: quality
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/quality-gate
+      - uses: ./.github/actions/setup-workspace
 
       - name: Resolve the version this branch documents
         id: version

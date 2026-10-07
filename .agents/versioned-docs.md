@@ -52,7 +52,7 @@ release/v2 ...    same pattern for each older major
   rewrites all hashed files and would bloat the repository.
 - `actions/deploy-pages` replaces the whole site, so every archived version is
   copied into every deployment. Never deploy a partial site.
-- `deploy.yml` and `archive-docs.yml` share `.github/actions/quality-gate`. Add
+- `deploy.yml` and `archive-docs.yml` share `.github/workflows/quality-gate.yml`. Add
   new gates there, not in one workflow.
 
 ## Runbook: Release A New Major Version

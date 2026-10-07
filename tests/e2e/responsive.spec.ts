@@ -55,15 +55,19 @@ const routes = [
   '/not-a-real-route',
 ] as const;
 
-test('has no document overflow across the representative route matrix', async ({ page }) => {
-  test.setTimeout(360_000);
+// One test per width so the matrix spreads across Playwright workers instead of one long run.
+test.describe.configure({ mode: 'parallel' });
 
-  for (const width of widths) {
+for (const width of widths) {
+  test(`has no document overflow at ${width}px across the representative route matrix`, async ({
+    page,
+  }) => {
+    test.setTimeout(180_000);
     await page.setViewportSize({ width, height: 900 });
 
     for (const route of routes) {
       await gotoReady(page, route);
       await expectNoDocumentOverflow(page);
     }
-  }
-});
+  });
+}

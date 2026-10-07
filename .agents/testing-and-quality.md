@@ -45,7 +45,11 @@ After the gate, deployment builds with the published base href and runs
 `pnpm check:versioned-output` (see `.agents/versioned-docs.md`). That check
 needs a build made with `--base-href`; on Windows Git Bash prefix it with
 `MSYS_NO_PATHCONV=1`. Both `deploy.yml` and `archive-docs.yml` run the gate
-through `.github/actions/quality-gate`; add new gates there.
+through the reusable `.github/workflows/quality-gate.yml`, which runs static
+checks, the production build and one job per Playwright project
+(`e2e`, `a11y`, `responsive`, `visual`) in parallel; add new gates there.
+Playwright uses 4 workers on CI, and the responsive matrix is one test per
+width so it spreads across them.
 
 `pnpm test:browser` serves the current production output from
 `dist/kikita-ui-docs/browser`. Run `pnpm build` first. Its four Playwright
