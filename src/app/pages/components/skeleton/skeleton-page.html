@@ -57,6 +57,10 @@
     <app-code-tabs [tabs]="compositionTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Skeleton" [geometryRows]="geometryTokenRows" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Skeleton API" [rows]="apiRows" />
   </app-doc-section>
@@ -76,6 +80,32 @@
       <li>
         Kikita disables skeleton animation under <code>prefers-reduced-motion</code> regardless of
         the configured <code>animation</code> value.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Skeleton."
+  >
+    <ul class="skeleton-page__notes">
+      <li>
+        The directive class is <code>KuiSkeleton</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        Shape and animation defaults moved to
+        <code
+          >provideKuiDefaults({{ '{' }} skeleton: {{ '{' }} shape, animation {{ '}' }}
+          {{ '}' }})</code
+        >; the inputs are now <code>undefined</code> until set.
+      </li>
+      <li>
+        The host-level pulse animation is disabled under reduced motion as well as the shimmer.
+      </li>
+      <li>
+        Skeleton colours derive from <code>seeds.neutral</code>, and the text, heading and button
+        corner radii have geometry tokens.
       </li>
     </ul>
   </app-doc-section>

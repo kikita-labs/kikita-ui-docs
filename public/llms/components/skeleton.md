@@ -236,8 +236,9 @@ export class SkeletonShapesExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| shape | 'text' \| 'heading' \| 'rect' \| 'circle' \| 'square' \| 'button' \| 'badge' | 'rect' | Placeholder shape mapped to Kikita UI skeleton geometry tokens. |
-| animation | 'shimmer' \| 'pulse' \| 'none' | 'shimmer' | Placeholder animation mode. Automatically disabled when the user prefers reduced motion, regardless of this value. |
+| shape | 'text' \| 'heading' \| 'rect' \| 'circle' \| 'square' \| 'button' \| 'badge' \| undefined | undefined | Placeholder shape mapped to Kikita UI skeleton geometry tokens. Falls back to defaults.skeleton.shape, then rect. |
+| animation | 'shimmer' \| 'pulse' \| 'none' \| undefined | undefined | Placeholder animation mode (defaults.skeleton.animation, then shimmer). Automatically disabled when the user prefers reduced motion, regardless of this value. |
+| KuiSkeletonOptions | interface | - | Shape of defaults.skeleton: shape and animation. |
 
 ## Accessibility
 

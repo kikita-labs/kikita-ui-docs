@@ -49,8 +49,11 @@ describe('SkeletonPage', () => {
       'shapes',
       'animation',
       'composition',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(skeletons.length).toBeGreaterThan(20);
     expect(skeletons.every((skeleton) => skeleton.getAttribute('aria-hidden') === 'true')).toBe(

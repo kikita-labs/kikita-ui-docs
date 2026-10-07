@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 
 import { SKELETON_EXAMPLE_SOURCES } from '@generated/example-sources/skeleton.generated';
+import {
+  SKELETON_DEFAULTS,
+  SKELETON_GEOMETRY_TOKEN_ROWS,
+} from '@generated/library-tables/skeleton.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
 import {
   SkeletonAnimationExample,
@@ -23,6 +29,8 @@ import {
 @Component({
   selector: 'app-skeleton-page',
   imports: [
+    ProviderDefaultsSection,
+    TokenTablesSection,
     ApiTable,
     CodeTabs,
     DocSection,
@@ -50,5 +58,7 @@ export class SkeletonPage {
 
   protected readonly compositionTabs = SKELETON_EXAMPLE_SOURCES['skeleton-composition-example'];
 
+  protected readonly defaults = SKELETON_DEFAULTS;
+  protected readonly geometryTokenRows = SKELETON_GEOMETRY_TOKEN_ROWS;
   protected readonly apiRows = SKELETON_API_ROWS;
 }
