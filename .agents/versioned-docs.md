@@ -187,6 +187,10 @@ stable. The version prefix is irrelevant to the page.
   registry's `latest` -> `latest-<major>`, prerelease -> `next`) and refuses a
   tag that does not match `mcp/package.json`. npm rejects tag names beginning
   with a number or `v`, so `v1` is not usable.
+- Cutting `release/<major>.x` rewrites the agent data to `/<id>/` links and
+  `@latest-<major>`, so `cut-docs-release-branch.yml` also bumps the `mcp/`
+  patch version on the new branch; the first push there publishes that
+  version under `latest-<major>` (or `latest` while no newer major exists).
 - Publishing is automatic: bumping `mcp/package.json` together with the
   regenerated data and merging to `main` or `release/<major>.x` publishes it
   (see `.agents/agent-surface.md`). Never publish by hand or push tags.

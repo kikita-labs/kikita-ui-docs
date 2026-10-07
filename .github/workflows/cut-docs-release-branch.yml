@@ -51,7 +51,11 @@ jobs:
         run: |
           node tools/docs-site.mjs set-version-prefix
           node tools/generate-agent-surface.mjs
+          # The data now links to /<id>/ and `@latest-<major>`, so it differs from the published
+          # package; bump the patch version so the branch publishes it (check:mcp-version).
+          npm version patch --no-git-tag-version --prefix mcp
           pnpm run check:site-config
+          pnpm run check:mcp-version
           pnpm run check:agent-surface
 
       - name: Create and push the release branch
