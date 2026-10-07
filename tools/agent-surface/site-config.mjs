@@ -1,11 +1,12 @@
+import { resolveMcpPackageSpecifier, resolveSiteBaseUrl } from '../docs-site-config.mjs';
+
 /**
- * The deployed production origin, used to build absolute URLs in `llms.txt`/`llms-full.txt`.
- * `.github/workflows/deploy.yml` publishes to GitHub Pages with
- * `--base-href "/${{ github.event.repository.name }}/"`, and this origin is live (verified via
- * `curl https://kikita-labs.github.io/kikita-ui-docs/` returning 200), so absolute canonical URLs
- * are used only because the production origin is known.
+ * Absolute URL this branch is published under, used to build absolute links in
+ * `llms.txt`/`llms-full.txt` and the MCP bundle. It comes from the shared publication config
+ * (`docs-site-config.json`), so an archived version links to its own `/<version id>/` copy
+ * instead of the latest docs at the site root.
  */
-export const SITE_BASE_URL = 'https://kikita-labs.github.io/kikita-ui-docs';
+export const SITE_BASE_URL = resolveSiteBaseUrl();
 
 export function toSiteUrl(sitePath) {
   return `${SITE_BASE_URL}${sitePath}`;
@@ -13,4 +14,14 @@ export function toSiteUrl(sitePath) {
 
 export function markdownPathToUrl(markdownPath) {
   return toSiteUrl(markdownPath.replace(/^public/, ''));
+}
+
+/**
+ * Resolves the `{{siteUrl}}` and `{{mcpPackage}}` tokens used in version-dependent page text,
+ * matching `resolveDocsSiteTokens` in `src/app/core/site`.
+ */
+export function resolveSiteTokens(text) {
+  return text
+    .replaceAll('{{siteUrl}}', SITE_BASE_URL)
+    .replaceAll('{{mcpPackage}}', resolveMcpPackageSpecifier());
 }

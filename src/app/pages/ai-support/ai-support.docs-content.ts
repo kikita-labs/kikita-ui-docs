@@ -1,5 +1,11 @@
 import type { CodeTab } from '@shared/docs-ui/code-tabs';
 
+/**
+ * `{{siteUrl}}` and `{{mcpPackage}}` are resolved per documentation version: by the page at
+ * runtime (`resolveDocsSiteTokens`) and by the agent-surface generator, so an archived
+ * version links to its own copy and its own MCP release line.
+ */
+
 export const AI_SUPPORT_MCP_TABS = [
   {
     label: 'mcp.json',
@@ -9,7 +15,7 @@ export const AI_SUPPORT_MCP_TABS = [
   "mcpServers": {
     "kikita-ui": {
       "command": "npx",
-      "args": ["-y", "@kikita-labs/ui-mcp@latest"]
+      "args": ["-y", "{{mcpPackage}}"]
     }
   }
 }`,
@@ -24,7 +30,7 @@ export const AI_SUPPORT_AGENT_TABS = [
     code: `Use Kikita UI docs through the kikita-ui MCP server.
 Prefer package APIs and examples returned by the server.
 Do not invent component inputs, outputs, CSS hooks, or imports.
-If MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/llms.txt first, then llms-full.txt when full context is needed.`,
+If MCP is unavailable, use {{siteUrl}}/llms.txt first, then llms-full.txt when full context is needed.`,
   },
 ] as const satisfies readonly CodeTab[];
 
@@ -34,9 +40,9 @@ export const AI_SUPPORT_DIRECT_TABS = [
     filename: 'agent-context.md',
     language: 'md',
     code: `Start with:
-https://kikita-labs.github.io/kikita-ui-docs/llms.txt
+{{siteUrl}}/llms.txt
 
 Use full context only when the curated index is not enough:
-https://kikita-labs.github.io/kikita-ui-docs/llms-full.txt`,
+{{siteUrl}}/llms-full.txt`,
   },
 ] as const satisfies readonly CodeTab[];

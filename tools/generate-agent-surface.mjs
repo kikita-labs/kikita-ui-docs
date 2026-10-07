@@ -10,6 +10,7 @@ import { renderAgentManifest } from './agent-surface/render-agent-manifest.mjs';
 import { renderAgentMarkdown } from './agent-surface/render-agent-markdown.mjs';
 import { renderLlmsFullTxt, renderLlmsTxt } from './agent-surface/render-llms-txt.mjs';
 import { renderMcpData } from './agent-surface/render-mcp-data.mjs';
+import { resolveSiteTokens } from './agent-surface/site-config.mjs';
 
 const workspace = resolve('.');
 const CHECK_MODE = process.argv.includes('--check');
@@ -170,7 +171,10 @@ async function collectPageSections(pageHtmlPath, pageTsPath, contentTsPath) {
     sections.push({
       heading,
       description,
-      codeTabs: readBoundArray(body, 'tabs', propertyConstants, exportedConstants),
+      codeTabs: readBoundArray(body, 'tabs', propertyConstants, exportedConstants).map((tab) => ({
+        ...tab,
+        code: resolveSiteTokens(tab.code),
+      })),
       apiRows: readBoundArray(body, 'rows', propertyConstants, exportedConstants),
     });
   }
@@ -195,7 +199,7 @@ function readBoundArray(body, binding, propertyConstants, exportedConstants) {
 function parseReadonlyPropertyConstants(source) {
   const constants = new Map();
   const propertyPattern =
-    /(?:public|protected|private)?\s*readonly\s+(\w+)\s*=\s*([A-Z0-9_]+)\s*;/g;
+    /(?:public|protected|private)?\s*readonly\s+(\w+)\s*=\s*(?:this\.\w+\(\s*)?([A-Z0-9_]+)\s*\)?\s*;/g;
 
   for (const match of source.matchAll(propertyPattern)) {
     constants.set(match[1], match[2]);
