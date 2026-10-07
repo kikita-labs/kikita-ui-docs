@@ -70,6 +70,16 @@
     <app-code-tabs [tabs]="cssTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Number Input"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Number Input API" [rows]="apiRows" />
   </app-doc-section>
@@ -84,19 +94,57 @@
         <code>kui-field</code> label.
       </li>
       <li>
-        Generated buttons use <code>aria-label="Decrease value"</code> and
-        <code>aria-label="Increase value"</code>, plus native <code>disabled</code> and
+        Generated buttons are named by the <code>numberInput.decrease</code> and
+        <code>numberInput.increase</code> messages (<code>Decrease value</code> and
+        <code>Increase value</code> by default), plus native <code>disabled</code> and
         <code>aria-disabled="true"</code> when stepping is not available.
       </li>
       <li>
         Native keyboard behavior on the input remains available: ArrowUp, ArrowDown, Home, and End.
       </li>
       <li>
-        Press and hold a generated button for accelerating auto-increment after a 400 ms delay.
+        Press and hold a generated button for repeated stepping after a 400 ms delay; Enter or Space
+        on a focused button steps once.
+      </li>
+      <li>
+        A disabled or readonly native input sets <code>data-kui-disabled</code> or
+        <code>data-kui-readonly</code> on the container and disables both buttons.
       </li>
       <li>
         Place the input inside <code>kui-field</code> to inherit label, hint, error, and id wiring
         instead of wiring ARIA by hand.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Number Input."
+  >
+    <ul class="number-input-page__notes">
+      <li>
+        The directive class is <code>KuiNumberInput</code>; the <code>Directive</code> suffix is
+        gone.
+      </li>
+      <li>
+        <code>variant</code> values are <code>split</code> (side controls, default) and
+        <code>stacked</code>; the old <code>b</code> and <code>a</code> names are gone.
+      </li>
+      <li>
+        Size and variant defaults moved to
+        <code
+          >provideKuiDefaults({{ '{' }} numberInput: {{ '{' }} size, variant {{ '}' }}
+          {{ '}' }})</code
+        >; the inputs are now <code>undefined</code> until set.
+      </li>
+      <li>
+        The decrease and increase button names come from the <code>numberInput.decrease</code> and
+        <code>numberInput.increase</code> messages.
+      </li>
+      <li>
+        Button hover, active, disabled and readonly states have colour tokens, and the field padding
+        has <code>--kui-number-input-field-padding-inline</code>.
       </li>
     </ul>
   </app-doc-section>

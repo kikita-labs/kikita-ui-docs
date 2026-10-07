@@ -53,8 +53,12 @@ describe('NumberInputPage', () => {
       'field-composition',
       'signal-forms',
       'css-custom-properties',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(inputs).toHaveLength(9);
     expect(inputs.every((input) => input.type === 'number')).toBe(true);

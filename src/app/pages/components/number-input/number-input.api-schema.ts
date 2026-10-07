@@ -3,16 +3,17 @@ import { type ApiTableRow } from '@shared/docs-ui/api-table';
 export const NUMBER_INPUT_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'size',
-    type: `'xs' | 'sm' | 'md' | 'lg'`,
-    defaultValue: `'md'`,
-    description: 'Control height from --kui-control-height-*. Generated buttons scale to match.',
+    type: `'xs' | 'sm' | 'md' | 'lg' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Control height from --kui-control-height-*; generated buttons scale to match. Resolved from defaults.numberInput.size, then the parent field, then the global defaults.size, then md.',
   },
   {
     name: 'variant',
-    type: `'stacked' | 'split'`,
-    defaultValue: `'split'`,
+    type: `'stacked' | 'split' | undefined`,
+    defaultValue: 'undefined',
     description:
-      'Button layout. b places minus/plus controls on the sides (recommended). a stacks compact arrow controls on the right.',
+      'Button layout. split places minus/plus controls on the sides (recommended); stacked stacks compact arrows on the right. Falls back to defaults.numberInput.variant, then split.',
   },
   {
     name: 'invalid',
@@ -62,24 +63,6 @@ export const NUMBER_INPUT_API_ROWS: readonly ApiTableRow[] = [
       'Native HTML attribute. Sets data-kui-readonly on the container and disables both generated buttons.',
   },
   {
-    name: '--kui-input-height',
-    type: 'CSS custom property',
-    defaultValue: 'var(--kui-control-height-md)',
-    description: 'Shared control height used by the number-input wrapper.',
-  },
-  {
-    name: '--kui-input-border',
-    type: 'CSS custom property',
-    defaultValue: 'ButtonBorder',
-    description: 'Shared border color used when --kui-number-input-border is not overridden.',
-  },
-  {
-    name: '--kui-input-radius',
-    type: 'CSS custom property',
-    defaultValue: '8px',
-    description: 'Shared corner radius for the number-input wrapper.',
-  },
-  {
     name: '--kui-input-bg',
     type: 'CSS custom property',
     defaultValue: 'Field',
@@ -90,42 +73,6 @@ export const NUMBER_INPUT_API_ROWS: readonly ApiTableRow[] = [
     type: 'CSS custom property',
     defaultValue: 'var(--kui-input-bg)',
     description: 'Shared background color used for disabled and readonly states.',
-  },
-  {
-    name: '--kui-input-color',
-    type: 'CSS custom property',
-    defaultValue: 'FieldText',
-    description: 'Shared control text color.',
-  },
-  {
-    name: '--kui-input-placeholder-color',
-    type: 'CSS custom property',
-    defaultValue: 'GrayText',
-    description: 'Shared placeholder text color.',
-  },
-  {
-    name: '--kui-input-border-hover',
-    type: 'CSS custom property',
-    defaultValue: 'ButtonBorder',
-    description: 'Shared border color on hover.',
-  },
-  {
-    name: '--kui-input-border-focus',
-    type: 'CSS custom property',
-    defaultValue: 'Highlight',
-    description: 'Shared border color when the control has focus.',
-  },
-  {
-    name: '--kui-input-focus-ring',
-    type: 'CSS custom property',
-    defaultValue: '0 0 0 3px Highlight',
-    description: 'Shared focus ring applied when the control has focus.',
-  },
-  {
-    name: '--kui-input-border-error',
-    type: 'CSS custom property',
-    defaultValue: 'Mark',
-    description: 'Shared invalid-state border color.',
   },
   {
     name: '--kui-number-input-border',
@@ -156,5 +103,11 @@ export const NUMBER_INPUT_API_ROWS: readonly ApiTableRow[] = [
     type: 'CSS custom property',
     defaultValue: '--kui-color-text-secondary',
     description: 'Generated button icon color.',
+  },
+  {
+    name: 'KuiNumberInputOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.numberInput: size and variant.',
   },
 ];
