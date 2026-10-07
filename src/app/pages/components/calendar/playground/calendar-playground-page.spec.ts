@@ -6,6 +6,7 @@ import { provideKikitaUi } from '@kikita-labs/ui';
 import { DocsClipboardService } from '@core/platform/clipboard';
 import { DocsPointerDragService } from '@core/platform/pointer';
 import { DocsThemeService } from '@core/theme';
+import { CodeHighlighterService } from '@shared/docs-ui/code-tabs';
 import { expectNoAxeViolations } from '@shared/docs-ui/testing';
 
 import { CalendarPlaygroundPage } from './calendar-playground-page';
@@ -27,6 +28,10 @@ describe('CalendarPlaygroundPage', () => {
       providers: [
         provideKikitaUi(),
         { provide: DocsPointerDragService, useValue: { start: vi.fn() } },
+        {
+          provide: CodeHighlighterService,
+          useValue: { highlight: vi.fn().mockRejectedValue(new Error('fallback')) },
+        },
         {
           provide: DocsClipboardService,
           useValue: { writeText: vi.fn().mockResolvedValue({ ok: true, value: undefined }) },
