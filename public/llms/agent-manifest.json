@@ -228,7 +228,9 @@
       "publicImportName": "KuiBreadcrumbs",
       "category": "surfaces",
       "exampleIds": [
-        "basic-breadcrumbs-example"
+        "basic-breadcrumbs-example",
+        "breadcrumbs-size-example",
+        "breadcrumbs-collapse-example"
       ],
       "apiSchemaPath": "src/app/pages/components/breadcrumbs/breadcrumbs.api-schema.ts",
       "hasPlayground": true

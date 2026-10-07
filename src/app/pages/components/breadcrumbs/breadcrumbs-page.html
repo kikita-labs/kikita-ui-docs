@@ -25,6 +25,54 @@
     <app-code-tabs [tabs]="basicTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    heading="Plain-text crumbs"
+    description="Use a span without current for a grouping crumb that has no page of its own, as the middle crumb in the first example does. Only the last crumb carries current."
+  >
+    <ul class="breadcrumbs-page__notes">
+      <li>
+        A <code>span[kuiBreadcrumbItem]</code> without <code>current</code> is plain text and is not
+        focusable.
+      </li>
+      <li>
+        <code>current</code> is meaningful on a span only and sets <code>aria-current="page"</code>.
+      </li>
+      <li>
+        An optional leading icon goes on the first crumb only, inside a
+        <code>span.kui-breadcrumb-icon</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Sizes"
+    description="size scales the font, separators and spacing of the whole trail."
+  >
+    <app-live-preview previewLabel="Breadcrumb sizes">
+      <app-breadcrumbs-size-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="narrow-screens"
+    heading="Narrow screens"
+    description="The library does not enforce one collapse strategy. Truncate a middle crumb with .kui-breadcrumb-truncate on a non-wrapping trail, collapse hidden levels behind an ellipsis button wired to a kui-menu, or keep only the first and last crumbs at the narrowest breakpoint."
+  >
+    <app-live-preview previewLabel="Truncated and collapsed trails">
+      <app-breadcrumbs-collapse-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="collapseTabs" />
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Breadcrumbs"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Breadcrumbs API" [rows]="apiRows" />
   </app-doc-section>
@@ -38,6 +86,38 @@
       <li>Keep navigable ancestors as native links.</li>
       <li>Render the current page as non-focusable text with <code>current</code>.</li>
       <li>Collapse long mobile trails with first/last crumbs or a separate menu pattern.</li>
+      <li>
+        Breadcrumb links intentionally do not compose <code>kuiLink</code>: breadcrumbs own their
+        navigation spacing, size scale, tokens and current-page treatment. Keep navigable crumbs as
+        native anchors with <code>kuiBreadcrumbItem</code>.
+      </li>
+      <li>
+        The ellipsis button needs an accessible name (for example <code>aria-label</code>) and opens
+        a menu that lists the hidden levels.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Breadcrumbs."
+  >
+    <ul class="breadcrumbs-page__notes">
+      <li>
+        The classes are <code>KuiBreadcrumbs</code>, <code>KuiBreadcrumbItem</code> and
+        <code>KuiBreadcrumbSeparator</code> (they had a <code>Directive</code> or
+        <code>Component</code> suffix). <code>ng update @kikita-labs/ui</code> renames the imports.
+      </li>
+      <li>
+        The default size comes from <code>defaults.breadcrumbs.size</code> and the separator icon
+        from <code>defaults.breadcrumbs.separatorIcon</code> (it takes precedence over
+        <code>defaults.icons.separator</code>).
+      </li>
+      <li>
+        The ellipsis, separator and truncation sizes are geometry tokens, and the focus ring is the
+        shared 2px outline.
+      </li>
     </ul>
   </app-doc-section>
 </article>

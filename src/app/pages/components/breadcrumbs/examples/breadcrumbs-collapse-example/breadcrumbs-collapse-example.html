@@ -1,0 +1,39 @@
+<div class="breadcrumbs-collapse-example">
+  <nav aria-label="Truncated breadcrumb">
+    <ol kuiBreadcrumbs class="breadcrumbs-collapse-example__trail">
+      <li><a kuiBreadcrumbItem href="/catalog">Catalog</a></li>
+      <li kuiBreadcrumbSeparator></li>
+      <li>
+        <a kuiBreadcrumbItem class="kui-breadcrumb-truncate" href="/catalog/audio">
+          Audio equipment and accessories
+        </a>
+      </li>
+      <li kuiBreadcrumbSeparator></li>
+      <li><span kuiBreadcrumbItem current>Headphones</span></li>
+    </ol>
+  </nav>
+
+  <nav aria-label="Collapsed breadcrumb">
+    <ol kuiBreadcrumbs>
+      <li><a kuiBreadcrumbItem href="/catalog">Catalog</a></li>
+      <li kuiBreadcrumbSeparator></li>
+      <li>
+        <button
+          class="kui-breadcrumb-ellipsis"
+          type="button"
+          aria-label="Show hidden levels"
+          [kuiMenuFor]="hiddenLevels"
+        >
+          &hellip;
+        </button>
+      </li>
+      <li kuiBreadcrumbSeparator></li>
+      <li><span kuiBreadcrumbItem current>Headphones</span></li>
+    </ol>
+  </nav>
+
+  <kui-menu #hiddenLevels ariaLabel="Hidden levels">
+    <a kuiMenuItem href="/catalog/electronics">Electronics</a>
+    <a kuiMenuItem href="/catalog/electronics/audio">Audio</a>
+  </kui-menu>
+</div>

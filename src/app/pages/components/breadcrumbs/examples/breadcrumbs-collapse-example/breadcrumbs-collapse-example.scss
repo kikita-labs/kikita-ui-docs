@@ -1,0 +1,10 @@
+.breadcrumbs-collapse-example {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  min-inline-size: 0;
+}
+
+.breadcrumbs-collapse-example__trail {
+  flex-wrap: nowrap;
+  max-inline-size: 20rem;
+}

@@ -33,6 +33,14 @@ const BREADCRUMBS_PLAYGROUND_CONTROLS = definePlaygroundControls([
     kind: 'string',
     defaultValue: 'Breadcrumbs',
   },
+  {
+    key: 'middleKind',
+    label: 'middle crumb',
+    kind: 'enum',
+    options: ['text', 'link'],
+    defaultValue: 'text',
+  },
+  { key: 'truncateMiddle', label: 'truncate middle', kind: 'boolean', defaultValue: false },
 ] as const);
 
 type BreadcrumbsPlaygroundValues = PlaygroundValues<typeof BREADCRUMBS_PLAYGROUND_CONTROLS>;
@@ -55,6 +63,12 @@ export class BreadcrumbsPlaygroundPage {
       { name: 'size', value: values.size, defaultValue: 'md' },
     ]);
 
+    const truncate = values.truncateMiddle ? ' class="kui-breadcrumb-truncate"' : '';
+    const middle =
+      values.middleKind === 'link'
+        ? `<a kuiBreadcrumbItem${truncate} href="/components/surfaces">${values.middleLabel}</a>`
+        : `<span kuiBreadcrumbItem${truncate}>${values.middleLabel}</span>`;
+
     return [
       {
         label: 'HTML',
@@ -63,7 +77,7 @@ export class BreadcrumbsPlaygroundPage {
   <ol kuiBreadcrumbs${attrString}>
     <li><a kuiBreadcrumbItem href="/components">Components</a></li>
     <li kuiBreadcrumbSeparator></li>
-    <li><span kuiBreadcrumbItem>${values.middleLabel}</span></li>
+    <li>${middle}</li>
     <li kuiBreadcrumbSeparator></li>
     <li><span kuiBreadcrumbItem current>${values.currentLabel}</span></li>
   </ol>
@@ -74,6 +88,14 @@ export class BreadcrumbsPlaygroundPage {
 
   protected sizeOf(values: BreadcrumbsPlaygroundValues): KuiBreadcrumbsSize {
     return values.size;
+  }
+
+  protected isLinkMiddle(values: BreadcrumbsPlaygroundValues): boolean {
+    return values.middleKind === 'link';
+  }
+
+  protected truncateMiddleOf(values: BreadcrumbsPlaygroundValues): boolean {
+    return values.truncateMiddle;
   }
 
   protected middleLabelOf(values: BreadcrumbsPlaygroundValues): string {

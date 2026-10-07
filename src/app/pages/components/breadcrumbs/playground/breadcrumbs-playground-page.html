@@ -14,7 +14,20 @@
         <li><a kuiBreadcrumbItem href="/components">Components</a></li>
         <li kuiBreadcrumbSeparator></li>
         <li>
-          <span kuiBreadcrumbItem>{{ middleLabelOf(playground.values()) }}</span>
+          @if (isLinkMiddle(playground.values())) {
+            <a
+              kuiBreadcrumbItem
+              href="/components/surfaces"
+              [class.kui-breadcrumb-truncate]="truncateMiddleOf(playground.values())"
+              >{{ middleLabelOf(playground.values()) }}</a
+            >
+          } @else {
+            <span
+              kuiBreadcrumbItem
+              [class.kui-breadcrumb-truncate]="truncateMiddleOf(playground.values())"
+              >{{ middleLabelOf(playground.values()) }}</span
+            >
+          }
         </li>
         <li kuiBreadcrumbSeparator></li>
         <li>

@@ -8,7 +8,11 @@ export const BREADCRUMBS_DOCS_MANIFEST = {
   description: 'Hierarchy trail.',
   importName: 'KuiBreadcrumbs',
   status: 'available',
-  exampleIds: ['basic-breadcrumbs-example'],
+  exampleIds: [
+    'basic-breadcrumbs-example',
+    'breadcrumbs-size-example',
+    'breadcrumbs-collapse-example',
+  ],
   loadPage: () => import('./breadcrumbs-page').then((module) => module.BreadcrumbsPage),
   loadPlayground: () =>
     import('./playground/breadcrumbs-playground-page').then(

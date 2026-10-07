@@ -24,6 +24,46 @@ export const BREADCRUMBS_EXAMPLE_SOURCES = {
       code: ".basic-breadcrumbs-example {\n  min-width: 0;\n}",
     },
   ],
+  "breadcrumbs-size-example": [
+    {
+      label: "HTML",
+      filename: "breadcrumbs-size-example.html",
+      language: "html",
+      code: "<div class=\"breadcrumbs-size-example\">\n  <nav aria-label=\"Small breadcrumb\">\n    <ol kuiBreadcrumbs size=\"sm\">\n      <li><a kuiBreadcrumbItem href=\"/components\">Components</a></li>\n      <li kuiBreadcrumbSeparator></li>\n      <li><span kuiBreadcrumbItem current>Small</span></li>\n    </ol>\n  </nav>\n\n  <nav aria-label=\"Medium breadcrumb\">\n    <ol kuiBreadcrumbs>\n      <li><a kuiBreadcrumbItem href=\"/components\">Components</a></li>\n      <li kuiBreadcrumbSeparator></li>\n      <li><span kuiBreadcrumbItem current>Medium</span></li>\n    </ol>\n  </nav>\n\n  <nav aria-label=\"Large breadcrumb\">\n    <ol kuiBreadcrumbs size=\"lg\">\n      <li><a kuiBreadcrumbItem href=\"/components\">Components</a></li>\n      <li kuiBreadcrumbSeparator></li>\n      <li><span kuiBreadcrumbItem current>Large</span></li>\n    </ol>\n  </nav>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "breadcrumbs-size-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiBreadcrumbItem, KuiBreadcrumbs, KuiBreadcrumbSeparator } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-breadcrumbs-size-example',\n  imports: [KuiBreadcrumbItem, KuiBreadcrumbSeparator, KuiBreadcrumbs],\n  templateUrl: './breadcrumbs-size-example.html',\n  styleUrl: './breadcrumbs-size-example.scss',\n})\nexport class BreadcrumbsSizeExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "breadcrumbs-size-example.scss",
+      language: "scss",
+      code: ".breadcrumbs-size-example {\n  display: grid;\n  gap: var(--kui-space-3, 12px);\n  min-inline-size: 0;\n}",
+    },
+  ],
+  "breadcrumbs-collapse-example": [
+    {
+      label: "HTML",
+      filename: "breadcrumbs-collapse-example.html",
+      language: "html",
+      code: "<div class=\"breadcrumbs-collapse-example\">\n  <nav aria-label=\"Truncated breadcrumb\">\n    <ol kuiBreadcrumbs class=\"breadcrumbs-collapse-example__trail\">\n      <li><a kuiBreadcrumbItem href=\"/catalog\">Catalog</a></li>\n      <li kuiBreadcrumbSeparator></li>\n      <li>\n        <a kuiBreadcrumbItem class=\"kui-breadcrumb-truncate\" href=\"/catalog/audio\">\n          Audio equipment and accessories\n        </a>\n      </li>\n      <li kuiBreadcrumbSeparator></li>\n      <li><span kuiBreadcrumbItem current>Headphones</span></li>\n    </ol>\n  </nav>\n\n  <nav aria-label=\"Collapsed breadcrumb\">\n    <ol kuiBreadcrumbs>\n      <li><a kuiBreadcrumbItem href=\"/catalog\">Catalog</a></li>\n      <li kuiBreadcrumbSeparator></li>\n      <li>\n        <button\n          class=\"kui-breadcrumb-ellipsis\"\n          type=\"button\"\n          aria-label=\"Show hidden levels\"\n          [kuiMenuFor]=\"hiddenLevels\"\n        >\n          &hellip;\n        </button>\n      </li>\n      <li kuiBreadcrumbSeparator></li>\n      <li><span kuiBreadcrumbItem current>Headphones</span></li>\n    </ol>\n  </nav>\n\n  <kui-menu #hiddenLevels ariaLabel=\"Hidden levels\">\n    <a kuiMenuItem href=\"/catalog/electronics\">Electronics</a>\n    <a kuiMenuItem href=\"/catalog/electronics/audio\">Audio</a>\n  </kui-menu>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "breadcrumbs-collapse-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiBreadcrumbItem,\n  KuiBreadcrumbs,\n  KuiBreadcrumbSeparator,\n  KuiMenu,\n  KuiMenuFor,\n  KuiMenuItem,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-breadcrumbs-collapse-example',\n  imports: [\n    KuiBreadcrumbItem,\n    KuiBreadcrumbSeparator,\n    KuiBreadcrumbs,\n    KuiMenu,\n    KuiMenuFor,\n    KuiMenuItem,\n  ],\n  templateUrl: './breadcrumbs-collapse-example.html',\n  styleUrl: './breadcrumbs-collapse-example.scss',\n})\nexport class BreadcrumbsCollapseExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "breadcrumbs-collapse-example.scss",
+      language: "scss",
+      code: ".breadcrumbs-collapse-example {\n  display: grid;\n  gap: var(--kui-space-4, 16px);\n  min-inline-size: 0;\n}\n\n.breadcrumbs-collapse-example__trail {\n  flex-wrap: nowrap;\n  max-inline-size: 20rem;\n}",
+    },
+  ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;
 
 export type BreadcrumbsExampleId = keyof typeof BREADCRUMBS_EXAMPLE_SOURCES;

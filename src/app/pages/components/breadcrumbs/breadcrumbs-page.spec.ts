@@ -42,7 +42,18 @@ describe('BreadcrumbsPage', () => {
     );
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Breadcrumbs');
-    expect(sectionIds).toEqual(['import', 'usage', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'plain-text-crumbs',
+      'sizes',
+      'narrow-screens',
+      'provider-defaults',
+      'theming-tokens',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(root.querySelector('app-live-preview nav[aria-label="Breadcrumb"]')).not.toBeNull();
     expect(root.textContent).toContain('Breadcrumbs');
   });
@@ -55,7 +66,11 @@ describe('BreadcrumbsPage', () => {
 
     expect(pageType).toBe(BreadcrumbsPage);
     expect(isStandalone(playgroundType)).toBe(true);
-    expect(BREADCRUMBS_DOCS_MANIFEST.exampleIds).toEqual(['basic-breadcrumbs-example']);
+    expect(BREADCRUMBS_DOCS_MANIFEST.exampleIds).toEqual([
+      'basic-breadcrumbs-example',
+      'breadcrumbs-size-example',
+      'breadcrumbs-collapse-example',
+    ]);
     expect(Object.keys(BREADCRUMBS_EXAMPLE_SOURCES).sort()).toEqual(
       [...BREADCRUMBS_DOCS_MANIFEST.exampleIds].sort(),
     );

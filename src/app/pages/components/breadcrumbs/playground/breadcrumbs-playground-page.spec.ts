@@ -48,6 +48,26 @@ describe('BreadcrumbsPlaygroundPage', () => {
     expect(snippet?.textContent).toContain('size="lg"');
   });
 
+  it('switches the middle crumb to a truncating link', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const optionButtons = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
+    const toggle = root.querySelector<HTMLInputElement>('.api-playground__toggle-row input');
+
+    optionButtons.find((button) => button.textContent?.trim() === 'link')?.click();
+    toggle?.click();
+    fixture.detectChanges();
+
+    const middle = root.querySelector<HTMLElement>(
+      'app-api-playground-viewport a.kui-breadcrumb-truncate',
+    );
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(middle?.getAttribute('href')).toBe('/components/surfaces');
+    expect(snippet?.textContent).toContain(
+      '<a kuiBreadcrumbItem class="kui-breadcrumb-truncate" href="/components/surfaces">Surfaces</a>',
+    );
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });
