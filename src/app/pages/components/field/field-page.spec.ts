@@ -40,11 +40,25 @@ describe('FieldPage', () => {
     const sectionIds = [...root.querySelectorAll<HTMLHeadingElement>('h2')].map(
       (heading) => heading.id,
     );
-    const fields = [...root.querySelectorAll<HTMLElement>('app-live-preview kui-field')];
-    const inputs = [...root.querySelectorAll<HTMLInputElement>('app-live-preview input.kui-input')];
+    const fields = [...root.querySelectorAll<HTMLElement>('app-basic-field-example kui-field')];
+    const inputs = [
+      ...root.querySelectorAll<HTMLInputElement>('app-basic-field-example input.kui-input'),
+    ];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Field');
-    expect(sectionIds).toEqual(['import', 'usage', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'signal-forms',
+      'projected-content',
+      'affixes',
+      'input-group',
+      'provider-defaults',
+      'theming-tokens',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(fields).toHaveLength(2);
     expect(inputs).toHaveLength(2);
     expect(inputs.every((input) => input.id.length > 0)).toBe(true);
@@ -60,7 +74,12 @@ describe('FieldPage', () => {
 
     expect(pageType).toBe(FieldPage);
     expect(isStandalone(playgroundType)).toBe(true);
-    expect(FIELD_DOCS_MANIFEST.exampleIds).toEqual(['basic-field-example']);
+    expect(FIELD_DOCS_MANIFEST.exampleIds).toEqual([
+      'basic-field-example',
+      'field-projected-example',
+      'field-affix-example',
+      'field-input-group-example',
+    ]);
     expect(Object.keys(FIELD_EXAMPLE_SOURCES).sort()).toEqual(
       [...FIELD_DOCS_MANIFEST.exampleIds].sort(),
     );

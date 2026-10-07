@@ -25,6 +25,99 @@
     <app-code-tabs [tabs]="usageTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    anchor="signal-forms"
+    heading="Signal Forms"
+    description="Bind Angular Signal Forms to the native control with [formField]. The field owns label, hint, error text, the required marker and the ARIA description; Signal Forms owns the form state."
+  >
+    <app-code-tabs [tabs]="formsTabs" />
+    <ul class="field-page__notes">
+      <li>
+        With a <code>required(...)</code> validator on the bound field the required marker is
+        inferred; an explicit <code>required</code> input on <code>kui-field</code> overrides it.
+      </li>
+      <li>
+        The first error message of the bound field is rendered automatically unless
+        <code>hideErrors</code> is set. <code>hideErrors</code> hides every rendered message,
+        including the explicit <code>error</code> input and projected <code>kuiError</code>
+        content, but keeps the invalid state.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="projected-content"
+    heading="Projected content"
+    description="Use the kuiLabel, kuiHint and kuiError markers when the label, hint or error needs template logic. They keep the same field wiring."
+  >
+    <app-live-preview previewLabel="Projected label, hint and error">
+      <app-field-projected-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="projectedTabs" />
+    <p class="field-page__note">
+      The same markers also exist for the label, which the field wires to the control for you:
+    </p>
+    <app-code-tabs [tabs]="labelTabs" />
+    <ul class="field-page__notes">
+      <li>
+        <code>kuiError</code> is manual content: render it with <code>&#64;if</code> under your own
+        visibility rules, and never hide it with <code>[hidden]</code>, so it only joins the field
+        semantics when it is shown.
+      </li>
+      <li>
+        Add <code>.kui-field-message</code> to a projected hint or error for icon and text layouts;
+        projected errors stay part of <code>aria-describedby</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="affixes"
+    heading="Affixes and field actions"
+    description="Drop kuiFieldAffix directly inside kui-field for prefix text, suffix text, leading icons or trailing actions. The field switches its control slot to the shared input-group chrome automatically."
+  >
+    <app-live-preview previewLabel="Prefix, suffix, icon and action">
+      <app-field-affix-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="affixTabs" />
+    <ul class="field-page__notes">
+      <li>
+        One directive, three looks, detected from the host: any <code>button</code> gets compact
+        action styling (do not add <code>kuiButton</code> or <code>kuiIconButton</code> to it),
+        <code>kui-icon</code> a fixed square icon slot, anything else muted text (the
+        <code>emphasis</code> input switches it to full color).
+      </li>
+      <li>
+        A <code>span kuiLoader kuiFieldAffix</code> is detected as an icon and keeps its own
+        <code>role="status"</code> and label. <code>kuiFieldAffixIcon</code> and
+        <code>kuiFieldAction</code> remain as explicit overrides for older markup.
+      </li>
+      <li>
+        Decorative icons use <code>aria-hidden="true"</code>; interactive field actions must be
+        native buttons with accessible names.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="input-group"
+    heading="Input group"
+    description="For field chrome the affixes do not cover, build .kui-input-group by hand and import KuiInputGroup. It delegates clicks on non-interactive chrome to the first enabled native control."
+  >
+    <app-live-preview previewLabel="Manual input group">
+      <app-field-input-group-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="groupTabs" />
+    <p class="field-page__note">
+      Interactive descendants such as clear buttons, chevrons, visibility toggles, links and the
+      control itself keep their own behavior.
+    </p>
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Field" [geometryRows]="geometryTokenRows" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Field API" [rows]="apiRows" />
   </app-doc-section>
@@ -40,6 +133,51 @@
         <code>aria-describedby</code>.
       </li>
       <li>The field does not replace the native control role.</li>
+      <li>
+        The required marker is visual only (<code>aria-hidden</code>). The merged required state,
+        from the explicit <code>required</code> input or a Signal Forms
+        <code>required(...)</code> validator, reaches assistive technology as
+        <code>aria-required="true"</code> on the control. <code>kui-field</code> never writes the
+        native <code>required</code> attribute, so nothing is announced twice.
+      </li>
+      <li>
+        Controls with a role that supports it receive <code>aria-required</code>: Input, Textarea,
+        Checkbox, Switch, Number Input, Color Input, Select, Combobox, Date Picker and Time Picker.
+        A single Radio does not (the requirement belongs to the group you build), Slider does not,
+        <code>kui-otp-input</code> marks only its first cell, and <code>kui-segmented</code>
+        exposes no required state.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Field."
+  >
+    <ul class="field-page__notes">
+      <li>
+        The classes are <code>KuiField</code>, <code>KuiInput</code>, <code>KuiInputGroup</code>,
+        <code>KuiFieldAffix</code>, <code>KuiFieldAffixIcon</code> and
+        <code>KuiFieldAction</code> (they had a <code>Component</code> or
+        <code>Directive</code> suffix); <code>ng update @kikita-labs/ui</code> renames the imports.
+      </li>
+      <li>
+        <code>KUI_FIELD_OPTIONS</code> is removed and <code>kuiProvideFieldOptions</code> is
+        deprecated until 3.0: set <code>defaults.field</code> through
+        <code>provideKuiDefaults</code> or
+        <code>provideKikitaUi({{ '{' }} defaults {{ '}' }})</code>. A nested provider now merges
+        with its parent per property.
+      </li>
+      <li>
+        <code>kui-field</code> exposes its required state as <code>aria-required</code> on the
+        controls that support it, so snapshot tests of the rendered markup change.
+      </li>
+      <li>
+        Field styles moved into the <code>kui.components</code> layer without
+        <code>::ng-deep</code>: the field needs <code>kikita-ui.css</code> like every other
+        component, and an unlayered application rule overrides it without raising specificity.
+      </li>
     </ul>
   </app-doc-section>
 </article>

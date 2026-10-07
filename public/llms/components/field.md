@@ -79,6 +79,142 @@ export class BasicFieldExample {}
 }
 ```
 
+### field-projected-example
+
+#### field-projected-example.html
+
+```html
+<div class="field-projected-example">
+  <kui-field label="Email">
+    <input kuiInput type="email" placeholder="mira@company.dev" />
+    <p kuiHint>Use your work email</p>
+    <p kuiError>Email is required</p>
+  </kui-field>
+
+  <kui-field label="API key">
+    <input kuiInput />
+    <p kuiHint class="kui-field-message">
+      <span>Stored encrypted. <a href="/foundations/accessibility">Learn more</a>.</span>
+    </p>
+  </kui-field>
+</div>
+```
+
+#### field-projected-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiError, KuiField, KuiHint, KuiInput } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-field-projected-example',
+  imports: [KuiError, KuiField, KuiHint, KuiInput],
+  templateUrl: './field-projected-example.html',
+  styleUrl: './field-projected-example.scss',
+})
+export class FieldProjectedExample {}
+```
+
+#### field-projected-example.scss
+
+```scss
+.field-projected-example {
+  display: grid;
+  gap: var(--kui-space-5, 20px);
+  inline-size: min(100%, 24rem);
+}
+```
+
+### field-affix-example
+
+#### field-affix-example.html
+
+```html
+<div class="field-affix-example">
+  <kui-field label="Project URL" hint="The prefix and suffix are visual field chrome.">
+    <span kuiFieldAffix>https://</span>
+    <input kuiInput aria-label="Project slug" />
+    <span kuiFieldAffix>.dev</span>
+  </kui-field>
+
+  <kui-field label="Search">
+    <kui-icon kuiFieldAffix name="search" />
+    <input kuiInput aria-label="Search query" />
+    <button kuiFieldAffix type="button" aria-label="Clear search">
+      <kui-icon name="x" />
+    </button>
+  </kui-field>
+</div>
+```
+
+#### field-affix-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiField, KuiFieldAffix, KuiIcon, KuiInput } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-field-affix-example',
+  imports: [KuiFieldAffix, KuiField, KuiIcon, KuiInput],
+  templateUrl: './field-affix-example.html',
+  styleUrl: './field-affix-example.scss',
+})
+export class FieldAffixExample {}
+```
+
+#### field-affix-example.scss
+
+```scss
+.field-affix-example {
+  display: grid;
+  gap: var(--kui-space-5, 20px);
+  inline-size: min(100%, 24rem);
+}
+```
+
+### field-input-group-example
+
+#### field-input-group-example.html
+
+```html
+<div class="field-input-group-example">
+  <kui-field label="API key">
+    <div class="kui-input-group">
+      <input kuiInput />
+      <span class="kui-affix-spinner" role="status" aria-label="Checking key"></span>
+    </div>
+  </kui-field>
+</div>
+```
+
+#### field-input-group-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiField, KuiInput, KuiInputGroup } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-field-input-group-example',
+  imports: [KuiField, KuiInput, KuiInputGroup],
+  templateUrl: './field-input-group-example.html',
+  styleUrl: './field-input-group-example.scss',
+})
+export class FieldInputGroupExample {}
+```
+
+#### field-input-group-example.scss
+
+```scss
+.field-input-group-example {
+  display: grid;
+  gap: var(--kui-space-5, 20px);
+  inline-size: min(100%, 24rem);
+}
+```
+
 ## API
 
 | Name | Type | Default | Description |
@@ -87,8 +223,12 @@ export class BasicFieldExample {}
 | hint | string | - | Optional help text rendered below the control and wired through aria-describedby. |
 | error | string | - | Explicit error text rendered below the control and wired through aria-describedby. |
 | hideErrors | boolean | - | Hides automatic, explicit, and projected error messages while keeping invalid state. |
-| required | boolean | - | Explicit required marker override. Omit when Signal Forms can infer it. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Field spacing and projected control size. |
+| required | boolean | - | Explicit required marker override. Omit when Signal Forms can infer it. Also drives aria-required on the projected control. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Field spacing and projected control size. Falls back to defaults.field.size, then the global defaults.size. |
+| [kuiLabel] / [kuiHint] / [kuiError] | marker directives | - | Projected label, hint and error with the same field wiring. kuiError is manual content: render it with @if. |
+| [kuiFieldAffix] | directive | - | Prefix, suffix, icon or action chrome inside the field: button hosts get action styling, kui-icon an icon slot, anything else muted text (emphasis input for full color). kuiFieldAffixIcon and kuiFieldAction are explicit overrides. |
+| .kui-input-group / KuiInputGroup | class and directive | - | Hand-built input group chrome; the directive delegates clicks on non-interactive chrome to the first enabled control. |
+| KuiFieldOptions | interface | - | Shape of defaults.field: clearable, size and hideErrors. Controls inside the field take an explicit field size first, then their own defaults key, then defaults.field.size. |
 
 ## Accessibility
 

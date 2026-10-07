@@ -24,6 +24,66 @@ export const FIELD_EXAMPLE_SOURCES = {
       code: ".basic-field-example {\n  display: grid;\n  inline-size: min(100%, 360px);\n  gap: var(--kui-space-4, 16px);\n}",
     },
   ],
+  "field-projected-example": [
+    {
+      label: "HTML",
+      filename: "field-projected-example.html",
+      language: "html",
+      code: "<div class=\"field-projected-example\">\n  <kui-field label=\"Email\">\n    <input kuiInput type=\"email\" placeholder=\"mira@company.dev\" />\n    <p kuiHint>Use your work email</p>\n    <p kuiError>Email is required</p>\n  </kui-field>\n\n  <kui-field label=\"API key\">\n    <input kuiInput />\n    <p kuiHint class=\"kui-field-message\">\n      <span>Stored encrypted. <a href=\"/foundations/accessibility\">Learn more</a>.</span>\n    </p>\n  </kui-field>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "field-projected-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiError, KuiField, KuiHint, KuiInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-projected-example',\n  imports: [KuiError, KuiField, KuiHint, KuiInput],\n  templateUrl: './field-projected-example.html',\n  styleUrl: './field-projected-example.scss',\n})\nexport class FieldProjectedExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "field-projected-example.scss",
+      language: "scss",
+      code: ".field-projected-example {\n  display: grid;\n  gap: var(--kui-space-5, 20px);\n  inline-size: min(100%, 24rem);\n}",
+    },
+  ],
+  "field-affix-example": [
+    {
+      label: "HTML",
+      filename: "field-affix-example.html",
+      language: "html",
+      code: "<div class=\"field-affix-example\">\n  <kui-field label=\"Project URL\" hint=\"The prefix and suffix are visual field chrome.\">\n    <span kuiFieldAffix>https://</span>\n    <input kuiInput aria-label=\"Project slug\" />\n    <span kuiFieldAffix>.dev</span>\n  </kui-field>\n\n  <kui-field label=\"Search\">\n    <kui-icon kuiFieldAffix name=\"search\" />\n    <input kuiInput aria-label=\"Search query\" />\n    <button kuiFieldAffix type=\"button\" aria-label=\"Clear search\">\n      <kui-icon name=\"x\" />\n    </button>\n  </kui-field>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "field-affix-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiField, KuiFieldAffix, KuiIcon, KuiInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-affix-example',\n  imports: [KuiFieldAffix, KuiField, KuiIcon, KuiInput],\n  templateUrl: './field-affix-example.html',\n  styleUrl: './field-affix-example.scss',\n})\nexport class FieldAffixExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "field-affix-example.scss",
+      language: "scss",
+      code: ".field-affix-example {\n  display: grid;\n  gap: var(--kui-space-5, 20px);\n  inline-size: min(100%, 24rem);\n}",
+    },
+  ],
+  "field-input-group-example": [
+    {
+      label: "HTML",
+      filename: "field-input-group-example.html",
+      language: "html",
+      code: "<div class=\"field-input-group-example\">\n  <kui-field label=\"API key\">\n    <div class=\"kui-input-group\">\n      <input kuiInput />\n      <span class=\"kui-affix-spinner\" role=\"status\" aria-label=\"Checking key\"></span>\n    </div>\n  </kui-field>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "field-input-group-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiField, KuiInput, KuiInputGroup } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-input-group-example',\n  imports: [KuiField, KuiInput, KuiInputGroup],\n  templateUrl: './field-input-group-example.html',\n  styleUrl: './field-input-group-example.scss',\n})\nexport class FieldInputGroupExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "field-input-group-example.scss",
+      language: "scss",
+      code: ".field-input-group-example {\n  display: grid;\n  gap: var(--kui-space-5, 20px);\n  inline-size: min(100%, 24rem);\n}",
+    },
+  ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;
 
 export type FieldExampleId = keyof typeof FIELD_EXAMPLE_SOURCES;

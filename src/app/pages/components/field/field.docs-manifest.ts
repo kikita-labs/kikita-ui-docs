@@ -8,7 +8,12 @@ export const FIELD_DOCS_MANIFEST = {
   description: 'Label, hint, error, and form-control composition.',
   importName: 'KuiField',
   status: 'available',
-  exampleIds: ['basic-field-example'],
+  exampleIds: [
+    'basic-field-example',
+    'field-projected-example',
+    'field-affix-example',
+    'field-input-group-example',
+  ],
   loadPage: () => import('./field-page').then((module) => module.FieldPage),
   loadPlayground: () =>
     import('./playground/field-playground-page').then((module) => module.FieldPlaygroundPage),

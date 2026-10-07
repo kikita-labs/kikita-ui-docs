@@ -552,7 +552,10 @@
       "publicImportName": "KuiField",
       "category": "forms",
       "exampleIds": [
-        "basic-field-example"
+        "basic-field-example",
+        "field-projected-example",
+        "field-affix-example",
+        "field-input-group-example"
       ],
       "apiSchemaPath": "src/app/pages/components/field/field.api-schema.ts",
       "hasPlayground": true

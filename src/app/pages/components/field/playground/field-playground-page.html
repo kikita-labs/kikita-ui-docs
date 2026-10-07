@@ -17,7 +17,16 @@
       [required]="requiredOf(playground.values())"
       [hideErrors]="hideErrorsOf(playground.values())"
     >
+      @if (leadingIconOf(playground.values())) {
+        <kui-icon kuiFieldAffix name="mail" />
+      }
+      @if (prefixOf(playground.values()); as prefix) {
+        <span kuiFieldAffix>{{ prefix }}</span>
+      }
       <input kuiInput placeholder="mira@company.dev" />
+      @if (suffixOf(playground.values()); as suffix) {
+        <span kuiFieldAffix>{{ suffix }}</span>
+      }
     </kui-field>
   </app-api-playground>
 

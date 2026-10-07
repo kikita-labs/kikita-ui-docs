@@ -1,0 +1,5 @@
+.field-affix-example {
+  display: grid;
+  gap: var(--kui-space-5, 20px);
+  inline-size: min(100%, 24rem);
+}

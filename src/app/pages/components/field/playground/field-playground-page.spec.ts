@@ -106,6 +106,26 @@ describe('FieldPlaygroundPage', () => {
     expect(snippet?.textContent).toContain('hideErrors');
   });
 
+  it('adds prefix and suffix affixes to the preview and the snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    setTextInput(root, 'prefix affix', 'https://');
+    setTextInput(root, 'suffix affix', '.dev');
+    fixture.detectChanges();
+
+    const preview = root
+      .querySelector<HTMLElement>(
+        'app-api-playground-viewport input[placeholder="mira@company.dev"]',
+      )
+      ?.closest('kui-field');
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(preview?.textContent).toContain('https://');
+    expect(preview?.textContent).toContain('.dev');
+    expect(snippet?.textContent).toContain('<span kuiFieldAffix>https://</span>');
+    expect(snippet?.textContent).toContain('<span kuiFieldAffix>.dev</span>');
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });

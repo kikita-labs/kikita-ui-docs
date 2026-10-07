@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
-import { KuiField, KuiInput, type KuiSize } from '@kikita-labs/ui';
+import { KuiField, KuiFieldAffix, KuiIcon, KuiInput, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
   definePlaygroundControls,
+  escapePlaygroundHtml,
   type PlaygroundValues,
   serializePlaygroundAttributes,
 } from '@shared/docs-ui/api-playground';
@@ -25,6 +26,9 @@ const FIELD_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['xs', 'sm', 'md', 'lg'],
     defaultValue: 'md',
   },
+  { key: 'prefix', label: 'prefix affix', kind: 'string', defaultValue: '' },
+  { key: 'suffix', label: 'suffix affix', kind: 'string', defaultValue: '' },
+  { key: 'leadingIcon', label: 'leading icon', kind: 'boolean', defaultValue: false },
   { key: 'required', label: 'required', kind: 'boolean', defaultValue: false },
   { key: 'hideErrors', label: 'hideErrors', kind: 'boolean', defaultValue: false },
 ] as const);
@@ -33,7 +37,7 @@ type FieldPlaygroundValues = PlaygroundValues<typeof FIELD_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-field-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiField, KuiInput],
+  imports: [ApiPlayground, ApiTable, KuiField, KuiFieldAffix, KuiIcon, KuiInput],
   templateUrl: './field-playground-page.html',
   styleUrl: './field-playground-page.scss',
 })
@@ -55,16 +59,37 @@ export class FieldPlaygroundPage {
       { name: 'hideErrors', value: values.hideErrors },
     ]);
 
+    const affixes = [
+      values.leadingIcon ? '  <kui-icon kuiFieldAffix name="mail" />' : null,
+      values.prefix ? `  <span kuiFieldAffix>${escapePlaygroundHtml(values.prefix)}</span>` : null,
+      '  <input kuiInput placeholder="mira@company.dev" />',
+      values.suffix ? `  <span kuiFieldAffix>${escapePlaygroundHtml(values.suffix)}</span>` : null,
+    ]
+      .filter((line): line is string => line !== null)
+      .join('\n');
+
     return [
       {
         label: 'HTML',
         language: 'html',
         code: `<kui-field${attrString}>
-  <input kuiInput placeholder="mira@company.dev" />
+${affixes}
 </kui-field>`,
       },
     ];
   };
+
+  protected prefixOf(values: FieldPlaygroundValues): string {
+    return values.prefix;
+  }
+
+  protected suffixOf(values: FieldPlaygroundValues): string {
+    return values.suffix;
+  }
+
+  protected leadingIconOf(values: FieldPlaygroundValues): boolean {
+    return values.leadingIcon;
+  }
 
   protected labelOf(values: FieldPlaygroundValues): string {
     return values.label;
