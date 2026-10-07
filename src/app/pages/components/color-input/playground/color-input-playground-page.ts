@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
-import { KuiColorInput, KuiField, type KuiSize } from '@kikita-labs/ui';
+import { KuiColorInput, type KuiColorInputMessages, KuiField, type KuiSize } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
   definePlaygroundControls,
+  PLAYGROUND_MESSAGES_CONTROL,
+  playgroundBinding,
   type PlaygroundValues,
   serializePlaygroundAttributes,
 } from '@shared/docs-ui/api-playground';
@@ -13,6 +15,7 @@ import { type CodeTab } from '@shared/docs-ui/code-tabs';
 
 import { COLOR_INPUT_API_ROWS } from '../color-input.api-schema';
 import { COLOR_INPUT_API_DESCRIPTION } from '../color-input.docs-content';
+import { COLOR_INPUT_PLAYGROUND_MESSAGES } from './constants';
 
 const COLOR_INPUT_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'value', label: 'value', kind: 'string', defaultValue: '#5b4fe0' },
@@ -23,12 +26,14 @@ const COLOR_INPUT_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['xs', 'sm', 'md', 'lg'],
     defaultValue: 'md',
   },
+  PLAYGROUND_MESSAGES_CONTROL,
   { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
+  { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
   {
     key: 'swatchLabel',
-    label: 'swatch label',
+    label: 'swatch label (empty = message)',
     kind: 'string',
-    defaultValue: 'Open primary seed color picker',
+    defaultValue: '',
   },
 ] as const);
 
@@ -52,11 +57,9 @@ export class ColorInputPlaygroundPage {
       { name: 'value', value: values.value, defaultValue: '#5b4fe0' },
       { name: 'size', value: values.size, defaultValue: 'md' },
       { name: 'invalid', value: values.invalid },
-      {
-        name: 'swatchLabel',
-        value: values.swatchLabel,
-        defaultValue: 'Open primary seed color picker',
-      },
+      { name: 'disabled', value: values.disabled },
+      { name: 'swatchLabel', value: values.swatchLabel || null },
+      playgroundBinding('messages', values.messages === 'custom' ? 'messages' : null),
     ]);
 
     return [
@@ -82,7 +85,17 @@ export class ColorInputPlaygroundPage {
     return values.invalid;
   }
 
-  protected swatchLabelOf(values: ColorInputPlaygroundValues): string {
-    return values.swatchLabel;
+  protected disabledOf(values: ColorInputPlaygroundValues): boolean {
+    return values.disabled;
+  }
+
+  protected swatchLabelOf(values: ColorInputPlaygroundValues): string | undefined {
+    return values.swatchLabel || undefined;
+  }
+
+  protected messagesOf(
+    values: ColorInputPlaygroundValues,
+  ): Partial<KuiColorInputMessages> | undefined {
+    return values.messages === 'custom' ? COLOR_INPUT_PLAYGROUND_MESSAGES : undefined;
   }
 }

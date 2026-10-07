@@ -25,6 +25,16 @@
     <app-code-tabs [tabs]="basicTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Color Input"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Color Input API" [rows]="apiRows" />
   </app-doc-section>
@@ -37,7 +47,45 @@
       <li>Use <code>kui-field</code> for label, hint, error, and described-by wiring.</li>
       <li>Unsupported non-empty values expose invalid state on the wrapper.</li>
       <li>Disabled and readonly native attributes also disable the swatch button.</li>
+      <li>
+        A click anywhere on the field outside the swatch and chevron, including the padding around
+        the text, focuses the text input and opens the picker; it never closes it, so the caret can
+        be placed while typing.
+      </li>
+      <li>
+        A pointer user keeps the caret in the text field. A keyboard user is moved into the panel,
+        because it renders in an overlay that Tab from the field never reaches; Escape or choosing a
+        value returns focus to the trigger that opened it. The hue slider shows its focus on the
+        thumb.
+      </li>
+      <li>
+        During server rendering the directive leaves the native input in place and adds the picker
+        controls in the browser after the view is created, so Angular can hydrate the server markup.
+      </li>
       <li>Test the picker popover manually on narrow screens before releasing visual changes.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Color Input."
+  >
+    <ul class="color-input-page__notes">
+      <li>
+        The class is <code>KuiColorInput</code> (it was <code>KuiColorInputDirective</code>);
+        <code>ng update @kikita-labs/ui</code> renames the import.
+      </li>
+      <li>
+        The size falls back to <code>defaults.colorInput.size</code>, the chevron to
+        <code>defaults.colorInput.chevronIcon</code>. <code>swatchLabel</code> is undefined when
+        omitted and the text comes from the <code>colorInput.openPicker</code> message.
+      </li>
+      <li>
+        The picker is reachable from the keyboard (focus moves into the panel and returns on
+        Escape), a click on the field padding focuses the input, and the swatch no longer shows
+        slivers of its checker background.
+      </li>
     </ul>
   </app-doc-section>
 </article>

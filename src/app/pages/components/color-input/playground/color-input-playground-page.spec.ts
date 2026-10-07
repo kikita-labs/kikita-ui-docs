@@ -62,6 +62,23 @@ describe('ColorInputPlaygroundPage', () => {
     expect(snippet?.textContent).toContain('invalid');
   });
 
+  it('applies custom messages to the swatch name and the snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const custom = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')].find(
+      (button) => button.textContent?.trim() === 'custom',
+    );
+
+    custom?.click();
+    fixture.detectChanges();
+
+    expect(
+      root.querySelector('app-api-playground-viewport [aria-label^="Choose a color"]'),
+    ).not.toBeNull();
+    expect(root.querySelector<HTMLElement>('.code-tabs__fallback code')?.textContent).toContain(
+      '[messages]="messages"',
+    );
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });

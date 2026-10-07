@@ -3159,10 +3159,12 @@ export class BasicColorInputExample {}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | kuiColorInput | directive | - | Applies Kikita color-input styling and picker affordances to a native input. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height matched to Kikita UI size tokens. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height matched to Kikita UI size tokens. Falls back to defaults.colorInput.size, then the parent field, then the global defaults.size. |
 | invalid | boolean | false | Applies an error border and inherits invalid state from parent kui-field. |
 | id | string \| undefined | field id | Native input id override. |
-| swatchLabel | string | 'Open color picker' | Accessible label for the swatch button. |
+| swatchLabel | string \| undefined | colorInput.openPicker message | Accessible label for the swatch button. Undefined when omitted: the rendered text comes from the colorInput.openPicker message (Open color picker). |
+| messages | Partial<KuiColorInputMessages> \| undefined | undefined | Per-instance text overrides (openPicker, pickerLabel, and the other picker labels). They win over scoped and root messages. |
+| KuiColorInputOptions | interface | - | Shape of defaults.colorInput: size and chevronIcon (takes precedence over defaults.icons.pickerChevron). |
 
 ## Accessibility
 

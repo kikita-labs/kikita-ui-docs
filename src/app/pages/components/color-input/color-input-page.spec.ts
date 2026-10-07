@@ -42,7 +42,16 @@ describe('ColorInputPage', () => {
     );
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Color Input');
-    expect(sectionIds).toEqual(['import', 'usage', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(root.querySelector('app-live-preview input[kuicolorinput]')).not.toBeNull();
     expect(root.textContent).toContain('Primary seed');
   });
