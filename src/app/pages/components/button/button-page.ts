@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { BUTTON_EXAMPLE_SOURCES } from '@generated/example-sources/button.generated';
+import { BUTTON_GEOMETRY_TOKEN_ROWS } from '@generated/token-tables/button.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
@@ -12,7 +13,6 @@ import {
   BUTTON_API_ROWS,
   BUTTON_COLOR_TOKEN_ROWS,
   BUTTON_DEFAULTS_ROWS,
-  BUTTON_GEOMETRY_TOKEN_ROWS,
 } from './button.api-schema';
 import {
   BUTTON_API_DESCRIPTION,

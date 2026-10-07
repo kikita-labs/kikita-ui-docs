@@ -47,6 +47,7 @@ pnpm lint
 pnpm test
 pnpm check:package-consumer
 pnpm check:agent-surface
+pnpm check:token-tables
 pnpm check:site-config
 pnpm check:performance
 ```
@@ -85,6 +86,7 @@ run:
 ```bash
 pnpm generate:agent-surface
 pnpm check:agent-surface
+pnpm check:token-tables
 ```
 
 The local MCP server is published from `./mcp`. Publishing is automatic:

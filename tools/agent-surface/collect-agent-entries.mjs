@@ -2,7 +2,11 @@ import { existsSync } from 'node:fs';
 import { readdir, readFile } from 'node:fs/promises';
 import { relative, resolve } from 'node:path';
 
-const LIBRARY_REPO = 'kikita-labs/kikita-ui';
+import {
+  fetchLibrarySourceDoc,
+  LIBRARY_PACKAGE_NAME,
+  readInstalledLibraryVersion,
+} from '../library-docs.mjs';
 
 /**
  * Derives the agent surface entry list from `DOCS_REGISTRY` inputs: component/foundation/resource
@@ -16,15 +20,15 @@ const LIBRARY_REPO = 'kikita-labs/kikita-ui';
  * output shape.
  *
  * Component source docs come from the library's GitHub release tag matching the installed
- * `@kikita-labs/ui` version (`raw.githubusercontent.com/${LIBRARY_REPO}/v<version>/docs/<slug>.md`),
+ * `@kikita-labs/ui` version (`raw.githubusercontent.com/kikita-labs/kikita-ui/v<version>/docs/<slug>.md`),
  * never from a local sibling checkout -- this repo must build and generate on its own, with only
  * network access to the public library repo.
  *
  * @returns {Promise<import('./agent-doc-entry.js').AgentDocEntry[]>}
  */
 export async function collectAgentEntries(workspace = resolve('.')) {
-  const packageName = '@kikita-labs/ui';
-  const packageVersion = await readInstalledPackageVersion(workspace, packageName);
+  const packageName = LIBRARY_PACKAGE_NAME;
+  const packageVersion = await readInstalledLibraryVersion(workspace);
   const entries = [];
 
   entries.push(await collectHomeEntry(workspace, packageName, packageVersion));
@@ -33,13 +37,6 @@ export async function collectAgentEntries(workspace = resolve('.')) {
   entries.push(...(await collectResourceEntries(workspace, packageName, packageVersion)));
 
   return entries;
-}
-
-async function readInstalledPackageVersion(workspace, packageName) {
-  const packageJsonPath = resolve(workspace, 'node_modules', packageName, 'package.json');
-  const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf8'));
-
-  return packageJson.version;
 }
 
 async function collectHomeEntry(workspace, packageName, packageVersion) {
@@ -133,32 +130,6 @@ async function collectComponentEntries(workspace, packageName, packageVersion) {
       };
     }),
   );
-}
-
-/**
- * Fetches a component's authored doc from the published library's GitHub release tag, which
- * always matches the installed `@kikita-labs/ui` version (`kikita-labs/kikita-ui` tags every
- * release `v<version>`). Returns `{ url: null, content: null }` when the library repo has no doc
- * for this slug (a 404 is expected, not an error). Any other fetch failure throws, since a silent
- * `null` there would make the agent surface look complete when it actually couldn't reach GitHub.
- */
-async function fetchLibrarySourceDoc(packageVersion, slug) {
-  const tag = `v${packageVersion}`;
-  const rawUrl = `https://raw.githubusercontent.com/${LIBRARY_REPO}/${tag}/docs/${slug}.md`;
-  const response = await fetch(rawUrl);
-
-  if (response.status === 404) {
-    return { url: null, content: null };
-  }
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch ${rawUrl}: ${response.status} ${response.statusText}`);
-  }
-
-  return {
-    url: `https://github.com/${LIBRARY_REPO}/blob/${tag}/docs/${slug}.md`,
-    content: await response.text(),
-  };
 }
 
 async function collectResourceEntries(workspace, packageName, packageVersion) {

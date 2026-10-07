@@ -36,6 +36,7 @@ pnpm check:package-consumer
 pnpm check:migration-debt
 pnpm check:site-config
 pnpm check:agent-surface
+pnpm check:token-tables
 pnpm build
 pnpm check:performance
 pnpm test:browser

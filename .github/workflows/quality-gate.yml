@@ -39,6 +39,8 @@ jobs:
 
       - run: pnpm run check:agent-surface
 
+      - run: pnpm run check:token-tables
+
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
