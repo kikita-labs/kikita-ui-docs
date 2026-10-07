@@ -1,0 +1,9 @@
+<app-doc-section
+  anchor="provider-defaults"
+  heading="Provider defaults"
+  [description]="description()"
+>
+  <app-code-tabs [tabs]="tabs()" />
+  <ng-content />
+  <app-api-table [label]="tableLabel()" [rows]="rows()" />
+</app-doc-section>

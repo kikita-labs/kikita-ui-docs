@@ -107,8 +107,8 @@ For a component named `<name>`:
 - Local boundary `index.ts` files according to
   `.agents/imports-and-boundaries.md`.
 - Generated outputs, never hand-edited: run `pnpm generate:examples` after
-  changing example files or `exampleIds`, `pnpm generate:token-tables` after a
-  library sync (it writes `src/app/generated/token-tables/<name>.generated.ts`
+  changing example files or `exampleIds`, `pnpm generate:library-tables` after a
+  library sync (it writes `src/app/generated/library-tables/<name>.generated.ts`
   from the library doc's Color Tokens and Geometry Tokens tables; render those
   rows with `app-api-table`, never copy token lists by hand), and `pnpm generate:agent-surface` after
   changing manifests, source docs, API schemas, generated examples, the package
@@ -462,7 +462,7 @@ Use this before calling the page done:
       or the exact blocker was recorded: Markdown mirror, agent manifest,
       `llms.txt` when curated, `llms-full.txt`, and MCP data.
 - [ ] `pnpm check:agent-surface` passes when generated agent files changed.
-- [ ] `pnpm check:token-tables` passes (token tables rendered from the generated rows).
+- [ ] `pnpm check:library-tables` passes (token tables rendered from the generated rows).
 - [ ] No sibling library source imports were added.
 - [ ] No unreleased behavior was documented as available.
 - [ ] Angular verification ran or the exact blocker is recorded.

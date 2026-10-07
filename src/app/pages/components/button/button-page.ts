@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
 
 import { BUTTON_EXAMPLE_SOURCES } from '@generated/example-sources/button.generated';
-import { BUTTON_GEOMETRY_TOKEN_ROWS } from '@generated/token-tables/button.generated';
+import {
+  BUTTON_DEFAULTS_KEY,
+  BUTTON_DEFAULTS_ROWS,
+  BUTTON_GEOMETRY_TOKEN_ROWS,
+} from '@generated/library-tables/button.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
-import {
-  BUTTON_API_ROWS,
-  BUTTON_COLOR_TOKEN_ROWS,
-  BUTTON_DEFAULTS_ROWS,
-} from './button.api-schema';
+import { BUTTON_API_ROWS, BUTTON_APPEARANCE_TOKEN_ROWS } from './button.api-schema';
 import {
   BUTTON_API_DESCRIPTION,
   BUTTON_CUSTOM_ICON_TABS,
@@ -46,6 +48,8 @@ import {
     LivePreview,
     PageHeader,
     PlaygroundRouteButton,
+    ProviderDefaultsSection,
+    TokenTablesSection,
   ],
   templateUrl: './button-page.html',
   styleUrl: './button-page.scss',
@@ -66,7 +70,8 @@ export class ButtonPage {
   protected readonly migrationTabs = BUTTON_MIGRATION_TABS;
 
   protected readonly apiRows = BUTTON_API_ROWS;
+  protected readonly defaultsKey = BUTTON_DEFAULTS_KEY;
   protected readonly defaultsRows = BUTTON_DEFAULTS_ROWS;
-  protected readonly colorTokenRows = BUTTON_COLOR_TOKEN_ROWS;
+  protected readonly colorTokenRows = BUTTON_APPEARANCE_TOKEN_ROWS;
   protected readonly geometryTokenRows = BUTTON_GEOMETRY_TOKEN_ROWS;
 }

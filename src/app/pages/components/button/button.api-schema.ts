@@ -91,28 +91,7 @@ export const BUTTON_API_ROWS: readonly ApiTableRow[] = [
   },
 ];
 
-export const BUTTON_DEFAULTS_ROWS: readonly ApiTableRow[] = [
-  {
-    name: 'shape',
-    type: `'solid' | 'soft' | 'outline' | 'ghost'`,
-    defaultValue: `'solid'`,
-    description: 'Default surface shape.',
-  },
-  {
-    name: 'appearance',
-    type: `'primary' | 'danger' | 'success' | 'warning' | null`,
-    defaultValue: 'null',
-    description: "Default semantic color intent. Use null for each shape's neutral appearance.",
-  },
-  {
-    name: 'size',
-    type: `'xs' | 'sm' | 'md' | 'lg'`,
-    defaultValue: `'md'`,
-    description: 'Default button size. Takes precedence over the global defaults.size.',
-  },
-];
-
-export const BUTTON_COLOR_TOKEN_ROWS: readonly ApiTableRow[] = [
+export const BUTTON_APPEARANCE_TOKEN_ROWS: readonly ApiTableRow[] = [
   {
     name: '--kui-btn-solid-bg / -bg-hov / -bg-act',
     type: 'CSS custom property',

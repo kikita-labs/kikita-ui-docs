@@ -77,10 +77,7 @@
     <app-code-tabs [tabs]="linkTabs" />
   </app-doc-section>
 
-  <app-doc-section
-    heading="Provider defaults"
-    description="Use provideKuiDefaults for repeated button defaults in a feature or application shell, or the defaults option of provideKikitaUi for the whole application. Local inputs still win."
-  >
+  <app-provider-defaults-section [defaultsKey]="defaultsKey" [rows]="defaultsRows">
     <app-code-tabs [tabs]="providerTabs" />
     <p class="button-page__note">Resolution order, highest priority first:</p>
     <ul class="button-page__notes">
@@ -94,17 +91,13 @@
       <code>button</code> and <code>iconButton</code> keys, so one never restyles the other. A
       nested provider merges with its parent per property.
     </p>
-    <app-api-table label="defaults.button options" [rows]="defaultsRows" />
-  </app-doc-section>
+  </app-provider-defaults-section>
 
-  <app-doc-section
-    anchor="theming-tokens"
-    heading="Theming tokens"
-    description="Each appearance reads its own component tokens, so an override set on any ancestor restyles the buttons below it. Every geometry token is optional and falls back to the scale token in its default column."
-  >
-    <app-api-table label="Button color tokens" [rows]="colorTokenRows" />
-    <app-api-table label="Button geometry tokens" [rows]="geometryTokenRows" />
-  </app-doc-section>
+  <app-token-tables-section
+    name="Button"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Button API" [rows]="apiRows" />

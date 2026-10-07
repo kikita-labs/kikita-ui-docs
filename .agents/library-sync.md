@@ -99,7 +99,7 @@ foundation page, source docs, or package version changes, run:
 ```bash
 pnpm generate:agent-surface
 pnpm check:agent-surface
-pnpm check:token-tables
+pnpm check:library-tables
 ```
 
 The generator owns:

@@ -1,0 +1,200 @@
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import process from 'node:process';
+
+import { fetchLibrarySourceDoc, readInstalledLibraryVersion } from './library-docs.mjs';
+
+/**
+ * Generates `src/app/generated/library-tables/<slug>.generated.ts` from the library docs at the
+ * installed release tag: the "Color Tokens" and "Geometry Tokens" tables, and the defaults key and
+ * option table of the "Provider Defaults" section. Component pages render these rows through
+ * `app-token-tables-section` and `app-provider-defaults-section`, so a sync only has to regenerate
+ * them. Needs network access to GitHub raw (like `generate-agent-surface`); `--check` fails when
+ * the committed output differs.
+ */
+const PROJECT_ROOT = process.cwd();
+const COMPONENTS_ROOT = join(PROJECT_ROOT, 'src', 'app', 'pages', 'components');
+const OUTPUT_ROOT = join(PROJECT_ROOT, 'src', 'app', 'generated', 'library-tables');
+const CHECK_MODE = process.argv.includes('--check');
+const TOKEN_TABLE_KINDS = [
+  { marker: 'color-tokens', suffix: 'COLOR_TOKEN_ROWS' },
+  { marker: 'geometry-tokens', suffix: 'GEOMETRY_TOKEN_ROWS' },
+];
+
+const version = await readInstalledLibraryVersion(PROJECT_ROOT);
+const slugs = readdirSync(COMPONENTS_ROOT, { withFileTypes: true })
+  .filter(
+    (entry) =>
+      entry.isDirectory() &&
+      existsSync(join(COMPONENTS_ROOT, entry.name, `${entry.name}.docs-manifest.ts`)),
+  )
+  .map((entry) => entry.name)
+  .sort((left, right) => left.localeCompare(right));
+
+const outputs = new Map();
+
+for (const slug of slugs) {
+  const { content } = await fetchLibrarySourceDoc(version, slug);
+  const exports = content === null ? [] : readExports(slug, content);
+
+  if (exports.length > 0) {
+    outputs.set(join(OUTPUT_ROOT, `${slug}.generated.ts`), renderModule(version, exports));
+  }
+}
+
+const staleOutputs = findStaleOutputs(outputs);
+
+if (staleOutputs.length === 0) {
+  console.log(`Generated library tables are current (${outputs.size} components, v${version}).`);
+} else if (CHECK_MODE) {
+  console.error(
+    'Generated library tables are stale. Run "node tools/generate-library-tables.mjs".',
+  );
+  process.exitCode = 1;
+} else {
+  mkdirSync(OUTPUT_ROOT, { recursive: true });
+
+  for (const [outputPath, output] of outputs) {
+    writeFileSync(outputPath, output, 'utf8');
+  }
+
+  for (const staleOutput of staleOutputs.filter((outputPath) => !outputs.has(outputPath))) {
+    rmSync(staleOutput);
+  }
+
+  console.log(`Generated library tables for ${outputs.size} components (v${version}).`);
+}
+
+/** Returns `{ name, kind, value }` records, one per generated constant of a component. */
+function readExports(slug, markdown) {
+  const prefix = slug.toUpperCase().replaceAll('-', '_');
+  const records = [];
+
+  for (const { marker, suffix } of TOKEN_TABLE_KINDS) {
+    const block = new RegExp(`<!-- ${marker}:begin -->([\\s\\S]*?)<!-- ${marker}:end -->`).exec(
+      markdown,
+    );
+    const rows = block
+      ? parseTable(block[1], /^--kui-/, ['name', 'defaultValue', 'description'])
+      : [];
+
+    if (rows.length > 0) {
+      records.push({
+        name: `${prefix}_${suffix}`,
+        kind: 'rows',
+        value: rows.map((row) => ({ ...row, type: 'CSS custom property' })),
+      });
+    }
+  }
+
+  const defaults = readProviderDefaults(markdown);
+
+  if (defaults) {
+    records.push({ name: `${prefix}_DEFAULTS_KEY`, kind: 'string', value: defaults.key });
+    records.push({
+      name: `${prefix}_DEFAULTS_ROWS`,
+      kind: 'rows',
+      value: defaults.rows,
+    });
+  }
+
+  return records;
+}
+
+/** The `defaults.<key>` and its `| Option | Values | Description |` table, when the doc has both. */
+function readProviderDefaults(markdown) {
+  const heading = /^## Provider Defaults\s*$/m.exec(markdown);
+
+  if (!heading) {
+    return null;
+  }
+
+  const rest = markdown.slice(heading.index + heading[0].length);
+  const next = /^## /m.exec(rest);
+  const section = next ? rest.slice(0, next.index) : rest;
+  const key =
+    /`defaults\.(\w+)`:/.exec(section)?.[1] ??
+    /Set `defaults\.(\w+)`/.exec(section)?.[1] ??
+    /`defaults\.(\w+)`/.exec(section)?.[1];
+  const rows = parseTable(section, /^[A-Za-z]\w*$/, ['name', 'type', 'description']).filter(
+    (row) => row.name !== 'Option',
+  );
+
+  return key && rows.length > 0 ? { key, rows } : null;
+}
+
+/**
+ * Reads markdown table rows whose first cell matches `firstCell`; the header and the separator row
+ * do not match. Cells are mapped to `fields` in order and stripped of code ticks.
+ */
+function parseTable(block, firstCell, fields) {
+  return block
+    .split('\n')
+    .filter((line) => line.trim().startsWith('|'))
+    .map((line) => splitRow(line.trim()).map(stripCode))
+    .filter((cells) => cells.length >= fields.length && firstCell.test(cells[0]))
+    .map((cells) => Object.fromEntries(fields.map((field, index) => [field, cells[index]])));
+}
+
+/** Splits a table row on pipes that are not escaped (`\|` inside a cell stays a pipe). */
+function splitRow(line) {
+  return line
+    .slice(1, -1)
+    .split(/(?<!\\)\|/)
+    .map((cell) => cell.replaceAll('\\|', '|'));
+}
+
+/** One plain-text cell: a whole-cell code span loses its ticks, links keep their text only. */
+function stripCode(cell) {
+  return cell
+    .trim()
+    .replace(/^`([^`]*)`$/, '$1')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replaceAll('`', '');
+}
+
+function renderModule(libraryVersion, records) {
+  const body = records
+    .map((record) =>
+      record.kind === 'string'
+        ? `export const ${record.name} = ${quote(record.value)};\n`
+        : `export const ${record.name}: readonly ApiTableRow[] = [\n${record.value
+            .map(
+              (row) =>
+                `  {\n    name: ${quote(row.name)},\n    type: ${quote(row.type)},\n${
+                  row.defaultValue === undefined
+                    ? ''
+                    : `    defaultValue: ${quote(row.defaultValue)},\n`
+                }    description: ${quote(row.description)},\n  },`,
+            )
+            .join('\n')}\n];\n`,
+    )
+    .join('\n');
+
+  return `// Generated by tools/generate-library-tables.mjs from the @kikita-labs/ui v${libraryVersion} docs. Do not edit.\nimport { type ApiTableRow } from '@shared/docs-ui/api-table';\n\n${body}`;
+}
+
+function quote(value) {
+  const escaped = value.replaceAll('\\', '\\\\');
+
+  return value.includes("'") && !value.includes('"')
+    ? `"${escaped}"`
+    : `'${escaped.replaceAll("'", "\\'")}'`;
+}
+
+function findStaleOutputs(expectedOutputs) {
+  const existing = existsSync(OUTPUT_ROOT)
+    ? readdirSync(OUTPUT_ROOT)
+        .filter((name) => name.endsWith('.generated.ts'))
+        .map((name) => join(OUTPUT_ROOT, name))
+    : [];
+  const stale = [];
+
+  for (const [outputPath, output] of expectedOutputs) {
+    if (!existsSync(outputPath) || readFileSync(outputPath, 'utf8') !== output) {
+      stale.push(outputPath);
+    }
+  }
+
+  return [...stale, ...existing.filter((outputPath) => !expectedOutputs.has(outputPath))];
+}

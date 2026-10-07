@@ -1,0 +1,12 @@
+<app-doc-section
+  anchor="theming-tokens"
+  heading="Theming tokens"
+  description="Set any of these on the component or an ancestor to restyle one part. Each token is optional: when it is not set, the part uses the role or scale token in the default column."
+>
+  @if (colorRows().length) {
+    <app-api-table [label]="name() + ' color tokens'" [rows]="colorRows()" />
+  }
+  @if (geometryRows().length) {
+    <app-api-table [label]="name() + ' geometry tokens'" [rows]="geometryRows()" />
+  }
+</app-doc-section>

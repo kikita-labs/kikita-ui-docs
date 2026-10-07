@@ -39,7 +39,7 @@ jobs:
 
       - run: pnpm run check:agent-surface
 
-      - run: pnpm run check:token-tables
+      - run: pnpm run check:library-tables
 
   build:
     runs-on: ubuntu-latest

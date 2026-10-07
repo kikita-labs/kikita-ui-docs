@@ -39,7 +39,7 @@ export const BUTTON_CUSTOM_ICON_TABS: readonly CodeTab[] = [
 
 export const BUTTON_PROVIDER_TABS: readonly CodeTab[] = [
   {
-    label: 'Subtree',
+    label: 'Button family',
     filename: 'feature.providers.ts',
     language: 'ts',
     code: `import { provideKuiDefaults } from '@kikita-labs/ui';
@@ -50,23 +50,6 @@ export const featureProviders = [
     iconButton: { shape: 'outline', size: 'sm' },
   }),
 ];`,
-  },
-  {
-    label: 'Application',
-    filename: 'app.config.ts',
-    language: 'ts',
-    code: `import { provideKikitaUi } from '@kikita-labs/ui';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideKikitaUi({
-      defaults: {
-        size: 'sm',
-        button: { shape: 'soft' },
-      },
-    }),
-  ],
-};`,
   },
 ];
 

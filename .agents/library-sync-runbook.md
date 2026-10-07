@@ -97,7 +97,7 @@ Update coupled surfaces together (see `.agents/component-doc-page.md`):
 
 - page content, examples, playgrounds, API schemas, manifests;
 - generated example sources: `pnpm generate:examples`;
-- generated token tables: `pnpm generate:token-tables`;
+- generated token tables: `pnpm generate:library-tables`;
 - generated agent surface: `pnpm generate:agent-surface`.
 
 Never hand-edit generated files. Keep route paths stable: a renamed or removed
@@ -130,7 +130,7 @@ pnpm check:migration-debt
 pnpm check:site-config
 pnpm check:mcp-version
 pnpm check:agent-surface
-pnpm check:token-tables
+pnpm check:library-tables
 pnpm build
 pnpm check:performance
 pnpm test:browser
