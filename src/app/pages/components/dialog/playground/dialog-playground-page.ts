@@ -10,7 +10,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { KuiButton, kuiDialog } from '@kikita-labs/ui';
 
-import { ApiPlayground } from '@shared/docs-ui/api-playground';
+import {
+  ApiPlayground,
+  createPlaygroundEventLog,
+  PlaygroundEventLogView,
+} from '@shared/docs-ui/api-playground';
 import {
   definePlaygroundControls,
   escapePlaygroundSingleQuotedString,
@@ -35,7 +39,7 @@ const DIALOG_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'size',
     label: 'size',
     kind: 'enum',
-    options: ['auto', 'sm', 'md', 'lg'],
+    options: ['auto', 'sm', 'md', 'lg', 'fullscreen'],
     defaultValue: 'md',
   },
   {
@@ -53,7 +57,7 @@ type DialogPlaygroundValues = PlaygroundValues<typeof DIALOG_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-dialog-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButton],
+  imports: [ApiPlayground, ApiTable, KuiButton, PlaygroundEventLogView],
   templateUrl: './dialog-playground-page.html',
   styleUrl: './dialog-playground-page.scss',
 })
@@ -65,6 +69,7 @@ export class DialogPlaygroundPage {
   protected readonly apiRows = DIALOG_API_ROWS;
 
   protected readonly playgroundControls = DIALOG_PLAYGROUND_CONTROLS;
+  protected readonly eventLog = createPlaygroundEventLog();
 
   protected openDialog(values: DialogPlaygroundValues): void {
     const size = values.size;
@@ -78,7 +83,10 @@ export class DialogPlaygroundPage {
       kuiDialog(PlaygroundDialogContent, { size, appearance, dismissable, closable }),
     );
 
-    open({ title, message }).pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
+    this.eventLog.log('opened', size);
+    open({ title, message })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((result) => this.eventLog.log('closed', result));
   }
 
   protected readonly buildPlaygroundSnippet = (

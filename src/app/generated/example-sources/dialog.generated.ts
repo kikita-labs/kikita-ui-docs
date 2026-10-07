@@ -73,7 +73,7 @@ export const DIALOG_EXAMPLE_SOURCES = {
       label: "dialog-sizes-example.ts",
       filename: "dialog-sizes-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, kuiDialog, type KuiDialogSize } from '@kikita-labs/ui';\n\nimport { SizePreviewDialog } from './size-preview-dialog';\n\n@Component({\n  selector: 'app-dialog-sizes-example',\n  imports: [KuiButton],\n  templateUrl: './dialog-sizes-example.html',\n  styleUrl: './dialog-sizes-example.scss',\n})\nexport class DialogSizesExample {\n  protected readonly sizes: readonly KuiDialogSize[] = ['auto', 'sm', 'md', 'lg'];\n\n  private readonly openers = new Map(\n    this.sizes.map((size) => [size, kuiDialog(SizePreviewDialog, { size })]),\n  );\n\n  protected open(size: KuiDialogSize): void {\n    this.openers.get(size)?.({ size });\n  }\n}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, kuiDialog, type KuiDialogSize } from '@kikita-labs/ui';\n\nimport { SizePreviewDialog } from './size-preview-dialog';\n\n@Component({\n  selector: 'app-dialog-sizes-example',\n  imports: [KuiButton],\n  templateUrl: './dialog-sizes-example.html',\n  styleUrl: './dialog-sizes-example.scss',\n})\nexport class DialogSizesExample {\n  protected readonly sizes: readonly KuiDialogSize[] = ['auto', 'sm', 'md', 'lg', 'fullscreen'];\n\n  private readonly openers = new Map(\n    this.sizes.map((size) => [size, kuiDialog(SizePreviewDialog, { size })]),\n  );\n\n  protected open(size: KuiDialogSize): void {\n    this.openers.get(size)?.({ size });\n  }\n}",
     },
     {
       label: "size-preview-dialog.ts",

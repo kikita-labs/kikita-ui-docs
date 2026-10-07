@@ -42,8 +42,19 @@ describe('DialogPage', () => {
     );
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Dialog');
-    expect(sectionIds).toEqual(['import', 'usage', 'sizes', 'confirm', 'api', 'accessibility']);
-    expect(root.querySelectorAll('app-live-preview button[kuiButton]')).toHaveLength(6);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'sizes',
+      'confirm',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
+    expect(root.querySelectorAll('app-live-preview button[kuiButton]')).toHaveLength(7);
     expect(root.querySelector('app-basic-dialog-example')).not.toBeNull();
     expect(root.querySelector('app-dialog-confirm-example')).not.toBeNull();
   });

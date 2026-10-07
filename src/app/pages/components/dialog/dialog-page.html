@@ -27,7 +27,7 @@
 
   <app-doc-section
     heading="Sizes"
-    description="size selects a panel width preset: auto sizes to content with a 320px minimum, sm is 400px, md is 560px (default), and lg is 720px."
+    description="size selects a panel width preset: auto sizes to content with a 320px minimum, sm is 400px, md is 560px (default), lg is 720px, and fullscreen fills the viewport without the panel border, radius or shadow."
   >
     <app-live-preview previewLabel="Size presets">
       <app-dialog-sizes-example />
@@ -44,6 +44,16 @@
     </app-live-preview>
     <app-code-tabs [tabs]="confirmTabs" />
   </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Dialog"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Dialog API" [rows]="apiRows" />
@@ -78,9 +88,47 @@
       </li>
       <li>Page scroll is blocked via the CDK block scroll strategy while any dialog is open.</li>
       <li>
+        A toast shown while a dialog is open appears above it, in the browser top layer, so its
+        message is not hidden behind the backdrop.
+      </li>
+      <li>
+        Without a <code>.kui-dialog-title</code> the accessible name comes from the
+        <code>dialog.label</code> message (Dialog), and the confirm and cancel buttons of
+        <code>kuiConfirm()</code> from the <code>dialog.confirm</code> and
+        <code>dialog.cancel</code> messages.
+      </li>
+
+      <li>
         The panel renders <code>.kui-dialog-close</code> itself, top-right of the header, when
         <code>closable</code> is <code>true</code> (the default); the header reserves space for it
         automatically. <code>dialogContext.closable</code> is retained for informational use only.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Dialog."
+  >
+    <ul class="dialog-page__notes">
+      <li>
+        The imports are <code>KuiButton</code> and the rest of the renamed classes;
+        <code>ng update @kikita-labs/ui</code> renames them. <code>KuiDialogContext</code>,
+        <code>KUI_DIALOG_CONTEXT</code> and <code>kuiDialog()</code> keep their names.
+      </li>
+      <li>
+        Defaults come from <code>defaults.dialog</code> and are read each time a dialog opens. The
+        <code>fullscreen</code> size is new.
+      </li>
+      <li>
+        The backdrop uses the <code>--kui-color-scrim</code> role, the layer comes from
+        <code>--kui-z-dialog</code> (it was a literal 100) only where the browser lacks the Popover
+        API, and the close button and icon sizes are tokens.
+      </li>
+      <li>
+        Button and close-mark icons are drawn by the shared structural icon renderer, and the
+        accessible name and confirm labels come from the <code>dialog</code> messages.
       </li>
     </ul>
   </app-doc-section>

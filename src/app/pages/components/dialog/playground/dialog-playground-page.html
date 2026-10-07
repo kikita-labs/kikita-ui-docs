@@ -17,6 +17,8 @@
     <button kuiButton type="button" (click)="openDialog(playground.values())">Open dialog</button>
   </app-api-playground>
 
+  <app-playground-event-log [log]="eventLog" label="Dialog events" />
+
   <app-api-table label="Dialog API" [rows]="apiRows" />
   <p class="dialog-playground-page__note">{{ apiDescription }}</p>
 </article>

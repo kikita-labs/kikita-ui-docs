@@ -11,7 +11,7 @@ import { SizePreviewDialog } from './size-preview-dialog';
   styleUrl: './dialog-sizes-example.scss',
 })
 export class DialogSizesExample {
-  protected readonly sizes: readonly KuiDialogSize[] = ['auto', 'sm', 'md', 'lg'];
+  protected readonly sizes: readonly KuiDialogSize[] = ['auto', 'sm', 'md', 'lg', 'fullscreen'];
 
   private readonly openers = new Map(
     this.sizes.map((size) => [size, kuiDialog(SizePreviewDialog, { size })]),

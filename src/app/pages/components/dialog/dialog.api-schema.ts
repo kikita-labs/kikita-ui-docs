@@ -56,21 +56,24 @@ export const DIALOG_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'KuiDialogConfig.size',
-    type: `'auto' | 'sm' | 'md' | 'lg'`,
+    type: `'auto' | 'sm' | 'md' | 'lg' | 'fullscreen'`,
     defaultValue: `'md'`,
-    description: 'Panel width preset: auto (min 320px), sm (400px), md (560px), lg (720px).',
+    description:
+      'Panel width preset: auto (min 320px), sm (400px), md (560px), lg (720px), fullscreen (fills the viewport, no border, radius or shadow). Falls back to defaults.dialog.size.',
   },
   {
     name: 'KuiDialogConfig.appearance',
     type: `'default' | 'danger' | 'warning'`,
     defaultValue: `'default'`,
-    description: 'Colors .kui-dialog-icon via a CSS variable. Has no other visual effect.',
+    description:
+      'Colors .kui-dialog-icon via a CSS variable. Has no other visual effect. Falls back to defaults.dialog.appearance.',
   },
   {
     name: 'KuiDialogConfig.dismissable',
     type: 'boolean',
     defaultValue: 'true',
-    description: 'Allows Escape and backdrop click to close the dialog.',
+    description:
+      'Allows Escape and backdrop click to close the dialog. Falls back to defaults.dialog.dismissable.',
   },
   {
     name: 'KuiDialogConfig.closable',
@@ -113,15 +116,15 @@ export const DIALOG_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'KuiConfirmConfig.confirmLabel',
-    type: 'string',
-    defaultValue: `'OK'`,
-    description: 'Confirm button label.',
+    type: 'string | undefined',
+    defaultValue: 'dialog.confirm message',
+    description: 'Confirm button label. Defaults to the dialog.confirm message (OK).',
   },
   {
     name: 'KuiConfirmConfig.cancelLabel',
-    type: 'string',
-    defaultValue: `'Cancel'`,
-    description: 'Cancel button label.',
+    type: 'string | undefined',
+    defaultValue: 'dialog.cancel message',
+    description: 'Cancel button label. Defaults to the dialog.cancel message (Cancel).',
   },
   {
     name: '.kui-dialog-icon',
@@ -159,5 +162,12 @@ export const DIALOG_API_ROWS: readonly ApiTableRow[] = [
     type: 'CSS custom property',
     defaultValue: 'oklch(0 0 0 / 0.5)',
     description: 'Backdrop fill color.',
+  },
+  {
+    name: 'KuiDialogOptions / KuiModalSurfaceOptions',
+    type: 'interfaces',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.dialog (closable, size, appearance, dismissable, closeIcon), built on the base interface shared with the drawer. Options are read each time a dialog opens, so an open dialog keeps what it opened with.',
   },
 ];

@@ -7,3 +7,7 @@
 .dialog-page__notes {
   @include doc-page-notes;
 }
+
+.dialog-page__note {
+  @include doc-page-note;
+}
