@@ -258,11 +258,12 @@ function renderModule(libraryVersion, records) {
     )
     .join('\n');
   const imports = [
-    records.some((record) => record.kind === 'groups')
-      ? "import { type ProviderDefaultsGroup } from '@shared/docs-ui/provider-defaults-section';\n"
-      : '',
+    // Same order the import sorter produces, so lint-staged never rewrites generated files.
     records.some((record) => record.kind === 'rows')
       ? "import { type ApiTableRow } from '@shared/docs-ui/api-table';\n"
+      : '',
+    records.some((record) => record.kind === 'groups')
+      ? "import { type ProviderDefaultsGroup } from '@shared/docs-ui/provider-defaults-section';\n"
       : '',
   ].join('');
 
