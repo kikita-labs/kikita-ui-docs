@@ -1,0 +1,10 @@
+@let text = message();
+
+@if (text) {
+  <div class="version-banner" role="note" aria-label="Documentation version notice">
+    <p class="version-banner__text">{{ text }}</p>
+    <a class="version-banner__link" [href]="latestHref()" (click)="openLatest($event)">
+      View this page in the latest version ({{ latestLabel() }})
+    </a>
+  </div>
+}

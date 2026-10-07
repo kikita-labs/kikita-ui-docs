@@ -15,14 +15,17 @@ import { DocsRouteStateService } from '@core/navigation';
 import { DocsAnchorNavigationService } from '@core/platform/anchor';
 import { DocsDocumentStyleService } from '@core/platform/document';
 import { DocsSectionRegistryService } from '@core/platform/heading';
+import { DocsCanonicalLinkService } from '@core/platform/link';
+import { DocsCanonicalUrlService } from '@core/site';
 
 import { DocsHeader } from '../header/docs-header';
 import { PageToc } from '../page-toc/page-toc';
 import { SidebarNav } from '../sidebar-nav/sidebar-nav';
+import { VersionBanner } from '../version-banner/version-banner';
 
 @Component({
   selector: 'app-docs-shell',
-  imports: [CdkTrapFocus, DocsHeader, PageToc, RouterOutlet, SidebarNav],
+  imports: [CdkTrapFocus, DocsHeader, PageToc, RouterOutlet, SidebarNav, VersionBanner],
   templateUrl: './docs-shell.html',
   styleUrl: './docs-shell.scss',
   host: {
@@ -36,10 +39,24 @@ export class DocsShell {
   private readonly documentStyle = inject(DocsDocumentStyleService);
   private readonly anchorNavigation = inject(DocsAnchorNavigationService);
   private readonly sectionRegistry = inject(DocsSectionRegistryService);
+  private readonly canonicalLink = inject(DocsCanonicalLinkService);
+  private readonly canonicalUrl = inject(DocsCanonicalUrlService);
   private scrolledFragmentUrl: string | null = null;
 
   protected readonly activePage = this.routeState.activePage;
   protected readonly isNavigationOpen = signal(false);
+
+  /** Runs during prerender too, so every static page ships its own canonical URL. */
+  private readonly canonicalLinkEffect = effect(() => {
+    const page = this.activePage();
+
+    if (page.isNotFound) {
+      this.canonicalLink.clear();
+      return;
+    }
+
+    this.canonicalLink.set(this.canonicalUrl.forPath(page.path));
+  });
 
   private readonly closeNavigationOnRouteChange = effect(() => {
     if (this.activePage().url) {

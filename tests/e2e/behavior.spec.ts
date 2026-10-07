@@ -26,9 +26,15 @@ test('search opens from the keyboard, selects a registry result, and restores fo
   await page.keyboard.press('ArrowDown');
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/components\/table$/);
+  // Route changes move focus to the page heading once the lazy page has rendered. Wait for it so
+  // that late focus move cannot land after the search trigger below has been used.
+  await expect(page.getByRole('heading', { level: 1 })).toBeFocused();
 
   const trigger = page.getByRole('banner').getByRole('button', { name: 'Search' });
   await trigger.click();
+  // Close only once the palette has finished opening and taken focus; an earlier Escape races the
+  // palette's own focus capture and leaves focus on nothing.
+  await expect(search).toBeFocused();
   await page.keyboard.press('Escape');
   await expect(trigger).toBeFocused();
 });
@@ -361,4 +367,60 @@ test('keeps draft, not-found, and installed-package smoke routes recoverable', a
   await expect(page.getByRole('heading', { level: 1, name: 'Page not found' })).toBeFocused();
   await page.getByRole('link', { name: 'Back to Docs' }).click();
   await expect(page).toHaveURL(/\/components$/);
+});
+
+const VERSIONS_MANIFEST = [
+  { id: 'v2', label: 'v2', path: '/', status: 'latest' },
+  { id: 'v1', label: 'v1', path: '/v1/', status: 'maintained' },
+];
+
+test('publishes one canonical URL per page and none on not-found', async ({ page }) => {
+  await gotoReady(page, '/components/button');
+  const canonical = page.locator('link[rel="canonical"]');
+  await expect(canonical).toHaveCount(1);
+  await expect(canonical).toHaveAttribute('href', /^https:\/\/.+\/components\/button$/);
+
+  await gotoReady(page, '/not-a-real-route');
+  await expect(canonical).toHaveCount(0);
+});
+
+test('hides the version controls while no valid versions.json is published', async ({ page }) => {
+  await gotoReady(page, '/components/button');
+
+  await expect(page.getByRole('button', { name: /^Documentation version/ })).toHaveCount(0);
+  await expect(page.getByRole('note', { name: 'Documentation version notice' })).toHaveCount(0);
+});
+
+test('switches versions and warns on an older version using versions.json', async ({ page }) => {
+  await page.route('**/versions.json', (route) => route.fulfill({ json: VERSIONS_MANIFEST }));
+  await gotoReady(page, '/components/button');
+
+  const notice = page.getByRole('note', { name: 'Documentation version notice' });
+  await expect(notice).toContainText('older version');
+  await expect(notice.getByRole('link')).toHaveAttribute('href', '/components/button');
+
+  const trigger = page.getByRole('button', { name: 'Documentation version, current v1' });
+  await trigger.click();
+  const menu = page.getByRole('menu', { name: 'Documentation version' });
+  await expect(menu.getByRole('menuitem', { name: 'v2' })).toHaveAttribute(
+    'href',
+    '/components/button',
+  );
+  await expect(menu.getByRole('menuitem', { name: 'v1' })).toHaveAttribute(
+    'href',
+    '/v1/components/button',
+  );
+  await expect(menu.getByRole('menuitem', { name: 'v1' })).toHaveAttribute('aria-current', 'true');
+});
+
+test('falls back to the version home when the page is missing there', async ({ page }) => {
+  await page.route('**/versions.json', (route) => route.fulfill({ json: VERSIONS_MANIFEST }));
+  await page.route('**/components/button', (route) =>
+    route.request().method() === 'HEAD' ? route.fulfill({ status: 404 }) : route.continue(),
+  );
+  await gotoReady(page, '/components/button');
+
+  await page.getByRole('note', { name: 'Documentation version notice' }).getByRole('link').click();
+
+  await expect(page).toHaveURL(/\/$/);
 });

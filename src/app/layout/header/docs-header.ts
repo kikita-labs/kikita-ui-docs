@@ -28,6 +28,7 @@ import { DocsThemeService } from '@core/theme';
 import { SearchTrigger } from '@shared/docs-ui/search-trigger';
 
 import { Theming } from '../theming/theming';
+import { VersionSwitcher } from '../version-switcher/version-switcher';
 
 @Component({
   selector: 'app-docs-header',
@@ -41,6 +42,7 @@ import { Theming } from '../theming/theming';
     RouterLink,
     SearchTrigger,
     Theming,
+    VersionSwitcher,
   ],
   templateUrl: './docs-header.html',
   styleUrl: './docs-header.scss',

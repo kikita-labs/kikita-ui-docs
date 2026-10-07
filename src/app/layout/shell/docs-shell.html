@@ -7,6 +7,10 @@
     (menuToggle)="toggleNavigation()"
   />
 
+  @defer (on idle) {
+    <app-version-banner />
+  }
+
   <div
     class="docs-shell__body"
     [class.docs-shell__body--landing]="activePage().isLanding"
