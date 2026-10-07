@@ -1,0 +1,10 @@
+<app-doc-section
+  anchor="messages"
+  heading="Messages"
+  description="Every text the component owns (accessible names, visible words, announcements) is a typed message with an English default. Override it for the application with provideKikitaUi({ messages }), or for a subtree with provideKuiMessages."
+>
+  <ng-content />
+  @for (group of groups(); track group.group) {
+    <app-api-table [label]="'messages.' + group.group" [rows]="group.rows" />
+  }
+</app-doc-section>
