@@ -74,6 +74,22 @@ app-api-playground-viewport {
   inline-size: 100%;
 }
 
+.api-playground__multi-controls {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+}
+
+.api-playground__multi-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-2, 8px) var(--kui-space-5, 20px);
+}
+
+.api-playground__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .api-playground__state-group {
   display: grid;
   gap: var(--kui-space-2, 8px);

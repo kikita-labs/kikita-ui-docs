@@ -313,9 +313,22 @@ Use `app-api-playground`:
   document the exception in the normal page body and cover it with a focused
   rendered example.
 - Use `kind: 'enum'` for literal unions.
+- Use `kind: 'multi'` for a subset of options (slot or feature toggles, flag
+  sets); its value is a readonly array in declared order.
 - Use `kind: 'boolean'` for binary inputs.
 - Use `kind: 'number'` for numeric inputs.
 - Use `kind: 'string'` for labels, placeholder text, ids, and simple values.
+- Reuse the shared presets for locale-aware and message-aware primitives:
+  spread `PLAYGROUND_LOCALE_CONTROL` and `PLAYGROUND_MESSAGES_CONTROL`
+  (`default` | `custom`) into `definePlaygroundControls`; the custom message
+  fixture lives next to that element's playground.
+- Build snippet bindings with `playgroundBinding('prop', expression)` and
+  `playgroundEvent('output', handler)` instead of hand-concatenated strings.
+- Show emitted outputs with `createPlaygroundEventLog()` in the page and
+  `<app-playground-event-log [log]="eventLog" />` (exported as
+  `PlaygroundEventLogView`) next to the preview; call `eventLog.log(name,
+detail)` from the output handlers.
+- `app-api-playground` renders a "Reset controls" button; do not add another.
 - Choose defaults that match the runtime default whenever possible.
 - Render the real component in the preview area.
 - Provide a local preview theme toggle when the component has theme-sensitive

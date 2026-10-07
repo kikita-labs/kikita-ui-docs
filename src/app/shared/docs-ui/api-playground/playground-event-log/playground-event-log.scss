@@ -1,0 +1,48 @@
+@use '../../../styles/mixins/caption-label' as *;
+
+:host {
+  display: block;
+  min-inline-size: 0;
+}
+
+.playground-event-log {
+  display: grid;
+  gap: var(--kui-space-2, 8px);
+}
+
+.playground-event-log__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--kui-space-2, 8px);
+}
+
+.playground-event-log__caption {
+  @include caption-label;
+
+  text-transform: none;
+}
+
+.playground-event-log__list {
+  display: grid;
+  gap: var(--kui-space-1, 4px);
+  max-block-size: 8rem;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  font-size: var(--kui-text-sm-size, 13px);
+}
+
+.playground-event-log__entry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-2, 8px);
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}
+
+.playground-event-log__detail,
+.playground-event-log__empty {
+  color: var(--kui-color-text-secondary);
+}

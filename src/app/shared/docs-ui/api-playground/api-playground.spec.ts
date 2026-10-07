@@ -24,6 +24,13 @@ const CONTROLS = definePlaygroundControls([
   { key: 'label', label: 'label', kind: 'string', defaultValue: 'Save' },
   { key: 'count', label: 'count', kind: 'number', defaultValue: 1 },
   { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
+  {
+    key: 'parts',
+    label: 'parts',
+    kind: 'multi',
+    options: ['icon', 'badge', 'hint'],
+    defaultValue: ['icon'],
+  },
 ] as const);
 
 describe('ApiPlayground', () => {
@@ -67,7 +74,9 @@ describe('ApiPlayground', () => {
       (button) => button.textContent?.trim() === 'soft',
     );
     const inputs = root.querySelectorAll<HTMLInputElement>('.api-playground__text-controls input');
-    const toggle = root.querySelector<HTMLInputElement>('input[type="checkbox"]');
+    const toggle = root.querySelector<HTMLInputElement>(
+      '.api-playground__state-controls input[type="checkbox"]',
+    );
 
     expect(inputs[0]?.classList.contains('kui-input')).toBe(true);
     expect(inputs[1]?.classList.contains('kui-number-input__input')).toBe(true);
@@ -90,7 +99,34 @@ describe('ApiPlayground', () => {
       label: 'Submit',
       count: 3,
       disabled: true,
+      parts: ['icon'],
     });
+  });
+
+  it('toggles multi options in declared order and resets every control', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const partInputs = root.querySelectorAll<HTMLInputElement>(
+      '.api-playground__multi-options input',
+    );
+    const reset = [...root.querySelectorAll<HTMLButtonElement>('button')].find(
+      (button) => button.textContent?.trim() === 'Reset controls',
+    );
+
+    expect(reset?.disabled).toBe(true);
+
+    partInputs[2]?.click();
+    partInputs[1]?.click();
+    partInputs[0]?.click();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.values().parts).toEqual(['badge', 'hint']);
+    expect(reset?.disabled).toBe(false);
+
+    reset?.click();
+    fixture.detectChanges();
+
+    expect(fixture.componentInstance.values().parts).toEqual(['icon']);
+    expect(reset?.disabled).toBe(true);
   });
 
   it('marks wide enum groups for wrapping without changing control data', () => {

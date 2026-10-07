@@ -1,0 +1,30 @@
+<div class="playground-event-log">
+  <div class="playground-event-log__header">
+    <span class="playground-event-log__caption">{{ label() }}</span>
+    <button
+      kuiButton
+      type="button"
+      shape="ghost"
+      size="xs"
+      [disabled]="log().entries().length === 0"
+      (click)="log().clear()"
+    >
+      Clear
+    </button>
+  </div>
+
+  <div class="playground-event-log__region" role="log" [attr.aria-label]="label()">
+    <ul class="playground-event-log__list">
+      @for (entry of log().entries(); track entry.id) {
+        <li class="playground-event-log__entry">
+          <code>{{ entry.name }}</code>
+          @if (entry.detail) {
+            <span class="playground-event-log__detail">{{ entry.detail }}</span>
+          }
+        </li>
+      } @empty {
+        <li class="playground-event-log__empty">No events yet.</li>
+      }
+    </ul>
+  </div>
+</div>

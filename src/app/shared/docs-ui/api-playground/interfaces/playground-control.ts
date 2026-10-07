@@ -29,3 +29,11 @@ export interface PlaygroundStringControl<
 > extends PlaygroundControlBase<TKey, 'string'> {
   readonly defaultValue: string;
 }
+
+export interface PlaygroundMultiControl<
+  TKey extends string = string,
+  TOptions extends readonly string[] = readonly string[],
+> extends PlaygroundControlBase<TKey, 'multi'> {
+  readonly options: TOptions;
+  readonly defaultValue: readonly TOptions[number][];
+}

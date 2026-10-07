@@ -3,7 +3,9 @@ import { Overlay, OverlayContainer } from '@angular/cdk/overlay';
 import { Component, computed, inject, input, signal } from '@angular/core';
 
 import {
+  KuiButton,
   KuiCard,
+  KuiCheckbox,
   KuiInput,
   KuiNumberInput,
   KuiSegment,
@@ -28,7 +30,9 @@ import {
   imports: [
     ApiPlaygroundViewport,
     CodeTabs,
+    KuiButton,
     KuiCard,
+    KuiCheckbox,
     KuiInput,
     KuiNumberInput,
     KuiSegment,
@@ -67,9 +71,39 @@ export class ApiPlayground<
   protected readonly booleanControls = computed(() =>
     this.controls().filter((control) => control.kind === 'boolean'),
   );
+  protected readonly multiControls = computed(() =>
+    this.controls().filter((control) => control.kind === 'multi'),
+  );
+  protected readonly hasOverrides = computed(() => Object.keys(this.valueOverrides()).length > 0);
 
   protected setValue(key: string, value: PlaygroundValue): void {
     this.valueOverrides.update((current) => ({ ...current, [key]: value }));
+  }
+
+  /** Restores every control to its default value. */
+  public reset(): void {
+    this.valueOverrides.set({});
+  }
+
+  protected setMultiOption(key: TControls[number]['key'], option: string, checked: boolean): void {
+    const current = this.multiValue(key);
+    const next = checked
+      ? [...current.filter((entry) => entry !== option), option]
+      : current.filter((entry) => entry !== option);
+    const options = this.multiControls().find((control) => control.key === key)?.options ?? [];
+
+    this.setValue(
+      key,
+      options.filter((candidate) => next.includes(candidate)),
+    );
+  }
+
+  protected multiValue(key: TControls[number]['key']): readonly string[] {
+    const value: unknown = this.values()[key];
+
+    return Array.isArray(value)
+      ? value.filter((entry): entry is string => typeof entry === 'string')
+      : [];
   }
 
   protected setBooleanValue(key: string, value: boolean): void {

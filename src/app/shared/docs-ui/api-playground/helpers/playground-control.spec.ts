@@ -16,6 +16,13 @@ describe('typed playground values', () => {
     },
     { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
     { key: 'count', label: 'count', kind: 'number', defaultValue: 1 },
+    {
+      key: 'features',
+      label: 'features',
+      kind: 'multi',
+      options: ['icon', 'badge', 'hint'] as const,
+      defaultValue: ['icon'],
+    },
   ] as const);
 
   it('uses valid overrides and rejects invalid runtime values', () => {
@@ -26,7 +33,24 @@ describe('typed playground values', () => {
         disabled: true,
         count: Number.NaN,
       }),
-    ).toEqual({ label: 'Submit', size: 'md', disabled: true, count: 1 });
+    ).toEqual({
+      label: 'Submit',
+      size: 'md',
+      disabled: true,
+      count: 1,
+      features: ['icon'],
+    });
+  });
+
+  it('accepts a subset of the multi options and rejects unknown entries', () => {
+    expect(createPlaygroundValues(controls, { features: ['badge', 'hint'] }).features).toEqual([
+      'badge',
+      'hint',
+    ]);
+    expect(createPlaygroundValues(controls, { features: ['badge', 'other'] }).features).toEqual([
+      'icon',
+    ]);
+    expect(createPlaygroundValues(controls, { features: 'badge' }).features).toEqual(['icon']);
   });
 
   it('parses finite number input with a deterministic fallback', () => {

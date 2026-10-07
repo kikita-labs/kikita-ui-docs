@@ -33,6 +33,11 @@ export function isPlaygroundControlValue(
       return typeof value === 'boolean';
     case 'enum':
       return typeof value === 'string' && control.options.includes(value);
+    case 'multi':
+      return (
+        Array.isArray(value) &&
+        value.every((entry) => typeof entry === 'string' && control.options.includes(entry))
+      );
     case 'number':
       return typeof value === 'number' && Number.isFinite(value);
     case 'string':

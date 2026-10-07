@@ -3,16 +3,18 @@ import { type CodeTab } from '@shared/docs-ui/code-tabs';
 import {
   type PlaygroundBooleanControl,
   type PlaygroundEnumControl,
+  type PlaygroundMultiControl,
   type PlaygroundNumberControl,
   type PlaygroundStringControl,
 } from '../interfaces';
 
-export type PlaygroundControlKind = 'boolean' | 'enum' | 'number' | 'string';
-export type PlaygroundValue = boolean | number | string;
+export type PlaygroundControlKind = 'boolean' | 'enum' | 'multi' | 'number' | 'string';
+export type PlaygroundValue = boolean | number | string | readonly string[];
 
 export type PlaygroundControl =
   | PlaygroundBooleanControl
   | PlaygroundEnumControl
+  | PlaygroundMultiControl
   | PlaygroundNumberControl
   | PlaygroundStringControl;
 
@@ -21,9 +23,11 @@ export type PlaygroundControlValue<TControl extends PlaygroundControl> =
     ? boolean
     : TControl extends PlaygroundNumberControl
       ? number
-      : TControl extends PlaygroundEnumControl<string, infer TOptions>
-        ? TOptions[number]
-        : string;
+      : TControl extends PlaygroundMultiControl<string, infer TOptions>
+        ? readonly TOptions[number][]
+        : TControl extends PlaygroundEnumControl<string, infer TOptions>
+          ? TOptions[number]
+          : string;
 
 export type PlaygroundValues<
   TControls extends readonly PlaygroundControl[] = readonly PlaygroundControl[],

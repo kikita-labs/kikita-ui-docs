@@ -29,6 +29,38 @@
       </div>
     }
 
+    @if (multiControls().length) {
+      <div class="api-playground__divider"></div>
+
+      <div class="api-playground__multi-controls">
+        @for (control of multiControls(); track control.key) {
+          <div
+            class="api-playground__group"
+            role="group"
+            [attr.aria-labelledby]="controlLabelId(control.key)"
+          >
+            <span class="api-playground__group-label" [id]="controlLabelId(control.key)">
+              {{ control.label }}
+            </span>
+            <div class="api-playground__multi-options">
+              @for (option of control.options; track option) {
+                <label class="api-playground__toggle-row">
+                  <input
+                    #multiInput
+                    kuiCheckbox
+                    type="checkbox"
+                    [checked]="multiValue(control.key).includes(option)"
+                    (change)="setMultiOption(control.key, option, multiInput.checked)"
+                  />
+                  <span>{{ option }}</span>
+                </label>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    }
+
     @if (textControls().length || booleanControls().length) {
       <div class="api-playground__divider"></div>
 
@@ -87,6 +119,18 @@
         }
       </div>
     }
+    <div class="api-playground__footer">
+      <button
+        kuiButton
+        type="button"
+        shape="ghost"
+        size="xs"
+        [disabled]="!hasOverrides()"
+        (click)="reset()"
+      >
+        Reset controls
+      </button>
+    </div>
   </div>
 
   <app-code-tabs label="Live snippet" [tabs]="snippetTabs()" />
