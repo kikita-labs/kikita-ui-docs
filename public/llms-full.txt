@@ -6,7 +6,7 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 ---
 
 <!-- route: / -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/index.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/index.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # Kikita UI
@@ -19,68 +19,68 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 
 ## Foundations
 
-- [Accessibility](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md): Keyboard, semantics, focus, and WCAG expectations.
-- [Density](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md): Spacing and control density expectations for product UIs.
-- [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
-- [Theming](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md): Theme provider setup and theme customization basics.
-- [Tokens](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/tokens.md): Design token categories exposed through Kikita CSS variables.
-- [Typography](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/typography.md): Semantic type-role classes, text tones, and the kuiText directive.
+- [Accessibility](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/accessibility.md): Keyboard, semantics, focus, and WCAG expectations.
+- [Density](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/density.md): Spacing and control density expectations for product UIs.
+- [Installation](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/installation.md): Package installation and global stylesheet setup.
+- [Theming](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/theming.md): Theme provider setup and theme customization basics.
+- [Tokens](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/tokens.md): Design token categories exposed through Kikita CSS variables.
+- [Typography](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/typography.md): Semantic type-role classes, text tones, and the kuiText directive.
 
 ## Components
 
-- [Accordion](https://kikita-labs.github.io/kikita-ui-docs/llms/components/accordion.md): Disclosure component for grouped expandable content.
-- [Avatar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/avatar.md): User or entity identity with image, initials, and status.
-- [Badge](https://kikita-labs.github.io/kikita-ui-docs/llms/components/badge.md): Compact status or metadata marker.
-- [Breadcrumbs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md): Hierarchy trail.
-- [Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/button.md): Primary command primitive for buttons and links.
-- [Calendar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md): Date grid.
-- [Card](https://kikita-labs.github.io/kikita-ui-docs/llms/components/card.md): Surface, elevated, and sunken content container.
-- [Checkbox](https://kikita-labs.github.io/kikita-ui-docs/llms/components/checkbox.md): Native checkbox styling with field state integration.
-- [Chip](https://kikita-labs.github.io/kikita-ui-docs/llms/components/chip.md): Compact token for selected values, filters, and entity references.
-- [Color Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/color-input.md): Color value input.
-- [Combobox](https://kikita-labs.github.io/kikita-ui-docs/llms/components/combobox.md): Searchable input with projected options and async mode.
-- [Command Palette](https://kikita-labs.github.io/kikita-ui-docs/llms/components/command-palette.md): Searchable command overlay for application actions.
-- [Date Picker](https://kikita-labs.github.io/kikita-ui-docs/llms/components/date-picker.md): Calendar date input.
-- [Dialog](https://kikita-labs.github.io/kikita-ui-docs/llms/components/dialog.md): Typed modal overlay service and host contract.
-- [Drawer](https://kikita-labs.github.io/kikita-ui-docs/llms/components/drawer.md): Side and edge overlay surface for focused workflows.
-- [Dropdown](https://kikita-labs.github.io/kikita-ui-docs/llms/components/dropdown.md): Projected option overlay used by select-like controls.
-- [Empty State](https://kikita-labs.github.io/kikita-ui-docs/llms/components/empty-state.md): Known empty, error, no-access, and success content states.
-- [Field](https://kikita-labs.github.io/kikita-ui-docs/llms/components/field.md): Label, hint, error, and form-control composition.
-- [File Upload](https://kikita-labs.github.io/kikita-ui-docs/llms/components/file-upload.md): Controlled file picker.
-- [Group](https://kikita-labs.github.io/kikita-ui-docs/llms/components/group.md): Grouped control chrome for adjacent actions and fields.
-- [Icon](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon.md): SVG icon renderer.
-- [Icon Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon-button.md): Compact icon-only action control.
-- [Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/input.md): Native text input styling with field integration.
-- [Loader](https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md): Inline loading indicator for buttons and status areas.
-- [Menu](https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md): Anchored command menu with keyboard focus behavior.
-- [Number Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md): Number input states with compact variant options.
-- [Popover](https://kikita-labs.github.io/kikita-ui-docs/llms/components/popover.md): Anchored content surface for contextual UI.
-- [Progress](https://kikita-labs.github.io/kikita-ui-docs/llms/components/progress.md): Progress status primitive for determinate and indeterminate work.
-- [Radio](https://kikita-labs.github.io/kikita-ui-docs/llms/components/radio.md): Native radio control styling for exclusive choices.
-- [Scrollbar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/scrollbar.md): Tokenized native scroll container utility.
-- [Segmented](https://kikita-labs.github.io/kikita-ui-docs/llms/components/segmented.md): Compact single-choice control rendered as adjacent segment buttons.
-- [Select](https://kikita-labs.github.io/kikita-ui-docs/llms/components/select.md): Dropdown-backed selection control for single and multiple values.
-- [Separator](https://kikita-labs.github.io/kikita-ui-docs/llms/components/separator.md): Tokenized horizontal or vertical separator primitive.
-- [Skeleton](https://kikita-labs.github.io/kikita-ui-docs/llms/components/skeleton.md): Loading placeholder with reduced-motion behavior.
-- [Slider](https://kikita-labs.github.io/kikita-ui-docs/llms/components/slider.md): Native range input styling with field and Signal Forms support.
-- [Stepper](https://kikita-labs.github.io/kikita-ui-docs/llms/components/stepper.md): Multi-step progress and navigation indicator.
-- [Switch](https://kikita-labs.github.io/kikita-ui-docs/llms/components/switch.md): Native switch control styling for binary settings.
-- [Table](https://kikita-labs.github.io/kikita-ui-docs/llms/components/table.md): Native table styling, sorting context, and selection cells.
-- [Tabs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tabs.md): Line and pill tab navigation with optional panel wiring.
-- [Textarea](https://kikita-labs.github.io/kikita-ui-docs/llms/components/textarea.md): Native multiline input styling with field integration.
-- [Toast](https://kikita-labs.github.io/kikita-ui-docs/llms/components/toast.md): Global notifications with actions and live-region semantics.
-- [Tooltip](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tooltip.md): Hover and focus hint.
-- [Tree](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tree.md): Hierarchical list.
+- [Accordion](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/accordion.md): Disclosure component for grouped expandable content.
+- [Avatar](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/avatar.md): User or entity identity with image, initials, and status.
+- [Badge](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/badge.md): Compact status or metadata marker.
+- [Breadcrumbs](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/breadcrumbs.md): Hierarchy trail.
+- [Button](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/button.md): Primary command primitive for buttons and links.
+- [Calendar](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/calendar.md): Date grid.
+- [Card](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/card.md): Surface, elevated, and sunken content container.
+- [Checkbox](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/checkbox.md): Native checkbox styling with field state integration.
+- [Chip](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/chip.md): Compact token for selected values, filters, and entity references.
+- [Color Input](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/color-input.md): Color value input.
+- [Combobox](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/combobox.md): Searchable input with projected options and async mode.
+- [Command Palette](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/command-palette.md): Searchable command overlay for application actions.
+- [Date Picker](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/date-picker.md): Calendar date input.
+- [Dialog](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/dialog.md): Typed modal overlay service and host contract.
+- [Drawer](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/drawer.md): Side and edge overlay surface for focused workflows.
+- [Dropdown](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/dropdown.md): Projected option overlay used by select-like controls.
+- [Empty State](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/empty-state.md): Known empty, error, no-access, and success content states.
+- [Field](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/field.md): Label, hint, error, and form-control composition.
+- [File Upload](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/file-upload.md): Controlled file picker.
+- [Group](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/group.md): Grouped control chrome for adjacent actions and fields.
+- [Icon](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/icon.md): SVG icon renderer.
+- [Icon Button](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/icon-button.md): Compact icon-only action control.
+- [Input](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/input.md): Native text input styling with field integration.
+- [Loader](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/loader.md): Inline loading indicator for buttons and status areas.
+- [Menu](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/menu.md): Anchored command menu with keyboard focus behavior.
+- [Number Input](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/number-input.md): Number input states with compact variant options.
+- [Popover](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/popover.md): Anchored content surface for contextual UI.
+- [Progress](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/progress.md): Progress status primitive for determinate and indeterminate work.
+- [Radio](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/radio.md): Native radio control styling for exclusive choices.
+- [Scrollbar](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/scrollbar.md): Tokenized native scroll container utility.
+- [Segmented](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/segmented.md): Compact single-choice control rendered as adjacent segment buttons.
+- [Select](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/select.md): Dropdown-backed selection control for single and multiple values.
+- [Separator](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/separator.md): Tokenized horizontal or vertical separator primitive.
+- [Skeleton](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/skeleton.md): Loading placeholder with reduced-motion behavior.
+- [Slider](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/slider.md): Native range input styling with field and Signal Forms support.
+- [Stepper](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/stepper.md): Multi-step progress and navigation indicator.
+- [Switch](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/switch.md): Native switch control styling for binary settings.
+- [Table](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/table.md): Native table styling, sorting context, and selection cells.
+- [Tabs](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/tabs.md): Line and pill tab navigation with optional panel wiring.
+- [Textarea](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/textarea.md): Native multiline input styling with field integration.
+- [Toast](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/toast.md): Global notifications with actions and live-region semantics.
+- [Tooltip](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/tooltip.md): Hover and focus hint.
+- [Tree](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/tree.md): Hierarchical list.
 
 ## Resources
 
-- [AI Support](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/ai-support.md): Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.
-- [Package Smoke](https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md): External consumer verification for package imports, styles, and providers.
+- [AI Support](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/resources/ai-support.md): Agent-readable docs, llms.txt, and local MCP setup for Kikita UI.
+- [Package Smoke](https://kikita-labs.github.io/kikita-ui-docs/v1/llms/resources/smoke.md): External consumer verification for package imports, styles, and providers.
 
 ---
 
 <!-- route: /foundations/accessibility -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/accessibility.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # Accessibility
@@ -148,7 +148,7 @@ Record the actual level of review. Be explicit when only DOM smoke has run.
 ---
 
 <!-- route: /foundations/density -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/density.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # Density
@@ -231,7 +231,7 @@ Density rebinds the padding tokens below; height tokens resolve from data-kui-si
 ---
 
 <!-- route: /foundations/installation -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/installation.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # Installation
@@ -304,7 +304,7 @@ Use these options when a consumer app needs to control which parts of setup are 
 ---
 
 <!-- route: /foundations/theming -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/theming.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # Theming
@@ -387,7 +387,7 @@ These public functions can generate CSS variables for docs, visual tests, or non
 ---
 
 <!-- route: /foundations/tokens -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/tokens.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/tokens.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # Tokens
@@ -472,7 +472,7 @@ Radius and spacing scales are shared by component tokens and docs layout primiti
 ---
 
 <!-- route: /foundations/typography -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/typography.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/foundations/typography.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # Typography
@@ -597,7 +597,7 @@ Typography should strengthen native semantics rather than replace them.
 ---
 
 <!-- route: /components/accordion -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/accordion.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/accordion.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/accordion.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -872,7 +872,7 @@ Available at /components/accordion/playground.
 ---
 
 <!-- route: /components/avatar -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/avatar.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/avatar.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/avatar.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -1164,7 +1164,7 @@ Available at /components/avatar/playground.
 ---
 
 <!-- route: /components/badge -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/badge.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/badge.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/badge.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -1353,7 +1353,7 @@ Available at /components/badge/playground.
 ---
 
 <!-- route: /components/breadcrumbs -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/breadcrumbs.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/breadcrumbs.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -1504,7 +1504,7 @@ Available at /components/breadcrumbs/playground.
 ---
 
 <!-- route: /components/button -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/button.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/button.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/button.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -1770,7 +1770,7 @@ Available at /components/button/playground.
 ---
 
 <!-- route: /components/calendar -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/calendar.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/calendar.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -1990,7 +1990,7 @@ Available at /components/calendar/playground.
 ---
 
 <!-- route: /components/card -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/card.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/card.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/card.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -2227,7 +2227,7 @@ Available at /components/card/playground.
 ---
 
 <!-- route: /components/checkbox -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/checkbox.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/checkbox.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/checkbox.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -2405,7 +2405,7 @@ Available at /components/checkbox/playground.
 ---
 
 <!-- route: /components/chip -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/chip.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/chip.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/chip.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -2718,7 +2718,7 @@ Available at /components/chip/playground.
 ---
 
 <!-- route: /components/color-input -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/color-input.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/color-input.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/color-input.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -2839,7 +2839,7 @@ Available at /components/color-input/playground.
 ---
 
 <!-- route: /components/combobox -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/combobox.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/combobox.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/combobox.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -3310,7 +3310,7 @@ Available at /components/combobox/playground.
 ---
 
 <!-- route: /components/command-palette -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/command-palette.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/command-palette.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/command-palette.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -3505,7 +3505,7 @@ Available at /components/command-palette/playground.
 ---
 
 <!-- route: /components/date-picker -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/date-picker.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/date-picker.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/date-picker.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -3662,7 +3662,7 @@ Available at /components/date-picker/playground.
 ---
 
 <!-- route: /components/dialog -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/dialog.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/dialog.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/dialog.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -4050,7 +4050,7 @@ Available at /components/dialog/playground.
 ---
 
 <!-- route: /components/drawer -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/drawer.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/drawer.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/drawer.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -4456,7 +4456,7 @@ Available at /components/drawer/playground.
 ---
 
 <!-- route: /components/dropdown -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/dropdown.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/dropdown.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/dropdown.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -4763,7 +4763,7 @@ Available at /components/dropdown/playground.
 ---
 
 <!-- route: /components/empty-state -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/empty-state.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/empty-state.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/empty-state.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -5031,7 +5031,7 @@ Available at /components/empty-state/playground.
 ---
 
 <!-- route: /components/field -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/field.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/field.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/field.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -5138,7 +5138,7 @@ Available at /components/field/playground.
 ---
 
 <!-- route: /components/file-upload -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/file-upload.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/file-upload.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/file-upload.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -5286,7 +5286,7 @@ Available at /components/file-upload/playground.
 ---
 
 <!-- route: /components/group -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/group.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/group.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/group.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -5570,7 +5570,7 @@ Available at /components/group/playground.
 ---
 
 <!-- route: /components/icon -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/icon.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/icon.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -5775,7 +5775,7 @@ Available at /components/icon/playground.
 ---
 
 <!-- route: /components/icon-button -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon-button.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/icon-button.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/icon-button.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -6035,7 +6035,7 @@ Available at /components/icon-button/playground.
 ---
 
 <!-- route: /components/input -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/input.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/input.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/input.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -6162,7 +6162,7 @@ Available at /components/input/playground.
 ---
 
 <!-- route: /components/loader -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/loader.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/loader.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -6343,7 +6343,7 @@ Available at /components/loader/playground.
 ---
 
 <!-- route: /components/menu -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/menu.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/menu.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -6548,7 +6548,7 @@ Available at /components/menu/playground.
 ---
 
 <!-- route: /components/number-input -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/number-input.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/number-input.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -6837,7 +6837,7 @@ Available at /components/number-input/playground.
 ---
 
 <!-- route: /components/popover -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/popover.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/popover.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/popover.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -7036,7 +7036,7 @@ Available at /components/popover/playground.
 ---
 
 <!-- route: /components/progress -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/progress.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/progress.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/progress.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -7243,7 +7243,7 @@ Available at /components/progress/playground.
 ---
 
 <!-- route: /components/radio -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/radio.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/radio.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/radio.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -7550,7 +7550,7 @@ Available at /components/radio/playground.
 ---
 
 <!-- route: /components/scrollbar -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/scrollbar.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/scrollbar.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/scrollbar.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -7671,7 +7671,7 @@ No playground for this component.
 ---
 
 <!-- route: /components/segmented -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/segmented.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/segmented.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/segmented.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -7804,7 +7804,7 @@ Available at /components/segmented/playground.
 ---
 
 <!-- route: /components/select -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/select.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/select.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/select.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -8006,7 +8006,7 @@ Available at /components/select/playground.
 ---
 
 <!-- route: /components/separator -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/separator.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/separator.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/separator.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -8236,7 +8236,7 @@ Available at /components/separator/playground.
 ---
 
 <!-- route: /components/skeleton -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/skeleton.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/skeleton.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/skeleton.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -8495,7 +8495,7 @@ Available at /components/skeleton/playground.
 ---
 
 <!-- route: /components/slider -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/slider.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/slider.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/slider.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -8768,7 +8768,7 @@ Available at /components/slider/playground.
 ---
 
 <!-- route: /components/stepper -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/stepper.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/stepper.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/stepper.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -8905,7 +8905,7 @@ Available at /components/stepper/playground.
 ---
 
 <!-- route: /components/switch -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/switch.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/switch.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/switch.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -9067,7 +9067,7 @@ Available at /components/switch/playground.
 ---
 
 <!-- route: /components/table -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/table.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/table.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/table.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -9570,7 +9570,7 @@ Available at /components/table/playground.
 ---
 
 <!-- route: /components/tabs -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tabs.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/tabs.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/tabs.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -9863,7 +9863,7 @@ Available at /components/tabs/playground.
 ---
 
 <!-- route: /components/textarea -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/textarea.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/textarea.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/textarea.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -10053,7 +10053,7 @@ Available at /components/textarea/playground.
 ---
 
 <!-- route: /components/toast -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/toast.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/toast.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/toast.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -10341,7 +10341,7 @@ Available at /components/toast/playground.
 ---
 
 <!-- route: /components/tooltip -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tooltip.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/tooltip.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/tooltip.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -10480,7 +10480,7 @@ Available at /components/tooltip/playground.
 ---
 
 <!-- route: /components/tree -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/tree.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/components/tree.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/tree.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
@@ -10621,7 +10621,7 @@ Available at /components/tree/playground.
 ---
 
 <!-- route: /resources/ai-support -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/resources/ai-support.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/resources/ai-support.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # AI Support
@@ -10640,10 +10640,10 @@ Use llms.txt for a concise index and llms-full.txt when an agent needs the full 
 
 ```md
 Start with:
-https://kikita-labs.github.io/kikita-ui-docs/llms.txt
+https://kikita-labs.github.io/kikita-ui-docs/v1/llms.txt
 
 Use full context only when the curated index is not enough:
-https://kikita-labs.github.io/kikita-ui-docs/llms-full.txt
+https://kikita-labs.github.io/kikita-ui-docs/v1/llms-full.txt
 ```
 
 ### Local MCP
@@ -10655,7 +10655,7 @@ Run the read-only stdio MCP server locally with npx. It exposes package docs, co
   "mcpServers": {
     "kikita-ui": {
       "command": "npx",
-      "args": ["-y", "@kikita-labs/ui-mcp@latest"]
+      "args": ["-y", "@kikita-labs/ui-mcp@latest-1"]
     }
   }
 }
@@ -10669,7 +10669,7 @@ Give agents a short rule that keeps them on published package APIs and the gener
 Use Kikita UI docs through the kikita-ui MCP server.
 Prefer package APIs and examples returned by the server.
 Do not invent component inputs, outputs, CSS hooks, or imports.
-If MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/llms.txt first, then llms-full.txt when full context is needed.
+If MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/v1/llms.txt first, then llms-full.txt when full context is needed.
 ```
 
 ### Version boundary
@@ -10678,7 +10678,7 @@ The MCP package is generated from this docs site's installed @kikita-labs/ui ver
 ---
 
 <!-- route: /resources/smoke -->
-<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/resources/smoke.md -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/v1/llms/resources/smoke.md -->
 <!-- package: @kikita-labs/ui@1.8.0 -->
 
 # Package Smoke

@@ -14,10 +14,10 @@ Use llms.txt for a concise index and llms-full.txt when an agent needs the full 
 
 ```md
 Start with:
-https://kikita-labs.github.io/kikita-ui-docs/llms.txt
+https://kikita-labs.github.io/kikita-ui-docs/v1/llms.txt
 
 Use full context only when the curated index is not enough:
-https://kikita-labs.github.io/kikita-ui-docs/llms-full.txt
+https://kikita-labs.github.io/kikita-ui-docs/v1/llms-full.txt
 ```
 
 ### Local MCP
@@ -29,7 +29,7 @@ Run the read-only stdio MCP server locally with npx. It exposes package docs, co
   "mcpServers": {
     "kikita-ui": {
       "command": "npx",
-      "args": ["-y", "@kikita-labs/ui-mcp@latest"]
+      "args": ["-y", "@kikita-labs/ui-mcp@latest-1"]
     }
   }
 }
@@ -43,7 +43,7 @@ Give agents a short rule that keeps them on published package APIs and the gener
 Use Kikita UI docs through the kikita-ui MCP server.
 Prefer package APIs and examples returned by the server.
 Do not invent component inputs, outputs, CSS hooks, or imports.
-If MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/llms.txt first, then llms-full.txt when full context is needed.
+If MCP is unavailable, use https://kikita-labs.github.io/kikita-ui-docs/v1/llms.txt first, then llms-full.txt when full context is needed.
 ```
 
 ### Version boundary
