@@ -125,20 +125,26 @@ Required MCP prompts:
 Tools must remain read-only at first. Any future write tool must require a
 separate plan, explicit user confirmation, clear input schemas, and tests.
 
-Publish through `.github/workflows/publish-mcp.yml`: pushing a `mcp-v*` tag runs
-CI (checkout, install, MCP smoke check, `npm publish ./mcp`) and authenticates
-via npm Trusted Publishing (GitHub Actions OIDC, no `NPM_TOKEN`). CI does not
-regenerate the agent surface -- it publishes exactly what was reviewed and
-committed, so a tag can't silently ship an unreviewed regeneration. Run
-`npm run generate:agent-surface` locally and commit the result _before_
-tagging, then bump `mcp/package.json` and tag and push
-(`git tag mcp-v<version> && git push origin mcp-v<version>`). Pushing the tag
-is what triggers the publish -- there is no separate manual publish step.
+Publishing is automatic and driven by the version in `mcp/package.json`.
+`.github/workflows/publish-mcp.yml` runs on every push to `main` or
+`release/*.x` that touches `mcp/**`. If that version is not on npm yet it runs
+the MCP smoke check, publishes `./mcp` through npm Trusted Publishing (GitHub
+Actions OIDC, no `NPM_TOKEN`) and tags the commit `mcp-v<version>`; if the
+version already exists the run is a no-op. CI never regenerates the agent
+surface: it publishes exactly the committed data.
+
+To release: run `pnpm generate:agent-surface`, bump `mcp/package.json`, and
+commit both together. Do not push tags or run `npm publish` by hand.
+
+Guards (`pnpm check:mcp-version`, part of the quality gate and therefore of the
+deploy): the MCP major must equal the installed `@kikita-labs/ui` major, and when
+the version in `mcp/package.json` is already on npm the generated data must be
+identical to the published data, so data can never change without a version bump.
 
 The workflow picks the npm dist-tag from the version: the newest major gets
 `latest`, an older major gets `latest-<major>` (for example a 1.x fix from
-`release/1.x` after 2.0 shipped), and a prerelease gets `next`. It also fails when
-the tag does not match `mcp/package.json`. See `.agents/versioned-docs.md`.
+`release/1.x` after 2.0 shipped), and a prerelease gets `next`. See
+`.agents/versioned-docs.md`.
 
 ## SSR Safety
 

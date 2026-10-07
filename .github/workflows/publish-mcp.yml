@@ -1,18 +1,30 @@
 name: Publish @kikita-labs/ui-mcp
 
+# Publishes the MCP package whenever a version that is not on npm yet reaches main or a release
+# branch. A merge without a version bump is a no-op, and `pnpm check:mcp-version` fails the
+# quality gate when the data changed without a bump, so changing the data always means a bump.
+#
 # Trusted Publishing: npm exchanges this workflow's OIDC token for a
 # short-lived publish credential. No NPM_TOKEN secret involved -- the trust
 # relationship is configured on npmjs.com under the package's
 # Settings > Trusted Publisher (GitHub Actions, org kikita-labs, repo
-# kikita-ui-docs, workflow filename publish-mcp.yml).
+# kikita-ui-docs, workflow filename publish-mcp.yml). Keep the file name.
 on:
   push:
-    tags:
-      - 'mcp-v*'
+    branches:
+      - main
+      - 'release/*.x'
+    paths:
+      - 'mcp/**'
+  workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
+
+concurrency:
+  group: publish-mcp-${{ github.ref_name }}
+  cancel-in-progress: false
 
 jobs:
   publish:
@@ -20,9 +32,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Read the version and check whether npm already has it
+        id: version
+        run: |
+          version=$(node -p "require('./mcp/package.json').version")
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          published=$(curl -fsS "https://registry.npmjs.org/@kikita-labs%2Fui-mcp" | node -e "
+            let s = ''; process.stdin.on('data', (d) => (s += d)).on('end', () => {
+              console.log(JSON.parse(s).versions?.['$version'] ? 'true' : 'false');
+            });")
+          echo "published=$published" >> "$GITHUB_OUTPUT"
+          echo "MCP $version already published: $published"
+
       - uses: pnpm/action-setup@v4
+        if: steps.version.outputs.published == 'false'
 
       - uses: actions/setup-node@v4
+        if: steps.version.outputs.published == 'false'
         with:
           node-version-file: .nvmrc
           registry-url: https://registry.npmjs.org
@@ -30,31 +56,26 @@ jobs:
 
       # OIDC trusted publishing needs npm CLI >= 11.5.1.
       - run: npm install -g npm@latest
+        if: steps.version.outputs.published == 'false'
 
       - run: pnpm install --frozen-lockfile
+        if: steps.version.outputs.published == 'false'
 
-      # mcp/generated/kikita-agent-data.json is committed, not regenerated
-      # here, so a tag always publishes exactly what was reviewed. Regenerate
-      # and commit it locally (pnpm generate:agent-surface) before tagging.
+      # mcp/generated/kikita-agent-data.json is committed, not regenerated here, so a publish is
+      # exactly what was reviewed. Regenerate it locally (pnpm generate:agent-surface) and bump
+      # the version in the same commit.
       - run: npm run check:mcp
-
-      # The tag must name the version it publishes, so a typo cannot ship another version.
-      - name: Verify the tag matches mcp/package.json
-        run: |
-          version=$(node -p "require('./mcp/package.json').version")
-          test "mcp-v$version" = "$GITHUB_REF_NAME" || {
-            echo "Tag $GITHUB_REF_NAME does not match mcp/package.json version $version."
-            exit 1
-          }
+        if: steps.version.outputs.published == 'false'
 
       # Publishing without --tag moves `latest`. A release of an older major (for example a 1.x
       # fix after 2.0.0 shipped) must not take `latest` from the newest major, so it is published
       # as `latest-<major>`; prereleases go to `next`. npm rejects tag names that begin with a
       # number or `v`, so `v1` would not be a valid tag.
       - name: Resolve the npm dist-tag
+        if: steps.version.outputs.published == 'false'
         id: dist-tag
         run: |
-          version=$(node -p "require('./mcp/package.json').version")
+          version=${{ steps.version.outputs.version }}
           major=${version%%.*}
           latest=$(npm view @kikita-labs/ui-mcp dist-tags.latest --@kikita-labs:registry=https://registry.npmjs.org/ || true)
           latest_major=${latest%%.*}
@@ -69,3 +90,11 @@ jobs:
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
       - run: npm publish ./mcp --access public --tag "${{ steps.dist-tag.outputs.tag }}" --@kikita-labs:registry=https://registry.npmjs.org/
+        if: steps.version.outputs.published == 'false'
+
+      # A tag only records what was released; it does not trigger anything.
+      - name: Tag the release
+        if: steps.version.outputs.published == 'false'
+        run: |
+          git tag "mcp-v${{ steps.version.outputs.version }}"
+          git push origin "mcp-v${{ steps.version.outputs.version }}"

@@ -35,6 +35,8 @@ jobs:
 
       - run: pnpm run check:site-config
 
+      - run: pnpm run check:mcp-version
+
       - run: pnpm run check:agent-surface
 
   build:

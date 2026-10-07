@@ -1,0 +1,72 @@
+name: Watch for a new UI major
+
+# When @kikita-labs/ui publishes a new major on npm while main still documents the previous one,
+# archive the current docs automatically and open an issue with the remaining steps, so the
+# release-day work cannot be forgotten.
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+  issues: write
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Compare the published major with the documented major
+        id: majors
+        run: |
+          docs_version=$(node -p "require('./package.json').dependencies['@kikita-labs/ui']")
+          docs_major=${docs_version%%.*}
+          latest=$(npm view @kikita-labs/ui dist-tags.latest --@kikita-labs:registry=https://registry.npmjs.org/)
+          latest_major=${latest%%.*}
+          echo "docs_major=$docs_major" >> "$GITHUB_OUTPUT"
+          echo "latest=$latest" >> "$GITHUB_OUTPUT"
+          echo "latest_major=$latest_major" >> "$GITHUB_OUTPUT"
+          if [ "$latest_major" -gt "$docs_major" ]; then
+            echo "new_major=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "new_major=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "docs documents v$docs_major, npm latest is $latest"
+
+      - name: Archive the current docs when no release branch exists yet
+        if: steps.majors.outputs.new_major == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="release/${{ steps.majors.outputs.docs_major }}.x"
+          if git ls-remote --exit-code --heads origin "$branch" > /dev/null; then
+            echo "$branch already exists."
+          else
+            gh workflow run cut-docs-release-branch.yml -f source_ref=main
+          fi
+
+      - name: Open an issue with the remaining steps
+        if: steps.majors.outputs.new_major == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Sync docs to @kikita-labs/ui ${{ steps.majors.outputs.latest_major }}.x (new major)"
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq 'length')
+          if [ "$existing" = "0" ]; then
+            gh issue create --title "$title" --body "@kikita-labs/ui ${{ steps.majors.outputs.latest }} is on npm, but this repo still documents v${{ steps.majors.outputs.docs_major }}.
+
+          Done automatically: the \"Cut docs release branch\" workflow was started for v${{ steps.majors.outputs.docs_major }} (it archives the current docs under /v${{ steps.majors.outputs.docs_major }}/).
+
+          Remaining steps (see .agents/versioned-docs.md):
+          - [ ] Wait for the \"Archive documentation version\" run on release/${{ steps.majors.outputs.docs_major }}.x to succeed.
+          - [ ] Sync the library on main (/library-sync) and set mcp/package.json to ${{ steps.majors.outputs.latest_major }}.0.0.
+          - [ ] Add { \"id\": \"v${{ steps.majors.outputs.docs_major }}\", \"label\": \"v${{ steps.majors.outputs.docs_major }}\", \"status\": \"maintained\" } to docs-archive.json.
+          - [ ] Push to main: the deploy publishes both versions and the MCP package is published by its version bump."
+          fi

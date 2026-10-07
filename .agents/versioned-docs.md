@@ -72,11 +72,17 @@ Example: `@kikita-labs/ui` 2.0.0 is published and v1 becomes an archive.
    `https://kikita-labs.github.io/kikita-ui-docs/sitemap.xml` in Google Search
    Console (optional; crawlers also discover pages by following links).
 
-Nothing here has to be remembered. `pnpm check:site-config` (pre-push hook and
-quality gate) fails on `main` when the installed major is N and
-`docs-archive.json` has no `v<N-1>` entry, and the message says what to run. If
-the library was already updated, run the workflow with `source_ref` set to the
-last commit that still documents the old major.
+Nothing here has to be remembered:
+
+- `watch-ui-major.yml` runs daily. When npm's `@kikita-labs/ui` major is higher
+  than the one documented on `main`, it starts "Cut docs release branch" for the
+  current major by itself (once) and opens a GitHub issue with the remaining
+  steps, which notifies you.
+- `pnpm check:site-config` (pre-push hook and
+  quality gate) fails on `main` when the installed major is N and
+  `docs-archive.json` has no `v<N-1>` entry, and the message says what to run. If
+  the library was already updated, run the workflow with `source_ref` set to the
+  last commit that still documents the old major.
 
 The `ai-support` page and the agent surface derive their URLs and MCP package
 specifier (`@latest-1` on an archived branch) from the site config, so nothing
@@ -178,9 +184,9 @@ stable. The version prefix is irrelevant to the page.
   registry's `latest` -> `latest-<major>`, prerelease -> `next`) and refuses a
   tag that does not match `mcp/package.json`. npm rejects tag names beginning
   with a number or `v`, so `v1` is not usable.
-- Publishing is still CI-only through a `mcp-v<version>` tag and still needs the
-  explicit owner confirmation required by `.agents/library-sync.md`. Never
-  publish `@kikita-labs/ui-mcp` as a side effect of version work.
+- Publishing is automatic: bumping `mcp/package.json` together with the
+  regenerated data and merging to `main` or `release/<major>.x` publishes it
+  (see `.agents/agent-surface.md`). Never publish by hand or push tags.
 
 ## Verification
 

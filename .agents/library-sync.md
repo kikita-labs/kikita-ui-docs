@@ -112,22 +112,20 @@ API schema, foundation page, or generator instead.
 
 `pnpm generate:agent-surface` writes `mcp/generated/kikita-agent-data.json`. If
 that file changed (`git status --short mcp/`), the `@kikita-labs/ui-mcp` package
-on npm is now stale relative to the repo.
+on npm is stale relative to the repo, so the same commit must bump
+`mcp/package.json` (a patch bump for content-only changes, `<major>.0.0` when the
+library major changes).
 
-Never publish `@kikita-labs/ui-mcp` (or any package) silently, and never bury a
-pending-publish decision inside a longer report. Stop and ask the user
-explicitly — a standalone question, not a trailing bullet in a summary — before
-bumping `mcp/package.json` or publishing. This applies every time the sync
-detects drift, even if a prior sync in the same session already asked and was
-told yes.
+Publishing is automatic: when that commit reaches `main` (or a
+`release/<major>.x` branch), `.github/workflows/publish-mcp.yml` publishes the new
+version with npm Trusted Publishing and tags it `mcp-v<version>`. There is no tag
+to push and no `npm publish` to run; never publish locally (a stale `~/.npmrc`
+token surfaces as a misleading 404, not 401).
 
-Publishing happens through `.github/workflows/publish-mcp.yml` (Trusted
-Publishing / OIDC), triggered by pushing a `mcp-v*` tag — not by running
-`npm publish` locally. A local publish will fail (a stale `~/.npmrc` npm token
-surfaces as a misleading 404, not 401) and is not how this package is meant to
-ship. After the user confirms, the flow is: bump `mcp/package.json`, commit,
-push to `main`, then `git tag mcp-v<version>` and
-`git push origin mcp-v<version>`.
+`pnpm check:mcp-version` (quality gate) fails when the data changed without a
+version bump or when the MCP major differs from the library major, so a stale
+package cannot go unnoticed. State the bump and the resulting publish in the
+sync report.
 
 ## Older Major Versions (Release Branches)
 
@@ -145,7 +143,6 @@ Each older major of `@kikita-labs/ui` is documented from its own
   `/<id>/` directory. Do not run the sync flow for it on `main`.
 - A change that applies to several versions is made on each branch separately.
 - `@kikita-labs/ui-mcp` follows the same majors. A release-branch sync that
-  changes `mcp/generated/kikita-agent-data.json` needs a 1.x MCP release from
+  changes `mcp/generated/kikita-agent-data.json` bumps the 1.x MCP version on
   that branch; `publish-mcp.yml` publishes it under `latest-<major>` so `latest`
-  stays on the newest major. The explicit-confirmation rule below still applies
-  before any bump or tag.
+  stays on the newest major.
