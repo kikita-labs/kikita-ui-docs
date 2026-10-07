@@ -15,7 +15,7 @@ export const PROGRESS_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-progress-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiProgressComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-progress-example',\n  imports: [KuiProgressComponent],\n  templateUrl: './basic-progress-example.html',\n  styleUrl: './basic-progress-example.scss',\n})\nexport class BasicProgressExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiProgress } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-progress-example',\n  imports: [KuiProgress],\n  templateUrl: './basic-progress-example.html',\n  styleUrl: './basic-progress-example.scss',\n})\nexport class BasicProgressExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const PROGRESS_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "progress-circular-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiProgressComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-progress-circular-example',\n  imports: [KuiProgressComponent],\n  templateUrl: './progress-circular-example.html',\n  styleUrl: './progress-circular-example.scss',\n})\nexport class ProgressCircularExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiProgress } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-progress-circular-example',\n  imports: [KuiProgress],\n  templateUrl: './progress-circular-example.html',\n  styleUrl: './progress-circular-example.scss',\n})\nexport class ProgressCircularExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const PROGRESS_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "progress-color-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiProgressComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-progress-color-size-example',\n  imports: [KuiProgressComponent],\n  templateUrl: './progress-color-size-example.html',\n  styleUrl: './progress-color-size-example.scss',\n})\nexport class ProgressColorSizeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiProgress } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-progress-color-size-example',\n  imports: [KuiProgress],\n  templateUrl: './progress-color-size-example.html',\n  styleUrl: './progress-color-size-example.scss',\n})\nexport class ProgressColorSizeExample {}",
     },
     {
       label: "SCSS",

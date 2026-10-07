@@ -27,14 +27,14 @@ export const EMPTY_STATE_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: '[kuiEmptyStateIcon]',
-    type: 'KuiEmptyStateIconDirective',
+    type: 'KuiEmptyStateIcon',
     defaultValue: '-',
     description:
       'Marks projected visual content as the decorative icon slot. Kikita marks it aria-hidden.',
   },
   {
     name: '[kuiEmptyStateActions]',
-    type: 'KuiEmptyStateActionsDirective',
+    type: 'KuiEmptyStateActions',
     defaultValue: '-',
     description:
       'Marks projected content as the action slot for native buttons, links, or Kikita button directives.',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiTextDirective } from '@kikita-labs/ui';
+import { KuiText } from '@kikita-labs/ui';
 
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
@@ -18,7 +18,7 @@ import {
 
 @Component({
   selector: 'app-typography-page',
-  imports: [ApiTable, CodeTabs, DocSection, KuiTextDirective, PageHeader],
+  imports: [ApiTable, CodeTabs, DocSection, KuiText, PageHeader],
   templateUrl: './typography-page.html',
   styleUrl: './typography-page.scss',
 })

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';
+import { KuiField, KuiFieldAffix, KuiInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-input-group-example',
-  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective],
+  imports: [KuiFieldAffix, KuiField, KuiInput],
   templateUrl: './input-group-example.html',
   styleUrl: './input-group-example.scss',
 })

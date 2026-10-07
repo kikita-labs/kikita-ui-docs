@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective } from '@kikita-labs/ui';
+import { KuiButton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-button-size-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './button-size-example.html',
   styleUrl: './button-size-example.scss',
 })

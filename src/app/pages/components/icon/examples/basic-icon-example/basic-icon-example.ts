@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';
+import { KuiIcon, KuiIconButton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-icon-example',
-  imports: [KuiIconButtonDirective, KuiIconComponent],
+  imports: [KuiIconButton, KuiIcon],
   templateUrl: './basic-icon-example.html',
   styleUrl: './basic-icon-example.scss',
 })

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiSegmentDirective, KuiSegmentedComponent, type KuiSize } from '@kikita-labs/ui';
+import { KuiSegment, KuiSegmented, type KuiSize } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
@@ -29,7 +29,7 @@ type SegmentedPlaygroundValues = PlaygroundValues<typeof SEGMENTED_PLAYGROUND_CO
 
 @Component({
   selector: 'app-segmented-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiSegmentDirective, KuiSegmentedComponent],
+  imports: [ApiPlayground, ApiTable, KuiSegment, KuiSegmented],
   templateUrl: './segmented-playground-page.html',
   styleUrl: './segmented-playground-page.scss',
 })

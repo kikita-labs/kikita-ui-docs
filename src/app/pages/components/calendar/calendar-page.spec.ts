@@ -42,7 +42,8 @@ describe('CalendarPage', () => {
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Calendar');
     expect(sectionIds).toEqual(['import', 'usage', 'states', 'api', 'accessibility']);
-    expect(root.querySelectorAll('app-live-preview kui-calendar')).toHaveLength(2);
+    expect(root.querySelectorAll('app-live-preview kui-calendar')).toHaveLength(1);
+    expect(root.querySelectorAll('app-live-preview kui-calendar-range')).toHaveLength(1);
   });
 
   it('keeps manifest loaders and generated example ownership aligned', async () => {

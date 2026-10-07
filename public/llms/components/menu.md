@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/menu
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiMenuComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/menu.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiMenu from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/menu.md
 
 ## Install
 
@@ -66,23 +66,11 @@ Rendered at /components/menu:
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiMenuComponent,
-  KuiMenuForDirective,
-  KuiMenuItemDirective,
-  KuiSeparatorDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiMenu, KuiMenuFor, KuiMenuItem, KuiSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-menu-example',
-  imports: [
-    KuiButtonDirective,
-    KuiMenuComponent,
-    KuiMenuForDirective,
-    KuiMenuItemDirective,
-    KuiSeparatorDirective,
-  ],
+  imports: [KuiButton, KuiMenu, KuiMenuFor, KuiMenuItem, KuiSeparator],
   templateUrl: './basic-menu-example.html',
   styleUrl: './basic-menu-example.scss',
 })
@@ -132,24 +120,17 @@ export class BasicMenuExample {}
 import { Component } from '@angular/core';
 
 import {
-  KuiButtonDirective,
-  KuiMenuComponent,
-  KuiMenuForDirective,
-  KuiMenuHeaderDirective,
-  KuiMenuItemDirective,
-  KuiSeparatorDirective,
+  KuiButton,
+  KuiMenu,
+  KuiMenuFor,
+  KuiMenuHeader,
+  KuiMenuItem,
+  KuiSeparator,
 } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-menu-content-example',
-  imports: [
-    KuiButtonDirective,
-    KuiMenuComponent,
-    KuiMenuForDirective,
-    KuiMenuHeaderDirective,
-    KuiMenuItemDirective,
-    KuiSeparatorDirective,
-  ],
+  imports: [KuiButton, KuiMenu, KuiMenuFor, KuiMenuHeader, KuiMenuItem, KuiSeparator],
   templateUrl: './menu-content-example.html',
   styleUrl: './menu-content-example.scss',
 })
@@ -174,7 +155,7 @@ export class MenuContentExample {}
 | menuAlign | 'start' \| 'end' | 'start' | Alignment along the trigger edge. For top/bottom placement, start is left-aligned and end is right-aligned. For left/right placement, start is top-aligned and end is bottom-aligned. |
 | offset | number | 4 | Pixel gap between the trigger and the menu panel. |
 | minWidth | string \| null | null | Optional overlay minimum width. |
-| [kuiMenuFor] | KuiMenuComponent \| undefined | - | Wires a native trigger to a menu instance and manages trigger ARIA state. |
+| [kuiMenuFor] | KuiMenu \| undefined | - | Wires a native trigger to a menu instance and manages trigger ARIA state. |
 | kuiMenuHeader | - | - | Marks a non-interactive group heading inside the menu panel. Renders with role="presentation". |
 | kuiSeparator | - | - | Native hr[kuiSeparator] divider between menu item groups. See the Separator page for spacing and appearance inputs. |
 | kuiMenuItem.appearance | 'neutral' \| 'destructive' | 'neutral' | Visual treatment for an action item. Use destructive for dangerous actions. |
@@ -191,6 +172,8 @@ export class MenuContentExample {}
 - Inside the menu, `ArrowDown`, `ArrowUp`, `Home`, and `End` move focus.
 - `Escape` closes the menu and returns focus to the trigger.
 - `Tab` closes the menu and lets focus continue normally.
+- When `prefers-reduced-motion: reduce` is active, closing completes without waiting for an exit
+  animation.
 
 ## Playground
 

@@ -1,22 +1,10 @@
 import { Component } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiMenuComponent,
-  KuiMenuForDirective,
-  KuiMenuItemDirective,
-  KuiSeparatorDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiMenu, KuiMenuFor, KuiMenuItem, KuiSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-menu-example',
-  imports: [
-    KuiButtonDirective,
-    KuiMenuComponent,
-    KuiMenuForDirective,
-    KuiMenuItemDirective,
-    KuiSeparatorDirective,
-  ],
+  imports: [KuiButton, KuiMenu, KuiMenuFor, KuiMenuItem, KuiSeparator],
   templateUrl: './basic-menu-example.html',
   styleUrl: './basic-menu-example.scss',
 })

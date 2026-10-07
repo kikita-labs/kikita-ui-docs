@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 
-import {
-  type KuiSkeletonAnimation,
-  KuiSkeletonDirective,
-  type KuiSkeletonShape,
-} from '@kikita-labs/ui';
+import { KuiSkeleton, type KuiSkeletonAnimation, type KuiSkeletonShape } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import { definePlaygroundControls, type PlaygroundValues } from '@shared/docs-ui/api-playground';
@@ -35,7 +31,7 @@ type SkeletonPlaygroundValues = PlaygroundValues<typeof SKELETON_PLAYGROUND_CONT
 
 @Component({
   selector: 'app-skeleton-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiSkeletonDirective],
+  imports: [ApiPlayground, ApiTable, KuiSkeleton],
   templateUrl: './skeleton-playground-page.html',
   styleUrl: './skeleton-playground-page.scss',
 })

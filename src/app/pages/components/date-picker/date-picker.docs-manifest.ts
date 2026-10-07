@@ -6,7 +6,7 @@ export const DATE_PICKER_DOCS_MANIFEST = {
   label: 'Date Picker',
   category: 'forms',
   description: 'Calendar date input.',
-  importName: 'KuiDatePickerDirective',
+  importName: 'KuiDatePicker',
   status: 'available',
   exampleIds: ['basic-date-picker-example'],
   loadPage: () => import('./date-picker-page').then((module) => module.DatePickerPage),

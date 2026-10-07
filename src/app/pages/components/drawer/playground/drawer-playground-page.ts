@@ -8,7 +8,7 @@ import {
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiDrawer } from '@kikita-labs/ui';
+import { KuiButton, kuiDrawer } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -59,7 +59,7 @@ type DrawerPlaygroundValues = PlaygroundValues<typeof DRAWER_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-drawer-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButtonDirective],
+  imports: [ApiPlayground, ApiTable, KuiButton],
   templateUrl: './drawer-playground-page.html',
   styleUrl: './drawer-playground-page.scss',
 })

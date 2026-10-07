@@ -10,6 +10,6 @@ export const SKELETON_IMPORT_TABS = [
     label: 'Import',
     filename: 'skeleton.ts',
     language: 'ts',
-    code: `import { KuiSkeletonDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiSkeleton } from '@kikita-labs/ui';`,
   },
 ] as const satisfies readonly CodeTab[];

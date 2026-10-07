@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
 import {
-  KuiButtonDirective,
+  KuiButton,
+  KuiMenu,
   type KuiMenuAlign,
-  KuiMenuComponent,
-  KuiMenuForDirective,
-  KuiMenuHeaderDirective,
-  KuiMenuItemDirective,
+  KuiMenuFor,
+  KuiMenuHeader,
+  KuiMenuItem,
   type KuiMenuPlacement,
-  KuiSeparatorDirective,
+  KuiSeparator,
 } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
@@ -55,12 +55,12 @@ type MenuPlaygroundValues = PlaygroundValues<typeof MENU_PLAYGROUND_CONTROLS>;
   imports: [
     ApiPlayground,
     ApiTable,
-    KuiButtonDirective,
-    KuiMenuComponent,
-    KuiMenuForDirective,
-    KuiMenuHeaderDirective,
-    KuiMenuItemDirective,
-    KuiSeparatorDirective,
+    KuiButton,
+    KuiMenu,
+    KuiMenuFor,
+    KuiMenuHeader,
+    KuiMenuItem,
+    KuiSeparator,
   ],
   templateUrl: './menu-playground-page.html',
   styleUrl: './menu-playground-page.scss',

@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiFileUploadComponent, type KuiSize, type KuiUploadFile } from '@kikita-labs/ui';
+import { KuiFileUpload, type KuiSize, type KuiUploadFile } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
@@ -43,7 +43,7 @@ type FileUploadPlaygroundValues = PlaygroundValues<typeof FILE_UPLOAD_PLAYGROUND
 
 @Component({
   selector: 'app-file-upload-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiFileUploadComponent],
+  imports: [ApiPlayground, ApiTable, KuiFileUpload],
   templateUrl: './file-upload-playground-page.html',
   styleUrl: './file-upload-playground-page.scss',
 })

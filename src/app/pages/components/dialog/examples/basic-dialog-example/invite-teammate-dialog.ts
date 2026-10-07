@@ -2,10 +2,10 @@ import { Component, inject, signal } from '@angular/core';
 
 import {
   KUI_DIALOG_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDialogContext,
   type KuiDialogHost,
-  KuiInputDirective,
+  KuiInput,
 } from '@kikita-labs/ui';
 
 export interface InviteTeammateData {
@@ -16,7 +16,7 @@ export type InviteTeammateResult = 'sent' | null;
 
 @Component({
   selector: 'app-invite-teammate-dialog',
-  imports: [KuiButtonDirective, KuiInputDirective],
+  imports: [KuiButton, KuiInput],
   templateUrl: './invite-teammate-dialog.html',
 })
 export class InviteTeammateDialog implements KuiDialogHost<

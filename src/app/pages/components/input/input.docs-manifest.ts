@@ -6,7 +6,7 @@ export const INPUT_DOCS_MANIFEST = {
   label: 'Input',
   category: 'forms',
   description: 'Native text input styling with field integration.',
-  importName: 'KuiInputDirective',
+  importName: 'KuiInput',
   status: 'available',
   exampleIds: ['basic-input-example', 'input-group-example'],
   loadPage: () => import('./input-page').then((module) => module.InputPage),

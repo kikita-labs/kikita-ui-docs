@@ -6,7 +6,7 @@ export const CHIP_DOCS_MANIFEST = {
   label: 'Chip',
   category: 'data-identity',
   description: 'Compact token for selected values, filters, and entity references.',
-  importName: 'KuiChipDirective',
+  importName: 'KuiChip',
   status: 'available',
   exampleIds: [
     'basic-chip-example',

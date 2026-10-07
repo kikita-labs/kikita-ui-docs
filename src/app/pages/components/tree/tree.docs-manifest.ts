@@ -6,7 +6,7 @@ export const TREE_DOCS_MANIFEST = {
   label: 'Tree',
   category: 'data-identity',
   description: 'Hierarchical list.',
-  importName: 'KuiTreeComponent',
+  importName: 'KuiTree',
   status: 'available',
   exampleIds: ['basic-tree-example'],
   loadPage: () => import('./tree-page').then((module) => module.TreePage),

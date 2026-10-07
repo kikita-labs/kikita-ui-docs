@@ -10,6 +10,6 @@ export const POPOVER_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'popover.ts',
     language: 'ts',
-    code: `import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiButton, KuiPopover, KuiPopoverFor } from '@kikita-labs/ui';`,
   },
 ];

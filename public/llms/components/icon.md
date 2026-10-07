@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/icon
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiIconComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/icon.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiIcon from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/icon.md
 
 ## Install
 
@@ -19,14 +19,17 @@ ng add @kikita-labs/ui
 
 ```html
 <kui-icon name="check" label="Success" />
+<kui-icon [source]="glyph" label="Gauge" />
 <kui-icon src="/assets/logo.svg" label="Logo" />
 <kui-icon name="check" />
 ```
 
 Omit `label` for decorative icons. Decorative icons render with `aria-hidden="true"`.
 
-`source` (direct inline SVG markup) always takes precedence over `name` and resolves
-synchronously -- no registry lookup, no network request.
+`source` (direct glyph data or inline SVG markup) always takes precedence over `name`; its content
+renders synchronously. A `name` that is found in a static registry also renders synchronously, on
+the first pass, with no promise and no network request. Only names that need an async resolver
+render when it settles.
 
 ## Examples
 
@@ -54,11 +57,11 @@ Rendered at /components/icon:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';
+import { KuiIcon, KuiIconButton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-icon-example',
-  imports: [KuiIconButtonDirective, KuiIconComponent],
+  imports: [KuiIconButton, KuiIcon],
   templateUrl: './basic-icon-example.html',
   styleUrl: './basic-icon-example.scss',
 })
@@ -117,7 +120,7 @@ export class BasicIconExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KUI_ICONS, KuiIconComponent, type KuiIconRegistry } from '@kikita-labs/ui';
+import { KUI_ICONS, KuiIcon, type KuiIconRegistry } from '@kikita-labs/ui';
 
 const MATERIAL_SYMBOLS_ICON_SET: KuiIconRegistry = {
   star: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="m323-245 157-94 157 95-42-178 138-120-182-16-71-168-71 167-182 16 138 120-42 178Zm-90 125 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Zm247-355Z"/></svg>',
@@ -130,7 +133,7 @@ const CUSTOM_ICON_SET: KuiIconRegistry = {
 
 @Component({
   selector: 'app-material-icon-scope',
-  imports: [KuiIconComponent],
+  imports: [KuiIcon],
   template: `<kui-icon name="star" label="Material Symbols star" size="28px" />`,
   providers: [{ provide: KUI_ICONS, multi: true, useValue: MATERIAL_SYMBOLS_ICON_SET }],
 })
@@ -138,7 +141,7 @@ export class MaterialIconScope {}
 
 @Component({
   selector: 'app-custom-icon-scope',
-  imports: [KuiIconComponent],
+  imports: [KuiIcon],
   template: `<kui-icon name="brand-mark" label="Custom brand mark" size="28px" />`,
   providers: [{ provide: KUI_ICONS, multi: true, useValue: CUSTOM_ICON_SET }],
 })
@@ -146,7 +149,7 @@ export class CustomIconScope {}
 
 @Component({
   selector: 'app-swap-icon-set-example',
-  imports: [KuiIconComponent, MaterialIconScope, CustomIconScope],
+  imports: [KuiIcon, MaterialIconScope, CustomIconScope],
   templateUrl: './swap-icon-set-example.html',
   styleUrl: './swap-icon-set-example.scss',
 })

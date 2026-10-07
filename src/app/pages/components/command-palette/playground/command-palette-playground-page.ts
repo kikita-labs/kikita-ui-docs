@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiButtonDirective,
+  KuiButton,
   type KuiCommandGroup,
   type KuiCommandItem,
-  KuiCommandPaletteComponent,
+  KuiCommandPalette,
 } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
@@ -88,7 +88,7 @@ type CommandPalettePlaygroundValues = PlaygroundValues<typeof COMMAND_PALETTE_PL
 
 @Component({
   selector: 'app-command-palette-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButtonDirective, KuiCommandPaletteComponent],
+  imports: [ApiPlayground, ApiTable, KuiButton, KuiCommandPalette],
   templateUrl: './command-palette-playground-page.html',
   styleUrl: './command-palette-playground-page.scss',
 })

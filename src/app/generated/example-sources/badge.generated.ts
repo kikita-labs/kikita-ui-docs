@@ -15,7 +15,7 @@ export const BADGE_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "badge-appearance-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiBadgeDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-badge-appearance-example',\n  imports: [KuiBadgeDirective],\n  templateUrl: './badge-appearance-example.html',\n  styleUrl: './badge-appearance-example.scss',\n})\nexport class BadgeAppearanceExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiBadge } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-badge-appearance-example',\n  imports: [KuiBadge],\n  templateUrl: './badge-appearance-example.html',\n  styleUrl: './badge-appearance-example.scss',\n})\nexport class BadgeAppearanceExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const BADGE_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "badge-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiBadgeDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-badge-size-example',\n  imports: [KuiBadgeDirective],\n  templateUrl: './badge-size-example.html',\n  styleUrl: './badge-size-example.scss',\n})\nexport class BadgeSizeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiBadge } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-badge-size-example',\n  imports: [KuiBadge],\n  templateUrl: './badge-size-example.html',\n  styleUrl: './badge-size-example.scss',\n})\nexport class BadgeSizeExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const BADGE_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-badge-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiBadgeDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-badge-example',\n  imports: [KuiBadgeDirective],\n  templateUrl: './basic-badge-example.html',\n  styleUrl: './basic-badge-example.scss',\n})\nexport class BasicBadgeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiBadge } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-badge-example',\n  imports: [KuiBadge],\n  templateUrl: './basic-badge-example.html',\n  styleUrl: './basic-badge-example.scss',\n})\nexport class BasicBadgeExample {}",
     },
     {
       label: "SCSS",

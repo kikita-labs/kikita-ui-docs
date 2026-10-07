@@ -15,7 +15,7 @@ export const SLIDER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-slider-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-slider-example',\n  imports: [KuiFieldComponent, KuiSliderDirective],\n  templateUrl: './basic-slider-example.html',\n  styleUrl: './basic-slider-example.scss',\n})\nexport class BasicSliderExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiField, KuiSlider } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-slider-example',\n  imports: [KuiField, KuiSlider],\n  templateUrl: './basic-slider-example.html',\n  styleUrl: './basic-slider-example.scss',\n})\nexport class BasicSliderExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const SLIDER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "slider-disabled-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-slider-disabled-example',\n  imports: [KuiFieldComponent, KuiSliderDirective],\n  templateUrl: './slider-disabled-example.html',\n  styleUrl: './slider-disabled-example.scss',\n})\nexport class SliderDisabledExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiField, KuiSlider } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-slider-disabled-example',\n  imports: [KuiField, KuiSlider],\n  templateUrl: './slider-disabled-example.html',\n  styleUrl: './slider-disabled-example.scss',\n})\nexport class SliderDisabledExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const SLIDER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "slider-field-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\nimport { form, FormField, max, min } from '@angular/forms/signals';\n\nimport { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';\n\ninterface SettingsModel {\n  readonly volume: number;\n}\n\n@Component({\n  selector: 'app-slider-field-example',\n  imports: [FormField, KuiFieldComponent, KuiSliderDirective],\n  templateUrl: './slider-field-example.html',\n  styleUrl: './slider-field-example.scss',\n})\nexport class SliderFieldExample {\n  private readonly settingsModel = signal<SettingsModel>({ volume: 60 });\n\n  protected readonly settingsForm = form(this.settingsModel, (path) => {\n    min(path.volume, 0);\n    max(path.volume, 100);\n  });\n}",
+      code: "import { Component, signal } from '@angular/core';\nimport { form, FormField, max, min } from '@angular/forms/signals';\n\nimport { KuiField, KuiSlider } from '@kikita-labs/ui';\n\ninterface SettingsModel {\n  readonly volume: number;\n}\n\n@Component({\n  selector: 'app-slider-field-example',\n  imports: [FormField, KuiField, KuiSlider],\n  templateUrl: './slider-field-example.html',\n  styleUrl: './slider-field-example.scss',\n})\nexport class SliderFieldExample {\n  private readonly settingsModel = signal<SettingsModel>({ volume: 60 });\n\n  protected readonly settingsForm = form(this.settingsModel, (path) => {\n    min(path.volume, 0);\n    max(path.volume, 100);\n  });\n}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const SLIDER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "slider-range-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-slider-range-example',\n  imports: [KuiFieldComponent, KuiSliderDirective],\n  templateUrl: './slider-range-example.html',\n  styleUrl: './slider-range-example.scss',\n})\nexport class SliderRangeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiField, KuiSlider } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-slider-range-example',\n  imports: [KuiField, KuiSlider],\n  templateUrl: './slider-range-example.html',\n  styleUrl: './slider-range-example.scss',\n})\nexport class SliderRangeExample {}",
     },
     {
       label: "SCSS",

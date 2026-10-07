@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiTreeComponent, type KuiTreeNode } from '@kikita-labs/ui';
+import { KuiTree, type KuiTreeNode } from '@kikita-labs/ui';
 
 const PROJECT_NODES: readonly KuiTreeNode[] = [
   {
@@ -22,7 +22,7 @@ const PROJECT_NODES: readonly KuiTreeNode[] = [
 
 @Component({
   selector: 'app-basic-tree-example',
-  imports: [KuiTreeComponent],
+  imports: [KuiTree],
   templateUrl: './basic-tree-example.html',
   styleUrl: './basic-tree-example.scss',
 })

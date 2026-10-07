@@ -6,7 +6,7 @@ export const POPOVER_DOCS_MANIFEST = {
   label: 'Popover',
   category: 'surfaces',
   description: 'Anchored content surface for contextual UI.',
-  importName: 'KuiPopoverComponent',
+  importName: 'KuiPopover',
   status: 'available',
   exampleIds: ['action-popover-example', 'basic-popover-example', 'hover-popover-example'],
   loadPage: () => import('./popover-page').then((module) => module.PopoverPage),

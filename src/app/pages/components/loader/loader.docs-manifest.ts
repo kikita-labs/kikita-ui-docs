@@ -6,7 +6,7 @@ export const LOADER_DOCS_MANIFEST = {
   label: 'Loader',
   category: 'feedback',
   description: 'Inline loading indicator for buttons and status areas.',
-  importName: 'KuiLoaderDirective',
+  importName: 'KuiLoader',
   status: 'available',
   exampleIds: ['basic-loader-example', 'loader-button-example', 'loader-size-example'],
   loadPage: () => import('./loader-page').then((module) => module.LoaderPage),

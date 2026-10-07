@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiGroupDirective,
-  type KuiGroupOrientation,
-  type KuiSize,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiGroup, type KuiGroupOrientation, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -46,7 +41,7 @@ type GroupPlaygroundValues = PlaygroundValues<typeof GROUP_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-group-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButtonDirective, KuiGroupDirective],
+  imports: [ApiPlayground, ApiTable, KuiButton, KuiGroup],
   templateUrl: './group-playground-page.html',
   styleUrl: './group-playground-page.scss',
 })

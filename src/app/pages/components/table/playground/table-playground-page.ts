@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiSelectCellComponent,
-  KuiSelectThComponent,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
+  KuiCell,
+  KuiRow,
+  KuiSelectCell,
+  KuiSelectTh,
+  KuiTable,
+  KuiTh,
+  KuiThGroup,
 } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
@@ -51,13 +51,13 @@ type TablePlaygroundValues = PlaygroundValues<typeof TABLE_PLAYGROUND_CONTROLS>;
   imports: [
     ApiPlayground,
     ApiTable,
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiSelectCellComponent,
-    KuiSelectThComponent,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
+    KuiCell,
+    KuiRow,
+    KuiSelectCell,
+    KuiSelectTh,
+    KuiTable,
+    KuiTh,
+    KuiThGroup,
   ],
   templateUrl: './table-playground-page.html',
   styleUrl: './table-playground-page.scss',

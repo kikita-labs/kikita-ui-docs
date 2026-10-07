@@ -15,7 +15,7 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "field-dropdown-example.ts",
       filename: "field-dropdown-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiDropdownComponent,\n  KuiFieldComponent,\n  KuiOptionDirective,\n  KuiSelectDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-dropdown-example',\n  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],\n  templateUrl: './field-dropdown-example.html',\n})\nexport class FieldDropdownExample {\n  protected readonly fruit = signal<string | null>(null);\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-dropdown-example',\n  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],\n  templateUrl: './field-dropdown-example.html',\n})\nexport class FieldDropdownExample {\n  protected readonly fruit = signal<string | null>(null);\n}",
     },
   ],
   "panel-width-dropdown-example": [
@@ -29,7 +29,7 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "panel-width-dropdown-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiDropdownComponent,\n  KuiDropdownForDirective,\n  KuiOptionDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-panel-width-dropdown-example',\n  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './panel-width-dropdown-example.html',\n  styleUrl: './panel-width-dropdown-example.scss',\n})\nexport class PanelWidthDropdownExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-panel-width-dropdown-example',\n  imports: [KuiButton, KuiDropdown, KuiDropdownFor, KuiOption],\n  templateUrl: './panel-width-dropdown-example.html',\n  styleUrl: './panel-width-dropdown-example.scss',\n})\nexport class PanelWidthDropdownExample {}",
     },
     {
       label: "SCSS",
@@ -49,7 +49,7 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "standalone-dropdown-example.ts",
       filename: "standalone-dropdown-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiDropdownComponent,\n  KuiDropdownForDirective,\n  KuiOptionDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-standalone-dropdown-example',\n  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './standalone-dropdown-example.html',\n})\nexport class StandaloneDropdownExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-standalone-dropdown-example',\n  imports: [KuiButton, KuiDropdown, KuiDropdownFor, KuiOption],\n  templateUrl: './standalone-dropdown-example.html',\n})\nexport class StandaloneDropdownExample {}",
     },
   ],
   "controlled-open-dropdown-example": [
@@ -63,7 +63,7 @@ export const DROPDOWN_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "controlled-open-dropdown-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiDropdownComponent,\n  KuiDropdownForDirective,\n  KuiOptionDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-controlled-open-dropdown-example',\n  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],\n  templateUrl: './controlled-open-dropdown-example.html',\n  styleUrl: './controlled-open-dropdown-example.scss',\n})\nexport class ControlledOpenDropdownExample {\n  protected readonly resultsOpen = signal(false);\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiButton, KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-controlled-open-dropdown-example',\n  imports: [KuiButton, KuiDropdown, KuiDropdownFor, KuiOption],\n  templateUrl: './controlled-open-dropdown-example.html',\n  styleUrl: './controlled-open-dropdown-example.scss',\n})\nexport class ControlledOpenDropdownExample {\n  protected readonly resultsOpen = signal(false);\n}",
     },
     {
       label: "SCSS",

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { type KuiSize, KuiTextareaDirective } from '@kikita-labs/ui';
+import { type KuiSize, KuiTextarea } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -39,7 +39,7 @@ type TextareaPlaygroundValues = PlaygroundValues<typeof TEXTAREA_PLAYGROUND_CONT
 
 @Component({
   selector: 'app-textarea-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiTextareaDirective],
+  imports: [ApiPlayground, ApiTable, KuiTextarea],
   templateUrl: './textarea-playground-page.html',
   styleUrl: './textarea-playground-page.scss',
 })

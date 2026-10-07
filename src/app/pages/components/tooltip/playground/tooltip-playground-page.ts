@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import {
-  KuiButtonDirective,
-  KuiTooltipDirective,
+  KuiButton,
+  KuiTooltip,
   type KuiTooltipPlacement,
   type KuiTooltipTrigger,
 } from '@kikita-labs/ui';
@@ -42,7 +42,7 @@ type TooltipPlaygroundValues = PlaygroundValues<typeof TOOLTIP_PLAYGROUND_CONTRO
 
 @Component({
   selector: 'app-tooltip-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButtonDirective, KuiTooltipDirective],
+  imports: [ApiPlayground, ApiTable, KuiButton, KuiTooltip],
   templateUrl: './tooltip-playground-page.html',
   styleUrl: './tooltip-playground-page.scss',
 })

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiAvatarGroupComponent, type KuiAvatarItem } from '@kikita-labs/ui';
+import { KuiAvatarGroup, type KuiAvatarItem } from '@kikita-labs/ui';
 
 const MEMBERS: readonly KuiAvatarItem[] = [
   { src: 'https://i.pravatar.cc/64?img=12', name: 'Nikita Repin', status: 'online' },
@@ -12,7 +12,7 @@ const MEMBERS: readonly KuiAvatarItem[] = [
 
 @Component({
   selector: 'app-avatar-group-example',
-  imports: [KuiAvatarGroupComponent],
+  imports: [KuiAvatarGroup],
   templateUrl: './avatar-group-example.html',
   styleUrl: './avatar-group-example.scss',
 })

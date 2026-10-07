@@ -15,7 +15,7 @@ export const INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-input-example',\n  imports: [KuiInputDirective],\n  templateUrl: './basic-input-example.html',\n  styleUrl: './basic-input-example.scss',\n})\nexport class BasicInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-input-example',\n  imports: [KuiInput],\n  templateUrl: './basic-input-example.html',\n  styleUrl: './basic-input-example.scss',\n})\nexport class BasicInputExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "input-group-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-input-group-example',\n  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective],\n  templateUrl: './input-group-example.html',\n  styleUrl: './input-group-example.scss',\n})\nexport class InputGroupExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiField, KuiFieldAffix, KuiInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-input-group-example',\n  imports: [KuiFieldAffix, KuiField, KuiInput],\n  templateUrl: './input-group-example.html',\n  styleUrl: './input-group-example.scss',\n})\nexport class InputGroupExample {}",
     },
     {
       label: "SCSS",

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import {
   KUI_DRAWER_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDrawerContext,
   type KuiDrawerHost,
 } from '@kikita-labs/ui';
@@ -15,7 +15,7 @@ export type EditItemResult = 'saved' | 'cancelled';
 
 @Component({
   selector: 'app-edit-item-drawer',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './edit-item-drawer.html',
 })
 export class EditItemDrawer implements KuiDrawerHost<EditItemResult, EditItemData> {

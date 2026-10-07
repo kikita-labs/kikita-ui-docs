@@ -10,6 +10,6 @@ export const AVATAR_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'avatar.ts',
     language: 'ts',
-    code: `import { KuiAvatarComponent, KuiAvatarGroupComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiAvatar, KuiAvatarGroup } from '@kikita-labs/ui';`,
   },
 ];

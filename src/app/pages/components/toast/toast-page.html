@@ -56,7 +56,7 @@
 
   <app-doc-section
     heading="Global defaults"
-    description="provideKuiToastOptions configures app-wide defaults, including maxVisible, which has no runtime setter and can only be configured this way. Provide it once in app.config.ts or a route-level provider."
+    description="defaults.toast configures app-wide defaults, including maxVisible. Provide it once with provideKikitaUi in app.config.ts, or for a subtree with provideKuiDefaults; both follow runtime changes through KuiDefaults."
   >
     <app-code-tabs [tabs]="globalDefaultsTabs" />
   </app-doc-section>
@@ -97,8 +97,8 @@
         <code>prefers-reduced-motion</code> replaces slide animations with an opacity-only fade.
       </li>
       <li>
-        On the server, <code>KuiToastService.open()</code> returns a no-op ref and performs no DOM
-        access, so calling it during SSR is safe.
+        On the server, <code>KuiToast.open()</code> returns a no-op ref and performs no DOM access,
+        so calling it during SSR is safe.
       </li>
     </ul>
   </app-doc-section>

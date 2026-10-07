@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 
-import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
-} from '@kikita-labs/ui';
+import { KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup } from '@kikita-labs/ui';
 
 interface TeamMember {
   readonly id: string;
@@ -25,13 +19,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 @Component({
   selector: 'app-basic-sortable-table-example',
-  imports: [
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
-  ],
+  imports: [KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup],
   templateUrl: './basic-sortable-table-example.html',
   styleUrl: './basic-sortable-table-example.scss',
 })

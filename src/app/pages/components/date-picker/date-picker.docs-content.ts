@@ -11,10 +11,10 @@ export const DATE_PICKER_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'date-picker.ts',
     language: 'ts',
     code: `import {
-  KuiCalendarComponent,
-  KuiDatePickerDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
+  KuiCalendar,
+  KuiDatePicker,
+  KuiDropdown,
+  KuiField,
 } from '@kikita-labs/ui';`,
   },
 ];

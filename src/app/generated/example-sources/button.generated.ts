@@ -15,7 +15,7 @@ export const BUTTON_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-button-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\nimport { KuiButtonDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-button-example',\n  imports: [KuiButtonDirective, RouterLink],\n  templateUrl: './basic-button-example.html',\n  styleUrl: './basic-button-example.scss',\n})\nexport class BasicButtonExample {}",
+      code: "import { Component } from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\nimport { KuiButton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-button-example',\n  imports: [KuiButton, RouterLink],\n  templateUrl: './basic-button-example.html',\n  styleUrl: './basic-button-example.scss',\n})\nexport class BasicButtonExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const BUTTON_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "button-appearance-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-button-appearance-example',\n  imports: [KuiButtonDirective],\n  templateUrl: './button-appearance-example.html',\n  styleUrl: './button-appearance-example.scss',\n})\nexport class ButtonAppearanceExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-button-appearance-example',\n  imports: [KuiButton],\n  templateUrl: './button-appearance-example.html',\n  styleUrl: './button-appearance-example.scss',\n})\nexport class ButtonAppearanceExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const BUTTON_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "button-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-button-size-example',\n  imports: [KuiButtonDirective],\n  templateUrl: './button-size-example.html',\n  styleUrl: './button-size-example.scss',\n})\nexport class ButtonSizeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-button-size-example',\n  imports: [KuiButton],\n  templateUrl: './button-size-example.html',\n  styleUrl: './button-size-example.scss',\n})\nexport class ButtonSizeExample {}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const BUTTON_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "button-icon-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiIconButtonDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-button-icon-example',\n  imports: [KuiButtonDirective, KuiIconButtonDirective],\n  templateUrl: './button-icon-example.html',\n  styleUrl: './button-icon-example.scss',\n})\nexport class ButtonIconExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, KuiIconButton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-button-icon-example',\n  imports: [KuiButton, KuiIconButton],\n  templateUrl: './button-icon-example.html',\n  styleUrl: './button-icon-example.scss',\n})\nexport class ButtonIconExample {}",
     },
     {
       label: "SCSS",

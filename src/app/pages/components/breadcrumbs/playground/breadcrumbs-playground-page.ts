@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 import {
-  KuiBreadcrumbItemDirective,
-  KuiBreadcrumbsDirective,
-  KuiBreadcrumbSeparatorComponent,
+  KuiBreadcrumbItem,
+  KuiBreadcrumbs,
+  KuiBreadcrumbSeparator,
   type KuiBreadcrumbsSize,
 } from '@kikita-labs/ui';
 
@@ -39,13 +39,7 @@ type BreadcrumbsPlaygroundValues = PlaygroundValues<typeof BREADCRUMBS_PLAYGROUN
 
 @Component({
   selector: 'app-breadcrumbs-playground-page',
-  imports: [
-    ApiPlayground,
-    ApiTable,
-    KuiBreadcrumbItemDirective,
-    KuiBreadcrumbSeparatorComponent,
-    KuiBreadcrumbsDirective,
-  ],
+  imports: [ApiPlayground, ApiTable, KuiBreadcrumbItem, KuiBreadcrumbSeparator, KuiBreadcrumbs],
   templateUrl: './breadcrumbs-playground-page.html',
   styleUrl: './breadcrumbs-playground-page.scss',
 })

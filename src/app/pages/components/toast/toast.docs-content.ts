@@ -10,7 +10,7 @@ export const TOAST_IMPORT_TABS = [
     label: 'Import',
     filename: 'toast.ts',
     language: 'ts',
-    code: `import { kuiToast, provideKuiToastOptions } from '@kikita-labs/ui';
+    code: `import { kuiToast, provideKikitaUi } from '@kikita-labs/ui';
 
 // Import runtime styles once, application-wide:
 import '@kikita-labs/ui/styles';`,

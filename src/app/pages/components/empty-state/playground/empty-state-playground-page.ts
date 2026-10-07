@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 
 import {
-  KuiButtonDirective,
-  KuiEmptyStateActionsDirective,
-  KuiEmptyStateComponent,
+  KuiButton,
+  KuiEmptyState,
+  KuiEmptyStateActions,
   type KuiEmptyStateContext,
-  KuiEmptyStateIconDirective,
+  KuiEmptyStateIcon,
   type KuiEmptyStateSize,
-  KuiIconComponent,
+  KuiIcon,
 } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
@@ -54,11 +54,11 @@ type EmptyStatePlaygroundValues = PlaygroundValues<typeof EMPTY_STATE_PLAYGROUND
   imports: [
     ApiPlayground,
     ApiTable,
-    KuiButtonDirective,
-    KuiEmptyStateActionsDirective,
-    KuiEmptyStateComponent,
-    KuiEmptyStateIconDirective,
-    KuiIconComponent,
+    KuiButton,
+    KuiEmptyStateActions,
+    KuiEmptyState,
+    KuiEmptyStateIcon,
+    KuiIcon,
   ],
   templateUrl: './empty-state-playground-page.html',
   styleUrl: './empty-state-playground-page.scss',

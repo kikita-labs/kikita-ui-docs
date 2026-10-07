@@ -6,7 +6,7 @@ export const COLOR_INPUT_DOCS_MANIFEST = {
   label: 'Color Input',
   category: 'forms',
   description: 'Color value input.',
-  importName: 'KuiColorInputDirective',
+  importName: 'KuiColorInput',
   status: 'available',
   exampleIds: ['basic-color-input-example'],
   loadPage: () => import('./color-input-page').then((module) => module.ColorInputPage),

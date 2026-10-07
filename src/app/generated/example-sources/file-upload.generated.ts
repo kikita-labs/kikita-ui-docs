@@ -15,7 +15,7 @@ export const FILE_UPLOAD_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-file-upload-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiFileUploadComponent, type KuiUploadFile } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-file-upload-example',\n  imports: [KuiFileUploadComponent],\n  templateUrl: './basic-file-upload-example.html',\n  styleUrl: './basic-file-upload-example.scss',\n})\nexport class BasicFileUploadExample {\n  protected readonly files = signal<readonly KuiUploadFile[]>([]);\n\n  protected handleRetry(file: KuiUploadFile): void {\n    this.files.update((files) =>\n      files.map((entry) =>\n        entry.id === file.id ? { ...entry, status: 'pending', progress: 0 } : entry,\n      ),\n    );\n  }\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiFileUpload, type KuiUploadFile } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-file-upload-example',\n  imports: [KuiFileUpload],\n  templateUrl: './basic-file-upload-example.html',\n  styleUrl: './basic-file-upload-example.scss',\n})\nexport class BasicFileUploadExample {\n  protected readonly files = signal<readonly KuiUploadFile[]>([]);\n\n  protected handleRetry(file: KuiUploadFile): void {\n    this.files.update((files) =>\n      files.map((entry) =>\n        entry.id === file.id ? { ...entry, status: 'pending', progress: 0 } : entry,\n      ),\n    );\n  }\n}",
     },
     {
       label: "SCSS",

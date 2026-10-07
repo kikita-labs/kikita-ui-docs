@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiInputDirective, type KuiSize } from '@kikita-labs/ui';
+import { KuiInput, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -32,7 +32,7 @@ type InputPlaygroundValues = PlaygroundValues<typeof INPUT_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-input-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiInputDirective],
+  imports: [ApiPlayground, ApiTable, KuiInput],
   templateUrl: './input-playground-page.html',
   styleUrl: './input-playground-page.scss',
 })

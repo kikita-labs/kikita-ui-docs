@@ -10,6 +10,6 @@ export const STEPPER_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'stepper.ts',
     language: 'ts',
-    code: `import { KuiStepComponent, KuiStepperComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiStep, KuiStepper } from '@kikita-labs/ui';`,
   },
 ];

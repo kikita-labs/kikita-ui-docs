@@ -1,11 +1,6 @@
 import { Component, computed, signal } from '@angular/core';
 
-import {
-  KuiComboboxDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiCombobox, KuiDropdown, KuiField, KuiOption } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -52,14 +47,7 @@ type ComboboxPlaygroundValues = PlaygroundValues<typeof COMBOBOX_PLAYGROUND_CONT
 
 @Component({
   selector: 'app-combobox-playground-page',
-  imports: [
-    ApiPlayground,
-    ApiTable,
-    KuiComboboxDirective,
-    KuiDropdownComponent,
-    KuiFieldComponent,
-    KuiOptionDirective,
-  ],
+  imports: [ApiPlayground, ApiTable, KuiCombobox, KuiDropdown, KuiField, KuiOption],
   templateUrl: './combobox-playground-page.html',
   styleUrl: './combobox-playground-page.scss',
 })

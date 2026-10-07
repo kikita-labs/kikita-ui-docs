@@ -62,7 +62,7 @@ export const POPOVER_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: '[kuiPopoverFor]',
-    type: 'KuiPopoverComponent | undefined',
+    type: 'KuiPopover | undefined',
     defaultValue: '-',
     description:
       'Wires any element as a trigger for a kui-popover. Sets aria-expanded and aria-haspopup="dialog" automatically.',

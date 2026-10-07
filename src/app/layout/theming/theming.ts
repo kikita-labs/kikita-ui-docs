@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 import {
-  KuiIconButtonDirective,
-  KuiIconComponent,
-  KuiPopoverComponent,
-  KuiPopoverForDirective,
-  kuiProvideFieldOptions,
+  KuiIcon,
+  KuiIconButton,
+  KuiPopover,
+  KuiPopoverFor,
+  provideKuiDefaults,
 } from '@kikita-labs/ui';
 
 import { SeedColors } from './components/seed-colors/seed-colors';
@@ -13,15 +13,8 @@ import { Typography } from './components/typography/typography';
 
 @Component({
   selector: 'app-theming',
-  imports: [
-    KuiIconButtonDirective,
-    KuiIconComponent,
-    KuiPopoverComponent,
-    KuiPopoverForDirective,
-    SeedColors,
-    Typography,
-  ],
-  providers: [kuiProvideFieldOptions({ size: 'sm' })],
+  imports: [KuiIconButton, KuiIcon, KuiPopover, KuiPopoverFor, SeedColors, Typography],
+  providers: [provideKuiDefaults({ field: { size: 'sm' } })],
   templateUrl: './theming.html',
   styleUrl: './theming.scss',
 })

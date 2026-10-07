@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 
-import {
-  KuiBreadcrumbItemDirective,
-  KuiBreadcrumbsDirective,
-  KuiBreadcrumbSeparatorComponent,
-} from '@kikita-labs/ui';
+import { KuiBreadcrumbItem, KuiBreadcrumbs, KuiBreadcrumbSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-breadcrumbs-example',
-  imports: [KuiBreadcrumbItemDirective, KuiBreadcrumbSeparatorComponent, KuiBreadcrumbsDirective],
+  imports: [KuiBreadcrumbItem, KuiBreadcrumbSeparator, KuiBreadcrumbs],
   templateUrl: './basic-breadcrumbs-example.html',
   styleUrl: './basic-breadcrumbs-example.scss',
 })

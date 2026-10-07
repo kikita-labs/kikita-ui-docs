@@ -15,7 +15,7 @@ export const SEGMENTED_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-segmented-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiSegmentDirective, KuiSegmentedComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-segmented-example',\n  imports: [KuiSegmentDirective, KuiSegmentedComponent],\n  templateUrl: './basic-segmented-example.html',\n  styleUrl: './basic-segmented-example.scss',\n})\nexport class BasicSegmentedExample {\n  protected readonly view = signal('list');\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiSegment, KuiSegmented } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-segmented-example',\n  imports: [KuiSegment, KuiSegmented],\n  templateUrl: './basic-segmented-example.html',\n  styleUrl: './basic-segmented-example.scss',\n})\nexport class BasicSegmentedExample {\n  protected readonly view = signal('list');\n}",
     },
     {
       label: "SCSS",

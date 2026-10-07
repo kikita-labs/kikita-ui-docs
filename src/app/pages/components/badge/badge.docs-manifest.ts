@@ -6,7 +6,7 @@ export const BADGE_DOCS_MANIFEST = {
   label: 'Badge',
   category: 'feedback',
   description: 'Compact status or metadata marker.',
-  importName: 'KuiBadgeDirective',
+  importName: 'KuiBadge',
   status: 'available',
   exampleIds: ['badge-appearance-example', 'badge-size-example', 'basic-badge-example'],
   loadPage: () => import('./badge-page').then((module) => module.BadgePage),

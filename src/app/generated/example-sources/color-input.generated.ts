@@ -15,7 +15,7 @@ export const COLOR_INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-color-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiColorInputDirective, KuiFieldComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-color-input-example',\n  imports: [KuiColorInputDirective, KuiFieldComponent],\n  templateUrl: './basic-color-input-example.html',\n  styleUrl: './basic-color-input-example.scss',\n})\nexport class BasicColorInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiColorInput, KuiField } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-color-input-example',\n  imports: [KuiColorInput, KuiField],\n  templateUrl: './basic-color-input-example.html',\n  styleUrl: './basic-color-input-example.scss',\n})\nexport class BasicColorInputExample {}",
     },
     {
       label: "SCSS",

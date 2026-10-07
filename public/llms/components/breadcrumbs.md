@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/breadcrumbs
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiBreadcrumbsDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/breadcrumbs.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiBreadcrumbs from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/breadcrumbs.md
 
 ## Install
 
@@ -97,15 +97,11 @@ Rendered at /components/breadcrumbs:
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiBreadcrumbItemDirective,
-  KuiBreadcrumbsDirective,
-  KuiBreadcrumbSeparatorComponent,
-} from '@kikita-labs/ui';
+import { KuiBreadcrumbItem, KuiBreadcrumbs, KuiBreadcrumbSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-breadcrumbs-example',
-  imports: [KuiBreadcrumbItemDirective, KuiBreadcrumbSeparatorComponent, KuiBreadcrumbsDirective],
+  imports: [KuiBreadcrumbItem, KuiBreadcrumbSeparator, KuiBreadcrumbs],
   templateUrl: './basic-breadcrumbs-example.html',
   styleUrl: './basic-breadcrumbs-example.scss',
 })
@@ -137,6 +133,12 @@ export class BasicBreadcrumbsExample {}
 - Link crumbs are native `<a>`, focusable with a visible `:focus-visible` ring.
 - The current crumb is a `<span aria-current="page">`, not a link, and is not in tab order.
 - `[kuiBreadcrumbSeparator]` renders a decorative chevron `<li aria-hidden="true">`, never read by assistive technology.
+
+Breadcrumb links intentionally do not compose `[kuiLink]`. Breadcrumbs owns its
+navigation-specific spacing, responsive size scale, color tokens, separator
+relationship, and current-page treatment; applying generic Link styling would
+create competing visual contracts. Keep navigable crumbs as native anchors with
+`[kuiBreadcrumbItem]`.
 
 ## Playground
 

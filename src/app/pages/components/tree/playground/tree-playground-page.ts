@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-import { type KuiSize, KuiTreeComponent, type KuiTreeNode } from '@kikita-labs/ui';
+import { type KuiSize, KuiTree, type KuiTreeNode } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
@@ -57,7 +57,7 @@ const LAZY_CHILDREN: readonly KuiTreeNode[] = [
 
 @Component({
   selector: 'app-tree-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiTreeComponent],
+  imports: [ApiPlayground, ApiTable, KuiTree],
   templateUrl: './tree-playground-page.html',
   styleUrl: './tree-playground-page.scss',
 })

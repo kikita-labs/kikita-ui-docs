@@ -93,7 +93,7 @@ export const DROPDOWN_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: '[kuiDropdownFor]',
-    type: 'KuiDropdownComponent',
+    type: 'KuiDropdown',
     defaultValue: '-',
     description:
       'Wires a standalone trigger to a dropdown instance and manages click toggling, aria-expanded, and aria-haspopup. Prefer a native button so keyboard behavior is already correct.',
@@ -103,7 +103,7 @@ export const DROPDOWN_API_ROWS: readonly ApiTableRow[] = [
     type: 'unknown',
     defaultValue: '-',
     description:
-      'Required. The value an option renders and emits. Set via the `value` input on `KuiOptionDirective`, e.g. `<div kuiOption value="edit">`.',
+      'Required. The value an option renders and emits. Set via the `value` input on `KuiOption`, e.g. `<div kuiOption value="edit">`.',
   },
   {
     name: '[kuiOption] disabled',

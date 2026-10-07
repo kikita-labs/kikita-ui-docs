@@ -2,11 +2,11 @@ import { Component, DestroyRef, inject } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiToast } from '@kikita-labs/ui';
+import { KuiButton, kuiToast } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-toast-action-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './toast-action-example.html',
   styleUrl: './toast-action-example.scss',
 })

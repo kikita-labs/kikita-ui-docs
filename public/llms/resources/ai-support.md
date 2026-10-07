@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /resources/ai-support
-- Package: @kikita-labs/ui@1.8.0
+- Package: @kikita-labs/ui@2.0.0
 
 ## Content
 

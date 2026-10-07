@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/tree
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiTreeComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/tree.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiTree from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/tree.md
 
 ## Install
 
@@ -60,7 +60,7 @@ Rendered at /components/tree:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiTreeComponent, type KuiTreeNode } from '@kikita-labs/ui';
+import { KuiTree, type KuiTreeNode } from '@kikita-labs/ui';
 
 const PROJECT_NODES: readonly KuiTreeNode[] = [
   {
@@ -82,7 +82,7 @@ const PROJECT_NODES: readonly KuiTreeNode[] = [
 
 @Component({
   selector: 'app-basic-tree-example',
-  imports: [KuiTreeComponent],
+  imports: [KuiTree],
   templateUrl: './basic-tree-example.html',
   styleUrl: './basic-tree-example.scss',
 })

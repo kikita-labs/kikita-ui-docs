@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSlider } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-slider-range-example',
-  imports: [KuiFieldComponent, KuiSliderDirective],
+  imports: [KuiField, KuiSlider],
   templateUrl: './slider-range-example.html',
   styleUrl: './slider-range-example.scss',
 })

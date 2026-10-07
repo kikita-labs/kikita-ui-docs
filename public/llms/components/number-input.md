@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/number-input
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiNumberInputDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/number-input.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiNumberInput from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/number-input.md
 
 ## Install
 
@@ -30,11 +30,11 @@ ng add @kikita-labs/ui
 </kui-field>
 ```
 
-Variant B, with minus/plus controls on the sides, is the default and recommended
-for most use cases. Variant A uses stacked arrows on the right and is more compact.
+`split`, with minus/plus controls on the sides, is the default and recommended
+for most use cases. `stacked` uses stacked arrows on the right and is more compact.
 
 ```html
-<input type="number" kuiNumberInput variant="a" min="0" max="99" [(ngModel)]="qty" />
+<input type="number" kuiNumberInput variant="stacked" min="0" max="99" [(ngModel)]="qty" />
 ```
 
 ## Examples
@@ -72,11 +72,11 @@ Rendered at /components/number-input:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiNumberInputDirective } from '@kikita-labs/ui';
+import { KuiNumberInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-number-input-example',
-  imports: [KuiNumberInputDirective],
+  imports: [KuiNumberInput],
   templateUrl: './basic-number-input-example.html',
   styleUrl: './basic-number-input-example.scss',
 })
@@ -102,7 +102,7 @@ export class BasicNumberInputExample {}
 <input
   type="number"
   kuiNumberInput
-  variant="a"
+  variant="stacked"
   min="0"
   max="99"
   aria-label="Compact quantity"
@@ -111,7 +111,7 @@ export class BasicNumberInputExample {}
 <input
   type="number"
   kuiNumberInput
-  variant="b"
+  variant="split"
   min="0"
   max="99"
   aria-label="Default quantity"
@@ -124,11 +124,11 @@ export class BasicNumberInputExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiNumberInputDirective } from '@kikita-labs/ui';
+import { KuiNumberInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-compact-number-input-example',
-  imports: [KuiNumberInputDirective],
+  imports: [KuiNumberInput],
   templateUrl: './compact-number-input-example.html',
   styleUrl: './compact-number-input-example.scss',
 })
@@ -165,11 +165,11 @@ export class CompactNumberInputExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiNumberInputDirective } from '@kikita-labs/ui';
+import { KuiField, KuiNumberInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-field-number-input-example',
-  imports: [KuiFieldComponent, KuiNumberInputDirective],
+  imports: [KuiField, KuiNumberInput],
   templateUrl: './field-number-input-example.html',
   styleUrl: './field-number-input-example.scss',
 })
@@ -217,11 +217,11 @@ export class FieldNumberInputExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiNumberInputDirective } from '@kikita-labs/ui';
+import { KuiNumberInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-range-number-input-example',
-  imports: [KuiNumberInputDirective],
+  imports: [KuiNumberInput],
   templateUrl: './range-number-input-example.html',
   styleUrl: './range-number-input-example.scss',
 })
@@ -244,7 +244,7 @@ export class RangeNumberInputExample {}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height from --kui-control-height-*. Generated buttons scale to match. |
-| variant | 'a' \| 'b' | 'b' | Button layout. b places minus/plus controls on the sides (recommended). a stacks compact arrow controls on the right. |
+| variant | 'stacked' \| 'split' | 'split' | Button layout. b places minus/plus controls on the sides (recommended). a stacks compact arrow controls on the right. |
 | invalid | boolean | false | Applies an error border. Also inherited automatically from a parent kui-field with an error. |
 | id | string \| undefined | - | Id override for the native input. Falls back to the parent kui-field control id. |
 | min | string \| number | - | Native HTML attribute placed directly on the input. Decrement stops and disables at this value. |

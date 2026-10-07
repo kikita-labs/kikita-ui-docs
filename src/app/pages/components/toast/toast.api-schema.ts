@@ -31,7 +31,7 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
     type: 'number',
     defaultValue: '5000',
     description:
-      'Auto-dismiss delay in ms. Ignored when persistent is true. App-wide default overridable via provideKuiToastOptions.',
+      'Auto-dismiss delay in ms. Ignored when persistent is true. App-wide default overridable via defaults.toast.',
   },
   {
     name: 'persistent',
@@ -44,41 +44,40 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
     name: 'closable',
     type: 'boolean',
     defaultValue: 'true',
-    description: 'Shows the close button. App-wide default overridable via provideKuiToastOptions.',
+    description: 'Shows the close button. App-wide default overridable via defaults.toast.',
   },
   {
     name: 'showIcon',
     type: 'boolean',
     defaultValue: 'true',
-    description:
-      'Shows the appearance icon. App-wide default overridable via provideKuiToastOptions.',
+    description: 'Shows the appearance icon. App-wide default overridable via defaults.toast.',
   },
   {
     name: 'showProgress',
     type: 'boolean',
     defaultValue: 'false',
     description:
-      'Shows a progress bar tracking time until auto-dismiss. App-wide default overridable via provideKuiToastOptions.',
+      'Shows a progress bar tracking time until auto-dismiss. App-wide default overridable via defaults.toast.',
   },
   {
     name: 'kuiToast()',
-    type: '() => KuiToastService',
+    type: '() => KuiToast',
     defaultValue: '-',
     description:
-      'Inject-function returning a reusable opener bound to the current injector scope. Call once per component; prefer over injecting KuiToastService directly.',
+      'Inject-function returning a reusable opener bound to the current injector scope. Call once per component; prefer over injecting KuiToast directly.',
   },
   {
-    name: 'KuiToastService.open(config)',
+    name: 'KuiToast.open(config)',
     type: '(config: KuiToastConfig) => KuiToastRef',
     defaultValue: '-',
     description: 'Shows a toast notification and returns a ref for programmatic control.',
   },
   {
-    name: 'KuiToastService.setPosition(position)',
+    name: 'KuiToast.setPosition(position)',
     type: '(position: KuiToastPosition) => void',
     defaultValue: '-',
     description:
-      'Changes the shared toast region position at runtime. Intended for interactive demos; prefer provideKuiToastOptions for app-level configuration.',
+      'Changes the shared toast region position at runtime. Intended for interactive demos; prefer defaults.toast for app-level configuration.',
   },
   {
     name: 'KuiToastRef.close()',
@@ -111,20 +110,20 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
     description: 'Emits once when the action button is clicked, then completes.',
   },
   {
-    name: 'KuiToastService.dismiss(id)',
+    name: 'KuiToast.dismiss(id)',
     type: '(id: number) => void',
     defaultValue: '-',
     description: 'Dismisses one toast created by this service using its stable reference id.',
   },
   {
-    name: 'KuiToastService.dismissAll()',
+    name: 'KuiToast.dismissAll()',
     type: '() => void',
     defaultValue: '-',
     description: 'Dismisses all active toasts created by this service.',
   },
   {
-    name: 'provideKuiToastOptions(options)',
-    type: '(options: KuiToastOptions) => Provider',
+    name: 'provideKuiDefaults({ toast })',
+    type: '(defaults: KuiComponentDefaults) => Provider',
     defaultValue: '-',
     description:
       'App or route-level provider for global toast defaults: position, duration, maxVisible, showProgress, closable, showIcon.',
@@ -134,13 +133,13 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
     type: `'top-start' | 'top-center' | 'top-end' | 'bottom-start' | 'bottom-center' | 'bottom-end'`,
     defaultValue: `'bottom-center'`,
     description:
-      'Global region position. Set app-wide via provideKuiToastOptions, or at runtime via KuiToastService.setPosition for demos.',
+      'Global region position. Set app-wide via defaults.toast, or at runtime via KuiToast.setPosition for demos.',
   },
   {
     name: 'maxVisible',
     type: 'number',
     defaultValue: '3',
     description:
-      'Max simultaneous toasts, set via provideKuiToastOptions. The oldest visible toast is evicted when exceeded. Not changeable at runtime.',
+      'Max simultaneous toasts, set via defaults.toast. The oldest visible toast is evicted when exceeded. It follows runtime changes of the default.',
   },
 ];

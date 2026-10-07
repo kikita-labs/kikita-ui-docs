@@ -6,7 +6,7 @@ export const GROUP_DOCS_MANIFEST = {
   label: 'Group',
   category: 'forms',
   description: 'Grouped control chrome for adjacent actions and fields.',
-  importName: 'KuiGroupDirective',
+  importName: 'KuiGroup',
   status: 'available',
   exampleIds: [
     'basic-group-example',

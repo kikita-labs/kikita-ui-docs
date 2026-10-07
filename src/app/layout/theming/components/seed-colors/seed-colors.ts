@@ -1,12 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiColorInputDirective,
-  KuiFieldComponent,
-  KuiIconComponent,
-  KuiLabelDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiColorInput, KuiField, KuiIcon, KuiLabel } from '@kikita-labs/ui';
 
 import { DOCS_DEFAULT_SEED_COLORS, type DocsSeedColorName, DocsThemeService } from '@core/theme';
 
@@ -27,13 +21,7 @@ const SEED_COLOR_LABELS: Readonly<Record<DocsSeedColorName, string>> = {
 
 @Component({
   selector: 'app-seed-colors',
-  imports: [
-    KuiButtonDirective,
-    KuiColorInputDirective,
-    KuiFieldComponent,
-    KuiIconComponent,
-    KuiLabelDirective,
-  ],
+  imports: [KuiButton, KuiColorInput, KuiField, KuiIcon, KuiLabel],
   templateUrl: './seed-colors.html',
   styleUrl: './seed-colors.scss',
 })

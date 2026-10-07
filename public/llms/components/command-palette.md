@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/command-palette
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiCommandPaletteComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/command-palette.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiCommandPalette from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/command-palette.md
 
 ## Install
 
@@ -78,15 +78,15 @@ Rendered at /components/command-palette:
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiButtonDirective,
+  KuiButton,
   type KuiCommandGroup,
   type KuiCommandItem,
-  KuiCommandPaletteComponent,
+  KuiCommandPalette,
 } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-command-palette-example',
-  imports: [KuiButtonDirective, KuiCommandPaletteComponent],
+  imports: [KuiButton, KuiCommandPalette],
   templateUrl: './basic-command-palette-example.html',
   styleUrl: './basic-command-palette-example.scss',
 })
@@ -177,6 +177,7 @@ export class BasicCommandPaletteExample {
 
 - Uses a CDK overlay with scroll blocking.
 - Uses a modal dialog container with CDK focus trap.
+- Focus moves to the search input after the overlay has rendered, on every open, including when another control had focus.
 - The search input exposes combobox/listbox relationships through `aria-controls` and
   `aria-activedescendant`.
 - Arrow keys move the active option, Enter selects it, Escape closes the palette.

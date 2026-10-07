@@ -2,7 +2,7 @@
   <app-page-header
     eyebrow="Forms"
     heading="Calendar"
-    description="Inline month grid for single-date and range selection."
+    description="Inline month grid for single-date selection; kui-calendar-range selects a start and end pair."
     [status]="status"
   />
 
@@ -28,10 +28,13 @@
   <app-doc-section
     anchor="states"
     heading="States and composition"
-    description="The installed API covers range selection, disabled dates, locale, footer, and popover-friendly flat mode."
+    description="The installed API covers disabled dates, locale, footer, and popover-friendly flat mode."
   >
     <ul class="calendar-page__notes">
-      <li>Use <code>mode="range"</code> when the value is a <code>KuiDateRange</code>.</li>
+      <li>
+        Use <code>kui-calendar-range</code> (<code>KuiCalendarRange</code>) when the value is a
+        <code>KuiDateRange</code>; <code>kui-calendar</code> selects a single date.
+      </li>
       <li>
         Use <code>minDate</code>, <code>maxDate</code>, or <code>disabledDates</code> to block days.
       </li>
@@ -39,7 +42,7 @@
         Use <code>flat</code> inside <code>kui-dropdown</code> so panel chrome is not doubled.
       </li>
       <li>
-        Use <code>locale</code> or <code>kuiProvideLocale()</code> for month names and week start.
+        Use <code>locale</code> or <code>provideKuiLocale()</code> for month names and week start.
       </li>
     </ul>
   </app-doc-section>

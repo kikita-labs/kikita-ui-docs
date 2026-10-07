@@ -1,15 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-  KuiSelectDirective,
-} from '@kikita-labs/ui';
+import { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-select-example',
-  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],
   templateUrl: './basic-select-example.html',
   styleUrl: './basic-select-example.scss',
 })

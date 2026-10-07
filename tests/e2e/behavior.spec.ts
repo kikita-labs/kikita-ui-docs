@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 
 import { gotoReady } from './support/page-ready';
 
@@ -369,9 +370,17 @@ test('keeps draft, not-found, and installed-package smoke routes recoverable', a
   await expect(page).toHaveURL(/\/components$/);
 });
 
+// The page under test documents the installed library major; the mocked manifest pretends that a
+// newer major exists, so the suite keeps working across library majors.
+const PACKAGE_JSON: { dependencies: Record<string, string> } = JSON.parse(
+  readFileSync('package.json', 'utf8'),
+);
+const CURRENT_MAJOR = Number.parseInt(PACKAGE_JSON.dependencies['@kikita-labs/ui'], 10);
+const CURRENT_ID = `v${CURRENT_MAJOR}`;
+const NEWER_ID = `v${CURRENT_MAJOR + 1}`;
 const VERSIONS_MANIFEST = [
-  { id: 'v2', label: 'v2', path: '/', status: 'latest' },
-  { id: 'v1', label: 'v1', path: '/v1/', status: 'maintained' },
+  { id: NEWER_ID, label: NEWER_ID, path: '/', status: 'latest' },
+  { id: CURRENT_ID, label: CURRENT_ID, path: `/${CURRENT_ID}/`, status: 'maintained' },
 ];
 
 test('publishes one canonical URL per page and none on not-found', async ({ page }) => {
@@ -399,18 +408,23 @@ test('switches versions and warns on an older version using versions.json', asyn
   await expect(notice).toContainText('older version');
   await expect(notice.getByRole('link')).toHaveAttribute('href', '/components/button');
 
-  const trigger = page.getByRole('button', { name: 'Documentation version, current v1' });
+  const trigger = page.getByRole('button', {
+    name: `Documentation version, current ${CURRENT_ID}`,
+  });
   await trigger.click();
   const menu = page.getByRole('menu', { name: 'Documentation version' });
-  await expect(menu.getByRole('menuitem', { name: 'v2' })).toHaveAttribute(
+  await expect(menu.getByRole('menuitem', { name: NEWER_ID })).toHaveAttribute(
     'href',
     '/components/button',
   );
-  await expect(menu.getByRole('menuitem', { name: 'v1' })).toHaveAttribute(
+  await expect(menu.getByRole('menuitem', { name: CURRENT_ID })).toHaveAttribute(
     'href',
-    '/v1/components/button',
+    `/${CURRENT_ID}/components/button`,
   );
-  await expect(menu.getByRole('menuitem', { name: 'v1' })).toHaveAttribute('aria-current', 'true');
+  await expect(menu.getByRole('menuitem', { name: CURRENT_ID })).toHaveAttribute(
+    'aria-current',
+    'true',
+  );
 });
 
 test('falls back to the version home when the page is missing there', async ({ page }) => {

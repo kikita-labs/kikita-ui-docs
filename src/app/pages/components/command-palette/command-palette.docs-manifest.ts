@@ -6,7 +6,7 @@ export const COMMAND_PALETTE_DOCS_MANIFEST = {
   label: 'Command Palette',
   category: 'actions',
   description: 'Searchable command overlay for application actions.',
-  importName: 'KuiCommandPaletteComponent',
+  importName: 'KuiCommandPalette',
   status: 'available',
   exampleIds: ['basic-command-palette-example'],
   loadPage: () => import('./command-palette-page').then((module) => module.CommandPalettePage),

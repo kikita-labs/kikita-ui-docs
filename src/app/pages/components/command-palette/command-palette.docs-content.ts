@@ -11,10 +11,10 @@ export const COMMAND_PALETTE_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'command-palette.ts',
     language: 'ts',
     code: `import {
-  KuiButtonDirective,
+  KuiButton,
   KuiCommandGroup,
   KuiCommandItem,
-  KuiCommandPaletteComponent,
+  KuiCommandPalette,
 } from '@kikita-labs/ui';`,
   },
 ];

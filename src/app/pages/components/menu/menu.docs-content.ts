@@ -11,12 +11,12 @@ export const MENU_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'menu.ts',
     language: 'ts',
     code: `import {
-  KuiButtonDirective,
-  KuiMenuComponent,
-  KuiMenuForDirective,
-  KuiMenuHeaderDirective,
-  KuiMenuItemDirective,
-  KuiSeparatorDirective,
+  KuiButton,
+  KuiMenu,
+  KuiMenuFor,
+  KuiMenuHeader,
+  KuiMenuItem,
+  KuiSeparator,
 } from '@kikita-labs/ui';`,
   },
 ];

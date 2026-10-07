@@ -15,7 +15,7 @@ export const MENU_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-menu-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiMenuComponent,\n  KuiMenuForDirective,\n  KuiMenuItemDirective,\n  KuiSeparatorDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-menu-example',\n  imports: [\n    KuiButtonDirective,\n    KuiMenuComponent,\n    KuiMenuForDirective,\n    KuiMenuItemDirective,\n    KuiSeparatorDirective,\n  ],\n  templateUrl: './basic-menu-example.html',\n  styleUrl: './basic-menu-example.scss',\n})\nexport class BasicMenuExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, KuiMenu, KuiMenuFor, KuiMenuItem, KuiSeparator } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-menu-example',\n  imports: [KuiButton, KuiMenu, KuiMenuFor, KuiMenuItem, KuiSeparator],\n  templateUrl: './basic-menu-example.html',\n  styleUrl: './basic-menu-example.scss',\n})\nexport class BasicMenuExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const MENU_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "menu-content-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButtonDirective,\n  KuiMenuComponent,\n  KuiMenuForDirective,\n  KuiMenuHeaderDirective,\n  KuiMenuItemDirective,\n  KuiSeparatorDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-menu-content-example',\n  imports: [\n    KuiButtonDirective,\n    KuiMenuComponent,\n    KuiMenuForDirective,\n    KuiMenuHeaderDirective,\n    KuiMenuItemDirective,\n    KuiSeparatorDirective,\n  ],\n  templateUrl: './menu-content-example.html',\n  styleUrl: './menu-content-example.scss',\n})\nexport class MenuContentExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiButton,\n  KuiMenu,\n  KuiMenuFor,\n  KuiMenuHeader,\n  KuiMenuItem,\n  KuiSeparator,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-menu-content-example',\n  imports: [KuiButton, KuiMenu, KuiMenuFor, KuiMenuHeader, KuiMenuItem, KuiSeparator],\n  templateUrl: './menu-content-example.html',\n  styleUrl: './menu-content-example.scss',\n})\nexport class MenuContentExample {}",
     },
     {
       label: "SCSS",

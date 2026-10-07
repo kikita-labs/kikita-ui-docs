@@ -1,11 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-  KuiSelectDirective,
-} from '@kikita-labs/ui';
+import { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';
 
 interface RoleOption {
   readonly label: string;
@@ -14,7 +9,7 @@ interface RoleOption {
 
 @Component({
   selector: 'app-multiple-select-example',
-  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],
   templateUrl: './multiple-select-example.html',
   styleUrl: './multiple-select-example.scss',
 })

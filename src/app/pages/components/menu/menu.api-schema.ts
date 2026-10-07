@@ -35,7 +35,7 @@ export const MENU_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: '[kuiMenuFor]',
-    type: 'KuiMenuComponent | undefined',
+    type: 'KuiMenu | undefined',
     defaultValue: '-',
     description: 'Wires a native trigger to a menu instance and manages trigger ARIA state.',
   },

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+import { KuiButton, KuiPopover, KuiPopoverFor } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-popover-example',
-  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  imports: [KuiButton, KuiPopover, KuiPopoverFor],
   templateUrl: './basic-popover-example.html',
 })
 export class BasicPopoverExample {}

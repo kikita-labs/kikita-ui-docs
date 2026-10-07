@@ -6,7 +6,7 @@ export const SEGMENTED_DOCS_MANIFEST = {
   label: 'Segmented',
   category: 'forms',
   description: 'Compact single-choice control rendered as adjacent segment buttons.',
-  importName: 'KuiSegmentedComponent',
+  importName: 'KuiSegmented',
   status: 'available',
   exampleIds: ['basic-segmented-example'],
   loadPage: () => import('./segmented-page').then((module) => module.SegmentedPage),

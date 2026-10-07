@@ -10,6 +10,6 @@ export const ICON_BUTTON_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'icon-button.ts',
     language: 'ts',
-    code: `import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiIconButton, KuiIcon } from '@kikita-labs/ui';`,
   },
 ];

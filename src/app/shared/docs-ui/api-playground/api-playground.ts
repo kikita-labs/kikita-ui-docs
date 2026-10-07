@@ -3,12 +3,12 @@ import { Overlay, OverlayContainer } from '@angular/cdk/overlay';
 import { Component, computed, inject, input, signal } from '@angular/core';
 
 import {
-  KuiCardDirective,
-  KuiInputDirective,
-  KuiNumberInputDirective,
-  KuiSegmentDirective,
-  KuiSegmentedComponent,
-  KuiSwitchDirective,
+  KuiCard,
+  KuiInput,
+  KuiNumberInput,
+  KuiSegment,
+  KuiSegmented,
+  KuiSwitch,
 } from '@kikita-labs/ui';
 
 import { DocsLocalOverlayContainer } from '@core/platform/overlay';
@@ -28,12 +28,12 @@ import {
   imports: [
     ApiPlaygroundViewport,
     CodeTabs,
-    KuiCardDirective,
-    KuiInputDirective,
-    KuiNumberInputDirective,
-    KuiSegmentDirective,
-    KuiSegmentedComponent,
-    KuiSwitchDirective,
+    KuiCard,
+    KuiInput,
+    KuiNumberInput,
+    KuiSegment,
+    KuiSegmented,
+    KuiSwitch,
   ],
   providers: [{ provide: OverlayContainer, useClass: DocsLocalOverlayContainer }, Overlay],
   templateUrl: './api-playground.html',

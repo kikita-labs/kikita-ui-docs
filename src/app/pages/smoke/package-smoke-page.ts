@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
 
 /* docs-source:package-smoke-consumer-imports:start */
-import {
-  KuiBadgeDirective,
-  KuiButtonDirective,
-  KuiCardDirective,
-  KuiFieldComponent,
-  KuiInputDirective,
-} from '@kikita-labs/ui';
+import { KuiBadge, KuiButton, KuiCard, KuiField, KuiInput } from '@kikita-labs/ui';
 
 /* docs-source:package-smoke-consumer-imports:end */
 import { KIKITA_UI_PACKAGE_LABEL } from '@core/package';
@@ -26,11 +20,11 @@ import { SMOKE_API_ROWS } from './smoke.docs-content';
     ApiTable,
     CodeTabs,
     DocSection,
-    KuiBadgeDirective,
-    KuiButtonDirective,
-    KuiCardDirective,
-    KuiFieldComponent,
-    KuiInputDirective,
+    KuiBadge,
+    KuiButton,
+    KuiCard,
+    KuiField,
+    KuiInput,
     LivePreview,
     PageHeader,
   ],

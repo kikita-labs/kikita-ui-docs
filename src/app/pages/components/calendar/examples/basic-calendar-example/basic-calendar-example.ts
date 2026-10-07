@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiCalendarComponent, type KuiDateRange } from '@kikita-labs/ui';
+import { KuiCalendar, KuiCalendarRange, type KuiDateRange } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-calendar-example',
-  imports: [KuiCalendarComponent],
+  imports: [KuiCalendar, KuiCalendarRange],
   templateUrl: './basic-calendar-example.html',
   styleUrl: './basic-calendar-example.scss',
 })

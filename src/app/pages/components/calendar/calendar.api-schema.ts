@@ -2,16 +2,11 @@ import { type ApiTableRow } from '@shared/docs-ui/api-table';
 
 export const CALENDAR_API_ROWS: readonly ApiTableRow[] = [
   {
-    name: 'mode',
-    type: `'single' | 'range'`,
-    defaultValue: `'single'`,
-    description: 'Selection mode. Range mode stores a start date and a nullable end date.',
-  },
-  {
     name: '[(value)]',
-    type: 'Date | KuiDateRange | null',
+    type: 'Date | null',
     defaultValue: 'null',
-    description: 'Selected date in single mode or selected range in range mode.',
+    description:
+      'Selected date. For a start and end pair use kui-calendar-range, whose value is a KuiDateRange | null.',
   },
   {
     name: '[(viewDate)]',
@@ -74,7 +69,7 @@ export const CALENDAR_API_ROWS: readonly ApiTableRow[] = [
     description: 'Replace the default header or footer with consumer-owned content.',
   },
   {
-    name: 'kuiProvideLocale(locale)',
+    name: 'provideKuiLocale(locale)',
     type: 'Provider',
     defaultValue: '-',
     description: 'Provides the default app or subtree locale used by date-aware components.',

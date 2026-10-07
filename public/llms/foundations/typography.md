@@ -4,7 +4,7 @@
 
 - Status: available
 - Route: /foundations/typography
-- Package: @kikita-labs/ui@1.8.0
+- Package: @kikita-labs/ui@2.0.0
 
 ## Content
 
@@ -22,7 +22,7 @@ The CSS classes ship through the main stylesheet. Import the directive only when
 #### typography-example.ts
 
 ```ts
-import { KuiTextDirective } from '@kikita-labs/ui';
+import { KuiText } from '@kikita-labs/ui';
 ```
 
 ### Usage

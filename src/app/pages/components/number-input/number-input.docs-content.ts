@@ -10,7 +10,7 @@ export const NUMBER_INPUT_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'number-input.ts',
     language: 'ts',
-    code: `import { KuiNumberInputDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiNumberInput } from '@kikita-labs/ui';`,
   },
 ];
 

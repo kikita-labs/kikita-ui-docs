@@ -15,7 +15,7 @@ export const STEPPER_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-stepper-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiStepComponent, KuiStepperComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-stepper-example',\n  imports: [KuiStepComponent, KuiStepperComponent],\n  templateUrl: './basic-stepper-example.html',\n  styleUrl: './basic-stepper-example.scss',\n})\nexport class BasicStepperExample {\n  protected readonly currentIndex = signal(1);\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiStep, KuiStepper } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-stepper-example',\n  imports: [KuiStep, KuiStepper],\n  templateUrl: './basic-stepper-example.html',\n  styleUrl: './basic-stepper-example.scss',\n})\nexport class BasicStepperExample {\n  protected readonly currentIndex = signal(1);\n}",
     },
     {
       label: "SCSS",

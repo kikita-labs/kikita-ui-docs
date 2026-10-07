@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
 
-import { KuiCardDirective } from '@kikita-labs/ui';
+import { KuiCard } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-live-preview',
-  imports: [KuiCardDirective],
+  imports: [KuiCard],
   templateUrl: './live-preview.html',
   styleUrl: './live-preview.scss',
 })

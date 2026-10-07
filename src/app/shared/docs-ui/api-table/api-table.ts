@@ -1,24 +1,12 @@
 import { Component, input } from '@angular/core';
 
-import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
-} from '@kikita-labs/ui';
+import { KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup } from '@kikita-labs/ui';
 
 import { type ApiTableRow } from './interfaces';
 
 @Component({
   selector: 'app-api-table',
-  imports: [
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
-  ],
+  imports: [KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup],
   templateUrl: './api-table.html',
   styleUrl: './api-table.scss',
 })

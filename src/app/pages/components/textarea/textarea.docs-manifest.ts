@@ -6,7 +6,7 @@ export const TEXTAREA_DOCS_MANIFEST = {
   label: 'Textarea',
   category: 'forms',
   description: 'Native multiline input styling with field integration.',
-  importName: 'KuiTextareaDirective',
+  importName: 'KuiTextarea',
   status: 'available',
   exampleIds: ['basic-textarea-example', 'textarea-invalid-example', 'textarea-size-example'],
   loadPage: () => import('./textarea-page').then((module) => module.TextareaPage),

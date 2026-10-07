@@ -6,7 +6,7 @@ export const NUMBER_INPUT_DOCS_MANIFEST = {
   label: 'Number Input',
   category: 'forms',
   description: 'Number input states with compact variant options.',
-  importName: 'KuiNumberInputDirective',
+  importName: 'KuiNumberInput',
   status: 'available',
   exampleIds: [
     'basic-number-input-example',

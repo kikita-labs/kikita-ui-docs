@@ -15,7 +15,7 @@ export const SKELETON_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "skeleton-animation-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiSkeletonDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-skeleton-animation-example',\n  imports: [KuiSkeletonDirective],\n  templateUrl: './skeleton-animation-example.html',\n  styleUrl: './skeleton-animation-example.scss',\n})\nexport class SkeletonAnimationExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiSkeleton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-skeleton-animation-example',\n  imports: [KuiSkeleton],\n  templateUrl: './skeleton-animation-example.html',\n  styleUrl: './skeleton-animation-example.scss',\n})\nexport class SkeletonAnimationExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const SKELETON_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "skeleton-composition-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiCardDirective, KuiSkeletonDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-skeleton-composition-example',\n  imports: [KuiCardDirective, KuiSkeletonDirective],\n  templateUrl: './skeleton-composition-example.html',\n  styleUrl: './skeleton-composition-example.scss',\n})\nexport class SkeletonCompositionExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiCard, KuiSkeleton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-skeleton-composition-example',\n  imports: [KuiCard, KuiSkeleton],\n  templateUrl: './skeleton-composition-example.html',\n  styleUrl: './skeleton-composition-example.scss',\n})\nexport class SkeletonCompositionExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const SKELETON_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "skeleton-shapes-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiSkeletonDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-skeleton-shapes-example',\n  imports: [KuiSkeletonDirective],\n  templateUrl: './skeleton-shapes-example.html',\n  styleUrl: './skeleton-shapes-example.scss',\n})\nexport class SkeletonShapesExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiSkeleton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-skeleton-shapes-example',\n  imports: [KuiSkeleton],\n  templateUrl: './skeleton-shapes-example.html',\n  styleUrl: './skeleton-shapes-example.scss',\n})\nexport class SkeletonShapesExample {}",
     },
     {
       label: "SCSS",

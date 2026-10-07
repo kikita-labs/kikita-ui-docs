@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 
-import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
-} from '@kikita-labs/ui';
+import { KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup } from '@kikita-labs/ui';
 
 interface TeamMember {
   readonly id: string;
@@ -62,13 +56,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 @Component({
   selector: 'app-sticky-header-table-example',
-  imports: [
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
-  ],
+  imports: [KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup],
   templateUrl: './sticky-header-table-example.html',
   styleUrl: './sticky-header-table-example.scss',
 })

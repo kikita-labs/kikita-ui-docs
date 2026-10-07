@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/drawer
-- Package: @kikita-labs/ui@1.8.0
+- Package: @kikita-labs/ui@2.0.0
 - Import: kuiDrawer from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/drawer.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/drawer.md
 
 ## Install
 
@@ -46,7 +46,7 @@ type EditResult = 'saved' | 'cancelled';
       <button kuiButton type="button" (click)="drawerContext.close('saved')">Save</button>
     </div>
   `,
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
 })
 export class EditDrawer implements KuiDrawerHost<EditResult, EditData> {
   public readonly drawerContext =
@@ -102,13 +102,13 @@ import { Component, DestroyRef, inject, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiDrawer } from '@kikita-labs/ui';
+import { KuiButton, kuiDrawer } from '@kikita-labs/ui';
 
 import { EditItemDrawer } from './edit-item-drawer';
 
 @Component({
   selector: 'app-basic-drawer-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './basic-drawer-example.html',
   styleUrl: './basic-drawer-example.scss',
 })
@@ -133,7 +133,7 @@ import { Component, inject } from '@angular/core';
 
 import {
   KUI_DRAWER_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDrawerContext,
   type KuiDrawerHost,
 } from '@kikita-labs/ui';
@@ -146,7 +146,7 @@ export type EditItemResult = 'saved' | 'cancelled';
 
 @Component({
   selector: 'app-edit-item-drawer',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './edit-item-drawer.html',
 })
 export class EditItemDrawer implements KuiDrawerHost<EditItemResult, EditItemData> {
@@ -206,13 +206,13 @@ export class EditItemDrawer implements KuiDrawerHost<EditItemResult, EditItemDat
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, kuiDrawer, type KuiDrawerSide } from '@kikita-labs/ui';
+import { KuiButton, kuiDrawer, type KuiDrawerSide } from '@kikita-labs/ui';
 
 import { SidePreviewDrawer } from './side-preview-drawer';
 
 @Component({
   selector: 'app-drawer-sides-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './drawer-sides-example.html',
   styleUrl: './drawer-sides-example.scss',
 })
@@ -236,14 +236,14 @@ import { Component, inject } from '@angular/core';
 
 import {
   KUI_DRAWER_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDrawerContext,
   type KuiDrawerHost,
 } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-side-preview-drawer',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './side-preview-drawer.html',
 })
 export class SidePreviewDrawer implements KuiDrawerHost<void, void> {
@@ -297,13 +297,13 @@ export class SidePreviewDrawer implements KuiDrawerHost<void, void> {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';
+import { KuiButton, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';
 
 import { SizePreviewDrawer } from './size-preview-drawer';
 
 @Component({
   selector: 'app-drawer-sizes-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './drawer-sizes-example.html',
   styleUrl: './drawer-sizes-example.scss',
 })
@@ -327,14 +327,14 @@ import { Component, inject } from '@angular/core';
 
 import {
   KUI_DRAWER_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDrawerContext,
   type KuiDrawerHost,
 } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-size-preview-drawer',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './size-preview-drawer.html',
 })
 export class SizePreviewDrawer implements KuiDrawerHost<void, void> {

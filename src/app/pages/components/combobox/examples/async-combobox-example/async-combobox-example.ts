@@ -1,17 +1,12 @@
 import { Component, effect, inject, signal } from '@angular/core';
 
-import {
-  KuiComboboxDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiCombobox, KuiDropdown, KuiField, KuiOption } from '@kikita-labs/ui';
 
 import { ALL_REVIEWERS, type AsyncReviewer, AsyncReviewerService } from './async-reviewer.service';
 
 @Component({
   selector: 'app-async-combobox-example',
-  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  imports: [KuiCombobox, KuiDropdown, KuiField, KuiOption],
   providers: [AsyncReviewerService],
   templateUrl: './async-combobox-example.html',
   styleUrl: './async-combobox-example.scss',

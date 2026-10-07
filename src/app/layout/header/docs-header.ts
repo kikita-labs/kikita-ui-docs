@@ -10,13 +10,13 @@ import {
 import { Router, RouterLink } from '@angular/router';
 
 import {
-  KuiBreadcrumbItemDirective,
-  KuiBreadcrumbsDirective,
-  KuiBreadcrumbSeparatorComponent,
+  KuiBreadcrumbItem,
+  KuiBreadcrumbs,
+  KuiBreadcrumbSeparator,
   type KuiCommandItem,
-  KuiCommandPaletteComponent,
-  KuiIconButtonDirective,
-  KuiIconComponent,
+  KuiCommandPalette,
+  KuiIcon,
+  KuiIconButton,
 } from '@kikita-labs/ui';
 
 import { KIKITA_BRAND_MARK_ICON } from '@core/branding';
@@ -33,12 +33,12 @@ import { VersionSwitcher } from '../version-switcher/version-switcher';
 @Component({
   selector: 'app-docs-header',
   imports: [
-    KuiBreadcrumbItemDirective,
-    KuiBreadcrumbSeparatorComponent,
-    KuiBreadcrumbsDirective,
-    KuiCommandPaletteComponent,
-    KuiIconButtonDirective,
-    KuiIconComponent,
+    KuiBreadcrumbItem,
+    KuiBreadcrumbSeparator,
+    KuiBreadcrumbs,
+    KuiCommandPalette,
+    KuiIconButton,
+    KuiIcon,
     RouterLink,
     SearchTrigger,
     Theming,

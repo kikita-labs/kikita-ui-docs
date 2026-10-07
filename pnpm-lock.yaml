@@ -36,8 +36,8 @@ importers:
         specifier: ^22.0.5
         version: 22.0.7(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-server@22.0.6(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/compiler@22.0.5)(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-browser@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2)))(rxjs@7.8.2))(@angular/router@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-browser@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2)))(rxjs@7.8.2))
       '@kikita-labs/ui':
-        specifier: 1.8.0
-        version: 1.8.0(098d34021aededa29fb218c0a82fbcbc)
+        specifier: 2.0.0
+        version: 2.0.0(5e15c4a35e5e2cade7298ee74bdfbea1)
       express:
         specifier: ^5.1.0
         version: 5.2.1
@@ -1072,8 +1072,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
-  '@kikita-labs/ui@1.8.0':
-    resolution: {integrity: sha512-oqP92inPy385x6VJIHBHiiZD+TjZuCNW+RCfY6GDGWvn43cR6Lptz/wHdERiUz+JRcj60+T3ab1fquD4UdRPqA==}
+  '@kikita-labs/ui@2.0.0':
+    resolution: {integrity: sha512-0rm63888XGNjoaI6vnhO/u/QRcPEkqjzyOn0FT/YS2+bJxcD0zQsQBxgjdQyCZ9OLPDVDCONBKsoVLo4Hf6kfw==}
     peerDependencies:
       '@angular/cdk': ^22.0.0
       '@angular/common': ^22.0.0
@@ -1081,6 +1081,10 @@ packages:
       '@angular/forms': ^22.0.0
       '@angular/platform-browser': ^22.0.0
       rxjs: ^7.8.0
+      typescript: '>=6.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   '@listr2/prompt-adapter-inquirer@4.2.3':
     resolution: {integrity: sha512-Co9U3AJ3LW0J8XBHjVoNKA79dMAyFt8EZH3OaKTMcDTj8r+6kG3vSUPq/eGLHT7P0iK3uLaFfhdFYd3033P24g==}
@@ -4500,7 +4504,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@kikita-labs/ui@1.8.0(098d34021aededa29fb218c0a82fbcbc)':
+  '@kikita-labs/ui@2.0.0(5e15c4a35e5e2cade7298ee74bdfbea1)':
     dependencies:
       '@angular-devkit/schematics': 22.0.5(chokidar@5.0.0)
       '@angular/cdk': 22.0.3(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(@angular/platform-browser@22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2)))(rxjs@7.8.2)
@@ -4510,6 +4514,8 @@ snapshots:
       '@angular/platform-browser': 22.0.5(@angular/common@22.0.5(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.0.5(@angular/compiler@22.0.5)(rxjs@7.8.2))
       rxjs: 7.8.2
       tslib: 2.8.1
+    optionalDependencies:
+      typescript: 6.0.3
     transitivePeerDependencies:
       - chokidar
 

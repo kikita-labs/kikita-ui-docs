@@ -10,6 +10,6 @@ export const ACCORDION_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'accordion.ts',
     language: 'ts',
-    code: `import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiAccordion, KuiAccordionItem } from '@kikita-labs/ui';`,
   },
 ];

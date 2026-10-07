@@ -84,7 +84,7 @@ describe('NumberInputPlaygroundPage', () => {
     setNumberInput(root, 'step', '5');
     setNumberInput(root, 'value', '25');
     optionButtons.find((button) => button.textContent?.trim() === 'lg')?.click();
-    optionButtons.find((button) => button.textContent?.trim() === 'a')?.click();
+    optionButtons.find((button) => button.textContent?.trim() === 'stacked')?.click();
     toggleSwitch(root, 'invalid');
     fixture.detectChanges();
 
@@ -100,7 +100,7 @@ describe('NumberInputPlaygroundPage', () => {
     expect(wrapper).not.toBeNull();
     expect(input.getAttribute('aria-invalid')).toBe('true');
     expect(snippet?.textContent).toContain('size="lg"');
-    expect(snippet?.textContent).toContain('variant="a"');
+    expect(snippet?.textContent).toContain('variant="stacked"');
     expect(snippet?.textContent).toContain('min="5"');
     expect(snippet?.textContent).toContain('invalid');
   });

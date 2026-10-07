@@ -6,7 +6,7 @@ export const SWITCH_DOCS_MANIFEST = {
   label: 'Switch',
   category: 'forms',
   description: 'Native switch control styling for binary settings.',
-  importName: 'KuiSwitchDirective',
+  importName: 'KuiSwitch',
   status: 'available',
   exampleIds: ['basic-switch-example', 'switch-size-example'],
   loadPage: () => import('./switch-page').then((module) => module.SwitchPage),

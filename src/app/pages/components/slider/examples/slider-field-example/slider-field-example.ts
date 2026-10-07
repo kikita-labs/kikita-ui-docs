@@ -1,7 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { form, FormField, max, min } from '@angular/forms/signals';
 
-import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSlider } from '@kikita-labs/ui';
 
 interface SettingsModel {
   readonly volume: number;
@@ -9,7 +9,7 @@ interface SettingsModel {
 
 @Component({
   selector: 'app-slider-field-example',
-  imports: [FormField, KuiFieldComponent, KuiSliderDirective],
+  imports: [FormField, KuiField, KuiSlider],
   templateUrl: './slider-field-example.html',
   styleUrl: './slider-field-example.scss',
 })

@@ -6,7 +6,7 @@ export const BREADCRUMBS_DOCS_MANIFEST = {
   label: 'Breadcrumbs',
   category: 'surfaces',
   description: 'Hierarchy trail.',
-  importName: 'KuiBreadcrumbsDirective',
+  importName: 'KuiBreadcrumbs',
   status: 'available',
   exampleIds: ['basic-breadcrumbs-example'],
   loadPage: () => import('./breadcrumbs-page').then((module) => module.BreadcrumbsPage),

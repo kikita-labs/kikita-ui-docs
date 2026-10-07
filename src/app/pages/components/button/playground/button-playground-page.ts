@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import {
+  KuiButton,
   type KuiButtonAppearance,
-  KuiButtonDirective,
   type KuiButtonShape,
   type KuiSize,
 } from '@kikita-labs/ui';
@@ -52,7 +52,7 @@ type ButtonPlaygroundValues = PlaygroundValues<typeof BUTTON_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-button-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButtonDirective],
+  imports: [ApiPlayground, ApiTable, KuiButton],
   templateUrl: './button-playground-page.html',
   styleUrl: './button-playground-page.scss',
 })

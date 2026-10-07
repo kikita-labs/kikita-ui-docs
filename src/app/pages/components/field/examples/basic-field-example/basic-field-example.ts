@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';
+import { KuiField, KuiInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-field-example',
-  imports: [KuiFieldComponent, KuiInputDirective],
+  imports: [KuiField, KuiInput],
   templateUrl: './basic-field-example.html',
   styleUrl: './basic-field-example.scss',
 })

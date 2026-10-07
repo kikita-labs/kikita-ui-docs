@@ -10,7 +10,7 @@ export const BUTTON_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'button.ts',
     language: 'ts',
-    code: `import { KuiButtonDirective, kuiProvideButtonOptions } from '@kikita-labs/ui';`,
+    code: `import { KuiButton, provideKuiDefaults } from '@kikita-labs/ui';`,
   },
 ];
 
@@ -19,10 +19,10 @@ export const BUTTON_PROVIDER_TABS: readonly CodeTab[] = [
     label: 'Button family',
     filename: 'feature.providers.ts',
     language: 'ts',
-    code: `import { kuiProvideButtonOptions } from '@kikita-labs/ui';
+    code: `import { provideKuiDefaults } from '@kikita-labs/ui';
 
 export const featureProviders = [
-  kuiProvideButtonOptions({
+  provideKuiDefaults({
     button: { shape: 'ghost', appearance: 'primary', size: 'sm' },
     iconButton: { shape: 'outline', size: 'sm' },
   }),

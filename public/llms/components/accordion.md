@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/accordion
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiAccordionComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/accordion.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiAccordion from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/accordion.md
 
 ## Install
 
@@ -70,11 +70,11 @@ Rendered at /components/accordion:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
+import { KuiAccordion, KuiAccordionItem } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-appearance-accordion-example',
-  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
+  imports: [KuiAccordion, KuiAccordionItem],
   templateUrl: './appearance-accordion-example.html',
   styleUrl: './appearance-accordion-example.scss',
 })
@@ -129,11 +129,11 @@ export class AppearanceAccordionExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
+import { KuiAccordion, KuiAccordionItem } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-accordion-example',
-  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
+  imports: [KuiAccordion, KuiAccordionItem],
   templateUrl: './basic-accordion-example.html',
   styleUrl: './basic-accordion-example.scss',
 })
@@ -172,24 +172,14 @@ export class BasicAccordionExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiAccordionComponent,
-  KuiAccordionIconDirective,
-  KuiAccordionItemComponent,
-  KuiIconComponent,
-} from '@kikita-labs/ui';
+import { KuiAccordion, KuiAccordionIcon, KuiAccordionItem, KuiIcon } from '@kikita-labs/ui';
 
 const SETTINGS_ICON =
   '<svg viewBox="0 0 24 24" fill="none"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.04.04a2 2 0 0 1-2.83 2.83l-.04-.04a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 0 1-4 0v-.06A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.88.34l-.04.04a2 2 0 0 1-2.83-2.83l.04-.04A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 0 1 0-4h.06A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.88l-.04-.04a2 2 0 1 1 2.83-2.83l.04.04A1.7 1.7 0 0 0 8.96 4.6 1.7 1.7 0 0 0 10 3.06V3a2 2 0 0 1 4 0v.06A1.7 1.7 0 0 0 15.04 4.6a1.7 1.7 0 0 0 1.88-.34l.04-.04a2 2 0 0 1 2.83 2.83l-.04.04a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.94 10H21a2 2 0 0 1 0 4h-.06A1.7 1.7 0 0 0 19.4 15Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
 
 @Component({
   selector: 'app-icon-accordion-example',
-  imports: [
-    KuiAccordionComponent,
-    KuiAccordionIconDirective,
-    KuiAccordionItemComponent,
-    KuiIconComponent,
-  ],
+  imports: [KuiAccordion, KuiAccordionIcon, KuiAccordionItem, KuiIcon],
   templateUrl: './icon-accordion-example.html',
   styleUrl: './icon-accordion-example.scss',
 })
@@ -223,11 +213,11 @@ export class IconAccordionExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
+import { KuiAccordion, KuiAccordionItem } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-multi-accordion-example',
-  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
+  imports: [KuiAccordion, KuiAccordionItem],
   templateUrl: './multi-accordion-example.html',
   styleUrl: './multi-accordion-example.scss',
 })

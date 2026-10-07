@@ -15,7 +15,7 @@ export const FIELD_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-field-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-field-example',\n  imports: [KuiFieldComponent, KuiInputDirective],\n  templateUrl: './basic-field-example.html',\n  styleUrl: './basic-field-example.scss',\n})\nexport class BasicFieldExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiField, KuiInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-field-example',\n  imports: [KuiField, KuiInput],\n  templateUrl: './basic-field-example.html',\n  styleUrl: './basic-field-example.scss',\n})\nexport class BasicFieldExample {}",
     },
     {
       label: "SCSS",

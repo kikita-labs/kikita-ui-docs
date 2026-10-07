@@ -169,7 +169,7 @@ export const BUTTON_DOCS = defineComponentDocs({
   title: 'Button',
   category: DocsComponentCategory.Actions,
   description: 'Primary command primitive for buttons and links.',
-  publicImports: ['KuiButtonDirective'],
+  publicImports: ['KuiButton'],
   packageStatus: 'available',
   loadPage: () => import('./button-page').then((module) => module.ButtonPage),
   loadPlayground: () =>

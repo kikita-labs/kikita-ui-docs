@@ -4,12 +4,7 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, map, startWith } from 'rxjs';
 
-import {
-  KuiAccordionComponent,
-  KuiAccordionItemComponent,
-  KuiIconButtonDirective,
-  KuiIconComponent,
-} from '@kikita-labs/ui';
+import { KuiAccordion, KuiAccordionItem, KuiIcon, KuiIconButton } from '@kikita-labs/ui';
 
 import { KIKITA_BRAND_MARK_ICON } from '@core/branding';
 import type { DocsComponentCategory } from '@core/components';
@@ -21,10 +16,10 @@ import { SearchTrigger } from '@shared/docs-ui/search-trigger';
 @Component({
   selector: 'app-sidebar-nav',
   imports: [
-    KuiAccordionComponent,
-    KuiAccordionItemComponent,
-    KuiIconButtonDirective,
-    KuiIconComponent,
+    KuiAccordion,
+    KuiAccordionItem,
+    KuiIconButton,
+    KuiIcon,
     RouterLink,
     RouterLinkActive,
     SearchTrigger,

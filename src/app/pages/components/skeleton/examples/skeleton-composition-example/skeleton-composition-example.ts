@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiCardDirective, KuiSkeletonDirective } from '@kikita-labs/ui';
+import { KuiCard, KuiSkeleton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-skeleton-composition-example',
-  imports: [KuiCardDirective, KuiSkeletonDirective],
+  imports: [KuiCard, KuiSkeleton],
   templateUrl: './skeleton-composition-example.html',
   styleUrl: './skeleton-composition-example.scss',
 })

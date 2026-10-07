@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiLoaderDirective, type KuiSize } from '@kikita-labs/ui';
+import { KuiLoader, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -29,7 +29,7 @@ type LoaderPlaygroundValues = PlaygroundValues<typeof LOADER_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-loader-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiLoaderDirective],
+  imports: [ApiPlayground, ApiTable, KuiLoader],
   templateUrl: './loader-playground-page.html',
   styleUrl: './loader-playground-page.scss',
 })

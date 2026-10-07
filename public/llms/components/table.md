@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/table
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiTableDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/table.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiTable from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/table.md
 
 ## Install
 
@@ -74,13 +74,7 @@ Rendered at /components/table:
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
-} from '@kikita-labs/ui';
+import { KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup } from '@kikita-labs/ui';
 
 interface TeamMember {
   readonly id: string;
@@ -99,13 +93,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 @Component({
   selector: 'app-basic-sortable-table-example',
-  imports: [
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
-  ],
+  imports: [KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup],
   templateUrl: './basic-sortable-table-example.html',
   styleUrl: './basic-sortable-table-example.scss',
 })
@@ -161,13 +149,13 @@ export class BasicSortableTableExample {
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiSelectCellComponent,
-  KuiSelectThComponent,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
+  KuiCell,
+  KuiRow,
+  KuiSelectCell,
+  KuiSelectTh,
+  KuiTable,
+  KuiTh,
+  KuiThGroup,
 } from '@kikita-labs/ui';
 
 interface TeamMember {
@@ -188,15 +176,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 @Component({
   selector: 'app-combined-table-example',
-  imports: [
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiSelectCellComponent,
-    KuiSelectThComponent,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
-  ],
+  imports: [KuiCell, KuiRow, KuiSelectCell, KuiSelectTh, KuiTable, KuiTh, KuiThGroup],
   templateUrl: './combined-table-example.html',
   styleUrl: './combined-table-example.scss',
 })
@@ -261,13 +241,13 @@ export class CombinedTableExample {
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiSelectCellComponent,
-  KuiSelectThComponent,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
+  KuiCell,
+  KuiRow,
+  KuiSelectCell,
+  KuiSelectTh,
+  KuiTable,
+  KuiTh,
+  KuiThGroup,
 } from '@kikita-labs/ui';
 
 interface TeamMember {
@@ -287,15 +267,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 @Component({
   selector: 'app-row-selection-table-example',
-  imports: [
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiSelectCellComponent,
-    KuiSelectThComponent,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
-  ],
+  imports: [KuiCell, KuiRow, KuiSelectCell, KuiSelectTh, KuiTable, KuiTh, KuiThGroup],
   templateUrl: './row-selection-table-example.html',
   styleUrl: './row-selection-table-example.scss',
 })
@@ -360,13 +332,7 @@ export class RowSelectionTableExample {
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
-} from '@kikita-labs/ui';
+import { KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup } from '@kikita-labs/ui';
 
 interface TeamMember {
   readonly id: string;
@@ -422,13 +388,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 @Component({
   selector: 'app-sticky-header-table-example',
-  imports: [
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
-  ],
+  imports: [KuiCell, KuiRow, KuiTable, KuiTh, KuiThGroup],
   templateUrl: './sticky-header-table-example.html',
   styleUrl: './sticky-header-table-example.scss',
 })

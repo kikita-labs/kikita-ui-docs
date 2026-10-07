@@ -6,7 +6,7 @@ export const RADIO_DOCS_MANIFEST = {
   label: 'Radio',
   category: 'forms',
   description: 'Native radio control styling for exclusive choices.',
-  importName: 'KuiRadioDirective',
+  importName: 'KuiRadio',
   status: 'available',
   exampleIds: [
     'basic-radio-example',

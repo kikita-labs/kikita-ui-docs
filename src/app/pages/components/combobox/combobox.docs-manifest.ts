@@ -6,7 +6,7 @@ export const COMBOBOX_DOCS_MANIFEST = {
   label: 'Combobox',
   category: 'forms',
   description: 'Searchable input with projected options and async mode.',
-  importName: 'KuiComboboxDirective',
+  importName: 'KuiCombobox',
   status: 'available',
   exampleIds: [
     'async-combobox-example',

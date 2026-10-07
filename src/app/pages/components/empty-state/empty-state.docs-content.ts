@@ -11,10 +11,10 @@ export const EMPTY_STATE_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'empty-state.ts',
     language: 'ts',
     code: `import {
-  KuiButtonDirective,
-  KuiEmptyStateActionsDirective,
-  KuiEmptyStateComponent,
-  KuiEmptyStateIconDirective,
+  KuiButton,
+  KuiEmptyStateActions,
+  KuiEmptyState,
+  KuiEmptyStateIcon,
 } from '@kikita-labs/ui';`,
   },
 ];

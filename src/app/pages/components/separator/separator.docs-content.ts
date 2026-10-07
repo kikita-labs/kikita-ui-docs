@@ -10,7 +10,7 @@ export const SEPARATOR_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'separator.ts',
     language: 'ts',
-    code: `import { KuiSeparatorDirective } from '@kikita-labs/ui';
+    code: `import { KuiSeparator } from '@kikita-labs/ui';
 
 // Import runtime styles once, application-wide:
 import '@kikita-labs/ui/styles';`,

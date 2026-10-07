@@ -1,15 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiDropdownComponent,
-  KuiDropdownForDirective,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-controlled-open-dropdown-example',
-  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  imports: [KuiButton, KuiDropdown, KuiDropdownFor, KuiOption],
   templateUrl: './controlled-open-dropdown-example.html',
   styleUrl: './controlled-open-dropdown-example.scss',
 })

@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/textarea
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiTextareaDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/textarea.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiTextarea from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/textarea.md
 
 ## Install
 
@@ -44,11 +44,11 @@ Rendered at /components/textarea:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiTextareaDirective } from '@kikita-labs/ui';
+import { KuiField, KuiTextarea } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-textarea-example',
-  imports: [KuiFieldComponent, KuiTextareaDirective],
+  imports: [KuiField, KuiTextarea],
   templateUrl: './basic-textarea-example.html',
   styleUrl: './basic-textarea-example.scss',
 })
@@ -86,11 +86,11 @@ export class BasicTextareaExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiTextareaDirective } from '@kikita-labs/ui';
+import { KuiField, KuiTextarea } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-textarea-invalid-example',
-  imports: [KuiFieldComponent, KuiTextareaDirective],
+  imports: [KuiField, KuiTextarea],
   templateUrl: './textarea-invalid-example.html',
   styleUrl: './textarea-invalid-example.scss',
 })
@@ -137,11 +137,11 @@ export class TextareaInvalidExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiTextareaDirective } from '@kikita-labs/ui';
+import { KuiTextarea } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-textarea-size-example',
-  imports: [KuiTextareaDirective],
+  imports: [KuiTextarea],
   templateUrl: './textarea-size-example.html',
   styleUrl: './textarea-size-example.scss',
 })

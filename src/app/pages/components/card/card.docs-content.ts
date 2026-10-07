@@ -10,6 +10,6 @@ export const CARD_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'card.ts',
     language: 'ts',
-    code: `import { KuiCardDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiCard } from '@kikita-labs/ui';`,
   },
 ];

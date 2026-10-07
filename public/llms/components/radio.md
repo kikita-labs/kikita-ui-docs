@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/radio
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiRadioDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/radio.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiRadio from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/radio.md
 
 ## Install
 
@@ -77,11 +77,11 @@ Rendered at /components/radio:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';
+import { KuiField, KuiRadio } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-radio-example',
-  imports: [KuiFieldComponent, KuiRadioDirective],
+  imports: [KuiField, KuiRadio],
   templateUrl: './basic-radio-example.html',
   styleUrl: './basic-radio-example.scss',
 })
@@ -137,11 +137,11 @@ export class BasicRadioExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiRadioDirective } from '@kikita-labs/ui';
+import { KuiRadio } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-radio-disabled-example',
-  imports: [KuiRadioDirective],
+  imports: [KuiRadio],
   templateUrl: './radio-disabled-example.html',
   styleUrl: './radio-disabled-example.scss',
 })
@@ -192,11 +192,11 @@ export class RadioDisabledExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';
+import { KuiField, KuiRadio } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-radio-invalid-example',
-  imports: [KuiFieldComponent, KuiRadioDirective],
+  imports: [KuiField, KuiRadio],
   templateUrl: './radio-invalid-example.html',
   styleUrl: './radio-invalid-example.scss',
 })
@@ -254,11 +254,11 @@ export class RadioInvalidExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiRadioDirective } from '@kikita-labs/ui';
+import { KuiRadio } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-radio-size-example',
-  imports: [KuiRadioDirective],
+  imports: [KuiRadio],
   templateUrl: './radio-size-example.html',
   styleUrl: './radio-size-example.scss',
 })

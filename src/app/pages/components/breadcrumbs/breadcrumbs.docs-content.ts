@@ -11,9 +11,9 @@ export const BREADCRUMBS_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'breadcrumbs.ts',
     language: 'ts',
     code: `import {
-  KuiBreadcrumbItemDirective,
-  KuiBreadcrumbSeparatorComponent,
-  KuiBreadcrumbsDirective,
+  KuiBreadcrumbItem,
+  KuiBreadcrumbSeparator,
+  KuiBreadcrumbs,
 } from '@kikita-labs/ui';`,
   },
 ];

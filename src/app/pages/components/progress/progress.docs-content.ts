@@ -10,6 +10,6 @@ export const PROGRESS_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'progress.ts',
     language: 'ts',
-    code: `import { KuiProgressComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiProgress } from '@kikita-labs/ui';`,
   },
 ];

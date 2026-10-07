@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiCalendarComponent,
-  type KuiCalendarMode,
+  KuiCalendar,
+  KuiCalendarRange,
   type KuiCalendarSize,
   type KuiDateRange,
 } from '@kikita-labs/ui';
@@ -45,7 +45,7 @@ type CalendarPlaygroundValues = PlaygroundValues<typeof CALENDAR_PLAYGROUND_CONT
 
 @Component({
   selector: 'app-calendar-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiCalendarComponent],
+  imports: [ApiPlayground, ApiTable, KuiCalendar, KuiCalendarRange],
   templateUrl: './calendar-playground-page.html',
   styleUrl: './calendar-playground-page.scss',
 })
@@ -64,7 +64,6 @@ export class CalendarPlaygroundPage {
     values: CalendarPlaygroundValues,
   ): readonly CodeTab[] => {
     const attrString = serializePlaygroundAttributes([
-      { name: 'mode', value: values.mode, defaultValue: 'single' },
       { name: 'size', value: values.size, defaultValue: 'md' },
       { name: 'showFooter', value: values.showFooter },
       { name: 'flat', value: values.flat },
@@ -72,18 +71,20 @@ export class CalendarPlaygroundPage {
       { name: 'locale', value: values.locale, defaultValue: 'en-US' },
       { name: '[minDate]', value: values.minDate ? 'minDate' : null },
     ]);
-    const modelName = values.mode === 'range' ? 'selectedRange' : 'selectedDate';
+    const isRange = values.mode === 'range';
+    const selector = isRange ? 'kui-calendar-range' : 'kui-calendar';
+    const modelName = isRange ? 'selectedRange' : 'selectedDate';
 
     return [
       {
         label: 'HTML',
         language: 'html',
-        code: `<kui-calendar [(value)]="${modelName}"${attrString} />`,
+        code: `<${selector} [(value)]="${modelName}"${attrString} />`,
       },
     ];
   };
 
-  protected modeOf(values: CalendarPlaygroundValues): KuiCalendarMode {
+  protected modeOf(values: CalendarPlaygroundValues): 'single' | 'range' {
     return values.mode;
   }
 

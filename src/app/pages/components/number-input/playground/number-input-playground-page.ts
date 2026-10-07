@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiNumberInputDirective, type KuiNumberInputVariant, type KuiSize } from '@kikita-labs/ui';
+import { KuiNumberInput, type KuiNumberInputVariant, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -26,8 +26,8 @@ const NUMBER_INPUT_PLAYGROUND_CONTROLS = definePlaygroundControls([
     key: 'variant',
     label: 'variant',
     kind: 'enum',
-    options: ['a', 'b'],
-    defaultValue: 'b',
+    options: ['stacked', 'split'],
+    defaultValue: 'split',
   },
   { key: 'min', label: 'min', kind: 'number', defaultValue: 0 },
   { key: 'max', label: 'max', kind: 'number', defaultValue: 100 },
@@ -42,7 +42,7 @@ type NumberInputPlaygroundValues = PlaygroundValues<typeof NUMBER_INPUT_PLAYGROU
 
 @Component({
   selector: 'app-number-input-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiNumberInputDirective],
+  imports: [ApiPlayground, ApiTable, KuiNumberInput],
   templateUrl: './number-input-playground-page.html',
   styleUrl: './number-input-playground-page.scss',
 })
@@ -57,7 +57,7 @@ export class NumberInputPlaygroundPage {
   ): readonly CodeTab[] => {
     const attrString = serializePlaygroundAttributes([
       { name: 'size', value: values.size, defaultValue: 'md' },
-      { name: 'variant', value: values.variant, defaultValue: 'b' },
+      { name: 'variant', value: values.variant, defaultValue: 'split' },
       { name: 'min', value: values.min, defaultValue: 0 },
       { name: 'max', value: values.max, defaultValue: 100 },
       { name: 'step', value: values.step, defaultValue: 1 },

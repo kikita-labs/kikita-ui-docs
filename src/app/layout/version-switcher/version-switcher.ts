@@ -1,11 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiMenuComponent,
-  KuiMenuForDirective,
-  KuiMenuItemDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiMenu, KuiMenuFor, KuiMenuItem } from '@kikita-labs/ui';
 
 import { DocsRouteStateService } from '@core/navigation';
 import {
@@ -18,7 +13,7 @@ import type { VersionSwitcherItem } from './interfaces';
 
 @Component({
   selector: 'app-version-switcher',
-  imports: [KuiButtonDirective, KuiMenuComponent, KuiMenuForDirective, KuiMenuItemDirective],
+  imports: [KuiButton, KuiMenu, KuiMenuFor, KuiMenuItem],
   templateUrl: './version-switcher.html',
   styleUrl: './version-switcher.scss',
 })

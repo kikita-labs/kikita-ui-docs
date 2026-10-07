@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiBadgeDirective } from '@kikita-labs/ui';
+import { KuiBadge } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-badge-appearance-example',
-  imports: [KuiBadgeDirective],
+  imports: [KuiBadge],
   templateUrl: './badge-appearance-example.html',
   styleUrl: './badge-appearance-example.scss',
 })

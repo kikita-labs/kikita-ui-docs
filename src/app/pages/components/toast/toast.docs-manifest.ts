@@ -6,7 +6,7 @@ export const TOAST_DOCS_MANIFEST = {
   label: 'Toast',
   category: 'feedback',
   description: 'Global notifications with actions and live-region semantics.',
-  importName: 'KuiToastService',
+  importName: 'KuiToast',
   status: 'available',
   exampleIds: ['basic-toast-example', 'toast-action-example', 'toast-position-example'],
   loadPage: () => import('./toast-page').then((module) => module.ToastPage),

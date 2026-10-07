@@ -10,7 +10,7 @@ export const RADIO_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'radio.ts',
     language: 'ts',
-    code: `import { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiField, KuiRadio } from '@kikita-labs/ui';`,
   },
 ];
 

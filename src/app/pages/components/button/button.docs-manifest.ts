@@ -6,7 +6,7 @@ export const BUTTON_DOCS_MANIFEST = {
   label: 'Button',
   category: 'actions',
   description: 'Primary command primitive for buttons and links.',
-  importName: 'KuiButtonDirective',
+  importName: 'KuiButton',
   status: 'available',
   exampleIds: [
     'basic-button-example',

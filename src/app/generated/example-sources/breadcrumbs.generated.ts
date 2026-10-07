@@ -15,7 +15,7 @@ export const BREADCRUMBS_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-breadcrumbs-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiBreadcrumbItemDirective,\n  KuiBreadcrumbsDirective,\n  KuiBreadcrumbSeparatorComponent,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-breadcrumbs-example',\n  imports: [KuiBreadcrumbItemDirective, KuiBreadcrumbSeparatorComponent, KuiBreadcrumbsDirective],\n  templateUrl: './basic-breadcrumbs-example.html',\n  styleUrl: './basic-breadcrumbs-example.scss',\n})\nexport class BasicBreadcrumbsExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiBreadcrumbItem, KuiBreadcrumbs, KuiBreadcrumbSeparator } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-breadcrumbs-example',\n  imports: [KuiBreadcrumbItem, KuiBreadcrumbSeparator, KuiBreadcrumbs],\n  templateUrl: './basic-breadcrumbs-example.html',\n  styleUrl: './basic-breadcrumbs-example.scss',\n})\nexport class BasicBreadcrumbsExample {}",
     },
     {
       label: "SCSS",

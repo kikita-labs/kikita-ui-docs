@@ -15,7 +15,7 @@ export const TABS_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-tabs-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-tabs-example',\n  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],\n  templateUrl: './basic-tabs-example.html',\n  styleUrl: './basic-tabs-example.scss',\n})\nexport class BasicTabsExample {\n  protected readonly activeTab = signal('overview');\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTab, KuiTabPanel, KuiTabs } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-tabs-example',\n  imports: [KuiTab, KuiTabPanel, KuiTabs],\n  templateUrl: './basic-tabs-example.html',\n  styleUrl: './basic-tabs-example.scss',\n})\nexport class BasicTabsExample {\n  protected readonly activeTab = signal('overview');\n}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const TABS_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "navigation-tabs-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTabDirective, KuiTabsComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-navigation-tabs-example',\n  imports: [KuiTabDirective, KuiTabsComponent],\n  templateUrl: './navigation-tabs-example.html',\n  styleUrl: './navigation-tabs-example.scss',\n})\nexport class NavigationTabsExample {\n  protected readonly currentSection = signal('/overview');\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTab, KuiTabs } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-navigation-tabs-example',\n  imports: [KuiTab, KuiTabs],\n  templateUrl: './navigation-tabs-example.html',\n  styleUrl: './navigation-tabs-example.scss',\n})\nexport class NavigationTabsExample {\n  protected readonly currentSection = signal('/overview');\n}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const TABS_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "pill-tabs-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-pill-tabs-example',\n  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],\n  templateUrl: './pill-tabs-example.html',\n  styleUrl: './pill-tabs-example.scss',\n})\nexport class PillTabsExample {\n  protected readonly activeTab = signal('daily');\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTab, KuiTabPanel, KuiTabs } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-pill-tabs-example',\n  imports: [KuiTab, KuiTabPanel, KuiTabs],\n  templateUrl: './pill-tabs-example.html',\n  styleUrl: './pill-tabs-example.scss',\n})\nexport class PillTabsExample {\n  protected readonly activeTab = signal('daily');\n}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const TABS_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "vertical-tabs-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-vertical-tabs-example',\n  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],\n  templateUrl: './vertical-tabs-example.html',\n  styleUrl: './vertical-tabs-example.scss',\n})\nexport class VerticalTabsExample {\n  protected readonly activeTab = signal('profile');\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiTab, KuiTabPanel, KuiTabs } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-vertical-tabs-example',\n  imports: [KuiTab, KuiTabPanel, KuiTabs],\n  templateUrl: './vertical-tabs-example.html',\n  styleUrl: './vertical-tabs-example.scss',\n})\nexport class VerticalTabsExample {\n  protected readonly activeTab = signal('profile');\n}",
     },
     {
       label: "SCSS",

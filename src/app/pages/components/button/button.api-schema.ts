@@ -55,17 +55,17 @@ export const BUTTON_API_ROWS: readonly ApiTableRow[] = [
       'Renders a kui-icon resolved by name after the projected content, without hand-projecting kui-icon.',
   },
   {
-    name: 'kuiProvideButtonOptions(options)',
+    name: 'provideKuiDefaults({ button, iconButton })',
     type: 'Provider',
     defaultValue: '-',
     description:
-      'Scopes repeated defaults for kuiButton and kuiIconButton. Local inputs win over button options, and button options win over root defaults.size.',
+      'Scopes repeated defaults for kuiButton and kuiIconButton. Local inputs win over the button keys, and the button keys win over the global defaults.size. A nested level merges with its parent per property.',
   },
   {
-    name: 'KUI_BUTTON_OPTIONS',
-    type: 'InjectionToken<KuiButtonOptions>',
+    name: 'KuiDefaults',
+    type: 'service',
     defaultValue: '-',
     description:
-      'Provider token behind button-family defaults, with separate button and iconButton branches.',
+      'Injectable that reads and sets defaults at runtime: get(key) returns a Signal of the effective options, set and update write to the nearest level.',
   },
 ];

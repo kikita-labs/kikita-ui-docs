@@ -27,14 +27,15 @@ export const TOOLTIP_API_ROWS: readonly ApiTableRow[] = [
     description: 'Enum values accepted by triggerType and tooltip provider options.',
   },
   {
-    name: 'KUI_TOOLTIP_OPTIONS',
-    type: 'InjectionToken<KuiTooltipOptions>',
+    name: 'KuiTooltipOptions',
+    type: 'interface',
     defaultValue: '{ triggerType: auto }',
-    description: 'Injection token for app-wide and scoped tooltip trigger defaults.',
+    description:
+      'Shape of the defaults.tooltip key for app-wide and scoped tooltip trigger defaults.',
   },
   {
-    name: 'kuiProvideTooltipOptions(options)',
-    type: '(options: KuiTooltipOptions) => Provider',
+    name: 'provideKuiDefaults({ tooltip })',
+    type: '(defaults: KuiComponentDefaults) => Provider',
     defaultValue: '-',
     description:
       'Provides merged tooltip defaults for a component or route subtree; local triggerType wins.',

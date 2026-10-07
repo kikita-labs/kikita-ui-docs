@@ -82,10 +82,8 @@ export class UploadComponent {
       language: 'ts',
       code: `export const appConfig: ApplicationConfig = {
   providers: [
-    provideKuiToastOptions({
-      position: 'top-end',
-      duration: 4000,
-      maxVisible: 5,
+    provideKikitaUi({
+      defaults: { toast: { position: 'top-end', duration: 4000, maxVisible: 5 } },
     }),
   ],
 };`,

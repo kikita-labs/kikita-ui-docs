@@ -9,8 +9,8 @@ export const NUMBER_INPUT_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'variant',
-    type: `'a' | 'b'`,
-    defaultValue: `'b'`,
+    type: `'stacked' | 'split'`,
+    defaultValue: `'split'`,
     description:
       'Button layout. b places minus/plus controls on the sides (recommended). a stacks compact arrow controls on the right.',
   },

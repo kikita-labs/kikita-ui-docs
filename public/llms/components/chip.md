@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/chip
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiChipDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/chip.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiChip from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chip.md
 
 ## Install
 
@@ -49,8 +49,8 @@ of its own: project whatever content you want as the button's children, for exam
 </span>
 ```
 
-`kuiIconButton` is its own directive; import `KuiIconButtonDirective` alongside
-`KuiChipDirective`/`KuiChipRemoveDirective` to use this pattern. See [Icon
+`kuiIconButton` is its own directive; import `KuiIconButton` alongside
+`KuiChip`/`KuiChipRemove` to use this pattern. See [Icon
 Button](icon-button.md).
 
 Do not combine `removable` and a projected `button[kuiChipRemove]` on the same chip —
@@ -77,11 +77,11 @@ Rendered at /components/chip:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiChipDirective } from '@kikita-labs/ui';
+import { KuiChip } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-chip-example',
-  imports: [KuiChipDirective],
+  imports: [KuiChip],
   templateUrl: './basic-chip-example.html',
   styleUrl: './basic-chip-example.scss',
 })
@@ -119,11 +119,11 @@ export class BasicChipExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';
+import { KuiChip, KuiChipRemove } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-chip-states-example',
-  imports: [KuiChipDirective, KuiChipRemoveDirective],
+  imports: [KuiChip, KuiChipRemove],
   templateUrl: './chip-states-example.html',
   styleUrl: './chip-states-example.scss',
 })
@@ -180,11 +180,11 @@ export class ChipStatesExample {}
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiChipDirective } from '@kikita-labs/ui';
+import { KuiChip } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-interactive-chip-example',
-  imports: [KuiChipDirective],
+  imports: [KuiChip],
   templateUrl: './interactive-chip-example.html',
   styleUrl: './interactive-chip-example.scss',
 })
@@ -234,11 +234,11 @@ export class InteractiveChipExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiChipDirective } from '@kikita-labs/ui';
+import { KuiChip } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-removable-chip-example',
-  imports: [KuiChipDirective],
+  imports: [KuiChip],
   templateUrl: './removable-chip-example.html',
   styleUrl: './removable-chip-example.scss',
 })

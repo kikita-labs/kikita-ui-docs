@@ -1,24 +1,18 @@
 import { Component, input } from '@angular/core';
 
 import {
-  KuiButtonDirective,
-  KuiEmptyStateActionsDirective,
-  KuiEmptyStateComponent,
-  KuiEmptyStateIconDirective,
-  KuiIconComponent,
+  KuiButton,
+  KuiEmptyState,
+  KuiEmptyStateActions,
+  KuiEmptyStateIcon,
+  KuiIcon,
 } from '@kikita-labs/ui';
 
 import { DOCS_EXTERNAL_LINKS } from '@core/navigation';
 
 @Component({
   selector: 'app-draft-state',
-  imports: [
-    KuiButtonDirective,
-    KuiEmptyStateActionsDirective,
-    KuiEmptyStateComponent,
-    KuiEmptyStateIconDirective,
-    KuiIconComponent,
-  ],
+  imports: [KuiButton, KuiEmptyStateActions, KuiEmptyState, KuiEmptyStateIcon, KuiIcon],
   templateUrl: './draft-state.html',
   styleUrl: './draft-state.scss',
 })

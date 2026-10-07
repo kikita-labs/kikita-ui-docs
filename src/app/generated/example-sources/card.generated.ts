@@ -15,7 +15,7 @@ export const CARD_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-card-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiCardDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-card-example',\n  imports: [KuiCardDirective],\n  templateUrl: './basic-card-example.html',\n  styleUrl: './basic-card-example.scss',\n})\nexport class BasicCardExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiCard } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-card-example',\n  imports: [KuiCard],\n  templateUrl: './basic-card-example.html',\n  styleUrl: './basic-card-example.scss',\n})\nexport class BasicCardExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const CARD_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "card-appearance-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiCardDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-card-appearance-example',\n  imports: [KuiCardDirective],\n  templateUrl: './card-appearance-example.html',\n  styleUrl: './card-appearance-example.scss',\n})\nexport class CardAppearanceExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiCard } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-card-appearance-example',\n  imports: [KuiCard],\n  templateUrl: './card-appearance-example.html',\n  styleUrl: './card-appearance-example.scss',\n})\nexport class CardAppearanceExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const CARD_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "card-interactive-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiCardDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-card-interactive-example',\n  imports: [KuiCardDirective],\n  templateUrl: './card-interactive-example.html',\n  styleUrl: './card-interactive-example.scss',\n})\nexport class CardInteractiveExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiCard } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-card-interactive-example',\n  imports: [KuiCard],\n  templateUrl: './card-interactive-example.html',\n  styleUrl: './card-interactive-example.scss',\n})\nexport class CardInteractiveExample {}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const CARD_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "card-size-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiCardDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-card-size-example',\n  imports: [KuiCardDirective],\n  templateUrl: './card-size-example.html',\n  styleUrl: './card-size-example.scss',\n})\nexport class CardSizeExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiCard } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-card-size-example',\n  imports: [KuiCard],\n  templateUrl: './card-size-example.html',\n  styleUrl: './card-size-example.scss',\n})\nexport class CardSizeExample {}",
     },
     {
       label: "SCSS",

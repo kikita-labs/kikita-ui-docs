@@ -10,8 +10,7 @@
     [snippet]="buildPlaygroundSnippet"
   >
     @if (modeOf(playground.values()) === 'range') {
-      <kui-calendar
-        mode="range"
+      <kui-calendar-range
         [(value)]="selectedRange"
         [size]="sizeOf(playground.values())"
         [showFooter]="showFooterOf(playground.values())"

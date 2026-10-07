@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/switch
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiSwitchDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/switch.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiSwitch from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/switch.md
 
 ## Install
 
@@ -52,11 +52,11 @@ Rendered at /components/switch:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiSwitchDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSwitch } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-switch-example',
-  imports: [KuiFieldComponent, KuiSwitchDirective],
+  imports: [KuiField, KuiSwitch],
   templateUrl: './basic-switch-example.html',
   styleUrl: './basic-switch-example.scss',
 })
@@ -109,11 +109,11 @@ export class BasicSwitchExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiSwitchDirective } from '@kikita-labs/ui';
+import { KuiSwitch } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-switch-size-example',
-  imports: [KuiSwitchDirective],
+  imports: [KuiSwitch],
   templateUrl: './switch-size-example.html',
   styleUrl: './switch-size-example.scss',
 })

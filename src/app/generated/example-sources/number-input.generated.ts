@@ -15,7 +15,7 @@ export const NUMBER_INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-number-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-number-input-example',\n  imports: [KuiNumberInputDirective],\n  templateUrl: './basic-number-input-example.html',\n  styleUrl: './basic-number-input-example.scss',\n})\nexport class BasicNumberInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-number-input-example',\n  imports: [KuiNumberInput],\n  templateUrl: './basic-number-input-example.html',\n  styleUrl: './basic-number-input-example.scss',\n})\nexport class BasicNumberInputExample {}",
     },
     {
       label: "SCSS",
@@ -29,13 +29,13 @@ export const NUMBER_INPUT_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "compact-number-input-example.html",
       language: "html",
-      code: "<input\n  type=\"number\"\n  kuiNumberInput\n  variant=\"a\"\n  min=\"0\"\n  max=\"99\"\n  aria-label=\"Compact quantity\"\n  value=\"12\"\n/>\n<input\n  type=\"number\"\n  kuiNumberInput\n  variant=\"b\"\n  min=\"0\"\n  max=\"99\"\n  aria-label=\"Default quantity\"\n  value=\"12\"\n/>",
+      code: "<input\n  type=\"number\"\n  kuiNumberInput\n  variant=\"stacked\"\n  min=\"0\"\n  max=\"99\"\n  aria-label=\"Compact quantity\"\n  value=\"12\"\n/>\n<input\n  type=\"number\"\n  kuiNumberInput\n  variant=\"split\"\n  min=\"0\"\n  max=\"99\"\n  aria-label=\"Default quantity\"\n  value=\"12\"\n/>",
     },
     {
       label: "TS",
       filename: "compact-number-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-compact-number-input-example',\n  imports: [KuiNumberInputDirective],\n  templateUrl: './compact-number-input-example.html',\n  styleUrl: './compact-number-input-example.scss',\n})\nexport class CompactNumberInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-compact-number-input-example',\n  imports: [KuiNumberInput],\n  templateUrl: './compact-number-input-example.html',\n  styleUrl: './compact-number-input-example.scss',\n})\nexport class CompactNumberInputExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const NUMBER_INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "field-number-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiFieldComponent, KuiNumberInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-number-input-example',\n  imports: [KuiFieldComponent, KuiNumberInputDirective],\n  templateUrl: './field-number-input-example.html',\n  styleUrl: './field-number-input-example.scss',\n})\nexport class FieldNumberInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiField, KuiNumberInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-field-number-input-example',\n  imports: [KuiField, KuiNumberInput],\n  templateUrl: './field-number-input-example.html',\n  styleUrl: './field-number-input-example.scss',\n})\nexport class FieldNumberInputExample {}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const NUMBER_INPUT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "range-number-input-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInputDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-range-number-input-example',\n  imports: [KuiNumberInputDirective],\n  templateUrl: './range-number-input-example.html',\n  styleUrl: './range-number-input-example.scss',\n})\nexport class RangeNumberInputExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiNumberInput } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-range-number-input-example',\n  imports: [KuiNumberInput],\n  templateUrl: './range-number-input-example.html',\n  styleUrl: './range-number-input-example.scss',\n})\nexport class RangeNumberInputExample {}",
     },
     {
       label: "SCSS",

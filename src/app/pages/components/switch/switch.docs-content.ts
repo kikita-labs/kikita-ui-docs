@@ -10,6 +10,6 @@ export const SWITCH_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'switch.ts',
     language: 'ts',
-    code: `import { KuiFieldComponent, KuiSwitchDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiField, KuiSwitch } from '@kikita-labs/ui';`,
   },
 ];

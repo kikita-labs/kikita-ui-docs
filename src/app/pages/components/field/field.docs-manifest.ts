@@ -6,7 +6,7 @@ export const FIELD_DOCS_MANIFEST = {
   label: 'Field',
   category: 'forms',
   description: 'Label, hint, error, and form-control composition.',
-  importName: 'KuiFieldComponent',
+  importName: 'KuiField',
   status: 'available',
   exampleIds: ['basic-field-example'],
   loadPage: () => import('./field-page').then((module) => module.FieldPage),

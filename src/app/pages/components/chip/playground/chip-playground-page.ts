@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { type KuiChipAppearance, KuiChipDirective, type KuiSize } from '@kikita-labs/ui';
+import { KuiChip, type KuiChipAppearance, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -39,7 +39,7 @@ type ChipPlaygroundValues = PlaygroundValues<typeof CHIP_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-chip-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiChipDirective],
+  imports: [ApiPlayground, ApiTable, KuiChip],
   templateUrl: './chip-playground-page.html',
   styleUrl: './chip-playground-page.scss',
 })

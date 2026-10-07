@@ -10,6 +10,6 @@ export const LOADER_IMPORT_TABS = [
     label: 'Import',
     filename: 'loader.ts',
     language: 'ts',
-    code: `import { KuiLoaderDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiLoader } from '@kikita-labs/ui';`,
   },
 ] as const satisfies readonly CodeTab[];

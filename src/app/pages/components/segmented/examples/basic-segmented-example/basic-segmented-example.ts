@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiSegmentDirective, KuiSegmentedComponent } from '@kikita-labs/ui';
+import { KuiSegment, KuiSegmented } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-segmented-example',
-  imports: [KuiSegmentDirective, KuiSegmentedComponent],
+  imports: [KuiSegment, KuiSegmented],
   templateUrl: './basic-segmented-example.html',
   styleUrl: './basic-segmented-example.scss',
 })

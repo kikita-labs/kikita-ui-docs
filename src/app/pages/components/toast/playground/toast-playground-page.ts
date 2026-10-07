@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  kuiToast,
-  type KuiToastConfig,
-  type KuiToastPosition,
-} from '@kikita-labs/ui';
+import { KuiButton, kuiToast, type KuiToastConfig, type KuiToastPosition } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import { definePlaygroundControls, type PlaygroundValues } from '@shared/docs-ui/api-playground';
@@ -89,7 +84,7 @@ function toToastConfig(values: ToastPlaygroundValues): KuiToastConfig {
 
 @Component({
   selector: 'app-toast-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButtonDirective],
+  imports: [ApiPlayground, ApiTable, KuiButton],
   templateUrl: './toast-playground-page.html',
   styleUrl: './toast-playground-page.scss',
 })
@@ -99,8 +94,8 @@ export class ToastPlaygroundPage {
   protected readonly apiDescription = TOAST_API_DESCRIPTION;
   protected readonly apiRows = TOAST_API_ROWS;
 
-  // maxVisible is app-wide only (set via provideKuiToastOptions) and has no runtime setter,
-  // so it can't be represented safely here. See the "Global defaults" section on the main page.
+  // maxVisible is an app-wide default (set via defaults.toast), so it is not a per-toast
+  // control here. See the "Global defaults" section on the main page.
   protected readonly playgroundControls = TOAST_PLAYGROUND_CONTROLS;
 
   protected triggerLabel(values: ToastPlaygroundValues): string {

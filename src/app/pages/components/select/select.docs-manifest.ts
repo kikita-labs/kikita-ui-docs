@@ -6,7 +6,7 @@ export const SELECT_DOCS_MANIFEST = {
   label: 'Select',
   category: 'forms',
   description: 'Dropdown-backed selection control for single and multiple values.',
-  importName: 'KuiSelectDirective',
+  importName: 'KuiSelect',
   status: 'available',
   exampleIds: ['basic-select-example', 'multiple-select-example'],
   loadPage: () => import('./select-page').then((module) => module.SelectPage),

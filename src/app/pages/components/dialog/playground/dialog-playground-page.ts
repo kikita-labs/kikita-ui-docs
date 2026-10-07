@@ -8,7 +8,7 @@ import {
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiDialog } from '@kikita-labs/ui';
+import { KuiButton, kuiDialog } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -53,7 +53,7 @@ type DialogPlaygroundValues = PlaygroundValues<typeof DIALOG_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-dialog-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiButtonDirective],
+  imports: [ApiPlayground, ApiTable, KuiButton],
   templateUrl: './dialog-playground-page.html',
   styleUrl: './dialog-playground-page.scss',
 })

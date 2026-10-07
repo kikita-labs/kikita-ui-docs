@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+import { KuiTab, KuiTabPanel, KuiTabs } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-vertical-tabs-example',
-  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  imports: [KuiTab, KuiTabPanel, KuiTabs],
   templateUrl: './vertical-tabs-example.html',
   styleUrl: './vertical-tabs-example.scss',
 })

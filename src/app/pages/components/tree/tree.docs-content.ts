@@ -10,6 +10,6 @@ export const TREE_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'tree.ts',
     language: 'ts',
-    code: `import { KuiTreeComponent, type KuiTreeNode } from '@kikita-labs/ui';`,
+    code: `import { KuiTree, type KuiTreeNode } from '@kikita-labs/ui';`,
   },
 ];

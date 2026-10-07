@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiDropdownComponent,
-  KuiDropdownForDirective,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-standalone-dropdown-example',
-  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  imports: [KuiButton, KuiDropdown, KuiDropdownFor, KuiOption],
   templateUrl: './standalone-dropdown-example.html',
 })
 export class StandaloneDropdownExample {}

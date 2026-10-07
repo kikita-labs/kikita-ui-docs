@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+import { KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -41,13 +41,7 @@ type DropdownPlaygroundValues = PlaygroundValues<typeof DROPDOWN_PLAYGROUND_CONT
 
 @Component({
   selector: 'app-dropdown-playground-page',
-  imports: [
-    ApiPlayground,
-    ApiTable,
-    KuiDropdownComponent,
-    KuiDropdownForDirective,
-    KuiOptionDirective,
-  ],
+  imports: [ApiPlayground, ApiTable, KuiDropdown, KuiDropdownFor, KuiOption],
   templateUrl: './dropdown-playground-page.html',
   styleUrl: './dropdown-playground-page.scss',
 })

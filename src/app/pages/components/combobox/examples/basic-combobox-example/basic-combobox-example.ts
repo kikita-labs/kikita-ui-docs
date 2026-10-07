@@ -1,11 +1,11 @@
 import { Component, computed, signal } from '@angular/core';
 
 import {
-  KuiComboboxDirective,
+  KuiCombobox,
   KuiComboboxHighlightPipe,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
+  KuiDropdown,
+  KuiField,
+  KuiOption,
 } from '@kikita-labs/ui';
 
 interface Person {
@@ -23,13 +23,7 @@ const PEOPLE: readonly Person[] = [
 
 @Component({
   selector: 'app-basic-combobox-example',
-  imports: [
-    KuiComboboxDirective,
-    KuiComboboxHighlightPipe,
-    KuiDropdownComponent,
-    KuiFieldComponent,
-    KuiOptionDirective,
-  ],
+  imports: [KuiCombobox, KuiComboboxHighlightPipe, KuiDropdown, KuiField, KuiOption],
   templateUrl: './basic-combobox-example.html',
   styleUrl: './basic-combobox-example.scss',
 })

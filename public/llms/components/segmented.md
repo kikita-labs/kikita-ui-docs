@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/segmented
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiSegmentedComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/segmented.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiSegmented from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/segmented.md
 
 ## Install
 
@@ -70,11 +70,11 @@ Rendered at /components/segmented:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiSegmentDirective, KuiSegmentedComponent } from '@kikita-labs/ui';
+import { KuiSegment, KuiSegmented } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-segmented-example',
-  imports: [KuiSegmentDirective, KuiSegmentedComponent],
+  imports: [KuiSegment, KuiSegmented],
   templateUrl: './basic-segmented-example.html',
   styleUrl: './basic-segmented-example.scss',
 })

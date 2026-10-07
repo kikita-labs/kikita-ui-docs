@@ -10,6 +10,6 @@ export const CHECKBOX_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'checkbox.ts',
     language: 'ts',
-    code: `import { KuiCheckboxDirective, KuiFieldComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiCheckbox, KuiField } from '@kikita-labs/ui';`,
   },
 ];

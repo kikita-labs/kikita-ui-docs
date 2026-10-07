@@ -6,7 +6,7 @@ export const CHECKBOX_DOCS_MANIFEST = {
   label: 'Checkbox',
   category: 'forms',
   description: 'Native checkbox styling with field state integration.',
-  importName: 'KuiCheckboxDirective',
+  importName: 'KuiCheckbox',
   status: 'available',
   exampleIds: ['basic-checkbox-example', 'checkbox-size-example'],
   loadPage: () => import('./checkbox-page').then((module) => module.CheckboxPage),

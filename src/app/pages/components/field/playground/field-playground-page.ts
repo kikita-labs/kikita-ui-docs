@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiInputDirective, type KuiSize } from '@kikita-labs/ui';
+import { KuiField, KuiInput, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -33,7 +33,7 @@ type FieldPlaygroundValues = PlaygroundValues<typeof FIELD_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-field-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiFieldComponent, KuiInputDirective],
+  imports: [ApiPlayground, ApiTable, KuiField, KuiInput],
   templateUrl: './field-playground-page.html',
   styleUrl: './field-playground-page.scss',
 })

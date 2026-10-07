@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiCheckboxDirective, KuiFieldComponent } from '@kikita-labs/ui';
+import { KuiCheckbox, KuiField } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-checkbox-example',
-  imports: [KuiCheckboxDirective, KuiFieldComponent],
+  imports: [KuiCheckbox, KuiField],
   templateUrl: './basic-checkbox-example.html',
   styleUrl: './basic-checkbox-example.scss',
 })

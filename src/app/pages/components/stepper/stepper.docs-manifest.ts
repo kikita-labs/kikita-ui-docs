@@ -6,7 +6,7 @@ export const STEPPER_DOCS_MANIFEST = {
   label: 'Stepper',
   category: 'surfaces',
   description: 'Multi-step progress and navigation indicator.',
-  importName: 'KuiStepperComponent',
+  importName: 'KuiStepper',
   status: 'available',
   exampleIds: ['basic-stepper-example'],
   loadPage: () => import('./stepper-page').then((module) => module.StepperPage),

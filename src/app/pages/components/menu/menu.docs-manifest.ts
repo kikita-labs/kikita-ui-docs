@@ -6,7 +6,7 @@ export const MENU_DOCS_MANIFEST = {
   label: 'Menu',
   category: 'actions',
   description: 'Anchored command menu with keyboard focus behavior.',
-  importName: 'KuiMenuComponent',
+  importName: 'KuiMenu',
   status: 'available',
   exampleIds: ['basic-menu-example', 'menu-content-example'],
   loadPage: () => import('./menu-page').then((module) => module.MenuPage),

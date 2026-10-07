@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/empty-state
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiEmptyStateComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/empty-state.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiEmptyState from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/empty-state.md
 
 ## Install
 
@@ -65,22 +65,16 @@ Rendered at /components/empty-state:
 import { Component } from '@angular/core';
 
 import {
-  KuiButtonDirective,
-  KuiEmptyStateActionsDirective,
-  KuiEmptyStateComponent,
-  KuiEmptyStateIconDirective,
-  KuiIconComponent,
+  KuiButton,
+  KuiEmptyState,
+  KuiEmptyStateActions,
+  KuiEmptyStateIcon,
+  KuiIcon,
 } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-empty-state-example',
-  imports: [
-    KuiButtonDirective,
-    KuiEmptyStateActionsDirective,
-    KuiEmptyStateComponent,
-    KuiEmptyStateIconDirective,
-    KuiIconComponent,
-  ],
+  imports: [KuiButton, KuiEmptyStateActions, KuiEmptyState, KuiEmptyStateIcon, KuiIcon],
   templateUrl: './basic-empty-state-example.html',
   styleUrl: './basic-empty-state-example.scss',
 })
@@ -151,22 +145,16 @@ export class BasicEmptyStateExample {}
 import { Component } from '@angular/core';
 
 import {
-  KuiButtonDirective,
-  KuiEmptyStateActionsDirective,
-  KuiEmptyStateComponent,
-  KuiEmptyStateIconDirective,
-  KuiIconComponent,
+  KuiButton,
+  KuiEmptyState,
+  KuiEmptyStateActions,
+  KuiEmptyStateIcon,
+  KuiIcon,
 } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-empty-state-context-example',
-  imports: [
-    KuiButtonDirective,
-    KuiEmptyStateActionsDirective,
-    KuiEmptyStateComponent,
-    KuiEmptyStateIconDirective,
-    KuiIconComponent,
-  ],
+  imports: [KuiButton, KuiEmptyStateActions, KuiEmptyState, KuiEmptyStateIcon, KuiIcon],
   templateUrl: './empty-state-context-example.html',
   styleUrl: './empty-state-context-example.scss',
 })
@@ -209,15 +197,11 @@ export class EmptyStateContextExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiEmptyStateComponent,
-  KuiEmptyStateIconDirective,
-  KuiIconComponent,
-} from '@kikita-labs/ui';
+import { KuiEmptyState, KuiEmptyStateIcon, KuiIcon } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-empty-state-size-example',
-  imports: [KuiEmptyStateComponent, KuiEmptyStateIconDirective, KuiIconComponent],
+  imports: [KuiEmptyState, KuiEmptyStateIcon, KuiIcon],
   templateUrl: './empty-state-size-example.html',
   styleUrl: './empty-state-size-example.scss',
 })
@@ -243,8 +227,8 @@ export class EmptyStateSizeExample {}
 | description | string \| null | null | Optional supporting text rendered below the title. |
 | context | 'no-data' \| 'no-results' \| 'error' \| 'no-access' \| 'success' | 'no-data' | Semantic context. Only changes the icon accent, not layout. |
 | size | 'sm' \| 'md' \| 'lg' | 'md' | Empty-state layout size. Small uses a compact horizontal layout. |
-| [kuiEmptyStateIcon] | KuiEmptyStateIconDirective | - | Marks projected visual content as the decorative icon slot. Kikita marks it aria-hidden. |
-| [kuiEmptyStateActions] | KuiEmptyStateActionsDirective | - | Marks projected content as the action slot for native buttons, links, or Kikita button directives. |
+| [kuiEmptyStateIcon] | KuiEmptyStateIcon | - | Marks projected visual content as the decorative icon slot. Kikita marks it aria-hidden. |
+| [kuiEmptyStateActions] | KuiEmptyStateActions | - | Marks projected content as the action slot for native buttons, links, or Kikita button directives. |
 
 ## Accessibility
 

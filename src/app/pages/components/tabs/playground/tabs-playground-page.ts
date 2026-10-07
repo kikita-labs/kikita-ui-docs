@@ -2,9 +2,9 @@ import { Component, signal } from '@angular/core';
 
 import {
   type KuiSize,
-  KuiTabDirective,
-  KuiTabPanelDirective,
-  KuiTabsComponent,
+  KuiTab,
+  KuiTabPanel,
+  KuiTabs,
   type KuiTabsOrientation,
   type KuiTabsVariant,
 } from '@kikita-labs/ui';
@@ -55,7 +55,7 @@ type TabsPlaygroundValues = PlaygroundValues<typeof TABS_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-tabs-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  imports: [ApiPlayground, ApiTable, KuiTab, KuiTabPanel, KuiTabs],
   templateUrl: './tabs-playground-page.html',
   styleUrl: './tabs-playground-page.scss',
 })

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { KuiButtonDirective } from '@kikita-labs/ui';
+import { KuiButton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-button-example',
-  imports: [KuiButtonDirective, RouterLink],
+  imports: [KuiButton, RouterLink],
   templateUrl: './basic-button-example.html',
   styleUrl: './basic-button-example.scss',
 })

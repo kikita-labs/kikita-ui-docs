@@ -11,11 +11,11 @@ export const SELECT_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'select.ts',
     language: 'ts',
     code: `import {
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-  KuiSelectDirective,
-  kuiProvideSelectOptions,
+  KuiDropdown,
+  KuiField,
+  KuiOption,
+  KuiSelect,
+  provideKuiDefaults,
 } from '@kikita-labs/ui';`,
   },
 ];
@@ -24,15 +24,17 @@ export const SELECT_PROVIDER_TABS: readonly CodeTab[] = [
   {
     label: 'app.config.ts',
     language: 'ts',
-    code: `import { kuiProvideSelectOptions } from '@kikita-labs/ui';
+    code: `import { provideKikitaUi } from '@kikita-labs/ui';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    kuiProvideSelectOptions({
-      clearable: true,
-      maxVisibleChips: 2,
+    provideKikitaUi({
+      defaults: { select: { clearable: true, maxVisibleChips: 2 } },
     }),
   ],
-};`,
+};
+
+// In a component or route subtree instead:
+// providers: [provideKuiDefaults({ select: { clearable: true } })]`,
   },
 ];

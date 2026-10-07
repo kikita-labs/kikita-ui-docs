@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/checkbox
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiCheckboxDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/checkbox.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiCheckbox from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/checkbox.md
 
 ## Install
 
@@ -51,11 +51,11 @@ Rendered at /components/checkbox:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiCheckboxDirective, KuiFieldComponent } from '@kikita-labs/ui';
+import { KuiCheckbox, KuiField } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-checkbox-example',
-  imports: [KuiCheckboxDirective, KuiFieldComponent],
+  imports: [KuiCheckbox, KuiField],
   templateUrl: './basic-checkbox-example.html',
   styleUrl: './basic-checkbox-example.scss',
 })
@@ -122,11 +122,11 @@ export class BasicCheckboxExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiCheckboxDirective } from '@kikita-labs/ui';
+import { KuiCheckbox } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-checkbox-size-example',
-  imports: [KuiCheckboxDirective],
+  imports: [KuiCheckbox],
   templateUrl: './checkbox-size-example.html',
   styleUrl: './checkbox-size-example.scss',
 })

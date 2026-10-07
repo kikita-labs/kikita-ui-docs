@@ -1,13 +1,13 @@
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiCellDirective,
-  KuiRowDirective,
-  KuiSelectCellComponent,
-  KuiSelectThComponent,
-  KuiTableDirective,
-  KuiThDirective,
-  KuiThGroupDirective,
+  KuiCell,
+  KuiRow,
+  KuiSelectCell,
+  KuiSelectTh,
+  KuiTable,
+  KuiTh,
+  KuiThGroup,
 } from '@kikita-labs/ui';
 
 interface TeamMember {
@@ -27,15 +27,7 @@ const TEAM_MEMBERS: TeamMember[] = [
 
 @Component({
   selector: 'app-row-selection-table-example',
-  imports: [
-    KuiCellDirective,
-    KuiRowDirective,
-    KuiSelectCellComponent,
-    KuiSelectThComponent,
-    KuiTableDirective,
-    KuiThDirective,
-    KuiThGroupDirective,
-  ],
+  imports: [KuiCell, KuiRow, KuiSelectCell, KuiSelectTh, KuiTable, KuiTh, KuiThGroup],
   templateUrl: './row-selection-table-example.html',
   styleUrl: './row-selection-table-example.scss',
 })

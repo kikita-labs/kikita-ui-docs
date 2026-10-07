@@ -1,11 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-  KuiSelectDirective,
-} from '@kikita-labs/ui';
+import { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -50,14 +45,7 @@ type SelectPlaygroundValues = PlaygroundValues<typeof SELECT_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-select-playground-page',
-  imports: [
-    ApiPlayground,
-    ApiTable,
-    KuiDropdownComponent,
-    KuiFieldComponent,
-    KuiOptionDirective,
-    KuiSelectDirective,
-  ],
+  imports: [ApiPlayground, ApiTable, KuiDropdown, KuiField, KuiOption, KuiSelect],
   templateUrl: './select-playground-page.html',
   styleUrl: './select-playground-page.scss',
 })

@@ -15,7 +15,7 @@ export const POPOVER_EXAMPLE_SOURCES = {
       label: "action-popover-example.ts",
       filename: "action-popover-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-action-popover-example',\n  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],\n  templateUrl: './action-popover-example.html',\n})\nexport class ActionPopoverExample {\n  protected readonly deleted = signal(false);\n\n  protected delete(): void {\n    this.deleted.set(true);\n  }\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiButton, KuiPopover, KuiPopoverFor } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-action-popover-example',\n  imports: [KuiButton, KuiPopover, KuiPopoverFor],\n  templateUrl: './action-popover-example.html',\n})\nexport class ActionPopoverExample {\n  protected readonly deleted = signal(false);\n\n  protected delete(): void {\n    this.deleted.set(true);\n  }\n}",
     },
   ],
   "basic-popover-example": [
@@ -29,7 +29,7 @@ export const POPOVER_EXAMPLE_SOURCES = {
       label: "basic-popover-example.ts",
       filename: "basic-popover-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-popover-example',\n  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],\n  templateUrl: './basic-popover-example.html',\n})\nexport class BasicPopoverExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, KuiPopover, KuiPopoverFor } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-popover-example',\n  imports: [KuiButton, KuiPopover, KuiPopoverFor],\n  templateUrl: './basic-popover-example.html',\n})\nexport class BasicPopoverExample {}",
     },
   ],
   "hover-popover-example": [
@@ -43,7 +43,7 @@ export const POPOVER_EXAMPLE_SOURCES = {
       label: "hover-popover-example.ts",
       filename: "hover-popover-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-hover-popover-example',\n  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],\n  templateUrl: './hover-popover-example.html',\n})\nexport class HoverPopoverExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, KuiPopover, KuiPopoverFor } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-hover-popover-example',\n  imports: [KuiButton, KuiPopover, KuiPopoverFor],\n  templateUrl: './hover-popover-example.html',\n})\nexport class HoverPopoverExample {}",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

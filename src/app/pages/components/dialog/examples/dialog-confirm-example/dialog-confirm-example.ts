@@ -2,11 +2,11 @@ import { Component, DestroyRef, inject, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiConfirm } from '@kikita-labs/ui';
+import { KuiButton, kuiConfirm } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-dialog-confirm-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './dialog-confirm-example.html',
   styleUrl: './dialog-confirm-example.scss',
 })

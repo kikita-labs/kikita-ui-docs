@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/input
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiInputDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/input.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiInput from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/input.md
 
 ## Install
 
@@ -17,12 +17,36 @@ ng add @kikita-labs/ui
 
 ## Usage
 
-```html
-<input kuiInput placeholder="Email" />
+Import the directive where it is used:
+
+```ts
+import { KuiInput } from '@kikita-labs/ui';
 ```
 
-Inside `kui-field`, `kuiInput` automatically wires label, hint, error, and invalid ARIA attributes.
-Use `textarea[kuiTextarea]` for multiline controls.
+Import the Kikita UI runtime styles once in the application entry point:
+
+```ts
+import '@kikita-labs/ui/styles';
+```
+
+Use the directive on a native input. Add a native label or `aria-label` when the input is not
+inside a labelled Field:
+
+```html
+<label for="email">Email</label> <input id="email" kuiInput type="email" autocomplete="email" />
+```
+
+Inside `kui-field`, the Field supplies the visible label and wires its generated control id,
+hint, error, and invalid state:
+
+```html
+<kui-field label="Email" hint="Use your work email">
+  <input kuiInput type="email" autocomplete="email" />
+</kui-field>
+```
+
+Use `textarea[kuiTextarea]` for multiline controls. Use the dedicated Kikita UI controls for
+specialized number, color, date, selection, and other input behaviors.
 
 ## Examples
 
@@ -45,11 +69,11 @@ Rendered at /components/input:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiInputDirective } from '@kikita-labs/ui';
+import { KuiInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-input-example',
-  imports: [KuiInputDirective],
+  imports: [KuiInput],
   templateUrl: './basic-input-example.html',
   styleUrl: './basic-input-example.scss',
 })
@@ -83,11 +107,11 @@ export class BasicInputExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';
+import { KuiField, KuiFieldAffix, KuiInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-input-group-example',
-  imports: [KuiFieldAffixDirective, KuiFieldComponent, KuiInputDirective],
+  imports: [KuiFieldAffix, KuiField, KuiInput],
   templateUrl: './input-group-example.html',
   styleUrl: './input-group-example.scss',
 })
@@ -112,7 +136,17 @@ export class InputGroupExample {}
 
 ## Accessibility
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+- Keep the native `<input>` semantics; do not add an ARIA role to it.
+- Give every input an accessible name through a `kui-field` label, an associated native `<label>`,
+  or `aria-label`. Placeholder text alone is not a label.
+- The directive uses the containing Field's control id and references only its currently rendered
+  hint and error with `aria-describedby`. The Field exposes a visible error as `role="alert"`.
+- `aria-invalid` is omitted when the input is valid. When invalid, the directive sets
+  `aria-invalid="true"` and the `data-kui-invalid` styling hook.
+- Keep native `disabled` and `readonly` distinct. A disabled input is not available for normal
+  interaction; a read-only input remains a native focusable control whose value cannot be edited.
+  Required semantics come from native HTML or Signal Forms, not from the Field's visual required
+  marker.
 
 ## Playground
 

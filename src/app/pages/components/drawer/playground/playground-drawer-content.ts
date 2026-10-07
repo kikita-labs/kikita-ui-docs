@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import {
   KUI_DRAWER_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDrawerContext,
   type KuiDrawerHost,
 } from '@kikita-labs/ui';
@@ -14,7 +14,7 @@ export interface PlaygroundDrawerData {
 
 @Component({
   selector: 'app-playground-drawer-content',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './playground-drawer-content.html',
 })
 export class PlaygroundDrawerContent implements KuiDrawerHost<

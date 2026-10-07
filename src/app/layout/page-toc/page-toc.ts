@@ -9,12 +9,7 @@ import {
   untracked,
 } from '@angular/core';
 
-import {
-  KuiAccordionComponent,
-  KuiAccordionItemComponent,
-  KuiTabDirective,
-  KuiTabsComponent,
-} from '@kikita-labs/ui';
+import { KuiAccordion, KuiAccordionItem, KuiTab, KuiTabs } from '@kikita-labs/ui';
 
 import { DocsAnchorNavigationService } from '@core/platform/anchor';
 import {
@@ -25,7 +20,7 @@ import {
 
 @Component({
   selector: 'app-page-toc',
-  imports: [KuiAccordionComponent, KuiAccordionItemComponent, KuiTabDirective, KuiTabsComponent],
+  imports: [KuiAccordion, KuiAccordionItem, KuiTab, KuiTabs],
   templateUrl: './page-toc.html',
   styleUrl: './page-toc.scss',
   host: {

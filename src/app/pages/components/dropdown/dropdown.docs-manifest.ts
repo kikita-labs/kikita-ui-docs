@@ -6,7 +6,7 @@ export const DROPDOWN_DOCS_MANIFEST = {
   label: 'Dropdown',
   category: 'surfaces',
   description: 'Projected option overlay used by select-like controls.',
-  importName: 'KuiDropdownComponent',
+  importName: 'KuiDropdown',
   status: 'available',
   exampleIds: [
     'field-dropdown-example',

@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/popover
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiPopoverComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/popover.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiPopover from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/popover.md
 
 ## Install
 
@@ -74,11 +74,11 @@ Rendered at /components/popover:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+import { KuiButton, KuiPopover, KuiPopoverFor } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-action-popover-example',
-  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  imports: [KuiButton, KuiPopover, KuiPopoverFor],
   templateUrl: './action-popover-example.html',
 })
 export class ActionPopoverExample {
@@ -110,11 +110,11 @@ export class ActionPopoverExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+import { KuiButton, KuiPopover, KuiPopoverFor } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-popover-example',
-  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  imports: [KuiButton, KuiPopover, KuiPopoverFor],
   templateUrl: './basic-popover-example.html',
 })
 export class BasicPopoverExample {}
@@ -145,11 +145,11 @@ export class BasicPopoverExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective } from '@kikita-labs/ui';
+import { KuiButton, KuiPopover, KuiPopoverFor } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-hover-popover-example',
-  imports: [KuiButtonDirective, KuiPopoverComponent, KuiPopoverForDirective],
+  imports: [KuiButton, KuiPopover, KuiPopoverFor],
   templateUrl: './hover-popover-example.html',
 })
 export class HoverPopoverExample {}
@@ -168,7 +168,7 @@ export class HoverPopoverExample {}
 | offset | number | 8 | Gap in px between the anchor and the panel. The arrow adds 6px automatically. |
 | trapFocus | boolean | false | Traps focus inside the panel and auto-focuses the first focusable element on open. |
 | open | boolean (model) | false | Current open state exposed for trigger integrations via openChange. Not intended as a standalone controlled API. |
-| [kuiPopoverFor] | KuiPopoverComponent \| undefined | - | Wires any element as a trigger for a kui-popover. Sets aria-expanded and aria-haspopup="dialog" automatically. |
+| [kuiPopoverFor] | KuiPopover \| undefined | - | Wires any element as a trigger for a kui-popover. Sets aria-expanded and aria-haspopup="dialog" automatically. |
 | .kui-popover-title | - | - | Optional CSS class for a semi-bold sm title inside the projected content. |
 | .kui-popover-desc | - | - | Optional CSS class for secondary sm supporting text inside the projected content. |
 | --kui-popover-bg | CSS custom property | var(--kui-color-surface-elevated) | Panel background. |

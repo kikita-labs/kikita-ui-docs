@@ -6,7 +6,7 @@ export const SKELETON_DOCS_MANIFEST = {
   label: 'Skeleton',
   category: 'feedback',
   description: 'Loading placeholder with reduced-motion behavior.',
-  importName: 'KuiSkeletonDirective',
+  importName: 'KuiSkeleton',
   status: 'available',
   exampleIds: [
     'skeleton-animation-example',

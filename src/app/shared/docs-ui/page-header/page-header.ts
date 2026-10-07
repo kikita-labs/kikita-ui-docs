@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
 
-import { KuiBadgeDirective } from '@kikita-labs/ui';
+import { KuiBadge } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-page-header',
-  imports: [KuiBadgeDirective],
+  imports: [KuiBadge],
   templateUrl: './page-header.html',
   styleUrl: './page-header.scss',
 })

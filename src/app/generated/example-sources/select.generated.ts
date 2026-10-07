@@ -15,7 +15,7 @@ export const SELECT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-select-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiDropdownComponent,\n  KuiFieldComponent,\n  KuiOptionDirective,\n  KuiSelectDirective,\n} from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-select-example',\n  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],\n  templateUrl: './basic-select-example.html',\n  styleUrl: './basic-select-example.scss',\n})\nexport class BasicSelectExample {\n  protected readonly role = signal<string | null>(null);\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-select-example',\n  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],\n  templateUrl: './basic-select-example.html',\n  styleUrl: './basic-select-example.scss',\n})\nexport class BasicSelectExample {\n  protected readonly role = signal<string | null>(null);\n}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const SELECT_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "multiple-select-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport {\n  KuiDropdownComponent,\n  KuiFieldComponent,\n  KuiOptionDirective,\n  KuiSelectDirective,\n} from '@kikita-labs/ui';\n\ninterface RoleOption {\n  readonly label: string;\n  readonly value: string;\n}\n\n@Component({\n  selector: 'app-multiple-select-example',\n  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],\n  templateUrl: './multiple-select-example.html',\n  styleUrl: './multiple-select-example.scss',\n})\nexport class MultipleSelectExample {\n  protected readonly roles = signal<readonly string[]>(['engineer']);\n\n  protected readonly roleOptions: readonly RoleOption[] = [\n    { label: 'Software Engineer', value: 'engineer' },\n    { label: 'Designer', value: 'designer' },\n    { label: 'Product Manager', value: 'manager' },\n    { label: 'Support Lead', value: 'support' },\n  ];\n\n  protected readonly roleLabel = (value: string): string =>\n    this.roleOptions.find((role) => role.value === value)?.label ?? value;\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';\n\ninterface RoleOption {\n  readonly label: string;\n  readonly value: string;\n}\n\n@Component({\n  selector: 'app-multiple-select-example',\n  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],\n  templateUrl: './multiple-select-example.html',\n  styleUrl: './multiple-select-example.scss',\n})\nexport class MultipleSelectExample {\n  protected readonly roles = signal<readonly string[]>(['engineer']);\n\n  protected readonly roleOptions: readonly RoleOption[] = [\n    { label: 'Software Engineer', value: 'engineer' },\n    { label: 'Designer', value: 'designer' },\n    { label: 'Product Manager', value: 'manager' },\n    { label: 'Support Lead', value: 'support' },\n  ];\n\n  protected readonly roleLabel = (value: string): string =>\n    this.roleOptions.find((role) => role.value === value)?.label ?? value;\n}",
     },
     {
       label: "SCSS",

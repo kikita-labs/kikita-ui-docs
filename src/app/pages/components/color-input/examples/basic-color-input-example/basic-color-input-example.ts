@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiColorInputDirective, KuiFieldComponent } from '@kikita-labs/ui';
+import { KuiColorInput, KuiField } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-color-input-example',
-  imports: [KuiColorInputDirective, KuiFieldComponent],
+  imports: [KuiColorInput, KuiField],
   templateUrl: './basic-color-input-example.html',
   styleUrl: './basic-color-input-example.scss',
 })

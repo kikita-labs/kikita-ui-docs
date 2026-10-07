@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/skeleton
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiSkeletonDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/skeleton.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiSkeleton from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/skeleton.md
 
 ## Install
 
@@ -64,11 +64,11 @@ Rendered at /components/skeleton:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiSkeletonDirective } from '@kikita-labs/ui';
+import { KuiSkeleton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-skeleton-animation-example',
-  imports: [KuiSkeletonDirective],
+  imports: [KuiSkeleton],
   templateUrl: './skeleton-animation-example.html',
   styleUrl: './skeleton-animation-example.scss',
 })
@@ -125,11 +125,11 @@ export class SkeletonAnimationExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiCardDirective, KuiSkeletonDirective } from '@kikita-labs/ui';
+import { KuiCard, KuiSkeleton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-skeleton-composition-example',
-  imports: [KuiCardDirective, KuiSkeletonDirective],
+  imports: [KuiCard, KuiSkeleton],
   templateUrl: './skeleton-composition-example.html',
   styleUrl: './skeleton-composition-example.scss',
 })
@@ -200,11 +200,11 @@ export class SkeletonCompositionExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiSkeletonDirective } from '@kikita-labs/ui';
+import { KuiSkeleton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-skeleton-shapes-example',
-  imports: [KuiSkeletonDirective],
+  imports: [KuiSkeleton],
   templateUrl: './skeleton-shapes-example.html',
   styleUrl: './skeleton-shapes-example.scss',
 })

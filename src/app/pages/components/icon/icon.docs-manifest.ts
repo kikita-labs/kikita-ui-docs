@@ -6,7 +6,7 @@ export const ICON_DOCS_MANIFEST = {
   label: 'Icon',
   category: 'data-identity',
   description: 'SVG icon renderer.',
-  importName: 'KuiIconComponent',
+  importName: 'KuiIcon',
   status: 'available',
   exampleIds: ['basic-icon-example', 'swap-icon-set-example'],
   loadPage: () => import('./icon-page').then((module) => module.IconPage),

@@ -10,6 +10,6 @@ export const FILE_UPLOAD_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'file-upload.ts',
     language: 'ts',
-    code: `import { KuiFileUploadComponent, type KuiUploadFile } from '@kikita-labs/ui';`,
+    code: `import { KuiFileUpload, type KuiUploadFile } from '@kikita-labs/ui';`,
   },
 ];

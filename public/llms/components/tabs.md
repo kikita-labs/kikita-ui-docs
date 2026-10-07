@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/tabs
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiTabsComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/tabs.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiTabs from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/tabs.md
 
 ## Install
 
@@ -96,11 +96,11 @@ Rendered at /components/tabs:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+import { KuiTab, KuiTabPanel, KuiTabs } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-tabs-example',
-  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  imports: [KuiTab, KuiTabPanel, KuiTabs],
   templateUrl: './basic-tabs-example.html',
   styleUrl: './basic-tabs-example.scss',
 })
@@ -138,11 +138,11 @@ export class BasicTabsExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiTabDirective, KuiTabsComponent } from '@kikita-labs/ui';
+import { KuiTab, KuiTabs } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-navigation-tabs-example',
-  imports: [KuiTabDirective, KuiTabsComponent],
+  imports: [KuiTab, KuiTabs],
   templateUrl: './navigation-tabs-example.html',
   styleUrl: './navigation-tabs-example.scss',
 })
@@ -186,11 +186,11 @@ export class NavigationTabsExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+import { KuiTab, KuiTabPanel, KuiTabs } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-pill-tabs-example',
-  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  imports: [KuiTab, KuiTabPanel, KuiTabs],
   templateUrl: './pill-tabs-example.html',
   styleUrl: './pill-tabs-example.scss',
 })
@@ -228,11 +228,11 @@ export class PillTabsExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+import { KuiTab, KuiTabPanel, KuiTabs } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-vertical-tabs-example',
-  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  imports: [KuiTab, KuiTabPanel, KuiTabs],
   templateUrl: './vertical-tabs-example.html',
   styleUrl: './vertical-tabs-example.scss',
 })

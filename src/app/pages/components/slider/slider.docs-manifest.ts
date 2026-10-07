@@ -6,7 +6,7 @@ export const SLIDER_DOCS_MANIFEST = {
   label: 'Slider',
   category: 'forms',
   description: 'Native range input styling with field and Signal Forms support.',
-  importName: 'KuiSliderDirective',
+  importName: 'KuiSlider',
   status: 'available',
   exampleIds: [
     'basic-slider-example',

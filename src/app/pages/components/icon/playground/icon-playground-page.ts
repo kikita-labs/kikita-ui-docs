@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiIconComponent } from '@kikita-labs/ui';
+import { KuiIcon } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
@@ -47,7 +47,7 @@ function iconLabelOf(values: IconPlaygroundValues): string | undefined {
 
 @Component({
   selector: 'app-icon-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiIconComponent],
+  imports: [ApiPlayground, ApiTable, KuiIcon],
   templateUrl: './icon-playground-page.html',
   styleUrl: './icon-playground-page.scss',
 })

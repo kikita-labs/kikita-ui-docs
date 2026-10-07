@@ -10,6 +10,6 @@ export const SLIDER_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'slider.ts',
     language: 'ts',
-    code: `import { KuiSliderDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiSlider } from '@kikita-labs/ui';`,
   },
 ];

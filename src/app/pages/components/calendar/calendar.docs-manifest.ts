@@ -6,7 +6,7 @@ export const CALENDAR_DOCS_MANIFEST = {
   label: 'Calendar',
   category: 'forms',
   description: 'Date grid.',
-  importName: 'KuiCalendarComponent',
+  importName: 'KuiCalendar',
   status: 'available',
   exampleIds: ['basic-calendar-example'],
   loadPage: () => import('./calendar-page').then((module) => module.CalendarPage),

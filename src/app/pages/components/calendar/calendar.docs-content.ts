@@ -11,8 +11,8 @@ export const CALENDAR_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'calendar.ts',
     language: 'ts',
     code: `import {
-  KuiCalendarComponent,
-  kuiProvideLocale,
+  KuiCalendar,
+  provideKuiLocale,
   type KuiCalendarValue,
   type KuiDateRange,
 } from '@kikita-labs/ui';`,

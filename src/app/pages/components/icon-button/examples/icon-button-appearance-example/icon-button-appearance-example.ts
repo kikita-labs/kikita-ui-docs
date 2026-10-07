@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiIconButtonDirective, KuiIconComponent } from '@kikita-labs/ui';
+import { KuiIcon, KuiIconButton } from '@kikita-labs/ui';
 
 const PLUS_ICON =
   '<svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
@@ -9,7 +9,7 @@ const TRASH_ICON =
 
 @Component({
   selector: 'app-icon-button-appearance-example',
-  imports: [KuiIconButtonDirective, KuiIconComponent],
+  imports: [KuiIconButton, KuiIcon],
   templateUrl: './icon-button-appearance-example.html',
   styleUrl: './icon-button-appearance-example.scss',
 })

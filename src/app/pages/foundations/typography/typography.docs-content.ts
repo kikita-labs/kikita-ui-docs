@@ -15,7 +15,7 @@ export const TYPOGRAPHY_IMPORT_TABS = [
     label: 'Directive',
     filename: 'typography-example.ts',
     language: 'ts',
-    code: `import { KuiTextDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiText } from '@kikita-labs/ui';`,
   },
 ] as const satisfies readonly CodeTab[];
 

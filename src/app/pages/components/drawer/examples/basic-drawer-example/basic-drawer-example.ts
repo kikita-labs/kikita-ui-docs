@@ -2,13 +2,13 @@ import { Component, DestroyRef, inject, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiDrawer } from '@kikita-labs/ui';
+import { KuiButton, kuiDrawer } from '@kikita-labs/ui';
 
 import { EditItemDrawer } from './edit-item-drawer';
 
 @Component({
   selector: 'app-basic-drawer-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './basic-drawer-example.html',
   styleUrl: './basic-drawer-example.scss',
 })

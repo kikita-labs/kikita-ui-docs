@@ -10,6 +10,6 @@ export const CHIP_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'chip.ts',
     language: 'ts',
-    code: `import { KuiChipDirective, KuiChipRemoveDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiChip, KuiChipRemove } from '@kikita-labs/ui';`,
   },
 ];

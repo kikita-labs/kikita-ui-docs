@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/combobox
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiComboboxDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/combobox.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiCombobox from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/combobox.md
 
 ## Install
 
@@ -60,7 +60,8 @@ filteredPeople = computed(() => {
 ```
 
 Inside `kui-field`, Combobox inherits field id, label association, `aria-describedby`,
-invalid state, and field size.
+invalid state, and field size. With Angular Signal Forms, the field gates the required error and
+`aria-invalid` state until the control is touched; selecting a valid option clears that state.
 
 ## Examples
 
@@ -107,18 +108,13 @@ Rendered at /components/combobox:
 ```ts
 import { Component, effect, inject, signal } from '@angular/core';
 
-import {
-  KuiComboboxDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiCombobox, KuiDropdown, KuiField, KuiOption } from '@kikita-labs/ui';
 
 import { ALL_REVIEWERS, type AsyncReviewer, AsyncReviewerService } from './async-reviewer.service';
 
 @Component({
   selector: 'app-async-combobox-example',
-  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  imports: [KuiCombobox, KuiDropdown, KuiField, KuiOption],
   providers: [AsyncReviewerService],
   templateUrl: './async-combobox-example.html',
   styleUrl: './async-combobox-example.scss',
@@ -256,11 +252,11 @@ export { ALL_REVIEWERS };
 import { Component, computed, signal } from '@angular/core';
 
 import {
-  KuiComboboxDirective,
+  KuiCombobox,
   KuiComboboxHighlightPipe,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
+  KuiDropdown,
+  KuiField,
+  KuiOption,
 } from '@kikita-labs/ui';
 
 interface Person {
@@ -278,13 +274,7 @@ const PEOPLE: readonly Person[] = [
 
 @Component({
   selector: 'app-basic-combobox-example',
-  imports: [
-    KuiComboboxDirective,
-    KuiComboboxHighlightPipe,
-    KuiDropdownComponent,
-    KuiFieldComponent,
-    KuiOptionDirective,
-  ],
+  imports: [KuiCombobox, KuiComboboxHighlightPipe, KuiDropdown, KuiField, KuiOption],
   templateUrl: './basic-combobox-example.html',
   styleUrl: './basic-combobox-example.scss',
 })
@@ -340,16 +330,11 @@ export class BasicComboboxExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiComboboxDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiCombobox, KuiDropdown, KuiField, KuiOption } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-combobox-field-states-example',
-  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  imports: [KuiCombobox, KuiDropdown, KuiField, KuiOption],
   templateUrl: './combobox-field-states-example.html',
   styleUrl: './combobox-field-states-example.scss',
 })
@@ -389,16 +374,11 @@ export class ComboboxFieldStatesExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiComboboxDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiCombobox, KuiDropdown, KuiField, KuiOption } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-free-combobox-example',
-  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  imports: [KuiCombobox, KuiDropdown, KuiField, KuiOption],
   templateUrl: './free-combobox-example.html',
   styleUrl: './free-combobox-example.scss',
 })
@@ -426,7 +406,7 @@ export class FreeComboboxExample {
 | kuiLabelFn | (item: T) => string | String() | Maps a selected object value to display text. Required when T is not a primitive. |
 | placeholder | string | '' | Native input placeholder shown when no value is selected. |
 | mode | 'filter' \| 'free' \| 'async' | 'filter' | filter clears the value while editing until a kuiOption is selected. free stores typed text as the value. async documents that filtering happens outside the directive. |
-| clearable | boolean \| undefined | true | Shows a clear affordance. Falls back to KUI_COMBOBOX_OPTIONS, then KUI_FIELD_OPTIONS, then true. |
+| clearable | boolean \| undefined | true | Shows a clear affordance. Falls back to defaults.combobox, then defaults.field, then true. |
 | loading | boolean | false | Shows a suffix loader. Loading row content inside kui-dropdown is projected by the consumer. |
 | disabled | boolean | false | Disables the native input. Set by [formField] or directly. |
 | readonly | boolean | false | Keeps the value readable but prevents editing and opening the dropdown. |
@@ -437,8 +417,8 @@ export class FreeComboboxExample {
 | id | string \| undefined | undefined | Explicit id override. Inside kui-field, the field id is used when omitted. |
 | kuiOption | directive | - | Marks a projected option inside kui-dropdown. Provides role="option", aria-selected, disabled state, and keyboard navigation. |
 | kuiComboboxHighlight | pipe: (label: string, query: string \| null \| undefined) => readonly { text: string; match: boolean }[] | - | Splits an option label into plain and matched segments for highlighting the current query. |
-| kuiProvideComboboxOptions | (opts: KuiComboboxOptions) => Provider | - | Registers app-wide combobox defaults, such as clearable, via KUI_COMBOBOX_OPTIONS. |
-| KUI_COMBOBOX_OPTIONS | InjectionToken<KuiComboboxOptions> | - | Injection token backing kuiProvideComboboxOptions. Read by the directive for clearable fallback. |
+| provideKuiDefaults({ combobox }) | (defaults: KuiComponentDefaults) => Provider | - | Registers combobox defaults, such as clearable, for a subtree. Use provideKikitaUi({ defaults }) for the whole application. |
+| KuiComboboxOptions | interface | - | Shape of the defaults.combobox key, read by the directive for the clearable fallback. |
 | --kui-combobox-affordance-size | CSS custom property | - | Size of the suffix clear/chevron affordance controls. |
 | --kui-combobox-suffix-gap | CSS custom property | - | Gap between suffix affordances (clear button, chevron, loader). |
 | --kui-combobox-loader-size | CSS custom property | - | Diameter of the suffix loading spinner. |

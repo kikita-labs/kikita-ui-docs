@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/select
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiSelectDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/select.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiSelect from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/select.md
 
 ## Install
 
@@ -55,16 +55,11 @@ Rendered at /components/select:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-  KuiSelectDirective,
-} from '@kikita-labs/ui';
+import { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-select-example',
-  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],
   templateUrl: './basic-select-example.html',
   styleUrl: './basic-select-example.scss',
 })
@@ -110,12 +105,7 @@ export class BasicSelectExample {
 ```ts
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-  KuiSelectDirective,
-} from '@kikita-labs/ui';
+import { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';
 
 interface RoleOption {
   readonly label: string;
@@ -124,7 +114,7 @@ interface RoleOption {
 
 @Component({
   selector: 'app-multiple-select-example',
-  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],
   templateUrl: './multiple-select-example.html',
   styleUrl: './multiple-select-example.scss',
 })

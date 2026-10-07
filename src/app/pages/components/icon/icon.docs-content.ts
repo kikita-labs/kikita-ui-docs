@@ -10,7 +10,7 @@ export const ICON_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Component',
     filename: 'icon.ts',
     language: 'ts',
-    code: `import { KuiIconComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiIcon } from '@kikita-labs/ui';`,
   },
   {
     label: 'Registry',

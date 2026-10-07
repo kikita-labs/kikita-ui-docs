@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/separator
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiSeparatorDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/separator.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiSeparator from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/separator.md
 
 ## Install
 
@@ -49,11 +49,11 @@ Rendered at /components/separator:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiSeparatorDirective } from '@kikita-labs/ui';
+import { KuiSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-separator-example',
-  imports: [KuiSeparatorDirective],
+  imports: [KuiSeparator],
   templateUrl: './basic-separator-example.html',
   styleUrl: './basic-separator-example.scss',
 })
@@ -87,11 +87,11 @@ export class BasicSeparatorExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiSeparatorDirective } from '@kikita-labs/ui';
+import { KuiSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-separator-appearance-example',
-  imports: [KuiSeparatorDirective],
+  imports: [KuiSeparator],
   templateUrl: './separator-appearance-example.html',
   styleUrl: './separator-appearance-example.scss',
 })
@@ -135,11 +135,11 @@ p {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiSeparatorDirective } from '@kikita-labs/ui';
+import { KuiSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-separator-spacing-example',
-  imports: [KuiSeparatorDirective],
+  imports: [KuiSeparator],
   templateUrl: './separator-spacing-example.html',
   styleUrl: './separator-spacing-example.scss',
 })
@@ -179,11 +179,11 @@ p {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, KuiSeparatorDirective } from '@kikita-labs/ui';
+import { KuiButton, KuiSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-separator-vertical-example',
-  imports: [KuiButtonDirective, KuiSeparatorDirective],
+  imports: [KuiButton, KuiSeparator],
   templateUrl: './separator-vertical-example.html',
   styleUrl: './separator-vertical-example.scss',
 })

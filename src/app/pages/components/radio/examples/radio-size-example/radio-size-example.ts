@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiRadioDirective } from '@kikita-labs/ui';
+import { KuiRadio } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-radio-size-example',
-  imports: [KuiRadioDirective],
+  imports: [KuiRadio],
   templateUrl: './radio-size-example.html',
   styleUrl: './radio-size-example.scss',
 })

@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/date-picker
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiDatePickerDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/date-picker.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiDatePicker from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/date-picker.md
 
 ## Install
 
@@ -21,7 +21,27 @@ ng add @kikita-labs/ui
 <kui-field label="Meeting date">
   <input kuiDatePicker [(value)]="date" />
   <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
-    <kui-calendar flat [(value)]="date" [showFooter]="true" />
+    <kui-calendar flat showFooter />
+  </kui-dropdown>
+</kui-field>
+```
+
+The calendar needs no `[value]`/`(valueChange)` or `[(viewDate)]` binding: when `kui-calendar`
+is found as a sibling of `input[kuiDatePicker]` inside the same `kui-field`, the directive
+auto-discovers it and wires `value`/`viewDate` both ways automatically — a day clicked in the
+calendar updates the input, and a valid date typed in the input updates (and scrolls) the
+calendar. This is the recommended usage.
+
+Manually binding `[value]`/`(valueChange)`/`[(viewDate)]` on the calendar still works — it's no
+longer required, not deprecated. If you keep the old pattern (e.g. bound to the same signal as
+the input), the auto-wire effects and your binding stay in sync without fighting each other:
+
+```html
+<!-- Still supported: manual binding, same as before this feature shipped. -->
+<kui-field label="Meeting date">
+  <input kuiDatePicker [(value)]="date" [(viewDate)]="viewDate" />
+  <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="420px">
+    <kui-calendar flat [(value)]="date" [(viewDate)]="viewDate" [showFooter]="true" />
   </kui-dropdown>
 </kui-field>
 ```
@@ -82,16 +102,11 @@ Rendered at /components/date-picker:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiCalendarComponent,
-  KuiDatePickerDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-} from '@kikita-labs/ui';
+import { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-date-picker-example',
-  imports: [KuiCalendarComponent, KuiDatePickerDirective, KuiDropdownComponent, KuiFieldComponent],
+  imports: [KuiCalendar, KuiDatePicker, KuiDropdown, KuiField],
   templateUrl: './basic-date-picker-example.html',
   styleUrl: './basic-date-picker-example.scss',
 })
@@ -140,7 +155,7 @@ export class BasicDatePickerExample {
 
 - `ArrowDown`: opens the popover
 - `Enter`: opens the popover if closed, closes it if open
-- `Escape`: closes the popover, focus stays in the field
+- `Escape`: closes the popover; focus stays in the field, or returns to it when it was inside the calendar
 - `Tab`: closes the popover, focus moves to the next tabbable element
 - Inside the popover: calendar keyboard navigation applies (see Calendar docs)
 

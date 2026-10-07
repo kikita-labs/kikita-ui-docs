@@ -1,15 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiCalendarComponent,
-  KuiDatePickerDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-} from '@kikita-labs/ui';
+import { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-date-picker-example',
-  imports: [KuiCalendarComponent, KuiDatePickerDirective, KuiDropdownComponent, KuiFieldComponent],
+  imports: [KuiCalendar, KuiDatePicker, KuiDropdown, KuiField],
   templateUrl: './basic-date-picker-example.html',
   styleUrl: './basic-date-picker-example.scss',
 })

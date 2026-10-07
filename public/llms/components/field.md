@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/field
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiFieldComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/field.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiField from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/field.md
 
 ## Install
 
@@ -58,11 +58,11 @@ Rendered at /components/field:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiInputDirective } from '@kikita-labs/ui';
+import { KuiField, KuiInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-field-example',
-  imports: [KuiFieldComponent, KuiInputDirective],
+  imports: [KuiField, KuiInput],
   templateUrl: './basic-field-example.html',
   styleUrl: './basic-field-example.scss',
 })

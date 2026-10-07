@@ -56,7 +56,7 @@ describe('ButtonPage', () => {
       'api',
       'accessibility',
     ]);
-    expect(root.textContent).toContain('kuiProvideButtonOptions');
+    expect(root.textContent).toContain('provideKuiDefaults');
     expect(buttons.map((button) => button.textContent?.trim())).toEqual([
       'Save changes',
       'Cancel',

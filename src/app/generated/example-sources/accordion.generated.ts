@@ -15,7 +15,7 @@ export const ACCORDION_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "appearance-accordion-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-appearance-accordion-example',\n  imports: [KuiAccordionComponent, KuiAccordionItemComponent],\n  templateUrl: './appearance-accordion-example.html',\n  styleUrl: './appearance-accordion-example.scss',\n})\nexport class AppearanceAccordionExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiAccordion, KuiAccordionItem } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-appearance-accordion-example',\n  imports: [KuiAccordion, KuiAccordionItem],\n  templateUrl: './appearance-accordion-example.html',\n  styleUrl: './appearance-accordion-example.scss',\n})\nexport class AppearanceAccordionExample {}",
     },
     {
       label: "SCSS",
@@ -35,7 +35,7 @@ export const ACCORDION_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-accordion-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-accordion-example',\n  imports: [KuiAccordionComponent, KuiAccordionItemComponent],\n  templateUrl: './basic-accordion-example.html',\n  styleUrl: './basic-accordion-example.scss',\n})\nexport class BasicAccordionExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiAccordion, KuiAccordionItem } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-accordion-example',\n  imports: [KuiAccordion, KuiAccordionItem],\n  templateUrl: './basic-accordion-example.html',\n  styleUrl: './basic-accordion-example.scss',\n})\nexport class BasicAccordionExample {}",
     },
     {
       label: "SCSS",
@@ -55,7 +55,7 @@ export const ACCORDION_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "icon-accordion-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport {\n  KuiAccordionComponent,\n  KuiAccordionIconDirective,\n  KuiAccordionItemComponent,\n  KuiIconComponent,\n} from '@kikita-labs/ui';\n\nconst SETTINGS_ICON =\n  '<svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M19.4 15a1.7 1.7 0 0 0 .34 1.88l.04.04a2 2 0 0 1-2.83 2.83l-.04-.04a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 0 1-4 0v-.06A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.88.34l-.04.04a2 2 0 0 1-2.83-2.83l.04-.04A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 0 1 0-4h.06A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.88l-.04-.04a2 2 0 1 1 2.83-2.83l.04.04A1.7 1.7 0 0 0 8.96 4.6 1.7 1.7 0 0 0 10 3.06V3a2 2 0 0 1 4 0v.06A1.7 1.7 0 0 0 15.04 4.6a1.7 1.7 0 0 0 1.88-.34l.04-.04a2 2 0 0 1 2.83 2.83l-.04.04a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.94 10H21a2 2 0 0 1 0 4h-.06A1.7 1.7 0 0 0 19.4 15Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>';\n\n@Component({\n  selector: 'app-icon-accordion-example',\n  imports: [\n    KuiAccordionComponent,\n    KuiAccordionIconDirective,\n    KuiAccordionItemComponent,\n    KuiIconComponent,\n  ],\n  templateUrl: './icon-accordion-example.html',\n  styleUrl: './icon-accordion-example.scss',\n})\nexport class IconAccordionExample {\n  protected readonly settingsIcon = SETTINGS_ICON;\n}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiAccordion, KuiAccordionIcon, KuiAccordionItem, KuiIcon } from '@kikita-labs/ui';\n\nconst SETTINGS_ICON =\n  '<svg viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z\" stroke=\"currentColor\" stroke-width=\"2\"/><path d=\"M19.4 15a1.7 1.7 0 0 0 .34 1.88l.04.04a2 2 0 0 1-2.83 2.83l-.04-.04a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 0 1-4 0v-.06A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.88.34l-.04.04a2 2 0 0 1-2.83-2.83l.04-.04A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 0 1 0-4h.06A1.7 1.7 0 0 0 4.6 8.96a1.7 1.7 0 0 0-.34-1.88l-.04-.04a2 2 0 1 1 2.83-2.83l.04.04A1.7 1.7 0 0 0 8.96 4.6 1.7 1.7 0 0 0 10 3.06V3a2 2 0 0 1 4 0v.06A1.7 1.7 0 0 0 15.04 4.6a1.7 1.7 0 0 0 1.88-.34l.04-.04a2 2 0 0 1 2.83 2.83l-.04.04a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.94 10H21a2 2 0 0 1 0 4h-.06A1.7 1.7 0 0 0 19.4 15Z\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>';\n\n@Component({\n  selector: 'app-icon-accordion-example',\n  imports: [KuiAccordion, KuiAccordionIcon, KuiAccordionItem, KuiIcon],\n  templateUrl: './icon-accordion-example.html',\n  styleUrl: './icon-accordion-example.scss',\n})\nexport class IconAccordionExample {\n  protected readonly settingsIcon = SETTINGS_ICON;\n}",
     },
     {
       label: "SCSS",
@@ -75,7 +75,7 @@ export const ACCORDION_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "multi-accordion-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-multi-accordion-example',\n  imports: [KuiAccordionComponent, KuiAccordionItemComponent],\n  templateUrl: './multi-accordion-example.html',\n  styleUrl: './multi-accordion-example.scss',\n})\nexport class MultiAccordionExample {\n  protected readonly expanded = signal(['profile']);\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiAccordion, KuiAccordionItem } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-multi-accordion-example',\n  imports: [KuiAccordion, KuiAccordionItem],\n  templateUrl: './multi-accordion-example.html',\n  styleUrl: './multi-accordion-example.scss',\n})\nexport class MultiAccordionExample {\n  protected readonly expanded = signal(['profile']);\n}",
     },
     {
       label: "SCSS",

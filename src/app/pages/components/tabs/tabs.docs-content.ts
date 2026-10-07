@@ -10,6 +10,6 @@ export const TABS_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'tabs.ts',
     language: 'ts',
-    code: `import { KuiTabsComponent, KuiTabDirective, KuiTabPanelDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiTabs, KuiTab, KuiTabPanel } from '@kikita-labs/ui';`,
   },
 ];

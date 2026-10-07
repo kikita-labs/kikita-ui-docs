@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, kuiDialog, type KuiDialogSize } from '@kikita-labs/ui';
+import { KuiButton, kuiDialog, type KuiDialogSize } from '@kikita-labs/ui';
 
 import { SizePreviewDialog } from './size-preview-dialog';
 
 @Component({
   selector: 'app-dialog-sizes-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './dialog-sizes-example.html',
   styleUrl: './dialog-sizes-example.scss',
 })

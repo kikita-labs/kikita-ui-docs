@@ -11,12 +11,12 @@ export const COMBOBOX_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'combobox.ts',
     language: 'ts',
     code: `import {
-  KuiComboboxDirective,
+  KuiCombobox,
   KuiComboboxHighlightPipe,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-  kuiProvideComboboxOptions,
+  KuiDropdown,
+  KuiField,
+  KuiOption,
+  provideKuiDefaults,
 } from '@kikita-labs/ui';`,
   },
 ];
@@ -25,14 +25,17 @@ export const COMBOBOX_PROVIDER_TABS: readonly CodeTab[] = [
   {
     label: 'app.config.ts',
     language: 'ts',
-    code: `import { kuiProvideComboboxOptions } from '@kikita-labs/ui';
+    code: `import { provideKikitaUi } from '@kikita-labs/ui';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    kuiProvideComboboxOptions({
-      clearable: true,
+    provideKikitaUi({
+      defaults: { combobox: { clearable: true } },
     }),
   ],
-};`,
+};
+
+// In a component or route subtree instead:
+// providers: [provideKuiDefaults({ combobox: { clearable: true } })]`,
   },
 ];

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiAccordionComponent, KuiAccordionItemComponent } from '@kikita-labs/ui';
+import { KuiAccordion, KuiAccordionItem } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-appearance-accordion-example',
-  imports: [KuiAccordionComponent, KuiAccordionItemComponent],
+  imports: [KuiAccordion, KuiAccordionItem],
   templateUrl: './appearance-accordion-example.html',
   styleUrl: './appearance-accordion-example.scss',
 })

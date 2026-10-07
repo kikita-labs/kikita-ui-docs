@@ -10,6 +10,6 @@ export const COLOR_INPUT_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'color-input.ts',
     language: 'ts',
-    code: `import { KuiColorInputDirective, KuiFieldComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiColorInput, KuiField } from '@kikita-labs/ui';`,
   },
 ];

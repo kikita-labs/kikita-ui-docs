@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/button
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiButtonDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/button.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiButton from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/button.md
 
 ## Install
 
@@ -73,11 +73,11 @@ Rendered at /components/button:
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { KuiButtonDirective } from '@kikita-labs/ui';
+import { KuiButton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-button-example',
-  imports: [KuiButtonDirective, RouterLink],
+  imports: [KuiButton, RouterLink],
   templateUrl: './basic-button-example.html',
   styleUrl: './basic-button-example.scss',
 })
@@ -116,11 +116,11 @@ export class BasicButtonExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective } from '@kikita-labs/ui';
+import { KuiButton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-button-appearance-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './button-appearance-example.html',
   styleUrl: './button-appearance-example.scss',
 })
@@ -159,11 +159,11 @@ export class ButtonAppearanceExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective } from '@kikita-labs/ui';
+import { KuiButton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-button-size-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './button-size-example.html',
   styleUrl: './button-size-example.scss',
 })
@@ -206,11 +206,11 @@ export class ButtonSizeExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, KuiIconButtonDirective } from '@kikita-labs/ui';
+import { KuiButton, KuiIconButton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-button-icon-example',
-  imports: [KuiButtonDirective, KuiIconButtonDirective],
+  imports: [KuiButton, KuiIconButton],
   templateUrl: './button-icon-example.html',
   styleUrl: './button-icon-example.scss',
 })
@@ -241,8 +241,8 @@ export class ButtonIconExample {}
 | loading | boolean | false | Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled. |
 | iconStart | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name before the projected content, without hand-projecting kui-icon. |
 | iconEnd | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name after the projected content, without hand-projecting kui-icon. |
-| kuiProvideButtonOptions(options) | Provider | - | Scopes repeated defaults for kuiButton and kuiIconButton. Local inputs win over button options, and button options win over root defaults.size. |
-| KUI_BUTTON_OPTIONS | InjectionToken<KuiButtonOptions> | - | Provider token behind button-family defaults, with separate button and iconButton branches. |
+| provideKuiDefaults({ button, iconButton }) | Provider | - | Scopes repeated defaults for kuiButton and kuiIconButton. Local inputs win over the button keys, and the button keys win over the global defaults.size. A nested level merges with its parent per property. |
+| KuiDefaults | service | - | Injectable that reads and sets defaults at runtime: get(key) returns a Signal of the effective options, set and update write to the nearest level. |
 
 ## Accessibility
 

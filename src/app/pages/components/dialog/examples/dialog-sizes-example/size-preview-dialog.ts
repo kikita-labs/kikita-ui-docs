@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import {
   KUI_DIALOG_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDialogContext,
   type KuiDialogHost,
 } from '@kikita-labs/ui';
@@ -13,7 +13,7 @@ export interface SizePreviewData {
 
 @Component({
   selector: 'app-size-preview-dialog',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './size-preview-dialog.html',
 })
 export class SizePreviewDialog implements KuiDialogHost<void, SizePreviewData> {

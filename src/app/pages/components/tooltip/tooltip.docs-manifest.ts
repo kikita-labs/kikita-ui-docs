@@ -6,7 +6,7 @@ export const TOOLTIP_DOCS_MANIFEST = {
   label: 'Tooltip',
   category: 'feedback',
   description: 'Hover and focus hint.',
-  importName: 'KuiTooltipDirective',
+  importName: 'KuiTooltip',
   status: 'available',
   exampleIds: ['basic-tooltip-example'],
   loadPage: () => import('./tooltip-page').then((module) => module.TooltipPage),

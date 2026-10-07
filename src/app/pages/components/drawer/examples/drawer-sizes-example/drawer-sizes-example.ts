@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';
+import { KuiButton, kuiDrawer, type KuiDrawerSize } from '@kikita-labs/ui';
 
 import { SizePreviewDrawer } from './size-preview-drawer';
 
 @Component({
   selector: 'app-drawer-sizes-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './drawer-sizes-example.html',
   styleUrl: './drawer-sizes-example.scss',
 })

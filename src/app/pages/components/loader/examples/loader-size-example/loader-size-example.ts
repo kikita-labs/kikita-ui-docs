@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiLoaderDirective } from '@kikita-labs/ui';
+import { KuiLoader } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-loader-size-example',
-  imports: [KuiLoaderDirective],
+  imports: [KuiLoader],
   templateUrl: './loader-size-example.html',
   styleUrl: './loader-size-example.scss',
 })

@@ -12,7 +12,7 @@ export const DIALOG_IMPORT_TABS: readonly CodeTab[] = [
     language: 'ts',
     code: `import {
   KUI_DIALOG_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   KuiDialogContext,
   KuiDialogHost,
   kuiDialog,

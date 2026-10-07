@@ -1,15 +1,15 @@
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiButtonDirective,
+  KuiButton,
   type KuiCommandGroup,
   type KuiCommandItem,
-  KuiCommandPaletteComponent,
+  KuiCommandPalette,
 } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-command-palette-example',
-  imports: [KuiButtonDirective, KuiCommandPaletteComponent],
+  imports: [KuiButton, KuiCommandPalette],
   templateUrl: './basic-command-palette-example.html',
   styleUrl: './basic-command-palette-example.scss',
 })

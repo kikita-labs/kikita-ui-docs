@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
 
 import {
+  KuiAccordion,
   type KuiAccordionAppearance,
-  KuiAccordionComponent,
-  KuiAccordionItemComponent,
+  KuiAccordionItem,
   type KuiAccordionMode,
   type KuiSize,
 } from '@kikita-labs/ui';
@@ -57,7 +57,7 @@ type AccordionPlaygroundValues = PlaygroundValues<typeof ACCORDION_PLAYGROUND_CO
 
 @Component({
   selector: 'app-accordion-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiAccordionComponent, KuiAccordionItemComponent],
+  imports: [ApiPlayground, ApiTable, KuiAccordion, KuiAccordionItem],
   templateUrl: './accordion-playground-page.html',
   styleUrl: './accordion-playground-page.scss',
 })

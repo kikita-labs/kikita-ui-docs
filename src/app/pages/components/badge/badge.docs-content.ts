@@ -10,6 +10,6 @@ export const BADGE_IMPORT_TABS = [
     label: 'Import',
     filename: 'badge.ts',
     language: 'ts',
-    code: `import { KuiBadgeDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiBadge } from '@kikita-labs/ui';`,
   },
 ] as const satisfies readonly CodeTab[];

@@ -1,13 +1,13 @@
 import { Component, computed, inject } from '@angular/core';
 
 import {
-  KuiButtonDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiIconComponent,
-  KuiLabelDirective,
-  KuiOptionDirective,
-  KuiSelectDirective,
+  KuiButton,
+  KuiDropdown,
+  KuiField,
+  KuiIcon,
+  KuiLabel,
+  KuiOption,
+  KuiSelect,
 } from '@kikita-labs/ui';
 
 import { docsCodeThemeOptionsForMode, findDocsCodeThemeOption } from '@core/theme';
@@ -15,15 +15,7 @@ import { DocsThemeService } from '@core/theme';
 
 @Component({
   selector: 'app-typography',
-  imports: [
-    KuiButtonDirective,
-    KuiDropdownComponent,
-    KuiFieldComponent,
-    KuiIconComponent,
-    KuiLabelDirective,
-    KuiOptionDirective,
-    KuiSelectDirective,
-  ],
+  imports: [KuiButton, KuiDropdown, KuiField, KuiIcon, KuiLabel, KuiOption, KuiSelect],
   templateUrl: './typography.html',
   styleUrl: './typography.scss',
 })

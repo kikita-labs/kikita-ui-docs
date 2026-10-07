@@ -10,6 +10,6 @@ export const FIELD_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'field.ts',
     language: 'ts',
-    code: `import { KuiFieldComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiField } from '@kikita-labs/ui';`,
   },
 ];

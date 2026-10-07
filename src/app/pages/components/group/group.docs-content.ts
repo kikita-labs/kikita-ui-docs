@@ -10,6 +10,6 @@ export const GROUP_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'group.ts',
     language: 'ts',
-    code: `import { KuiGroupDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiGroup } from '@kikita-labs/ui';`,
   },
 ];

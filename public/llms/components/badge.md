@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/badge
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiBadgeDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/badge.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiBadge from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/badge.md
 
 ## Install
 
@@ -50,11 +50,11 @@ Rendered at /components/badge:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiBadgeDirective } from '@kikita-labs/ui';
+import { KuiBadge } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-badge-appearance-example',
-  imports: [KuiBadgeDirective],
+  imports: [KuiBadge],
   templateUrl: './badge-appearance-example.html',
   styleUrl: './badge-appearance-example.scss',
 })
@@ -91,11 +91,11 @@ export class BadgeAppearanceExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiBadgeDirective } from '@kikita-labs/ui';
+import { KuiBadge } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-badge-size-example',
-  imports: [KuiBadgeDirective],
+  imports: [KuiBadge],
   templateUrl: './badge-size-example.html',
   styleUrl: './badge-size-example.scss',
 })
@@ -132,11 +132,11 @@ export class BadgeSizeExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiBadgeDirective } from '@kikita-labs/ui';
+import { KuiBadge } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-badge-example',
-  imports: [KuiBadgeDirective],
+  imports: [KuiBadge],
   templateUrl: './basic-badge-example.html',
   styleUrl: './basic-badge-example.scss',
 })

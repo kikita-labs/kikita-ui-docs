@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import {
+  KuiSeparator,
   type KuiSeparatorAppearance,
-  KuiSeparatorDirective,
   type KuiSeparatorOrientation,
   type KuiSeparatorSpacing,
 } from '@kikita-labs/ui';
@@ -43,7 +43,7 @@ type SeparatorPlaygroundValues = PlaygroundValues<typeof SEPARATOR_PLAYGROUND_CO
 
 @Component({
   selector: 'app-separator-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiSeparatorDirective],
+  imports: [ApiPlayground, ApiTable, KuiSeparator],
   templateUrl: './separator-playground-page.html',
   styleUrl: './separator-playground-page.scss',
 })

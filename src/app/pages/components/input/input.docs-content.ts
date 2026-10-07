@@ -11,8 +11,8 @@ export const INPUT_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'input.ts',
     language: 'ts',
     code: `import {
-  KuiInputDirective,
-  KuiInputGroupDirective,
+  KuiInput,
+  KuiInputGroup,
 } from '@kikita-labs/ui';`,
   },
 ];

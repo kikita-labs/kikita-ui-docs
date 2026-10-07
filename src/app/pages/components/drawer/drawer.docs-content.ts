@@ -12,7 +12,7 @@ export const DRAWER_IMPORT_TABS: readonly CodeTab[] = [
     language: 'ts',
     code: `import {
   KUI_DRAWER_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   KuiDrawerContext,
   KuiDrawerHost,
   kuiDrawer,

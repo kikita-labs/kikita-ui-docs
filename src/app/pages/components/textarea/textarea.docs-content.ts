@@ -10,7 +10,7 @@ export const TEXTAREA_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'textarea.ts',
     language: 'ts',
-    code: `import { KuiTextareaDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiTextarea } from '@kikita-labs/ui';`,
   },
 ];
 

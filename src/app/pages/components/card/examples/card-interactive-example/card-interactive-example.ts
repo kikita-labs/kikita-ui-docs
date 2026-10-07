@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiCardDirective } from '@kikita-labs/ui';
+import { KuiCard } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-card-interactive-example',
-  imports: [KuiCardDirective],
+  imports: [KuiCard],
   templateUrl: './card-interactive-example.html',
   styleUrl: './card-interactive-example.scss',
 })

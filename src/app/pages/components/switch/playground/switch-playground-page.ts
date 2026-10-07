@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { type KuiSize, KuiSwitchDirective } from '@kikita-labs/ui';
+import { type KuiSize, KuiSwitch } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -33,7 +33,7 @@ type SwitchPlaygroundValues = PlaygroundValues<typeof SWITCH_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-switch-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiSwitchDirective],
+  imports: [ApiPlayground, ApiTable, KuiSwitch],
   templateUrl: './switch-playground-page.html',
   styleUrl: './switch-playground-page.scss',
 })

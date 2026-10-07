@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/color-input
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiColorInputDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/color-input.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiColorInput from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/color-input.md
 
 ## Install
 
@@ -65,11 +65,11 @@ Rendered at /components/color-input:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiColorInputDirective, KuiFieldComponent } from '@kikita-labs/ui';
+import { KuiColorInput, KuiField } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-color-input-example',
-  imports: [KuiColorInputDirective, KuiFieldComponent],
+  imports: [KuiColorInput, KuiField],
   templateUrl: './basic-color-input-example.html',
   styleUrl: './basic-color-input-example.scss',
 })

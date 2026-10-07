@@ -2,13 +2,13 @@ import { Component, DestroyRef, inject, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiDialog } from '@kikita-labs/ui';
+import { KuiButton, kuiDialog } from '@kikita-labs/ui';
 
 import { InviteTeammateDialog } from './invite-teammate-dialog';
 
 @Component({
   selector: 'app-basic-dialog-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './basic-dialog-example.html',
   styleUrl: './basic-dialog-example.scss',
 })

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiSeparatorDirective } from '@kikita-labs/ui';
+import { KuiSeparator } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-separator-spacing-example',
-  imports: [KuiSeparatorDirective],
+  imports: [KuiSeparator],
   templateUrl: './separator-spacing-example.html',
   styleUrl: './separator-spacing-example.scss',
 })

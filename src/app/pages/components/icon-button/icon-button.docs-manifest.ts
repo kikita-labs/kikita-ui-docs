@@ -6,7 +6,7 @@ export const ICON_BUTTON_DOCS_MANIFEST = {
   label: 'Icon Button',
   category: 'actions',
   description: 'Compact icon-only action control.',
-  importName: 'KuiIconButtonDirective',
+  importName: 'KuiIconButton',
   status: 'available',
   exampleIds: [
     'icon-button-appearance-example',

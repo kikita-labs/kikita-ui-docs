@@ -10,7 +10,7 @@ export const TOOLTIP_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'tooltip.ts',
     language: 'ts',
-    code: `import { KuiTooltipDirective } from '@kikita-labs/ui';`,
+    code: `import { KuiTooltip } from '@kikita-labs/ui';`,
   },
 ];
 
@@ -23,15 +23,15 @@ export const TOOLTIP_PROVIDER_TABS: readonly CodeTab[] = [
 
 import {
   KuiTooltipTriggerType,
-  kuiProvideTooltipOptions,
   provideKikitaUi,
+  provideKuiDefaults,
 } from '@kikita-labs/ui';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideKikitaUi({ tooltip: { triggerType: KuiTooltipTriggerType.Auto } })],
+  providers: [provideKikitaUi({ defaults: { tooltip: { triggerType: KuiTooltipTriggerType.Auto } } })],
 };
 
 // In a component or route subtree instead:
-// providers: [kuiProvideTooltipOptions({ triggerType: KuiTooltipTriggerType.Hover })]`,
+// providers: [provideKuiDefaults({ tooltip: { triggerType: KuiTooltipTriggerType.Hover } })]`,
   },
 ];

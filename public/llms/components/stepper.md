@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/stepper
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiStepperComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/stepper.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiStepper from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/stepper.md
 
 ## Install
 
@@ -79,11 +79,11 @@ Rendered at /components/stepper:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiStepComponent, KuiStepperComponent } from '@kikita-labs/ui';
+import { KuiStep, KuiStepper } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-stepper-example',
-  imports: [KuiStepComponent, KuiStepperComponent],
+  imports: [KuiStep, KuiStepper],
   templateUrl: './basic-stepper-example.html',
   styleUrl: './basic-stepper-example.scss',
 })

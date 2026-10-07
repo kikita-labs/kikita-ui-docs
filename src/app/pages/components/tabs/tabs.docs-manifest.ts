@@ -6,7 +6,7 @@ export const TABS_DOCS_MANIFEST = {
   label: 'Tabs',
   category: 'surfaces',
   description: 'Line and pill tab navigation with optional panel wiring.',
-  importName: 'KuiTabsComponent',
+  importName: 'KuiTabs',
   status: 'available',
   exampleIds: [
     'basic-tabs-example',

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiSkeletonDirective } from '@kikita-labs/ui';
+import { KuiSkeleton } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-skeleton-shapes-example',
-  imports: [KuiSkeletonDirective],
+  imports: [KuiSkeleton],
   templateUrl: './skeleton-shapes-example.html',
   styleUrl: './skeleton-shapes-example.scss',
 })

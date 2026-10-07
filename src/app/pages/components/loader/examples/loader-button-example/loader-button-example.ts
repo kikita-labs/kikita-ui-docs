@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, KuiLoaderDirective } from '@kikita-labs/ui';
+import { KuiButton, KuiLoader } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-loader-button-example',
-  imports: [KuiButtonDirective, KuiLoaderDirective],
+  imports: [KuiButton, KuiLoader],
   templateUrl: './loader-button-example.html',
   styleUrl: './loader-button-example.scss',
 })

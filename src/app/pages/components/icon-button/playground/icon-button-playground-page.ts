@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import {
   type KuiButtonAppearance,
   type KuiButtonShape,
-  KuiIconButtonDirective,
-  KuiIconComponent,
+  KuiIcon,
+  KuiIconButton,
   type KuiSize,
 } from '@kikita-labs/ui';
 
@@ -55,7 +55,7 @@ type IconButtonPlaygroundValues = PlaygroundValues<typeof ICON_BUTTON_PLAYGROUND
 
 @Component({
   selector: 'app-icon-button-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiIconButtonDirective, KuiIconComponent],
+  imports: [ApiPlayground, ApiTable, KuiIconButton, KuiIcon],
   templateUrl: './icon-button-playground-page.html',
   styleUrl: './icon-button-playground-page.scss',
 })

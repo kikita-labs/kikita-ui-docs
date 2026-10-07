@@ -1,15 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiComboboxDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiCombobox, KuiDropdown, KuiField, KuiOption } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-free-combobox-example',
-  imports: [KuiComboboxDirective, KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective],
+  imports: [KuiCombobox, KuiDropdown, KuiField, KuiOption],
   templateUrl: './free-combobox-example.html',
   styleUrl: './free-combobox-example.scss',
 })

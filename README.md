@@ -56,7 +56,7 @@ pnpm check:performance
 The installed package version is the docs source of truth:
 
 ```text
-@kikita-labs/ui@1.8.0
+@kikita-labs/ui@2.0.0
 ```
 
 When `@kikita-labs/ui` is released, ask an agent to "sync". Any agent follows

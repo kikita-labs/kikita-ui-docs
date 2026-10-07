@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiInputDirective } from '@kikita-labs/ui';
+import { KuiInput } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-input-example',
-  imports: [KuiInputDirective],
+  imports: [KuiInput],
   templateUrl: './basic-input-example.html',
   styleUrl: './basic-input-example.scss',
 })

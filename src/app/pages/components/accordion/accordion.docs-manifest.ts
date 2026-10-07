@@ -6,7 +6,7 @@ export const ACCORDION_DOCS_MANIFEST = {
   label: 'Accordion',
   category: 'surfaces',
   description: 'Disclosure component for grouped expandable content.',
-  importName: 'KuiAccordionComponent',
+  importName: 'KuiAccordion',
   status: 'available',
   exampleIds: [
     'appearance-accordion-example',

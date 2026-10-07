@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/calendar
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiCalendarComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/calendar.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiCalendar from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/calendar.md
 
 ## Install
 
@@ -21,13 +21,11 @@ ng add @kikita-labs/ui
 <kui-calendar [(value)]="selectedDate" />
 ```
 
-### Range Mode
+`value` is a two-way model holding a `Date | null`.
 
-```html
-<kui-calendar mode="range" [(value)]="selectedRange" />
-```
-
-`value` holds a `Date` in `single` mode, and a `{ start: Date; end: Date | null }` object (`KuiDateRange`) in `range` mode. `end` is `null` while the range is still open (only the start date has been picked); the first click after a committed range starts a new one.
+Placed as a sibling of `input[kuiDatePicker]` inside the same `kui-field`, the directive
+auto-wires this calendar's `value`/`viewDate` for you — see [Date Picker](./date-picker.md),
+which is the recommended way to pair the two.
 
 ### Disabled Dates
 
@@ -94,9 +92,10 @@ don't stack into a double frame. See [Date Picker](./date-picker.md).
 ```
 
 `viewDate` (a first-of-month `Date`, two-way) drives which month the grid shows. Bind it when
-an external control (e.g. a paired `input[kuiDatePicker]`) needs to move the calendar to a
-specific month — for example, jumping to the typed date's month in real time. Left unbound, it
-defaults to today's month, or the bound `value`'s month at construction time.
+an external control needs to move the calendar to a specific month manually. Left unbound, it
+defaults to today's month, or the bound `value`'s month at construction time. When paired with
+`input[kuiDatePicker]` inside the same `kui-field`, this is wired automatically — see
+[Date Picker](./date-picker.md).
 
 `showPrevNav`/`showNextNav` (`boolean`, default `true`) hide the previous/next nav button. This
 is for pairing two linked calendars a month apart (one showing month N with only a "previous"
@@ -105,18 +104,22 @@ but available for custom layouts.
 
 ### Locale
 
-`kui-calendar` resolves month names, weekday names, and the first day of the week purely from `Intl` — there is no bundled locale data to keep in sync. By default it uses the app-wide `KUI_LOCALE` token (which itself defaults to `navigator.language`, falling back to `en-US`).
+`kui-calendar` resolves month names, weekday names, the heading, the first day of the week and the weekend purely from `Intl` — there is no bundled locale data to keep in sync. The heading is one `Intl` month-and-year format, so its order follows the locale (`October 2026`, `2026年10月`). The first day and the weekend come from `Intl.Locale#getWeekInfo()` (`he-IL` has a Friday and Saturday weekend), with a static table for engines that lack it. Names use the Gregorian calendar and Latin digits whatever the locale's default is.
 
-Override the locale for the whole app:
+By default it uses the locale of the nearest `KuiI18n` level, which starts from the app-wide `KUI_LOCALE` (in the browser `navigator.language`, on the server the request's `Accept-Language`, both falling back to `en-US`; see `KUI_LOCALE` for the server-to-browser hand-off). See [Internationalization](./i18n.md).
+
+Set the locale for the whole app or a subtree:
 
 ```ts
 // app.config.ts
-import { kuiProvideLocale } from '@kikita-labs/ui';
+import { provideKikitaUi } from '@kikita-labs/ui';
 
-providers: [kuiProvideLocale('ru-RU')];
+provideKikitaUi({ locale: 'ru-RU' });
+
+// a subtree: provideKuiLocale('ru-RU') in the component's providers
 ```
 
-Or override it for a single instance with the `locale` input, which takes precedence over the token:
+Or override it for a single instance with the `locale` input, which takes precedence over the level:
 
 ```html
 <kui-calendar locale="ru-RU" [(value)]="selectedDate" />
@@ -134,7 +137,7 @@ Rendered at /components/calendar:
 <div class="basic-calendar-example">
   <kui-calendar [(value)]="selectedDate" [minDate]="minDate" showFooter />
 
-  <kui-calendar mode="range" size="sm" [(value)]="sprintRange" locale="en-US" />
+  <kui-calendar-range size="sm" [(value)]="sprintRange" locale="en-US" />
 </div>
 ```
 
@@ -143,11 +146,11 @@ Rendered at /components/calendar:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiCalendarComponent, type KuiDateRange } from '@kikita-labs/ui';
+import { KuiCalendar, KuiCalendarRange, type KuiDateRange } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-calendar-example',
-  imports: [KuiCalendarComponent],
+  imports: [KuiCalendar, KuiCalendarRange],
   templateUrl: './basic-calendar-example.html',
   styleUrl: './basic-calendar-example.scss',
 })
@@ -176,8 +179,7 @@ export class BasicCalendarExample {
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| mode | 'single' \| 'range' | 'single' | Selection mode. Range mode stores a start date and a nullable end date. |
-| [(value)] | Date \| KuiDateRange \| null | null | Selected date in single mode or selected range in range mode. |
+| [(value)] | Date \| null | null | Selected date. For a start and end pair use kui-calendar-range, whose value is a KuiDateRange \| null. |
 | [(viewDate)] | Date | current month | First-of-month date that controls the visible month. |
 | size | 'md' \| 'sm' | 'md' | Calendar density. Use sm when embedding in tighter sidebars or panels. |
 | flat | boolean | false | Removes the calendar frame for dropdown or popover panel composition. |
@@ -188,14 +190,14 @@ export class BasicCalendarExample {
 | locale | string \| undefined | KUI_LOCALE | BCP 47 locale override for month names, weekday names, and week start. |
 | showPrevNav / showNextNav | boolean | true | Hide one header navigation control for linked multi-calendar layouts. |
 | [kuiCalendarHeader] / [kuiCalendarFooter] | projected content | - | Replace the default header or footer with consumer-owned content. |
-| kuiProvideLocale(locale) | Provider | - | Provides the default app or subtree locale used by date-aware components. |
+| provideKuiLocale(locale) | Provider | - | Provides the default app or subtree locale used by date-aware components. |
 | --kui-calendar-width | CSS custom property | 296px | Overrides the fixed calendar width while keeping the day grid predictable. |
 
 ## Accessibility
 
-- `role="grid"` on the day grid, `role="row"` on the weekday header row.
-- `aria-selected` on selected/range-endpoint cells, `aria-current="date"` on today, `aria-disabled` on disabled dates.
-- Roving tabindex: one day cell is in the tab order at a time (the focused date); arrow keys, `Home`/`End`, `PageUp`/`PageDown` move focus without leaving the grid.
+- The day grid is a complete ARIA grid: `role="grid"` containing the weekday header `role="row"` (with `role="columnheader"` cells that carry the full weekday name as `abbr`) and a `role="rowgroup"` of six `role="row"` week rows, each holding seven `role="gridcell"` elements. Each gridcell wraps one day `<button>`.
+- `aria-selected` on the selected gridcell (not on the button), `aria-current="date"` on today, `aria-disabled` on disabled dates.
+- Roving tabindex: one day cell is in the tab order at a time (the focused date). On initial render, the selected date receives focus when it is in the displayed month; otherwise today is used when visible, then the first day of the displayed month. Arrow keys, `Home`/`End`, and `PageUp`/`PageDown` move DOM focus to the new roving cell without leaving the grid.
 - Month/year changes are announced through an `aria-live="polite"` region.
 
 ### Keyboard

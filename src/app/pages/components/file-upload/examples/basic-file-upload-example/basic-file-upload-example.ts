@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiFileUploadComponent, type KuiUploadFile } from '@kikita-labs/ui';
+import { KuiFileUpload, type KuiUploadFile } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-file-upload-example',
-  imports: [KuiFileUploadComponent],
+  imports: [KuiFileUpload],
   templateUrl: './basic-file-upload-example.html',
   styleUrl: './basic-file-upload-example.scss',
 })

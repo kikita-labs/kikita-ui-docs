@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { type KuiBadgeAppearance, KuiBadgeDirective, type KuiSize } from '@kikita-labs/ui';
+import { KuiBadge, type KuiBadgeAppearance, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -36,7 +36,7 @@ type BadgePlaygroundValues = PlaygroundValues<typeof BADGE_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-badge-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiBadgeDirective],
+  imports: [ApiPlayground, ApiTable, KuiBadge],
   templateUrl: './badge-playground-page.html',
   styleUrl: './badge-playground-page.scss',
 })

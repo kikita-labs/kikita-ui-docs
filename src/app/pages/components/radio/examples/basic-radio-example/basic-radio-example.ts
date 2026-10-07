@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiFieldComponent, KuiRadioDirective } from '@kikita-labs/ui';
+import { KuiField, KuiRadio } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-radio-example',
-  imports: [KuiFieldComponent, KuiRadioDirective],
+  imports: [KuiField, KuiRadio],
   templateUrl: './basic-radio-example.html',
   styleUrl: './basic-radio-example.scss',
 })

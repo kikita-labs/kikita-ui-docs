@@ -15,7 +15,7 @@ export const SMOKE_EXAMPLE_SOURCES = {
       label: "Imports",
       filename: "package-smoke-consumer.ts",
       language: "ts",
-      code: "import {\n  KuiBadgeDirective,\n  KuiButtonDirective,\n  KuiCardDirective,\n  KuiFieldComponent,\n  KuiInputDirective,\n} from '@kikita-labs/ui';",
+      code: "import { KuiBadge, KuiButton, KuiCard, KuiField, KuiInput } from '@kikita-labs/ui';",
     },
   ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;

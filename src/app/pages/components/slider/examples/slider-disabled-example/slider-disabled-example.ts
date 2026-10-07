@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSlider } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-slider-disabled-example',
-  imports: [KuiFieldComponent, KuiSliderDirective],
+  imports: [KuiField, KuiSlider],
   templateUrl: './slider-disabled-example.html',
   styleUrl: './slider-disabled-example.scss',
 })

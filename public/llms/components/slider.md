@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/slider
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiSliderDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/slider.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiSlider from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/slider.md
 
 ## Install
 
@@ -74,11 +74,11 @@ Rendered at /components/slider:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSlider } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-slider-example',
-  imports: [KuiFieldComponent, KuiSliderDirective],
+  imports: [KuiField, KuiSlider],
   templateUrl: './basic-slider-example.html',
   styleUrl: './basic-slider-example.scss',
 })
@@ -115,11 +115,11 @@ export class BasicSliderExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSlider } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-slider-disabled-example',
-  imports: [KuiFieldComponent, KuiSliderDirective],
+  imports: [KuiField, KuiSlider],
   templateUrl: './slider-disabled-example.html',
   styleUrl: './slider-disabled-example.scss',
 })
@@ -155,7 +155,7 @@ export class SliderDisabledExample {}
 import { Component, signal } from '@angular/core';
 import { form, FormField, max, min } from '@angular/forms/signals';
 
-import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSlider } from '@kikita-labs/ui';
 
 interface SettingsModel {
   readonly volume: number;
@@ -163,7 +163,7 @@ interface SettingsModel {
 
 @Component({
   selector: 'app-slider-field-example',
-  imports: [FormField, KuiFieldComponent, KuiSliderDirective],
+  imports: [FormField, KuiField, KuiSlider],
   templateUrl: './slider-field-example.html',
   styleUrl: './slider-field-example.scss',
 })
@@ -218,11 +218,11 @@ export class SliderFieldExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiSliderDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSlider } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-slider-range-example',
-  imports: [KuiFieldComponent, KuiSliderDirective],
+  imports: [KuiField, KuiSlider],
   templateUrl: './slider-range-example.html',
   styleUrl: './slider-range-example.scss',
 })

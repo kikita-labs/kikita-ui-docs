@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiColorInputDirective, KuiFieldComponent, type KuiSize } from '@kikita-labs/ui';
+import { KuiColorInput, KuiField, type KuiSize } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
@@ -36,7 +36,7 @@ type ColorInputPlaygroundValues = PlaygroundValues<typeof COLOR_INPUT_PLAYGROUND
 
 @Component({
   selector: 'app-color-input-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiColorInputDirective, KuiFieldComponent],
+  imports: [ApiPlayground, ApiTable, KuiColorInput, KuiField],
   templateUrl: './color-input-playground-page.html',
   styleUrl: './color-input-playground-page.scss',
 })

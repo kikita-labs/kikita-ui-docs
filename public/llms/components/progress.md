@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/progress
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiProgressComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/progress.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiProgress from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/progress.md
 
 ## Install
 
@@ -45,11 +45,11 @@ Rendered at /components/progress:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiProgressComponent } from '@kikita-labs/ui';
+import { KuiProgress } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-progress-example',
-  imports: [KuiProgressComponent],
+  imports: [KuiProgress],
   templateUrl: './basic-progress-example.html',
   styleUrl: './basic-progress-example.scss',
 })
@@ -97,11 +97,11 @@ export class BasicProgressExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiProgressComponent } from '@kikita-labs/ui';
+import { KuiProgress } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-progress-circular-example',
-  imports: [KuiProgressComponent],
+  imports: [KuiProgress],
   templateUrl: './progress-circular-example.html',
   styleUrl: './progress-circular-example.scss',
 })
@@ -148,11 +148,11 @@ export class ProgressCircularExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiProgressComponent } from '@kikita-labs/ui';
+import { KuiProgress } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-progress-color-size-example',
-  imports: [KuiProgressComponent],
+  imports: [KuiProgress],
   templateUrl: './progress-color-size-example.html',
   styleUrl: './progress-color-size-example.scss',
 })

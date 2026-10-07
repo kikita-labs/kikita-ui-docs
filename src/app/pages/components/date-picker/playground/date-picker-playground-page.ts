@@ -1,11 +1,6 @@
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiCalendarComponent,
-  KuiDatePickerDirective,
-  KuiDropdownComponent,
-  KuiFieldComponent,
-} from '@kikita-labs/ui';
+import { KuiCalendar, KuiDatePicker, KuiDropdown, KuiField } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
@@ -34,14 +29,7 @@ type DatePickerPlaygroundValues = PlaygroundValues<typeof DATE_PICKER_PLAYGROUND
 
 @Component({
   selector: 'app-date-picker-playground-page',
-  imports: [
-    ApiPlayground,
-    ApiTable,
-    KuiCalendarComponent,
-    KuiDatePickerDirective,
-    KuiDropdownComponent,
-    KuiFieldComponent,
-  ],
+  imports: [ApiPlayground, ApiTable, KuiCalendar, KuiDatePicker, KuiDropdown, KuiField],
   templateUrl: './date-picker-playground-page.html',
   styleUrl: './date-picker-playground-page.scss',
 })

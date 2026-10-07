@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { type KuiCardAppearance, KuiCardDirective, type KuiSize } from '@kikita-labs/ui';
+import { KuiCard, type KuiCardAppearance, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -43,7 +43,7 @@ type CardPlaygroundValues = PlaygroundValues<typeof CARD_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-card-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiCardDirective],
+  imports: [ApiPlayground, ApiTable, KuiCard],
   templateUrl: './card-playground-page.html',
   styleUrl: './card-playground-page.scss',
 })

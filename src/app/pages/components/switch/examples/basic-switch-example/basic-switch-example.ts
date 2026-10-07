@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiSwitchDirective } from '@kikita-labs/ui';
+import { KuiField, KuiSwitch } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-switch-example',
-  imports: [KuiFieldComponent, KuiSwitchDirective],
+  imports: [KuiField, KuiSwitch],
   templateUrl: './basic-switch-example.html',
   styleUrl: './basic-switch-example.scss',
 })

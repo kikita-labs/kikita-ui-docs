@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiCheckboxDirective, type KuiSize } from '@kikita-labs/ui';
+import { KuiCheckbox, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -33,7 +33,7 @@ type CheckboxPlaygroundValues = PlaygroundValues<typeof CHECKBOX_PLAYGROUND_CONT
 
 @Component({
   selector: 'app-checkbox-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiCheckboxDirective],
+  imports: [ApiPlayground, ApiTable, KuiCheckbox],
   templateUrl: './checkbox-playground-page.html',
   styleUrl: './checkbox-playground-page.scss',
 })

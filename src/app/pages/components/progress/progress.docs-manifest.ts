@@ -6,7 +6,7 @@ export const PROGRESS_DOCS_MANIFEST = {
   label: 'Progress',
   category: 'feedback',
   description: 'Progress status primitive for determinate and indeterminate work.',
-  importName: 'KuiProgressComponent',
+  importName: 'KuiProgress',
   status: 'available',
   exampleIds: [
     'basic-progress-example',

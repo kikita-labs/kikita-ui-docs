@@ -9,13 +9,13 @@ export const CALENDAR_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "basic-calendar-example.html",
       language: "html",
-      code: "<div class=\"basic-calendar-example\">\n  <kui-calendar [(value)]=\"selectedDate\" [minDate]=\"minDate\" showFooter />\n\n  <kui-calendar mode=\"range\" size=\"sm\" [(value)]=\"sprintRange\" locale=\"en-US\" />\n</div>",
+      code: "<div class=\"basic-calendar-example\">\n  <kui-calendar [(value)]=\"selectedDate\" [minDate]=\"minDate\" showFooter />\n\n  <kui-calendar-range size=\"sm\" [(value)]=\"sprintRange\" locale=\"en-US\" />\n</div>",
     },
     {
       label: "TS",
       filename: "basic-calendar-example.ts",
       language: "ts",
-      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendarComponent, type KuiDateRange } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-calendar-example',\n  imports: [KuiCalendarComponent],\n  templateUrl: './basic-calendar-example.html',\n  styleUrl: './basic-calendar-example.scss',\n})\nexport class BasicCalendarExample {\n  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly sprintRange = signal<KuiDateRange>({\n    start: new Date(2026, 6, 13),\n    end: new Date(2026, 6, 17),\n  });\n  protected readonly minDate = new Date(2026, 6, 1);\n}",
+      code: "import { Component, signal } from '@angular/core';\n\nimport { KuiCalendar, KuiCalendarRange, type KuiDateRange } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-calendar-example',\n  imports: [KuiCalendar, KuiCalendarRange],\n  templateUrl: './basic-calendar-example.html',\n  styleUrl: './basic-calendar-example.scss',\n})\nexport class BasicCalendarExample {\n  protected readonly selectedDate = signal<Date | null>(new Date(2026, 6, 14));\n  protected readonly sprintRange = signal<KuiDateRange>({\n    start: new Date(2026, 6, 13),\n    end: new Date(2026, 6, 17),\n  });\n  protected readonly minDate = new Date(2026, 6, 1);\n}",
     },
     {
       label: "SCSS",

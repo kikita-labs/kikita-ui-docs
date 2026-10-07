@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/loader
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiLoaderDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/loader.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiLoader from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/loader.md
 
 ## Install
 
@@ -47,11 +47,11 @@ Rendered at /components/loader:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiLoaderDirective } from '@kikita-labs/ui';
+import { KuiLoader } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-loader-example',
-  imports: [KuiLoaderDirective],
+  imports: [KuiLoader],
   templateUrl: './basic-loader-example.html',
   styleUrl: './basic-loader-example.scss',
 })
@@ -88,11 +88,11 @@ export class BasicLoaderExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, KuiLoaderDirective } from '@kikita-labs/ui';
+import { KuiButton, KuiLoader } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-loader-button-example',
-  imports: [KuiButtonDirective, KuiLoaderDirective],
+  imports: [KuiButton, KuiLoader],
   templateUrl: './loader-button-example.html',
   styleUrl: './loader-button-example.scss',
 })
@@ -129,11 +129,11 @@ export class LoaderButtonExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiLoaderDirective } from '@kikita-labs/ui';
+import { KuiLoader } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-loader-size-example',
-  imports: [KuiLoaderDirective],
+  imports: [KuiLoader],
   templateUrl: './loader-size-example.html',
   styleUrl: './loader-size-example.scss',
 })

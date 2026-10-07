@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/file-upload
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiFileUploadComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/file-upload.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiFileUpload from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/file-upload.md
 
 ## Install
 
@@ -76,11 +76,11 @@ Rendered at /components/file-upload:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import { KuiFileUploadComponent, type KuiUploadFile } from '@kikita-labs/ui';
+import { KuiFileUpload, type KuiUploadFile } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-file-upload-example',
-  imports: [KuiFileUploadComponent],
+  imports: [KuiFileUpload],
   templateUrl: './basic-file-upload-example.html',
   styleUrl: './basic-file-upload-example.scss',
 })
@@ -127,13 +127,22 @@ export class BasicFileUploadExample {
 
 The visible dropzone/button controls a visually hidden native
 `<input type="file">` — drag-and-drop is never the only way to select a
-file. The dropzone is `role="button"` with an `aria-label` that includes
-`acceptLabel` when set. Upload progress reuses `kui-progress`
+file. The native input is `aria-hidden` and out of the tab order; the dropzone
+(or the compact "Attach file" button) is the control. The dropzone is
+`role="button"` with an `aria-label` that includes `acceptLabel` when set. The
+small "Choose file" label inside it is presentational (`aria-hidden`), not a
+second button, so a click on it reaches the dropzone and no interactive control
+is nested inside another. Upload progress reuses `kui-progress`
 (`role="progressbar"`, `aria-valuenow`) with an
 `aria-label="Uploading {name}"`. The file list is wrapped in
 `aria-live="polite"` so additions/removals are announced, and the
 `maxCount` form error is its own `aria-live="polite"` region. The remove
 button has `aria-label="Remove {name}"`.
+
+The errored-item Retry control is a native `button[kuiLink]` with caption
+typography and an always-visible underline. It remains an action: it has
+`type="button"`, does not navigate or submit a surrounding form, and emits the
+same `retry` payload for the consumer-owned upload restart.
 
 ## Playground
 

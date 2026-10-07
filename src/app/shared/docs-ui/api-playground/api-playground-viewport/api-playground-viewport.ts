@@ -12,14 +12,14 @@ import {
 } from '@angular/core';
 
 import {
-  KuiCardDirective,
-  KuiFieldAffixDirective,
-  KuiFieldComponent,
-  KuiIconButtonDirective,
-  KuiIconComponent,
-  KuiInputDirective,
-  KuiSegmentDirective,
-  KuiSegmentedComponent,
+  KuiCard,
+  KuiField,
+  KuiFieldAffix,
+  KuiIcon,
+  KuiIconButton,
+  KuiInput,
+  KuiSegment,
+  KuiSegmented,
 } from '@kikita-labs/ui';
 
 import { DocsPointerDragService } from '@core/platform/pointer';
@@ -36,14 +36,14 @@ import { type PlaygroundPreviewTheme, type PlaygroundViewport } from './types';
 @Component({
   selector: 'app-api-playground-viewport',
   imports: [
-    KuiCardDirective,
-    KuiFieldAffixDirective,
-    KuiFieldComponent,
-    KuiIconButtonDirective,
-    KuiIconComponent,
-    KuiInputDirective,
-    KuiSegmentDirective,
-    KuiSegmentedComponent,
+    KuiCard,
+    KuiFieldAffix,
+    KuiField,
+    KuiIconButton,
+    KuiIcon,
+    KuiInput,
+    KuiSegment,
+    KuiSegmented,
   ],
   templateUrl: './api-playground-viewport.html',
   styleUrl: './api-playground-viewport.scss',

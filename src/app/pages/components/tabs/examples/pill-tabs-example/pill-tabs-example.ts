@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 
-import { KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent } from '@kikita-labs/ui';
+import { KuiTab, KuiTabPanel, KuiTabs } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-pill-tabs-example',
-  imports: [KuiTabDirective, KuiTabPanelDirective, KuiTabsComponent],
+  imports: [KuiTab, KuiTabPanel, KuiTabs],
   templateUrl: './pill-tabs-example.html',
   styleUrl: './pill-tabs-example.scss',
 })

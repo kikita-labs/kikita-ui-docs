@@ -15,7 +15,7 @@ export const TOOLTIP_EXAMPLE_SOURCES = {
       label: "TS",
       filename: "basic-tooltip-example.ts",
       language: "ts",
-      code: "import { Component } from '@angular/core';\n\nimport { KuiButtonDirective, KuiTooltipDirective } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-tooltip-example',\n  imports: [KuiButtonDirective, KuiTooltipDirective],\n  templateUrl: './basic-tooltip-example.html',\n  styleUrl: './basic-tooltip-example.scss',\n})\nexport class BasicTooltipExample {}",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton, KuiTooltip } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-basic-tooltip-example',\n  imports: [KuiButton, KuiTooltip],\n  templateUrl: './basic-tooltip-example.html',\n  styleUrl: './basic-tooltip-example.scss',\n})\nexport class BasicTooltipExample {}",
     },
     {
       label: "SCSS",

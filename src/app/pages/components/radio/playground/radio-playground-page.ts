@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiFieldComponent, KuiRadioDirective, type KuiSize } from '@kikita-labs/ui';
+import { KuiField, KuiRadio, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -34,7 +34,7 @@ type RadioPlaygroundValues = PlaygroundValues<typeof RADIO_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-radio-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiFieldComponent, KuiRadioDirective],
+  imports: [ApiPlayground, ApiTable, KuiField, KuiRadio],
   templateUrl: './radio-playground-page.html',
   styleUrl: './radio-playground-page.scss',
 })

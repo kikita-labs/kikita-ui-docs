@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 
 import {
-  KuiStepComponent,
-  KuiStepperComponent,
+  KuiStep,
+  KuiStepper,
   type KuiStepperOrientation,
   type KuiStepperSize,
 } from '@kikita-labs/ui';
@@ -37,7 +37,7 @@ type StepperPlaygroundValues = PlaygroundValues<typeof STEPPER_PLAYGROUND_CONTRO
 
 @Component({
   selector: 'app-stepper-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiStepComponent, KuiStepperComponent],
+  imports: [ApiPlayground, ApiTable, KuiStep, KuiStepper],
   templateUrl: './stepper-playground-page.html',
   styleUrl: './stepper-playground-page.scss',
 })

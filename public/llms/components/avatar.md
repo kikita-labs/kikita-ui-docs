@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/avatar
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiAvatarComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/avatar.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiAvatar from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/avatar.md
 
 ## Install
 
@@ -47,11 +47,11 @@ Rendered at /components/avatar:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiAvatarComponent } from '@kikita-labs/ui';
+import { KuiAvatar } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-avatar-button-example',
-  imports: [KuiAvatarComponent],
+  imports: [KuiAvatar],
   templateUrl: './avatar-button-example.html',
   styleUrl: './avatar-button-example.scss',
 })
@@ -83,7 +83,7 @@ export class AvatarButtonExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiAvatarGroupComponent, type KuiAvatarItem } from '@kikita-labs/ui';
+import { KuiAvatarGroup, type KuiAvatarItem } from '@kikita-labs/ui';
 
 const MEMBERS: readonly KuiAvatarItem[] = [
   { src: 'https://i.pravatar.cc/64?img=12', name: 'Nikita Repin', status: 'online' },
@@ -95,7 +95,7 @@ const MEMBERS: readonly KuiAvatarItem[] = [
 
 @Component({
   selector: 'app-avatar-group-example',
-  imports: [KuiAvatarGroupComponent],
+  imports: [KuiAvatarGroup],
   templateUrl: './avatar-group-example.html',
   styleUrl: './avatar-group-example.scss',
 })
@@ -140,11 +140,11 @@ export class AvatarGroupExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiAvatarComponent } from '@kikita-labs/ui';
+import { KuiAvatar } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-avatar-sizes-shapes-example',
-  imports: [KuiAvatarComponent],
+  imports: [KuiAvatar],
   templateUrl: './avatar-sizes-shapes-example.html',
   styleUrl: './avatar-sizes-shapes-example.scss',
 })
@@ -188,11 +188,11 @@ export class AvatarSizesShapesExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiAvatarComponent } from '@kikita-labs/ui';
+import { KuiAvatar } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-avatar-status-example',
-  imports: [KuiAvatarComponent],
+  imports: [KuiAvatar],
   templateUrl: './avatar-status-example.html',
   styleUrl: './avatar-status-example.scss',
 })
@@ -228,11 +228,11 @@ export class AvatarStatusExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiAvatarComponent } from '@kikita-labs/ui';
+import { KuiAvatar } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-avatar-example',
-  imports: [KuiAvatarComponent],
+  imports: [KuiAvatar],
   templateUrl: './basic-avatar-example.html',
   styleUrl: './basic-avatar-example.scss',
 })

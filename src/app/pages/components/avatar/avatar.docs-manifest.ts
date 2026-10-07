@@ -6,7 +6,7 @@ export const AVATAR_DOCS_MANIFEST = {
   label: 'Avatar',
   category: 'data-identity',
   description: 'User or entity identity with image, initials, and status.',
-  importName: 'KuiAvatarComponent',
+  importName: 'KuiAvatar',
   status: 'available',
   exampleIds: [
     'avatar-button-example',

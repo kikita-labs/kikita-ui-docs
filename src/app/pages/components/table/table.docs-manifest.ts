@@ -6,7 +6,7 @@ export const TABLE_DOCS_MANIFEST = {
   label: 'Table',
   category: 'data-identity',
   description: 'Native table styling, sorting context, and selection cells.',
-  importName: 'KuiTableDirective',
+  importName: 'KuiTable',
   status: 'available',
   exampleIds: [
     'basic-sortable-table-example',

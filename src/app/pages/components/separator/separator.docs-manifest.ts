@@ -6,7 +6,7 @@ export const SEPARATOR_DOCS_MANIFEST = {
   label: 'Separator',
   category: 'surfaces',
   description: 'Tokenized horizontal or vertical separator primitive.',
-  importName: 'KuiSeparatorDirective',
+  importName: 'KuiSeparator',
   status: 'available',
   exampleIds: [
     'basic-separator-example',

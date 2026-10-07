@@ -10,6 +10,6 @@ export const SEGMENTED_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'segmented.ts',
     language: 'ts',
-    code: `import { KuiSegmentDirective, KuiSegmentedComponent } from '@kikita-labs/ui';`,
+    code: `import { KuiSegment, KuiSegmented } from '@kikita-labs/ui';`,
   },
 ];

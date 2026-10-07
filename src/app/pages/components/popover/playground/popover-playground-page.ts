@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 import {
-  KuiButtonDirective,
+  KuiButton,
+  KuiPopover,
   type KuiPopoverAlign,
-  KuiPopoverComponent,
-  KuiPopoverForDirective,
+  KuiPopoverFor,
   type KuiPopoverPlacement,
   type KuiPopoverTriggerType,
 } from '@kikita-labs/ui';
@@ -57,13 +57,7 @@ type PopoverPlaygroundValues = PlaygroundValues<typeof POPOVER_PLAYGROUND_CONTRO
 
 @Component({
   selector: 'app-popover-playground-page',
-  imports: [
-    ApiPlayground,
-    ApiTable,
-    KuiButtonDirective,
-    KuiPopoverComponent,
-    KuiPopoverForDirective,
-  ],
+  imports: [ApiPlayground, ApiTable, KuiButton, KuiPopover, KuiPopoverFor],
   templateUrl: './popover-playground-page.html',
   styleUrl: './popover-playground-page.scss',
 })

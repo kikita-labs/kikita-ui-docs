@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, kuiDrawer, type KuiDrawerSide } from '@kikita-labs/ui';
+import { KuiButton, kuiDrawer, type KuiDrawerSide } from '@kikita-labs/ui';
 
 import { SidePreviewDrawer } from './side-preview-drawer';
 
 @Component({
   selector: 'app-drawer-sides-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './drawer-sides-example.html',
   styleUrl: './drawer-sides-example.scss',
 })

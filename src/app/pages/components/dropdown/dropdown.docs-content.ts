@@ -10,7 +10,7 @@ export const DROPDOWN_IMPORT_TABS: readonly CodeTab[] = [
     label: 'Import',
     filename: 'dropdown.ts',
     language: 'ts',
-    code: `import { KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective } from '@kikita-labs/ui';
+    code: `import { KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';
 
 // Import runtime styles once, application-wide:
 import '@kikita-labs/ui/styles';`,

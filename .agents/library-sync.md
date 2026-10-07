@@ -80,13 +80,13 @@ were published. Distinguish:
 Examples must use package-consumer imports:
 
 ```ts
-import { KuiButtonDirective } from '@kikita-labs/ui';
+import { KuiButton } from '@kikita-labs/ui';
 ```
 
 Do not use sibling source imports:
 
 ```ts
-import { KuiButtonDirective } from '../../kikita-ui/projects/ui/src/...';
+import { KuiButton } from '../../kikita-ui/projects/ui/src/...';
 ```
 
 Examples must be copy-pasteable for a normal Angular consumer app.

@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/dropdown
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiDropdownComponent from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/dropdown.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiDropdown from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/dropdown.md
 
 ## Install
 
@@ -95,16 +95,11 @@ Rendered at /components/dropdown:
 ```ts
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiDropdownComponent,
-  KuiFieldComponent,
-  KuiOptionDirective,
-  KuiSelectDirective,
-} from '@kikita-labs/ui';
+import { KuiDropdown, KuiField, KuiOption, KuiSelect } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-field-dropdown-example',
-  imports: [KuiDropdownComponent, KuiFieldComponent, KuiOptionDirective, KuiSelectDirective],
+  imports: [KuiDropdown, KuiField, KuiOption, KuiSelect],
   templateUrl: './field-dropdown-example.html',
 })
 export class FieldDropdownExample {
@@ -140,16 +135,11 @@ export class FieldDropdownExample {
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiDropdownComponent,
-  KuiDropdownForDirective,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-panel-width-dropdown-example',
-  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  imports: [KuiButton, KuiDropdown, KuiDropdownFor, KuiOption],
   templateUrl: './panel-width-dropdown-example.html',
   styleUrl: './panel-width-dropdown-example.scss',
 })
@@ -186,16 +176,11 @@ export class PanelWidthDropdownExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiDropdownComponent,
-  KuiDropdownForDirective,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-standalone-dropdown-example',
-  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  imports: [KuiButton, KuiDropdown, KuiDropdownFor, KuiOption],
   templateUrl: './standalone-dropdown-example.html',
 })
 export class StandaloneDropdownExample {}
@@ -226,16 +211,11 @@ export class StandaloneDropdownExample {}
 ```ts
 import { Component, signal } from '@angular/core';
 
-import {
-  KuiButtonDirective,
-  KuiDropdownComponent,
-  KuiDropdownForDirective,
-  KuiOptionDirective,
-} from '@kikita-labs/ui';
+import { KuiButton, KuiDropdown, KuiDropdownFor, KuiOption } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-controlled-open-dropdown-example',
-  imports: [KuiButtonDirective, KuiDropdownComponent, KuiDropdownForDirective, KuiOptionDirective],
+  imports: [KuiButton, KuiDropdown, KuiDropdownFor, KuiOption],
   templateUrl: './controlled-open-dropdown-example.html',
   styleUrl: './controlled-open-dropdown-example.scss',
 })
@@ -274,8 +254,8 @@ export class ControlledOpenDropdownExample {
 | setAnchor(el) | method | - | Sets the anchor imperatively. Called by kui-field and [kuiDropdownFor]. |
 | getPanel() | method | - | Returns the rendered panel element, if attached. |
 | getPanelId() | method | - | Returns the stable panel id for ARIA wiring. |
-| [kuiDropdownFor] | KuiDropdownComponent | - | Wires a standalone trigger to a dropdown instance and manages click toggling, aria-expanded, and aria-haspopup. Prefer a native button so keyboard behavior is already correct. |
-| [kuiOption] value | unknown | - | Required. The value an option renders and emits. Set via the `value` input on `KuiOptionDirective`, e.g. `<div kuiOption value="edit">`. |
+| [kuiDropdownFor] | KuiDropdown | - | Wires a standalone trigger to a dropdown instance and manages click toggling, aria-expanded, and aria-haspopup. Prefer a native button so keyboard behavior is already correct. |
+| [kuiOption] value | unknown | - | Required. The value an option renders and emits. Set via the `value` input on `KuiOption`, e.g. `<div kuiOption value="edit">`. |
 | [kuiOption] disabled | boolean | false | Disables click and keyboard selection for this option. |
 | kuiOptionSelect | EventEmitter<unknown> | - | Emits the option value on selection. |
 | --kui-dropdown-bg | CSS custom property | var(--kui-color-surface-elevated) | Panel background. |

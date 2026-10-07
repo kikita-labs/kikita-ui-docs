@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import {
+  KuiProgress,
   type KuiProgressColor,
-  KuiProgressComponent,
   type KuiProgressSize,
   type KuiProgressType,
 } from '@kikita-labs/ui';
@@ -56,7 +56,7 @@ type ProgressPlaygroundValues = PlaygroundValues<typeof PROGRESS_PLAYGROUND_CONT
 
 @Component({
   selector: 'app-progress-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiProgressComponent],
+  imports: [ApiPlayground, ApiTable, KuiProgress],
   templateUrl: './progress-playground-page.html',
   styleUrl: './progress-playground-page.scss',
 })

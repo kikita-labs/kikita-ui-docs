@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiAvatarComponent, KuiAvatarGroupComponent, type KuiAvatarItem } from '@kikita-labs/ui';
+import { KuiAvatar, KuiAvatarGroup, type KuiAvatarItem } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -54,7 +54,7 @@ type AvatarPlaygroundValues = PlaygroundValues<typeof AVATAR_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-avatar-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiAvatarComponent, KuiAvatarGroupComponent],
+  imports: [ApiPlayground, ApiTable, KuiAvatar, KuiAvatarGroup],
   templateUrl: './avatar-playground-page.html',
   styleUrl: './avatar-playground-page.scss',
 })

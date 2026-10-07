@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/dialog
-- Package: @kikita-labs/ui@1.8.0
+- Package: @kikita-labs/ui@2.0.0
 - Import: kuiDialog from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/dialog.md
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/dialog.md
 
 ## Install
 
@@ -91,13 +91,13 @@ import { Component, DestroyRef, inject, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiDialog } from '@kikita-labs/ui';
+import { KuiButton, kuiDialog } from '@kikita-labs/ui';
 
 import { InviteTeammateDialog } from './invite-teammate-dialog';
 
 @Component({
   selector: 'app-basic-dialog-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './basic-dialog-example.html',
   styleUrl: './basic-dialog-example.scss',
 })
@@ -122,10 +122,10 @@ import { Component, inject, signal } from '@angular/core';
 
 import {
   KUI_DIALOG_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDialogContext,
   type KuiDialogHost,
-  KuiInputDirective,
+  KuiInput,
 } from '@kikita-labs/ui';
 
 export interface InviteTeammateData {
@@ -136,7 +136,7 @@ export type InviteTeammateResult = 'sent' | null;
 
 @Component({
   selector: 'app-invite-teammate-dialog',
-  imports: [KuiButtonDirective, KuiInputDirective],
+  imports: [KuiButton, KuiInput],
   templateUrl: './invite-teammate-dialog.html',
 })
 export class InviteTeammateDialog implements KuiDialogHost<
@@ -196,11 +196,11 @@ import { Component, DestroyRef, inject, signal } from '@angular/core';
 
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
-import { KuiButtonDirective, kuiConfirm } from '@kikita-labs/ui';
+import { KuiButton, kuiConfirm } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-dialog-confirm-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './dialog-confirm-example.html',
   styleUrl: './dialog-confirm-example.scss',
 })
@@ -272,13 +272,13 @@ export class DialogConfirmExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, kuiDialog, type KuiDialogSize } from '@kikita-labs/ui';
+import { KuiButton, kuiDialog, type KuiDialogSize } from '@kikita-labs/ui';
 
 import { SizePreviewDialog } from './size-preview-dialog';
 
 @Component({
   selector: 'app-dialog-sizes-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './dialog-sizes-example.html',
   styleUrl: './dialog-sizes-example.scss',
 })
@@ -302,7 +302,7 @@ import { Component, inject } from '@angular/core';
 
 import {
   KUI_DIALOG_CONTEXT,
-  KuiButtonDirective,
+  KuiButton,
   type KuiDialogContext,
   type KuiDialogHost,
 } from '@kikita-labs/ui';
@@ -313,7 +313,7 @@ export interface SizePreviewData {
 
 @Component({
   selector: 'app-size-preview-dialog',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './size-preview-dialog.html',
 })
 export class SizePreviewDialog implements KuiDialogHost<void, SizePreviewData> {

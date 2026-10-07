@@ -6,7 +6,7 @@ export const EMPTY_STATE_DOCS_MANIFEST = {
   label: 'Empty State',
   category: 'feedback',
   description: 'Known empty, error, no-access, and success content states.',
-  importName: 'KuiEmptyStateComponent',
+  importName: 'KuiEmptyState',
   status: 'available',
   exampleIds: [
     'basic-empty-state-example',

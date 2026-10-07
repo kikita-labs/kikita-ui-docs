@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { KuiButtonDirective, kuiToast, type KuiToastAppearance } from '@kikita-labs/ui';
+import { KuiButton, kuiToast, type KuiToastAppearance } from '@kikita-labs/ui';
 
 interface ToastTrigger {
   readonly label: string;
@@ -9,7 +9,7 @@ interface ToastTrigger {
 
 @Component({
   selector: 'app-basic-toast-example',
-  imports: [KuiButtonDirective],
+  imports: [KuiButton],
   templateUrl: './basic-toast-example.html',
   styleUrl: './basic-toast-example.scss',
 })

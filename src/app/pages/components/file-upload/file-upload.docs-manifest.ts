@@ -6,7 +6,7 @@ export const FILE_UPLOAD_DOCS_MANIFEST = {
   label: 'File Upload',
   category: 'forms',
   description: 'Controlled file picker.',
-  importName: 'KuiFileUploadComponent',
+  importName: 'KuiFileUpload',
   status: 'available',
   exampleIds: ['basic-file-upload-example'],
   loadPage: () => import('./file-upload-page').then((module) => module.FileUploadPage),

@@ -6,7 +6,7 @@ export const CARD_DOCS_MANIFEST = {
   label: 'Card',
   category: 'surfaces',
   description: 'Surface, elevated, and sunken content container.',
-  importName: 'KuiCardDirective',
+  importName: 'KuiCard',
   status: 'available',
   exampleIds: [
     'basic-card-example',

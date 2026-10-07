@@ -4,9 +4,9 @@
 
 - Status: available
 - Route: /components/card
-- Package: @kikita-labs/ui@1.8.0
-- Import: KuiCardDirective from @kikita-labs/ui
-- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v1.8.0/docs/card.md
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiCard from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/card.md
 
 ## Install
 
@@ -17,6 +17,12 @@ ng add @kikita-labs/ui
 
 ## Usage
 
+```ts
+import { KuiCard } from '@kikita-labs/ui';
+```
+
+Import `@kikita-labs/ui/styles` once in the application stylesheet to load Card's runtime styles.
+
 ```html
 <article kuiCard>
   <h3>Default surface</h3>
@@ -26,7 +32,8 @@ ng add @kikita-labs/ui
 <button kuiCard interactive type="button">Interactive card</button>
 ```
 
-Use real semantic elements: `article`, `section`, `aside`, `button`, or `a` depending on behavior.
+Choose a native host that matches the content and behavior: `article`, `section`, or `aside` for
+content; `button` for an action; and `a` with an `href` for navigation.
 
 ## Examples
 
@@ -48,11 +55,11 @@ Rendered at /components/card:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiCardDirective } from '@kikita-labs/ui';
+import { KuiCard } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-card-example',
-  imports: [KuiCardDirective],
+  imports: [KuiCard],
   templateUrl: './basic-card-example.html',
   styleUrl: './basic-card-example.scss',
 })
@@ -92,11 +99,11 @@ export class BasicCardExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiCardDirective } from '@kikita-labs/ui';
+import { KuiCard } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-card-appearance-example',
-  imports: [KuiCardDirective],
+  imports: [KuiCard],
   templateUrl: './card-appearance-example.html',
   styleUrl: './card-appearance-example.scss',
 })
@@ -134,11 +141,11 @@ export class CardAppearanceExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiCardDirective } from '@kikita-labs/ui';
+import { KuiCard } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-card-interactive-example',
-  imports: [KuiCardDirective],
+  imports: [KuiCard],
   templateUrl: './card-interactive-example.html',
   styleUrl: './card-interactive-example.scss',
 })
@@ -190,11 +197,11 @@ export class CardInteractiveExample {}
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiCardDirective } from '@kikita-labs/ui';
+import { KuiCard } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-card-size-example',
-  imports: [KuiCardDirective],
+  imports: [KuiCard],
   templateUrl: './card-size-example.html',
   styleUrl: './card-size-example.scss',
 })
@@ -222,7 +229,11 @@ export class CardSizeExample {}
 
 ## Accessibility
 
-Rendered documentation, interactive examples, and the playground live at the HTML route above.
+`kuiCard` styles its host; it does not add a role, `tabindex`, activation behavior, or keyboard
+handlers. `interactive` only supplies visual affordances. Use a native `button` for an action or an
+`a` element with an `href` for navigation so the browser provides focus and keyboard activation.
+Card has no disabled, selected, pressed, or form state of its own; native host behavior remains
+owned by the host element.
 
 ## Playground
 

@@ -11,13 +11,7 @@ import {
 } from '@angular/core';
 import { type SafeHtml } from '@angular/platform-browser';
 
-import {
-  KuiIconButtonDirective,
-  KuiIconComponent,
-  KuiSegmentDirective,
-  KuiSegmentedComponent,
-  kuiToast,
-} from '@kikita-labs/ui';
+import { KuiIcon, KuiIconButton, KuiSegment, KuiSegmented, kuiToast } from '@kikita-labs/ui';
 
 import { DocsClipboardService } from '@core/platform/clipboard';
 import { DocsThemeService } from '@core/theme';
@@ -29,7 +23,7 @@ let nextCodeTabsId = 0;
 
 @Component({
   selector: 'app-code-tabs',
-  imports: [KuiIconButtonDirective, KuiIconComponent, KuiSegmentDirective, KuiSegmentedComponent],
+  imports: [KuiIconButton, KuiIcon, KuiSegment, KuiSegmented],
   templateUrl: './code-tabs.html',
   styleUrl: './code-tabs.scss',
 })

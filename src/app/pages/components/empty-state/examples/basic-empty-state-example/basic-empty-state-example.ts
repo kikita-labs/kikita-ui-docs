@@ -1,22 +1,16 @@
 import { Component } from '@angular/core';
 
 import {
-  KuiButtonDirective,
-  KuiEmptyStateActionsDirective,
-  KuiEmptyStateComponent,
-  KuiEmptyStateIconDirective,
-  KuiIconComponent,
+  KuiButton,
+  KuiEmptyState,
+  KuiEmptyStateActions,
+  KuiEmptyStateIcon,
+  KuiIcon,
 } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-empty-state-example',
-  imports: [
-    KuiButtonDirective,
-    KuiEmptyStateActionsDirective,
-    KuiEmptyStateComponent,
-    KuiEmptyStateIconDirective,
-    KuiIconComponent,
-  ],
+  imports: [KuiButton, KuiEmptyStateActions, KuiEmptyState, KuiEmptyStateIcon, KuiIcon],
   templateUrl: './basic-empty-state-example.html',
   styleUrl: './basic-empty-state-example.scss',
 })

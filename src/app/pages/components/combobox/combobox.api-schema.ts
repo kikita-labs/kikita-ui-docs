@@ -44,7 +44,7 @@ export const COMBOBOX_API_ROWS: readonly ApiTableRow[] = [
     type: 'boolean | undefined',
     defaultValue: 'true',
     description:
-      'Shows a clear affordance. Falls back to KUI_COMBOBOX_OPTIONS, then KUI_FIELD_OPTIONS, then true.',
+      'Shows a clear affordance. Falls back to defaults.combobox, then defaults.field, then true.',
   },
   {
     name: 'loading',
@@ -113,18 +113,18 @@ export const COMBOBOX_API_ROWS: readonly ApiTableRow[] = [
       'Splits an option label into plain and matched segments for highlighting the current query.',
   },
   {
-    name: 'kuiProvideComboboxOptions',
-    type: '(opts: KuiComboboxOptions) => Provider',
+    name: 'provideKuiDefaults({ combobox })',
+    type: '(defaults: KuiComponentDefaults) => Provider',
     defaultValue: '-',
     description:
-      'Registers app-wide combobox defaults, such as clearable, via KUI_COMBOBOX_OPTIONS.',
+      'Registers combobox defaults, such as clearable, for a subtree. Use provideKikitaUi({ defaults }) for the whole application.',
   },
   {
-    name: 'KUI_COMBOBOX_OPTIONS',
-    type: 'InjectionToken<KuiComboboxOptions>',
+    name: 'KuiComboboxOptions',
+    type: 'interface',
     defaultValue: '-',
     description:
-      'Injection token backing kuiProvideComboboxOptions. Read by the directive for clearable fallback.',
+      'Shape of the defaults.combobox key, read by the directive for the clearable fallback.',
   },
   {
     name: '--kui-combobox-affordance-size',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { type KuiSliderColor, KuiSliderDirective, type KuiSliderSize } from '@kikita-labs/ui';
+import { KuiSlider, type KuiSliderColor, type KuiSliderSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
@@ -43,7 +43,7 @@ type SliderPlaygroundValues = PlaygroundValues<typeof SLIDER_PLAYGROUND_CONTROLS
 
 @Component({
   selector: 'app-slider-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiSliderDirective],
+  imports: [ApiPlayground, ApiTable, KuiSlider],
   templateUrl: './slider-playground-page.html',
   styleUrl: './slider-playground-page.scss',
 })
