@@ -150,16 +150,18 @@ export class MenuContentExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| ariaLabel | string | 'Actions' | Accessible name for the menu panel. |
-| placement | 'top' \| 'bottom' \| 'left' \| 'right' | 'bottom' | Preferred side of the trigger the menu opens on. Auto-flips to the opposite side to fit the viewport. |
-| menuAlign | 'start' \| 'end' | 'start' | Alignment along the trigger edge. For top/bottom placement, start is left-aligned and end is right-aligned. For left/right placement, start is top-aligned and end is bottom-aligned. |
-| offset | number | 4 | Pixel gap between the trigger and the menu panel. |
-| minWidth | string \| null | null | Optional overlay minimum width. |
+| ariaLabel | string \| undefined | undefined | Accessible name for the menu panel. Falls back to the menu.label message (Actions). |
+| placement | 'top' \| 'bottom' \| 'left' \| 'right' \| undefined | undefined | Preferred side of the trigger the menu opens on. Falls back to defaults.menu.placement, then bottom. Auto-flips to the opposite side to fit the viewport. |
+| menuAlign | 'start' \| 'end' \| undefined | undefined | Alignment along the trigger edge (defaults.menu.menuAlign, then start). For top/bottom placement, start is left-aligned and end is right-aligned. For left/right placement, start is top-aligned and end is bottom-aligned. |
+| offset | number \| undefined | undefined | Pixel gap between the trigger and the menu panel. Falls back to defaults.menu.offset, then 4. A static numeric string is coerced. |
+| minWidth | string \| null \| undefined | undefined | Optional minimum inline size, applied to the visible panel as well as its overlay pane. Falls back to defaults.menu.minWidth, then none. |
 | [kuiMenuFor] | KuiMenu \| undefined | - | Wires a native trigger to a menu instance and manages trigger ARIA state. |
 | kuiMenuHeader | - | - | Marks a non-interactive group heading inside the menu panel. Renders with role="presentation". |
 | kuiSeparator | - | - | Native hr[kuiSeparator] divider between menu item groups. See the Separator page for spacing and appearance inputs. |
 | kuiMenuItem.appearance | 'neutral' \| 'destructive' | 'neutral' | Visual treatment for an action item. Use destructive for dangerous actions. |
 | kuiMenuItem.disabled | boolean | false | Prevents activation and applies disabled/aria-disabled semantics. Disabled items are skipped by keyboard navigation. |
+| isOpen | WritableSignal<boolean> | false | Whether the menu is currently open. Read it from a template reference. |
+| KuiMenuOptions | interface | - | Shape of defaults.menu: placement, offset, menuAlign and minWidth. |
 
 ## Accessibility
 

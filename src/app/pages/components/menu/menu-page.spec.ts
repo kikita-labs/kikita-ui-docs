@@ -45,7 +45,17 @@ describe('MenuPage', () => {
     ];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Menu');
-    expect(sectionIds).toEqual(['import', 'usage', 'content', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'content',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(triggers.length).toBeGreaterThanOrEqual(2);
     expect(triggers.every((trigger) => trigger.getAttribute('aria-haspopup') === 'menu')).toBe(
       true,

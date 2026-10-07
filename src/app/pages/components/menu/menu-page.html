@@ -35,6 +35,12 @@
     <app-code-tabs [tabs]="contentTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Menu" [geometryRows]="geometryTokenRows" />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Menu API" [rows]="apiRows" />
   </app-doc-section>
@@ -65,9 +71,52 @@
       <li><code>Escape</code> closes the menu and returns focus to the trigger.</li>
       <li><code>Tab</code> closes the menu and lets focus continue to the next element.</li>
       <li>
+        With <code>prefers-reduced-motion: reduce</code> the menu closes immediately instead of
+        waiting for its exit animation.
+      </li>
+      <li>
+        Without <code>ariaLabel</code> the panel name comes from the <code>menu.label</code>
+        message, so it follows the active locale.
+      </li>
+      <li>
         Menu covers keyboard navigation and static ARIA review. Screen reader and other
         assistive-technology verification has not been completed for this primitive yet; see
         <code>state-coverage.md</code> in the library repository for current review status.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Menu."
+  >
+    <ul class="menu-page__notes">
+      <li>
+        The classes are <code>KuiMenu</code>, <code>KuiMenuFor</code>, <code>KuiMenuHeader</code>,
+        <code>KuiMenuItem</code> and <code>KuiSeparator</code>; the <code>Component</code> and
+        <code>Directive</code> suffixes are gone.
+      </li>
+      <li>
+        Placement, offset, alignment and minimum width defaults moved to
+        <code>provideKuiDefaults({{ '{' }} menu: {{ '{' }} ... {{ '}' }} {{ '}' }})</code>; the
+        matching inputs are now <code>undefined</code> until set.
+      </li>
+      <li>
+        The default <code>ariaLabel</code> comes from the <code>menu.label</code> message instead of
+        a fixed English string.
+      </li>
+      <li>
+        <code>minWidth</code> now applies to the visible panel as well as the CDK overlay pane.
+      </li>
+      <li>
+        The menu closes immediately under reduced motion, and its exit animation uses
+        <code>--kui-duration-quick</code> and <code>--kui-ease-exit</code>.
+      </li>
+      <li>
+        Item hover and pressed fills read <code>--kui-color-state-hover</code> and
+        <code>--kui-color-state-active</code>; the shortcut font size is
+        <code>--kui-menu-item-shortcut-font-size</code>.
       </li>
     </ul>
   </app-doc-section>

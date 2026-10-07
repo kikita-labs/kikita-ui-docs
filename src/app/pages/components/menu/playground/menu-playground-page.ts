@@ -26,7 +26,12 @@ import { MENU_API_DESCRIPTION } from '../menu.docs-content';
 
 const MENU_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'triggerLabel', label: 'trigger label', kind: 'string', defaultValue: 'Actions' },
-  { key: 'ariaLabel', label: 'ariaLabel', kind: 'string', defaultValue: 'Actions' },
+  {
+    key: 'ariaLabel',
+    label: 'ariaLabel (empty = menu.label message)',
+    kind: 'string',
+    defaultValue: '',
+  },
   {
     key: 'placement',
     label: 'placement',
@@ -75,7 +80,7 @@ export class MenuPlaygroundPage {
     values: MenuPlaygroundValues,
   ): readonly CodeTab[] => {
     const triggerLabel = values.triggerLabel || 'Actions';
-    const ariaLabel = values.ariaLabel || 'Actions';
+    const ariaLabel = values.ariaLabel;
     const placement = values.placement;
     const menuAlign = values.menuAlign;
     const offset = values.offset;
@@ -85,7 +90,7 @@ export class MenuPlaygroundPage {
     const disabledItem = values.disabledItem;
 
     const menuAttrs = serializePlaygroundAttributes([
-      { name: 'ariaLabel', value: ariaLabel, defaultValue: 'Actions' },
+      { name: 'ariaLabel', value: ariaLabel || null },
       { name: 'placement', value: placement, defaultValue: 'bottom' },
       { name: 'menuAlign', value: menuAlign, defaultValue: 'start' },
       { name: '[offset]', value: offset, defaultValue: 4 },
@@ -124,8 +129,8 @@ export class MenuPlaygroundPage {
     return values.triggerLabel || 'Actions';
   }
 
-  protected ariaLabelOf(values: MenuPlaygroundValues): string {
-    return values.ariaLabel || 'Actions';
+  protected ariaLabelOf(values: MenuPlaygroundValues): string | undefined {
+    return values.ariaLabel || undefined;
   }
 
   protected placementOf(values: MenuPlaygroundValues): KuiMenuPlacement {
