@@ -3,23 +3,24 @@ import { type ApiTableRow } from '@shared/docs-ui/api-table';
 export const DROPDOWN_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'maxHeight',
-    type: 'string | null',
-    defaultValue: `'240px'`,
+    type: 'string | null | undefined',
+    defaultValue: `'240px' (--kui-dropdown-max-height)`,
     description:
-      'Preferred max height of the panel before it scrolls. Always additionally clamped to the viewport so the panel can never render taller than the screen. null removes only the preferred cap, not the viewport clamp.',
+      'Preferred max height of the panel before it scrolls. Falls back to defaults.dropdown.maxHeight, then the --kui-dropdown-max-height token (240px). Always additionally clamped to the viewport so the panel can never render taller than the screen. null removes only the preferred cap, not the viewport clamp.',
   },
   {
     name: 'offset',
-    type: 'number',
+    type: 'number | undefined',
     defaultValue: '4',
-    description: 'Gap in px between the anchor and the panel edge.',
+    description:
+      'Gap in px between the anchor and the panel edge. A static numeric attribute is coerced. Falls back to defaults.dropdown.offset.',
   },
   {
     name: 'closeOnSelect',
-    type: 'boolean (model)',
+    type: 'boolean | undefined',
     defaultValue: 'true',
     description:
-      'Closes the panel after an enabled option is selected with a pointer or Enter/Space. Two-way bindable via closeOnSelectChange.',
+      'Closes the panel after an enabled option is selected with a pointer or Enter/Space. A plain input (it is no longer a two-way model). Falls back to defaults.dropdown.closeOnSelect.',
   },
   {
     name: 'open',
@@ -37,10 +38,10 @@ export const DROPDOWN_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'panelWidth',
-    type: `'anchor' | 'content' | 'auto'`,
+    type: `'anchor' | 'content' | 'auto' | undefined`,
     defaultValue: `'anchor'`,
     description:
-      "anchor matches the trigger's width exactly (listboxes). content grows with the panel's own content but never below the trigger's width. auto ignores the trigger's width and sizes purely to content.",
+      "Falls back to defaults.dropdown.panelWidth. anchor matches the trigger's width exactly (listboxes). content grows with the panel's own content but never below the trigger's width. auto ignores the trigger's width and sizes purely to content.",
   },
   {
     name: 'width',
@@ -74,10 +75,11 @@ export const DROPDOWN_API_ROWS: readonly ApiTableRow[] = [
     description: 'Opens when closed, closes when open.',
   },
   {
-    name: 'setAnchor(el)',
+    name: 'setAnchor(el, focusReturn?)',
     type: 'method',
     defaultValue: '-',
-    description: 'Sets the anchor imperatively. Called by kui-field and [kuiDropdownFor].',
+    description:
+      'Sets the anchor imperatively. The optional third argument names the element that receives focus when the panel closes after a selection or Escape. Called by kui-field and [kuiDropdownFor].',
   },
   {
     name: 'getPanel()',
@@ -153,5 +155,11 @@ export const DROPDOWN_API_ROWS: readonly ApiTableRow[] = [
     defaultValue: '-',
     description:
       'Dropdown does not own selection or value state itself. Select, Combobox, Menu, or another host component provides that context; a bare kui-dropdown only positions the panel and manages open/close.',
+  },
+  {
+    name: 'KuiDropdownOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.dropdown: maxHeight, offset, closeOnSelect and panelWidth.',
   },
 ];

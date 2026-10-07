@@ -48,8 +48,11 @@ describe('DropdownPage', () => {
       'controlled-open',
       'field-composition',
       'panel-width',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview kui-dropdown')).toHaveLength(6);
     expect(root.querySelector('app-standalone-dropdown-example')).not.toBeNull();

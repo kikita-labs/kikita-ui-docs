@@ -57,6 +57,10 @@
     <app-code-tabs [tabs]="panelWidthTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Dropdown" [geometryRows]="geometryTokenRows" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Dropdown API" [rows]="apiRows" />
   </app-doc-section>
@@ -97,6 +101,35 @@
         screen reader and other assistive-technology verification has not been completed for this
         primitive yet; see <code>state-coverage.md</code> in the library repository for current
         review status.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Dropdown."
+  >
+    <ul class="dropdown-page__notes">
+      <li>
+        The classes are <code>KuiDropdown</code>, <code>KuiDropdownFor</code> and
+        <code>KuiOption</code> (they had a <code>Component</code> or <code>Directive</code> suffix);
+        <code>ng update @kikita-labs/ui</code> renames the imports.
+      </li>
+      <li>
+        <code>maxHeight</code>, <code>offset</code>, <code>closeOnSelect</code> and
+        <code>panelWidth</code> are undefined when omitted and fall back to
+        <code>defaults.dropdown</code>; <code>closeOnSelect</code> is a plain input, no longer a
+        two-way model.
+      </li>
+      <li>
+        A panel closed after a selection returns focus to the control (Escape returns it to the
+        field control), and <code>setAnchor</code> takes an optional third argument naming the
+        focus-return element.
+      </li>
+      <li>
+        The default panel height is the <code>--kui-dropdown-max-height</code> token, and the
+        viewport clamp no longer adds a second 32px margin.
       </li>
     </ul>
   </app-doc-section>
