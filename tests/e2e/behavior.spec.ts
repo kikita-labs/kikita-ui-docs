@@ -439,7 +439,7 @@ test('uses soft contrast by default and persists an explicit contrast choice', a
   await gotoReady(page, '/components/button');
   await expect(page.locator('html')).not.toHaveAttribute('data-kui-contrast', /.*/);
 
-  await page.getByRole('button', { name: 'Theming' }).click();
+  await page.getByRole('button', { name: 'Theming', exact: true }).click();
   const strict = page.getByRole('radio', { name: 'Strict' });
   await expect(page.getByRole('radio', { name: 'Soft' })).toBeChecked();
 
@@ -449,7 +449,7 @@ test('uses soft contrast by default and persists an explicit contrast choice', a
   await gotoReady(page, '/components/button');
   await expect(page.locator('html')).toHaveAttribute('data-kui-contrast', 'strict');
 
-  await page.getByRole('button', { name: 'Theming' }).click();
+  await page.getByRole('button', { name: 'Theming', exact: true }).click();
   await page.getByRole('button', { name: 'Reset to defaults' }).last().click();
   await expect(page.locator('html')).not.toHaveAttribute('data-kui-contrast', /.*/);
 });
