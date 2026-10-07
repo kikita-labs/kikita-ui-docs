@@ -58,6 +58,14 @@
     <app-code-tabs [tabs]="statesTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Chip"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Chip API" [rows]="apiRows" />
   </app-doc-section>
@@ -82,6 +90,29 @@
       <li>
         Select and Combobox own keyboard behavior for Delete/Backspace selected-value removal; do
         not duplicate that handling when Chip is used inside those controls.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Chip."
+  >
+    <ul class="chip-page__notes">
+      <li>
+        The classes are <code>KuiChip</code> and <code>KuiChipRemove</code> (they had a
+        <code>Directive</code> suffix); <code>ng update @kikita-labs/ui</code> renames the imports.
+        <code>kuiIconButton</code> inside a chip is now <code>KuiIconButton</code>.
+      </li>
+      <li>
+        The size falls back to <code>defaults.chip.size</code>, and the remove icon to
+        <code>defaults.chip.removeIcon</code> (then <code>defaults.icons.remove</code>). The remove
+        mark is drawn by the shared structural icon renderer.
+      </li>
+      <li>
+        The disabled state dims to the shared 0.5 opacity (it was 0.4), the focus ring is a 2px
+        outline, and a pressed chip keeps system colours in forced colors mode.
       </li>
     </ul>
   </app-doc-section>

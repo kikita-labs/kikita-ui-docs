@@ -48,8 +48,11 @@ describe('ChipPage', () => {
       'removable',
       'interactive',
       'states',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview [kuiChip]')).toHaveLength(11);
     expect(root.querySelectorAll('button[kuiChipRemove]').length).toBeGreaterThan(0);

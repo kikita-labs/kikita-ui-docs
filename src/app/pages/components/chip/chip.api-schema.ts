@@ -11,7 +11,8 @@ export const CHIP_API_ROWS: readonly ApiTableRow[] = [
     name: 'size',
     type: `'xs' | 'sm' | 'md' | 'lg'`,
     defaultValue: `'md'`,
-    description: 'Chip size. sm is the size used inside Select and Combobox controls.',
+    description:
+      'Chip size. sm is the size used inside Select and Combobox controls. Falls back to defaults.chip.size, then the global defaults.size.',
   },
   {
     name: 'disabled',
@@ -124,5 +125,12 @@ export const CHIP_API_ROWS: readonly ApiTableRow[] = [
     type: 'CSS number',
     defaultValue: '-',
     description: 'Opacity applied to the whole chip when disabled.',
+  },
+  {
+    name: 'KuiChipOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.chip: size and removeIcon (takes precedence over defaults.icons.remove).',
   },
 ];

@@ -9,18 +9,37 @@
     [controls]="playgroundControls"
     [snippet]="buildPlaygroundSnippet"
   >
-    <span
-      kuiChip
-      [appearance]="appearanceOf(playground.values())"
-      [size]="sizeOf(playground.values())"
-      [disabled]="disabledOf(playground.values())"
-      [invalid]="invalidOf(playground.values())"
-      [removable]="removableOf(playground.values())"
-      [removeLabel]="'Remove ' + labelOf(playground.values())"
-    >
-      <span class="kui-chip-label">{{ labelOf(playground.values()) }}</span>
-    </span>
+    @if (isButtonHost(playground.values())) {
+      <button
+        kuiChip
+        type="button"
+        [appearance]="appearanceOf(playground.values())"
+        [size]="sizeOf(playground.values())"
+        [disabled]="disabledOf(playground.values())"
+        [invalid]="invalidOf(playground.values())"
+        [removable]="removableOf(playground.values())"
+        [removeLabel]="removeLabelOf(playground.values())"
+        (removed)="onRemoved()"
+      >
+        <span class="kui-chip-label">{{ labelOf(playground.values()) }}</span>
+      </button>
+    } @else {
+      <span
+        kuiChip
+        [appearance]="appearanceOf(playground.values())"
+        [size]="sizeOf(playground.values())"
+        [disabled]="disabledOf(playground.values())"
+        [invalid]="invalidOf(playground.values())"
+        [removable]="removableOf(playground.values())"
+        [removeLabel]="removeLabelOf(playground.values())"
+        (removed)="onRemoved()"
+      >
+        <span class="kui-chip-label">{{ labelOf(playground.values()) }}</span>
+      </span>
+    }
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Chip events" />
 
   <app-api-table label="Chip API" [rows]="apiRows" />
   <p class="chip-playground-page__note">{{ apiDescription }}</p>

@@ -4,8 +4,10 @@ import { KuiChip, type KuiChipAppearance, type KuiSize } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
+  createPlaygroundEventLog,
   definePlaygroundControls,
   escapePlaygroundHtml,
+  PlaygroundEventLogView,
   type PlaygroundValues,
 } from '@shared/docs-ui/api-playground';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -16,6 +18,19 @@ import { CHIP_API_DESCRIPTION } from '../chip.docs-content';
 
 const CHIP_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'label', label: 'label', kind: 'string', defaultValue: 'Design' },
+  {
+    key: 'removeLabel',
+    label: 'removeLabel (empty = Remove + label)',
+    kind: 'string',
+    defaultValue: '',
+  },
+  {
+    key: 'host',
+    label: 'host element',
+    kind: 'enum',
+    options: ['span', 'button'],
+    defaultValue: 'span',
+  },
   {
     key: 'appearance',
     label: 'appearance',
@@ -39,13 +54,14 @@ type ChipPlaygroundValues = PlaygroundValues<typeof CHIP_PLAYGROUND_CONTROLS>;
 
 @Component({
   selector: 'app-chip-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiChip],
+  imports: [ApiPlayground, ApiTable, KuiChip, PlaygroundEventLogView],
   templateUrl: './chip-playground-page.html',
   styleUrl: './chip-playground-page.scss',
 })
 export class ChipPlaygroundPage {
   protected readonly apiDescription = CHIP_API_DESCRIPTION;
   protected readonly apiRows = CHIP_API_ROWS;
+  protected readonly eventLog = createPlaygroundEventLog();
 
   protected readonly playgroundControls = CHIP_PLAYGROUND_CONTROLS;
 
@@ -57,9 +73,11 @@ export class ChipPlaygroundPage {
     const size = values.size;
     const disabled = values.disabled;
     const invalid = values.invalid;
-    const removable = values.removable;
+    const host = values.host;
+    const removable = values.removable && host === 'span';
 
     const escapedLabel = escapePlaygroundHtml(label || 'Design');
+    const removeLabel = escapePlaygroundHtml(values.removeLabel || `Remove ${label || 'Design'}`);
 
     const attrs = [
       appearance !== 'neutral' ? `appearance="${appearance}"` : null,
@@ -67,17 +85,19 @@ export class ChipPlaygroundPage {
       disabled ? 'disabled' : null,
       invalid ? 'invalid' : null,
       removable ? 'removable' : null,
-      removable ? `removeLabel="Remove ${escapedLabel}"` : null,
+      removable ? `removeLabel="${removeLabel}"` : null,
       removable ? '(removed)="removeTag()"' : null,
     ].filter((attr): attr is string => attr !== null);
 
     const attrString = attrs.length > 0 ? ` ${attrs.join(' ')}` : '';
 
+    const tag = host === 'button' ? 'button' : 'span';
+    const typeAttr = host === 'button' ? ' type="button"' : '';
     const code = removable
-      ? `<span kuiChip${attrString}>
+      ? `<${tag} kuiChip${typeAttr}${attrString}>
   <span class="kui-chip-label">${escapedLabel}</span>
-</span>`
-      : `<span kuiChip${attrString}>${escapedLabel}</span>`;
+</${tag}>`
+      : `<${tag} kuiChip${typeAttr}${attrString}>${escapedLabel}</${tag}>`;
 
     return [
       {
@@ -92,6 +112,18 @@ export class ChipPlaygroundPage {
     const label = values.label;
 
     return label || 'Design';
+  }
+
+  protected removeLabelOf(values: ChipPlaygroundValues): string {
+    return values.removeLabel || `Remove ${this.labelOf(values)}`;
+  }
+
+  protected isButtonHost(values: ChipPlaygroundValues): boolean {
+    return values.host === 'button';
+  }
+
+  protected onRemoved(): void {
+    this.eventLog.log('removed');
   }
 
   protected appearanceOf(values: ChipPlaygroundValues): KuiChipAppearance {
@@ -110,7 +142,8 @@ export class ChipPlaygroundPage {
     return values.invalid;
   }
 
+  /** A button host cannot contain the remove button, so removal applies to the span host only. */
   protected removableOf(values: ChipPlaygroundValues): boolean {
-    return values.removable;
+    return values.removable && values.host === 'span';
   }
 }

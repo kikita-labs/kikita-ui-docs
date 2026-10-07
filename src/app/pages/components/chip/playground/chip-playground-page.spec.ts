@@ -86,6 +86,31 @@ describe('ChipPlaygroundPage', () => {
     expect(snippet?.textContent?.trim()).toBe('<span kuiChip>Design</span>');
   });
 
+  it('renders a button host without a remove action', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const optionButtons = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
+
+    optionButtons.find((button) => button.textContent?.trim() === 'button')?.click();
+    fixture.detectChanges();
+
+    expect(root.querySelector('app-api-playground-viewport button.kui-chip')).not.toBeNull();
+    expect(root.querySelector('app-api-playground-viewport button[kuiChipRemove]')).toBeNull();
+    expect(root.querySelector<HTMLElement>('.code-tabs__fallback code')?.textContent).toContain(
+      '<button kuiChip type="button"',
+    );
+  });
+
+  it('logs the removed event of a span chip', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    root
+      .querySelector<HTMLButtonElement>('app-api-playground-viewport button[aria-label^="Remove"]')
+      ?.click();
+    fixture.detectChanges();
+
+    expect(root.querySelector('app-playground-event-log')?.textContent).toContain('removed');
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });
