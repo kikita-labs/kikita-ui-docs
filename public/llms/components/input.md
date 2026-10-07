@@ -130,9 +130,10 @@ export class InputGroupExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Native input height and spacing size. |
-| invalid | boolean | - | Marks the input invalid outside a field error state. |
-| id | string | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Resolved in order: local size, parent Field effective size, defaults.input.size, root defaults.size, then md. The resolved value is written to data-kui-size. |
+| invalid | boolean | false | Marks a standalone input (or one outside a Field error state) invalid: sets data-kui-invalid and aria-invalid="true". With [formField] the Field state wins and this binding is not a manual override. |
+| id | string \| undefined | undefined | Inside a Field, omitted uses the Field generated control id; outside, no id is added. An explicit id can leave the Field label for attribute pointing elsewhere. |
+| KuiInputOptions | interface | - | Shape of defaults.input: size. |
 
 ## Accessibility
 

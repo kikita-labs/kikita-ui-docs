@@ -43,7 +43,17 @@ describe('InputPage', () => {
     const inputs = [...root.querySelectorAll<HTMLInputElement>('app-live-preview input.kui-input')];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Input');
-    expect(sectionIds).toEqual(['import', 'usage', 'input-group', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'input-group',
+      'forms',
+      'provider-defaults',
+      'theming-tokens',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(inputs).toHaveLength(4);
     expect(inputs[0]?.type).toBe('email');
     expect(inputs[2]?.getAttribute('aria-invalid')).toBe('true');

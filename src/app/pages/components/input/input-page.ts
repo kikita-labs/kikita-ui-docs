@@ -1,20 +1,33 @@
 import { Component } from '@angular/core';
 
 import { INPUT_EXAMPLE_SOURCES } from '@generated/example-sources/input.generated';
+import {
+  INPUT_DEFAULTS,
+  INPUT_GEOMETRY_TOKEN_ROWS,
+} from '@generated/library-tables/input.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
 import { BasicInputExample, InputGroupExample } from './examples';
 import { INPUT_API_ROWS } from './input.api-schema';
-import { INPUT_API_DESCRIPTION, INPUT_IMPORT_TABS, INPUT_STATUS } from './input.docs-content';
+import {
+  INPUT_API_DESCRIPTION,
+  INPUT_FORMS_TABS,
+  INPUT_IMPORT_TABS,
+  INPUT_STATUS,
+} from './input.docs-content';
 
 @Component({
   selector: 'app-input-page',
   imports: [
+    ProviderDefaultsSection,
+    TokenTablesSection,
     ApiTable,
     BasicInputExample,
     CodeTabs,
@@ -30,8 +43,11 @@ import { INPUT_API_DESCRIPTION, INPUT_IMPORT_TABS, INPUT_STATUS } from './input.
 export class InputPage {
   protected readonly status = INPUT_STATUS;
   protected readonly apiDescription = INPUT_API_DESCRIPTION;
+  protected readonly defaults = INPUT_DEFAULTS;
+  protected readonly geometryTokenRows = INPUT_GEOMETRY_TOKEN_ROWS;
   protected readonly inputRows = INPUT_API_ROWS;
   protected readonly importTabs = INPUT_IMPORT_TABS;
+  protected readonly formsTabs = INPUT_FORMS_TABS;
 
   protected readonly basicTabs = INPUT_EXAMPLE_SOURCES['basic-input-example'];
 

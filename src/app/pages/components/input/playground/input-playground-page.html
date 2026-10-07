@@ -11,6 +11,8 @@
   >
     <input
       kuiInput
+      [type]="typeOf(playground.values())"
+      [readOnly]="readonlyOf(playground.values())"
       [size]="sizeOf(playground.values())"
       [invalid]="invalidOf(playground.values())"
       [disabled]="disabledOf(playground.values())"

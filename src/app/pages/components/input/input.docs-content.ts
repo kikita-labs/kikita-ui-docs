@@ -11,8 +11,20 @@ export const INPUT_IMPORT_TABS: readonly CodeTab[] = [
     filename: 'input.ts',
     language: 'ts',
     code: `import {
+  KuiField,
+  KuiFieldAffix,
   KuiInput,
-  KuiInputGroup,
 } from '@kikita-labs/ui';`,
+  },
+];
+
+export const INPUT_FORMS_TABS: readonly CodeTab[] = [
+  {
+    label: 'Signal Forms',
+    filename: 'profile-form.html',
+    language: 'html',
+    code: `<kui-field label="Email" hint="Use your work email">
+  <input kuiInput type="email" autocomplete="email" [formField]="profileForm.email" />
+</kui-field>`,
   },
 ];

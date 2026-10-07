@@ -67,7 +67,7 @@ describe('InputPlaygroundPage', () => {
     setTextInput(root, 'value', '<kikita>');
     setTextInput(root, 'placeholder', '<email>');
     optionButtons.find((button) => button.textContent?.trim() === 'lg')?.click();
-    toggles.at(0)?.click();
+    toggles.at(1)?.click();
     fixture.detectChanges();
 
     const input = previewInput();
@@ -88,7 +88,7 @@ describe('InputPlaygroundPage', () => {
       ...root.querySelectorAll<HTMLInputElement>('.api-playground__toggle-row input'),
     ];
 
-    toggles.at(1)?.click();
+    toggles.at(2)?.click();
     fixture.detectChanges();
 
     const input = previewInput();
@@ -96,6 +96,23 @@ describe('InputPlaygroundPage', () => {
 
     expect(input?.disabled).toBe(true);
     expect(snippet?.textContent).toContain('disabled');
+  });
+
+  it('switches the native type and toggles readonly', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')]
+      .find((button) => button.textContent?.trim() === 'email')
+      ?.click();
+    root.querySelector<HTMLInputElement>('.api-playground__toggle-row input')?.click();
+    fixture.detectChanges();
+
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(previewInput()?.type).toBe('email');
+    expect(previewInput()?.readOnly).toBe(true);
+    expect(snippet?.textContent).toContain('type="email"');
+    expect(snippet?.textContent).toContain('readonly');
   });
 
   it('has no automated accessibility violations', async () => {

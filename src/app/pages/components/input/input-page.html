@@ -35,6 +35,24 @@
     <app-code-tabs [tabs]="groupTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    anchor="forms"
+    heading="Forms"
+    description="Put [formField] on the same native input as kuiInput. Signal Forms owns the value, required, disabled, touched and validation state; kuiInput adds no constraint or rule."
+  >
+    <app-code-tabs [tabs]="formsTabs" />
+    <p class="input-page__note">
+      Signal Forms supplies raw validity through the native control <code>invalid</code> property.
+      The Field gates the displayed state on touch, so with <code>[formField]</code> the input
+      follows the Field state instead of treating a raw <code>invalid</code> binding as a manual
+      override.
+    </p>
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Input" [geometryRows]="geometryTokenRows" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Input API" [rows]="inputRows" />
   </app-doc-section>
@@ -44,10 +62,59 @@
     description="Keep native input semantics. Add labels through Field or native label elements."
   >
     <ul class="input-page__notes">
-      <li>Use a visible label through <code>kui-field</code> or a native <code>label</code>.</li>
-      <li>Use <code>invalid</code> only when the input is outside field error wiring.</li>
+      <li>Keep the native <code>input</code> semantics; do not add an ARIA role.</li>
+      <li>
+        Give every input an accessible name through a <code>kui-field</code> label, a native
+        <code>label</code> or <code>aria-label</code>. A placeholder alone is not a label.
+      </li>
+      <li>
+        Inside a Field the input uses the generated control id and references only the rendered hint
+        and error through <code>aria-describedby</code>; a visible error is
+        <code>role="alert"</code>.
+      </li>
+      <li>
+        <code>aria-invalid</code> is omitted while valid; when invalid the directive sets
+        <code>aria-invalid="true"</code> and <code>data-kui-invalid</code>.
+      </li>
+      <li>
+        Keep <code>disabled</code> and <code>readonly</code> distinct: a read-only input stays
+        focusable. Required semantics come from native HTML or Signal Forms, not the Field marker.
+      </li>
       <li>Decorative affix icons use <code>aria-hidden="true"</code>.</li>
       <li>Interactive field actions must be native buttons with accessible names.</li>
+      <li>
+        <code>kuiInput</code> adds no keyboard handlers: Tab focus, editing and type-specific keys
+        stay native.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Input."
+  >
+    <ul class="input-page__notes">
+      <li>
+        The directive class is <code>KuiInput</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        The default size moved to
+        <code>provideKuiDefaults({{ '{' }} input: {{ '{' }} size {{ '}' }} {{ '}' }})</code>; the
+        old <code>provideKikitaUi({{ '{' }} input {{ '}' }})</code> shape is deprecated.
+      </li>
+      <li>
+        Input height and font size per size now have geometry tokens
+        (<code>--kui-input-height-*</code>, <code>--kui-input-font-size-*</code>).
+      </li>
+      <li>
+        A Field size only styles descendant inputs without <code>data-kui-size</code>, so an input
+        with an explicit <code>size</code> keeps it inside a differently sized Field.
+      </li>
+      <li>
+        With <code>[formField]</code>, <code>kuiInput</code> follows the Field's touch-gated invalid
+        state.
+      </li>
     </ul>
   </app-doc-section>
 </article>

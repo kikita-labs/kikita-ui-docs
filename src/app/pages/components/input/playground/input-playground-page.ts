@@ -14,6 +14,8 @@ import { type CodeTab } from '@shared/docs-ui/code-tabs';
 import { INPUT_API_ROWS } from '../input.api-schema';
 import { INPUT_API_DESCRIPTION } from '../input.docs-content';
 
+const INPUT_PLAYGROUND_TYPES = ['text', 'email', 'password', 'search', 'number'] as const;
+
 const INPUT_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'value', label: 'value', kind: 'string', defaultValue: 'kikita-ui' },
   { key: 'placeholder', label: 'placeholder', kind: 'string', defaultValue: 'mira@company.dev' },
@@ -24,6 +26,14 @@ const INPUT_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['xs', 'sm', 'md', 'lg'],
     defaultValue: 'md',
   },
+  {
+    key: 'type',
+    label: 'type',
+    kind: 'enum',
+    options: INPUT_PLAYGROUND_TYPES,
+    defaultValue: 'text',
+  },
+  { key: 'readonly', label: 'readonly', kind: 'boolean', defaultValue: false },
   { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
   { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
 ] as const);
@@ -47,9 +57,11 @@ export class InputPlaygroundPage {
   ): readonly CodeTab[] => {
     const attrString = serializePlaygroundAttributes([
       { name: 'size', value: values.size, defaultValue: 'md' },
+      { name: 'type', value: values.type, defaultValue: 'text' },
       { name: 'placeholder', value: values.placeholder },
       { name: 'value', value: values.value },
       { name: 'invalid', value: values.invalid },
+      { name: 'readonly', value: values.readonly },
       { name: 'disabled', value: values.disabled },
     ]);
 
@@ -61,6 +73,14 @@ export class InputPlaygroundPage {
       },
     ];
   };
+
+  protected typeOf(values: InputPlaygroundValues): string {
+    return values.type;
+  }
+
+  protected readonlyOf(values: InputPlaygroundValues): boolean {
+    return values.readonly;
+  }
 
   protected valueOf(values: InputPlaygroundValues): string {
     return values.value;

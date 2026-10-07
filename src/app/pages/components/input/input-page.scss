@@ -12,3 +12,7 @@
 .input-page__notes {
   @include doc-page-notes;
 }
+
+.input-page__note {
+  @include doc-page-note;
+}
