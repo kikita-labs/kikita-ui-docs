@@ -378,7 +378,7 @@ test('publishes one canonical URL per page and none on not-found', async ({ page
   await gotoReady(page, '/components/button');
   const canonical = page.locator('link[rel="canonical"]');
   await expect(canonical).toHaveCount(1);
-  await expect(canonical).toHaveAttribute('href', /^https:\/\/.+\/components\/button$/);
+  await expect(canonical).toHaveAttribute('href', /^https:\/\/.+\/components\/button\/$/);
 
   await gotoReady(page, '/not-a-real-route');
   await expect(canonical).toHaveCount(0);

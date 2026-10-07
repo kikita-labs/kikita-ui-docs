@@ -64,7 +64,7 @@ async function checkHtmlFile(file) {
 
 function checkCanonical(name, html) {
   const route = name === 'index.html' ? '' : dirname(name);
-  const expected = `${siteBaseUrl}/${route === '.' ? '' : route}`;
+  const expected = `${siteBaseUrl}/${route === '' || route === '.' ? '' : `${route}/`}`;
   const match = /<link rel="canonical" href="([^"]*)"/.exec(html);
 
   if (!match) {

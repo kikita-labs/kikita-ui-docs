@@ -80,9 +80,7 @@ async function renderSitemap(directory) {
     .filter((path) => path === 'index.html' || path.endsWith('/index.html'))
     .map((path) => path.slice(0, -'index.html'.length))
     .sort();
-  const urls = routes.map(
-    (route) => `${config.siteOrigin}${config.siteBasePath}/${route.replace(/\/$/, '')}`,
-  );
+  const urls = routes.map((route) => `${config.siteOrigin}${config.siteBasePath}/${route}`);
   const entries = urls.map((url) => `  <url><loc>${escapeXml(url)}</loc></url>`);
 
   return [

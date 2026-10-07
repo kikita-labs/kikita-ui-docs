@@ -153,6 +153,10 @@ stable. The version prefix is irrelevant to the page.
 - Every prerendered page has one absolute `<link rel="canonical">` pointing at
   itself inside its own version (`DocsCanonicalLinkService` +
   `DocsCanonicalUrlService`). Not-found pages have none.
+- Canonical URLs and sitemap entries use the trailing-slash form
+  (`.../components/button/`). Pages are directory indexes and GitHub Pages
+  redirects `/page` to `/page/`, so only the slash form answers 200 without a
+  redirect; a canonical that redirects is an inconsistent signal.
 - `sitemap.xml` lists only the latest version.
 - Do not use `noindex` or `robots.txt` to hide archived versions. Google
   recommends canonical signals, and `robots.txt` does not hide URLs from the
