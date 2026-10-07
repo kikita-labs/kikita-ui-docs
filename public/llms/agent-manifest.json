@@ -252,7 +252,9 @@
         "basic-button-example",
         "button-appearance-example",
         "button-size-example",
-        "button-icon-example"
+        "button-icon-example",
+        "button-wrap-example",
+        "button-link-example"
       ],
       "apiSchemaPath": "src/app/pages/components/button/button.api-schema.ts",
       "hasPlayground": true

@@ -84,6 +84,46 @@ export const BUTTON_EXAMPLE_SOURCES = {
       code: ".button-icon-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-3, 12px);\n  align-items: center;\n  justify-content: center;\n}",
     },
   ],
+  "button-wrap-example": [
+    {
+      label: "HTML",
+      filename: "button-wrap-example.html",
+      language: "html",
+      code: "<div class=\"button-wrap-example\">\n  <button kuiButton type=\"button\">Save changes and continue to the review step</button>\n  <button kuiButton type=\"button\" wrap>Save changes and continue to the review step</button>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "button-wrap-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\n\nimport { KuiButton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-button-wrap-example',\n  imports: [KuiButton],\n  templateUrl: './button-wrap-example.html',\n  styleUrl: './button-wrap-example.scss',\n})\nexport class ButtonWrapExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "button-wrap-example.scss",
+      language: "scss",
+      code: ".button-wrap-example {\n  display: grid;\n  gap: var(--kui-space-3, 12px);\n  inline-size: min(100%, 16rem);\n  margin-inline: auto;\n}",
+    },
+  ],
+  "button-link-example": [
+    {
+      label: "HTML",
+      filename: "button-link-example.html",
+      language: "html",
+      code: "<div class=\"button-link-example\">\n  <a kuiButton shape=\"outline\" routerLink=\"/components/button\">Open the Button page</a>\n  <a kuiButton shape=\"outline\" routerLink=\"/components/button\" disabled>Disabled link</a>\n</div>",
+    },
+    {
+      label: "TS",
+      filename: "button-link-example.ts",
+      language: "ts",
+      code: "import { Component } from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\nimport { KuiButton } from '@kikita-labs/ui';\n\n@Component({\n  selector: 'app-button-link-example',\n  imports: [KuiButton, RouterLink],\n  templateUrl: './button-link-example.html',\n  styleUrl: './button-link-example.scss',\n})\nexport class ButtonLinkExample {}",
+    },
+    {
+      label: "SCSS",
+      filename: "button-link-example.scss",
+      language: "scss",
+      code: ".button-link-example {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--kui-space-3, 12px);\n  align-items: center;\n  justify-content: center;\n}",
+    },
+  ],
 } as const satisfies Readonly<Record<string, readonly CodeTab[]>>;
 
 export type ButtonExampleId = keyof typeof BUTTON_EXAMPLE_SOURCES;

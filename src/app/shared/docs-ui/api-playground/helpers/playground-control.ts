@@ -45,6 +45,13 @@ export function isPlaygroundControlValue(
   }
 }
 
+/** Maps the `none` option of an optional enum control to `undefined` (the input stays unset). */
+export function playgroundOptionOrUndefined<TOption extends string>(
+  value: TOption | 'none',
+): TOption | undefined {
+  return value === 'none' ? undefined : value;
+}
+
 export function parsePlaygroundNumber(rawValue: string, fallback = 0): number {
   const parsed = Number(rawValue);
 

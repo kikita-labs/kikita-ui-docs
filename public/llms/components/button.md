@@ -229,20 +229,101 @@ export class ButtonIconExample {}
 }
 ```
 
+### button-wrap-example
+
+#### button-wrap-example.html
+
+```html
+<div class="button-wrap-example">
+  <button kuiButton type="button">Save changes and continue to the review step</button>
+  <button kuiButton type="button" wrap>Save changes and continue to the review step</button>
+</div>
+```
+
+#### button-wrap-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiButton } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-button-wrap-example',
+  imports: [KuiButton],
+  templateUrl: './button-wrap-example.html',
+  styleUrl: './button-wrap-example.scss',
+})
+export class ButtonWrapExample {}
+```
+
+#### button-wrap-example.scss
+
+```scss
+.button-wrap-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  inline-size: min(100%, 16rem);
+  margin-inline: auto;
+}
+```
+
+### button-link-example
+
+#### button-link-example.html
+
+```html
+<div class="button-link-example">
+  <a kuiButton shape="outline" routerLink="/components/button">Open the Button page</a>
+  <a kuiButton shape="outline" routerLink="/components/button" disabled>Disabled link</a>
+</div>
+```
+
+#### button-link-example.ts
+
+```ts
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+import { KuiButton } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-button-link-example',
+  imports: [KuiButton, RouterLink],
+  templateUrl: './button-link-example.html',
+  styleUrl: './button-link-example.scss',
+})
+export class ButtonLinkExample {}
+```
+
+#### button-link-example.scss
+
+```scss
+.button-link-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+  justify-content: center;
+}
+```
+
 ## API
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| shape | 'solid' \| 'soft' \| 'outline' \| 'ghost' | 'solid' | Surface treatment. Defaults to solid. Combines freely with appearance. |
-| appearance | 'primary' \| 'danger' \| 'success' \| 'warning' \| null | null | Semantic color intent. Without an explicit value, solid/soft use primary colors and outline/ghost use neutral defaults. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height and spacing size. |
+| shape | 'solid' \| 'soft' \| 'outline' \| 'ghost' | 'solid' | Surface treatment. Combines freely with appearance. |
+| appearance | 'primary' \| 'danger' \| 'success' \| 'warning' \| null | null | Semantic color intent. Without an explicit value, solid and soft use primary colors and outline and ghost use their neutral defaults. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height and spacing size. Falls back to defaults.button.size, then the global defaults.size. |
 | wrap | boolean | false | Allows long button text to wrap instead of truncating in narrow containers. |
-| disabled | boolean | false | Disables native button behavior. Anchor buttons receive aria-disabled and leave tab order. |
-| loading | boolean | false | Centers a kui-loader spinner over the button content, preserves layout size, sets aria-busy, and behaves like disabled. |
-| iconStart | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name before the projected content, without hand-projecting kui-icon. |
-| iconEnd | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by name after the projected content, without hand-projecting kui-icon. |
-| provideKuiDefaults({ button, iconButton }) | Provider | - | Scopes repeated defaults for kuiButton and kuiIconButton. Local inputs win over the button keys, and the button keys win over the global defaults.size. A nested level merges with its parent per property. |
-| KuiDefaults | service | - | Injectable that reads and sets defaults at runtime: get(key) returns a Signal of the effective options, set and update write to the nearest level. |
+| disabled | boolean | false | Disables button behavior. A button host gets the native disabled attribute; an anchor host gets aria-disabled="true", leaves the tab order and suppresses navigation. |
+| loading | boolean | false | Centers a kuiLoader spinner over the button content, fades the content out while keeping its layout size, sets aria-busy="true" and behaves like disabled. The button keeps full opacity instead of dimming like a disabled one. |
+| iconStart | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by registered name before the projected content, without hand-projecting kui-icon. |
+| iconEnd | KuiIconName \| undefined | undefined | Renders a kui-icon resolved by registered name after the projected content, without hand-projecting kui-icon. |
+| provideKuiDefaults({ button }) | (defaults: KuiComponentDefaults) => Provider | - | Scopes repeated defaults for kuiButton in a component, route or feature subtree. A nested level merges with its parent per property. Use the defaults option of provideKikitaUi for the whole application. |
+| KuiButtonOptions | interface | - | Shape of defaults.button: shape, appearance (null selects each shape neutral appearance) and size. It is the same shape as KuiButtonBaseOptions, shared with defaults.iconButton. |
+| KuiDefaults | service | - | Injectable that reads and writes defaults at runtime: get(key) returns a Signal of the effective options, set and update write to the nearest level. |
+| KuiButtonShape / KuiButtonAppearance | type aliases | - | Public unions of the shape and appearance values, exported for typed wrappers. |
+| kuiProvideButtonOptions | deprecated function | - | Forwards { button, iconButton } (KuiButtonProviderOptions) to provideKuiDefaults. Deprecated, removed in 3.0; use provideKuiDefaults. |
 
 ## Accessibility
 

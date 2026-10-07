@@ -30,11 +30,22 @@
   }
 }
 
-// Shared note paragraph used at the bottom of playground pages.
-@mixin playground-page-note {
+// Shared note paragraph used between blocks of doc pages and at the bottom of playground pages.
+@mixin doc-page-note {
   margin: 0;
   color: var(--kui-color-text-secondary);
   font-size: var(--kui-text-sm-size, 13px);
+  line-height: 1.6;
+
+  code {
+    color: var(--kui-color-primary-soft-text);
+    font-family: var(--kui-font-mono, ui-monospace, SFMono-Regular, Consolas, monospace);
+  }
+}
+
+// Shared note paragraph used at the bottom of playground pages.
+@mixin playground-page-note {
+  @include doc-page-note;
 }
 
 // Shared "notes" bullet list used in Accessibility/API sections across doc pages.

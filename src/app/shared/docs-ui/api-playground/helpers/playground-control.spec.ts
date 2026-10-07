@@ -2,6 +2,7 @@ import {
   createPlaygroundValues,
   definePlaygroundControls,
   parsePlaygroundNumber,
+  playgroundOptionOrUndefined,
 } from './playground-control';
 
 describe('typed playground values', () => {
@@ -51,6 +52,11 @@ describe('typed playground values', () => {
       'icon',
     ]);
     expect(createPlaygroundValues(controls, { features: 'badge' }).features).toEqual(['icon']);
+  });
+
+  it('maps the none option of an optional control to undefined', () => {
+    expect(playgroundOptionOrUndefined('none')).toBeUndefined();
+    expect(playgroundOptionOrUndefined('danger')).toBe('danger');
   });
 
   it('parses finite number input with a deterministic fallback', () => {

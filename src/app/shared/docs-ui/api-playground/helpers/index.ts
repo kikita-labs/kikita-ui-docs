@@ -4,6 +4,7 @@ export {
   definePlaygroundControls,
   isPlaygroundControlValue,
   parsePlaygroundNumber,
+  playgroundOptionOrUndefined,
 } from './playground-control';
 export { createPlaygroundEventLog, formatPlaygroundEventDetail } from './playground-event-log';
 export {

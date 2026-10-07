@@ -8,7 +8,7 @@
 
   <app-doc-section
     heading="Import"
-    description="Import the public directive from the published package entrypoint."
+    description="Import the public directive from the published package entrypoint and the style entrypoint once in the application."
   >
     <app-code-tabs [tabs]="importTabs" />
   </app-doc-section>
@@ -28,7 +28,7 @@
   <app-doc-section
     anchor="appearances"
     heading="Shape and appearance"
-    description="shape controls the surface treatment (solid/soft/outline/ghost); appearance controls semantic color (primary/danger/success/warning). The two axes combine freely."
+    description="shape controls the surface treatment (solid/soft/outline/ghost); appearance controls semantic color (primary/danger/success/warning). The two axes combine freely. Without an explicit appearance, solid and soft use primary colors and outline and ghost use their neutral defaults."
   >
     <app-live-preview previewLabel="Shape and appearance set">
       <app-button-appearance-example />
@@ -38,7 +38,7 @@
 
   <app-doc-section
     heading="Sizes and states"
-    description="Use the shared Kikita size scale, native disabled state, and the loading state for pending actions."
+    description="Use the shared Kikita size scale, native disabled state, and the loading state for pending actions. A loading button keeps full opacity and its layout size while a spinner covers the content."
   >
     <app-live-preview previewLabel="Size scale">
       <app-button-size-example />
@@ -54,13 +54,56 @@
       <app-button-icon-example />
     </app-live-preview>
     <app-code-tabs [tabs]="iconTabs" />
+    <p class="button-page__note">
+      Project <code>kui-icon</code> directly when the icon needs <code>source</code> or
+      <code>src</code> instead of a registered name.
+    </p>
+    <app-code-tabs [tabs]="customIconTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="wrapping-and-links"
+    heading="Wrapping and links"
+    description="Long labels truncate by default; wrap lets them use several lines. An anchor host is for navigation, and a disabled anchor leaves the tab order and suppresses navigation."
+  >
+    <app-live-preview previewLabel="Truncating and wrapping labels">
+      <app-button-wrap-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="wrapTabs" />
+
+    <app-live-preview previewLabel="Link buttons">
+      <app-button-link-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="linkTabs" />
   </app-doc-section>
 
   <app-doc-section
     heading="Provider defaults"
-    description="Use provideKuiDefaults for repeated button-family defaults in a feature or application shell. Local inputs still win."
+    description="Use provideKuiDefaults for repeated button defaults in a feature or application shell, or the defaults option of provideKikitaUi for the whole application. Local inputs still win."
   >
     <app-code-tabs [tabs]="providerTabs" />
+    <p class="button-page__note">Resolution order, highest priority first:</p>
+    <ul class="button-page__notes">
+      <li>the local input;</li>
+      <li><code>defaults.button</code> (or <code>defaults.iconButton</code>);</li>
+      <li>the global <code>defaults.size</code>, for the size only;</li>
+      <li>the component default.</li>
+    </ul>
+    <p class="button-page__note">
+      <code>kuiButton</code> and <code>kuiIconButton</code> are configured through separate
+      <code>button</code> and <code>iconButton</code> keys, so one never restyles the other. A
+      nested provider merges with its parent per property.
+    </p>
+    <app-api-table label="defaults.button options" [rows]="defaultsRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="theming-tokens"
+    heading="Theming tokens"
+    description="Each appearance reads its own component tokens, so an override set on any ancestor restyles the buttons below it. Every geometry token is optional and falls back to the scale token in its default column."
+  >
+    <app-api-table label="Button color tokens" [rows]="colorTokenRows" />
+    <app-api-table label="Button geometry tokens" [rows]="geometryTokenRows" />
   </app-doc-section>
 
   <app-doc-section heading="API" [description]="apiDescription">
@@ -74,15 +117,61 @@
     <ul class="button-page__notes">
       <li>Use <code>&lt;button&gt;</code> for in-page commands and form actions.</li>
       <li>Use <code>&lt;a&gt;</code> only for real navigation with an <code>href</code>.</li>
-      <li>Prefer visible text labels. Icon-only actions should use <code>kuiIconButton</code>.</li>
       <li>
-        Disabled anchor buttons are removed from tab order and receive <code>aria-disabled</code>.
+        Every button needs an accessible name. Prefer visible text labels; icon-only actions should
+        use <code>kuiIconButton</code> with an <code>aria-label</code>.
+      </li>
+      <li>
+        Native keyboard behavior is preserved: <code>Enter</code> and <code>Space</code> activate a
+        button, links use native anchor behavior. The directive adds no custom keyboard model.
+      </li>
+      <li>
+        A disabled button uses the native <code>disabled</code> attribute. A disabled anchor gets
+        <code>aria-disabled="true"</code>, is removed from the tab order and suppresses navigation.
       </li>
       <li>
         <code>loading</code> keeps the button's original content in layout, centers a spinner over
-        it, sets <code>aria-busy="true"</code>, and behaves like <code>disabled</code>
-        until it clears.
+        it, sets <code>aria-busy="true"</code>, and behaves like <code>disabled</code> until it
+        clears.
+      </li>
+      <li>
+        Focus is a solid 2px outline in <code>--kui-color-focus</code>; no ring depends on
+        <code>box-shadow</code>.
       </li>
     </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for buttons."
+  >
+    <ul class="button-page__notes">
+      <li>
+        The class is <code>KuiButton</code> (it was <code>KuiButtonDirective</code>); the selector,
+        inputs and class names are unchanged. <code>ng update @kikita-labs/ui</code> renames the
+        import.
+      </li>
+      <li>
+        Defaults moved to <code>provideKuiDefaults</code> and <code>defaults.button</code>. The
+        <code>KUI_BUTTON_OPTIONS</code> token is removed and <code>kuiProvideButtonOptions</code> is
+        deprecated until 3.0. A nested provider now merges with its parent per property.
+      </li>
+      <li>
+        <code>KuiButtonOptions</code> describes one button. The old shape with
+        <code>button</code> and <code>iconButton</code> keys is
+        <code>KuiButtonProviderOptions</code> (deprecated).
+      </li>
+      <li>
+        The compatibility tokens <code>--kui-btn-bg</code>, <code>--kui-btn-color</code> and their
+        siblings are no longer generated. Override the canonical <code>--kui-btn-solid-*</code> and
+        <code>--kui-btn-soft-*</code> tokens, or the per-appearance tokens above.
+      </li>
+      <li>
+        Disabled buttons dim to the shared <code>--kui-opacity-disabled</code> (0.5), and a loading
+        button no longer dims.
+      </li>
+    </ul>
+    <app-code-tabs [tabs]="migrationTabs" />
   </app-doc-section>
 </article>

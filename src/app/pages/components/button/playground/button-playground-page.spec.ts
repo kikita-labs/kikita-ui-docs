@@ -85,7 +85,7 @@ describe('ButtonPlaygroundPage', () => {
     );
   });
 
-  it('orders shape and appearance controls without a none appearance option', () => {
+  it('orders shape and appearance controls and offers a neutral appearance', () => {
     const root = fixture.nativeElement as HTMLElement;
     const groups = [...root.querySelectorAll<HTMLElement>('.api-playground__group')];
     const shapeOptions = groups
@@ -102,6 +102,7 @@ describe('ButtonPlaygroundPage', () => {
       'ghost',
     ]);
     expect([...(appearanceOptions ?? [])].map((button) => button.textContent?.trim())).toEqual([
+      'none',
       'primary',
       'danger',
       'success',
@@ -124,8 +125,51 @@ describe('ButtonPlaygroundPage', () => {
     expect(button?.disabled).toBe(true);
     expect(button?.getAttribute('aria-busy')).toBe('true');
     expect(snippet?.textContent).toBe(
-      '<button kuiButton type="button" appearance="primary" loading>Save changes</button>',
+      '<button kuiButton type="button" loading>Save changes</button>',
     );
+  });
+
+  it('renders registered icons from the iconStart and iconEnd controls', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const options = (label: string): HTMLButtonElement[] => [
+      ...([...root.querySelectorAll<HTMLElement>('.api-playground__group')]
+        .find(
+          (group) =>
+            group.querySelector('.api-playground__group-label')?.textContent?.trim() === label,
+        )
+        ?.querySelectorAll<HTMLButtonElement>('[role="radio"]') ?? []),
+    ];
+
+    options('iconStart')
+      .find((button) => button.textContent?.trim() === 'check')
+      ?.click();
+    options('iconEnd')
+      .find((button) => button.textContent?.trim() === 'arrow-right')
+      ?.click();
+    fixture.detectChanges();
+
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(previewButton()?.querySelectorAll('kui-icon')).toHaveLength(2);
+    expect(snippet?.textContent).toBe(
+      '<button kuiButton type="button" iconStart="check" iconEnd="arrow-right">Save changes</button>',
+    );
+  });
+
+  it('switches the preview and snippet to an anchor host', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const anchor = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')].find(
+      (button) => button.textContent?.trim() === 'anchor',
+    );
+
+    anchor?.click();
+    fixture.detectChanges();
+
+    const host = root.querySelector<HTMLAnchorElement>('app-api-playground-viewport a.kui-button');
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(host?.getAttribute('href')).toBe('/settings');
+    expect(snippet?.textContent).toBe('<a kuiButton href="/settings">Save changes</a>');
   });
 
   it('has no automated accessibility violations', async () => {

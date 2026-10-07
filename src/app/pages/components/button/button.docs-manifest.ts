@@ -13,6 +13,8 @@ export const BUTTON_DOCS_MANIFEST = {
     'button-appearance-example',
     'button-size-example',
     'button-icon-example',
+    'button-wrap-example',
+    'button-link-example',
   ],
   loadPage: () => import('./button-page').then((module) => module.ButtonPage),
   loadPlayground: () =>

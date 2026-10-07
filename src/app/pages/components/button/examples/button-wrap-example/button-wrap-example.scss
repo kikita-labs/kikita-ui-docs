@@ -1,0 +1,6 @@
+.button-wrap-example {
+  display: grid;
+  gap: var(--kui-space-3, 12px);
+  inline-size: min(100%, 16rem);
+  margin-inline: auto;
+}

@@ -9,18 +9,38 @@
     [controls]="playgroundControls"
     [snippet]="buildPlaygroundSnippet"
   >
-    <button
-      kuiButton
-      type="button"
-      [shape]="shapeOf(playground.values())"
-      [appearance]="appearanceOf(playground.values())"
-      [size]="sizeOf(playground.values())"
-      [wrap]="wrapOf(playground.values())"
-      [loading]="loadingOf(playground.values())"
-      [disabled]="disabledOf(playground.values())"
-    >
-      {{ labelOf(playground.values()) }}
-    </button>
+    @if (isAnchor(playground.values())) {
+      <a
+        kuiButton
+        href="/settings"
+        [shape]="shapeOf(playground.values())"
+        [appearance]="appearanceOf(playground.values())"
+        [size]="sizeOf(playground.values())"
+        [iconStart]="iconStartOf(playground.values())"
+        [iconEnd]="iconEndOf(playground.values())"
+        [wrap]="wrapOf(playground.values())"
+        [loading]="loadingOf(playground.values())"
+        [disabled]="disabledOf(playground.values())"
+        (click)="keepInPlayground($event)"
+      >
+        {{ labelOf(playground.values()) }}
+      </a>
+    } @else {
+      <button
+        kuiButton
+        type="button"
+        [shape]="shapeOf(playground.values())"
+        [appearance]="appearanceOf(playground.values())"
+        [size]="sizeOf(playground.values())"
+        [iconStart]="iconStartOf(playground.values())"
+        [iconEnd]="iconEndOf(playground.values())"
+        [wrap]="wrapOf(playground.values())"
+        [loading]="loadingOf(playground.values())"
+        [disabled]="disabledOf(playground.values())"
+      >
+        {{ labelOf(playground.values()) }}
+      </button>
+    }
   </app-api-playground>
 
   <app-api-table label="Button API" [rows]="apiRows" />

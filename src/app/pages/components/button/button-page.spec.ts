@@ -52,9 +52,12 @@ describe('ButtonPage', () => {
       'appearances',
       'sizes-and-states',
       'icon-composition',
+      'wrapping-and-links',
       'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.textContent).toContain('provideKuiDefaults');
     expect(buttons.map((button) => button.textContent?.trim())).toEqual([
@@ -74,8 +77,19 @@ describe('ButtonPage', () => {
       'Loading',
       'Save',
       'Continue',
+      'Save changes and continue to the review step',
+      'Save changes and continue to the review step',
     ]);
-    expect(links.map((link) => link.textContent?.trim())).toEqual(['Button docs']);
+    expect(links.map((link) => link.textContent?.trim())).toEqual([
+      'Button docs',
+      'Open the Button page',
+      'Disabled link',
+    ]);
+    expect(
+      links
+        .find((link) => link.textContent?.trim() === 'Disabled link')
+        ?.getAttribute('aria-disabled'),
+    ).toBe('true');
     expect(buttons.find((button) => button.textContent?.trim() === 'Disabled')?.disabled).toBe(
       true,
     );
@@ -97,6 +111,8 @@ describe('ButtonPage', () => {
       'button-appearance-example',
       'button-size-example',
       'button-icon-example',
+      'button-wrap-example',
+      'button-link-example',
     ]);
     expect(Object.keys(BUTTON_EXAMPLE_SOURCES).sort()).toEqual(
       [...BUTTON_DOCS_MANIFEST.exampleIds].sort(),

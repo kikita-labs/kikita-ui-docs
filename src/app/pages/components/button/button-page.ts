@@ -8,10 +8,17 @@ import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
 
-import { BUTTON_API_ROWS } from './button.api-schema';
+import {
+  BUTTON_API_ROWS,
+  BUTTON_COLOR_TOKEN_ROWS,
+  BUTTON_DEFAULTS_ROWS,
+  BUTTON_GEOMETRY_TOKEN_ROWS,
+} from './button.api-schema';
 import {
   BUTTON_API_DESCRIPTION,
+  BUTTON_CUSTOM_ICON_TABS,
   BUTTON_IMPORT_TABS,
+  BUTTON_MIGRATION_TABS,
   BUTTON_PROVIDER_TABS,
   BUTTON_STATUS,
 } from './button.docs-content';
@@ -19,7 +26,9 @@ import {
   BasicButtonExample,
   ButtonAppearanceExample,
   ButtonIconExample,
+  ButtonLinkExample,
   ButtonSizeExample,
+  ButtonWrapExample,
 } from './examples';
 
 @Component({
@@ -29,7 +38,9 @@ import {
     BasicButtonExample,
     ButtonAppearanceExample,
     ButtonIconExample,
+    ButtonLinkExample,
     ButtonSizeExample,
+    ButtonWrapExample,
     CodeTabs,
     DocSection,
     LivePreview,
@@ -48,7 +59,14 @@ export class ButtonPage {
   protected readonly appearanceTabs = BUTTON_EXAMPLE_SOURCES['button-appearance-example'];
   protected readonly sizeTabs = BUTTON_EXAMPLE_SOURCES['button-size-example'];
   protected readonly iconTabs = BUTTON_EXAMPLE_SOURCES['button-icon-example'];
+  protected readonly wrapTabs = BUTTON_EXAMPLE_SOURCES['button-wrap-example'];
+  protected readonly linkTabs = BUTTON_EXAMPLE_SOURCES['button-link-example'];
+  protected readonly customIconTabs = BUTTON_CUSTOM_ICON_TABS;
   protected readonly providerTabs = BUTTON_PROVIDER_TABS;
+  protected readonly migrationTabs = BUTTON_MIGRATION_TABS;
 
   protected readonly apiRows = BUTTON_API_ROWS;
+  protected readonly defaultsRows = BUTTON_DEFAULTS_ROWS;
+  protected readonly colorTokenRows = BUTTON_COLOR_TOKEN_ROWS;
+  protected readonly geometryTokenRows = BUTTON_GEOMETRY_TOKEN_ROWS;
 }

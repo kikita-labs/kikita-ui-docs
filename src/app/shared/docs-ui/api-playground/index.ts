@@ -16,6 +16,7 @@ export {
   parsePlaygroundNumber,
   playgroundBinding,
   playgroundEvent,
+  playgroundOptionOrUndefined,
   serializePlaygroundAttributes,
 } from './helpers';
 export type {
