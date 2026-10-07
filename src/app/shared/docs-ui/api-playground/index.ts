@@ -8,6 +8,7 @@ export {
   createPlaygroundEventLog,
   createPlaygroundValues,
   definePlaygroundControls,
+  escapePlaygroundDoubleQuotedValue,
   escapePlaygroundHtml,
   escapePlaygroundHtmlAttribute,
   escapePlaygroundSingleQuotedString,

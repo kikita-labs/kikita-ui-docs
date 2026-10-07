@@ -15,7 +15,7 @@ describe('playground bindings', () => {
 
   it('escapes quotes inside the expression', () => {
     expect(serializePlaygroundAttributes([playgroundBinding('label', `'a "b"'`)])).toBe(
-      ' [label]="&#39;a &quot;b&quot;&#39;"',
+      ` [label]="'a &quot;b&quot;'"`,
     );
   });
 });

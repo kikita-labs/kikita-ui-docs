@@ -8,6 +8,7 @@ export {
 } from './playground-control';
 export { createPlaygroundEventLog, formatPlaygroundEventDetail } from './playground-event-log';
 export {
+  escapePlaygroundDoubleQuotedValue,
   escapePlaygroundHtml,
   escapePlaygroundHtmlAttribute,
   escapePlaygroundSingleQuotedString,

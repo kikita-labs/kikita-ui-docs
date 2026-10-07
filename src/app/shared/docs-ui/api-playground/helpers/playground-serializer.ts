@@ -8,6 +8,14 @@ export function escapePlaygroundHtmlAttribute(value: string): string {
   return escapePlaygroundHtml(value).replaceAll('"', '&quot;').replaceAll("'", '&#39;');
 }
 
+/**
+ * Escapes a value written between double quotes in a snippet: single quotes stay readable, which
+ * keeps Angular expressions such as `['image/png']` intact.
+ */
+export function escapePlaygroundDoubleQuotedValue(value: string): string {
+  return escapePlaygroundHtml(value).replaceAll('"', '&quot;');
+}
+
 export function escapePlaygroundSingleQuotedString(value: string): string {
   return value.replaceAll('\\', '\\\\').replaceAll("'", "\\'");
 }
@@ -29,7 +37,7 @@ export function serializePlaygroundAttributes(
       return [attribute.name];
     }
 
-    return [`${attribute.name}="${escapePlaygroundHtmlAttribute(String(attribute.value))}"`];
+    return [`${attribute.name}="${escapePlaygroundDoubleQuotedValue(String(attribute.value))}"`];
   });
 
   return serialized.length > 0 ? ` ${serialized.join(' ')}` : '';

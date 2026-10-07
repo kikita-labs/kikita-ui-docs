@@ -1,4 +1,5 @@
 import {
+  escapePlaygroundDoubleQuotedValue,
   escapePlaygroundHtml,
   escapePlaygroundHtmlAttribute,
   escapePlaygroundSingleQuotedString,
@@ -10,6 +11,9 @@ describe('playground snippet serialization', () => {
     expect(escapePlaygroundHtml('<Save & close>')).toBe('&lt;Save &amp; close&gt;');
     expect(escapePlaygroundHtmlAttribute('"quoted" & \'single\'')).toBe(
       '&quot;quoted&quot; &amp; &#39;single&#39;',
+    );
+    expect(escapePlaygroundDoubleQuotedValue('<\'x\' & "y">')).toBe(
+      "&lt;'x' &amp; &quot;y&quot;&gt;",
     );
     expect(escapePlaygroundSingleQuotedString("A \\ path's value")).toBe("A \\\\ path\\'s value");
   });
