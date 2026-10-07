@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { ACCORDION_EXAMPLE_SOURCES } from '@generated/example-sources/accordion.generated';
 import {
   ACCORDION_COLOR_TOKEN_ROWS,
-  ACCORDION_DEFAULTS_KEY,
-  ACCORDION_DEFAULTS_ROWS,
+  ACCORDION_DEFAULTS,
   ACCORDION_GEOMETRY_TOKEN_ROWS,
 } from '@generated/library-tables/accordion.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -56,8 +55,7 @@ export class AccordionPage {
 
   protected readonly importTabs = ACCORDION_IMPORT_TABS;
   protected readonly migrationTabs = ACCORDION_MIGRATION_TABS;
-  protected readonly defaultsKey = ACCORDION_DEFAULTS_KEY;
-  protected readonly defaultsRows = ACCORDION_DEFAULTS_ROWS;
+  protected readonly defaults = ACCORDION_DEFAULTS;
   protected readonly colorTokenRows = ACCORDION_COLOR_TOKEN_ROWS;
   protected readonly geometryTokenRows = ACCORDION_GEOMETRY_TOKEN_ROWS;
 

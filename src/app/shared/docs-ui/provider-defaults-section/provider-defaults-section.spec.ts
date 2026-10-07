@@ -26,9 +26,12 @@ describe('ProviderDefaultsSection', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProviderDefaultsSection);
-    fixture.componentRef.setInput('defaultsKey', 'datePicker');
-    fixture.componentRef.setInput('rows', [
-      { name: 'size', type: "'sm' | 'md'", description: 'Component size.' },
+    fixture.componentRef.setInput('groups', [
+      {
+        key: 'datePicker',
+        rows: [{ name: 'size', type: "'sm' | 'md'", description: 'Component size.' }],
+      },
+      { key: 'dateRange', rows: [{ name: 'min', type: 'number', description: 'Minimum.' }] },
     ]);
     fixture.detectChanges();
     await fixture.whenStable();
@@ -41,7 +44,11 @@ describe('ProviderDefaultsSection', () => {
     expect(root.querySelector('h2')?.id).toBe('provider-defaults');
     expect(root.textContent).toContain('defaults.datePicker.<option>');
     expect(root.textContent).toContain('datePicker: {');
-    expect(root.querySelector('app-api-table')?.textContent).toContain('size');
+    const tables = root.querySelectorAll('app-api-table');
+
+    expect(tables).toHaveLength(2);
+    expect(tables[0]?.textContent).toContain('size');
+    expect(tables[1]?.textContent).toContain('min');
   });
 
   it('has no automated accessibility violations', async () => {

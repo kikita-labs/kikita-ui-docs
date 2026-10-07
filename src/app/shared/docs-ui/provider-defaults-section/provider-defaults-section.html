@@ -5,5 +5,7 @@
 >
   <app-code-tabs [tabs]="tabs()" />
   <ng-content />
-  <app-api-table [label]="tableLabel()" [rows]="rows()" />
+  @for (group of groups(); track group.key) {
+    <app-api-table [label]="'defaults.' + group.key + ' options'" [rows]="group.rows" />
+  }
 </app-doc-section>

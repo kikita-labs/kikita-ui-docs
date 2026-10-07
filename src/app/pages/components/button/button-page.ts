@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 
 import { BUTTON_EXAMPLE_SOURCES } from '@generated/example-sources/button.generated';
 import {
-  BUTTON_DEFAULTS_KEY,
-  BUTTON_DEFAULTS_ROWS,
+  BUTTON_DEFAULTS,
   BUTTON_GEOMETRY_TOKEN_ROWS,
 } from '@generated/library-tables/button.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
@@ -70,8 +69,7 @@ export class ButtonPage {
   protected readonly migrationTabs = BUTTON_MIGRATION_TABS;
 
   protected readonly apiRows = BUTTON_API_ROWS;
-  protected readonly defaultsKey = BUTTON_DEFAULTS_KEY;
-  protected readonly defaultsRows = BUTTON_DEFAULTS_ROWS;
+  protected readonly defaults = BUTTON_DEFAULTS;
   protected readonly colorTokenRows = BUTTON_APPEARANCE_TOKEN_ROWS;
   protected readonly geometryTokenRows = BUTTON_GEOMETRY_TOKEN_ROWS;
 }
