@@ -59,8 +59,7 @@ The installed package version is the docs source of truth:
 @kikita-labs/ui@1.8.0
 ```
 
-When `@kikita-labs/ui` is released, ask an agent to "sync" (or run
-`/library-sync`). Any agent follows
+When `@kikita-labs/ui` is released, ask an agent to "sync". Any agent follows
 [.agents/library-sync-runbook.md](.agents/library-sync-runbook.md): update the
 dependency, apply the changelog to docs, regenerate examples and the agent
 surface, bump the MCP version when its data changed, verify, commit and push.

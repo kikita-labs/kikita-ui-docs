@@ -44,7 +44,7 @@ For component documentation page work, also read:
 - `.agents/component-doc-page.md`
 
 For sync requests ("sync", "sync with the library", "синхронизируй",
-`/library-sync`, or a "Sync docs to @kikita-labs/ui ..." issue), also read and
+or a "Sync docs to @kikita-labs/ui ..." issue), also read and
 follow end to end:
 
 - `.agents/library-sync-runbook.md`

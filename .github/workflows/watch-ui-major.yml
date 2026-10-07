@@ -66,7 +66,7 @@ jobs:
 
           Remaining steps (see .agents/versioned-docs.md):
           - [ ] Wait for the \"Archive documentation version\" run on release/${{ steps.majors.outputs.docs_major }}.x to succeed.
-          - [ ] Sync the library on main (/library-sync) and set mcp/package.json to ${{ steps.majors.outputs.latest_major }}.0.0.
+          - [ ] Ask an agent to \"sync\" the library on main (see .agents/library-sync-runbook.md) and set mcp/package.json to ${{ steps.majors.outputs.latest_major }}.0.0.
           - [ ] Add { \"id\": \"v${{ steps.majors.outputs.docs_major }}\", \"label\": \"v${{ steps.majors.outputs.docs_major }}\", \"status\": \"maintained\" } to docs-archive.json.
           - [ ] Push to main: the deploy publishes both versions and the MCP package is published by its version bump."
           fi

@@ -11,7 +11,7 @@ it.
 Any of these means "run this runbook end to end":
 
 - "sync", "sync with the library", "update to the new library version",
-  "синхронизируй", `/library-sync`;
+  "синхронизируй";
 - a GitHub issue titled "Sync docs to @kikita-labs/ui <major>.x (new major)".
 
 A sync request authorizes committing and pushing to the current branch once the
