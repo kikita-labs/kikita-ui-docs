@@ -23,6 +23,46 @@ Do not document unreleased library behavior as available in the docs app. If the
 library source has a newer API than the installed `@kikita-labs/ui` package,
 either update the package first or mark the docs task as blocked.
 
+## Choosing The Target
+
+- With a name ("document Combobox"), match it case-insensitively against a
+  manifest `label`, a manifest `slug`, or a directory under
+  `src/app/pages/components/`.
+- With no name, inspect `DOCS_COMPONENT_MANIFESTS` through
+  `src/app/generated/docs-registry.ts` and propose the first
+  `status: 'docs-pending'` component in registry order. If none are pending,
+  report that the catalog is documented and ask which page to audit.
+- A target with `status: 'available'` is an audit or update: read its page,
+  examples, API schema, playground, manifest, generated source, tests, the
+  library docs and the installed typings, then patch the gaps. Do not rewrite it
+  from scratch.
+- A target with no manifest and no directory: stop and ask. Do not invent a
+  category, public import, or route.
+- Handle several components in one run only when asked, keeping each one's
+  facts, examples, schema and checklist separate; shared files such as
+  `docs-registry.ts` receive each component's change once.
+- Component docs work verifies the installed package. Do not install a newer
+  `@kikita-labs/ui` as part of it; that is a sync
+  (`.agents/library-sync-runbook.md`).
+
+## Current Architecture
+
+Routes, navigation, categories, breadcrumbs, search and draft behavior are all
+derived from the typed docs registry. Do not hand-edit derived surfaces.
+
+| Surface                 | Source of truth                                                                                                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Per-component facts     | `src/app/pages/components/<name>/<name>.docs-manifest.ts` (`slug`, `label`, `category`, `description`, `importName`, `status`, `exampleIds`, `loadPage`, `loadPlayground`) |
+| Registry aggregate      | `src/app/generated/docs-registry.ts`                                                                                                                                       |
+| Routes                  | `src/app/generated/docs-routes.ts`, consumed by `src/app/app.routes.ts` (do not wire routes there)                                                                         |
+| Categories              | `src/app/core/components/docs-component-categories.ts`, derived from the registry                                                                                          |
+| Left navigation         | `src/app/core/navigation/docs-navigation-items.ts`, derived from the registry                                                                                              |
+| Rendered example source | manifest `exampleIds` -> `tools/generate-example-sources.mjs` -> `src/app/generated/example-sources/<name>.generated.ts`                                                   |
+| Agent surface           | `tools/generate-agent-surface.mjs` -> `public/llms/**`, `llms.txt`, `llms-full.txt`, `agent-manifest.json`, MCP data                                                       |
+
+Do not add route constants for component pages, and do not edit category or
+navigation output unless the code proves the registry no longer owns it.
+
 ## Implementation Sequence
 
 1. Read `AGENTS.md`, every document in its Always Read list, and this file.
@@ -40,9 +80,8 @@ either update the package first or mark the docs task as blocked.
 7. Confirm the public imports and exported types from the installed package.
    Examples must import from `@kikita-labs/ui`, never from `../kikita-ui`.
 8. Create or update the component docs manifest, page, examples, API schema,
-   playground, registry-derived surfaces, generated source, and tests together.
-   Until the typed registry migration lands, update the existing
-   route/navigation/category sources together.
+   playground, generated sources, and tests together. Routes, navigation and
+   categories follow from the manifest; do not edit them separately.
 9. Verify with the relevant Angular target and review the rendered page when the
    change affects layout, responsive behavior, overlay behavior, or interaction.
 
@@ -50,60 +89,43 @@ either update the package first or mark the docs task as blocked.
 
 For a component named `<name>`:
 
-- `src/app/pages/components/<name>/<name>-page.ts`
-- `src/app/pages/components/<name>/<name>-page.html`
-- `src/app/pages/components/<name>/<name>-page.scss`
-- `src/app/pages/components/<name>/<name>.api-schema.ts`
-- `src/app/pages/components/<name>/examples/<scenario>-example/*`
-- `src/app/pages/components/<name>/playground/<name>-playground-page.*`
-- `src/app/pages/components/<name>/<name>.docs-manifest.ts` once the typed
-  registry migration is available
-- generated Markdown mirror, agent manifest entry, `llms.txt` when curated,
-  `llms-full.txt`, and MCP data through `tools/generate-agent-surface.mjs`
-- local boundary `index.ts` files according to
-  `.agents/imports-and-boundaries.md`
-- `src/app/core/navigation/app-route-path.ts`
-- `src/app/core/navigation/docs-navigation-items.ts`
-- `src/app/core/components/docs-component-categories.ts`
-- `src/app/app.routes.ts`
+- `src/app/pages/components/<name>/<name>.docs-manifest.ts`: correct `slug`,
+  `label`, `category`, `description`, `importName`, `status`, `exampleIds`. Set
+  `status: 'available'` only when a complete routed page exists, and add
+  `loadPage` and `loadPlayground` only for available docs.
+- `src/app/generated/docs-registry.ts`: add the manifest import and registry
+  entry only when the component is new to the registry. Preserve category and
+  component order unless the task is about taxonomy.
+- `src/app/pages/components/<name>/<name>-page.ts`, `.html`, `.scss`, and an
+  optional `<name>.docs-content.ts` when the local pattern uses one.
+- `src/app/pages/components/<name>/<name>.api-schema.ts`.
+- `src/app/pages/components/<name>/examples/<scenario>-example/*`, with every id
+  added to the manifest `exampleIds`.
+- `src/app/pages/components/<name>/playground/<name>-playground-page.*`.
+- Focused tests when behavior, schema parsing, playground generation, or
+  route/registry invariants change.
+- Local boundary `index.ts` files according to
+  `.agents/imports-and-boundaries.md`.
+- Generated outputs, never hand-edited: run `pnpm generate:examples` after
+  changing example files or `exampleIds`, and `pnpm generate:agent-surface` after
+  changing manifests, source docs, API schemas, generated examples, the package
+  version, routes, or foundation docs. An available component needs source docs
+  and an API schema before the generated agent surface is valid.
 
-Only create a route constant if it does not already exist. Many planned
-components already have `AppRoutePath` entries and draft route records.
+## Navigation, Routes, And Categories
 
-## Left Sidebar Navigation
+All three are derived from the manifest; there is nothing to edit by hand.
 
-The left sidebar is driven by navigation data, not by the page template.
-
-Update `AppRoutePath` and `DOCS_PATHS` before adding navigation entries:
-
-- Add the route enum member in `src/app/core/navigation/app-route-path.ts` when
-  the component does not already have one.
-- Add the matching `DOCS_PATHS.components<Name>` entry in
-  `src/app/core/navigation/docs-navigation-items.ts`.
-- Reuse existing route constants for planned draft components.
-
-Update `DOCS_NAVIGATION_ITEMS` in
-`src/app/core/navigation/docs-navigation-items.ts`:
-
-- Add the component under the existing `Components` child list.
-- Keep the label user-facing and title case, for example `Icon Button`.
-- Use the route from `DOCS_PATHS`, not an inline path string.
-- Write a short description that explains the consumer use case, not internal
-  implementation.
-
-Update `DOCS_COMPONENT_CATEGORIES` in
-`src/app/core/components/docs-component-categories.ts`:
-
-- Put the component in the correct category: Actions, Forms, Feedback,
-  Surfaces, Data and Identity, or a new category only if the existing taxonomy
-  cannot represent it.
-- Set `status: 'available'` only when the docs page is complete and routed.
-- Keep `status: 'docs-pending'` for draft pages.
-- Use the public import name from `@kikita-labs/ui`.
-- Keep category order stable unless the task is explicitly about taxonomy.
-
-If a component moves from draft to available, make sure its auto-generated draft
-route no longer applies and an explicit page route exists.
+- The left sidebar and the components overview come from the registry. Keep the
+  manifest `label` user-facing and title case (for example `Icon Button`) and the
+  `description` about the consumer use case, not implementation.
+- Put the component in the right `category` (Actions, Forms, Feedback, Surfaces,
+  Data and Identity); add a category only when the taxonomy cannot represent it.
+  Keep category order stable unless the task is about taxonomy.
+- `status: 'docs-pending'` produces an automatic draft route; setting
+  `status: 'available'` with `loadPage` replaces it with the real page, so a
+  moved component needs no route change.
+- Use the public import name from `@kikita-labs/ui` as `importName`.
 
 ## Right Page Menu
 
@@ -218,12 +240,10 @@ Code rules:
 
 Snippet rules:
 
-- The target architecture generates snippet text from the real example source
-  files. Use the generated example-source module once it is available for the
-  feature; do not duplicate the source in page-owned multiline strings.
-- Until a feature is migrated, store legacy snippets as
-  `protected readonly CodeTab[]` and update the real example and snippet in
-  the same change.
+- Snippet text is generated from the real example source files through
+  `exampleIds`; never duplicate example source in page-owned multiline strings
+  and never edit generated modules. Non-rendered guidance (imports, providers)
+  stays page-authored.
 - Include file names where useful.
 - Use `language: 'html'`, `language: 'ts'`, or `language: 'scss'` so Shiki can
   highlight correctly.
@@ -314,31 +334,10 @@ For inputs that require object values, templates, async data, or arrays:
 - Explain advanced composition in a normal docs section if the playground
   control would become awkward or misleading.
 
-The playground route should usually be nested under the component route:
-
-```ts
-{
-  path: AppRoutePath.ComponentsButton,
-  children: [
-    {
-      path: AppRoutePath.Home,
-      loadComponent: () =>
-        import('./pages/components/button/button-page').then((m) => m.ButtonPage),
-      pathMatch: 'full',
-    },
-    {
-      path: AppRoutePath.Playground,
-      loadComponent: () =>
-        import('./pages/components/button/playground/button-playground-page').then(
-          (m) => m.ButtonPlaygroundPage,
-        ),
-    },
-  ],
-}
-```
-
-Add a `docSectionActions` link from the main page `Usage` section to the
-playground.
+The playground route comes from the manifest `loadPlayground` loader and is
+nested under the component route automatically. Link to it from the main page's
+`Usage` section with the shared `app-playground-route-button` marked
+`docSectionActions`.
 
 ## Design And Layout Expectations
 
@@ -386,6 +385,15 @@ Use it for:
 
 Do not copy unreleased changelog entries into public docs as if shipped.
 
+## Reuse Before Building
+
+- Use the closest same-family page as the structural template. Button is the
+  baseline, but forms must also inspect Field, Input and Select; overlays
+  Menu, Popover, Dialog, Drawer and Dropdown; data and identity pages Table,
+  Avatar, Chip and Icon.
+- Keep page-specific styling small and use the shared doc-page SCSS mixin that
+  current component pages use.
+
 ## Verification
 
 At minimum:
@@ -412,9 +420,9 @@ Use this before calling the page done:
 - [ ] Agent instructions and source-of-truth files were read.
 - [ ] Installed `@kikita-labs/ui` version was checked.
 - [ ] Public package typings were checked for all documented APIs.
-- [ ] Page route exists and draft route no longer intercepts it.
-- [ ] Left sidebar navigation includes the component.
-- [ ] Component category status is correct.
+- [ ] Manifest is `available` with `loadPage`, so the draft route no longer applies.
+- [ ] The component appears in the registry-derived sidebar and overview.
+- [ ] The manifest category and status are correct.
 - [ ] Page header has family, title, description, and version-aware status.
 - [ ] Every top-level section uses `app-doc-section` with stable anchors.
 - [ ] Right menu appears from the section headings.
@@ -444,3 +452,10 @@ Use this before calling the page done:
 - [ ] Browser review covered desktop and narrow mobile when UI changed.
 - [ ] `git diff --check` passes.
 - [ ] Tracked files contain English text only.
+
+## Reporting
+
+Report with the checklist vocabulary above: done items, skipped items with the
+reason, blockers with exact evidence, and the commands that ran with their
+result. Keep it concise. Never claim a gate passed unless it ran. Commit and push
+only when the request includes it (see `.agents/git-policy.md`).
