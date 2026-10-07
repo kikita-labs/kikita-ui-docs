@@ -6078,10 +6078,11 @@ export class GroupSizeExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Layout direction for the grouped controls. |
+| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Layout direction for the grouped controls. Falls back to defaults.group.orientation. |
 | size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Size inherited by grouped controls through CSS variables. Set on the group instead of each child. |
 | collapsed | boolean | false | Collapses adjacent control borders into a single visual group, removing the double border between children. |
 | rounded | boolean | true | Keeps the outer group corners rounded when collapsed. Set to false for square outer corners. |
+| KuiGroupOptions | interface | - | Shape of defaults.group: size, orientation, collapsed and rounded. Each input is undefined when omitted and falls back to it. |
 
 ## Accessibility
 

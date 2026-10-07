@@ -52,8 +52,10 @@ describe('GroupPage', () => {
       'orientation',
       'size',
       'grouping-fields',
+      'provider-defaults',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(groups.length).toBeGreaterThanOrEqual(8);
     expect(groups.every((group) => group.hasAttribute('data-kui-collapsed'))).toBe(true);

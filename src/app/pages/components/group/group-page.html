@@ -55,6 +55,8 @@
     <app-code-tabs [tabs]="fieldTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Group API" [rows]="apiRows" />
   </app-doc-section>
@@ -74,6 +76,24 @@
       </li>
       <li>Tab order follows the DOM order of the grouped children, not the visual orientation.</li>
       <li>collapsed and rounded are purely visual and never affect focus or hit targets.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Group."
+  >
+    <ul class="group-page__notes">
+      <li>
+        The class is <code>KuiGroup</code> (it was <code>KuiGroupDirective</code>);
+        <code>ng update @kikita-labs/ui</code> renames the import.
+      </li>
+      <li>
+        <code>orientation</code>, <code>size</code>, <code>collapsed</code> and
+        <code>rounded</code> are undefined when omitted and fall back to
+        <code>defaults.group</code> (the size then to the global <code>defaults.size</code>).
+      </li>
     </ul>
   </app-doc-section>
 </article>

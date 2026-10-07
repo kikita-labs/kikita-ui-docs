@@ -5,7 +5,8 @@ export const GROUP_API_ROWS: readonly ApiTableRow[] = [
     name: 'orientation',
     type: `'horizontal' | 'vertical'`,
     defaultValue: `'horizontal'`,
-    description: 'Layout direction for the grouped controls.',
+    description:
+      'Layout direction for the grouped controls. Falls back to defaults.group.orientation.',
   },
   {
     name: 'size',
@@ -27,5 +28,12 @@ export const GROUP_API_ROWS: readonly ApiTableRow[] = [
     defaultValue: 'true',
     description:
       'Keeps the outer group corners rounded when collapsed. Set to false for square outer corners.',
+  },
+  {
+    name: 'KuiGroupOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.group: size, orientation, collapsed and rounded. Each input is undefined when omitted and falls back to it.',
   },
 ];
