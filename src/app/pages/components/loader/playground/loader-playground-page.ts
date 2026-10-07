@@ -22,7 +22,12 @@ const LOADER_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['xs', 'sm', 'md', 'lg'],
     defaultValue: 'md',
   },
-  { key: 'label', label: 'label', kind: 'string', defaultValue: 'Loading' },
+  {
+    key: 'label',
+    label: 'label (empty = common.loading message)',
+    kind: 'string',
+    defaultValue: '',
+  },
 ] as const);
 
 type LoaderPlaygroundValues = PlaygroundValues<typeof LOADER_PLAYGROUND_CONTROLS>;
@@ -65,9 +70,7 @@ export class LoaderPlaygroundPage {
     return values.size;
   }
 
-  protected labelOf(values: LoaderPlaygroundValues): string {
-    const label = values.label;
-
-    return label || 'Loading';
+  protected labelOf(values: LoaderPlaygroundValues): string | undefined {
+    return values.label || undefined;
   }
 }

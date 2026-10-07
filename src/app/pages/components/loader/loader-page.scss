@@ -7,3 +7,7 @@
 .loader-page__notes {
   @include doc-page-notes;
 }
+
+.loader-page__note {
+  @include doc-page-note;
+}

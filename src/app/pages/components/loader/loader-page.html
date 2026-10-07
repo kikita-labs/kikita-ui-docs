@@ -37,13 +37,17 @@
 
   <app-doc-section
     heading="With Button"
-    description='kuiButton&apos;s own loading input (0.3.0) renders a kuiLoader internally, sets aria-busy="true", and behaves like disabled. Compose kuiLoader manually only when the button markup needs a custom saving label; otherwise prefer loading.'
+    description='kuiButton&apos;s own loading input (0.3.0) renders a kuiLoader internally, sets aria-busy="true", and behaves like disabled. Compose kuiLoader manually only when the button markup needs a custom saving label; otherwise prefer loading. A loading button keeps full opacity, and a kuiLoader inside a button takes the button text colour.'
   >
     <app-live-preview previewLabel="Loader inside a button">
       <app-loader-button-example />
     </app-live-preview>
     <app-code-tabs [tabs]="buttonTabs" />
   </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-messages-section [groups]="messageGroups" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Loader API" [rows]="apiRows" />
@@ -59,9 +63,10 @@
         automatically; no extra ARIA wiring is required.
       </li>
       <li>
-        <code>label</code> sets the accessible name via <code>aria-label</code> and defaults to
-        <code>Loading</code>. Provide a specific label (for example <code>Saving</code>) whenever
-        the loading context is not obvious from surrounding text.
+        <code>label</code> sets the accessible name via <code>aria-label</code> and defaults to the
+        <code>common.loading</code> message (<code>Loading</code>), so it follows the active locale.
+        Provide a specific label (for example <code>Saving</code>) whenever the loading context is
+        not obvious from surrounding text.
       </li>
       <li>
         Since 0.3.0, the loader keeps <code>flex-shrink: 0</code> so it no longer collapses into an
@@ -71,6 +76,34 @@
         When composed inside a <code>kuiButton</code> with native <code>disabled</code>, the button
         itself communicates the busy state to assistive technology; keep <code>disabled</code> set
         for the duration of the loading state.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Loader."
+  >
+    <ul class="loader-page__notes">
+      <li>
+        The directive class is <code>KuiLoader</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        The default size moved to
+        <code>provideKuiDefaults({{ '{' }} loader: {{ '{' }} size {{ '}' }} {{ '}' }})</code>.
+      </li>
+      <li>
+        The default <code>label</code> now comes from the <code>common.loading</code> message, so it
+        follows <code>provideKuiLocale</code> and <code>provideKuiMessages</code>; an unset
+        <code>label</code> is <code>undefined</code>.
+      </li>
+      <li>
+        <code>--kui-loader-duration-reduced</code> sets the spin duration under reduced motion.
+      </li>
+      <li>
+        A loading Button keeps full opacity, and a <code>kuiLoader</code> placed inside a Button
+        takes the button text colour.
       </li>
     </ul>
   </app-doc-section>

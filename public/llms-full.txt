@@ -6943,13 +6943,15 @@ export class LoaderSizeExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Loader size mapped to Kikita UI loader tokens. |
-| label | string | 'Loading' | Accessible label rendered as aria-label. Also announced through the host role="status" and aria-live="polite". |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Loader size. Falls back to defaults.loader.size, then the global defaults.size, then md. |
+| label | string \| undefined | undefined | Accessible label rendered as aria-label and announced through the host role="status" and aria-live="polite". Falls back to the common.loading message (Loading). |
 | --kui-loader-size | CSS custom property | - | Overrides the rendered loader diameter for the current size step. |
 | --kui-loader-track | CSS custom property | - | Overrides the loader track (background ring) color. |
 | --kui-loader-fill | CSS custom property | - | Overrides the loader spinning fill color. |
 | --kui-loader-border-width | CSS custom property | - | Overrides the loader ring stroke width. |
 | --kui-loader-duration | CSS custom property | - | Overrides the spin animation duration. |
+| --kui-loader-duration-reduced | CSS custom property | - | Spin animation duration used when the user prefers reduced motion. |
+| KuiLoaderOptions | interface | - | Shape of defaults.loader: size. |
 
 ## Accessibility
 

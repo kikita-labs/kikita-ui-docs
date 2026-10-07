@@ -43,7 +43,17 @@ describe('LoaderPage', () => {
     const loaders = [...root.querySelectorAll<HTMLElement>('app-live-preview .kui-loader')];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Loader');
-    expect(sectionIds).toEqual(['import', 'usage', 'sizes', 'with-button', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'sizes',
+      'with-button',
+      'provider-defaults',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(loaders).toHaveLength(7);
     expect(loaders.map((loader) => loader.getAttribute('role'))).toEqual([
       'status',
