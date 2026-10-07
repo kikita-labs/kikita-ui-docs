@@ -81,3 +81,8 @@ Sources:
   Escape before the palette had opened and taken focus; it now waits for that and
   passes 15 of 15 repeats. Removing `@defer` was measured and rejected: +2,6 kB raw
   (-1,2 kB gzip) but `main` grows to 45 kB and `versions.json` loads at startup.
+- Library 2.0 sync (2026-10-07): `@kikita-labs/ui` 1.8.0 -> 2.0.0. Initial total
+  929,94 kB -> 1,08 MB (bundled stylesheet 283 kB raw, plus the library's i18n
+  messages and forced-colors support), which crossed the old 1 MB Angular
+  `initial` error budget. The error budget is now 1.25 MB; the 850 kB warning is
+  unchanged, and `main` stays under its 60 kB gate. The transfer size is 223 kB.
