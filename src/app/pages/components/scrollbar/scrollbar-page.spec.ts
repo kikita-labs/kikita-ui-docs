@@ -40,7 +40,15 @@ describe('ScrollbarPage', () => {
     );
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Scrollbar');
-    expect(sectionIds).toEqual(['import', 'usage', 'provider-defaults', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'provider-defaults',
+      'custom-track',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(root.querySelector('app-live-preview .kui-scroll')).not.toBeNull();
     expect(root.textContent).toContain('Scrollbar has no playground');
   });

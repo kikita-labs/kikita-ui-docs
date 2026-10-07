@@ -39,6 +39,20 @@
     <app-code-tabs [tabs]="providerTabs" />
   </app-doc-section>
 
+  <app-doc-section
+    anchor="custom-track"
+    heading="Custom scrollbars"
+    description="Kikita styles the native scrollbar and does not ship a replacement."
+  >
+    <p class="scrollbar-page__note">
+      A custom track built from CSS anchor positioning and scroll timelines still needs JavaScript
+      for dragging, and <code>animation-range</code> is not Baseline yet. Kikita does not hide the
+      native scrollbar or expose a custom-scrollbar API until the design need, supported browsers,
+      drag and pointer cancellation, zoom, nested scrolling, RTL, forced colors, SSR and fallback
+      have been reviewed. Native token styling is the supported contract.
+    </p>
+  </app-doc-section>
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Scrollbar API" [rows]="apiRows" />
   </app-doc-section>
@@ -52,9 +66,36 @@
         Keyboard scrolling, touch scrolling, and assistive-technology behavior remain owned by the
         native scroll container.
       </li>
+      <li>
+        Add <code>tabindex="0"</code> on the scrollable element itself so keyboard users can focus
+        and scroll it (WCAG 2.1.1, axe <code>scrollable-region-focusable</code>); CSS alone cannot
+        make an overflow container focusable.
+      </li>
       <li>Do not add ARIA roles solely to style a scrollbar.</li>
       <li>In forced-colors mode, scrollbar colors fall back to the system implementation.</li>
       <li>Browser and OS scrollbar rendering can differ, especially with overlay scrollbars.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Scrollbar."
+  >
+    <ul class="scrollbar-page__notes">
+      <li>
+        <code>provideKikitaUi({{ '{' }} scrollbars {{ '}' }})</code> now sets
+        <code>data-kui-scrollbars</code> on the server as well, so server-rendered HTML carries the
+        mode.
+      </li>
+      <li>
+        The scrollbar thumb roles derive from <code>seeds.neutral</code> together with the surface,
+        border and text roles.
+      </li>
+      <li>
+        The scrollbar stylesheet moved beside the other primitives and is still included through
+        <code>@kikita-labs/ui/styles</code>.
+      </li>
     </ul>
   </app-doc-section>
 </article>
