@@ -45,6 +45,8 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Badge API" [rows]="apiRows" />
   </app-doc-section>
@@ -67,6 +69,27 @@
         When a badge duplicates state already announced elsewhere (for example next to a status
         icon), avoid redundant announcements by keeping the text concise instead of adding extra
         ARIA attributes.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Badge."
+  >
+    <ul class="badge-page__notes">
+      <li>
+        The class is <code>KuiBadge</code> (it was <code>KuiBadgeDirective</code>); the selector and
+        inputs are unchanged. <code>ng update @kikita-labs/ui</code> renames the import.
+      </li>
+      <li>
+        The default size comes from <code>defaults.badge.size</code> (then the global
+        <code>defaults.size</code>); the input is undefined when omitted.
+      </li>
+      <li>
+        The badge tokens listed above are unchanged, and they now take effect on any ancestor: the
+        component no longer sets them on its own element.
       </li>
     </ul>
   </app-doc-section>

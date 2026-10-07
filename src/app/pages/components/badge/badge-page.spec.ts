@@ -43,7 +43,16 @@ describe('BadgePage', () => {
     const badges = [...root.querySelectorAll<HTMLElement>('app-live-preview .kui-badge')];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Badge');
-    expect(sectionIds).toEqual(['import', 'usage', 'appearances', 'sizes', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'appearances',
+      'sizes',
+      'provider-defaults',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(badges).toHaveLength(14);
     expect(badges.map((badge) => badge.textContent?.trim())).toEqual([
       'Neutral',

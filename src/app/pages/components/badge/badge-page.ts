@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 
 import { BADGE_EXAMPLE_SOURCES } from '@generated/example-sources/badge.generated';
+import { BADGE_DEFAULTS } from '@generated/library-tables/badge.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
 
 import { BADGE_API_ROWS } from './badge.api-schema';
 import { BADGE_API_DESCRIPTION, BADGE_IMPORT_TABS, BADGE_STATUS } from './badge.docs-content';
@@ -15,6 +17,7 @@ import { BadgeAppearanceExample, BadgeSizeExample, BasicBadgeExample } from './e
 @Component({
   selector: 'app-badge-page',
   imports: [
+    ProviderDefaultsSection,
     ApiTable,
     BadgeAppearanceExample,
     BadgeSizeExample,
@@ -39,5 +42,6 @@ export class BadgePage {
 
   protected readonly sizeTabs = BADGE_EXAMPLE_SOURCES['badge-size-example'];
 
+  protected readonly defaults = BADGE_DEFAULTS;
   protected readonly apiRows = BADGE_API_ROWS;
 }
