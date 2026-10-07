@@ -13,7 +13,8 @@
       <input
         kuiCombobox
         [value]="value()"
-        (valueChange)="value.set($event)"
+        (valueChange)="onValueChange($event)"
+        (search)="onSearch($event)"
         [(query)]="query"
         [kuiLabelFn]="personLabel"
         [mode]="modeOf(playground.values())"
@@ -33,6 +34,8 @@
       </kui-dropdown>
     </kui-field>
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Combobox events" />
 
   <app-api-table label="Combobox API" [rows]="apiRows" />
   <p class="combobox-playground-page__note">{{ apiDescription }}</p>

@@ -4,7 +4,9 @@ import { KuiCombobox, KuiDropdown, KuiField, KuiOption } from '@kikita-labs/ui';
 
 import { ApiPlayground } from '@shared/docs-ui/api-playground';
 import {
+  createPlaygroundEventLog,
   definePlaygroundControls,
+  PlaygroundEventLogView,
   type PlaygroundValues,
   serializePlaygroundAttributes,
 } from '@shared/docs-ui/api-playground';
@@ -47,7 +49,15 @@ type ComboboxPlaygroundValues = PlaygroundValues<typeof COMBOBOX_PLAYGROUND_CONT
 
 @Component({
   selector: 'app-combobox-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiCombobox, KuiDropdown, KuiField, KuiOption],
+  imports: [
+    ApiPlayground,
+    ApiTable,
+    KuiCombobox,
+    KuiDropdown,
+    KuiField,
+    KuiOption,
+    PlaygroundEventLogView,
+  ],
   templateUrl: './combobox-playground-page.html',
   styleUrl: './combobox-playground-page.scss',
 })
@@ -58,6 +68,7 @@ export class ComboboxPlaygroundPage {
 
   protected readonly value = signal<Person | string | null>(null);
   protected readonly query = signal('');
+  protected readonly eventLog = createPlaygroundEventLog();
 
   protected readonly personLabel = (person: Person) => person.name;
 
@@ -75,7 +86,7 @@ export class ComboboxPlaygroundPage {
     const attrString = serializePlaygroundAttributes([
       { name: 'mode', value: values.mode, defaultValue: 'filter' },
       { name: 'placeholder', value: values.placeholder },
-      { name: '[clearable]', value: values.clearable ? 'true' : 'false' },
+      { name: '[clearable]', value: values.clearable ? null : 'false' },
       { name: '[loading]', value: values.loading ? 'true' : null },
       { name: 'disabled', value: values.disabled },
       { name: 'readonly', value: values.readonly },
@@ -97,6 +108,18 @@ export class ComboboxPlaygroundPage {
       },
     ];
   };
+
+  protected onValueChange(value: Person | string | null): void {
+    this.value.set(value);
+    this.eventLog.log(
+      'valueChange',
+      typeof value === 'string' || value === null ? value : value.name,
+    );
+  }
+
+  protected onSearch(query: string): void {
+    this.eventLog.log('search', query);
+  }
 
   protected placeholderOf(values: ComboboxPlaygroundValues): string {
     return values.placeholder;

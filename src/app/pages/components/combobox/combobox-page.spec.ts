@@ -52,8 +52,11 @@ describe('ComboboxPage', () => {
       'free-input',
       'field-states',
       'provider-defaults',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(triggers.length).toBeGreaterThanOrEqual(4);
     expect(triggers.every((trigger) => trigger.getAttribute('role') === 'combobox')).toBe(true);

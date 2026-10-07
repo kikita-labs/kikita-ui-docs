@@ -57,12 +57,21 @@
     <app-code-tabs [tabs]="fieldStatesTabs" />
   </app-doc-section>
 
-  <app-doc-section
-    heading="Provider defaults"
-    description="Use provider defaults for app-wide combobox behavior. Local inputs still win."
-  >
-    <app-code-tabs [tabs]="providerTabs" />
-  </app-doc-section>
+  <app-provider-defaults-section [groups]="defaults">
+    <p class="combobox-page__note">
+      <code>clearable</code> resolves as local input &gt; <code>defaults.combobox</code> &gt;
+      <code>defaults.field</code> &gt; true. The chevron and clear icons take precedence over
+      <code>defaults.icons.pickerChevron</code> and <code>defaults.icons.clear</code>.
+    </p>
+  </app-provider-defaults-section>
+
+  <app-token-tables-section
+    name="Combobox"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Combobox API" [rows]="apiRows" />
@@ -88,10 +97,40 @@
         disabled state, click selection, and keyboard navigation.
       </li>
       <li>Arrow keys open the dropdown and move focus to the first or last enabled option.</li>
-      <li>Escape closes the dropdown.</li>
+      <li>Escape closes the dropdown and returns focus to the control.</li>
+      <li>
+        Choosing an option inside the panel returns focus to the input. With Angular Signal Forms
+        the field gates the required error and <code>aria-invalid</code> until the control is
+        touched, and selecting a valid option clears that state.
+      </li>
       <li>
         Multiple chip-backed selection is intentionally not part of Combobox; use Select for fixed
         choices without typing.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Combobox."
+  >
+    <ul class="combobox-page__notes">
+      <li>
+        The classes are <code>KuiCombobox</code>, <code>KuiDropdown</code>,
+        <code>KuiField</code> and <code>KuiOption</code> (they had a <code>Directive</code> or
+        <code>Component</code> suffix); <code>ng update @kikita-labs/ui</code> renames the imports.
+      </li>
+      <li>
+        <code>KUI_COMBOBOX_OPTIONS</code> is removed and <code>kuiProvideComboboxOptions</code> is
+        deprecated until 3.0: set <code>defaults.combobox</code> through
+        <code>provideKuiDefaults</code> or
+        <code>provideKikitaUi({{ '{' }} defaults {{ '}' }})</code>.
+      </li>
+      <li>
+        The control no longer pulls the whole field and dropdown into your bundle, the panel returns
+        focus to the control after a selection, and the open and close button names come from the
+        <code>combobox</code> messages.
       </li>
     </ul>
   </app-doc-section>

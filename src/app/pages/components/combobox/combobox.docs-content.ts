@@ -20,22 +20,3 @@ export const COMBOBOX_IMPORT_TABS: readonly CodeTab[] = [
 } from '@kikita-labs/ui';`,
   },
 ];
-
-export const COMBOBOX_PROVIDER_TABS: readonly CodeTab[] = [
-  {
-    label: 'app.config.ts',
-    language: 'ts',
-    code: `import { provideKikitaUi } from '@kikita-labs/ui';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideKikitaUi({
-      defaults: { combobox: { clearable: true } },
-    }),
-  ],
-};
-
-// In a component or route subtree instead:
-// providers: [provideKuiDefaults({ combobox: { clearable: true } })]`,
-  },
-];
