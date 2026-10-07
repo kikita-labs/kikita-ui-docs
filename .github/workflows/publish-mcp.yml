@@ -38,4 +38,34 @@ jobs:
       # and commit it locally (pnpm generate:agent-surface) before tagging.
       - run: npm run check:mcp
 
-      - run: npm publish ./mcp --access public --@kikita-labs:registry=https://registry.npmjs.org/
+      # The tag must name the version it publishes, so a typo cannot ship another version.
+      - name: Verify the tag matches mcp/package.json
+        run: |
+          version=$(node -p "require('./mcp/package.json').version")
+          test "mcp-v$version" = "$GITHUB_REF_NAME" || {
+            echo "Tag $GITHUB_REF_NAME does not match mcp/package.json version $version."
+            exit 1
+          }
+
+      # Publishing without --tag moves `latest`. A release of an older major (for example a 1.x
+      # fix after 2.0.0 shipped) must not take `latest` from the newest major, so it is published
+      # as `latest-<major>`; prereleases go to `next`. npm rejects tag names that begin with a
+      # number or `v`, so `v1` would not be a valid tag.
+      - name: Resolve the npm dist-tag
+        id: dist-tag
+        run: |
+          version=$(node -p "require('./mcp/package.json').version")
+          major=${version%%.*}
+          latest=$(npm view @kikita-labs/ui-mcp dist-tags.latest --@kikita-labs:registry=https://registry.npmjs.org/ || true)
+          latest_major=${latest%%.*}
+          if [[ "$version" == *-* ]]; then
+            tag=next
+          elif [ -n "$latest_major" ] && [ "$major" -lt "$latest_major" ]; then
+            tag="latest-$major"
+          else
+            tag=latest
+          fi
+          echo "Publishing $version with dist-tag $tag (registry latest: ${latest:-none})."
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - run: npm publish ./mcp --access public --tag "${{ steps.dist-tag.outputs.tag }}" --@kikita-labs:registry=https://registry.npmjs.org/

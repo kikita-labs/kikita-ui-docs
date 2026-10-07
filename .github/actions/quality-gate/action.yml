@@ -1,0 +1,59 @@
+name: Docs quality gate
+description: >
+  Install dependencies and run the full docs quality gate against the production build.
+  Shared by the deploy and archive workflows so both enforce exactly the same checks.
+
+runs:
+  using: composite
+  steps:
+    - uses: pnpm/action-setup@v4
+
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: pnpm
+
+    - run: pnpm install --frozen-lockfile
+      shell: bash
+
+    - run: pnpm run format:check
+      shell: bash
+
+    - run: pnpm run lint
+      shell: bash
+
+    - run: pnpm run test
+      shell: bash
+
+    - run: pnpm run check:boundaries
+      shell: bash
+
+    - run: pnpm run check:generated
+      shell: bash
+
+    - run: pnpm run check:inventory
+      shell: bash
+
+    - run: pnpm run check:package-consumer
+      shell: bash
+
+    - run: pnpm run check:migration-debt
+      shell: bash
+
+    - run: pnpm run check:site-config
+      shell: bash
+
+    - run: pnpm run check:agent-surface
+      shell: bash
+
+    - run: pnpm run build
+      shell: bash
+
+    - run: pnpm run check:performance
+      shell: bash
+
+    - run: pnpm exec playwright install --with-deps chromium
+      shell: bash
+
+    - run: pnpm run test:browser
+      shell: bash

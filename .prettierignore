@@ -1,4 +1,6 @@
 /.angular
+/_site
+/.tmp
 /.local-notes
 /.pnpm-store
 /dist

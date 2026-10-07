@@ -1,0 +1,61 @@
+name: Archive documentation version
+
+# A release branch (release/v1, release/v2, ...) documents one older major version of
+# @kikita-labs/ui. Every push builds that branch for its own /<version id>/ directory, stores the
+# result as a release asset, and redeploys the site. Other versions are never rebuilt.
+on:
+  push:
+    branches: ['release/v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: archive-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/quality-gate
+
+      - name: Resolve the version this branch documents
+        id: version
+        run: echo "id=$(node tools/docs-site.mjs version-id)" >> "$GITHUB_OUTPUT"
+
+      - name: Require the archived path prefix
+        run: |
+          test "$(node tools/docs-site.mjs path-prefix)" = "/${{ steps.version.outputs.id }}" || {
+            echo "versionPathPrefix in docs-site-config.json must be /${{ steps.version.outputs.id }} on this branch."
+            exit 1
+          }
+
+      - name: Build for the archived base href
+        run: pnpm exec ng build --base-href "$(node tools/docs-site.mjs base-href)"
+
+      - run: pnpm run check:versioned-output
+
+      - name: Package the build
+        run: tar -czf "docs-${{ steps.version.outputs.id }}.tar.gz" -C dist/kikita-ui-docs/browser .
+
+      - name: Publish the build as a release asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="docs-${{ steps.version.outputs.id }}"
+          gh release view "$tag" > /dev/null 2>&1 || gh release create "$tag" \
+            --title "Documentation ${{ steps.version.outputs.id }}" \
+            --notes "Archived documentation build, published by .github/workflows/archive-docs.yml. Do not edit." \
+            --target "$GITHUB_SHA" \
+            --latest=false
+          gh release upload "$tag" "$tag.tar.gz" --clobber
+
+      - name: Redeploy the site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

@@ -10,9 +10,12 @@ permissions:
   pages: write
   id-token: write
 
+# One Pages deployment at a time. Archive workflows dispatch this workflow, so a deployment that
+# is already running finishes before the next one starts and never publishes a stale site over a
+# newer one.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -20,48 +23,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4
+      - uses: ./.github/actions/quality-gate
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
+      # The gate above builds for the site root so the browser suites can serve it. The published
+      # build must use the base href this branch is published under.
+      - name: Build for the published base href
+        run: pnpm exec ng build --base-href "$(node tools/docs-site.mjs base-href)"
 
-      - run: pnpm install --frozen-lockfile
+      - run: pnpm run check:versioned-output
 
-      - run: pnpm run format:check
+      - name: Download archived documentation versions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .tmp/archives
+          for id in $(node tools/docs-site.mjs archived-ids); do
+            mkdir -p ".tmp/archives/$id"
+            gh release download "docs-$id" --pattern "docs-$id.tar.gz" --dir .tmp --clobber
+            tar -xzf ".tmp/docs-$id.tar.gz" -C ".tmp/archives/$id"
+          done
 
-      - run: pnpm run lint
-
-      - run: pnpm run test
-
-      - run: pnpm run check:boundaries
-
-      - run: pnpm run check:generated
-
-      - run: pnpm run check:inventory
-
-      - run: pnpm run check:package-consumer
-
-      - run: pnpm run check:migration-debt
-
-      - run: pnpm run check:agent-surface
-
-      - run: pnpm run build
-
-      - run: pnpm run check:performance
-
-      - run: pnpm exec playwright install --with-deps chromium
-
-      - run: pnpm run test:browser
-
-      - run: pnpm exec ng build --base-href "/${{ github.event.repository.name }}/"
-
-      - run: cp dist/kikita-ui-docs/browser/index.html dist/kikita-ui-docs/browser/404.html
+      - name: Assemble the site
+        run: pnpm run assemble:site
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/kikita-ui-docs/browser
+          path: _site
 
   deploy:
     needs: build

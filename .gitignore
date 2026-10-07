@@ -2,6 +2,7 @@
 
 # Compiled output
 /dist
+/_site
 /tmp
 /.tmp
 /out-tsc
