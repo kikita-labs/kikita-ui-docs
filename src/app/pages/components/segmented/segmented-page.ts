@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 
 import { SEGMENTED_EXAMPLE_SOURCES } from '@generated/example-sources/segmented.generated';
+import {
+  SEGMENTED_COLOR_TOKEN_ROWS,
+  SEGMENTED_DEFAULTS,
+} from '@generated/library-tables/segmented.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
 import { BasicSegmentedExample } from './examples';
 import { SEGMENTED_API_ROWS } from './segmented.api-schema';
@@ -19,6 +25,8 @@ import {
 @Component({
   selector: 'app-segmented-page',
   imports: [
+    ProviderDefaultsSection,
+    TokenTablesSection,
     ApiTable,
     BasicSegmentedExample,
     CodeTabs,
@@ -33,6 +41,8 @@ import {
 export class SegmentedPage {
   protected readonly status = SEGMENTED_STATUS;
   protected readonly apiDescription = SEGMENTED_API_DESCRIPTION;
+  protected readonly defaults = SEGMENTED_DEFAULTS;
+  protected readonly colorTokenRows = SEGMENTED_COLOR_TOKEN_ROWS;
   protected readonly apiRows = SEGMENTED_API_ROWS;
   protected readonly importTabs = SEGMENTED_IMPORT_TABS;
   protected readonly basicTabs = SEGMENTED_EXAMPLE_SOURCES['basic-segmented-example'];

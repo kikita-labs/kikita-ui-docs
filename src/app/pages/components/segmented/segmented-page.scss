@@ -7,3 +7,7 @@
 .segmented-page__notes {
   @include doc-page-notes;
 }
+
+.segmented-page__note {
+  @include doc-page-note;
+}

@@ -10,9 +10,13 @@
     [snippet]="buildPlaygroundSnippet"
   >
     <kui-segmented
-      [(value)]="selected"
+      [value]="selected()"
+      (valueChange)="onValueChange($event)"
+      (touch)="onTouch()"
       aria-label="Project view"
       [size]="sizeOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [invalid]="invalidOf(playground.values())"
     >
       <button kuiSegment value="list">List</button>
       <button kuiSegment value="board">Board</button>
@@ -21,6 +25,8 @@
       </button>
     </kui-segmented>
   </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Segmented events" />
 
   <app-api-table label="Segmented API" [rows]="apiRows" />
   <p class="segmented-playground-page__note">{{ apiDescription }}</p>

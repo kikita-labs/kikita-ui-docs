@@ -4,7 +4,10 @@ import { KuiSegment, KuiSegmented, type KuiSize } from '@kikita-labs/ui';
 
 import {
   ApiPlayground,
+  createPlaygroundEventLog,
   definePlaygroundControls,
+  playgroundEvent,
+  PlaygroundEventLogView,
   type PlaygroundValues,
   serializePlaygroundAttributes,
 } from '@shared/docs-ui/api-playground';
@@ -22,6 +25,8 @@ const SEGMENTED_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['xs', 'sm', 'md', 'lg'],
     defaultValue: 'md',
   },
+  { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
+  { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
   { key: 'disabledTimeline', label: 'disabled timeline', kind: 'boolean', defaultValue: false },
 ] as const);
 
@@ -29,7 +34,7 @@ type SegmentedPlaygroundValues = PlaygroundValues<typeof SEGMENTED_PLAYGROUND_CO
 
 @Component({
   selector: 'app-segmented-playground-page',
-  imports: [ApiPlayground, ApiTable, KuiSegment, KuiSegmented],
+  imports: [ApiPlayground, ApiTable, KuiSegment, KuiSegmented, PlaygroundEventLogView],
   templateUrl: './segmented-playground-page.html',
   styleUrl: './segmented-playground-page.scss',
 })
@@ -37,6 +42,7 @@ export class SegmentedPlaygroundPage {
   protected readonly apiDescription = SEGMENTED_API_DESCRIPTION;
   protected readonly apiRows = SEGMENTED_API_ROWS;
   protected readonly selected = signal('list');
+  protected readonly eventLog = createPlaygroundEventLog();
   protected readonly playgroundControls = SEGMENTED_PLAYGROUND_CONTROLS;
 
   protected readonly buildPlaygroundSnippet = (
@@ -44,6 +50,9 @@ export class SegmentedPlaygroundPage {
   ): readonly CodeTab[] => {
     const attrString = serializePlaygroundAttributes([
       { name: 'size', value: values.size, defaultValue: 'md' },
+      { name: 'disabled', value: values.disabled },
+      { name: 'invalid', value: values.invalid },
+      playgroundEvent('touch', 'onTouch()'),
     ]);
     const disabledAttr = values.disabledTimeline ? ' disabled' : '';
 
@@ -62,6 +71,23 @@ export class SegmentedPlaygroundPage {
 
   protected sizeOf(values: SegmentedPlaygroundValues): KuiSize {
     return values.size;
+  }
+
+  protected disabledOf(values: SegmentedPlaygroundValues): boolean {
+    return values.disabled;
+  }
+
+  protected invalidOf(values: SegmentedPlaygroundValues): boolean {
+    return values.invalid;
+  }
+
+  protected onValueChange(value: string): void {
+    this.selected.set(value);
+    this.eventLog.log('valueChange', value);
+  }
+
+  protected onTouch(): void {
+    this.eventLog.log('touch', '');
   }
 
   protected disabledTimelineOf(values: SegmentedPlaygroundValues): boolean {

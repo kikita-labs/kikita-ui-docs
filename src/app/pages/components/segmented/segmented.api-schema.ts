@@ -17,9 +17,10 @@ export const SEGMENTED_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'size',
-    type: `'xs' | 'sm' | 'md' | 'lg'`,
-    defaultValue: `'md'`,
-    description: 'Control height and spacing for the whole segmented group.',
+    type: `'xs' | 'sm' | 'md' | 'lg' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Control height and spacing for the whole segmented group. Falls back to defaults.segmented.size, then the global defaults.size, then md.',
   },
   {
     name: 'disabled',
@@ -50,7 +51,7 @@ export const SEGMENTED_API_ROWS: readonly ApiTableRow[] = [
     type: 'void',
     defaultValue: '-',
     description:
-      'Emitted when a segment is selected; marks the control as touched in the form system.',
+      'Emitted whenever an enabled segment is selected, including one that was already selected; marks the control as touched in the form system. Focus and blur alone do not emit it.',
   },
   {
     name: 'button[kuiSegment].value',
@@ -63,5 +64,25 @@ export const SEGMENTED_API_ROWS: readonly ApiTableRow[] = [
     type: 'boolean',
     defaultValue: 'false',
     description: 'Disables one segment and removes it from keyboard selection.',
+  },
+  {
+    name: 'focus(options?)',
+    type: '(options?: FocusOptions) => void',
+    defaultValue: '-',
+    description:
+      'Focuses the selected segment, or the first enabled one when nothing is selected, so Signal Forms focusBoundControl() reaches the control. Does nothing while every segment is disabled.',
+  },
+  {
+    name: 'required',
+    type: '-',
+    defaultValue: '-',
+    description:
+      'Not available: a segmented control always shows one active segment, so it exposes no required state.',
+  },
+  {
+    name: 'KuiSegmentedOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.segmented: size.',
   },
 ];

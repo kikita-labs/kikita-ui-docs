@@ -44,7 +44,16 @@ describe('SegmentedPage', () => {
     const segments = [...root.querySelectorAll<HTMLButtonElement>('app-live-preview button')];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Segmented');
-    expect(sectionIds).toEqual(['import', 'usage', 'api', 'version-notes', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'provider-defaults',
+      'theming-tokens',
+      'api',
+      'version-notes',
+      'accessibility',
+      'migration',
+    ]);
     expect(group?.getAttribute('role')).toBe('radiogroup');
     expect(segments.map((segment) => segment.getAttribute('role'))).toContain('radio');
   });

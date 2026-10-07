@@ -105,14 +105,17 @@ export class BasicSegmentedExample {
 | --- | --- | --- | --- |
 | [(value)] | string | '' | Selected segment value. Implements FormValueControl for [formField] integration, or bind directly for standalone use. |
 | [(selected)] | string | '' | Deprecated alias for value, kept in sync with it. Use value instead; planned for removal in the next major version. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Control height and spacing for the whole segmented group. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Control height and spacing for the whole segmented group. Falls back to defaults.segmented.size, then the global defaults.size, then md. |
 | disabled | boolean | false | Disables every segment. Set by [formField] or directly. |
 | invalid | boolean | false | Marks the control as having validation errors. Set by [formField]. |
 | errors | readonly WithOptionalFieldTree<ValidationError>[] | [] | Current validation errors. Set by [formField]. |
 | touched | boolean | false | Whether the control has been touched. Set by [formField]. |
-| (touch) | void | - | Emitted when a segment is selected; marks the control as touched in the form system. |
+| (touch) | void | - | Emitted whenever an enabled segment is selected, including one that was already selected; marks the control as touched in the form system. Focus and blur alone do not emit it. |
 | button[kuiSegment].value | string | '' | Value emitted when the segment is selected. |
 | button[kuiSegment].disabled | boolean | false | Disables one segment and removes it from keyboard selection. |
+| focus(options?) | (options?: FocusOptions) => void | - | Focuses the selected segment, or the first enabled one when nothing is selected, so Signal Forms focusBoundControl() reaches the control. Does nothing while every segment is disabled. |
+| required | - | - | Not available: a segmented control always shows one active segment, so it exposes no required state. |
+| KuiSegmentedOptions | interface | - | Shape of defaults.segmented: size. |
 
 ## Accessibility
 

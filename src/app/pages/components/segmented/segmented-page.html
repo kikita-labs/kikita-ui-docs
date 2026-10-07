@@ -25,6 +25,10 @@
     <app-code-tabs [tabs]="basicTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Segmented" [colorRows]="colorTokenRows" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Segmented API" [rows]="apiRows" />
   </app-doc-section>
@@ -54,9 +58,46 @@
   >
     <ul class="segmented-page__notes">
       <li>The container renders <code>role="radiogroup"</code>.</li>
+      <li>
+        <code>ArrowLeft</code>, <code>ArrowRight</code>, <code>ArrowUp</code> and
+        <code>ArrowDown</code> move focus between segments; <code>Home</code> and
+        <code>End</code> focus the first and last; <code>Enter</code> and <code>Space</code> select
+        the focused segment.
+      </li>
       <li>Each segment button renders <code>role="radio"</code> and selection state.</li>
       <li>Disabled segments cannot be selected.</li>
+      <li>
+        <code>focus()</code> lands on the selected segment, so Signal Forms
+        <code>focusBoundControl()</code> reaches the control instead of the group host.
+      </li>
       <li>Use an accessible label on the segmented group when nearby text is not enough.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Segmented."
+  >
+    <ul class="segmented-page__notes">
+      <li>
+        The classes are <code>KuiSegmented</code> and <code>KuiSegment</code>; the
+        <code>Component</code> and <code>Directive</code> suffixes are gone.
+      </li>
+      <li>
+        The default size moved to
+        <code>provideKuiDefaults({{ '{' }} segmented: {{ '{' }} size {{ '}' }} {{ '}' }})</code>;
+        the input is now <code>undefined</code> until set.
+      </li>
+      <li>
+        <code>kui-segmented</code> gains <code>focus(options?)</code>, so Signal Forms
+        <code>focusBoundControl()</code> reaches the selected segment.
+      </li>
+      <li><code>ArrowUp</code> and <code>ArrowDown</code> now also move focus between segments.</li>
+      <li>
+        The focus ring has <code>--kui-seg-focus-ring-color</code>, and disabled segments use the
+        shared <code>--kui-opacity-disabled</code>.
+      </li>
     </ul>
   </app-doc-section>
 </article>

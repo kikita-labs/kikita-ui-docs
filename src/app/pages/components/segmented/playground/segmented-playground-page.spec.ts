@@ -69,6 +69,39 @@ describe('SegmentedPlaygroundPage', () => {
     expect(snippet?.textContent).toContain('value="timeline" disabled');
   });
 
+  it('disables and invalidates the group and adds the touch binding to the snippet', () => {
+    const root = fixture.nativeElement as HTMLElement;
+
+    toggleSwitch(root, 'disabled');
+    toggleSwitch(root, 'invalid');
+    fixture.detectChanges();
+
+    const group = root.querySelector<HTMLElement>(
+      '.api-playground-viewport__resizable kui-segmented',
+    );
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(group?.querySelectorAll('button:disabled')).toHaveLength(3);
+    expect(snippet?.textContent).toContain('disabled invalid (touch)="onTouch()"');
+  });
+
+  it('logs the value change and the touch when a segment is selected', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const board = [
+      ...root.querySelectorAll<HTMLButtonElement>(
+        '.api-playground-viewport__resizable kui-segmented button',
+      ),
+    ].find((button) => button.textContent?.trim() === 'Board');
+
+    board?.click();
+    fixture.detectChanges();
+
+    const log = root.querySelector('app-playground-event-log')?.textContent ?? '';
+
+    expect(log).toContain('valueChange');
+    expect(log).toContain('touch');
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });
