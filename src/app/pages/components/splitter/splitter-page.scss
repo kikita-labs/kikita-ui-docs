@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.splitter-page {
+  @include doc-page-layout;
+}
+
+.splitter-page__notes {
+  @include doc-page-notes;
+}
+
+.splitter-page__note {
+  @include doc-page-note;
+}

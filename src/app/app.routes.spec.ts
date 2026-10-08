@@ -23,6 +23,7 @@ const COMPONENT_SLUGS = [
   'dialog',
   'media-viewer',
   'drawer',
+  'splitter',
   'dropdown',
   'empty-state',
   'field',

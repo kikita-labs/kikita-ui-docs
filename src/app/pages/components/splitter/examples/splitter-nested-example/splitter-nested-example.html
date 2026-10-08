@@ -1,0 +1,17 @@
+<div class="splitter-example">
+  <kui-splitter orientation="vertical">
+    <kui-splitter-pane>
+      <kui-splitter orientation="horizontal">
+        <kui-splitter-pane [size]="25">
+          <div class="splitter-example__pane">Tree</div>
+        </kui-splitter-pane>
+        <kui-splitter-pane [size]="75">
+          <div class="splitter-example__pane">Editor</div>
+        </kui-splitter-pane>
+      </kui-splitter>
+    </kui-splitter-pane>
+    <kui-splitter-pane [size]="30" [minSize]="10" [collapsible]="true">
+      <div class="splitter-example__pane">Terminal</div>
+    </kui-splitter-pane>
+  </kui-splitter>
+</div>

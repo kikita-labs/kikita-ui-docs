@@ -1,0 +1,12 @@
+.splitter-example {
+  block-size: 300px;
+  inline-size: 100%;
+}
+
+.splitter-example__pane {
+  display: grid;
+  place-items: center;
+  block-size: 100%;
+  padding: var(--kui-space-3, 12px);
+  color: var(--kui-color-text);
+}

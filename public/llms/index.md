@@ -63,6 +63,7 @@
 - [Separator](https://kikita-labs.github.io/kikita-ui-docs/llms/components/separator.md): Tokenized horizontal or vertical separator primitive.
 - [Skeleton](https://kikita-labs.github.io/kikita-ui-docs/llms/components/skeleton.md): Loading placeholder with reduced-motion behavior.
 - [Slider](https://kikita-labs.github.io/kikita-ui-docs/llms/components/slider.md): Native range input styling with field and Signal Forms support.
+- [Splitter](https://kikita-labs.github.io/kikita-ui-docs/llms/components/splitter.md): Draggable multi-pane layout with resizable gutters.
 - [Stepper](https://kikita-labs.github.io/kikita-ui-docs/llms/components/stepper.md): Multi-step progress and navigation indicator.
 - [Switch](https://kikita-labs.github.io/kikita-ui-docs/llms/components/switch.md): Native switch control styling for binary settings.
 - [Table](https://kikita-labs.github.io/kikita-ui-docs/llms/components/table.md): Native table styling, sorting context, and selection cells.

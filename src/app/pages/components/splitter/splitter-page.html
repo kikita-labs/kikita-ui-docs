@@ -1,0 +1,124 @@
+<article class="splitter-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Splitter"
+    description="Draggable multi-pane layout with resizable gutters."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="Splitter follows the W3C ARIA window splitter pattern. The splitter creates one internal gutter between each pair of adjacent panes, so you never write gutters yourself."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Give the splitter a container with a height and project kui-splitter-pane elements. size is only the initial share: the splitter owns the live size, and drag and keyboard both write into it."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic splitter">
+      <app-basic-splitter-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+    <ul class="splitter-page__notes">
+      <li>
+        Pane sizes are percentages of the splitter's own container, computed with
+        <code>calc()</code> against the fixed gutter width, so panes and gutters always add up to
+        100%.
+      </li>
+      <li>
+        <code>minSize</code> (default 10) is a percentage floor that stops an accidental drag or
+        keyboard step from collapsing a pane to nothing.
+      </li>
+      <li>
+        A <code>collapsible</code> first or last pane gets a one-touch button on its gutter that
+        toggles it between its <code>minSize</code> and its size before collapsing;
+        <kbd>Enter</kbd> on the gutter does the same. A middle pane's flag is ignored.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="nested"
+    heading="Vertical and nested"
+    description="orientation vertical stacks the panes top to bottom. A splitter inside a pane needs no special API, since each splitter measures only its own container."
+  >
+    <app-live-preview previewLabel="Nested splitters">
+      <app-splitter-nested-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="nestedTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="multiple"
+    heading="Multiple panes and disabled"
+    description="Any number of panes works, with one gutter between each adjacent pair. A gutter only resizes the two panes touching it, each clamped by its own minSize. disabled removes every gutter from the tab order and ignores input."
+  >
+    <app-live-preview previewLabel="Three panes and a disabled splitter">
+      <app-splitter-multiple-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="multipleTabs" />
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Splitter" [geometryRows]="geometryTokenRows" />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Splitter API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="Each gutter holds a focusable separator, following the window splitter pattern."
+  >
+    <ul class="splitter-page__notes">
+      <li>
+        The gutter renders an inner <code>role="separator"</code>, focusable unless
+        <code>disabled</code>. The <code>kui-splitter-gutter</code> host has no role, and the
+        collapse button is a sibling of the separator because a focusable separator must not contain
+        an interactive control.
+      </li>
+      <li>
+        <code>aria-orientation</code> describes the gutter line: horizontal panes have a vertical
+        line, and vice versa.
+      </li>
+      <li>
+        <code>aria-valuenow</code>, <code>aria-valuemin</code> and <code>aria-valuemax</code> track
+        the pane before the gutter from the same value that drives the visual size, and
+        <code>aria-controls</code> points at that pane's generated id, which replaces any id set in
+        a template.
+      </li>
+      <li>
+        The collapse button is named by the <code>splitter.collapsePane</code> and
+        <code>splitter.expandPane</code> messages and stays out of the tab order; its keyboard
+        equivalent is <kbd>Enter</kbd> on the separator.
+      </li>
+      <li>
+        <kbd>Tab</kbd> focuses each gutter. The arrow keys along the layout axis resize the before
+        pane by 2%, or 10% with <kbd>Shift</kbd>. <kbd>Home</kbd> collapses it to its
+        <code>minSize</code> and <kbd>End</kbd> expands it to the maximum the after pane allows.
+        <kbd>Escape</kbd> cancels an active drag and restores the earlier sizes.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section heading="Known gaps" description="Documented limits of the installed package.">
+    <ul class="splitter-page__notes">
+      <li>
+        There is no custom thumb projection; only the default grip and the chevron button exist.
+      </li>
+      <li>Sizes are not persisted between sessions.</li>
+      <li>
+        The gutter strip is 8px, below the 44px touch-target guidance, as a desktop cursor-driven
+        control.
+      </li>
+      <li>A formal assistive-technology review has not been run.</li>
+    </ul>
+  </app-doc-section>
+</article>

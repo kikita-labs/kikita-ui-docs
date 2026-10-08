@@ -53,6 +53,7 @@ import { SELECT_DOCS_MANIFEST } from '@pages/components/select/select.docs-manif
 import { SEPARATOR_DOCS_MANIFEST } from '@pages/components/separator/separator.docs-manifest';
 import { SKELETON_DOCS_MANIFEST } from '@pages/components/skeleton/skeleton.docs-manifest';
 import { SLIDER_DOCS_MANIFEST } from '@pages/components/slider/slider.docs-manifest';
+import { SPLITTER_DOCS_MANIFEST } from '@pages/components/splitter/splitter.docs-manifest';
 import { STEPPER_DOCS_MANIFEST } from '@pages/components/stepper/stepper.docs-manifest';
 import { SWITCH_DOCS_MANIFEST } from '@pages/components/switch/switch.docs-manifest';
 import { TABLE_DOCS_MANIFEST } from '@pages/components/table/table.docs-manifest';
@@ -177,6 +178,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     DIALOG_DOCS_MANIFEST,
     MEDIA_VIEWER_DOCS_MANIFEST,
     DRAWER_DOCS_MANIFEST,
+    SPLITTER_DOCS_MANIFEST,
     DROPDOWN_DOCS_MANIFEST,
     SEPARATOR_DOCS_MANIFEST,
     STEPPER_DOCS_MANIFEST,

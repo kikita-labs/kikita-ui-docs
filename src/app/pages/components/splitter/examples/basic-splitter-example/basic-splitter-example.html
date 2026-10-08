@@ -1,0 +1,11 @@
+<div class="splitter-example">
+  <kui-splitter (sizesChange)="onResize($event)">
+    <kui-splitter-pane [size]="30" [minSize]="15" [collapsible]="true">
+      <div class="splitter-example__pane">Files</div>
+    </kui-splitter-pane>
+    <kui-splitter-pane [size]="70" [minSize]="30">
+      <div class="splitter-example__pane">Editor</div>
+    </kui-splitter-pane>
+  </kui-splitter>
+</div>
+<p>Sizes: {{ sizes().join(' / ') }}</p>

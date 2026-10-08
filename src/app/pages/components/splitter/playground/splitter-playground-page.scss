@@ -1,0 +1,26 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.splitter-playground-page {
+  @include playground-page-layout;
+}
+
+.splitter-playground-page__header {
+  @include playground-page-header;
+}
+
+.splitter-playground-page__note {
+  @include playground-page-note;
+}
+
+.splitter-playground-page__stage {
+  block-size: 260px;
+  inline-size: 100%;
+}
+
+.splitter-playground-page__pane {
+  display: grid;
+  place-items: center;
+  block-size: 100%;
+  padding: var(--kui-space-3, 12px);
+  color: var(--kui-color-text);
+}

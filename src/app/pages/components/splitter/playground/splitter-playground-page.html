@@ -1,0 +1,35 @@
+<article class="splitter-playground-page">
+  <div class="splitter-playground-page__header">
+    <h1>Splitter &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Splitter playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <div class="splitter-playground-page__stage">
+      <kui-splitter
+        [orientation]="orientationOf(playground.values())"
+        [disabled]="disabledOf(playground.values())"
+        (sizesChange)="onResize($event)"
+      >
+        @for (number of paneNumbers(playground.values()); track number) {
+          <kui-splitter-pane
+            [size]="sizeOf(playground.values(), number)"
+            [minSize]="minSizeOf(playground.values())"
+            [collapsible]="collapsibleOf(playground.values(), number)"
+          >
+            <div class="splitter-playground-page__pane">Pane {{ number }}</div>
+          </kui-splitter-pane>
+        }
+      </kui-splitter>
+    </div>
+  </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Splitter events" />
+
+  <app-api-table label="Splitter API" [rows]="apiRows" />
+  <p class="splitter-playground-page__note">{{ apiDescription }}</p>
+</article>

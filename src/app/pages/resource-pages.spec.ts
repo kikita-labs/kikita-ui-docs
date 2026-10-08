@@ -134,7 +134,7 @@ describe('foundation resource pages', () => {
     const root = createPage(ComponentsOverviewPage).nativeElement as HTMLElement;
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Component overview');
-    expect(root.querySelectorAll('.components-overview-page__card')).toHaveLength(54);
+    expect(root.querySelectorAll('.components-overview-page__card')).toHaveLength(55);
     expect(root.querySelectorAll('.components-overview-page__category')).toHaveLength(5);
   });
 });
