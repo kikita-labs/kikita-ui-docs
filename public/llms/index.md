@@ -18,6 +18,7 @@
 ## Components
 
 - [Accordion](https://kikita-labs.github.io/kikita-ui-docs/llms/components/accordion.md): Disclosure component for grouped expandable content.
+- [Alert](https://kikita-labs.github.io/kikita-ui-docs/llms/components/alert.md): Inline notification embedded in the page content flow.
 - [Avatar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/avatar.md): User or entity identity with image, initials, and status.
 - [Badge](https://kikita-labs.github.io/kikita-ui-docs/llms/components/badge.md): Compact status or metadata marker.
 - [Breadcrumbs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md): Hierarchy trail.

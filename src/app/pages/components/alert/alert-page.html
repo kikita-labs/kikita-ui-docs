@@ -1,0 +1,118 @@
+<article class="alert-page">
+  <app-page-header
+    eyebrow="Feedback"
+    heading="Alert"
+    description="Inline notification embedded in the page content flow."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="Import the alert component. Import the slot directives only for custom content."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Unlike kuiToast(), an alert does not float above the interface, does not dismiss itself on a timer and needs no body region. It renders next to the content it relates to."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Alert appearances">
+      <app-basic-alert-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="shapes"
+    heading="Shapes and sizes"
+    description="shape reuses the button vocabulary restricted to soft (default), outline and solid. size sm tightens padding and gap."
+  >
+    <app-live-preview previewLabel="Alert shapes">
+      <app-alert-shape-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="shapeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="actions"
+    heading="Action and dismissal"
+    description="The alert is controlled: (closed) only notifies you that the close button was clicked, so render it conditionally to hide it. actionLabel adds an inline ghost button that emits (action)."
+  >
+    <app-live-preview previewLabel="Alert with action and close">
+      <app-alert-action-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="actionTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="custom-content"
+    heading="Custom content"
+    description="Project kuiAlertTitle, kuiAlertIcon, kuiAlertMessage or kuiAlertActions for richer content. A projected slot takes over its area entirely and the matching input is ignored."
+  >
+    <app-live-preview previewLabel="Alert custom content">
+      <app-alert-custom-content-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="customTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="banner"
+    heading="Banner"
+    description="banner stretches the alert to the full container width, removes the corner radius and reduces the border to a single bottom seam. Use it for a system-wide message above the page content."
+  >
+    <app-live-preview previewLabel="Alert banner">
+      <app-alert-banner-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="bannerTabs" />
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Alert" [geometryRows]="geometryTokenRows" />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Alert API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="The alert is a static region, not an overlay, and its announcement depends on severity."
+  >
+    <ul class="alert-page__notes">
+      <li>
+        <code>appearance="danger"</code> renders <code>role="alert"</code> with
+        <code>aria-live="assertive"</code>; every other appearance uses
+        <code>role="status"</code> with <code>aria-live="polite"</code>. Both are
+        <code>aria-atomic="true"</code>.
+      </li>
+      <li>The alert itself is not in the tab order; only its action and close buttons are.</li>
+      <li>
+        The close button has an accessible name from <code>closeLabel</code> or the
+        <code>alert.close</code> message.
+      </li>
+      <li>
+        Severity is never colour-only: info, success, warning and danger pair an icon with text.
+        neutral has no icon because it carries no severity.
+      </li>
+      <li><code>Escape</code> does not close an alert.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section heading="Known gaps" description="Documented limits of the installed package.">
+    <ul class="alert-page__notes">
+      <li>
+        The close button hit target is 28px (<code>kuiIconButton size="xs"</code>), below the 44px
+        platform recommendation. The toast shares this limitation.
+      </li>
+      <li>
+        A formal assistive-technology review of the alert has not been run yet; see
+        <code>state-coverage.md</code> in the library repository.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -7,6 +7,7 @@ import type {
 import { defineDocsRegistry, docsComponentPath } from '@core/docs-registry';
 import { AI_SUPPORT_DOCS_MANIFEST } from '@pages/ai-support/ai-support.docs-manifest';
 import { ACCORDION_DOCS_MANIFEST } from '@pages/components/accordion/accordion.docs-manifest';
+import { ALERT_DOCS_MANIFEST } from '@pages/components/alert/alert.docs-manifest';
 import { AVATAR_DOCS_MANIFEST } from '@pages/components/avatar/avatar.docs-manifest';
 import { BADGE_DOCS_MANIFEST } from '@pages/components/badge/badge.docs-manifest';
 import { BREADCRUMBS_DOCS_MANIFEST } from '@pages/components/breadcrumbs/breadcrumbs.docs-manifest';
@@ -153,6 +154,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     TOOLTIP_DOCS_MANIFEST,
     TOAST_DOCS_MANIFEST,
     EMPTY_STATE_DOCS_MANIFEST,
+    ALERT_DOCS_MANIFEST,
     PROGRESS_DOCS_MANIFEST,
     CARD_DOCS_MANIFEST,
     TABS_DOCS_MANIFEST,

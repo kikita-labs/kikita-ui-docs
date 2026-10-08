@@ -1,0 +1,9 @@
+.alert-example {
+  display: grid;
+  gap: var(--kui-space-3);
+  justify-items: start;
+}
+
+.alert-example kui-alert {
+  inline-size: 100%;
+}

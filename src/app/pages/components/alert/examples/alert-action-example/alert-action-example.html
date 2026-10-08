@@ -1,0 +1,16 @@
+<div class="alert-example">
+  @if (!dismissed()) {
+    <kui-alert
+      appearance="warning"
+      title="Session expiring"
+      message="Your access token expires in 3 days. Renewed {{ renewals() }} times."
+      actionLabel="Renew"
+      (action)="renew()"
+      (closed)="dismissed.set(true)"
+    />
+  } @else {
+    <button kuiButton shape="outline" type="button" (click)="restore()">
+      Show the alert again
+    </button>
+  }
+</div>

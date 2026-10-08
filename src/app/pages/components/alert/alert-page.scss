@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.alert-page {
+  @include doc-page-layout;
+}
+
+.alert-page__notes {
+  @include doc-page-notes;
+}
+
+.alert-page__note {
+  @include doc-page-note;
+}

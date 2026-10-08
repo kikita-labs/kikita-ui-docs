@@ -182,10 +182,10 @@ export class BreadcrumbsSizeExample {}
 <div class="breadcrumbs-collapse-example">
   <nav aria-label="Truncated breadcrumb">
     <ol kuiBreadcrumbs class="breadcrumbs-collapse-example__trail">
-      <li><a kuiBreadcrumbItem href="/catalog">Catalog</a></li>
+      <li><a kuiBreadcrumbItem href="#catalog">Catalog</a></li>
       <li kuiBreadcrumbSeparator></li>
       <li>
-        <a kuiBreadcrumbItem class="kui-breadcrumb-truncate" href="/catalog/audio">
+        <a kuiBreadcrumbItem class="kui-breadcrumb-truncate" href="#audio">
           Audio equipment and accessories
         </a>
       </li>
@@ -196,7 +196,7 @@ export class BreadcrumbsSizeExample {}
 
   <nav aria-label="Collapsed breadcrumb">
     <ol kuiBreadcrumbs>
-      <li><a kuiBreadcrumbItem href="/catalog">Catalog</a></li>
+      <li><a kuiBreadcrumbItem href="#catalog">Catalog</a></li>
       <li kuiBreadcrumbSeparator></li>
       <li>
         <button
@@ -214,8 +214,8 @@ export class BreadcrumbsSizeExample {}
   </nav>
 
   <kui-menu #hiddenLevels ariaLabel="Hidden levels">
-    <a kuiMenuItem href="/catalog/electronics">Electronics</a>
-    <a kuiMenuItem href="/catalog/electronics/audio">Audio</a>
+    <a kuiMenuItem href="#electronics">Electronics</a>
+    <a kuiMenuItem href="#audio">Audio</a>
   </kui-menu>
 </div>
 ```

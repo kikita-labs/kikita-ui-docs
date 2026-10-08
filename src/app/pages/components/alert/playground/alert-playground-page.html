@@ -1,0 +1,32 @@
+<article class="alert-playground-page">
+  <div class="alert-playground-page__header">
+    <h1>Alert &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Alert playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-alert
+      [appearance]="appearanceOf(playground.values())"
+      [shape]="shapeOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [title]="titleOf(playground.values())"
+      [message]="messageOf(playground.values())"
+      [actionLabel]="actionLabelOf(playground.values())"
+      [closeLabel]="closeLabelOf(playground.values())"
+      [banner]="bannerOf(playground.values())"
+      [showIcon]="showIconOf(playground.values())"
+      [closable]="closableOf(playground.values())"
+      (action)="onAction()"
+      (closed)="onClosed()"
+    />
+  </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Alert events" />
+
+  <app-api-table label="Alert API" [rows]="apiRows" />
+  <p class="alert-playground-page__note">{{ apiDescription }}</p>
+</article>

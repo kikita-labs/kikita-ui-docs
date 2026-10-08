@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 
 const COMPONENT_SLUGS = [
   'accordion',
+  'alert',
   'avatar',
   'badge',
   'breadcrumbs',

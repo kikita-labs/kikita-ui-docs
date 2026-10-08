@@ -29,7 +29,7 @@ export const FIELD_EXAMPLE_SOURCES = {
       label: "HTML",
       filename: "field-projected-example.html",
       language: "html",
-      code: "<div class=\"field-projected-example\">\n  <kui-field label=\"Email\">\n    <input kuiInput type=\"email\" placeholder=\"mira@company.dev\" />\n    <p kuiHint>Use your work email</p>\n    <p kuiError>Email is required</p>\n  </kui-field>\n\n  <kui-field label=\"API key\">\n    <input kuiInput />\n    <p kuiHint class=\"kui-field-message\">\n      <span>Stored encrypted. <a href=\"/foundations/accessibility\">Learn more</a>.</span>\n    </p>\n  </kui-field>\n</div>",
+      code: "<div class=\"field-projected-example\">\n  <kui-field label=\"Email\">\n    <input kuiInput type=\"email\" placeholder=\"mira@company.dev\" />\n    <p kuiHint>Use your work email</p>\n    <p kuiError>Email is required</p>\n  </kui-field>\n\n  <kui-field label=\"API key\">\n    <input kuiInput />\n    <p kuiHint class=\"kui-field-message\">\n      <span>Stored encrypted. <a href=\"#encryption\">Learn more</a>.</span>\n    </p>\n  </kui-field>\n</div>",
     },
     {
       label: "TS",

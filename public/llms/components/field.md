@@ -94,7 +94,7 @@ export class BasicFieldExample {}
   <kui-field label="API key">
     <input kuiInput />
     <p kuiHint class="kui-field-message">
-      <span>Stored encrypted. <a href="/foundations/accessibility">Learn more</a>.</span>
+      <span>Stored encrypted. <a href="#encryption">Learn more</a>.</span>
     </p>
   </kui-field>
 </div>

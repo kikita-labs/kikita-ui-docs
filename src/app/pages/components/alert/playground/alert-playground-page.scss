@@ -1,0 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.alert-playground-page {
+  @include playground-page-layout;
+}
+
+.alert-playground-page__header {
+  @include playground-page-header;
+}
+
+.alert-playground-page__note {
+  @include playground-page-note;
+}
