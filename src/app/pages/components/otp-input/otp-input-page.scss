@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.otp-input-page {
+  @include doc-page-layout;
+}
+
+.otp-input-page__notes {
+  @include doc-page-notes;
+}
+
+.otp-input-page__note {
+  @include doc-page-note;
+}

@@ -57,6 +57,7 @@ Important notes:
 - [Media Viewer](https://kikita-labs.github.io/kikita-ui-docs/llms/components/media-viewer.md): Fullscreen photo lightbox with navigation, thumbnails and zoom.
 - [Menu](https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md): Anchored command menu with keyboard focus behavior.
 - [Number Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md): Number input states with compact variant options.
+- [OTP Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/otp-input.md): Row of single-character cells for a one-time code or PIN.
 - [Popover](https://kikita-labs.github.io/kikita-ui-docs/llms/components/popover.md): Anchored content surface for contextual UI.
 - [Progress](https://kikita-labs.github.io/kikita-ui-docs/llms/components/progress.md): Progress status primitive for determinate and indeterminate work.
 - [Radio](https://kikita-labs.github.io/kikita-ui-docs/llms/components/radio.md): Native radio control styling for exclusive choices.

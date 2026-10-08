@@ -1,0 +1,35 @@
+<article class="otp-input-playground-page">
+  <div class="otp-input-playground-page__header">
+    <h1>OTP Input &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="OTP input playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-otp-input
+      [value]="code()"
+      (valueChange)="onValueChange($event)"
+      (complete)="onComplete($event)"
+      (touch)="onTouch()"
+      [length]="lengthOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [mask]="maskOf(playground.values())"
+      [integerOnly]="integerOnlyOf(playground.values())"
+      [autoFocus]="autoFocusOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+      [readonly]="readonlyOf(playground.values())"
+      [required]="requiredOf(playground.values())"
+      [loading]="loadingOf(playground.values())"
+      [invalid]="invalidOf(playground.values())"
+    />
+  </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="OTP input events" />
+
+  <app-api-table label="OTP Input API" [rows]="apiRows" />
+  <p class="otp-input-playground-page__note">{{ apiDescription }}</p>
+</article>

@@ -1,0 +1,10 @@
+<div class="otp-example">
+  <kui-otp-input mask [length]="4" [(value)]="pin" ariaLabel="PIN code" />
+  <kui-otp-input
+    [integerOnly]="false"
+    [length]="8"
+    size="sm"
+    [(value)]="backupCode"
+    ariaLabel="Backup code"
+  />
+</div>

@@ -1,0 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.otp-input-playground-page {
+  @include playground-page-layout;
+}
+
+.otp-input-playground-page__header {
+  @include playground-page-header;
+}
+
+.otp-input-playground-page__note {
+  @include playground-page-note;
+}

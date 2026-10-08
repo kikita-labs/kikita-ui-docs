@@ -34,6 +34,7 @@ const COMPONENT_SLUGS = [
   'loader',
   'menu',
   'number-input',
+  'otp-input',
   'popover',
   'progress',
   'radio',

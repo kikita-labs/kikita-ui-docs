@@ -1,0 +1,12 @@
+<div class="otp-example">
+  <kui-field
+    label="Code from email"
+    hint="We sent a 6-digit code to your email. Try 123456."
+    [error]="wrong() ? 'Code is wrong or expired' : ''"
+  >
+    <kui-otp-input [(value)]="code" [loading]="verifying()" [invalid]="wrong()" />
+  </kui-field>
+  <button kuiButton shape="outline" size="sm" type="button" (click)="toggleVerifying()">
+    Toggle loading
+  </button>
+</div>

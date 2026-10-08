@@ -1,0 +1,120 @@
+<article class="otp-input-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="OTP Input"
+    description="Row of single-character cells for a one-time code or PIN."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="OTP Input is a standalone component. Each cell is a native input styled like Input; the component owns roving keyboard navigation, paste distribution and the composite value."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Bind value with a signal. (complete) fires once with the completed code when every cell becomes filled, and again only after the code became incomplete and was refilled."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic OTP input">
+      <app-basic-otp-input-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+    <p class="otp-input-page__note">
+      <code>length</code> defaults to 6. <code>size</code> uses the <code>xs</code> to
+      <code>lg</code> scale of Input. <code>autoFocus</code> focuses the first cell after render.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="variants"
+    heading="Mask and backup codes"
+    description="mask renders every cell as a password input. integerOnly false accepts letters and digits, uppercased, for backup codes."
+  >
+    <app-live-preview previewLabel="PIN and backup code inputs">
+      <app-otp-input-variants-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="variantsTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="field"
+    heading="Field, loading and validation"
+    description="Label, hint, error and the required state stay kui-field's job. loading disables and blurs the cells and centers a Loader; there is no built-in success or error status, since a server result is unknown to the component."
+  >
+    <app-live-preview previewLabel="OTP input in a field">
+      <app-otp-input-field-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="fieldTabs" />
+    <ul class="otp-input-page__notes">
+      <li>
+        Inside <code>kui-field</code> the first cell adopts the field control id, so the label
+        targets it and a click on the label focuses it. The hint and error reach the group through
+        <code>aria-describedby</code>.
+      </li>
+      <li>
+        <code>kui-otp-input</code> implements <code>FormValueControl&lt;string&gt;</code>: put
+        <code>[formField]</code> on it, not on <code>kui-field</code>. A required validator message
+        and the invalid cell styling stay hidden until the field is touched.
+      </li>
+      <li>
+        <code>focus(options?)</code> moves focus to the first cell that can take focus, so
+        <code>field().focusBoundControl()</code> works.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="OTP Input API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="The group is named, each cell is positioned, and keyboard movement stays inside the group."
+  >
+    <ul class="otp-input-page__notes">
+      <li>
+        The group is <code>role="group"</code> with the <code>ariaLabel</code> or the
+        <code>otpInput.label</code> message; each cell has its own <code>Digit N of M</code> name
+        from the <code>otpInput.digit</code> message.
+      </li>
+      <li>
+        Typing a valid character fills the cell and moves to the next empty one.
+        <kbd>Backspace</kbd> on an empty cell clears and refocuses the previous cell.
+        <kbd>ArrowLeft</kbd> and <kbd>ArrowRight</kbd> move without changing values, and
+        <kbd>Home</kbd> and <kbd>End</kbd> jump to the first and last cell. <kbd>Tab</kbd> leaves
+        the whole group.
+      </li>
+      <li>
+        <kbd>Ctrl</kbd> or <kbd>Cmd</kbd> + <kbd>V</kbd> distributes a pasted code from the first
+        cell, whichever cell had focus.
+      </li>
+      <li>
+        The first cell carries <code>autocomplete="one-time-code"</code> for SMS autofill on iOS and
+        Android.
+      </li>
+      <li>
+        <code>disabled</code> and <code>loading</code> use the native attribute, so the cells leave
+        the tab order. <code>readonly</code> also blocks paste and the cross-cell Backspace clear.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section heading="Known gaps" description="Documented limits of the installed package.">
+    <ul class="otp-input-page__notes">
+      <li>
+        Clearing a cell while later cells stay filled collapses those positions in the joined
+        <code>value</code>, as in other OTP inputs.
+      </li>
+      <li>There is no built-in success or error status icon after verification.</li>
+      <li>A formal assistive-technology review has not been run.</li>
+    </ul>
+  </app-doc-section>
+</article>

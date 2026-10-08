@@ -1,0 +1,4 @@
+<div class="otp-example">
+  <kui-otp-input [(value)]="code" (complete)="verify($event)" />
+  <span>Entered: {{ code() || 'nothing' }}. Completed: {{ verified() || 'not yet' }}</span>
+</div>
