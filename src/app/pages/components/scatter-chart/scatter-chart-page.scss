@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.scatter-chart-page {
+  @include doc-page-layout;
+}
+
+.scatter-chart-page__notes {
+  @include doc-page-notes;
+}
+
+.scatter-chart-page__note {
+  @include doc-page-note;
+}

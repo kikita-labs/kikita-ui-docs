@@ -1,0 +1,28 @@
+<article class="scatter-chart-playground-page">
+  <div class="scatter-chart-playground-page__header">
+    <h1>Scatter Chart &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Scatter Chart playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-scatter-chart
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [series]="dataOf(playground.values())"
+      [bubble]="bubbleOf(playground.values())"
+      [axes]="axesOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [loading]="loadingOf(playground.values())"
+      [legend]="legendOf(playground.values())"
+      [valueFormat]="valueFormatOf(playground.values())"
+      [tooltip]="tooltipOf(playground.values())"
+      [messages]="messagesOf(playground.values())"
+    />
+  </app-api-playground>
+
+  <app-api-table label="Scatter Chart API" [rows]="apiRows" />
+  <p class="scatter-chart-playground-page__note">{{ apiDescription }}</p>
+</article>

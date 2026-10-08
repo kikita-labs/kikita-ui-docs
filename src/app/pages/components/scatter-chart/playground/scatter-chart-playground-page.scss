@@ -1,0 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.scatter-chart-playground-page {
+  @include playground-page-layout;
+}
+
+.scatter-chart-playground-page__header {
+  @include playground-page-header;
+}
+
+.scatter-chart-playground-page__note {
+  @include playground-page-note;
+}

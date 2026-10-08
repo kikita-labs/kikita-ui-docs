@@ -1,0 +1,67 @@
+<article class="scatter-chart-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Scatter Chart"
+    description="Scatter and bubble chart for two numeric measures."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="The chart is a standalone component. Import the styles once for the whole family."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Pass series of { x, y } points. There are no categories: both axes are numeric domains computed from the data extent."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic scatter chart">
+      <app-basic-scatter-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="bubble"
+    heading="Bubble"
+    description="bubble reads r from each point as its radius in CSS pixels instead of a fixed dot size. It is a flag on the scatter chart and the radius is not clamped, so pass one that fits the plot."
+  >
+    <app-live-preview previewLabel="Bubble chart">
+      <app-scatter-bubble-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="bubbleTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="states"
+    heading="State examples"
+    description="loading shows a loose cluster of shimmering dots; a series input without points shows the empty composition."
+  >
+    <app-live-preview previewLabel="Loading and empty scatter charts">
+      <app-scatter-states-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="statesTabs" />
+  </app-doc-section>
+
+  <app-chart-behavior-sections type="scatter" />
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Scatter Chart"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Scatter Chart API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-chart-accessibility-sections type="scatter" />
+</article>
