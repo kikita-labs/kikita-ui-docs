@@ -1,0 +1,199 @@
+<article class="internationalization-page">
+  <app-page-header
+    eyebrow="Foundation"
+    heading="Internationalization"
+    description="Locale and messages are two independent settings: the locale formats dates, numbers and plurals, the messages translate the text the library owns."
+  />
+
+  <app-doc-section
+    heading="Locale and messages"
+    description="An application can change either one without the other: German dates with English labels, or French messages with the locale of the request. The library ships English only."
+  >
+    <app-api-table label="Locale and messages" [rows]="settingsRows" />
+
+    <p class="internationalization-page__note">
+      A translation is a typed object that your application owns, or a community package provides.
+      <code>KuiMessages</code> is the contract for it and <code>KUI_ENGLISH_MESSAGES</code> is the
+      complete English pack.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Quick start"
+    description="Set the locale and a partial messages layer in the root provider. Only the keys you write change; every other key keeps its English default."
+  >
+    <app-code-tabs [tabs]="quickTabs" />
+
+    <p class="internationalization-page__note">
+      A message is a string, or a function with one named parameter object for text that depends on
+      values. A group you leave out stays English.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Follow the language at runtime"
+    description="Pass a Signal or a function. The library re-renders its labels when the signal changes and nothing is recreated."
+  >
+    <app-code-tabs [tabs]="runtimeTabs" />
+
+    <ul class="internationalization-page__notes">
+      <li>
+        <code>locale</code> and <code>messages</code> also accept a plain function; it runs in an
+        injection context, so it can <code>inject()</code> services.
+      </li>
+      <li>
+        Angular <code>LOCALE_ID</code> is not read implicitly, because it cannot tell "unset" from
+        <code>en-US</code>. Use the last tab to follow it.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Override a subtree or one instance"
+    description="Levels and per-instance inputs let one part of the page differ without affecting another."
+  >
+    <app-code-tabs [tabs]="subtreeTabs" />
+
+    <ul class="internationalization-page__notes">
+      <li>
+        <code>provideKuiI18n</code>, <code>provideKuiLocale</code> and
+        <code>provideKuiMessages</code> add a level to a component, a route or an environment
+        injector. A level inherits the locale and messages of its parent and changes only what it
+        names; two subtrees never affect each other.
+      </li>
+      <li>
+        Explicit label inputs (<code>ariaLabel</code>, <code>closeLabel</code>, <code>label</code>,
+        <code>swatchLabel</code>, <code>errorLabel</code>, <code>placeholder</code>,
+        <code>emptyText</code>, <code>removeLabel</code> and similar) keep working and win over
+        messages.
+      </li>
+      <li>
+        The <code>messages</code> input exists on the components that own four or more messages:
+        Calendar, Calendar Range, Carousel, the charts, Color Input, Command Palette, Date Picker,
+        File Upload, Pagination and Time Picker. Calendar and Calendar Range also take a
+        <code>locale</code> input.
+      </li>
+      <li>
+        Per-call data does the same for the imperative openers:
+        <code>kuiMediaViewer({{ '{' }} messages {{ '}' }})</code> and
+        <code>kuiConfirm({{ '{' }} confirmLabel, cancelLabel {{ '}' }})</code>. For every other
+        component use a subtree level.
+      </li>
+      <li>
+        Precedence: explicit label input, then <code>messages</code> input, then the nearest level,
+        then outer levels, then <code>provideKikitaUi</code>, then English. Merging is per group and
+        per key; <code>undefined</code> inherits and an empty string is a real value.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Writing a translation"
+    description="Copy KUI_ENGLISH_MESSAGES, translate the values and let the compiler check every key."
+  >
+    <app-api-table label="Helpers passed to function messages" [rows]="helpersRows" />
+
+    <app-code-tabs [tabs]="pluralTabs" />
+
+    <ul class="internationalization-page__notes">
+      <li>
+        Messages are text only; do not put HTML in them. Text that you pass to a component (titles,
+        option and tab labels, error text, tooltip content, <code>acceptLabel</code>) is yours and
+        is never translated by the library.
+      </li>
+      <li>
+        Messages are plain functions, so any translator fits without a library dependency: wrap it
+        in a function and keep it reactive. This documentation site keeps the Kikita UI messages in
+        its own catalogues and converts them with a short adapter, which is a reference
+        implementation and not a library API.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Where the locale comes from"
+    description="The locale is resolved from the nearest source and checked against the runtime Intl."
+  >
+    <ul class="internationalization-page__notes">
+      <li>
+        Order: Calendar <code>locale</code> input, nearest level,
+        <code>provideKikitaUi({{ '{' }} locale {{ '}' }})</code>, then <code>KUI_LOCALE</code>.
+      </li>
+      <li>
+        <code>KUI_LOCALE</code> resolves to the first usable <code>Accept-Language</code> language
+        of the request on the server, hands it to the browser through <code>TransferState</code> so
+        the first client render matches the server HTML, and falls back to
+        <code>navigator.language</code> and then <code>en-US</code>. The host locale is never read
+        on the server.
+      </li>
+      <li>
+        Responses vary by <code>Accept-Language</code>: a cache in front of the server must send
+        <code>Vary: Accept-Language</code>, or pin a locale with <code>provideKuiLocale</code>.
+      </li>
+      <li>
+        A requested tag is canonicalized and checked against the runtime <code>Intl</code>; the
+        fallback chain is the full tag, then language and script, then language, then
+        <code>en-US</code>. Development builds warn once on a fallback. The server needs full ICU
+        data (the default in Node 13 and later), otherwise a locale such as <code>ru-RU</code> can
+        fall back on the server and render differently from the browser.
+      </li>
+      <li>
+        Locale and messages are plain data held per injector, and the formatter caches live in the
+        <code>KuiI18n</code> instance, so one request never sees another. A
+        <code>Signal</code> source that loads asynchronously should resolve before the first render
+        or be provided with the transfer cache.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="What the locale controls"
+    description="Each area below follows the resolved locale."
+  >
+    <app-api-table label="Areas controlled by the locale" [rows]="areasRows" />
+
+    <ul class="internationalization-page__notes">
+      <li>
+        Dates are formatted in the Gregorian calendar with Latin digits whatever the locale default
+        is, and calendar names are taken from UTC midnight, so the time zone never moves a day.
+      </li>
+      <li>
+        Right-to-left layouts, native non-Latin numerals and non-Gregorian calendars are not
+        supported in 2.0. Text remains translatable in those languages, but layout and digits follow
+        the left-to-right Latin rules.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility and testing"
+    description="Accessible names come from the same messages as the visible text."
+  >
+    <ul class="internationalization-page__notes">
+      <li>
+        A translation changes visible text and accessible names together, and every name is
+        non-empty by default.
+      </li>
+      <li>
+        The library does not set <code>lang</code> or <code>dir</code>. When the language of the
+        messages differs from the page language, mark the document or the subtree that carries the
+        scope with <code>lang</code> (WCAG 2.2 SC 3.1.2).
+      </li>
+      <li>
+        Calendar day buttons are named with the full localized date and the grid, month and year
+        controls with messages, so a screen reader gets the context a bare day number lacks.
+      </li>
+      <li>
+        To test a translation, wrap every message of the English pack in a marker and render your
+        screens: an accessible name without the marker bypasses the message map.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Reference"
+    description="The public API of the locale and messages layer."
+  >
+    <app-api-table label="Internationalization API" [rows]="referenceRows" />
+  </app-doc-section>
+</article>

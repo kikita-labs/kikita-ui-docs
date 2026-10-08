@@ -19,6 +19,12 @@ import {
   INSTALLATION_OPTION_ROWS,
   INSTALLATION_REGISTRY_TABS,
 } from './installation/installation.docs-content';
+import {
+  INTERNATIONALIZATION_PLURAL_TABS,
+  INTERNATIONALIZATION_QUICK_TABS,
+  INTERNATIONALIZATION_RUNTIME_TABS,
+  INTERNATIONALIZATION_SUBTREE_TABS,
+} from './internationalization/internationalization.docs-content';
 import { MIGRATION_AUTOMATIC_TABS } from './migration/migration.docs-content';
 import {
   THEMING_CONTRACT_TABS,
@@ -33,6 +39,10 @@ import {
 } from './tokens/tokens.docs-content';
 
 const ALL_FOUNDATION_CODE_TABS: readonly CodeTab[] = [
+  ...INTERNATIONALIZATION_QUICK_TABS,
+  ...INTERNATIONALIZATION_RUNTIME_TABS,
+  ...INTERNATIONALIZATION_SUBTREE_TABS,
+  ...INTERNATIONALIZATION_PLURAL_TABS,
   ...MIGRATION_AUTOMATIC_TABS,
   ...ACCESSIBILITY_FORM_TABS,
   ...ACCESSIBILITY_STATUS_TABS,

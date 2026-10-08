@@ -8,6 +8,7 @@ import { KIKITA_UI_PACKAGE_VERSION } from '@core/package';
 import { AccessibilityPage } from './accessibility/accessibility-page';
 import { DensityPage } from './density/density-page';
 import { InstallationPage } from './installation/installation-page';
+import { InternationalizationPage } from './internationalization/internationalization-page';
 import { MigrationPage } from './migration/migration-page';
 import { ThemingPage } from './theming/theming-page';
 import { TokensPage } from './tokens/tokens-page';
@@ -72,6 +73,21 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
       'Token and style changes',
       'Chart behaviour',
       'Verify the upgrade',
+    ],
+  },
+  {
+    component: InternationalizationPage,
+    heading: 'Internationalization',
+    sections: [
+      'Locale and messages',
+      'Quick start',
+      'Follow the language at runtime',
+      'Override a subtree or one instance',
+      'Writing a translation',
+      'Where the locale comes from',
+      'What the locale controls',
+      'Accessibility and testing',
+      'Reference',
     ],
   },
 ];
