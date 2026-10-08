@@ -106,14 +106,22 @@ export class BasicStepperExample {
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | [(currentIndex)] | number | 0 | Zero-based active step index. |
-| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Step list layout direction. |
-| size | 'sm' \| 'md' \| 'lg' | 'md' | Circle size and label scale. |
-| linear | boolean | true | Prevents jumping forward to upcoming steps when true. |
-| compact | boolean | false | Shows step circles without labels or descriptions. |
+| orientation | 'horizontal' \| 'vertical' \| undefined | undefined | Step list layout direction. Falls back to defaults.stepper.orientation, then horizontal. |
+| size | 'sm' \| 'md' \| 'lg' \| undefined | undefined | Circle size and label scale. Falls back to defaults.stepper.size, then the root size, then md. |
+| linear | boolean \| undefined | undefined | When true, only completed steps can be clicked to go back; when false, upcoming steps can be clicked to jump forward. Falls back to defaults.stepper.linear, then true. |
+| compact | boolean \| undefined | undefined | Shows step circles (dots) without labels or descriptions. Falls back to defaults.stepper.compact, then false. |
 | kui-step.label | string | '' | Primary step label. |
 | kui-step.description | string | '' | Optional secondary line below the label. |
 | kui-step.hasError | boolean | false | Marks the step as errored and disables later steps. |
 | kui-step.disabled | boolean | false | Forces a step to render disabled. |
+| --kui-stepper-connector-color | CSS custom property | - | Connector line colour. |
+| --kui-stepper-connector-color-done | CSS custom property | - | Connector line colour after a completed step. |
+| --kui-stepper-circle-size | CSS custom property | - | Step circle diameter. |
+| --kui-stepper-fg-upcoming | CSS custom property | - | Foreground of an upcoming step. |
+| --kui-stepper-fg-current | CSS custom property | - | Foreground of the current step. |
+| --kui-stepper-fg-done | CSS custom property | - | Foreground of a completed step. |
+| --kui-stepper-fg-error | CSS custom property | - | Foreground of an errored step. |
+| KuiStepperOptions | interface | - | Shape of defaults.stepper: size, orientation, linear and compact. |
 
 ## Accessibility
 

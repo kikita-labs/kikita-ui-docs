@@ -42,7 +42,16 @@ describe('StepperPage', () => {
     );
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Stepper');
-    expect(sectionIds).toEqual(['import', 'usage', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(root.querySelector('app-live-preview kui-stepper')).not.toBeNull();
     expect(root.textContent).toContain('Review');
   });
