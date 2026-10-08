@@ -86,3 +86,6 @@ Sources:
   messages and forced-colors support), which crossed the old 1 MB Angular
   `initial` error budget. The error budget is now 1.25 MB; the 850 kB warning is
   unchanged, and `main` stays under its 60 kB gate. The transfer size is 223 kB.
+  Ten new component pages (56 in the registry) added their manifests and
+  descriptions to the initial registry, which passed 1,25 MB by under 1 kB, so the
+  error budget is now 1.3 MB; the lazy page code stays out of the initial bundle.
