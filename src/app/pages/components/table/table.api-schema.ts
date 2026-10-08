@@ -9,9 +9,10 @@ export const TABLE_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'size',
-    type: `'xs' | 'sm' | 'md' | 'lg'`,
-    defaultValue: `'md'`,
-    description: 'Table density and typography scale. Selector: table[kuiTable].',
+    type: `'xs' | 'sm' | 'md' | 'lg' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Table density and typography scale. Falls back to defaults.table.size, then the global defaults.size, then md. Selector: table[kuiTable].',
   },
   {
     name: 'selectionChange',
@@ -70,21 +71,24 @@ export const TABLE_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'value',
-    type: 'T',
-    description: 'The data object represented by this row. Selector: tr[kuiRow], required.',
-  },
-  {
-    name: 'ariaLabel',
-    type: 'string',
-    defaultValue: `'Select all rows'`,
-    description: 'Accessible label for the select-all checkbox. Selector: th[kuiSelectTh].',
-  },
-  {
-    name: 'ariaLabel',
-    type: 'string',
-    defaultValue: '-',
+    type: 'T | undefined',
+    defaultValue: 'undefined',
     description:
-      'Accessible label for a row selection checkbox, e.g. "Select " + row.name. Selector: td[kuiSelectCell].',
+      'Data object used for selected state. Omit it for a presentational row without selection. Selector: tr[kuiRow].',
+  },
+  {
+    name: 'ariaLabel',
+    type: 'string | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Accessible label for the select-all checkbox; falls back to the table.selectAllRows message (Select all rows). Selector: th[kuiSelectTh].',
+  },
+  {
+    name: 'ariaLabel',
+    type: 'string | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Accessible label for a row selection checkbox, falling back to the table.selectRow message (Select row), e.g. "Select " + row.name. Selector: td[kuiSelectCell].',
   },
   {
     name: 'td[kuiCell]',
@@ -156,5 +160,11 @@ export const TABLE_API_ROWS: readonly ApiTableRow[] = [
     name: '--kui-table-bg',
     type: 'CSS custom property',
     description: 'Table background color.',
+  },
+  {
+    name: 'KuiTableOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.table: size.',
   },
 ];

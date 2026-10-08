@@ -74,6 +74,16 @@
     <app-code-tabs [tabs]="combinedTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Table"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Table API" [rows]="apiRows" />
   </app-doc-section>
@@ -94,6 +104,12 @@
       <li>
         Selection uses native checkboxes; pass a human-readable <code>ariaLabel</code> on
         <code>kuiSelectTh</code> and <code>kuiSelectCell</code>.
+      </li>
+      <li>
+        Without an <code>ariaLabel</code> the checkboxes are named by the
+        <code>table.selectRow</code> and <code>table.selectAllRows</code> messages, and the sort
+        buttons by <code>table.sortAscending</code>, <code>table.sortDescending</code> and
+        <code>table.clearSort</code>.
       </li>
       <li>
         Add a native <code>caption</code> when the surrounding page does not already provide a clear
@@ -121,6 +137,38 @@
         and <code>tr[kuiThGroup] sticky</code>) is available in this version. This page documents
         only the working header behavior; do not add <code>sticky</code> to
         <code>td[kuiCell]</code> until the installed package exposes it.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Table."
+  >
+    <ul class="table-page__notes">
+      <li>
+        The classes are <code>KuiTable</code>, <code>KuiTh</code>, <code>KuiThGroup</code>,
+        <code>KuiRow</code>, <code>KuiCell</code>, <code>KuiSelectTh</code> and
+        <code>KuiSelectCell</code>; the <code>Directive</code> and <code>Component</code> suffixes
+        are gone.
+      </li>
+      <li>
+        The default size moved to
+        <code>provideKuiDefaults({{ '{' }} table: {{ '{' }} size {{ '}' }} {{ '}' }})</code>; the
+        input is now <code>undefined</code> until set.
+      </li>
+      <li>
+        <code>tr[kuiRow]</code> <code>value</code> is optional: omit it for a presentational row
+        without selection.
+      </li>
+      <li>
+        Select and sort button names come from the <code>table</code> messages instead of fixed
+        English labels.
+      </li>
+      <li>
+        The header text is <code>--kui-text-xs-size</code> (11px, was 10px), and the checkbox and
+        sort button corners follow the radius seed.
       </li>
     </ul>
   </app-doc-section>

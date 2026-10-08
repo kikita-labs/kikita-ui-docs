@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
 
 import { TABLE_EXAMPLE_SOURCES } from '@generated/example-sources/table.generated';
+import { TABLE_MESSAGES } from '@generated/library-tables/messages.generated';
+import {
+  TABLE_COLOR_TOKEN_ROWS,
+  TABLE_DEFAULTS,
+  TABLE_GEOMETRY_TOKEN_ROWS,
+} from '@generated/library-tables/table.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
+import { MessagesSection } from '@shared/docs-ui/messages-section';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
 import {
   BasicSortableTableExample,
@@ -20,6 +29,9 @@ import { TABLE_API_DESCRIPTION, TABLE_IMPORT_TABS, TABLE_STATUS } from './table.
 @Component({
   selector: 'app-table-page',
   imports: [
+    ProviderDefaultsSection,
+    TokenTablesSection,
+    MessagesSection,
     ApiTable,
     BasicSortableTableExample,
     CodeTabs,
@@ -37,6 +49,10 @@ import { TABLE_API_DESCRIPTION, TABLE_IMPORT_TABS, TABLE_STATUS } from './table.
 export class TablePage {
   protected readonly status = TABLE_STATUS;
   protected readonly apiDescription = TABLE_API_DESCRIPTION;
+  protected readonly defaults = TABLE_DEFAULTS;
+  protected readonly colorTokenRows = TABLE_COLOR_TOKEN_ROWS;
+  protected readonly geometryTokenRows = TABLE_GEOMETRY_TOKEN_ROWS;
+  protected readonly messageGroups = [TABLE_MESSAGES];
   protected readonly apiRows = TABLE_API_ROWS;
 
   protected readonly importTabs = TABLE_IMPORT_TABS;

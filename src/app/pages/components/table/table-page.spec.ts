@@ -49,9 +49,13 @@ describe('TablePage', () => {
       'selection',
       'sticky',
       'combined',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
       'known-gaps',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview table[kuiTable]')).toHaveLength(4);
     expect(root.querySelector('app-row-selection-table-example')).not.toBeNull();

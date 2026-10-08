@@ -411,7 +411,7 @@ export class StickyHeaderTableExample {
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | data | T[] | [] | Source rows for sorting and selection. Selector: table[kuiTable]. |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Table density and typography scale. Selector: table[kuiTable]. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Table density and typography scale. Falls back to defaults.table.size, then the global defaults.size, then md. Selector: table[kuiTable]. |
 | selectionChange | output<T[]> | - | Emits current selection whenever it changes. Observing this output is what makes the selection column appear. Selector: table[kuiTable]. |
 | sortChange | output<KuiActiveSortState \| null> | - | Emits the active sort key/direction, or null when sort is cleared. When observed, kuiTable hands row ordering to the parent instead of sorting locally. Selector: table[kuiTable]. |
 | sortState | Signal<KuiSortState> | - | Current sort state (null when no column is sorted). Selector: table[kuiTable]. |
@@ -421,9 +421,9 @@ export class StickyHeaderTableExample {
 | sortKey | string \| undefined | - | Enables sort for this header cell; usually matches a row property name. Selector: th[kuiTh]. |
 | comparator | (a: T, b: T) => number | - | Custom sort function for the column, used instead of default comparison. Selector: th[kuiTh]. |
 | sticky | boolean | false | Pins this header cell horizontally with position: sticky. Selector: th[kuiTh]. Also available on tr[kuiThGroup] to pin the whole header row vertically. |
-| value | T | - | The data object represented by this row. Selector: tr[kuiRow], required. |
-| ariaLabel | string | 'Select all rows' | Accessible label for the select-all checkbox. Selector: th[kuiSelectTh]. |
-| ariaLabel | string | - | Accessible label for a row selection checkbox, e.g. "Select " + row.name. Selector: td[kuiSelectCell]. |
+| value | T \| undefined | undefined | Data object used for selected state. Omit it for a presentational row without selection. Selector: tr[kuiRow]. |
+| ariaLabel | string \| undefined | undefined | Accessible label for the select-all checkbox; falls back to the table.selectAllRows message (Select all rows). Selector: th[kuiSelectTh]. |
+| ariaLabel | string \| undefined | undefined | Accessible label for a row selection checkbox, falling back to the table.selectRow message (Select row), e.g. "Select " + row.name. Selector: td[kuiSelectCell]. |
 | td[kuiCell] | marker directive | - | Applies Kikita table cell styling to a native td. No inputs in the installed version. |
 | --kui-table-font-size | CSS custom property | - | Base font size for table text. |
 | --kui-table-th-py | CSS custom property | - | Vertical padding for header cells. |
@@ -438,6 +438,7 @@ export class StickyHeaderTableExample {
 | --kui-table-row-selected-accent | CSS custom property | - | Accent color for selected rows. |
 | --kui-table-sort-active-color | CSS custom property | - | Color used for the active sort indicator. |
 | --kui-table-bg | CSS custom property | - | Table background color. |
+| KuiTableOptions | interface | - | Shape of defaults.table: size. |
 
 ## Accessibility
 

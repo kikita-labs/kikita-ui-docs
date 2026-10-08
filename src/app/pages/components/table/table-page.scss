@@ -7,3 +7,7 @@
 .table-page__notes {
   @include doc-page-notes;
 }
+
+.table-page__note {
+  @include doc-page-note;
+}
