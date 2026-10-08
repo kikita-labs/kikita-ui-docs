@@ -17,6 +17,17 @@
     description="Set density through theme seeds. Use provideKikitaUi defaults.size for app-wide control size, not for density."
   >
     <app-code-tabs [tabs]="providerTabs" />
+    <ul class="density-page__notes">
+      <li>
+        <code>provideKikitaUi()</code> sets <code>data-kui-density</code> on the root element from
+        <code>seeds.density</code>, on the server too, unless the page already set it, and
+        <code>density.css</code> turns it into the horizontal padding.
+      </li>
+      <li>
+        Density is a theme seed, not a component default: it is not part of <code>defaults</code>,
+        and it never changes control height.
+      </li>
+    </ul>
   </app-doc-section>
 
   <app-doc-section

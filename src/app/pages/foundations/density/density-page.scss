@@ -1,4 +1,10 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
 .density-page {
   display: grid;
   gap: clamp(28px, 5vw, 48px);
+}
+
+.density-page__notes {
+  @include doc-page-notes;
 }
