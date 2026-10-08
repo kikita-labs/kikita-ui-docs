@@ -101,10 +101,35 @@ describe('CommandPalettePlaygroundPage', () => {
     );
   });
 
-  it('shows the event log region for palette events', () => {
+  it('logs the query and selected events when a command is picked', async () => {
     const root = fixture.nativeElement as HTMLElement;
+    const trigger = root.querySelector<HTMLButtonElement>(
+      '.api-playground-viewport__resizable button[kuibutton]',
+    );
 
-    expect(root.querySelector('app-playground-event-log [role="log"]')).not.toBeNull();
+    trigger?.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    const input = document.querySelector<HTMLInputElement>('.kui-command__input');
+
+    expect(input).not.toBeNull();
+
+    if (input) {
+      input.value = 'rename';
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+
+    fixture.detectChanges();
+
+    document.querySelector<HTMLButtonElement>('.kui-command__item')?.click();
+    fixture.detectChanges();
+
+    const log = root.querySelector('app-playground-event-log')?.textContent ?? '';
+
+    expect(log).toContain('queryChange');
+    expect(log).toContain('selected');
   });
 
   it('has no automated accessibility violations', async () => {
