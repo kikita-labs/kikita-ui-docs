@@ -38,6 +38,16 @@
     </ul>
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Tree"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Tree API" [rows]="apiRows" />
   </app-doc-section>
@@ -50,7 +60,40 @@
       <li>Set ariaLabel when nearby text does not already name the tree.</li>
       <li>Arrow keys, Home, End, Enter, Space, and type-ahead move through visible nodes.</li>
       <li>Disabled nodes stay reachable by navigation but cannot be selected or checked.</li>
+      <li>
+        The root is <code>role="tree"</code> and nodes are <code>role="treeitem"</code> with
+        <code>aria-expanded</code>, <code>aria-selected</code> (display) or
+        <code>aria-checked</code> (checkable, including <code>mixed</code>), and
+        <code>aria-level</code>, <code>aria-setsize</code> and <code>aria-posinset</code>. Exactly
+        one node is in the tab order (roving tabindex).
+      </li>
+      <li>
+        Without <code>ariaLabel</code> the tree is named by the <code>tree.label</code> message.
+      </li>
       <li>Use mobile mode where touch targets need the larger 44px toggle affordance.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Tree."
+  >
+    <ul class="tree-page__notes">
+      <li>
+        The component class is <code>KuiTree</code>; the <code>Component</code> suffix is gone.
+      </li>
+      <li>
+        Size and mode defaults moved to
+        <code>provideKuiDefaults({{ '{' }} tree: {{ '{' }} size, mode {{ '}' }} {{ '}' }})</code>,
+        together with the <code>disclosureIcon</code> glyph; the inputs are now
+        <code>undefined</code> until set.
+      </li>
+      <li>The default <code>ariaLabel</code> comes from the <code>tree.label</code> message.</li>
+      <li>
+        Row, spinner and focus colours have tokens, plus gap, padding, font-size and icon-size
+        geometry tokens.
+      </li>
     </ul>
   </app-doc-section>
 </article>

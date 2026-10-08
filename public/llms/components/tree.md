@@ -107,10 +107,10 @@ export class BasicTreeExample {
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| mode | 'display' \| 'checkable' | 'display' | Selects navigation-style rows or checkbox rows with cascade. |
-| size | 'sm' \| 'md' \| 'lg' | 'md' | Controls row height and label scale. |
+| mode | 'display' \| 'checkable' \| undefined | undefined | Selects navigation-style rows or checkbox rows with cascade. Falls back to defaults.tree.mode, then display. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Controls row height and label scale; only sm, md and lg have dedicated styling. Falls back to defaults.tree.size, then the root size, then md. |
 | data | readonly KuiTreeNode[] | [] | Root nodes rendered by the tree. |
-| ariaLabel | string | 'Tree' | Accessible name for the role="tree" container. |
+| ariaLabel | string \| undefined | undefined | Accessible name for the role="tree" container. Falls back to the tree.label message (Tree). |
 | mobile | boolean | false | Increases toggle hit targets to support touch layouts. |
 | [(value)] | string \| null | null | Controlled selected node id in display mode. |
 | [(selected)] | string \| null | null | Deprecated alias for value, kept in sync with it. Use value instead; planned for removal in the next major version. |
@@ -118,6 +118,7 @@ export class BasicTreeExample {
 | [(expandedIds)] | string[] | [] | Controlled expanded node ids. |
 | loadChildren | (node: KuiTreeNode) => Promise<readonly KuiTreeNode[]> | - | Lazy child loader called once for nodes marked lazy. |
 | KuiTreeNode.icon | 'folder' \| 'file' | - | Optional built-in glyph. Custom icon templates are not implemented. |
+| KuiTreeOptions | interface | - | Shape of defaults.tree: size, mode and disclosureIcon. |
 
 ## Accessibility
 

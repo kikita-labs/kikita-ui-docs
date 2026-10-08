@@ -80,7 +80,7 @@ export class TreePlaygroundPage {
       { name: 'mode', value: values.mode, defaultValue: 'display' },
       { name: 'size', value: values.size, defaultValue: 'md' },
       { name: 'mobile', value: values.mobile },
-      { name: 'ariaLabel', value: values.ariaLabel, defaultValue: 'Tree' },
+      { name: 'ariaLabel', value: values.ariaLabel || null },
       { name: '[data]', value: 'nodes' },
       { name: '[loadChildren]', value: 'loadChildren' },
     ]);

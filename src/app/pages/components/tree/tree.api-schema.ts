@@ -3,15 +3,17 @@ import { type ApiTableRow } from '@shared/docs-ui/api-table';
 export const TREE_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'mode',
-    type: `'display' | 'checkable'`,
-    defaultValue: `'display'`,
-    description: 'Selects navigation-style rows or checkbox rows with cascade.',
+    type: `'display' | 'checkable' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Selects navigation-style rows or checkbox rows with cascade. Falls back to defaults.tree.mode, then display.',
   },
   {
     name: 'size',
-    type: `'sm' | 'md' | 'lg'`,
-    defaultValue: `'md'`,
-    description: 'Controls row height and label scale.',
+    type: `'xs' | 'sm' | 'md' | 'lg' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Controls row height and label scale; only sm, md and lg have dedicated styling. Falls back to defaults.tree.size, then the root size, then md.',
   },
   {
     name: 'data',
@@ -21,9 +23,10 @@ export const TREE_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'ariaLabel',
-    type: 'string',
-    defaultValue: `'Tree'`,
-    description: 'Accessible name for the role="tree" container.',
+    type: 'string | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Accessible name for the role="tree" container. Falls back to the tree.label message (Tree).',
   },
   {
     name: 'mobile',
@@ -67,5 +70,11 @@ export const TREE_API_ROWS: readonly ApiTableRow[] = [
     type: `'folder' | 'file'`,
     defaultValue: '-',
     description: 'Optional built-in glyph. Custom icon templates are not implemented.',
+  },
+  {
+    name: 'KuiTreeOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.tree: size, mode and disclosureIcon.',
   },
 ];

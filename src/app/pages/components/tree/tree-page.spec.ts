@@ -42,7 +42,17 @@ describe('TreePage', () => {
     );
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Tree');
-    expect(sectionIds).toEqual(['import', 'usage', 'modes', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'modes',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(root.querySelector('app-live-preview kui-tree')).not.toBeNull();
     expect(root.textContent).toContain('not virtualized');
   });
