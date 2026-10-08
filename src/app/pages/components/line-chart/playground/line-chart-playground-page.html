@@ -1,0 +1,30 @@
+<article class="line-chart-playground-page">
+  <div class="line-chart-playground-page__header">
+    <h1>Line Chart &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Line Chart playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-line-chart
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [series]="dataOf(playground.values())"
+      [categories]="categories"
+      [area]="areaOf(playground.values())"
+      [patterns]="patternsOf(playground.values())"
+      [axes]="axesOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [loading]="loadingOf(playground.values())"
+      [legend]="legendOf(playground.values())"
+      [valueFormat]="valueFormatOf(playground.values())"
+      [tooltip]="tooltipOf(playground.values())"
+      [messages]="messagesOf(playground.values())"
+    />
+  </app-api-playground>
+
+  <app-api-table label="Line Chart API" [rows]="apiRows" />
+  <p class="line-chart-playground-page__note">{{ apiDescription }}</p>
+</article>

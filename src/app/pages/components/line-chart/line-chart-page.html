@@ -1,0 +1,89 @@
+<article class="line-chart-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Line Chart"
+    description="Line and area chart for trends over categories."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="The chart is a standalone component. Import the styles once for the whole family."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Pass series aligned with categories. ariaLabel names what the chart shows; the chart type fallback is used when it is omitted."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic line chart">
+      <app-basic-line-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="area"
+    heading="Area and series"
+    description="area fills the area under each line; it is a flag, not a separate chart type. patterns adds a hatch pattern to each area, and axes.xTitle and axes.yTitle name the axes."
+  >
+    <app-live-preview previewLabel="Area chart with patterns and axis titles">
+      <app-line-area-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="areaTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="gaps"
+    heading="Gaps and formatting"
+    description="null, NaN and Infinity are gaps: the line breaks there and the value is never drawn as 0. tooltip and valueFormat replace the tooltip text and the number format."
+  >
+    <app-live-preview previewLabel="Line chart with a gap and custom formatting">
+      <app-line-gaps-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="gapsTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="external-legend"
+    heading="External legend"
+    description="Hide the inline legend and render it anywhere with kui-chart-legend and a template reference variable."
+  >
+    <app-live-preview previewLabel="Line chart with an external legend">
+      <app-line-external-legend-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="legendExampleTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="states"
+    heading="State examples"
+    description="loading shows a sparkline skeleton; a series input without a non-gap value shows the empty composition."
+  >
+    <app-live-preview previewLabel="Loading and empty line charts">
+      <app-line-states-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="statesTabs" />
+  </app-doc-section>
+
+  <app-chart-behavior-sections type="line" />
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Line Chart"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Line Chart API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-chart-accessibility-sections type="line" />
+</article>

@@ -1,0 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.line-chart-playground-page {
+  @include playground-page-layout;
+}
+
+.line-chart-playground-page__header {
+  @include playground-page-header;
+}
+
+.line-chart-playground-page__note {
+  @include playground-page-note;
+}
