@@ -89,3 +89,7 @@ Sources:
   Ten new component pages (56 in the registry) added their manifests and
   descriptions to the initial registry, which passed 1,25 MB by under 1 kB, so the
   error budget is now 1.3 MB; the lazy page code stays out of the initial bundle.
+  The 2.0 docs wave also rewrote all existing component pages and playgrounds against
+  2.0.0, added the Migrating to 2.0, Internationalization, Defaults, Structural icons,
+  Auto focus and Forms foundation pages, and extended Installation, Theming (contrast
+  profiles, colour roles), Tokens, Typography, Accessibility and Density.
