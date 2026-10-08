@@ -65,6 +65,7 @@ import { TOOLTIP_DOCS_MANIFEST } from '@pages/components/tooltip/tooltip.docs-ma
 import { TREE_DOCS_MANIFEST } from '@pages/components/tree/tree.docs-manifest';
 import { DRAFT_DOCS_MANIFEST } from '@pages/draft/draft.docs-manifest';
 import { ACCESSIBILITY_DOCS_MANIFEST } from '@pages/foundations/accessibility/accessibility.docs-manifest';
+import { DEFAULTS_DOCS_MANIFEST } from '@pages/foundations/defaults/defaults.docs-manifest';
 import { DENSITY_DOCS_MANIFEST } from '@pages/foundations/density/density.docs-manifest';
 import { INSTALLATION_DOCS_MANIFEST } from '@pages/foundations/installation/installation.docs-manifest';
 import { INTERNATIONALIZATION_DOCS_MANIFEST } from '@pages/foundations/internationalization/internationalization.docs-manifest';
@@ -142,6 +143,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     ACCESSIBILITY_DOCS_MANIFEST,
     MIGRATION_DOCS_MANIFEST,
     INTERNATIONALIZATION_DOCS_MANIFEST,
+    DEFAULTS_DOCS_MANIFEST,
   ],
   components: [
     BUTTON_DOCS_MANIFEST,

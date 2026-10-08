@@ -6,6 +6,7 @@ import { provideKikitaUi } from '@kikita-labs/ui';
 import { KIKITA_UI_PACKAGE_VERSION } from '@core/package';
 
 import { AccessibilityPage } from './accessibility/accessibility-page';
+import { DefaultsPage } from './defaults/defaults-page';
 import { DensityPage } from './density/density-page';
 import { InstallationPage } from './installation/installation-page';
 import { InternationalizationPage } from './internationalization/internationalization-page';
@@ -88,6 +89,23 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
       'What the locale controls',
       'Accessibility and testing',
       'Reference',
+    ],
+  },
+  {
+    component: DefaultsPage,
+    heading: 'Defaults',
+    sections: [
+      'When to use defaults',
+      'Setting defaults',
+      'Layers and merging',
+      'Reactive values',
+      'Global control size',
+      'Clearable controls and tooltips',
+      'Overlays',
+      'Calendars, time, carousel and pagination',
+      'Other primitives',
+      'Structural icons',
+      'Migrating from the token API',
     ],
   },
 ];

@@ -64,6 +64,7 @@ const COMPONENT_SLUGS = [
 
 const FOUNDATION_SLUGS = [
   'accessibility',
+  'defaults',
   'density',
   'installation',
   'internationalization',

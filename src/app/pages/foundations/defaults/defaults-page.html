@@ -1,0 +1,217 @@
+<article class="defaults-page">
+  <app-page-header
+    eyebrow="Foundation"
+    heading="Defaults"
+    description="Set shared preferences such as size, shape, clearable or toast placement once for the application or for a subtree, instead of repeating them in every template."
+  />
+
+  <app-doc-section
+    heading="When to use defaults"
+    description="Defaults cover preferences shared by many instances. Data, instance state and form state are never defaults."
+  >
+    <app-api-table label="Customization levers" [rows]="leversRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Setting defaults"
+    description="defaults is a flat map with one key per primitive plus the global control size. Every key points to a named options interface such as KuiButtonOptions or KuiSelectOptions."
+  >
+    <app-code-tabs [tabs]="setTabs" />
+
+    <p class="defaults-page__note">
+      <code>KuiComponentDefaults</code> lists every key. Interfaces that share a meaning share a
+      base (<code>KuiButtonBaseOptions</code>, <code>KuiFieldControlOptions</code>). Each component
+      page lists its own options in the Provider defaults section.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Layers and merging"
+    description="The nearest value wins, and each level is merged over the defaults it inherits per component key and per property."
+  >
+    <ul class="defaults-page__notes">
+      <li>
+        Order: local input, then the nearest level, then parent levels, then
+        <code>provideKikitaUi</code> defaults, then the component default.
+      </li>
+      <li>
+        An omitted or <code>undefined</code> property inherits from the parent; <code>false</code>,
+        <code>0</code>, <code>''</code> and <code>null</code> are real values and override.
+      </li>
+      <li>Arrays and functions are replaced as a whole, and a level never changes its parent.</li>
+      <li>
+        Several <code>provideKuiDefaults</code> or <code>provideKikitaUi</code> providers on one
+        level combine in provider order, the later one winning per property.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Reactive values"
+    description="Every property accepts a plain value or a Signal, and the whole defaults value may be a function that runs in an injection context."
+  >
+    <app-code-tabs [tabs]="reactiveTabs" />
+
+    <ul class="defaults-page__notes">
+      <li>
+        Components read the effective value in a <code>computed</code>, so changing the signal
+        updates every affected component. A component <code>providers</code> array cannot read
+        <code>this</code>; put the state in a service and read it in a function.
+      </li>
+      <li>
+        <code>set</code> and <code>update</code> write to the nearest level only, and
+        <code>KuiDefaults</code> never exposes a writable signal.
+      </li>
+      <li>
+        Dialog, drawer and toast options are read each time one opens, so an open overlay keeps what
+        it opened with, and a tooltip reads its options each time it shows. Toast
+        <code>position</code> and <code>maxVisible</code> belong to the shared region and follow a
+        change of the default. Everything else follows runtime changes immediately.
+      </li>
+      <li>
+        Defaults live in the injector of each application instance, so concurrent server requests
+        never share them. Do not keep a module-level <code>signal</code> in an application config
+        shared by requests; create it inside a function default or a service.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Global control size"
+    description="defaults.size applies to every primitive with a size input when neither the local input nor the component key sets one."
+  >
+    <ul class="defaults-page__notes">
+      <li>
+        Order: local input, then <code>defaults.&lt;component&gt;.size</code>, then
+        <code>defaults.size</code>, then <code>md</code>. A primitive whose size type is narrower
+        than <code>KuiSize</code> ignores unsupported values; <code>kui-calendar</code> supports
+        <code>sm</code> and <code>md</code>, so a global <code>xs</code> leaves it at
+        <code>md</code>. <code>kui-icon</code> is excluded because its size is a raw CSS size.
+      </li>
+      <li>
+        Field controls (<code>kuiInput</code>, <code>kuiTextarea</code>,
+        <code>kuiNumberInput</code>, <code>kuiColorInput</code>, <code>kuiCheckbox</code>,
+        <code>kuiRadio</code>, <code>kuiSwitch</code>) have their own key, and an explicit size on
+        the parent <code>kui-field</code> wins over the control key: local size, then the parent
+        field local size, then <code>defaults.&lt;control&gt;.size</code>, then
+        <code>defaults.field.size</code>, then <code>defaults.size</code>, then <code>md</code>.
+      </li>
+      <li>
+        <code>kuiSlider</code> does not read the parent field. <code>kui-field</code> resolves local
+        size, <code>defaults.field.size</code>, <code>defaults.size</code>, <code>md</code>.
+        <code>kuiSelect</code>, <code>kuiCombobox</code>, <code>kuiDatePicker</code> and
+        <code>kuiTimePicker</code> have no size input and follow the parent field.
+      </li>
+      <li>
+        <code>kuiButton</code> and <code>kuiIconButton</code> use separate keys because their
+        default shapes differ on purpose (solid for buttons, ghost for icon-only buttons): local
+        input, then <code>defaults.button</code> or <code>defaults.iconButton</code>, then
+        <code>defaults.size</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Clearable controls and tooltips"
+    description="A few keys resolve through a chain with a shared field key."
+  >
+    <ul class="defaults-page__notes">
+      <li>
+        Clearable: local input, then
+        <code>defaults.&lt;select|combobox|datePicker|timePicker&gt;</code>, then
+        <code>defaults.field</code>, then the component default. Select defaults to
+        <code>false</code>; Combobox, Date Picker and Time Picker default to <code>true</code>.
+      </li>
+      <li>
+        <code>defaults.select.multipleDisplay</code> (<code>chips</code> or <code>text</code>) sets
+        how a multiple select shows its selection and
+        <code>defaults.select.maxVisibleChips</code> how many chips it shows before the
+        <code>+N</code> chip.
+      </li>
+      <li>
+        Tooltip: local <code>triggerType</code>, then <code>defaults.tooltip.triggerType</code>,
+        then <code>auto</code>. <code>auto</code> shows on mouse hover and keyboard focus and
+        toggles on touch tap, <code>hover</code> disables touch taps, <code>click</code> uses click
+        or keyboard activation everywhere and <code>none</code> disables the directive. Tooltip
+        content stays supplemental; use a popover for links or buttons.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Overlays"
+    description="Anchored overlays share the placement and offset options and add their own."
+  >
+    <app-api-table label="Overlay defaults" [rows]="overlaysRows" />
+
+    <ul class="defaults-page__notes">
+      <li>
+        Each option resolves as local input or call config, then
+        <code>defaults.&lt;overlay&gt;</code>, then the built-in default.
+      </li>
+      <li>
+        <code>kui-dropdown</code> is also the panel of <code>kuiSelect</code>,
+        <code>kuiCombobox</code>, <code>kuiDatePicker</code> and <code>kuiTimePicker</code>, so
+        <code>defaults.dropdown</code> reaches those panels unless the control sets the input
+        itself. <code>kuiDialog</code> and <code>kuiDrawer</code> read the defaults of the injector
+        they are called from, so a nested <code>provideKuiDefaults</code> applies to dialogs opened
+        inside it.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Calendars, time, carousel and pagination"
+    description="These keys follow local input, then defaults, then the built-in default."
+  >
+    <app-api-table label="Calendar, time, carousel and pagination defaults" [rows]="dataRows" />
+
+    <p class="defaults-page__note">
+      A date picker renders a calendar inside its panel, so a <code>defaults.calendar</code> entry
+      reaches it unless the panel sets the input itself.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Other primitives"
+    description="Every remaining primitive has a key. Each option resolves as local input, then defaults, then the built-in default; size follows the size chain above."
+  >
+    <app-api-table label="Keys of the remaining primitives" [rows]="otherRows" />
+
+    <p class="defaults-page__note">
+      Not configurable on purpose: values, open and loading state, <code>disabled</code>,
+      <code>readonly</code>, validation state, data inputs (<code>series</code>, <code>data</code>,
+      <code>groups</code>), ids, accessible names and library message text, and per-instance
+      structure such as <code>Select.multiple</code>, <code>Chip.removable</code> or the OTP
+      <code>length</code>.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Structural icons"
+    description="The icons key replaces the glyphs components draw for themselves, one glyph per role or per component slot."
+  >
+    <app-code-tabs [tabs]="iconsTabs" />
+
+    <p class="defaults-page__note">
+      Order: <code>defaults.&lt;component&gt;.&lt;slot&gt;Icon</code>, then
+      <code>defaults.icons.&lt;role&gt;</code>, then the built-in glyph. A glyph is plain icon data
+      and an invalid one is ignored. The roles and the data format are listed on the Structural
+      icons page; these are not the icons you pass to <code>kui-icon</code> by name.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Migrating from the token API"
+    description="The injection tokens are removed and the provider functions remain as deprecated wrappers until 3.0."
+  >
+    <app-api-table label="Deprecated defaults APIs" [rows]="migrateRows" />
+
+    <p class="defaults-page__note">
+      A nested level now merges with its parent per property (before, a nested field provider
+      replaced the whole parent object), and <code>kuiDatePicker</code> and
+      <code>kuiTimePicker</code> read their own <code>datePicker</code> and
+      <code>timePicker</code> keys before the <code>field</code> key.
+    </p>
+  </app-doc-section>
+</article>

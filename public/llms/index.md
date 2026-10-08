@@ -9,6 +9,7 @@
 ## Foundations
 
 - [Accessibility](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md): Keyboard, semantics, focus, and WCAG expectations.
+- [Defaults](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/defaults.md): Set shared preferences such as size, shape, clearable or toast placement once for the application or for a subtree, instead of repeating them in every template.
 - [Density](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md): Spacing and control density expectations for product UIs.
 - [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
 - [Internationalization](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/internationalization.md): Locale and messages are two independent settings: the locale formats dates, numbers and plurals, the messages translate the text the library owns.

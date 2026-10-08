@@ -9,6 +9,11 @@ import {
   ACCESSIBILITY_STATUS_TABS,
 } from './accessibility/accessibility.docs-content';
 import {
+  DEFAULTS_ICONS_TABS,
+  DEFAULTS_REACTIVE_TABS,
+  DEFAULTS_SET_TABS,
+} from './defaults/defaults.docs-content';
+import {
   DENSITY_PROVIDER_TABS,
   DENSITY_TOKEN_TABS,
   DENSITY_VALUE_ROWS,
@@ -39,6 +44,9 @@ import {
 } from './tokens/tokens.docs-content';
 
 const ALL_FOUNDATION_CODE_TABS: readonly CodeTab[] = [
+  ...DEFAULTS_SET_TABS,
+  ...DEFAULTS_REACTIVE_TABS,
+  ...DEFAULTS_ICONS_TABS,
   ...INTERNATIONALIZATION_QUICK_TABS,
   ...INTERNATIONALIZATION_RUNTIME_TABS,
   ...INTERNATIONALIZATION_SUBTREE_TABS,
