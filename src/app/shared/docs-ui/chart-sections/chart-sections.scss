@@ -1,0 +1,20 @@
+@use '../../styles/mixins/doc-page' as *;
+
+:host {
+  display: contents;
+}
+
+.chart-sections__notes {
+  @include doc-page-notes;
+}
+
+.chart-sections__note {
+  @include doc-page-note;
+}
+
+.chart-sections__subheading {
+  margin: var(--kui-space-4, 16px) 0 var(--kui-space-2, 8px);
+  color: var(--kui-color-text);
+  font-size: var(--kui-text-base-size, 15px);
+  font-weight: 600;
+}

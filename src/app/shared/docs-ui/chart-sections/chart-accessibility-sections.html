@@ -1,0 +1,117 @@
+<app-doc-section
+  heading="Accessibility"
+  description="The chart is an SVG graphic with an accessible name, labelled marks and a table alternative."
+>
+  <ul class="chart-sections__notes">
+    <li>
+      The <code>&lt;svg&gt;</code> is the graphic: <code>role="graphics-document"</code> with the
+      name and the role description (<code>aria-roledescription</code>). The wrapper has no role,
+      and axis text, gridlines and decorative shapes are <code>aria-hidden</code>.
+    </li>
+    <li>
+      Each
+      @switch (type()) {
+        @case ('bar') {
+          bar
+        }
+        @case ('donut') {
+          slice
+        }
+        @default {
+          point
+        }
+      }
+      is <code>role="graphics-symbol img"</code> with its own <code>aria-label</code>, the same text
+      as the tooltip, as an indivisible graphical unit per the WAI-ARIA Graphics Module.
+    </li>
+    <li>
+      <code>ariaLabel</code> has a chart-type fallback name from the <code>chart</code> messages and
+      should describe what the chart shows. It is distinct from each mark's own label (its value).
+    </li>
+    <li>
+      The marks use a roving tabindex (see Keyboard). The inline legend is a named group of native
+      <code>&lt;button aria-pressed&gt;</code> items at least 24px high.
+    </li>
+    <li>
+      One shared tooltip overlay is retargeted between marks, so hover and keyboard focus show the
+      same text. On pointer hover it appears at the pointer and follows it; keyboard focus anchors
+      it to the focused mark. On touch, a tap pins the tooltip until an outside tap,
+      <kbd>Escape</kbd> or a tap on a different mark, and it always renders below 768px.
+    </li>
+    <li>
+      Pointer hit targets:
+      @switch (type()) {
+        @case ('bar') {
+          the bar itself.
+        }
+        @case ('donut') {
+          the slice itself.
+        }
+        @case ('scatter') {
+          each point has an invisible hit circle of at least 12px radius (a 24px target, WCAG 2.5.8)
+          or the bubble radius if larger, which carries the role, label and tabindex, and a visible
+          <code>aria-hidden</code> marker at the real size.
+        }
+        @default {
+          the point marker plus a 3px margin.
+        }
+      }
+    </li>
+    <li>Text is at least 12px on screen; axis text defaults to 13px at any width.</li>
+    <li>
+      <code>prefers-reduced-motion: reduce</code> disables the hover and dim transition
+      @if (type() === 'donut') {
+        and the donut sweep, which also stops at once if reduced motion turns on while it runs.
+      } @else {
+        and the donut sweep of sibling charts.
+      }
+    </li>
+    <li>The alt-table is a real accessible alternative to the graphic.</li>
+  </ul>
+  <p class="chart-sections__note">
+    The library checks keyboard, the accessibility tree, axe, forced-colours media emulation and
+    reduced motion automatically. A session with a real screen reader has not been run and stays
+    pending.
+  </p>
+</app-doc-section>
+
+<app-doc-section heading="Known gaps" description="Documented limits of the installed package.">
+  <ul class="chart-sections__notes">
+    <li>
+      The chart tooltip follows the pointer and is not hoverable, so it does not meet the hoverable
+      part of WCAG 1.4.13 (it is dismissible and persistent). A tooltip that is hoverable and
+      follows the cursor would catch the cursor, so anchoring it to the mark is an open design
+      decision.
+    </li>
+    @switch (type()) {
+      @case ('bar') {
+        <li>
+          A bar is a <code>&lt;path&gt;</code> and its size change (hiding a series on a stacked
+          chart) is a CSS transition of <code>d</code>. Chromium animates it; Safari and Firefox are
+          expected to jump to the new size.
+        </li>
+      }
+      @case ('scatter') {
+        <li>
+          The <code>bubble</code> radius is not clamped to any minimum or maximum; the consumer owns
+          a radius that fits the plot area.
+        </li>
+      }
+      @case ('donut') {
+        <li>
+          The donut has no center text or sum, and its inner-radius ratio (60% of the outer radius)
+          is fixed and not configurable.
+        </li>
+      }
+    }
+    <li>
+      There is no zoom, pan or decimation, and bar and scatter charts draw every shape (see
+      Performance).
+    </li>
+    <li>
+      The marker shapes and hatch patterns are engineering decisions that the designer still has to
+      confirm. A formal assistive-technology pass with a real screen reader and a real Windows
+      forced-colours session is still pending.
+    </li>
+  </ul>
+</app-doc-section>

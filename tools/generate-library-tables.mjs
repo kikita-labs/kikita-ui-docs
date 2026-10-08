@@ -2,7 +2,11 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import { join } from 'node:path';
 import process from 'node:process';
 
-import { fetchLibrarySourceDoc, readInstalledLibraryVersion } from './library-docs.mjs';
+import {
+  fetchLibrarySourceDoc,
+  LIBRARY_DOC_ALIASES,
+  readInstalledLibraryVersion,
+} from './library-docs.mjs';
 
 /**
  * Generates `src/app/generated/library-tables/<slug>.generated.ts` from the library docs at the
@@ -153,7 +157,10 @@ function readExports(slug, markdown) {
     }
   }
 
-  const defaults = readProviderDefaults(markdown);
+  const ownKey = slug.replace(/-(\w)/g, (_, letter) => letter.toUpperCase());
+  const defaults = readProviderDefaults(markdown).filter(
+    (group) => !(slug in LIBRARY_DOC_ALIASES) || group.key === ownKey,
+  );
 
   if (defaults.length > 0) {
     records.push({ name: `${prefix}_DEFAULTS`, kind: 'groups', value: defaults });

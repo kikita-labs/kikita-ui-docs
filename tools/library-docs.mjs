@@ -23,7 +23,24 @@ export async function readInstalledLibraryVersion(workspace = resolve('.')) {
  */
 const docCache = new Map();
 
-export function fetchLibrarySourceDoc(packageVersion, slug) {
+/**
+ * Pages whose library doc is shared with sibling pages. The chart family is documented once in
+ * `docs/chart.md`; each chart type has its own docs page, so those slugs read the shared doc.
+ */
+export const LIBRARY_DOC_ALIASES = {
+  'bar-chart': 'chart',
+  'line-chart': 'chart',
+  'scatter-chart': 'chart',
+  'donut-chart': 'chart',
+};
+
+/** The library doc name for a docs page slug: the alias when the doc is shared, else the slug. */
+export function resolveLibraryDocSlug(slug) {
+  return LIBRARY_DOC_ALIASES[slug] ?? slug;
+}
+
+export function fetchLibrarySourceDoc(packageVersion, pageSlug) {
+  const slug = resolveLibraryDocSlug(pageSlug);
   const key = `${packageVersion}/${slug}`;
 
   if (!docCache.has(key)) {

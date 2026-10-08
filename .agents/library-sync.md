@@ -143,6 +143,10 @@ Each older major of `@kikita-labs/ui` is documented from its own
   unless the owner asks for more.
 - Fetch library docs from the release tag matching the version installed on
   that branch, never from `main`'s version.
+- A docs page that shares one library doc with sibling pages (the four chart pages
+  read `docs/chart.md`) is listed in `LIBRARY_DOC_ALIASES` in `tools/library-docs.mjs`;
+  the generators resolve the doc through it and keep only the provider defaults
+  group of that page.
 - Pushing a release branch rebuilds and republishes only its own
   `/<id>/` directory. Do not run the sync flow for it on `main`.
 - A change that applies to several versions is made on each branch separately.

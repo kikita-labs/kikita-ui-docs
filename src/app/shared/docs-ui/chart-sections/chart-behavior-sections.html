@@ -1,0 +1,378 @@
+<app-doc-section
+  anchor="data"
+  heading="Data contract"
+  description="Charts normalize their input before drawing, so gaps and invalid values never become zeros."
+>
+  <ul class="chart-sections__notes">
+    @switch (type()) {
+      @case ('scatter') {
+        <li>
+          <code>series[].points</code> holds <code>{{ '{' }} x, y, r? {{ '}' }}</code
+          >. A point with a non-finite <code>x</code>, <code>y</code> or <code>r</code> is dropped.
+        </li>
+        <li>
+          Both axes are independent numeric domains computed from the data extent. Zero is not
+          forced, and hiding a series keeps the scale.
+        </li>
+      }
+      @case ('donut') {
+        <li>
+          <code>slices</code> holds <code>{{ '{' }} id?, label, value, color? {{ '}' }}</code
+          >. A negative or non-finite slice is dropped.
+        </li>
+        <li>
+          Shares are computed from the visible total, and the identity is <code>id ?? label</code>.
+        </li>
+      }
+      @default {
+        <li>
+          <code>series[].data</code> is aligned index for index with <code>categories</code>; when
+          the lengths differ the shorter side wins.
+        </li>
+        <li>
+          <code>null</code>, <code>NaN</code> and <code>Infinity</code> are gaps: the mark is
+          skipped and a line breaks there instead of connecting across. A gap is never drawn as
+          <code>0</code>.
+        </li>
+        <li>
+          The value domain is <code>[min(0, min), max(0, max)]</code> over all series, so the value
+          axis always includes <code>0</code> and is never log-scaled or clamped.
+          @if (type() === 'bar') {
+            Stacked bars compute it per category, with positive and negative sums separate and
+            hidden series excluded.
+          }
+        </li>
+      }
+    }
+    <li>
+      The identity of a series is <code>id ?? name</code>. Two series or slices sharing an identity
+      get distinct keys (<code>a</code>, <code>a#1</code>, ...), and in development mode the chart
+      logs one warning for a duplicate explicit <code>id</code> and for a <code>data</code> array
+      whose length differs from <code>categories</code>.
+    </li>
+    <li>
+      A flat domain (every value equal) is expanded so the axis never collapses, and ticks are
+      rounded to the precision their step needs.
+    </li>
+    <li>
+      <code>series[].color</code> or <code>slices[].color</code> is optional; without it the marks
+      use a round-robin over the eight <code>--kui-chart-series-1..8</code> tokens in the order
+      given.
+    </li>
+  </ul>
+</app-doc-section>
+
+<app-doc-section
+  anchor="legend"
+  heading="Legend"
+  description="The legend shows automatically when there is more than one series or slice; the legend input overrides it. Clicking an item hides that series or slice."
+>
+  <ul class="chart-sections__notes">
+    <li>
+      @if (type() === 'donut') {
+        Hiding a slice recomputes the remaining shares and re-partitions the circle, as if the
+        hidden slice was never there.
+      } @else if (type() === 'bar') {
+        Hiding a series does not recompute the value-axis domain in grouped mode, so the scale stays
+        stable. A stacked bar is the exception: hiding a series recomputes the domain and the
+        remaining stack collapses to its own height.
+      } @else {
+        Hiding a series does not recompute the value-axis domain, so the remaining series keep a
+        stable scale across toggles.
+      }
+    </li>
+    <li>
+      Hovering a legend item highlights the matching mark, and hovering a mark highlights its legend
+      entry. Hidden items stay interactive; "every series hidden" is a legend-only state and not the
+      empty composition.
+    </li>
+    <li>
+      A hidden item is marked by more than its pressed state: the label is struck through and the
+      swatch becomes an outline.
+    </li>
+  </ul>
+  <h3 class="chart-sections__subheading">Standalone legend</h3>
+  <p class="chart-sections__note">
+    Every chart implements <code>KuiChartLegendSource</code>: a public
+    <code>legendItems()</code> and <code>hoveredLegendId()</code> read surface plus
+    <code>toggleLegendItem(id)</code> and <code>setHoveredLegendId(id)</code>. Pass the chart
+    through a template reference variable to <code>kui-chart-legend</code> to render the legend
+    anywhere, and set <code>[legend]="false"</code> on the chart so it is not drawn twice. Project a
+    <code>kuiChartLegendItem</code> template (context <code>KuiChartLegendItemContext</code>:
+    <code>$implicit</code> is the <code>KuiChartLegendEntry</code>, <code>hovered</code> the
+    cross-highlight state) to replace the default button markup; wiring the toggle and hover calls
+    is the template's job.
+  </p>
+  <app-code-tabs [tabs]="legendTabs" />
+</app-doc-section>
+
+<app-doc-section
+  anchor="sizes"
+  heading="Sizes"
+  description="size sets the plot height in CSS pixels; the chart follows the width of its container."
+>
+  <ul class="chart-sections__notes">
+    @if (type() === 'donut') {
+      <li>
+        <code>size</code> is <code>sm</code>, <code>md</code> or <code>lg</code> (default
+        <code>md</code>): a square of up to 200, 280 or 360px. The donut has no text, so it stays
+        CSS-scaled to <code>min(container, size)</code> and centered.
+      </li>
+    } @else {
+      <li>
+        <code>size</code> is <code>sm</code>, <code>md</code> or <code>lg</code> (default
+        <code>md</code>): a plot height of 200, 280 or 360px.
+      </li>
+      <li>
+        The chart measures its container with a <code>ResizeObserver</code> and draws at one user
+        unit per CSS pixel, so text, strokes and marks keep their pixel size at any width. The axis
+        padding fits the widest measured tick label and the axis title.
+      </li>
+      <li>
+        Server rendering and the first client render use a nominal width (320, 480 or 640px) inside
+        a graphic whose height is already final, so hydration does not shift the layout.
+      </li>
+      <li>
+        Tick labels are thinned by their measured width plus an 8px gap so they never overlap, and a
+        label wider than its slot is cut with an ellipsis (the full text stays in the element
+        <code>&lt;title&gt;</code>). Axis text defaults to <code>--kui-text-sm-size</code>; the
+        <code>--kui-chart-axis-text-font-size</code> token changes it.
+      </li>
+      <li>
+        Axis titles come from <code>axes.xTitle</code> and <code>axes.yTitle</code> and are drawn in
+        the SVG. There is no built-in zoom, pan or decimation: aggregate very dense data before
+        passing it in.
+      </li>
+    }
+  </ul>
+</app-doc-section>
+
+<app-doc-section
+  anchor="loading-empty"
+  heading="Loading and empty"
+  description="loading shows a skeleton shaped like the chart instead of a generic spinner. Missing data renders an empty composition."
+>
+  <ul class="chart-sections__notes">
+    <li>
+      @switch (type()) {
+        @case ('bar') {
+          The bar skeleton is a silhouette of bars with varying heights, and it shrinks with its
+          container instead of overflowing it.
+        }
+        @case ('scatter') {
+          The scatter skeleton is a loose cluster of shimmering dots built from
+          <code>[kuiSkeleton]</code>.
+        }
+        @case ('donut') {
+          The donut skeleton is a shimmering ring built from <code>[kuiSkeleton]</code>.
+        }
+        @default {
+          The line skeleton is a wavy sparkline silhouette of shimmering dots built from
+          <code>[kuiSkeleton]</code>.
+        }
+      }
+    </li>
+    <li>
+      An empty or missing input (no non-gap value anywhere) always renders the empty composition: a
+      dashed border, a faded chart icon and the "No data" text. It is not the
+      <code>kui-empty-state</code> component.
+    </li>
+    <li>
+      @if (type() === 'donut') {
+        A donut whose visible slices sum to zero draws no arc and keeps the legend usable.
+      } @else {
+        The loading and empty texts are <code>chart</code> messages.
+      }
+    </li>
+  </ul>
+</app-doc-section>
+
+<app-doc-section
+  anchor="tooltip"
+  heading="Tooltip and value formatting"
+  description="The tooltip text and the numbers on axes and in the legend can be replaced."
+>
+  <app-code-tabs [tabs]="tooltipTabs" />
+  <ul class="chart-sections__notes">
+    <li>
+      <code>tooltip</code> overrides the default text:
+      @switch (type()) {
+        @case ('scatter') {
+          <code>&lt;series&gt;: (&lt;x&gt;, &lt;y&gt;)</code>, with the radius added for bubbles.
+        }
+        @case ('donut') {
+          <code>&lt;label&gt;: &lt;value&gt; (&lt;share&gt;%)</code>.
+        }
+        @default {
+          <code>&lt;series&gt; &middot; &lt;category&gt;: &lt;value&gt;</code>.
+        }
+      }
+    </li>
+    <li>
+      <code>valueFormat</code> defaults to the compact notation of the locale (<code>1.2K</code> and
+      <code>3.4M</code> in English, <code>1,5 Mio.</code> in German). It formats axis ticks and the
+      default tooltip and legend numbers, and is never used for the alt-table, which shows exact
+      values.
+    </li>
+    <li>
+      The tooltip is dismissible (<code>Escape</code> closes it without moving focus or the pointer
+      until a new trigger) and persistent (it stays until hover or focus ends). It follows the
+      pointer and ignores pointer events, so it is not hoverable (WCAG 1.4.13); see Known gaps.
+    </li>
+    <li>
+      Accessible names, role descriptions, the loading and empty texts, the table headers and the
+      point text are <code>chart</code> messages. Every chart takes a <code>messages</code> input
+      for one-off overrides.
+    </li>
+  </ul>
+</app-doc-section>
+
+<app-doc-section
+  anchor="alt-table"
+  heading="Alt-table"
+  description="The Table button switches the same data to a table representation with exact values."
+>
+  <ul class="chart-sections__notes">
+    <li>
+      The alt-table is the accessible-charts recommendation of pairing a graphic with a tabular
+      alternative, not a decorative duplicate. It lists the visible
+      @if (type() === 'donut') {
+        slices
+      } @else {
+        series
+      }
+      with exact (not compact-formatted) numbers and has a caption with the chart name.
+    </li>
+    <li>It lists every point of a dense chart whatever the chart draws.</li>
+    <li>The Table button keeps keyboard focus when the view switches.</li>
+    @if (type() === 'scatter') {
+      <li>
+        The columns are <code>Series</code>, <code>X</code> and <code>Y</code> (plus
+        <code>R</code> when <code>bubble</code> is on), not category-keyed rows.
+      </li>
+    }
+  </ul>
+</app-doc-section>
+
+<app-doc-section
+  anchor="colour-independence"
+  heading="Colour independence"
+  description="Colour is never the only way to tell series apart (WCAG 1.4.1)."
+>
+  <ul class="chart-sections__notes">
+    @if (type() === 'line' || type() === 'scatter') {
+      <li>
+        With more than one series, marks use a marker shape per series index (circle, square,
+        diamond, up and down triangle, cross, plus, star) and the legend swatch shows the same
+        shape. A single series stays circles, and hiding another series never changes the shape.
+      </li>
+    }
+    @if (type() !== 'scatter') {
+      <li>
+        <code>patterns</code> (default <code>false</code>) fills each
+        @if (type() === 'donut') {
+          slice
+        } @else {
+          series
+        }
+        with one of eight hatch patterns, a tinted ground with a hatch in the full series colour,
+        and the legend swatch becomes a patterned square.
+        @if (type() === 'line') {
+          On a line chart it applies to <code>area</code>.
+        }
+        Pattern ids are unique per chart instance, so many charts on one page never collide.
+      </li>
+    }
+    <li>
+      In forced colours (Windows High Contrast) the chart draws with the system colours
+      <code>CanvasText</code>, <code>Canvas</code>, <code>GrayText</code> and
+      <code>Highlight</code> only. Series then differ by hatch pattern, by dash (lines) and by
+      marker shape; patterns and dashes turn on automatically.
+    </li>
+  </ul>
+</app-doc-section>
+
+<app-doc-section
+  anchor="keyboard"
+  heading="Keyboard"
+  description="Tab enters a chart at the last focused mark and leaves with Tab; focus follows the arrows."
+>
+  <ul class="chart-sections__notes">
+    @switch (type()) {
+      @case ('donut') {
+        <li>
+          <kbd>ArrowLeft</kbd> and <kbd>ArrowUp</kbd> focus the previous slice,
+          <kbd>ArrowRight</kbd> and <kbd>ArrowDown</kbd> the next, <kbd>Home</kbd> and
+          <kbd>End</kbd> the first and last.
+        </li>
+      }
+      @case ('scatter') {
+        <li>
+          Points are ordered by <code>x</code> within a series. <kbd>ArrowLeft</kbd> and
+          <kbd>ArrowRight</kbd> move along the series, <kbd>ArrowUp</kbd> and
+          <kbd>ArrowDown</kbd> move between series, and <kbd>Home</kbd> and <kbd>End</kbd> jump to
+          the first and last point of the series.
+        </li>
+      }
+      @case ('bar') {
+        <li>
+          Grouped bars: <kbd>ArrowLeft</kbd> and <kbd>ArrowRight</kbd> along the categories in the
+          same series, <kbd>ArrowUp</kbd> and <kbd>ArrowDown</kbd> between series at the same
+          category, <kbd>Home</kbd> and <kbd>End</kbd> the first and last category of the series.
+        </li>
+        <li>
+          Stacked bars: <kbd>ArrowUp</kbd> and <kbd>ArrowDown</kbd> move between the segments of a
+          stack.
+        </li>
+        <li>
+          Horizontal bars swap the pairs: <kbd>ArrowUp</kbd> and <kbd>ArrowDown</kbd> go along the
+          categories, <kbd>ArrowLeft</kbd> and <kbd>ArrowRight</kbd> between series.
+        </li>
+      }
+      @default {
+        <li>
+          <kbd>ArrowLeft</kbd> and <kbd>ArrowRight</kbd> move along the category axis in the same
+          series, <kbd>ArrowUp</kbd> and <kbd>ArrowDown</kbd> between series at the same category,
+          and <kbd>Home</kbd> and <kbd>End</kbd> jump to the first and last category of the series.
+        </li>
+      }
+    }
+    <li>
+      <kbd>Escape</kbd> dismisses the tooltip; <kbd>Enter</kbd> and <kbd>Space</kbd> on a legend
+      item toggle it.
+    </li>
+    <li>
+      The roving position is a key (series and category), not an index, so hiding a series moves it
+      to the nearest remaining mark and re-focuses that mark if focus was inside the chart. Focus
+      mirrors hover: the focused mark highlights its series and opens the tooltip.
+    </li>
+  </ul>
+</app-doc-section>
+
+<app-doc-section
+  anchor="performance"
+  heading="Performance"
+  description="A chart draws every shape it is given, up to a limit for line marks."
+>
+  <ul class="chart-sections__notes">
+    @if (type() === 'line') {
+      <li>
+        A line chart draws one DOM mark per point up to 500 marks
+        (<code>KUI_CHART_MARK_LIMIT</code>). Above that it draws only the mark that holds the tab
+        stop; the keyboard model is index based and the table still lists every point.
+      </li>
+    } @else {
+      <li>
+        {{ type() === 'bar' ? 'Bar' : type() === 'scatter' ? 'Scatter' : 'Donut' }} charts draw
+        every shape. The practical limit is a few thousand shapes; above that, aggregate before
+        passing the data in.
+      </li>
+    }
+    <li>
+      Library measurements in Chromium (a two-series line chart and a one-series scatter chart of
+      the same point count): 500 points paint in 46 ms with 1,629 DOM nodes, 2,000 points in 115 ms
+      with 6,123 nodes and 5,000 points in 259 ms with 15,123 nodes. Hiding a series on the
+      2,000-point line chart paints in 27 ms. Decimation is out of scope.
+    </li>
+  </ul>
+</app-doc-section>
