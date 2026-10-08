@@ -1,0 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.pagination-playground-page {
+  @include playground-page-layout;
+}
+
+.pagination-playground-page__header {
+  @include playground-page-header;
+}
+
+.pagination-playground-page__note {
+  @include playground-page-note;
+}

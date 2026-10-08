@@ -47,6 +47,7 @@ const COMPONENT_SLUGS = [
   'stepper',
   'switch',
   'table',
+  'pagination',
   'line-chart',
   'bar-chart',
   'scatter-chart',

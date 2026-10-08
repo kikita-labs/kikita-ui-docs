@@ -1,0 +1,125 @@
+<article class="pagination-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Pagination"
+    description="Page navigation with numbers, steps, a summary and a rows-per-page picker."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="Pagination is a standalone component built from the kit's Button, IconButton and Select, plus a static ellipsis."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Bind currentPage with a signal. The current page carries aria-current and its own name, so the state is never colour alone."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic pagination">
+      <app-basic-pagination-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+    <p class="pagination-page__note">
+      <code>currentPage</code> and <code>pageSize</code> are plain two-way bindings, not form
+      values: pagination is page-level navigation state and is never placed inside
+      <code>kui-field</code>.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="variants"
+    heading="Variants and sizes"
+    description="compact (default) shows First, Prev, numbers and Next, Last. simple shows Prev, Page X of Y and Next for narrow layouts. full adds the Showing X to Y of Z summary and the rows-per-page picker. disabled blocks every control."
+  >
+    <app-live-preview previewLabel="Pagination variants">
+      <app-pagination-variants-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="variantsTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="window"
+    heading="Page window"
+    description="siblingCount is how many numbers show beside the current page before an ellipsis, and boundaryCount how many always show at each edge. The ellipsis is a static aria-hidden span, never a button."
+  >
+    <app-live-preview previewLabel="Pagination page windows">
+      <app-pagination-window-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="windowTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="table"
+    heading="Usage with a table"
+    description="Pagination is a sibling of table[kuiTable], not nested in it: a table only allows table parts as children and holds the full dataset without a slicing concept. Page state is owned by the consuming component, as with mat-paginator and mat-table."
+  >
+    <app-live-preview previewLabel="Pagination driving a table">
+      <app-pagination-table-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="tableTabs" />
+    <p class="pagination-page__note">
+      Changing the rows-per-page picker sets <code>pageSize</code> and resets
+      <code>currentPage</code> to 1 in the same update, since a stale page offset into a resized
+      list would be wrong.
+    </p>
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Pagination"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Pagination API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="Pagination is a set of independent buttons in a navigation landmark."
+  >
+    <ul class="pagination-page__notes">
+      <li>
+        The controls sit in a <code>nav</code> landmark named by <code>ariaLabel</code> or the
+        <code>pagination.label</code> message, separate from the primary navigation.
+      </li>
+      <li>
+        The current page has <code>aria-current="page"</code> and the name
+        <code>Page N, current</code>.
+      </li>
+      <li>
+        First, Prev, Next and Last are icon buttons with a required <code>aria-label</code>; at the
+        range boundary they get the native <code>disabled</code> attribute and leave the tab order.
+      </li>
+      <li>The ellipsis is <code>aria-hidden</code> and not focusable.</li>
+      <li>The full-variant summary is <code>aria-live="polite"</code>.</li>
+      <li>
+        There is no roving tabindex or arrow-key navigation: <kbd>Tab</kbd> and
+        <kbd>Shift+Tab</kbd> move between the non-disabled controls in visual order, and
+        <kbd>Enter</kbd> or <kbd>Space</kbd> activates the focused one.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section heading="Known gaps" description="Documented limits of the installed package.">
+    <ul class="pagination-page__notes">
+      <li>
+        There is no jump-to-page input; add a Number Input next to the group if a product needs it.
+      </li>
+      <li>The ellipsis is static and has no hover-to-jump affordance.</li>
+      <li>
+        The rows-per-page select sits in a label-less field with an <code>aria-label</code> on the
+        input, so the open listbox panel carries no separate name.
+      </li>
+      <li>A formal assistive-technology review has not been run.</li>
+    </ul>
+  </app-doc-section>
+</article>

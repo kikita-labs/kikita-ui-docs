@@ -1,0 +1,23 @@
+<div class="pagination-example">
+  <kui-pagination
+    ariaLabel="Simple pages"
+    variant="simple"
+    [totalPages]="12"
+    [(currentPage)]="page"
+  />
+  <kui-pagination
+    ariaLabel="Full pages"
+    variant="full"
+    [totalPages]="12"
+    [totalItems]="289"
+    [(currentPage)]="page"
+    [(pageSize)]="pageSize"
+  />
+  <kui-pagination
+    ariaLabel="Disabled pages"
+    size="sm"
+    [totalPages]="12"
+    [(currentPage)]="page"
+    disabled
+  />
+</div>

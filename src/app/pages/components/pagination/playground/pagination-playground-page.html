@@ -1,0 +1,33 @@
+<article class="pagination-playground-page">
+  <div class="pagination-playground-page__header">
+    <h1>Pagination &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Pagination playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-pagination
+      [currentPage]="page()"
+      (currentPageChange)="onPageChange($event)"
+      [pageSize]="pageSize()"
+      (pageSizeChange)="onPageSizeChange($event)"
+      [variant]="variantOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [totalPages]="totalPagesOf(playground.values())"
+      [totalItems]="totalItemsOf(playground.values())"
+      [siblingCount]="siblingCountOf(playground.values())"
+      [boundaryCount]="boundaryCountOf(playground.values())"
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [messages]="messagesOf(playground.values())"
+      [disabled]="disabledOf(playground.values())"
+    />
+  </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Pagination events" />
+
+  <app-api-table label="Pagination API" [rows]="apiRows" />
+  <p class="pagination-playground-page__note">{{ apiDescription }}</p>
+</article>

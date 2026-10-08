@@ -1,0 +1,28 @@
+<div class="pagination-example">
+  <table kuiTable [data]="pageRows()">
+    <thead>
+      <tr>
+        <th kuiTh>Id</th>
+        <th kuiTh>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (row of pageRows(); track row.id) {
+        <tr kuiRow [value]="row">
+          <td kuiCell>{{ row.id }}</td>
+          <td kuiCell>{{ row.name }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <kui-pagination
+    ariaLabel="Table pages"
+    variant="full"
+    [totalPages]="totalPages()"
+    [totalItems]="allRows.length"
+    [pageSizeOptions]="[10, 20, 30]"
+    [(currentPage)]="page"
+    [(pageSize)]="pageSize"
+  />
+</div>

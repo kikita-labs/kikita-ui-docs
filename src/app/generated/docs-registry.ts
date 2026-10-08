@@ -42,6 +42,7 @@ import { MEDIA_VIEWER_DOCS_MANIFEST } from '@pages/components/media-viewer/media
 import { MENU_DOCS_MANIFEST } from '@pages/components/menu/menu.docs-manifest';
 import { NUMBER_INPUT_DOCS_MANIFEST } from '@pages/components/number-input/number-input.docs-manifest';
 import { OTP_INPUT_DOCS_MANIFEST } from '@pages/components/otp-input/otp-input.docs-manifest';
+import { PAGINATION_DOCS_MANIFEST } from '@pages/components/pagination/pagination.docs-manifest';
 import { POPOVER_DOCS_MANIFEST } from '@pages/components/popover/popover.docs-manifest';
 import { PROGRESS_DOCS_MANIFEST } from '@pages/components/progress/progress.docs-manifest';
 import { RADIO_DOCS_MANIFEST } from '@pages/components/radio/radio.docs-manifest';
@@ -182,6 +183,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     ICON_DOCS_MANIFEST,
     AVATAR_DOCS_MANIFEST,
     TABLE_DOCS_MANIFEST,
+    PAGINATION_DOCS_MANIFEST,
     LINE_CHART_DOCS_MANIFEST,
     BAR_CHART_DOCS_MANIFEST,
     SCATTER_CHART_DOCS_MANIFEST,

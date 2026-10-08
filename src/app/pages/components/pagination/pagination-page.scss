@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.pagination-page {
+  @include doc-page-layout;
+}
+
+.pagination-page__notes {
+  @include doc-page-notes;
+}
+
+.pagination-page__note {
+  @include doc-page-note;
+}
