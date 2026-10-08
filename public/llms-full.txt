@@ -9781,9 +9781,10 @@ export class SwitchSizeExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | - | Switch size mapped to Kikita switch tokens. |
-| invalid | boolean | - | Marks the switch invalid outside a field error state. |
-| id | string \| undefined | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Switch size mapped to Kikita switch tokens. Resolved from defaults.switch.size, then the parent field, then the global defaults.size, then md. |
+| invalid | boolean | false | Marks the switch invalid outside a kui-field error state. With [formField] the Field state wins. |
+| id | string \| undefined | undefined | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| KuiSwitchOptions | interface | - | Shape of defaults.switch: size. |
 
 ## Accessibility
 

@@ -35,6 +35,8 @@
     <app-code-tabs [tabs]="sizeTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Switch API" [rows]="apiRows" />
   </app-doc-section>
@@ -64,11 +66,37 @@
         Set the native <code>disabled</code> attribute to disable the control; use the directive's
         <code>invalid</code> input to mark it invalid outside a <code>kui-field</code> error state.
       </li>
+      <li>
+        A required <code>kui-field</code> exposes <code>aria-required</code> on the switch, and the
+        checked switch stays visible under <code>forced-colors: active</code>.
+      </li>
       <li>Use switch only for an immediate binary setting, not multi-choice selection.</li>
       <li>
         Per the Kikita UI library's state coverage notes, Switch has local playground coverage for
         off, on, hover, focus, invalid, disabled, sizes, and field wiring, but a dedicated
         assistive-technology review has not been completed yet.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Switch."
+  >
+    <ul class="switch-page__notes">
+      <li>
+        The directive class is <code>KuiSwitch</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        The default size moved to
+        <code>provideKuiDefaults({{ '{' }} switch: {{ '{' }} size {{ '}' }} {{ '}' }})</code>; the
+        input is now <code>undefined</code> until set.
+      </li>
+      <li>A required <code>kui-field</code> sets <code>aria-required</code> on the switch.</li>
+      <li>
+        The checked and indeterminate states are covered by forced-colors, and disabled switches use
+        the shared <code>--kui-opacity-disabled</code>.
       </li>
     </ul>
   </app-doc-section>

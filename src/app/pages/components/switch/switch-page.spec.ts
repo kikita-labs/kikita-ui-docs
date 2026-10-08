@@ -45,7 +45,15 @@ describe('SwitchPage', () => {
     ];
 
     expect(root.querySelector('h1')?.textContent?.trim()).toBe('Switch');
-    expect(sectionIds).toEqual(['import', 'usage', 'sizes', 'api', 'accessibility']);
+    expect(sectionIds).toEqual([
+      'import',
+      'usage',
+      'sizes',
+      'provider-defaults',
+      'api',
+      'accessibility',
+      'migration',
+    ]);
     expect(switches).toHaveLength(5);
     expect(switches.every((control) => control.type === 'checkbox')).toBe(true);
     expect(switches.every((control) => control.getAttribute('role') === 'switch')).toBe(true);
