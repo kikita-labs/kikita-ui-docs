@@ -65,11 +65,13 @@ import { TOOLTIP_DOCS_MANIFEST } from '@pages/components/tooltip/tooltip.docs-ma
 import { TREE_DOCS_MANIFEST } from '@pages/components/tree/tree.docs-manifest';
 import { DRAFT_DOCS_MANIFEST } from '@pages/draft/draft.docs-manifest';
 import { ACCESSIBILITY_DOCS_MANIFEST } from '@pages/foundations/accessibility/accessibility.docs-manifest';
+import { AUTO_FOCUS_DOCS_MANIFEST } from '@pages/foundations/auto-focus/auto-focus.docs-manifest';
 import { DEFAULTS_DOCS_MANIFEST } from '@pages/foundations/defaults/defaults.docs-manifest';
 import { DENSITY_DOCS_MANIFEST } from '@pages/foundations/density/density.docs-manifest';
 import { INSTALLATION_DOCS_MANIFEST } from '@pages/foundations/installation/installation.docs-manifest';
 import { INTERNATIONALIZATION_DOCS_MANIFEST } from '@pages/foundations/internationalization/internationalization.docs-manifest';
 import { MIGRATION_DOCS_MANIFEST } from '@pages/foundations/migration/migration.docs-manifest';
+import { STRUCTURAL_ICONS_DOCS_MANIFEST } from '@pages/foundations/structural-icons/structural-icons.docs-manifest';
 import { THEMING_DOCS_MANIFEST } from '@pages/foundations/theming/theming.docs-manifest';
 import { TOKENS_DOCS_MANIFEST } from '@pages/foundations/tokens/tokens.docs-manifest';
 import { TYPOGRAPHY_DOCS_MANIFEST } from '@pages/foundations/typography/typography.docs-manifest';
@@ -144,6 +146,8 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     MIGRATION_DOCS_MANIFEST,
     INTERNATIONALIZATION_DOCS_MANIFEST,
     DEFAULTS_DOCS_MANIFEST,
+    STRUCTURAL_ICONS_DOCS_MANIFEST,
+    AUTO_FOCUS_DOCS_MANIFEST,
   ],
   components: [
     BUTTON_DOCS_MANIFEST,

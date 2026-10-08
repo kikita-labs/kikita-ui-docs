@@ -1,0 +1,144 @@
+<article class="structural-icons-page">
+  <app-page-header
+    eyebrow="Foundation"
+    heading="Structural icons"
+    description="The small glyphs a component draws for itself, such as the cross on a dialog or the chevron on a select, as replaceable icon data."
+  />
+
+  <app-doc-section
+    heading="Replace a glyph"
+    description="Structural icons are not the icons you pass to kui-icon by name. They never touch the icon registry or the network, they render on the server, and you can replace them for the whole app or for one subtree without changing a template."
+  >
+    <app-code-tabs [tabs]="replaceTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Precedence"
+    description="A role changes every component without a more specific override; a component slot changes only that component."
+  >
+    <ul class="structural-icons-page__notes">
+      <li>
+        Order: <code>defaults.&lt;component&gt;.&lt;slot&gt;Icon</code>, then
+        <code>defaults.icons.&lt;role&gt;</code>, then the built-in glyph.
+      </li>
+      <li>
+        Levels merge per key like every other default, so a nested level overrides only the roles it
+        names. Values may be plain glyphs or signals.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Roles"
+    description="defaults.icons takes one glyph per role. Roles are named for what the icon does, not for its shape: one cross is close on a dialog, remove on a chip and clear in a field."
+  >
+    <app-api-table label="Structural icon roles" [rows]="rolesRows" />
+
+    <p class="structural-icons-page__note">
+      The names are direction-neutral on purpose (<code>previous</code>, not <code>left</code>), so
+      a role stays correct if a layout is ever mirrored. Right-to-left layouts are not supported in
+      2.0.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Component slots"
+    description="A component slot beats the role. Slots live in the options interface of the component, so a typo is a type error."
+  >
+    <app-api-table label="Component icon slots" [rows]="slotsRows" />
+
+    <ul class="structural-icons-page__notes">
+      <li>
+        The chips inside a multiple Select read <code>defaults.chip.removeIcon</code>, then
+        <code>defaults.icons.remove</code>.
+      </li>
+      <li>
+        Glyphs that are specific to one component and have no role (calendar, clock, search and zoom
+        marks, play and pause, copy, file and folder, upload) are drawn by the same renderer, so
+        they follow the stroke tokens, but they cannot be replaced yet.
+      </li>
+      <li>
+        Two glyph sets are outside this system: the plus, minus and chevron steppers of
+        <code>kuiNumberInput</code> and the silhouette placeholder of <code>kui-avatar</code>.
+        Charts draw data, not icons.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Glyph data"
+    description="An icon is plain data in the icon-node layout of Lucide, so an icon from the Lucide packages can be used as is."
+  >
+    <app-code-tabs [tabs]="glyphTabs" />
+
+    <app-api-table label="Glyph rules" [rows]="glyphRulesRows" />
+
+    <p class="structural-icons-page__note">
+      Hand-drawn icons and other sets work the same way: draw them with strokes on a 24 by 24 grid,
+      or set <code>viewBox</code>. Colour always follows <code>currentColor</code>, so a glyph picks
+      up the surrounding text colour, hover and disabled states and the forced-colors palette.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Stroke width"
+    description="Two public CSS custom properties control the line of structural icons and of stroke-based kui-icon content. Set them on the root or on any subtree."
+  >
+    <app-api-table label="Stroke tokens" [rows]="strokeRows" />
+
+    <app-code-tabs [tabs]="strokeCodeTabs" />
+
+    <p class="structural-icons-page__note">
+      <code>kui-icon</code> exposes both through <code>strokeWidth</code> and
+      <code>absoluteStrokeWidth</code>; they only set the tokens on the host, so an ancestor can set
+      them too. Only stroke-based drawings respond: filled shapes, gradients and markup with an
+      inline <code>style</code> stroke width do not. A scaling stroke is the default because a
+      constant pixel stroke makes small icons blurry on some screens.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility, security and server rendering"
+    description="Structural icons are decorative plain template output."
+  >
+    <ul class="structural-icons-page__notes">
+      <li>
+        Structural icons are decorative: <code>aria-hidden="true"</code> and
+        <code>focusable="false"</code>. The accessible name belongs to the owning control (the
+        <code>aria-label</code> of the close button, the visible text of the chip) and an override
+        never changes it.
+      </li>
+      <li>
+        Glyphs use <code>currentColor</code>, so they are visible in forced-colors mode with the
+        system text colour. Icons drawn with a CSS <code>mask-image</code> disappear in Chromium in
+        that mode, which is why this renderer draws real SVG.
+      </li>
+      <li>
+        A glyph is drawn through a fixed list of elements and attributes, never through
+        <code>innerHTML</code>, and the Angular sanitizer bypass is not involved, so a glyph can
+        come from any source. Icons that <code>kui-icon</code> fetches by name are converted to the
+        same data with the same rules before they are drawn.
+      </li>
+      <li>
+        The server HTML already contains the icon and hydration reuses it. The generated remove
+        button of a chip and the Color Input toggle are built in the browser only, as before, and
+        follow the same defaults.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Not supported"
+    description="Use a subtree and provideKuiDefaults for per-instance needs."
+  >
+    <ul class="structural-icons-page__notes">
+      <li>Per-instance icon inputs on components.</li>
+      <li>Icon fonts, sprite sheets and CSS <code>mask-image</code> icons.</li>
+      <li>
+        <code>&lt;g&gt;</code>, gradients, <code>&lt;use&gt;</code>, <code>&lt;image&gt;</code>,
+        filters and text inside a glyph.
+      </li>
+      <li>Render functions or component templates as an override value.</li>
+    </ul>
+  </app-doc-section>
+</article>

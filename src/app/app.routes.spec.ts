@@ -64,11 +64,13 @@ const COMPONENT_SLUGS = [
 
 const FOUNDATION_SLUGS = [
   'accessibility',
+  'auto-focus',
   'defaults',
   'density',
   'installation',
   'internationalization',
   'migration',
+  'structural-icons',
   'theming',
   'tokens',
   'typography',

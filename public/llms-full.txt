@@ -20,11 +20,13 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 ## Foundations
 
 - [Accessibility](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md): Keyboard, semantics, focus, and WCAG expectations.
+- [Auto Focus](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/auto-focus.md): kuiAutoFocus moves focus to its host, or to the first focusable element inside it, after the browser has rendered.
 - [Defaults](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/defaults.md): Set shared preferences such as size, shape, clearable or toast placement once for the application or for a subtree, instead of repeating them in every template.
 - [Density](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md): Spacing and control density expectations for product UIs.
 - [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
 - [Internationalization](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/internationalization.md): Locale and messages are two independent settings: the locale formats dates, numbers and plurals, the messages translate the text the library owns.
 - [Migrating to 2.0](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/migration.md): Every breaking change of @kikita-labs/ui 2.0: renamed exports, provider defaults, locale and messages, icons, tokens, component behaviour and the charts.
+- [Structural icons](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/structural-icons.md): The small glyphs a component draws for itself, such as the cross on a dialog or the chevron on a select, as replaceable icon data.
 - [Theming](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md): Theme provider setup and theme customization basics.
 - [Tokens](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/tokens.md): Design token categories exposed through Kikita CSS variables.
 - [Typography](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/typography.md): Semantic type-role classes, text tones, and the kuiText directive.
@@ -160,6 +162,63 @@ Record the actual level of review. Be explicit when only DOM smoke has run.
   Covered keyboard navigation, names/roles/states, focus return, and primitive-specific behavior.
   Remaining gap: none known.
 ```
+
+---
+
+<!-- route: /foundations/auto-focus -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/auto-focus.md -->
+<!-- package: @kikita-labs/ui@2.0.0 -->
+
+# Auto Focus
+
+> kuiAutoFocus moves focus to its host, or to the first focusable element inside it, after the browser has rendered.
+
+- Status: available
+- Route: /foundations/auto-focus
+- Package: @kikita-labs/ui@2.0.0
+
+## Content
+
+### Import and usage
+Use it where the next step is obvious, such as the first field of a dialog or a code field that has just appeared. The directive has no styles.
+#### auto-focus.ts
+
+```ts
+import { KuiAutoFocus } from '@kikita-labs/ui';
+```
+
+#### form.html
+
+```html
+<input kuiInput kuiAutoFocus />
+```
+
+#### form.html
+
+```html
+<input kuiInput [kuiAutoFocus]="editing()" />
+```
+
+#### form.html
+
+```html
+<div kuiAutoFocus>
+  <input kuiInput aria-label="Search" />
+</div>
+```
+
+### Rules
+The directive is conservative about when it moves focus.
+
+### API
+There are no outputs, providers or CSS custom properties.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| kuiAutoFocus | boolean | - | Enables focus (default false). The attribute without a value is true, and false to true focuses again. |
+| kuiAutoFocusPreventScroll | boolean | - | Focuses without scrolling the element into view (default false). |
+
+### Accessibility
+Automatic focus can disorient screen-reader users, so keep it off by default.
 
 ---
 
@@ -689,6 +748,132 @@ The four charts changed their keyboard model, tooltip data and sizing.
 
 ### Verify the upgrade
 Work through these checks in order after the automatic migration.
+
+---
+
+<!-- route: /foundations/structural-icons -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/structural-icons.md -->
+<!-- package: @kikita-labs/ui@2.0.0 -->
+
+# Structural icons
+
+> The small glyphs a component draws for itself, such as the cross on a dialog or the chevron on a select, as replaceable icon data.
+
+- Status: available
+- Route: /foundations/structural-icons
+- Package: @kikita-labs/ui@2.0.0
+
+## Content
+
+### Replace a glyph
+Structural icons are not the icons you pass to kui-icon by name. They never touch the icon registry or the network, they render on the server, and you can replace them for the whole app or for one subtree without changing a template.
+#### close-icon.ts
+
+```ts
+import type { KuiIconGlyph } from '@kikita-labs/ui';
+
+export const CIRCLE_X: KuiIconGlyph = {
+  node: [
+    ['circle', { cx: 12, cy: 12, r: 10 }],
+    ['path', { d: 'm15 9-6 6' }],
+    ['path', { d: 'm9 9 6 6' }],
+  ],
+};
+```
+
+#### app.config.ts
+
+```ts
+provideKikitaUi({ defaults: { icons: { close: CIRCLE_X, remove: CIRCLE_X } } });
+```
+
+#### section.providers.ts
+
+```ts
+providers: [provideKuiDefaults({ icons: { close: CIRCLE_X } })];
+```
+
+### Precedence
+A role changes every component without a more specific override; a component slot changes only that component.
+
+### Roles
+defaults.icons takes one glyph per role. Roles are named for what the icon does, not for its shape: one cross is close on a dialog, remove on a chip and clear in a field.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| close | role | - | Dialog, Drawer, Media Viewer, Toast and Alert close buttons. |
+| remove | role | - | Chip remove button (also the chips of a multiple Select) and File Upload remove button. |
+| clear | role | - | Clear button of Select, Combobox, Date Picker and Time Picker, and the Command Palette search clear. |
+| pickerChevron | role | - | Options toggle of Select, Combobox, Date Picker, Time Picker and Color Input. |
+| previous, next | role | - | Previous and next page, month, slide or tab group (Pagination, Calendar, Calendar Range, Carousel, Tabs, Media Viewer). |
+| first, last | role | - | First and last page buttons of Pagination. |
+| disclosure | role | - | Expand control of Accordion items and Tree nodes; the rotation stays CSS. |
+| separator | role | - | Breadcrumb separator. |
+| check | role | - | Completed Stepper step and finished File Upload item. |
+| statusInfo, statusSuccess, statusWarning, statusDanger | role | - | Status mark of Alert and Toast, and the warning mark of a non-default Confirm dialog. |
+| externalLink | role | - | Mark after an external kuiLink. |
+
+### Component slots
+A component slot beats the role. Slots live in the options interface of the component, so a typo is a type error.
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| dialog, drawer | closeIcon | - | Close button. |
+| alert, toast | closeIcon | - | Close button. |
+| chip, fileUpload | removeIcon | - | Remove button. |
+| select, combobox, datePicker, timePicker | chevronIcon, clearIcon | - | Options toggle and clear button. |
+| colorInput | chevronIcon | - | Options toggle. |
+| calendar, calendarRange, carousel, tabs | previousIcon, nextIcon | - | Step controls. |
+| pagination | firstIcon, previousIcon, nextIcon, lastIcon | - | Step controls. |
+| accordion, tree | disclosureIcon | - | Expand control. |
+| breadcrumbs | separatorIcon | - | Separator. |
+| link | externalIcon | - | Mark after an external link. |
+
+### Glyph data
+An icon is plain data in the icon-node layout of Lucide, so an icon from the Lucide packages can be used as is.
+#### glyph.ts
+
+```ts
+interface KuiIconGlyph {
+  readonly node: readonly (readonly [
+    tag: string,
+    attributes: Record<string, string | number | undefined>,
+  ])[];
+  readonly viewBox?: string; // default '0 0 24 24'
+}
+```
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| Elements | path, line, polyline, polygon, circle, ellipse, rect | - | Any other element invalidates the glyph. |
+| Attributes | geometry and paint | - | Geometry (d, cx, cy, r, rx, ry, x, y, x1, y1, x2, y2, width, height, points) and paint (fill, fill-opacity, fill-rule, clip-rule, stroke, stroke-opacity, stroke-linecap, stroke-linejoin, stroke-miterlimit, stroke-dasharray, stroke-dashoffset, opacity, transform). Everything else is ignored. |
+| Values | strings and numbers | - | Values containing url(, <, > or javascript: are ignored. |
+| Line weight | stroke-width, vector-effect | - | Not accepted; the stroke tokens own them. |
+| Filled shapes | fill and stroke none | - | Set fill and stroke: none on the element, as the built-in play glyph does. |
+| Invalid override | ignored | - | The next level of the precedence chain is used. In development mode the first use of an invalid glyph logs a warning. |
+
+### Stroke width
+Two public CSS custom properties control the line of structural icons and of stroke-based kui-icon content. Set them on the root or on any subtree.
+#### styles.css
+
+```css
+:root {
+  --kui-icon-stroke-width: 1.5; /* thinner icons everywhere */
+}
+```
+
+#### icon.html
+
+```html
+<kui-icon name="settings" size="96" [strokeWidth]="1.5" absoluteStrokeWidth />
+```
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| --kui-icon-stroke-width | a number in glyph-grid units | - | Built-in glyphs default to the weight of their call site (between 1.5 and 2.5); content icons keep the weight of their own markup until the token is set. |
+| --kui-icon-vector-effect | none \| non-scaling-stroke | - | non-scaling-stroke keeps the stroke the same number of pixels at any icon size. The default is none. |
+
+### Accessibility, security and server rendering
+Structural icons are decorative plain template output.
+
+### Not supported
+Use a subtree and provideKuiDefaults for per-instance needs.
 
 ---
 

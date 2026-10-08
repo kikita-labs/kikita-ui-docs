@@ -6,11 +6,13 @@ import { provideKikitaUi } from '@kikita-labs/ui';
 import { KIKITA_UI_PACKAGE_VERSION } from '@core/package';
 
 import { AccessibilityPage } from './accessibility/accessibility-page';
+import { AutoFocusPage } from './auto-focus/auto-focus-page';
 import { DefaultsPage } from './defaults/defaults-page';
 import { DensityPage } from './density/density-page';
 import { InstallationPage } from './installation/installation-page';
 import { InternationalizationPage } from './internationalization/internationalization-page';
 import { MigrationPage } from './migration/migration-page';
+import { StructuralIconsPage } from './structural-icons/structural-icons-page';
 import { ThemingPage } from './theming/theming-page';
 import { TokensPage } from './tokens/tokens-page';
 import { TypographyPage } from './typography/typography-page';
@@ -107,6 +109,25 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
       'Structural icons',
       'Migrating from the token API',
     ],
+  },
+  {
+    component: StructuralIconsPage,
+    heading: 'Structural icons',
+    sections: [
+      'Replace a glyph',
+      'Precedence',
+      'Roles',
+      'Component slots',
+      'Glyph data',
+      'Stroke width',
+      'Accessibility, security and server rendering',
+      'Not supported',
+    ],
+  },
+  {
+    component: AutoFocusPage,
+    heading: 'Auto Focus',
+    sections: ['Import and usage', 'Rules', 'API', 'Accessibility'],
   },
 ];
 

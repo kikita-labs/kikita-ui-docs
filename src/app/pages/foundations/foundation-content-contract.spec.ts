@@ -8,6 +8,7 @@ import {
   ACCESSIBILITY_FORM_TABS,
   ACCESSIBILITY_STATUS_TABS,
 } from './accessibility/accessibility.docs-content';
+import { AUTO_FOCUS_USAGE_TABS } from './auto-focus/auto-focus.docs-content';
 import {
   DEFAULTS_ICONS_TABS,
   DEFAULTS_REACTIVE_TABS,
@@ -32,6 +33,11 @@ import {
 } from './internationalization/internationalization.docs-content';
 import { MIGRATION_AUTOMATIC_TABS } from './migration/migration.docs-content';
 import {
+  STRUCTURAL_ICONS_GLYPH_TABS,
+  STRUCTURAL_ICONS_REPLACE_TABS,
+  STRUCTURAL_ICONS_STROKE_CODE_TABS,
+} from './structural-icons/structural-icons.docs-content';
+import {
   THEMING_CONTRACT_TABS,
   THEMING_PROVIDER_TABS,
   THEMING_SEED_TABS,
@@ -44,6 +50,10 @@ import {
 } from './tokens/tokens.docs-content';
 
 const ALL_FOUNDATION_CODE_TABS: readonly CodeTab[] = [
+  ...AUTO_FOCUS_USAGE_TABS,
+  ...STRUCTURAL_ICONS_REPLACE_TABS,
+  ...STRUCTURAL_ICONS_GLYPH_TABS,
+  ...STRUCTURAL_ICONS_STROKE_CODE_TABS,
   ...DEFAULTS_SET_TABS,
   ...DEFAULTS_REACTIVE_TABS,
   ...DEFAULTS_ICONS_TABS,
