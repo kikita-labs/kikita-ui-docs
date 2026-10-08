@@ -20,6 +20,126 @@
   </app-doc-section>
 
   <app-doc-section
+    heading="Overriding tokens"
+    description="Where you set a token decides how far it reaches. Components read semantic or component tokens, never palette or seed variables."
+  >
+    <app-api-table label="Where a token override works" [rows]="overrideRows" />
+    <app-code-tabs [tabs]="overrideTabs" />
+    <ul class="theming-page__notes">
+      <li>
+        Component tokens are inputs, not outputs. A component states its default in its own CSS, for
+        example <code>var(--kui-card-bg, var(--kui-color-surface))</code>, and the generated
+        stylesheet does not define that token. Setting <code>--kui-card-bg</code> on an ancestor
+        therefore wins, and so does changing <code>--kui-color-surface</code> on the same ancestor.
+      </li>
+      <li>
+        The generated stylesheet defines only literal component tokens (sizes, gaps, durations), the
+        semantic <code>--kui-type-*</code> roles and the density-dependent
+        <code>--kui-btn-px</code>. Do not read a component token in your own CSS without a fallback:
+        it has no value unless someone sets it.
+      </li>
+      <li>
+        Class names are a separate namespace: a <code>kui-*</code> class is stable only where a
+        component page documents it, and the other anatomy classes are internal and may change in a
+        minor release.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Defaults, layers and density"
+    description="The default theme works from CSS alone, and your own variables always win over the generated ones."
+  >
+    <ul class="theming-page__notes">
+      <li>
+        <code>@kikita-labs/ui/styles</code> includes <code>theme-default.css</code>, generated from
+        <code>DEFAULT_KUI_THEME</code>, so the first paint does not wait for a script.
+        <code>provideKikitaUi()</code> adds the theme of custom seeds on top of it.
+      </li>
+      <li>
+        The generated variables live in the <code>kui.tokens</code> cascade layer, declared before
+        <code>kui.base</code> and <code>kui.components</code>. A variable that you write outside any
+        layer, for example on the root, always wins over the generated one whatever the order of the
+        style sheets.
+      </li>
+      <li>
+        <code>provideKikitaUi()</code> sets <code>data-kui-density</code> on the root element from
+        <code>seeds.density</code>, on the server too, unless the page already set it.
+      </li>
+      <li>
+        The neutral seed tints the neutral scales of both modes, so surfaces, borders, text,
+        skeletons and scrollbars follow <code>seeds.neutral</code>. For any seed every pair of roles
+        the library draws reaches 4.5:1 (text) or 3:1 (non-text); the generator picks white or
+        near-black text for each solid fill and corrects a seed that neither reaches 4.5:1 on.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="contrast"
+    heading="Contrast profiles"
+    description="WCAG 1.4.11 asks for 3:1 on the boundary of a control only where that boundary identifies it. A contrast profile re-points the neutral roles that draw it."
+  >
+    <app-code-tabs [tabs]="contrastTabs" />
+    <ul class="theming-page__notes">
+      <li>
+        <code>strict</code> (default): control borders (<code>--kui-color-border-control</code>)
+        reach 3:1 on every surface. <code>soft</code>: they read quieter (neutral 6, hover 8) and
+        fall below 3:1, so choose it knowingly. Text, focus rings and fills do not change.
+      </li>
+      <li>
+        The option sets the default. The other profile is emitted as the variables it changes, so
+        <code>data-kui-contrast</code> switches it at runtime without a new theme.
+      </li>
+      <li>
+        <code>strict</code> also applies by itself under <code>prefers-contrast: more</code> while
+        the attribute is absent, so a visitor who asked for more contrast still gets 3:1 borders
+        with a soft default. An explicit attribute always wins over the system setting.
+      </li>
+      <li>
+        This documentation site runs with <code>soft</code> by default for a quieter look and lets
+        you pick Strict or Soft in the theming palette. The choice is stored only after you make it,
+        so the operating system setting keeps working until then.
+      </li>
+      <li>Keep profiles to border and surface roles: body text stays at 4.5:1 in every profile.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Shared behaviour tokens"
+    description="A few tokens change one behaviour for the whole library. Set them on the root or on any subtree."
+  >
+    <app-code-tabs [tabs]="sharedTokenTabs" />
+    <p class="theming-page__note">
+      A component hook such as <code>--kui-btn-focus-ring-w</code> no longer exists; the shared
+      token is the one to set. The full list is on the Tokens page.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="colour-roles"
+    heading="Migrating to the colour roles"
+    description="The 2.x colour system keeps every public token name, so an existing theme keeps working. Move to the new roles when you next touch a custom component."
+  >
+    <app-api-table label="Colour role migration" [rows]="colourRoleRows" />
+    <ul class="theming-page__notes">
+      <li>
+        <code>--kui-neutral-1</code> to <code>-12</code> are one scale per mode, accent steps sit at
+        fixed tones and <code>--kui-input-focus-ring</code> defaults to <code>none</code>.
+      </li>
+      <li>
+        <code>--kui-color-on-fill</code> and <code>--kui-color-primary-focus-ring</code> are
+        deprecated and removed in 3.0.
+      </li>
+      <li>
+        Under Windows High Contrast, <code>forced-colors.css</code> states checked controls, Slider,
+        Progress, selected cells, Tabs, Segmented, pressed Chip, Stepper and the charts with system
+        colours.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
     heading="Custom seeds"
     description="Seed values are the stable way to customize generated palettes and shared scales."
   >

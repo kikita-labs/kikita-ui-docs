@@ -41,7 +41,17 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
   {
     component: ThemingPage,
     heading: 'Theming',
-    sections: ['Runtime contract', 'Angular provider', 'Custom seeds', 'Theme utilities'],
+    sections: [
+      'Runtime contract',
+      'Angular provider',
+      'Overriding tokens',
+      'Defaults, layers and density',
+      'Contrast profiles',
+      'Shared behaviour tokens',
+      'Migrating to the colour roles',
+      'Custom seeds',
+      'Theme utilities',
+    ],
   },
   {
     component: TokensPage,
