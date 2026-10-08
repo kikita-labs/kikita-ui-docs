@@ -26,6 +26,12 @@ A clean automated scan is only a smoke test. Do not mark a primitive fully audit
 | Assistive technology | Manual | - | Uses a real screen reader or platform accessibility tool for names, roles, and states. |
 | Visual review | Manual | - | Checks responsive layout, 200% zoom, reduced motion, forced colors, and contrast. |
 
+### Focus, forms and keyboard
+Focus handling and required or invalid state follow one shared behaviour across the library.
+
+### Motion, contrast and forced colors
+Nonessential motion, contrast and Windows High Contrast are part of every state-bearing component.
+
 ### Docs examples
 Examples should use Kikita field wiring and native state attributes instead of compensating for broken markup with custom ARIA.
 #### field-example.html

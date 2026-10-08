@@ -89,7 +89,14 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
   {
     component: AccessibilityPage,
     heading: 'Accessibility',
-    sections: ['Baseline rules', 'Review levels', 'Docs examples', 'Coverage notes'],
+    sections: [
+      'Baseline rules',
+      'Review levels',
+      'Focus, forms and keyboard',
+      'Motion, contrast and forced colors',
+      'Docs examples',
+      'Coverage notes',
+    ],
   },
   {
     component: MigrationPage,

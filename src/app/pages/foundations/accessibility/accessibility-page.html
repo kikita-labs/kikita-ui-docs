@@ -20,6 +20,73 @@
   </app-doc-section>
 
   <app-doc-section
+    heading="Focus, forms and keyboard"
+    description="Focus handling and required or invalid state follow one shared behaviour across the library."
+  >
+    <ul class="accessibility-page__notes">
+      <li>
+        Every focusable part draws a solid 2px <code>outline</code> in
+        <code>--kui-color-focus</code>, which stays visible in forced-colors mode. A ring drawn only
+        with <code>box-shadow</code> is gone, and <code>--kui-input-focus-ring</code> defaults to
+        <code>none</code>.
+      </li>
+      <li>
+        <code>kui-field</code> sets <code>aria-required</code> from its merged required state on
+        every control whose role supports it. A single radio and a slider are the documented
+        exceptions.
+      </li>
+      <li>
+        Automatic focus (<code>kuiAutoFocus</code>, OTP <code>autoFocus</code>) is opt-in and
+        limited to places where focus on arrival is expected.
+      </li>
+      <li>
+        Safari on macOS does not focus a button when it is clicked with the mouse, so a modal
+        surface opened by mouse has no trigger to return focus to on close. Focus returns to the
+        trigger when the surface was opened with the keyboard; native dialog, Angular CDK and
+        Angular Material behave the same way, and Kikita UI does not work around it. Test focus
+        return in Safari by opening the surface with the keyboard.
+      </li>
+      <li>Right-to-left layouts are not supported in 2.0.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Motion, contrast and forced colors"
+    description="Nonessential motion, contrast and Windows High Contrast are part of every state-bearing component."
+  >
+    <ul class="accessibility-page__notes">
+      <li>
+        Respect <code>prefers-reduced-motion</code> for nonessential animation. Essential motion has
+        a non-motion cue, and focus, selected, invalid, disabled and loading states stay
+        distinguishable without colour alone.
+      </li>
+      <li>
+        Control borders follow WCAG 1.4.11: a boundary that alone identifies a control (an input, a
+        checkbox) reaches 3:1 in the default <code>strict</code> contrast profile. The opt-in
+        <code>soft</code> profile drops control borders below 3:1 and is documented as such, and
+        <code>prefers-contrast: more</code> selects <code>strict</code> while no
+        <code>data-kui-contrast</code> attribute is set.
+      </li>
+      <li>
+        The library ships forced-colors rules in <code>forced-colors.css</code> using system
+        colours, covering checked and indeterminate controls, Slider, Progress, selected cells,
+        Tabs, Segmented, pressed Chip, Stepper and the charts. Browser emulation of forced colors
+        only toggles the media query, so a real Windows pass is still needed.
+      </li>
+      <li>
+        Icons are drawn as inline SVG with <code>currentColor</code>, so they take the system text
+        colour. An icon drawn with a CSS <code>mask-image</code> and
+        <code>background: currentColor</code>
+        disappears in Chromium in forced-colors mode.
+      </li>
+      <li>
+        Semi-transparent overlays and shadows are never the only way to communicate depth or
+        modality.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
     heading="Docs examples"
     description="Examples should use Kikita field wiring and native state attributes instead of compensating for broken markup with custom ARIA."
   >

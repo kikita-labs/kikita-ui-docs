@@ -1,4 +1,10 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
 .accessibility-page {
   display: grid;
   gap: clamp(28px, 5vw, 48px);
+}
+
+.accessibility-page__notes {
+  @include doc-page-notes;
 }
