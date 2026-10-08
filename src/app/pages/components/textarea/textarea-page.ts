@@ -1,12 +1,18 @@
 import { Component } from '@angular/core';
 
 import { TEXTAREA_EXAMPLE_SOURCES } from '@generated/example-sources/textarea.generated';
+import {
+  TEXTAREA_DEFAULTS,
+  TEXTAREA_GEOMETRY_TOKEN_ROWS,
+} from '@generated/library-tables/textarea.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
 import { BasicTextareaExample, TextareaInvalidExample, TextareaSizeExample } from './examples';
 import { TEXTAREA_API_ROWS } from './textarea.api-schema';
@@ -20,6 +26,8 @@ import {
 @Component({
   selector: 'app-textarea-page',
   imports: [
+    ProviderDefaultsSection,
+    TokenTablesSection,
     ApiTable,
     BasicTextareaExample,
     CodeTabs,
@@ -36,6 +44,8 @@ import {
 export class TextareaPage {
   protected readonly status = TEXTAREA_STATUS;
   protected readonly apiDescription = TEXTAREA_API_DESCRIPTION;
+  protected readonly defaults = TEXTAREA_DEFAULTS;
+  protected readonly geometryTokenRows = TEXTAREA_GEOMETRY_TOKEN_ROWS;
   protected readonly apiRows = TEXTAREA_API_ROWS;
   protected readonly importTabs = TEXTAREA_IMPORT_TABS;
 

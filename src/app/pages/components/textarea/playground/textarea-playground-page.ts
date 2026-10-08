@@ -33,6 +33,7 @@ const TEXTAREA_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'rows', label: 'rows', kind: 'number', defaultValue: 4 },
   { key: 'invalid', label: 'invalid', kind: 'boolean', defaultValue: false },
   { key: 'disabled', label: 'disabled', kind: 'boolean', defaultValue: false },
+  { key: 'readonly', label: 'readonly', kind: 'boolean', defaultValue: false },
 ] as const);
 
 type TextareaPlaygroundValues = PlaygroundValues<typeof TEXTAREA_PLAYGROUND_CONTROLS>;
@@ -59,6 +60,7 @@ export class TextareaPlaygroundPage {
       { name: 'placeholder', value: values.placeholder },
       { name: 'invalid', value: values.invalid },
       { name: 'disabled', value: values.disabled },
+      { name: 'readonly', value: values.readonly },
     ]);
     const content = value ? escapePlaygroundHtml(value) : '';
 
@@ -89,6 +91,10 @@ export class TextareaPlaygroundPage {
 
   protected invalidOf(values: TextareaPlaygroundValues): boolean {
     return values.invalid;
+  }
+
+  protected readonlyOf(values: TextareaPlaygroundValues): boolean {
+    return values.readonly;
   }
 
   protected disabledOf(values: TextareaPlaygroundValues): boolean {

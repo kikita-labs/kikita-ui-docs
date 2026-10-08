@@ -10744,9 +10744,10 @@ export class TextareaSizeExample {}
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Textarea height and spacing size, mapped to Kikita UI control tokens. |
-| invalid | boolean | false | Marks the textarea invalid outside a kui-field error state. |
-| id | string | - | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Textarea height and spacing size, mapped to Kikita UI control tokens. Resolved from defaults.textarea.size, then the parent field, then the global defaults.size, then md. |
+| invalid | boolean | false | Marks the textarea invalid outside a kui-field error state. With [formField] the Field state wins. |
+| id | string \| undefined | undefined | Explicit id override. Inside kui-field, the field id is used when omitted. |
+| KuiTextareaOptions | interface | - | Shape of defaults.textarea: size. |
 
 ## Accessibility
 

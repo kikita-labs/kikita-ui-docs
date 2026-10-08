@@ -51,8 +51,11 @@ describe('TextareaPage', () => {
       'sizes',
       'invalid-state',
       'signal-forms',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(textareas).toHaveLength(7);
     expect(textareas[0]?.rows).toBe(4);

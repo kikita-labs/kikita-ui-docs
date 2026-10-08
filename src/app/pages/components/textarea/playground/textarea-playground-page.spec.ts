@@ -100,6 +100,21 @@ describe('TextareaPlaygroundPage', () => {
     expect(snippet?.textContent).toContain('disabled');
   });
 
+  it('keeps readonly behavior and snippet attribute', () => {
+    const root = fixture.nativeElement as HTMLElement;
+    const toggles = [
+      ...root.querySelectorAll<HTMLInputElement>('.api-playground__toggle-row input'),
+    ];
+
+    toggles.at(2)?.click();
+    fixture.detectChanges();
+
+    const snippet = root.querySelector<HTMLElement>('.code-tabs__fallback code');
+
+    expect(previewTextarea()?.readOnly).toBe(true);
+    expect(snippet?.textContent).toContain('readonly');
+  });
+
   it('has no automated accessibility violations', async () => {
     await expectNoAxeViolations(fixture.nativeElement as HTMLElement);
   });

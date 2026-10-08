@@ -52,6 +52,10 @@
     <app-code-tabs [tabs]="signalFormsTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Textarea" [geometryRows]="geometryTokenRows" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Textarea API" [rows]="apiRows" />
   </app-doc-section>
@@ -73,10 +77,30 @@
         <code>kuiTextarea</code> does not control or restrict resize; override it with the CSS
         <code>resize</code> property when a fixed size is required.
       </li>
+      <li>A required <code>kui-field</code> exposes <code>aria-required</code> on the textarea.</li>
       <li>
         Native <code>rows</code>, <code>cols</code>, and <code>maxlength</code> attributes work as
         usual.
       </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Textarea."
+  >
+    <ul class="textarea-page__notes">
+      <li>
+        The directive class is <code>KuiTextarea</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        The default size moved to
+        <code>provideKuiDefaults({{ '{' }} textarea: {{ '{' }} size {{ '}' }} {{ '}' }})</code>; the
+        input is now <code>undefined</code> until set.
+      </li>
+      <li>A required <code>kui-field</code> sets <code>aria-required</code> on the textarea.</li>
+      <li>The block padding has <code>--kui-textarea-padding-block</code>.</li>
     </ul>
   </app-doc-section>
 </article>
