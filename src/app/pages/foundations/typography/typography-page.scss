@@ -27,6 +27,6 @@
   overflow-wrap: anywhere;
 }
 
-.typography-page__notes {
-  @include doc-page-notes;
+.typography-page__note {
+  @include doc-page-note;
 }

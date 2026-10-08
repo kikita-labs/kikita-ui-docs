@@ -1,5 +1,6 @@
 import type { ApiTableRow } from '@shared/docs-ui/api-table';
 import type { CodeTab } from '@shared/docs-ui/code-tabs';
+import type { ProviderDefaultsGroup } from '@shared/docs-ui/provider-defaults-section';
 
 export const TYPOGRAPHY_IMPORT_TABS = [
   {
@@ -157,15 +158,17 @@ export const TYPOGRAPHY_API_ROWS = [
   },
   {
     name: 'variant',
-    type: 'KuiTextVariant',
-    defaultValue: "'body'",
-    description: 'Semantic typography role applied by the directive.',
+    type: 'KuiTextVariant | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Semantic typography role applied by the directive. Falls back to defaults.typography.variant, then body.',
   },
   {
     name: 'tone',
-    type: 'KuiTextTone',
-    defaultValue: "'default'",
-    description: 'Semantic text color tone applied by the directive.',
+    type: 'KuiTextTone | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Semantic text color tone applied by the directive. Falls back to defaults.typography.tone, then default.',
   },
   {
     name: 'KuiTextVariant',
@@ -200,3 +203,21 @@ export const TYPOGRAPHY_TOKEN_TABS = [
 --kui-font-weight-bold`,
   },
 ] as const satisfies readonly CodeTab[];
+
+export const TYPOGRAPHY_DEFAULTS_GROUPS = [
+  {
+    key: 'typography',
+    rows: [
+      {
+        name: 'variant',
+        type: "'display' | 'heading-lg' | 'heading-md' | 'heading-sm' | 'title' | 'body-lg' | 'body' | 'body-sm' | 'caption' | 'overline' | 'code'",
+        description: 'Semantic typography role.',
+      },
+      {
+        name: 'tone',
+        type: "'default' | 'muted' | 'disabled' | 'primary' | 'success' | 'warning' | 'danger'",
+        description: 'Semantic text colour tone.',
+      },
+    ],
+  },
+] as const satisfies readonly ProviderDefaultsGroup[];

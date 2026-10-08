@@ -31,6 +31,7 @@ describe('TypographyPage', () => {
       'type-roles',
       'tone-utilities',
       'directive-api',
+      'provider-defaults',
       'tokens',
       'accessibility',
     ]);

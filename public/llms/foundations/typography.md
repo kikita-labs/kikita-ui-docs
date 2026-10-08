@@ -90,8 +90,8 @@ The kuiText directive is convenience sugar over the same public class contract.
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | kuiText | attribute directive | - | Applies a semantic type role and text tone to a native text element. |
-| variant | KuiTextVariant | 'body' | Semantic typography role applied by the directive. |
-| tone | KuiTextTone | 'default' | Semantic text color tone applied by the directive. |
+| variant | KuiTextVariant \| undefined | undefined | Semantic typography role applied by the directive. Falls back to defaults.typography.variant, then body. |
+| tone | KuiTextTone \| undefined | undefined | Semantic text color tone applied by the directive. Falls back to defaults.typography.tone, then default. |
 | KuiTextVariant | 'display' \| 'heading-lg' \| 'heading-md' \| 'heading-sm' \| 'title' \| 'body-lg' \| 'body' \| 'body-sm' \| 'caption' \| 'overline' \| 'code' | - | Public type for the directive variant input. |
 | KuiTextTone | 'default' \| 'muted' \| 'disabled' \| 'primary' \| 'success' \| 'warning' \| 'danger' | - | Public type for the directive tone input. |
 

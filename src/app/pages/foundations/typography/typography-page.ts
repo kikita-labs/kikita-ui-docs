@@ -6,9 +6,11 @@ import { ApiTable } from '@shared/docs-ui/api-table';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { PageHeader } from '@shared/docs-ui/page-header';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
 
 import {
   TYPOGRAPHY_API_ROWS,
+  TYPOGRAPHY_DEFAULTS_GROUPS,
   TYPOGRAPHY_IMPORT_TABS,
   TYPOGRAPHY_ROLE_ROWS,
   TYPOGRAPHY_TOKEN_TABS,
@@ -18,7 +20,7 @@ import {
 
 @Component({
   selector: 'app-typography-page',
-  imports: [ApiTable, CodeTabs, DocSection, KuiText, PageHeader],
+  imports: [ApiTable, CodeTabs, DocSection, KuiText, PageHeader, ProviderDefaultsSection],
   templateUrl: './typography-page.html',
   styleUrl: './typography-page.scss',
 })
@@ -29,4 +31,5 @@ export class TypographyPage {
   protected readonly toneRows = TYPOGRAPHY_TONE_ROWS;
   protected readonly apiRows = TYPOGRAPHY_API_ROWS;
   protected readonly tokenTabs = TYPOGRAPHY_TOKEN_TABS;
+  protected readonly defaults = TYPOGRAPHY_DEFAULTS_GROUPS;
 }

@@ -48,6 +48,13 @@
     <app-api-table label="kuiText API" [rows]="apiRows" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults">
+    <p class="typography-page__note">
+      <code>defaults.typography</code> does not reach <code>kuiLink</code>, which composes
+      <code>kuiText</code> but owns its own text colour.
+    </p>
+  </app-provider-defaults-section>
+
   <app-doc-section
     heading="Tokens"
     description="Each role exposes generated size, line-height, and weight tokens for theme-aware text scales."

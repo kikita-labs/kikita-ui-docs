@@ -76,6 +76,7 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
       'Type roles',
       'Tone utilities',
       'Directive API',
+      'Provider defaults',
       'Tokens',
       'Accessibility',
     ],
