@@ -27,7 +27,7 @@ const POPOVER_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'description', label: 'description', kind: 'string', defaultValue: 'Supporting text.' },
   {
     key: 'ariaLabel',
-    label: 'ariaLabel (empty = popover.label message)',
+    label: 'ariaLabel',
     kind: 'string',
     defaultValue: '',
   },

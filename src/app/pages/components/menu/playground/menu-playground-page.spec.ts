@@ -84,7 +84,7 @@ describe('MenuPlaygroundPage', () => {
     const optionButtons = [...root.querySelectorAll<HTMLButtonElement>('[role="radio"]')];
 
     setTextInput(root, 'trigger label', '<Actions>');
-    setTextInput(root, 'ariaLabel (empty = menu.label message)', '<Project actions>');
+    setTextInput(root, 'ariaLabel', '<Project actions>');
     setTextInput(root, 'minWidth', '18rem');
     setNumberInput(root, 'offset', 12);
     optionButtons.find((button) => button.textContent?.trim() === 'top')?.click();

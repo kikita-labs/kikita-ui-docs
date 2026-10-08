@@ -24,7 +24,7 @@ const LOADER_PLAYGROUND_CONTROLS = definePlaygroundControls([
   },
   {
     key: 'label',
-    label: 'label (empty = common.loading message)',
+    label: 'label',
     kind: 'string',
     defaultValue: '',
   },

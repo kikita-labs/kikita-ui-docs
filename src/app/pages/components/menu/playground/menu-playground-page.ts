@@ -28,7 +28,7 @@ const MENU_PLAYGROUND_CONTROLS = definePlaygroundControls([
   { key: 'triggerLabel', label: 'trigger label', kind: 'string', defaultValue: 'Actions' },
   {
     key: 'ariaLabel',
-    label: 'ariaLabel (empty = menu.label message)',
+    label: 'ariaLabel',
     kind: 'string',
     defaultValue: '',
   },
