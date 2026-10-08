@@ -10,6 +10,7 @@ const COMPONENT_SLUGS = [
   'badge',
   'breadcrumbs',
   'button',
+  'link',
   'calendar',
   'calendar-range',
   'card',

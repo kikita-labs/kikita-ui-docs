@@ -36,6 +36,7 @@ import { ICON_DOCS_MANIFEST } from '@pages/components/icon/icon.docs-manifest';
 import { ICON_BUTTON_DOCS_MANIFEST } from '@pages/components/icon-button/icon-button.docs-manifest';
 import { INPUT_DOCS_MANIFEST } from '@pages/components/input/input.docs-manifest';
 import { LINE_CHART_DOCS_MANIFEST } from '@pages/components/line-chart/line-chart.docs-manifest';
+import { LINK_DOCS_MANIFEST } from '@pages/components/link/link.docs-manifest';
 import { LOADER_DOCS_MANIFEST } from '@pages/components/loader/loader.docs-manifest';
 import { MENU_DOCS_MANIFEST } from '@pages/components/menu/menu.docs-manifest';
 import { NUMBER_INPUT_DOCS_MANIFEST } from '@pages/components/number-input/number-input.docs-manifest';
@@ -135,6 +136,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
   ],
   components: [
     BUTTON_DOCS_MANIFEST,
+    LINK_DOCS_MANIFEST,
     ICON_BUTTON_DOCS_MANIFEST,
     MENU_DOCS_MANIFEST,
     COMMAND_PALETTE_DOCS_MANIFEST,

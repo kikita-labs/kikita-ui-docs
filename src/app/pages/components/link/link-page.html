@@ -1,0 +1,132 @@
+<article class="link-page">
+  <app-page-header
+    eyebrow="Actions"
+    heading="Link"
+    description="Inline interactive text for navigation or a JS-driven action."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="kuiLink is a directive on a native a or button. It composes kuiText internally, so you never add kuiText yourself."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Tone sets the rest colour only. Hover, focus and active change the underline thickness and the focus ring, never the colour."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Link tones">
+      <app-basic-link-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="underline"
+    heading="Underline and sizes"
+    description="Use always for a link inside running text, since colour alone is not a sufficient signal. hover (default) suits a link that already stands apart. variant picks an inline text role of the composed kuiText."
+  >
+    <app-live-preview previewLabel="Underline and variants">
+      <app-link-underline-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="underlineTabs" />
+    <p class="link-page__note">
+      A link acting as a heading goes inside an <code>h1</code> to <code>h6</code>, not the other
+      way round, so heading semantics never depend on the text being a link. Font size, weight and
+      line height follow the selected <code>--kui-type-&lt;variant&gt;-*</code> tokens.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="icons"
+    heading="Icons and external links"
+    description="iconStart and iconEnd take an icon name and stay decorative. external defaults to target being _blank."
+  >
+    <app-live-preview previewLabel="Link icons and external link">
+      <app-link-icons-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="iconsTabs" />
+    <ul class="link-page__notes">
+      <li>
+        An external link gets <code>rel="noopener noreferrer"</code> merged with any
+        <code>rel</code> you set.
+      </li>
+      <li>
+        The library's own external-link glyph fills the <code>iconEnd</code> slot unless you pass an
+        explicit <code>iconEnd</code>. It is a structural icon: synchronous icon data drawn as
+        inline SVG. Replace it with <code>defaults.link.externalIcon</code> or the
+        <code>externalLink</code> role.
+      </li>
+      <li>
+        A visually hidden suffix, the <code>link.opensInNewTab</code> message (<code
+          >(opens in a new tab)</code
+        >
+        by default), is appended to the accessible name.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="actions"
+    heading="Actions and disabled"
+    description="A link without a real href is a button, not an anchor. A disabled anchor is blocked by aria-disabled, tabindex -1 and a click handler."
+  >
+    <app-live-preview previewLabel="Button link and disabled links">
+      <app-link-actions-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="actionsTabs" />
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults">
+    <p class="link-page__note">
+      kuiLink composes kuiText for its role class but ignores <code>defaults.typography</code>,
+      because a link owns its text colour (<code>defaults.link.tone</code>).
+    </p>
+  </app-provider-defaults-section>
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Link API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="The host is a native a or button with no custom role."
+  >
+    <ul class="link-page__notes">
+      <li>
+        The visible text is the accessible name; icons are decorative and never the only meaning.
+      </li>
+      <li>
+        <code>:focus-visible</code> shows an explicit ring (<code>--kui-link-focus-ring</code>).
+      </li>
+      <li>
+        Colour is never the only signal: default, hover, focus and active differ by underline
+        thickness and, for focus, the ring. Avoid <code>underline="none"</code> inside running text.
+      </li>
+      <li>Disabled links are excluded from the tab order.</li>
+      <li>
+        <kbd>Enter</kbd> activates a link or button; <kbd>Space</kbd> activates only a
+        <code>button</code> host.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Not included"
+    description="Deliberate omissions of the installed package."
+  >
+    <ul class="link-page__notes">
+      <li>
+        There is no <code>visited</code> tone or state; add a
+        <code>--kui-link-color-visited</code> token yourself if a product needs it.
+      </li>
+      <li>There is no distinct active appearance from hover; both use the thicker underline.</li>
+    </ul>
+  </app-doc-section>
+</article>

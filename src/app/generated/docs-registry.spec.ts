@@ -42,7 +42,7 @@ describe('docs registry', () => {
   });
 
   it('enforces loader and status invariants for the current package catalog', () => {
-    expect(DOCS_REGISTRY.components).toHaveLength(50);
+    expect(DOCS_REGISTRY.components).toHaveLength(51);
     expect(Object.keys(DOCS_REGISTRY.pages)).toEqual([
       'home',
       'draft',

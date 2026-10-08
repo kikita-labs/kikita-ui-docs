@@ -46,6 +46,7 @@
 - [Icon Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon-button.md): Compact icon-only action control.
 - [Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/input.md): Native text input styling with field integration.
 - [Line Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/line-chart.md): Line and area chart for trends over categories.
+- [Link](https://kikita-labs.github.io/kikita-ui-docs/llms/components/link.md): Inline interactive text for navigation or a JS-driven action.
 - [Loader](https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md): Inline loading indicator for buttons and status areas.
 - [Menu](https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md): Anchored command menu with keyboard focus behavior.
 - [Number Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md): Number input states with compact variant options.

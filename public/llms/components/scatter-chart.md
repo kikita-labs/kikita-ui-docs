@@ -122,7 +122,7 @@ export class BasicScatterChartExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { type KuiChartScatterSeries,KuiScatterChart } from '@kikita-labs/ui';
+import { type KuiChartScatterSeries, KuiScatterChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-scatter-bubble-chart-example',
@@ -176,7 +176,7 @@ export class ScatterBubbleChartExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { type KuiChartScatterSeries,KuiScatterChart } from '@kikita-labs/ui';
+import { type KuiChartScatterSeries, KuiScatterChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-scatter-states-chart-example',

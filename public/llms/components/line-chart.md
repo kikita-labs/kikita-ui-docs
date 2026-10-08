@@ -50,7 +50,7 @@ Rendered at /components/line-chart:
 ```ts
 import { Component } from '@angular/core';
 
-import { type KuiChartCartesianSeries,KuiLineChart } from '@kikita-labs/ui';
+import { type KuiChartCartesianSeries, KuiLineChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-line-chart-example',
@@ -160,7 +160,7 @@ export class LineAreaChartExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { type KuiChartCartesianSeries, type KuiChartPoint,KuiLineChart } from '@kikita-labs/ui';
+import { type KuiChartCartesianSeries, type KuiChartPoint, KuiLineChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-line-gaps-chart-example',
@@ -217,7 +217,7 @@ export class LineGapsChartExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { type KuiChartCartesianSeries,KuiChartLegend, KuiLineChart } from '@kikita-labs/ui';
+import { type KuiChartCartesianSeries, KuiChartLegend, KuiLineChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-line-external-legend-example',
@@ -270,7 +270,7 @@ export class LineExternalLegendExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { type KuiChartCartesianSeries,KuiLineChart } from '@kikita-labs/ui';
+import { type KuiChartCartesianSeries, KuiLineChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-line-states-chart-example',

@@ -50,7 +50,7 @@ Rendered at /components/donut-chart:
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiDonutChart, type KuiChartSlice } from '@kikita-labs/ui';
+import { type KuiChartSlice, KuiDonutChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-basic-donut-chart-example',
@@ -96,7 +96,7 @@ export class BasicDonutChartExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiDonutChart, type KuiChartSlice } from '@kikita-labs/ui';
+import { type KuiChartSlice, KuiDonutChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-donut-patterns-chart-example',
@@ -143,7 +143,7 @@ export class DonutPatternsChartExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiDonutChart, type KuiChartSlice } from '@kikita-labs/ui';
+import { type KuiChartSlice, KuiDonutChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-donut-sizes-chart-example',
@@ -190,7 +190,7 @@ export class DonutSizesChartExample {
 ```ts
 import { Component } from '@angular/core';
 
-import { KuiDonutChart, type KuiChartSlice } from '@kikita-labs/ui';
+import { type KuiChartSlice, KuiDonutChart } from '@kikita-labs/ui';
 
 @Component({
   selector: 'app-donut-states-chart-example',

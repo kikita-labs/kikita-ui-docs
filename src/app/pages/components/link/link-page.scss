@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.link-page {
+  @include doc-page-layout;
+}
+
+.link-page__notes {
+  @include doc-page-notes;
+}
+
+.link-page__note {
+  @include doc-page-note;
+}
