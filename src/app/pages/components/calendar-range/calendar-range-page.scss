@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.calendar-range-page {
+  @include doc-page-layout;
+}
+
+.calendar-range-page__notes {
+  @include doc-page-notes;
+}
+
+.calendar-range-page__note {
+  @include doc-page-note;
+}

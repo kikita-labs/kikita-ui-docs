@@ -1,0 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.calendar-range-playground-page {
+  @include playground-page-layout;
+}
+
+.calendar-range-playground-page__header {
+  @include playground-page-header;
+}
+
+.calendar-range-playground-page__note {
+  @include playground-page-note;
+}

@@ -30,6 +30,7 @@ Important notes:
 - [Breadcrumbs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md): Hierarchy trail.
 - [Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/button.md): Primary command primitive for buttons and links.
 - [Calendar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md): Date grid.
+- [Calendar Range](https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar-range.md): Inline month grid for selecting a start and end date.
 - [Card](https://kikita-labs.github.io/kikita-ui-docs/llms/components/card.md): Surface, elevated, and sunken content container.
 - [Checkbox](https://kikita-labs.github.io/kikita-ui-docs/llms/components/checkbox.md): Native checkbox styling with field state integration.
 - [Chip](https://kikita-labs.github.io/kikita-ui-docs/llms/components/chip.md): Compact token for selected values, filters, and entity references.

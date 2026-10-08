@@ -13,6 +13,7 @@ import { BADGE_DOCS_MANIFEST } from '@pages/components/badge/badge.docs-manifest
 import { BREADCRUMBS_DOCS_MANIFEST } from '@pages/components/breadcrumbs/breadcrumbs.docs-manifest';
 import { BUTTON_DOCS_MANIFEST } from '@pages/components/button/button.docs-manifest';
 import { CALENDAR_DOCS_MANIFEST } from '@pages/components/calendar/calendar.docs-manifest';
+import { CALENDAR_RANGE_DOCS_MANIFEST } from '@pages/components/calendar-range/calendar-range.docs-manifest';
 import { CARD_DOCS_MANIFEST } from '@pages/components/card/card.docs-manifest';
 import { CHECKBOX_DOCS_MANIFEST } from '@pages/components/checkbox/checkbox.docs-manifest';
 import { CHIP_DOCS_MANIFEST } from '@pages/components/chip/chip.docs-manifest';
@@ -139,6 +140,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     COMBOBOX_DOCS_MANIFEST,
     DATE_PICKER_DOCS_MANIFEST,
     CALENDAR_DOCS_MANIFEST,
+    CALENDAR_RANGE_DOCS_MANIFEST,
     FILE_UPLOAD_DOCS_MANIFEST,
     SEGMENTED_DOCS_MANIFEST,
     SLIDER_DOCS_MANIFEST,

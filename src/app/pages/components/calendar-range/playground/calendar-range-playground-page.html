@@ -1,0 +1,35 @@
+<article class="calendar-range-playground-page">
+  <div class="calendar-range-playground-page__header">
+    <h1>Calendar Range &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Calendar range playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-calendar-range
+      [value]="range()"
+      [viewDate]="viewDate()"
+      (valueChange)="onValueChange($event)"
+      (viewDateChange)="onViewDateChange($event)"
+      [size]="sizeOf(playground.values())"
+      [showFooter]="showFooterOf(playground.values())"
+      [flat]="flatOf(playground.values())"
+      [showWeekend]="showWeekendOf(playground.values())"
+      [showPrevNav]="showPrevNavOf(playground.values())"
+      [showNextNav]="showNextNavOf(playground.values())"
+      [locale]="localeOf(playground.values())"
+      [messages]="messagesOf(playground.values())"
+      [minDate]="minDateOf(playground.values())"
+      [maxDate]="maxDateOf(playground.values())"
+      [disabledDates]="disabledDatesOf(playground.values())"
+    />
+  </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Calendar range events" />
+
+  <app-api-table label="Calendar Range API" [rows]="apiRows" />
+  <p class="calendar-range-playground-page__note">{{ apiDescription }}</p>
+</article>

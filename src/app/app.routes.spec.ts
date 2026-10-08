@@ -11,6 +11,7 @@ const COMPONENT_SLUGS = [
   'breadcrumbs',
   'button',
   'calendar',
+  'calendar-range',
   'card',
   'checkbox',
   'chip',

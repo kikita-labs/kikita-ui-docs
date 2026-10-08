@@ -1,0 +1,16 @@
+<div class="calendar-range-example">
+  <kui-calendar-range
+    [(value)]="range"
+    [(viewDate)]="viewDate"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    [disabledDates]="holidays"
+  />
+
+  <kui-calendar-range
+    [(value)]="range"
+    [(viewDate)]="viewDate"
+    [disabledDates]="isWeekend"
+    [showWeekend]="false"
+  />
+</div>

@@ -1,0 +1,138 @@
+<article class="calendar-range-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Calendar Range"
+    description="Inline month grid for selecting a start and end date."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="Calendar Range is a standalone component. Its value is a KuiDateRange."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Bind value to a signal of KuiDateRange | null. The first click sets the start, hovering before the second click previews the range, and the second click commits it. The first click after a committed range starts a new one."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic calendar range">
+      <app-basic-calendar-range-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+    <p class="calendar-range-page__note">
+      <code>viewDate</code> defaults to the current month; the documented fallback to the month of
+      <code>value.start</code> applies only when the value exists at construction, so bind
+      <code>[(viewDate)]</code> to open the grid at the month of a template-bound range.
+      <code>end</code> is <code>null</code> while the range is still open, so check it before using
+      the value as a closed range. The header navigation and the Today button are ghost
+      <code>kuiButton</code>s and the rule above the footer is <code>hr[kuiSeparator]</code>.
+      Calendar Range reuses the Calendar stylesheet and class names, so it shares the Calendar
+      theming tokens listed below.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="states"
+    heading="Bounds and disabled dates"
+    description="minDate and maxDate are inclusive bounds. disabledDates takes dates or a predicate. showWeekend mutes the weekend of the locale."
+  >
+    <app-live-preview previewLabel="Range calendars with bounds">
+      <app-calendar-range-states-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="statesTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="linked"
+    heading="Linked calendars"
+    description="viewDate is a two-way model, so two ranges a month apart can be built from showPrevNav and showNextNav. A built-in range popover is not available; this layout is for custom compositions."
+  >
+    <app-live-preview previewLabel="Two linked calendar ranges">
+      <app-calendar-range-linked-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="linkedTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="locale-and-messages"
+    heading="Locale and messages"
+    description="Month and weekday names, the heading order, the first day of the week and the weekend come from Intl for the locale of the nearest i18n level. locale and messages override them for one instance."
+  >
+    <app-live-preview previewLabel="Locale and message overrides">
+      <app-calendar-range-locale-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="localeTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="custom-footer"
+    heading="Custom header and footer"
+    description="Project an element with kuiCalendarHeader or kuiCalendarFooter to replace the matching default block completely."
+  >
+    <app-live-preview previewLabel="Custom footer">
+      <app-calendar-range-footer-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="footerTabs" />
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Calendar"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Calendar Range API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="Calendar Range has the same grid semantics and roving focus as Calendar."
+  >
+    <ul class="calendar-range-page__notes">
+      <li>
+        The day grid is a complete ARIA grid: <code>role="grid"</code>, a weekday header row of
+        <code>columnheader</code> cells and six week <code>row</code>s of seven
+        <code>gridcell</code>s, each wrapping one day button.
+      </li>
+      <li>
+        <code>aria-selected</code> sits on the gridcells of the range endpoints and any single
+        committed day; today exposes <code>aria-current="date"</code> and disabled dates
+        <code>aria-disabled</code>.
+      </li>
+      <li>
+        One day cell is in the tab order at a time; the arrow keys, <code>Home</code>,
+        <code>End</code>, <code>PageUp</code> and <code>PageDown</code> move focus without leaving
+        the grid.
+      </li>
+      <li>
+        Keyboard: <code>ArrowLeft</code> and <code>ArrowRight</code> move a day,
+        <code>ArrowUp</code> and <code>ArrowDown</code> a week, <code>Home</code> and
+        <code>End</code> the start and end of the week, <code>PageUp</code> and
+        <code>PageDown</code> a month (with <code>Shift</code> a year), and <code>Enter</code> or
+        <code>Space</code> selects the focused date.
+      </li>
+      <li>
+        Month and year changes are announced through an <code>aria-live="polite"</code> region.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section heading="Known gaps" description="Documented limits of the installed package.">
+    <ul class="calendar-range-page__notes">
+      <li>
+        There is no built-in popover wrapper (a range equivalent of
+        <code>input[kuiDatePicker]</code>); the component is inline-only.
+      </li>
+      <li>Selecting more than one start and end pair is not implemented.</li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,10 @@
+<div class="calendar-range-example">
+  <kui-calendar-range [(value)]="range" [(viewDate)]="leftView" [showNextNav]="false" />
+
+  <kui-calendar-range
+    [(value)]="range"
+    [viewDate]="rightView()"
+    (viewDateChange)="showFromRight($event)"
+    [showPrevNav]="false"
+  />
+</div>
