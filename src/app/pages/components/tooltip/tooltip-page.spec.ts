@@ -48,9 +48,10 @@ describe('TooltipPage', () => {
       'usage',
       'behavior',
       'provider-defaults',
-      'migration',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(triggers).toHaveLength(2);
     expect(root.textContent).toContain('touch input');

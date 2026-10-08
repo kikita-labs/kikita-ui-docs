@@ -35,6 +35,7 @@ const TOOLTIP_PLAYGROUND_CONTROLS = definePlaygroundControls([
     options: ['auto', 'hover', 'click', 'none'],
     defaultValue: 'auto',
   },
+  { key: 'offset', label: 'offset', kind: 'number', defaultValue: 6 },
   { key: 'text', label: 'text', kind: 'string', defaultValue: 'Save the current draft' },
 ] as const);
 
@@ -57,6 +58,7 @@ export class TooltipPlaygroundPage {
     const attrString = serializePlaygroundAttributes([
       { name: 'placement', value: values.placement, defaultValue: 'top' },
       { name: 'triggerType', value: values.triggerType, defaultValue: 'auto' },
+      { name: '[offset]', value: values.offset, defaultValue: 6 },
     ]);
 
     return [
@@ -72,6 +74,10 @@ export class TooltipPlaygroundPage {
 
   protected placementOf(values: TooltipPlaygroundValues): KuiTooltipPlacement {
     return values.placement;
+  }
+
+  protected offsetOf(values: TooltipPlaygroundValues): number {
+    return values.offset;
   }
 
   protected textOf(values: TooltipPlaygroundValues): string {

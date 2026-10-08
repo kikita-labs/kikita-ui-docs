@@ -110,12 +110,13 @@ export class BasicTooltipExample {}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | [kuiTooltip] | string | '' | Tooltip text content. Empty or whitespace-only text does not render a tooltip. |
-| placement | 'top' \| 'bottom' \| 'left' \| 'right' | 'top' | Preferred placement relative to the trigger. The CDK overlay can still adjust. |
-| triggerType | 'auto' \| 'hover' \| 'click' \| 'none' | 'auto' | Local interaction override. auto uses hover/focus for mouse input and tap for touch input. |
+| placement | 'top' \| 'bottom' \| 'left' \| 'right' \| undefined | undefined | Preferred placement relative to the trigger (defaults.tooltip.placement, then top). The CDK overlay can still adjust. |
+| offset | number \| undefined | undefined | Gap in px between the trigger and the tooltip. Falls back to defaults.tooltip.offset, then 6. A static numeric string is coerced. |
+| triggerType | 'auto' \| 'hover' \| 'click' \| 'none' \| undefined | undefined | Local interaction override. auto uses hover/focus for mouse input and tap for touch input. |
 | KuiTooltipTriggerType | enum: Auto \| Hover \| Click \| None | Auto | Enum values accepted by triggerType and tooltip provider options. |
-| KuiTooltipOptions | interface | { triggerType: auto } | Shape of the defaults.tooltip key for app-wide and scoped tooltip trigger defaults. |
-| provideKuiDefaults({ tooltip }) | (defaults: KuiComponentDefaults) => Provider | - | Provides merged tooltip defaults for a component or route subtree; local triggerType wins. |
-| provideKikitaUi({ tooltip }) | KikitaUiOptions.tooltip?: KuiTooltipOptions | { triggerType: auto } | Sets the root tooltip trigger default through the main Kikita UI provider. |
+| KuiTooltipOptions | interface | - | Shape of defaults.tooltip: triggerType, placement and offset, for app-wide and scoped tooltip defaults. |
+| provideKuiDefaults({ tooltip }) | (defaults: KuiComponentDefaults) => Provider | - | Provides merged tooltip defaults for a component or route subtree; a local input wins and each level merges with its parent per property. |
+| provideKikitaUi({ defaults: { tooltip } }) | KikitaUiOptions.defaults?: KuiComponentDefaults | - | Sets the root tooltip defaults through the main Kikita UI provider. |
 | role | 'tooltip' | 'tooltip' | The floating element is exposed as a tooltip while it exists. |
 | aria-describedby | string \| null | null | Applied only while the tooltip is visible, preventing stale removed ids. |
 | CSS variables | --kui-tooltip-* | - | Controls padding, radius, colors, and shadow through documented tooltip tokens. |

@@ -9,14 +9,22 @@ export const TOOLTIP_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'placement',
-    type: `'top' | 'bottom' | 'left' | 'right'`,
-    defaultValue: `'top'`,
-    description: 'Preferred placement relative to the trigger. The CDK overlay can still adjust.',
+    type: `'top' | 'bottom' | 'left' | 'right' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Preferred placement relative to the trigger (defaults.tooltip.placement, then top). The CDK overlay can still adjust.',
+  },
+  {
+    name: 'offset',
+    type: 'number | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Gap in px between the trigger and the tooltip. Falls back to defaults.tooltip.offset, then 6. A static numeric string is coerced.',
   },
   {
     name: 'triggerType',
-    type: `'auto' | 'hover' | 'click' | 'none'`,
-    defaultValue: `'auto'`,
+    type: `'auto' | 'hover' | 'click' | 'none' | undefined`,
+    defaultValue: 'undefined',
     description:
       'Local interaction override. auto uses hover/focus for mouse input and tap for touch input.',
   },
@@ -29,22 +37,22 @@ export const TOOLTIP_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'KuiTooltipOptions',
     type: 'interface',
-    defaultValue: '{ triggerType: auto }',
+    defaultValue: '-',
     description:
-      'Shape of the defaults.tooltip key for app-wide and scoped tooltip trigger defaults.',
+      'Shape of defaults.tooltip: triggerType, placement and offset, for app-wide and scoped tooltip defaults.',
   },
   {
     name: 'provideKuiDefaults({ tooltip })',
     type: '(defaults: KuiComponentDefaults) => Provider',
     defaultValue: '-',
     description:
-      'Provides merged tooltip defaults for a component or route subtree; local triggerType wins.',
+      'Provides merged tooltip defaults for a component or route subtree; a local input wins and each level merges with its parent per property.',
   },
   {
-    name: 'provideKikitaUi({ tooltip })',
-    type: 'KikitaUiOptions.tooltip?: KuiTooltipOptions',
-    defaultValue: '{ triggerType: auto }',
-    description: 'Sets the root tooltip trigger default through the main Kikita UI provider.',
+    name: 'provideKikitaUi({ defaults: { tooltip } })',
+    type: 'KikitaUiOptions.defaults?: KuiComponentDefaults',
+    defaultValue: '-',
+    description: 'Sets the root tooltip defaults through the main Kikita UI provider.',
   },
   {
     name: 'role',

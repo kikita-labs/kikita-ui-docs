@@ -43,17 +43,9 @@
     </ul>
   </app-doc-section>
 
-  <app-doc-section
-    heading="Provider defaults"
-    description="Set the default trigger at the root with provideKikitaUi({ defaults }) or for a component subtree with provideKuiDefaults. A local triggerType input takes precedence."
-  >
-    <app-code-tabs [tabs]="providerTabs" />
-  </app-doc-section>
+  <app-provider-defaults-section [groups]="defaults" />
 
-  <app-doc-section
-    heading="Migration"
-    description="The default now opens the existing tooltip surface on touch taps. Set triggerType=hover to preserve the previous touch-disabled behavior, or triggerType=none to disable the tooltip on all devices."
-  />
+  <app-token-tables-section name="Tooltip" [geometryRows]="geometryTokenRows" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Tooltip API" [rows]="apiRows" />
@@ -69,7 +61,43 @@
         Use tooltip text for short hints, not form errors or instructions required to finish a task.
       </li>
       <li><code>aria-describedby</code> is present only while the floating tooltip exists.</li>
+      <li>
+        The tooltip is hoverable, dismissible with <code>Escape</code> and persistent while hovered
+        or focused (WCAG 1.4.13). A tap-open tooltip closes on a second tap, an outside tap, focus
+        moving outside or <code>Escape</code>.
+      </li>
+      <li>Use a native interactive element, normally a <code>button</code>, as the trigger.</li>
       <li>Respect reduced-motion users; the package disables tooltip animation when requested.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Tooltip."
+  >
+    <ul class="tooltip-page__notes">
+      <li>
+        The directive class is <code>KuiTooltip</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        <code>kuiProvideTooltipOptions</code> and <code>KUI_TOOLTIP_OPTIONS</code> are replaced by
+        <code>provideKuiDefaults({{ '{' }} tooltip: {{ '{' }} ... {{ '}' }} {{ '}' }})</code>; a
+        nested level merges with its parent per property.
+      </li>
+      <li>
+        Defaults now cover <code>placement</code> and <code>offset</code> besides
+        <code>triggerType</code>, and the tooltip has a new <code>offset</code> input.
+      </li>
+      <li>
+        The default trigger opens the tooltip on touch taps; set <code>triggerType="hover"</code> to
+        keep the previous touch-disabled behaviour or <code>none</code> to disable it on all
+        devices.
+      </li>
+      <li>
+        The tooltip is hoverable and dismissible with <code>Escape</code> (WCAG 1.4.13), and its
+        exit animation uses <code>--kui-duration-quick</code> and <code>--kui-ease-exit</code>.
+      </li>
     </ul>
   </app-doc-section>
 </article>
