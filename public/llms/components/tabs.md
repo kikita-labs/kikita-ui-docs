@@ -253,16 +253,16 @@ export class VerticalTabsExample {
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| variant | 'line' \| 'pill' | 'line' | Tab visual style: underline indicator (line) or pill background (pill). |
-| size | 'xs' \| 'sm' \| 'md' \| 'lg' | 'md' | Tab trigger height and font size. |
-| orientation | 'horizontal' \| 'vertical' | 'horizontal' | Layout direction of the tab list. Vertical stacks triggers in a column with the indicator on the side edge. |
+| variant | 'line' \| 'pill' \| undefined | undefined | Tab visual style: underline indicator (line) or pill background (pill). Falls back to defaults.tabs.variant, then line. |
+| size | 'xs' \| 'sm' \| 'md' \| 'lg' \| undefined | undefined | Tab trigger height and font size. Falls back to defaults.tabs.size, then the root size, then md. |
+| orientation | 'horizontal' \| 'vertical' \| undefined | undefined | Layout direction of the tab list (defaults.tabs.orientation, then horizontal). Vertical stacks triggers in a column with the indicator on the side edge. |
 | inverted | boolean | false | Flips the tab edge. Horizontal tabs render panels above and the indicator on top; vertical tabs render panels before the list and the indicator on the start edge. |
 | controlsPanels | boolean | true | Whether tabs expose aria-controls links to projected kuiTabPanel elements. Set to false when tabs are used as navigation and content is rendered elsewhere, such as a router-outlet. |
 | [(value)] | string | - | Value of the active tab. |
 | [(selected)] | string | - | Deprecated alias for value, kept in sync with it. Use value instead; planned for removal in the next major version. |
 | [kuiTab] value | string | - | Identifier for this tab trigger. Must match a kuiTabPanel value when controlsPanels is true. |
 | [kuiTab] hasError | boolean | false | Shows a small danger dot next to the tab label without changing the selected state or tab color. |
-| [kuiTab] errorLabel | string | '' | Screen-reader-only text announced alongside the error dot. |
+| [kuiTab] errorLabel | string \| undefined | undefined | Screen-reader-only text announced alongside the error dot. Falls back to the tabs.errorIndicator message (has error). |
 | [kuiTabPanel] value | string | - | Identifier matching a [kuiTab] value. Panel is shown when its value matches the tabs value. |
 | --kui-tabs-gap | CSS length | 2px | Gap between tab triggers in the list. |
 | --kui-tabs-border | CSS color | var(--kui-color-border) | Border color of the tab list edge (bottom for horizontal, side for vertical). |
@@ -271,6 +271,21 @@ export class VerticalTabsExample {
 | --kui-tab-px | CSS length | var(--kui-btn-px) | Tab trigger inline padding. Overridden per size. |
 | --kui-tab-indicator | CSS color | var(--kui-color-primary-fill) | Color of the selected-tab indicator (underline for line, background for pill). |
 | --kui-tab-fg-active | CSS color | var(--kui-color-text) | Text color of the selected tab. |
+| --kui-tab-gap | CSS custom property | - | Gap inside a tab trigger. |
+| --kui-tab-radius | CSS custom property | - | Tab trigger corner radius. |
+| --kui-tab-fg | CSS custom property | - | Tab foreground. |
+| --kui-tab-fg-hover | CSS custom property | - | Tab foreground on hover. |
+| --kui-tab-bg-hover | CSS custom property | - | Tab background on hover. |
+| --kui-tab-indicator-size | CSS custom property | - | Thickness of the active indicator. |
+| --kui-tab-font-size | CSS custom property | - | Tab font size. |
+| --kui-tab-font-weight | CSS custom property | - | Tab font weight. |
+| --kui-tab-font-weight-active | CSS custom property | - | Active tab font weight. |
+| --kui-tab-pill-gap | CSS custom property | - | Gap between pill tabs. |
+| --kui-tab-pill-radius | CSS custom property | - | Pill tab corner radius. |
+| --kui-tab-pill-bg-hover | CSS custom property | - | Pill tab background on hover. |
+| --kui-tab-pill-bg-active | CSS custom property | - | Active pill tab background. |
+| --kui-tab-pill-fg-active | CSS custom property | - | Active pill tab foreground. |
+| KuiTabsOptions | interface | - | Shape of defaults.tabs: size, variant, orientation, previousIcon and nextIcon. |
 
 ## Accessibility
 

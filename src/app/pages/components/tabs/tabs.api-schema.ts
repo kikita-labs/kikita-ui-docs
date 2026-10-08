@@ -3,22 +3,24 @@ import { type ApiTableRow } from '@shared/docs-ui/api-table';
 export const TABS_API_ROWS: readonly ApiTableRow[] = [
   {
     name: 'variant',
-    type: `'line' | 'pill'`,
-    defaultValue: `'line'`,
-    description: 'Tab visual style: underline indicator (line) or pill background (pill).',
+    type: `'line' | 'pill' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Tab visual style: underline indicator (line) or pill background (pill). Falls back to defaults.tabs.variant, then line.',
   },
   {
     name: 'size',
-    type: `'xs' | 'sm' | 'md' | 'lg'`,
-    defaultValue: `'md'`,
-    description: 'Tab trigger height and font size.',
+    type: `'xs' | 'sm' | 'md' | 'lg' | undefined`,
+    defaultValue: 'undefined',
+    description:
+      'Tab trigger height and font size. Falls back to defaults.tabs.size, then the root size, then md.',
   },
   {
     name: 'orientation',
-    type: `'horizontal' | 'vertical'`,
-    defaultValue: `'horizontal'`,
+    type: `'horizontal' | 'vertical' | undefined`,
+    defaultValue: 'undefined',
     description:
-      'Layout direction of the tab list. Vertical stacks triggers in a column with the indicator on the side edge.',
+      'Layout direction of the tab list (defaults.tabs.orientation, then horizontal). Vertical stacks triggers in a column with the indicator on the side edge.',
   },
   {
     name: 'inverted',
@@ -63,9 +65,10 @@ export const TABS_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: '[kuiTab] errorLabel',
-    type: 'string',
-    defaultValue: `''`,
-    description: 'Screen-reader-only text announced alongside the error dot.',
+    type: 'string | undefined',
+    defaultValue: 'undefined',
+    description:
+      'Screen-reader-only text announced alongside the error dot. Falls back to the tabs.errorIndicator message (has error).',
   },
   {
     name: '[kuiTabPanel] value',
@@ -115,5 +118,95 @@ export const TABS_API_ROWS: readonly ApiTableRow[] = [
     type: 'CSS color',
     defaultValue: 'var(--kui-color-text)',
     description: 'Text color of the selected tab.',
+  },
+  {
+    name: '--kui-tab-gap',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Gap inside a tab trigger.',
+  },
+  {
+    name: '--kui-tab-radius',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Tab trigger corner radius.',
+  },
+  {
+    name: '--kui-tab-fg',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Tab foreground.',
+  },
+  {
+    name: '--kui-tab-fg-hover',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Tab foreground on hover.',
+  },
+  {
+    name: '--kui-tab-bg-hover',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Tab background on hover.',
+  },
+  {
+    name: '--kui-tab-indicator-size',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Thickness of the active indicator.',
+  },
+  {
+    name: '--kui-tab-font-size',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Tab font size.',
+  },
+  {
+    name: '--kui-tab-font-weight',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Tab font weight.',
+  },
+  {
+    name: '--kui-tab-font-weight-active',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Active tab font weight.',
+  },
+  {
+    name: '--kui-tab-pill-gap',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Gap between pill tabs.',
+  },
+  {
+    name: '--kui-tab-pill-radius',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Pill tab corner radius.',
+  },
+  {
+    name: '--kui-tab-pill-bg-hover',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Pill tab background on hover.',
+  },
+  {
+    name: '--kui-tab-pill-bg-active',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Active pill tab background.',
+  },
+  {
+    name: '--kui-tab-pill-fg-active',
+    type: 'CSS custom property',
+    defaultValue: '-',
+    description: 'Active pill tab foreground.',
+  },
+  {
+    name: 'KuiTabsOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.tabs: size, variant, orientation, previousIcon and nextIcon.',
   },
 ];

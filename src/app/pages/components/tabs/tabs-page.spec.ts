@@ -69,8 +69,12 @@ describe('TabsPage', () => {
       'variant',
       'orientation',
       'composition',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(root.querySelectorAll('app-live-preview .kui-tabs')).toHaveLength(4);
     expect(

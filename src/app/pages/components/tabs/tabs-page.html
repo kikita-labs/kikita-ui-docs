@@ -58,6 +58,12 @@
     <app-code-tabs [tabs]="navigationTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section name="Tabs" [colorRows]="colorTokenRows" />
+
+  <app-messages-section [groups]="messageGroups" />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Tabs API" [rows]="apiRows" />
   </app-doc-section>
@@ -81,6 +87,11 @@
       <li><code>ArrowLeft</code> / <code>ArrowRight</code> move focus between tabs.</li>
       <li><code>Home</code> focuses the first tab; <code>End</code> focuses the last tab.</li>
       <li>
+        Scroll buttons are named by the <code>tabs.scrollLeft</code> and
+        <code>tabs.scrollRight</code> messages, and the error dot text by
+        <code>tabs.errorIndicator</code>.
+      </li>
+      <li>
         At narrow widths the tablist scrolls horizontally and exposes accessible scroll buttons when
         needed.
       </li>
@@ -89,6 +100,35 @@
         assistive-technology verification has not been completed for this primitive yet; see
         <code>state-coverage.md</code> in the library repository for current review status.
       </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Tabs."
+  >
+    <ul class="tabs-page__notes">
+      <li>
+        The classes are <code>KuiTabs</code>, <code>KuiTab</code> and <code>KuiTabPanel</code>; the
+        <code>Component</code> and <code>Directive</code> suffixes are gone.
+      </li>
+      <li>
+        Size, variant and orientation defaults moved to
+        <code>provideKuiDefaults({{ '{' }} tabs: {{ '{' }} ... {{ '}' }} {{ '}' }})</code>, together
+        with <code>previousIcon</code> and <code>nextIcon</code> glyphs; the inputs are now
+        <code>undefined</code> until set.
+      </li>
+      <li>
+        Scroll button names and the default <code>errorLabel</code> come from the
+        <code>tabs</code> messages.
+      </li>
+      <li>
+        Hover and pressed fills read <code>--kui-color-state-hover</code> and
+        <code>--kui-color-state-active</code>, and <code>--kui-tab-indicator-size</code> sets the
+        indicator thickness.
+      </li>
+      <li>The scroll fade no longer carries a literal colour fallback.</li>
     </ul>
   </app-doc-section>
 </article>
