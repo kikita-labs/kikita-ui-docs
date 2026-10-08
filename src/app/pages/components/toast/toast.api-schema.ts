@@ -126,7 +126,7 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
     type: '(defaults: KuiComponentDefaults) => Provider',
     defaultValue: '-',
     description:
-      'App or route-level provider for global toast defaults: position, duration, maxVisible, showProgress, closable, showIcon.',
+      'App or route-level provider for toast defaults: position, duration, maxVisible, showProgress, closable, showIcon and closeIcon.',
   },
   {
     name: 'position',
@@ -141,5 +141,12 @@ export const TOAST_API_ROWS: readonly ApiTableRow[] = [
     defaultValue: '3',
     description:
       'Max simultaneous toasts, set via defaults.toast. The oldest visible toast is evicted when exceeded. It follows runtime changes of the default.',
+  },
+  {
+    name: 'KuiToastOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description:
+      'Shape of defaults.toast: position, duration, maxVisible, showProgress, closable, showIcon and closeIcon.',
   },
 ];

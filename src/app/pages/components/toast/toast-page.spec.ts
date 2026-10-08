@@ -57,9 +57,12 @@ describe('ToastPage', () => {
       'persistent-lifecycle',
       'with-action',
       'positions',
-      'global-defaults',
+      'provider-defaults',
+      'theming-tokens',
+      'messages',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(triggerLabels).toEqual([
       'Neutral',

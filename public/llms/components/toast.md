@@ -267,9 +267,10 @@ export class ToastPositionExample {
 | KuiToastRef.action$ | Observable<void> | - | Emits once when the action button is clicked, then completes. |
 | KuiToast.dismiss(id) | (id: number) => void | - | Dismisses one toast created by this service using its stable reference id. |
 | KuiToast.dismissAll() | () => void | - | Dismisses all active toasts created by this service. |
-| provideKuiDefaults({ toast }) | (defaults: KuiComponentDefaults) => Provider | - | App or route-level provider for global toast defaults: position, duration, maxVisible, showProgress, closable, showIcon. |
+| provideKuiDefaults({ toast }) | (defaults: KuiComponentDefaults) => Provider | - | App or route-level provider for toast defaults: position, duration, maxVisible, showProgress, closable, showIcon and closeIcon. |
 | position | 'top-start' \| 'top-center' \| 'top-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end' | 'bottom-center' | Global region position. Set app-wide via defaults.toast, or at runtime via KuiToast.setPosition for demos. |
 | maxVisible | number | 3 | Max simultaneous toasts, set via defaults.toast. The oldest visible toast is evicted when exceeded. It follows runtime changes of the default. |
+| KuiToastOptions | interface | - | Shape of defaults.toast: position, duration, maxVisible, showProgress, closable, showIcon and closeIcon. |
 
 ## Accessibility
 

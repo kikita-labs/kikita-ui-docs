@@ -31,6 +31,33 @@
     description="Use persistent for messages that must stay open, pass a signal when the lifecycle is controlled by application state, and use the returned ref for in-place updates or programmatic dismissal."
   >
     <app-code-tabs [tabs]="lifecycleTabs" />
+    <ul class="toast-page__notes">
+      <li>
+        A signal only needs to be readable; the toast never writes to it, so a
+        <code>computed</code> works.
+      </li>
+      <li>
+        Turning the signal <code>true</code> freezes the time left and <code>false</code> resumes
+        it. A toast opened with a <code>true</code> signal starts the full duration the first time
+        the signal becomes <code>false</code>.
+      </li>
+      <li>
+        <code>ref.update({{ '{' }} persistent {{ '}' }})</code> or
+        <code>ref.update({{ '{' }} duration {{ '}' }})</code> restarts the full duration. An update
+        that omits <code>persistent</code> keeps the current binding; one that sets it replaces the
+        previous value or signal and detaches the old signal.
+      </li>
+      <li>
+        An explicit <code>persistent</code> value, even <code>false</code>, wins over
+        <code>duration: Infinity</code>; a non-finite or missing duration then uses the default
+        duration.
+      </li>
+      <li>
+        Updates after the toast starts closing are ignored. Closing the toast or destroying the
+        region detaches every signal subscription and timer and completes <code>closed$</code> and
+        <code>action$</code>.
+      </li>
+    </ul>
   </app-doc-section>
 
   <app-doc-section
@@ -46,7 +73,7 @@
 
   <app-doc-section
     heading="Positions"
-    description="The toast region renders at one of six positions. top-* stacks grow downward; bottom-* stacks grow upward, keeping the newest toast closest to the viewport edge. setPosition() changes the shared region at runtime and is intended for interactive demos like this one; prefer provideKuiToastOptions for real app configuration."
+    description="The toast region renders at one of six positions. top-* stacks grow downward; bottom-* stacks grow upward, keeping the newest toast closest to the viewport edge. setPosition() changes the shared region at runtime and is intended for interactive demos like this one; prefer defaults.toast.position for real app configuration."
   >
     <app-live-preview previewLabel="Position triggers">
       <app-toast-position-example />
@@ -54,12 +81,15 @@
     <app-code-tabs [tabs]="positionTabs" />
   </app-doc-section>
 
-  <app-doc-section
-    heading="Global defaults"
-    description="defaults.toast configures app-wide defaults, including maxVisible. Provide it once with provideKikitaUi in app.config.ts, or for a subtree with provideKuiDefaults; both follow runtime changes through KuiDefaults."
-  >
-    <app-code-tabs [tabs]="globalDefaultsTabs" />
-  </app-doc-section>
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Toast"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
 
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Toast API" [rows]="apiRows" />
@@ -97,8 +127,48 @@
         <code>prefers-reduced-motion</code> replaces slide animations with an opacity-only fade.
       </li>
       <li>
+        The region is named by the <code>toast.region</code> message (<code>Notifications</code>).
+        While toasts are visible it is a manual popover in the browser top layer, alongside Dialog,
+        Drawer and Menu.
+      </li>
+      <li>
+        On narrow screens the card stretches to the viewport width and aligns to the bottom edge.
+      </li>
+      <li>
         On the server, <code>KuiToast.open()</code> returns a no-op ref and performs no DOM access,
         so calling it during SSR is safe.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Toast."
+  >
+    <ul class="toast-page__notes">
+      <li>
+        <code>provideKuiToastOptions</code> and <code>KUI_TOAST_OPTIONS</code> are replaced by
+        <code>defaults.toast</code> through
+        <code>provideKikitaUi({{ '{' }} defaults {{ '}' }})</code> or
+        <code>provideKuiDefaults</code>; position and <code>maxVisible</code> follow runtime changes
+        of the default.
+      </li>
+      <li>
+        The service class is <code>KuiToast</code> (was <code>KuiToastService</code>);
+        <code>kuiToast()</code> still returns it.
+      </li>
+      <li>
+        The notification region name comes from the <code>toast.region</code> message, and the close
+        glyph from <code>defaults.toast.closeIcon</code> or <code>defaults.icons.close</code>.
+      </li>
+      <li>
+        While toasts are visible the region is shown in the top layer, so it stays above open
+        Dialogs and Drawers.
+      </li>
+      <li>
+        Close button, message and title colours have tokens, and the close radius and accent width
+        have geometry tokens.
       </li>
     </ul>
   </app-doc-section>

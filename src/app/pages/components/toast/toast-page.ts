@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
 
 import { TOAST_EXAMPLE_SOURCES } from '@generated/example-sources/toast.generated';
+import { TOAST_MESSAGES } from '@generated/library-tables/messages.generated';
+import {
+  TOAST_COLOR_TOKEN_ROWS,
+  TOAST_DEFAULTS,
+  TOAST_GEOMETRY_TOKEN_ROWS,
+} from '@generated/library-tables/toast.generated';
 import { ApiTable } from '@shared/docs-ui/api-table';
 import { type CodeTab } from '@shared/docs-ui/code-tabs';
 import { CodeTabs } from '@shared/docs-ui/code-tabs';
 import { DocSection } from '@shared/docs-ui/doc-section';
 import { LivePreview } from '@shared/docs-ui/live-preview';
+import { MessagesSection } from '@shared/docs-ui/messages-section';
 import { PageHeader } from '@shared/docs-ui/page-header';
 import { PlaygroundRouteButton } from '@shared/docs-ui/playground-route-button';
+import { ProviderDefaultsSection } from '@shared/docs-ui/provider-defaults-section';
+import { TokenTablesSection } from '@shared/docs-ui/token-tables-section';
 
 import { BasicToastExample, ToastActionExample, ToastPositionExample } from './examples';
 import { TOAST_API_ROWS } from './toast.api-schema';
@@ -16,6 +25,9 @@ import { TOAST_API_DESCRIPTION, TOAST_IMPORT_TABS, TOAST_STATUS } from './toast.
 @Component({
   selector: 'app-toast-page',
   imports: [
+    ProviderDefaultsSection,
+    TokenTablesSection,
+    MessagesSection,
     ApiTable,
     BasicToastExample,
     CodeTabs,
@@ -75,20 +87,9 @@ export class UploadComponent {
 
   protected readonly positionTabs = TOAST_EXAMPLE_SOURCES['toast-position-example'];
 
-  protected readonly globalDefaultsTabs: readonly CodeTab[] = [
-    {
-      label: 'TS',
-      filename: 'app.config.ts',
-      language: 'ts',
-      code: `export const appConfig: ApplicationConfig = {
-  providers: [
-    provideKikitaUi({
-      defaults: { toast: { position: 'top-end', duration: 4000, maxVisible: 5 } },
-    }),
-  ],
-};`,
-    },
-  ];
-
+  protected readonly defaults = TOAST_DEFAULTS;
+  protected readonly colorTokenRows = TOAST_COLOR_TOKEN_ROWS;
+  protected readonly geometryTokenRows = TOAST_GEOMETRY_TOKEN_ROWS;
+  protected readonly messageGroups = [TOAST_MESSAGES];
   protected readonly apiRows = TOAST_API_ROWS;
 }
