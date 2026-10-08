@@ -59,6 +59,7 @@ import {
   TOKENS_LAYER_TABS,
   TOKENS_SCALE_TABS,
   TOKENS_SEED_ROWS,
+  TOKENS_SHARED_TABS,
 } from './tokens/tokens.docs-content';
 
 const ALL_FOUNDATION_CODE_TABS: readonly CodeTab[] = [
@@ -96,6 +97,7 @@ const ALL_FOUNDATION_CODE_TABS: readonly CodeTab[] = [
   ...THEMING_SEED_TABS,
   ...TOKENS_LAYER_TABS,
   ...TOKENS_SCALE_TABS,
+  ...TOKENS_SHARED_TABS,
 ];
 
 const DENSITY_THEME_CONTRACT = {
@@ -167,6 +169,14 @@ describe('foundation content contracts', () => {
       '--kui-seed-warning',
       '--kui-seed-danger',
       '--kui-seed-info',
+    ]);
+    expect(TOKENS_SEED_ROWS.map((row) => row.type)).toEqual([
+      DEFAULT_KUI_THEME.seeds?.color.primary,
+      DEFAULT_KUI_THEME.seeds?.color.neutral,
+      DEFAULT_KUI_THEME.seeds?.color.success,
+      DEFAULT_KUI_THEME.seeds?.color.warning,
+      DEFAULT_KUI_THEME.seeds?.color.danger,
+      DEFAULT_KUI_THEME.seeds?.color.info,
     ]);
     expect(ACCESSIBILITY_FORM_TABS[0].code).not.toContain(' formField');
   });

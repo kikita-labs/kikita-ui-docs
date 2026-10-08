@@ -56,7 +56,16 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
   {
     component: TokensPage,
     heading: 'Tokens',
-    sections: ['Token layers', 'Color seeds', 'Common scales'],
+    sections: [
+      'Token layers',
+      'Color seeds',
+      'Fill, indicator and text roles',
+      'Common scales',
+      'Shared tokens',
+      'Icon tokens',
+      'Defaults that moved into CSS',
+      'Removed in 2.0',
+    ],
   },
   {
     component: TypographyPage,

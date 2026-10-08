@@ -20,9 +20,62 @@
   </app-doc-section>
 
   <app-doc-section
+    heading="Fill, indicator and text roles"
+    description="Every accent (primary, success, warning, danger, info) has these roles. A fill is a background only: text and icons read -text, and borders and marks read -indicator."
+  >
+    <app-api-table label="Colour roles" [rows]="roleRows" />
+    <p class="tokens-page__note">
+      To recolour a solid inside a subtree, override the fill together with <code>-on-fill</code>,
+      <code>-fill-away</code> and <code>-indicator</code>, or set a different seed through the
+      provider. <code>--kui-color-on-fill</code> and <code>--kui-color-primary-focus-ring</code> are
+      deprecated and removed in 3.0.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
     heading="Common scales"
     description="Radius and spacing scales are shared by component tokens and docs layout primitives."
   >
     <app-code-tabs [tabs]="scaleTabs" />
+  </app-doc-section>
+  <app-doc-section
+    heading="Shared tokens"
+    description="A few global tokens are the single knob for a behaviour the whole library shares. A component hook is read first and defaults to the global token in the CSS of the component, so a value set on any ancestor wins."
+  >
+    <app-api-table label="Shared behaviour tokens" [rows]="sharedRows" />
+    <app-code-tabs [tabs]="sharedTabs" />
+    <p class="tokens-page__note">
+      The generated stylesheet does not define the component hooks, so a global token set on a
+      subtree is never shadowed by a copy of its value on the root. Loops keep their own tokens:
+      <code>--kui-loader-duration</code>, <code>--kui-loader-duration-reduced</code>,
+      <code>--kui-skeleton-duration</code> and <code>--kui-field-spinner-duration</code>.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Icon tokens"
+    description="Two public tokens control the line of structural icons and of stroke-based kui-icon content. Set them on the root or on any subtree."
+  >
+    <app-api-table label="Icon stroke tokens" [rows]="iconRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Defaults that moved into CSS"
+    description="These tokens are still valid hooks: set one on an element or an ancestor to override a single component. They are no longer defined on the root, because a literal copy of a global value there would shadow a change to the global token."
+  >
+    <app-api-table label="Hooks and the token they default to" [rows]="movedRows" />
+    <p class="tokens-page__note">
+      Card, Segmented, Tabs and Table no longer read the Button hooks
+      <code>--kui-btn-focus-ring-w</code> and <code>--kui-btn-focus-ring-off</code>; set
+      <code>--kui-focus-ring-width</code> and <code>--kui-focus-ring-offset</code> to change every
+      ring at once.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Removed in 2.0"
+    description="These generated tokens are gone and nothing in Kikita UI reads them any more. Set the replacement. 322 component tokens that only mapped a role onto another token are no longer generated either; each component states its default in its own CSS."
+  >
+    <app-api-table label="Removed tokens and their replacements" [rows]="removedRows" />
   </app-doc-section>
 </article>
