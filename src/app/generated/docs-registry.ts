@@ -68,6 +68,7 @@ import { ACCESSIBILITY_DOCS_MANIFEST } from '@pages/foundations/accessibility/ac
 import { AUTO_FOCUS_DOCS_MANIFEST } from '@pages/foundations/auto-focus/auto-focus.docs-manifest';
 import { DEFAULTS_DOCS_MANIFEST } from '@pages/foundations/defaults/defaults.docs-manifest';
 import { DENSITY_DOCS_MANIFEST } from '@pages/foundations/density/density.docs-manifest';
+import { FORMS_DOCS_MANIFEST } from '@pages/foundations/forms/forms.docs-manifest';
 import { INSTALLATION_DOCS_MANIFEST } from '@pages/foundations/installation/installation.docs-manifest';
 import { INTERNATIONALIZATION_DOCS_MANIFEST } from '@pages/foundations/internationalization/internationalization.docs-manifest';
 import { MIGRATION_DOCS_MANIFEST } from '@pages/foundations/migration/migration.docs-manifest';
@@ -148,6 +149,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     DEFAULTS_DOCS_MANIFEST,
     STRUCTURAL_ICONS_DOCS_MANIFEST,
     AUTO_FOCUS_DOCS_MANIFEST,
+    FORMS_DOCS_MANIFEST,
   ],
   components: [
     BUTTON_DOCS_MANIFEST,

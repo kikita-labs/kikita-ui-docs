@@ -9,6 +9,7 @@ import { AccessibilityPage } from './accessibility/accessibility-page';
 import { AutoFocusPage } from './auto-focus/auto-focus-page';
 import { DefaultsPage } from './defaults/defaults-page';
 import { DensityPage } from './density/density-page';
+import { FormsPage } from './forms/forms-page';
 import { InstallationPage } from './installation/installation-page';
 import { InternationalizationPage } from './internationalization/internationalization-page';
 import { MigrationPage } from './migration/migration-page';
@@ -128,6 +129,17 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
     component: AutoFocusPage,
     heading: 'Auto Focus',
     sections: ['Import and usage', 'Rules', 'API', 'Accessibility'],
+  },
+  {
+    component: FormsPage,
+    heading: 'Forms',
+    sections: [
+      'Signal Forms first',
+      'Field-first pattern',
+      'Custom field templates',
+      'Controls that are not native elements',
+      'Required and invalid state',
+    ],
   },
 ];
 

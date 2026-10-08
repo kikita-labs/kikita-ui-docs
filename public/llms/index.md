@@ -12,6 +12,7 @@
 - [Auto Focus](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/auto-focus.md): kuiAutoFocus moves focus to its host, or to the first focusable element inside it, after the browser has rendered.
 - [Defaults](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/defaults.md): Set shared preferences such as size, shape, clearable or toast placement once for the application or for a subtree, instead of repeating them in every template.
 - [Density](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md): Spacing and control density expectations for product UIs.
+- [Forms](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/forms.md): Kikita UI is Signal Forms first: put the control directive and [formField] on the same element and wrap it in kui-field for the label, hint, error and required marker.
 - [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
 - [Internationalization](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/internationalization.md): Locale and messages are two independent settings: the locale formats dates, numbers and plurals, the messages translate the text the library owns.
 - [Migrating to 2.0](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/migration.md): Every breaking change of @kikita-labs/ui 2.0: renamed exports, provider defaults, locale and messages, icons, tokens, component behaviour and the charts.

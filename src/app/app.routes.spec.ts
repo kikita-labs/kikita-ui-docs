@@ -67,6 +67,7 @@ const FOUNDATION_SLUGS = [
   'auto-focus',
   'defaults',
   'density',
+  'forms',
   'installation',
   'internationalization',
   'migration',

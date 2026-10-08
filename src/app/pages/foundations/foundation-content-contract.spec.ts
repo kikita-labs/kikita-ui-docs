@@ -20,6 +20,12 @@ import {
   DENSITY_VALUE_ROWS,
 } from './density/density.docs-content';
 import {
+  FORMS_COMPONENT_TABS,
+  FORMS_CUSTOM_TABS,
+  FORMS_MODEL_TABS,
+  FORMS_PATTERN_TABS,
+} from './forms/forms.docs-content';
+import {
   INSTALLATION_CLI_TABS,
   INSTALLATION_MANUAL_TABS,
   INSTALLATION_OPTION_ROWS,
@@ -50,6 +56,10 @@ import {
 } from './tokens/tokens.docs-content';
 
 const ALL_FOUNDATION_CODE_TABS: readonly CodeTab[] = [
+  ...FORMS_MODEL_TABS,
+  ...FORMS_PATTERN_TABS,
+  ...FORMS_CUSTOM_TABS,
+  ...FORMS_COMPONENT_TABS,
   ...AUTO_FOCUS_USAGE_TABS,
   ...STRUCTURAL_ICONS_REPLACE_TABS,
   ...STRUCTURAL_ICONS_GLYPH_TABS,

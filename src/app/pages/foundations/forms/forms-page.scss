@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.forms-page {
+  display: grid;
+  gap: clamp(28px, 5vw, 48px);
+}
+
+.forms-page__notes {
+  @include doc-page-notes;
+}
+
+.forms-page__note {
+  @include doc-page-note;
+}

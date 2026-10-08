@@ -1,0 +1,113 @@
+<article class="forms-page">
+  <app-page-header
+    eyebrow="Foundation"
+    heading="Forms"
+    description="Kikita UI is Signal Forms first: put the control directive and [formField] on the same element and wrap it in kui-field for the label, hint, error and required marker."
+  />
+
+  <app-doc-section
+    heading="Signal Forms first"
+    description="Place the Kikita control directive and the Angular Signal Forms formField binding on the same native element, then wrap it with kui-field when the UI needs a visible label, hint, error or required marker."
+  >
+    <app-code-tabs [tabs]="modelTabs" />
+
+    <ul class="forms-page__notes">
+      <li>
+        A native control with <code>[formField]</code> projected inside <code>kui-field</code> lets
+        the field infer the required marker from the Signal Forms
+        <code>required(...)</code> metadata and render the first error message when one is
+        available.
+      </li>
+      <li>
+        Use an explicit <code>required</code> on <code>kui-field</code> only when the marker should
+        be forced without a validator. Use <code>hideErrors</code> when the field should keep the
+        invalid styling without rendering automatic error text.
+      </li>
+      <li>
+        Custom Kikita form controls should prefer the Angular Signal Forms contracts
+        <code>FormValueControl</code> and <code>FormCheckboxControl</code>, not a
+        ControlValueAccessor, unless a compatibility layer is explicitly needed.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Field-first pattern"
+    description="kui-field owns the label, hint, error, required marker and aria-describedby wiring, so do not write them by hand for normal field usage."
+  >
+    <app-code-tabs [tabs]="patternTabs" />
+
+    <p class="forms-page__note">
+      For Signal Forms controls put range constraints in the form schema with
+      <code>min(...)</code> and <code>max(...)</code>. Do not add native <code>min</code> or
+      <code>max</code> attributes to an element that has <code>[formField]</code>; Angular binds
+      those native properties from the schema metadata.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Custom field templates"
+    description="Use projected marker directives only when the field needs custom template logic."
+  >
+    <app-code-tabs [tabs]="customTabs" />
+
+    <p class="forms-page__note">
+      Do not use <code>[hidden]</code> for custom errors. Prefer Angular control flow
+      (<code>&#64;if</code>) so hidden error content is not rendered or referenced by assistive
+      technology.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Controls that are not native elements"
+    description="kui-segmented and kui-otp-input implement the Signal Forms control contract themselves, so formField goes on the component."
+  >
+    <app-code-tabs [tabs]="componentTabs" />
+
+    <ul class="forms-page__notes">
+      <li>
+        Both implement <code>FormValueControl&lt;string&gt;</code>, so
+        <code>[formField]</code> binds <code>disabled</code>, <code>readonly</code>,
+        <code>invalid</code>, <code>errors</code> and <code>touched</code>.
+        <code>kui-otp-input</code> also binds <code>required</code>; <code>kui-segmented</code> has
+        no required state because it always shows one active segment.
+      </li>
+      <li>
+        Both implement <code>focus(options?)</code>, so
+        <code>field().focusBoundControl()</code> reaches the first focusable part (the selected
+        segment or the first OTP cell) instead of the non-focusable group host.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Required and invalid state"
+    description="How the field and its controls expose validation to assistive technology."
+  >
+    <ul class="forms-page__notes">
+      <li>
+        <code>kui-field</code> exposes its required state, from the explicit
+        <code>required</code> input or a Signal Forms <code>required(...)</code> validator, as
+        <code>aria-required</code> on Input, Textarea, Checkbox, Switch, Number Input, Color Input
+        and the other controls that support it. Snapshot tests of the rendered markup change
+        accordingly.
+      </li>
+      <li>
+        Signal Forms writes the raw, untouched-gated validity into the <code>invalid</code> of a
+        native control. The controls therefore gate <code>aria-invalid</code> and the invalid
+        styling by the touched state when <code>[formField]</code> is present, so a required but
+        empty control does not turn red before the user has interacted with it. This matches the
+        automatic error text of <code>kui-field</code>.
+      </li>
+      <li>
+        Outside Signal Forms the <code>invalid</code> input is a plain manual flag, for example for
+        a server verdict on a one-time code.
+      </li>
+      <li>
+        A control inside <code>kui-field</code> takes its id, <code>aria-describedby</code> and
+        invalid state from the field, so the label targets the control and the hint and error are
+        announced.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>
