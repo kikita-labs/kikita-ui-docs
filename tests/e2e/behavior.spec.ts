@@ -330,8 +330,8 @@ test('keeps representative simple, form, overlay, and table playgrounds interact
   await gotoReady(page, '/components/avatar/playground');
   await page.getByLabel('name', { exact: true }).fill('Design Bot');
   await page.getByLabel('src (sample image)', { exact: true }).uncheck();
-  await page.getByRole('radio', { name: 'xl', exact: true }).click();
-  await page.getByRole('radio', { name: 'square', exact: true }).click();
+  await page.getByRole('radio', { name: 'xl', exact: true }).first().click();
+  await page.getByRole('radio', { name: 'square', exact: true }).first().click();
   await page.getByRole('radio', { name: 'busy', exact: true }).click();
   const avatarPreview = page.getByRole('region', { name: 'Avatar playground' });
   await expect(avatarPreview.locator('kui-avatar')).toHaveAttribute('data-kui-size', 'xl');
