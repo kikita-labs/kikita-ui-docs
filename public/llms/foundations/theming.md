@@ -78,6 +78,11 @@ provideKuiTheme({ ...DEFAULT_KUI_THEME, contrast: 'soft' });
 ```ts
 document.documentElement.setAttribute('data-kui-contrast', 'strict');
 ```
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KuiThemeContrast | 'strict' \| 'soft' | - | Contrast profile name and the value of the data-kui-contrast attribute. |
+| DEFAULT_KUI_THEME_CONTRAST | KuiThemeContrast | - | Profile a theme uses when the contrast option is not set. |
+| KuiGeneratedContrast | { name; media?; light; dark } | - | Variables one profile changes relative to the default, emitted as [data-kui-contrast] rules and an optional media query. |
 
 ### Shared behaviour tokens
 A few tokens change one behaviour for the whole library. Set them on the root or on any subtree.

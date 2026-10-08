@@ -8,6 +8,7 @@ import { PageHeader } from '@shared/docs-ui/page-header';
 
 import {
   INSTALLATION_CLI_TABS,
+  INSTALLATION_ICON_ROWS,
   INSTALLATION_ICON_TABS,
   INSTALLATION_MANUAL_TABS,
   INSTALLATION_OPTION_ROWS,
@@ -32,4 +33,5 @@ export class InstallationPage {
   protected readonly styleTabs = INSTALLATION_STYLE_TABS;
   protected readonly upgradeTabs = INSTALLATION_UPGRADE_TABS;
   protected readonly iconTabs = INSTALLATION_ICON_TABS;
+  protected readonly iconRows = INSTALLATION_ICON_ROWS;
 }

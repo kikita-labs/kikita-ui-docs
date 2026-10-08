@@ -137,3 +137,22 @@ export const appConfig = {
     code: `connect-src 'self' https://cdn.jsdelivr.net`,
   },
 ] as const satisfies readonly CodeTab[];
+
+export const INSTALLATION_ICON_ROWS = [
+  {
+    name: 'KUI_LUCIDE_STATIC_VERSION',
+    type: "'1.51.0'",
+    description:
+      'Exact lucide-static version the default resolver reads. It changes only with a Kikita UI release.',
+  },
+  {
+    name: 'createKuiLucideResolver',
+    type: '(options?: KuiLucideResolverOptions) => KuiIconResolver',
+    description: 'Reads another lucide-static version or origin, for self-hosted icon files.',
+  },
+  {
+    name: 'provideKuiIcons',
+    type: '(icons: KuiIconRegistry) => EnvironmentProviders',
+    description: 'Registers named icons and resolvers for the injector it is provided in.',
+  },
+] as const satisfies readonly ApiTableRow[];

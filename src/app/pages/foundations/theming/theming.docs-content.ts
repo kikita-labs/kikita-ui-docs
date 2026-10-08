@@ -187,3 +187,22 @@ export const THEMING_COLOUR_ROLE_ROWS = [
     description: '4.5:1; disabled text stays for disabled controls.',
   },
 ] as const satisfies readonly ApiTableRow[];
+
+export const THEMING_CONTRAST_ROWS = [
+  {
+    name: 'KuiThemeContrast',
+    type: "'strict' | 'soft'",
+    description: 'Contrast profile name and the value of the data-kui-contrast attribute.',
+  },
+  {
+    name: 'DEFAULT_KUI_THEME_CONTRAST',
+    type: 'KuiThemeContrast',
+    description: 'Profile a theme uses when the contrast option is not set.',
+  },
+  {
+    name: 'KuiGeneratedContrast',
+    type: '{ name; media?; light; dark }',
+    description:
+      'Variables one profile changes relative to the default, emitted as [data-kui-contrast] rules and an optional media query.',
+  },
+] as const satisfies readonly ApiTableRow[];

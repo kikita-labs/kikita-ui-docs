@@ -8,6 +8,7 @@ import { PageHeader } from '@shared/docs-ui/page-header';
 import {
   THEMING_COLOUR_ROLE_ROWS,
   THEMING_CONTRACT_TABS,
+  THEMING_CONTRAST_ROWS,
   THEMING_CONTRAST_TABS,
   THEMING_OVERRIDE_ROWS,
   THEMING_OVERRIDE_TABS,
@@ -31,6 +32,7 @@ export class ThemingPage {
   protected readonly overrideRows = THEMING_OVERRIDE_ROWS;
   protected readonly overrideTabs = THEMING_OVERRIDE_TABS;
   protected readonly contrastTabs = THEMING_CONTRAST_TABS;
+  protected readonly contrastRows = THEMING_CONTRAST_ROWS;
   protected readonly sharedTokenTabs = THEMING_SHARED_TOKEN_TABS;
   protected readonly colourRoleRows = THEMING_COLOUR_ROLE_ROWS;
 }

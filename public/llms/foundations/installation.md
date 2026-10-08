@@ -108,6 +108,11 @@ export const appConfig = {
 ```text
 connect-src 'self' https://cdn.jsdelivr.net
 ```
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KUI_LUCIDE_STATIC_VERSION | '1.51.0' | - | Exact lucide-static version the default resolver reads. It changes only with a Kikita UI release. |
+| createKuiLucideResolver | (options?: KuiLucideResolverOptions) => KuiIconResolver | - | Reads another lucide-static version or origin, for self-hosted icon files. |
+| provideKuiIcons | (icons: KuiIconRegistry) => EnvironmentProviders | - | Registers named icons and resolvers for the injector it is provided in. |
 
 ### Upgrading from 1.x
 Update the package and run the migration that ships with it. See the Migrating to 2.0 page for every breaking change.

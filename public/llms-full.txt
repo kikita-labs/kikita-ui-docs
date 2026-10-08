@@ -682,6 +682,11 @@ export const appConfig = {
 ```text
 connect-src 'self' https://cdn.jsdelivr.net
 ```
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KUI_LUCIDE_STATIC_VERSION | '1.51.0' | - | Exact lucide-static version the default resolver reads. It changes only with a Kikita UI release. |
+| createKuiLucideResolver | (options?: KuiLucideResolverOptions) => KuiIconResolver | - | Reads another lucide-static version or origin, for self-hosted icon files. |
+| provideKuiIcons | (icons: KuiIconRegistry) => EnvironmentProviders | - | Registers named icons and resolvers for the injector it is provided in. |
 
 ### Upgrading from 1.x
 Update the package and run the migration that ships with it. See the Migrating to 2.0 page for every breaking change.
@@ -1135,6 +1140,11 @@ provideKuiTheme({ ...DEFAULT_KUI_THEME, contrast: 'soft' });
 ```ts
 document.documentElement.setAttribute('data-kui-contrast', 'strict');
 ```
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| KuiThemeContrast | 'strict' \| 'soft' | - | Contrast profile name and the value of the data-kui-contrast attribute. |
+| DEFAULT_KUI_THEME_CONTRAST | KuiThemeContrast | - | Profile a theme uses when the contrast option is not set. |
+| KuiGeneratedContrast | { name; media?; light; dark } | - | Variables one profile changes relative to the default, emitted as [data-kui-contrast] rules and an optional media query. |
 
 ### Shared behaviour tokens
 A few tokens change one behaviour for the whole library. Set them on the root or on any subtree.
