@@ -1,0 +1,8 @@
+<div class="media-viewer-example">
+  @for (photo of photos; track photo.id) {
+    <button type="button" class="media-viewer-example__tile" (click)="openPhotoAt($index)">
+      <img [src]="photo.src" [alt]="photo.alt" />
+    </button>
+  }
+  <span>Last viewed index: {{ lastViewed() }}</span>
+</div>

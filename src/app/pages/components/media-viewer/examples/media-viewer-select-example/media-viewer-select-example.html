@@ -1,0 +1,22 @@
+<div class="media-viewer-example">
+  @for (photo of photos; track photo.id) {
+    <div class="media-viewer-example__cell">
+      <button
+        type="button"
+        class="media-viewer-example__tile"
+        [attr.aria-label]="'Open photo ' + ($index + 1)"
+        (click)="openPhotoAt($index)"
+      >
+        <img [src]="photo.src" [alt]="photo.alt" />
+      </button>
+      <input
+        type="checkbox"
+        kuiCheckbox
+        aria-label="Select photo"
+        [checked]="isSelected(photo.id ?? photo.src)"
+        (change)="toggle(photo.id ?? photo.src)"
+      />
+    </div>
+  }
+  <span>{{ selected().size }} selected</span>
+</div>

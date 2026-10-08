@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.media-viewer-page {
+  @include doc-page-layout;
+}
+
+.media-viewer-page__notes {
+  @include doc-page-notes;
+}
+
+.media-viewer-page__note {
+  @include doc-page-note;
+}

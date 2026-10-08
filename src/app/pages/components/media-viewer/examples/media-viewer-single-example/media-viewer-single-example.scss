@@ -1,0 +1,23 @@
+.media-viewer-example {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--kui-space-3, 12px);
+  align-items: center;
+}
+
+.media-viewer-example__tile {
+  display: block;
+  padding: 0;
+  border: 1px solid var(--kui-color-border);
+  border-radius: var(--kui-radius-md, 8px);
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.media-viewer-example__tile img {
+  display: block;
+  inline-size: 96px;
+  block-size: 64px;
+  object-fit: cover;
+}

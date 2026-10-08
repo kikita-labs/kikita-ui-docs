@@ -21,6 +21,7 @@ const COMPONENT_SLUGS = [
   'command-palette',
   'date-picker',
   'dialog',
+  'media-viewer',
   'drawer',
   'dropdown',
   'empty-state',

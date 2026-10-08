@@ -1,0 +1,13 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.media-viewer-playground-page {
+  @include playground-page-layout;
+}
+
+.media-viewer-playground-page__header {
+  @include playground-page-header;
+}
+
+.media-viewer-playground-page__note {
+  @include playground-page-note;
+}

@@ -38,6 +38,7 @@ import { INPUT_DOCS_MANIFEST } from '@pages/components/input/input.docs-manifest
 import { LINE_CHART_DOCS_MANIFEST } from '@pages/components/line-chart/line-chart.docs-manifest';
 import { LINK_DOCS_MANIFEST } from '@pages/components/link/link.docs-manifest';
 import { LOADER_DOCS_MANIFEST } from '@pages/components/loader/loader.docs-manifest';
+import { MEDIA_VIEWER_DOCS_MANIFEST } from '@pages/components/media-viewer/media-viewer.docs-manifest';
 import { MENU_DOCS_MANIFEST } from '@pages/components/menu/menu.docs-manifest';
 import { NUMBER_INPUT_DOCS_MANIFEST } from '@pages/components/number-input/number-input.docs-manifest';
 import { POPOVER_DOCS_MANIFEST } from '@pages/components/popover/popover.docs-manifest';
@@ -171,6 +172,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     BREADCRUMBS_DOCS_MANIFEST,
     POPOVER_DOCS_MANIFEST,
     DIALOG_DOCS_MANIFEST,
+    MEDIA_VIEWER_DOCS_MANIFEST,
     DRAWER_DOCS_MANIFEST,
     DROPDOWN_DOCS_MANIFEST,
     SEPARATOR_DOCS_MANIFEST,

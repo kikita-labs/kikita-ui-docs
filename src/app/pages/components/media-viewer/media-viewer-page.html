@@ -1,0 +1,138 @@
+<article class="media-viewer-page">
+  <app-page-header
+    eyebrow="Surfaces"
+    heading="Media Viewer"
+    description="Fullscreen photo lightbox with navigation, thumbnails and zoom."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="kuiMediaViewer() is an imperative opener, the same shape as kuiDialog() and kuiConfirm(). It reuses KuiDialog for the portal, backdrop, focus trap, Escape handling and scroll lock."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Call the opener from a click handler with the photos and the index to open on. The grid, the trigger buttons and any selection are your own composition."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Photo grid that opens the viewer">
+      <app-basic-media-viewer-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+    <p class="media-viewer-page__note">
+      <code>onIndexChange</code> fires once on open with the clamped index and again on every
+      navigation while the lightbox stays open. Photos only: video is out of scope.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="single-photo"
+    heading="Single photo"
+    description="A one-item items array needs no separate API. The counter, Prev, Next and thumbnail strip disappear and only zoom and Close remain."
+  >
+    <app-live-preview previewLabel="Single photo viewer">
+      <app-media-viewer-single-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="singleTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="multi-select"
+    heading="Multi-select composition"
+    description="A per-tile checkbox next to, not inside, the cover button is your own composition and not a kuiMediaViewer() option."
+  >
+    <app-live-preview previewLabel="Photo grid with selection">
+      <app-media-viewer-select-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="selectTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="interaction"
+    heading="Pointer, wheel and touch"
+    description="Zoom and pan follow the pointer devices."
+  >
+    <ul class="media-viewer-page__notes">
+      <li>
+        Dragging a zoomed-in photo pans it. Panning stops when the pointer leaves the lightbox and
+        always ends cleanly on pointer up or cancel, even outside the window
+        (<code>setPointerCapture</code>).
+      </li>
+      <li>
+        The photo is not natively draggable or selectable, so a pan never becomes the browser's
+        drag-image or text-selection gesture.
+      </li>
+      <li>
+        Mouse wheel and a trackpad pinch (a wheel event with <code>ctrlKey</code>) zoom by one
+        <code>zoomStep</code> per event; scrolling up zooms in.
+      </li>
+      <li>
+        A touchscreen two-finger pinch zooms continuously, scaling from where the pinch began.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-token-tables-section
+    name="Media Viewer"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Media Viewer API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="The panel is a modal dialog; focus handling comes from KuiDialog."
+  >
+    <ul class="media-viewer-page__notes">
+      <li>
+        The panel is <code>role="dialog"</code> with <code>aria-modal="true"</code>, labelled by a
+        visually hidden heading such as <code>Photo viewer, photo 2 of 4</code>, or just the
+        <code>ariaLabel</code> for a single photo.
+      </li>
+      <li>
+        The focus trap, focus restore to the trigger on close and the page scroll lock come from
+        <code>KuiDialog</code>.
+      </li>
+      <li>
+        The counter is <code>aria-live="polite"</code> and is not rendered for a single photo.
+      </li>
+      <li>
+        Close, Prev, Next, Zoom in and Zoom out are icon buttons that get the native
+        <code>disabled</code> at their bounds; Prev and Next are not rendered for a single photo.
+      </li>
+      <li>
+        Every thumbnail is a real button named <code>Go to photo N of total</code> with
+        <code>aria-current="true"</code> on the viewed one.
+      </li>
+      <li>
+        <kbd>Escape</kbd> closes; <kbd>ArrowLeft</kbd> and <kbd>ArrowRight</kbd> go to the previous
+        and next photo without wrapping; <kbd>Home</kbd> and <kbd>End</kbd> jump to the first and
+        last; <kbd>Tab</kbd> cycles inside the lightbox.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Not included"
+    description="Deliberate omissions of the installed package."
+  >
+    <ul class="media-viewer-page__notes">
+      <li>Video.</li>
+      <li>A selectable prop: the grid and per-tile selection are your own composition.</li>
+      <li>
+        A pan clamp aware of the natural image size: panning uses a fixed offset budget per zoom
+        step.
+      </li>
+      <li>Gallery grouping across several kuiMediaViewer() calls; each open is independent.</li>
+    </ul>
+  </app-doc-section>
+</article>
