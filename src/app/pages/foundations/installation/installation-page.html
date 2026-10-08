@@ -33,4 +33,67 @@
   >
     <app-api-table label="ng add options" [rows]="optionRows" />
   </app-doc-section>
+
+  <app-doc-section
+    heading="Styles outside the CLI"
+    description="When styles are managed outside Angular CLI, import the public style entrypoint once and register the provider by hand."
+  >
+    <app-code-tabs [tabs]="styleTabs" />
+    <ul class="installation-page__notes">
+      <li>
+        <code>kui-field</code> and <code>kui-icon</code> styles live in the
+        <code>kui.components</code> layer, so both need <code>kikita-ui.css</code> like every other
+        component. An unlayered application rule overrides them without raising specificity.
+      </li>
+      <li>
+        <code>theme-default.css</code> is part of <code>@kikita-labs/ui/styles</code>, so the
+        default theme works from CSS alone. The generated theme sheet sits in the
+        <code>kui.tokens</code> layer, declared before <code>kui.base</code> and
+        <code>kui.components</code>, so a variable you write outside any layer wins regardless of
+        source order.
+      </li>
+      <li>
+        <code>provideKikitaUi()</code> sets <code>data-kui-density</code> on
+        <code>&lt;html&gt;</code> from <code>seeds.density</code>, on the server too, unless the
+        page already set it.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Icons and Content Security Policy"
+    description="The default Lucide set is read at a pinned lucide-static version (1.51.0) and converted to glyph data, not inserted as trusted HTML."
+  >
+    <app-code-tabs [tabs]="iconTabs" />
+    <ul class="installation-page__notes">
+      <li>
+        Allow <code>connect-src https://cdn.jsdelivr.net</code> in a Content Security Policy, or
+        serve the files yourself with <code>createKuiLucideResolver</code> and
+        <code>provideKuiIcons</code>, and opt out of the default set with
+        <code>provideKikitaUi({{ '{' }} icons: false {{ '}' }})</code>.
+      </li>
+      <li>
+        A name that is not a Lucide kebab-case name resolves to nothing without a request, and
+        structural icons never use the network.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Upgrading from 1.x"
+    description="Update the package and run the migration that ships with it. See the Migrating to 2.0 page for every breaking change."
+  >
+    <app-code-tabs [tabs]="upgradeTabs" />
+    <ul class="installation-page__notes">
+      <li>
+        The migration renames only identifiers (<code>rename-symbols-v2</code>) and skips strings,
+        comments and templates. Names used through a dynamic import are not seen, so search for the
+        old suffixes with <code>git grep</code>.
+      </li>
+      <li>
+        If you render on the server, check that a cache in front of it sends
+        <code>Vary: Accept-Language</code>.
+      </li>
+    </ul>
+  </app-doc-section>
 </article>

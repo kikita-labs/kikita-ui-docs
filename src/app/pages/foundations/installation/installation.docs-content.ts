@@ -72,6 +72,68 @@ export const INSTALLATION_OPTION_ROWS = [
   {
     name: '--theme',
     type: 'boolean',
-    description: 'Writes the default theme seed configuration into provideKikitaUi().',
+    description:
+      'Writes the default theme seed configuration into provideKikitaUi(). Without it Kikita UI uses the same default theme internally and adds no theme code to the app.',
   },
 ] as const satisfies readonly ApiTableRow[];
+
+export const INSTALLATION_STYLE_TABS = [
+  {
+    label: 'CSS import',
+    filename: 'styles.css',
+    language: 'css',
+    code: `@import '@kikita-labs/ui/styles';`,
+  },
+  {
+    label: 'Manual provider',
+    filename: 'app.config.ts',
+    language: 'ts',
+    code: `import { provideKikitaUi } from '@kikita-labs/ui';
+
+export const appConfig = {
+  providers: [provideKikitaUi()],
+};`,
+  },
+] as const satisfies readonly CodeTab[];
+
+export const INSTALLATION_UPGRADE_TABS = [
+  {
+    label: 'Update',
+    filename: 'terminal',
+    language: 'bash',
+    code: `ng update @kikita-labs/ui`,
+  },
+  {
+    label: 'Run the migration again',
+    filename: 'terminal',
+    language: 'bash',
+    code: `ng update @kikita-labs/ui --migrate-only --from=1.8.0 --to=2.0.0`,
+  },
+] as const satisfies readonly CodeTab[];
+
+export const INSTALLATION_ICON_TABS = [
+  {
+    label: 'Self-hosted Lucide',
+    filename: 'app.config.ts',
+    language: 'ts',
+    code: `import {
+  createKuiLucideResolver,
+  provideKikitaUi,
+  provideKuiIcons,
+} from '@kikita-labs/ui';
+
+// Serve the pinned lucide-static files yourself instead of reading them from the CDN.
+export const appConfig = {
+  providers: [
+    provideKikitaUi({ icons: false }),
+    provideKuiIcons(createKuiLucideResolver({ baseUrl: '/assets/lucide' })),
+  ],
+};`,
+  },
+  {
+    label: 'CSP',
+    filename: 'Content-Security-Policy',
+    language: 'text',
+    code: `connect-src 'self' https://cdn.jsdelivr.net`,
+  },
+] as const satisfies readonly CodeTab[];

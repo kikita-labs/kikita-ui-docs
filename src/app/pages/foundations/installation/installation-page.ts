@@ -8,9 +8,12 @@ import { PageHeader } from '@shared/docs-ui/page-header';
 
 import {
   INSTALLATION_CLI_TABS,
+  INSTALLATION_ICON_TABS,
   INSTALLATION_MANUAL_TABS,
   INSTALLATION_OPTION_ROWS,
   INSTALLATION_REGISTRY_TABS,
+  INSTALLATION_STYLE_TABS,
+  INSTALLATION_UPGRADE_TABS,
 } from './installation.docs-content';
 
 @Component({
@@ -26,4 +29,7 @@ export class InstallationPage {
   protected readonly cliTabs = INSTALLATION_CLI_TABS;
   protected readonly manualTabs = INSTALLATION_MANUAL_TABS;
   protected readonly optionRows = INSTALLATION_OPTION_ROWS;
+  protected readonly styleTabs = INSTALLATION_STYLE_TABS;
+  protected readonly upgradeTabs = INSTALLATION_UPGRADE_TABS;
+  protected readonly iconTabs = INSTALLATION_ICON_TABS;
 }

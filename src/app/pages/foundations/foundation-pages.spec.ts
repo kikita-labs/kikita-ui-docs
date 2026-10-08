@@ -28,7 +28,15 @@ const FOUNDATION_PAGE_CASES: readonly FoundationPageCase[] = [
   {
     component: InstallationPage,
     heading: 'Installation',
-    sections: ['Package registry', 'Angular CLI setup', 'Manual setup', 'Schematic options'],
+    sections: [
+      'Package registry',
+      'Angular CLI setup',
+      'Manual setup',
+      'Schematic options',
+      'Styles outside the CLI',
+      'Icons and Content Security Policy',
+      'Upgrading from 1.x',
+    ],
   },
   {
     component: ThemingPage,
