@@ -1,0 +1,78 @@
+<article class="donut-chart-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Donut Chart"
+    description="Donut chart for shares of a whole."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="The chart is a standalone component. Import the styles once for the whole family."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Pass slices of { label, value }. A donut has no categories or axes. The ring is fixed at an inner radius of 60% of the outer radius."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic donut chart">
+      <app-basic-donut-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="patterns"
+    heading="Patterns"
+    description="patterns fills each slice with one of eight hatch patterns instead of plain colour, so slices differ without relying on colour."
+  >
+    <app-live-preview previewLabel="Donut chart with patterns">
+      <app-donut-patterns-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="patternsTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="size-examples"
+    heading="Size examples"
+    description="size sets a square of up to 200, 280 or 360px. Hiding a slice through the legend recomputes the remaining shares and re-partitions the circle."
+  >
+    <app-live-preview previewLabel="Small and large donut charts">
+      <app-donut-sizes-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="sizesTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="states"
+    heading="State examples"
+    description="loading shows a shimmering ring; a slices input without a positive value shows the empty composition and never an invented split."
+  >
+    <app-live-preview previewLabel="Loading and empty donut charts">
+      <app-donut-states-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="statesTabs" />
+  </app-doc-section>
+
+  <app-chart-behavior-sections type="donut" />
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Donut Chart"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Donut Chart API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-chart-accessibility-sections type="donut" />
+</article>

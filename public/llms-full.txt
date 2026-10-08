@@ -32,6 +32,7 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 - [Alert](https://kikita-labs.github.io/kikita-ui-docs/llms/components/alert.md): Inline notification embedded in the page content flow.
 - [Avatar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/avatar.md): User or entity identity with image, initials, and status.
 - [Badge](https://kikita-labs.github.io/kikita-ui-docs/llms/components/badge.md): Compact status or metadata marker.
+- [Bar Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/bar-chart.md): Vertical or horizontal, grouped or stacked bar chart.
 - [Breadcrumbs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md): Hierarchy trail.
 - [Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/button.md): Primary command primitive for buttons and links.
 - [Calendar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md): Date grid.
@@ -45,6 +46,7 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 - [Command Palette](https://kikita-labs.github.io/kikita-ui-docs/llms/components/command-palette.md): Searchable command overlay for application actions.
 - [Date Picker](https://kikita-labs.github.io/kikita-ui-docs/llms/components/date-picker.md): Calendar date input.
 - [Dialog](https://kikita-labs.github.io/kikita-ui-docs/llms/components/dialog.md): Typed modal overlay service and host contract.
+- [Donut Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/donut-chart.md): Donut chart for shares of a whole.
 - [Drawer](https://kikita-labs.github.io/kikita-ui-docs/llms/components/drawer.md): Side and edge overlay surface for focused workflows.
 - [Dropdown](https://kikita-labs.github.io/kikita-ui-docs/llms/components/dropdown.md): Projected option overlay used by select-like controls.
 - [Empty State](https://kikita-labs.github.io/kikita-ui-docs/llms/components/empty-state.md): Known empty, error, no-access, and success content states.
@@ -54,12 +56,14 @@ agent ingestion. Prefer llms.txt for a curated index; use this file when you nee
 - [Icon](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon.md): SVG icon renderer.
 - [Icon Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon-button.md): Compact icon-only action control.
 - [Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/input.md): Native text input styling with field integration.
+- [Line Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/line-chart.md): Line and area chart for trends over categories.
 - [Loader](https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md): Inline loading indicator for buttons and status areas.
 - [Menu](https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md): Anchored command menu with keyboard focus behavior.
 - [Number Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md): Number input states with compact variant options.
 - [Popover](https://kikita-labs.github.io/kikita-ui-docs/llms/components/popover.md): Anchored content surface for contextual UI.
 - [Progress](https://kikita-labs.github.io/kikita-ui-docs/llms/components/progress.md): Progress status primitive for determinate and indeterminate work.
 - [Radio](https://kikita-labs.github.io/kikita-ui-docs/llms/components/radio.md): Native radio control styling for exclusive choices.
+- [Scatter Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/scatter-chart.md): Scatter and bubble chart for two numeric measures.
 - [Scrollbar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/scrollbar.md): Tokenized native scroll container utility.
 - [Segmented](https://kikita-labs.github.io/kikita-ui-docs/llms/components/segmented.md): Compact single-choice control rendered as adjacent segment buttons.
 - [Select](https://kikita-labs.github.io/kikita-ui-docs/llms/components/select.md): Dropdown-backed selection control for single and multiple values.
@@ -1680,6 +1684,346 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 ## Playground
 
 Available at /components/badge/playground.
+
+---
+
+<!-- route: /components/bar-chart -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/bar-chart.md -->
+<!-- source: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chart.md -->
+<!-- package: @kikita-labs/ui@2.0.0 -->
+
+# Bar Chart
+
+> Vertical or horizontal, grouped or stacked bar chart.
+
+- Status: available
+- Route: /components/bar-chart
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiBarChart from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chart.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-line-chart ariaLabel="Sessions per day" [series]="series" [categories]="categories" />
+```
+
+```ts
+protected readonly series: readonly KuiChartCartesianSeries[] = [
+  { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+];
+protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+```
+
+`ariaLabel` has a chart-type fallback name and should describe what the chart shows. It is distinct
+from each point's own `aria-label` (its value).
+
+## Examples
+
+Rendered at /components/bar-chart:
+
+### basic-bar-chart-example
+
+#### basic-bar-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-bar-chart ariaLabel="MRR by plan" [series]="series" [categories]="categories" />
+</div>
+```
+
+#### basic-bar-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiBarChart, type KuiChartCartesianSeries } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-bar-chart-example',
+  imports: [KuiBarChart],
+  templateUrl: './basic-bar-chart-example.html',
+  styleUrl: './basic-bar-chart-example.scss',
+})
+export class BasicBarChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'mrr', name: 'MRR', data: [0, 4200, 9800, 15600] },
+  ];
+  protected readonly categories = ['Free', 'Pro', 'Business', 'Enterprise'];
+}
+```
+
+#### basic-bar-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### bar-stacked-chart-example
+
+#### bar-stacked-chart-example.html
+
+```html
+<div class="chart-example chart-example--stack">
+  <kui-bar-chart ariaLabel="Grouped by day" [series]="series" [categories]="categories" size="sm" />
+  <kui-bar-chart
+    ariaLabel="Stacked by day"
+    [series]="series"
+    [categories]="categories"
+    [stacked]="true"
+    size="sm"
+  />
+</div>
+```
+
+#### bar-stacked-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiBarChart, type KuiChartCartesianSeries } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-bar-stacked-chart-example',
+  imports: [KuiBarChart],
+  templateUrl: './bar-stacked-chart-example.html',
+  styleUrl: './bar-stacked-chart-example.scss',
+})
+export class BarStackedChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+    { id: 'signups', name: 'Sign-ups', data: [40, 65, 52, 90, 110, 80, 140] },
+  ];
+  protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+}
+```
+
+#### bar-stacked-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### bar-horizontal-chart-example
+
+#### bar-horizontal-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-bar-chart
+    ariaLabel="MRR by plan"
+    orientation="horizontal"
+    [series]="series"
+    [categories]="categories"
+    [axes]="axes"
+  />
+</div>
+```
+
+#### bar-horizontal-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  KuiBarChart,
+  type KuiChartAxesOptions,
+  type KuiChartCartesianSeries,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-bar-horizontal-chart-example',
+  imports: [KuiBarChart],
+  templateUrl: './bar-horizontal-chart-example.html',
+  styleUrl: './bar-horizontal-chart-example.scss',
+})
+export class BarHorizontalChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'mrr', name: 'MRR', data: [0, 4200, 9800, 15600] },
+  ];
+  protected readonly categories = ['Free', 'Pro', 'Business', 'Enterprise'];
+  protected readonly axes: KuiChartAxesOptions = { xTitle: 'Plan', yTitle: 'MRR (USD)' };
+}
+```
+
+#### bar-horizontal-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### bar-patterns-chart-example
+
+#### bar-patterns-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-bar-chart
+    ariaLabel="Sessions and sign-ups"
+    [series]="series"
+    [categories]="categories"
+    [patterns]="true"
+  />
+</div>
+```
+
+#### bar-patterns-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiBarChart, type KuiChartCartesianSeries } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-bar-patterns-chart-example',
+  imports: [KuiBarChart],
+  templateUrl: './bar-patterns-chart-example.html',
+  styleUrl: './bar-patterns-chart-example.scss',
+})
+export class BarPatternsChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+    { id: 'signups', name: 'Sign-ups', data: [40, 65, 52, 90, 110, 80, 140] },
+  ];
+  protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+}
+```
+
+#### bar-patterns-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### bar-states-chart-example
+
+#### bar-states-chart-example.html
+
+```html
+<div class="chart-example chart-example--stack">
+  <kui-bar-chart
+    ariaLabel="Loading MRR"
+    [series]="series"
+    [categories]="categories"
+    [loading]="true"
+    size="sm"
+  />
+  <kui-bar-chart ariaLabel="Empty MRR" [series]="[]" size="sm" />
+</div>
+```
+
+#### bar-states-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiBarChart, type KuiChartCartesianSeries } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-bar-states-chart-example',
+  imports: [KuiBarChart],
+  templateUrl: './bar-states-chart-example.html',
+  styleUrl: './bar-states-chart-example.scss',
+})
+export class BarStatesChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'mrr', name: 'MRR', data: [0, 4200, 9800, 15600] },
+  ];
+  protected readonly categories = ['Free', 'Pro', 'Business', 'Enterprise'];
+}
+```
+
+#### bar-states-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| series | readonly KuiChartCartesianSeries[] | - | Required. { id?, name, color?, data }, with data aligned index for index with categories. Without a non-gap value the empty composition renders. |
+| categories | readonly string[] | [] | Category labels aligned with each series data. The shorter side wins. |
+| orientation | 'vertical' \| 'horizontal' | 'vertical' | Flips the on-screen bar direction only; axes.x and axes.y stay semantic. |
+| stacked | boolean | false | Stacks the series within each category. Only meaningful with more than one series; positive and negative values stack separately. Hiding a series recomputes the domain. |
+| patterns | boolean | false | Fills each series with one of eight hatch patterns (colour independence). |
+
+## Accessibility
+
+- The `<svg>` is the graphic: `role="graphics-document"` with the name and the role description
+  (`aria-roledescription`). The wrapper has no role, and axis text, gridlines and decorative shapes
+  are `aria-hidden`.
+- Each point/bar/slice is `role="graphics-symbol img"` with its own `aria-label` (the same text as
+  the tooltip) -- an indivisible graphical unit, per the WAI-ARIA Graphics Module.
+- Roving tabindex across points/bars/slices (see Keyboard). The inline legend is a named group of
+  native `<button aria-pressed>` items at least 24px high.
+- The tooltip shown on hover is the same one shown on keyboard focus (one shared overlay, retargeted
+  between marks). It is dismissible and persistent. On pointer hover it appears at the pointer and follows
+  it; keyboard focus anchors it to the focused mark. On touch, a tap pins the tooltip open until an
+  outside tap, `Escape`, or a tap on a different mark; it also always renders below 768px, since it is
+  the primary way to read a chart's exact value.
+- Pointer hit targets: a line chart shows the tooltip while the pointer is on the point (its marker plus a
+  3px margin), a scatter chart on the point's hit circle (at least 12px in radius), a bar chart on the bar
+  itself and a donut on the slice.
+- Text is at least 12px on screen: axis text defaults to 13px and keeps its pixel size at any width.
+- `prefers-reduced-motion: reduce` disables the hover/dim transition and the donut sweep.
+- The alt-table is a real accessible alternative to the graphic, not a decorative duplicate.
+
+Automated checks (keyboard, accessibility tree, axe, forced-colours media emulation, reduced motion)
+are in `chart-contract.spec.ts` and `accessibility.spec.ts`. A session with a real screen reader has
+not been run and stays pending.
+
+## Playground
+
+Available at /components/bar-chart/playground.
 
 ---
 
@@ -5541,6 +5885,271 @@ Available at /components/dialog/playground.
 
 ---
 
+<!-- route: /components/donut-chart -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/donut-chart.md -->
+<!-- source: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chart.md -->
+<!-- package: @kikita-labs/ui@2.0.0 -->
+
+# Donut Chart
+
+> Donut chart for shares of a whole.
+
+- Status: available
+- Route: /components/donut-chart
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiDonutChart from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chart.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-line-chart ariaLabel="Sessions per day" [series]="series" [categories]="categories" />
+```
+
+```ts
+protected readonly series: readonly KuiChartCartesianSeries[] = [
+  { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+];
+protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+```
+
+`ariaLabel` has a chart-type fallback name and should describe what the chart shows. It is distinct
+from each point's own `aria-label` (its value).
+
+## Examples
+
+Rendered at /components/donut-chart:
+
+### basic-donut-chart-example
+
+#### basic-donut-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-donut-chart ariaLabel="Plan mix" [slices]="slices" />
+</div>
+```
+
+#### basic-donut-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiDonutChart, type KuiChartSlice } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-donut-chart-example',
+  imports: [KuiDonutChart],
+  templateUrl: './basic-donut-chart-example.html',
+  styleUrl: './basic-donut-chart-example.scss',
+})
+export class BasicDonutChartExample {
+  protected readonly slices: readonly KuiChartSlice[] = [
+    { id: 'free', label: 'Free', value: 40 },
+    { id: 'pro', label: 'Pro', value: 35 },
+    { id: 'business', label: 'Business', value: 25 },
+  ];
+}
+```
+
+#### basic-donut-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### donut-patterns-chart-example
+
+#### donut-patterns-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-donut-chart ariaLabel="Plan mix with patterns" [slices]="slices" [patterns]="true" />
+</div>
+```
+
+#### donut-patterns-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiDonutChart, type KuiChartSlice } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-donut-patterns-chart-example',
+  imports: [KuiDonutChart],
+  templateUrl: './donut-patterns-chart-example.html',
+  styleUrl: './donut-patterns-chart-example.scss',
+})
+export class DonutPatternsChartExample {
+  protected readonly slices: readonly KuiChartSlice[] = [
+    { id: 'free', label: 'Free', value: 40 },
+    { id: 'pro', label: 'Pro', value: 35 },
+    { id: 'business', label: 'Business', value: 25 },
+  ];
+}
+```
+
+#### donut-patterns-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### donut-sizes-chart-example
+
+#### donut-sizes-chart-example.html
+
+```html
+<div class="chart-example chart-example--stack">
+  <kui-donut-chart ariaLabel="Small plan mix" [slices]="slices" size="sm" [legend]="false" />
+  <kui-donut-chart ariaLabel="Large plan mix" [slices]="slices" size="lg" />
+</div>
+```
+
+#### donut-sizes-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiDonutChart, type KuiChartSlice } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-donut-sizes-chart-example',
+  imports: [KuiDonutChart],
+  templateUrl: './donut-sizes-chart-example.html',
+  styleUrl: './donut-sizes-chart-example.scss',
+})
+export class DonutSizesChartExample {
+  protected readonly slices: readonly KuiChartSlice[] = [
+    { id: 'free', label: 'Free', value: 40 },
+    { id: 'pro', label: 'Pro', value: 35 },
+    { id: 'business', label: 'Business', value: 25 },
+  ];
+}
+```
+
+#### donut-sizes-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### donut-states-chart-example
+
+#### donut-states-chart-example.html
+
+```html
+<div class="chart-example chart-example--stack">
+  <kui-donut-chart ariaLabel="Loading plan mix" [slices]="slices" [loading]="true" size="sm" />
+  <kui-donut-chart ariaLabel="Empty plan mix" [slices]="[]" size="sm" />
+</div>
+```
+
+#### donut-states-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { KuiDonutChart, type KuiChartSlice } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-donut-states-chart-example',
+  imports: [KuiDonutChart],
+  templateUrl: './donut-states-chart-example.html',
+  styleUrl: './donut-states-chart-example.scss',
+})
+export class DonutStatesChartExample {
+  protected readonly slices: readonly KuiChartSlice[] = [
+    { id: 'free', label: 'Free', value: 40 },
+    { id: 'pro', label: 'Pro', value: 35 },
+  ];
+}
+```
+
+#### donut-states-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| slices | readonly KuiChartSlice[] | - | Required. { id?, label, value, color? }. Negative and non-finite values are dropped; a visible total of zero draws no arc. |
+| patterns | boolean | false | Fills each slice with one of eight hatch patterns (colour independence). |
+
+## Accessibility
+
+- The `<svg>` is the graphic: `role="graphics-document"` with the name and the role description
+  (`aria-roledescription`). The wrapper has no role, and axis text, gridlines and decorative shapes
+  are `aria-hidden`.
+- Each point/bar/slice is `role="graphics-symbol img"` with its own `aria-label` (the same text as
+  the tooltip) -- an indivisible graphical unit, per the WAI-ARIA Graphics Module.
+- Roving tabindex across points/bars/slices (see Keyboard). The inline legend is a named group of
+  native `<button aria-pressed>` items at least 24px high.
+- The tooltip shown on hover is the same one shown on keyboard focus (one shared overlay, retargeted
+  between marks). It is dismissible and persistent. On pointer hover it appears at the pointer and follows
+  it; keyboard focus anchors it to the focused mark. On touch, a tap pins the tooltip open until an
+  outside tap, `Escape`, or a tap on a different mark; it also always renders below 768px, since it is
+  the primary way to read a chart's exact value.
+- Pointer hit targets: a line chart shows the tooltip while the pointer is on the point (its marker plus a
+  3px margin), a scatter chart on the point's hit circle (at least 12px in radius), a bar chart on the bar
+  itself and a donut on the slice.
+- Text is at least 12px on screen: axis text defaults to 13px and keeps its pixel size at any width.
+- `prefers-reduced-motion: reduce` disables the hover/dim transition and the donut sweep.
+- The alt-table is a real accessible alternative to the graphic, not a decorative duplicate.
+
+Automated checks (keyboard, accessibility tree, axe, forced-colours media emulation, reduced motion)
+are in `chart-contract.spec.ts` and `accessibility.spec.ts`. A session with a real screen reader has
+not been run and stays pending.
+
+## Playground
+
+Available at /components/donut-chart/playground.
+
+---
+
 <!-- route: /components/drawer -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/drawer.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/drawer.md -->
@@ -7882,6 +8491,353 @@ Available at /components/input/playground.
 
 ---
 
+<!-- route: /components/line-chart -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/line-chart.md -->
+<!-- source: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chart.md -->
+<!-- package: @kikita-labs/ui@2.0.0 -->
+
+# Line Chart
+
+> Line and area chart for trends over categories.
+
+- Status: available
+- Route: /components/line-chart
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiLineChart from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chart.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-line-chart ariaLabel="Sessions per day" [series]="series" [categories]="categories" />
+```
+
+```ts
+protected readonly series: readonly KuiChartCartesianSeries[] = [
+  { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+];
+protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+```
+
+`ariaLabel` has a chart-type fallback name and should describe what the chart shows. It is distinct
+from each point's own `aria-label` (its value).
+
+## Examples
+
+Rendered at /components/line-chart:
+
+### basic-line-chart-example
+
+#### basic-line-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-line-chart ariaLabel="Sessions per day" [series]="series" [categories]="categories" />
+</div>
+```
+
+#### basic-line-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { type KuiChartCartesianSeries,KuiLineChart } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-line-chart-example',
+  imports: [KuiLineChart],
+  templateUrl: './basic-line-chart-example.html',
+  styleUrl: './basic-line-chart-example.scss',
+})
+export class BasicLineChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+  ];
+  protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+}
+```
+
+#### basic-line-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### line-area-chart-example
+
+#### line-area-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-line-chart
+    ariaLabel="Traffic by source"
+    [series]="series"
+    [categories]="categories"
+    [area]="true"
+    [patterns]="true"
+    [axes]="axes"
+  />
+</div>
+```
+
+#### line-area-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  type KuiChartAxesOptions,
+  type KuiChartCartesianSeries,
+  KuiLineChart,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-line-area-chart-example',
+  imports: [KuiLineChart],
+  templateUrl: './line-area-chart-example.html',
+  styleUrl: './line-area-chart-example.scss',
+})
+export class LineAreaChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+    { id: 'signups', name: 'Sign-ups', data: [40, 65, 52, 90, 110, 80, 140] },
+  ];
+  protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  protected readonly axes: KuiChartAxesOptions = { xTitle: 'Day', yTitle: 'Count' };
+}
+```
+
+#### line-area-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### line-gaps-chart-example
+
+#### line-gaps-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-line-chart
+    ariaLabel="Sessions with a missing day"
+    [series]="series"
+    [categories]="categories"
+    [tooltip]="formatTooltip"
+    [valueFormat]="formatValue"
+    size="sm"
+  />
+</div>
+```
+
+#### line-gaps-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { type KuiChartCartesianSeries, type KuiChartPoint,KuiLineChart } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-line-gaps-chart-example',
+  imports: [KuiLineChart],
+  templateUrl: './line-gaps-chart-example.html',
+  styleUrl: './line-gaps-chart-example.scss',
+})
+export class LineGapsChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'sessions', name: 'Sessions', data: [120, 180, null, 220, 260, 210, 300] },
+  ];
+  protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+  protected readonly formatValue = (value: number): string => value.toLocaleString('en-US');
+
+  protected readonly formatTooltip = (point: KuiChartPoint): string =>
+    `${point.categoryLabel}: ${point.value.toLocaleString('en-US')} sessions`;
+}
+```
+
+#### line-gaps-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### line-external-legend-example
+
+#### line-external-legend-example.html
+
+```html
+<div class="chart-example">
+  <kui-line-chart
+    #chartRef
+    ariaLabel="Sessions and sign-ups"
+    [series]="series"
+    [categories]="categories"
+    [legend]="false"
+  />
+  <kui-chart-legend [chart]="chartRef" />
+</div>
+```
+
+#### line-external-legend-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { type KuiChartCartesianSeries,KuiChartLegend, KuiLineChart } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-line-external-legend-example',
+  imports: [KuiChartLegend, KuiLineChart],
+  templateUrl: './line-external-legend-example.html',
+  styleUrl: './line-external-legend-example.scss',
+})
+export class LineExternalLegendExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+    { id: 'signups', name: 'Sign-ups', data: [40, 65, 52, 90, 110, 80, 140] },
+  ];
+  protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+}
+```
+
+#### line-external-legend-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### line-states-chart-example
+
+#### line-states-chart-example.html
+
+```html
+<div class="chart-example chart-example--stack">
+  <kui-line-chart
+    ariaLabel="Loading sessions"
+    [series]="series"
+    [categories]="categories"
+    [loading]="true"
+    size="sm"
+  />
+  <kui-line-chart ariaLabel="Empty sessions" [series]="[]" size="sm" />
+</div>
+```
+
+#### line-states-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { type KuiChartCartesianSeries,KuiLineChart } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-line-states-chart-example',
+  imports: [KuiLineChart],
+  templateUrl: './line-states-chart-example.html',
+  styleUrl: './line-states-chart-example.scss',
+})
+export class LineStatesChartExample {
+  protected readonly series: readonly KuiChartCartesianSeries[] = [
+    { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+  ];
+  protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+}
+```
+
+#### line-states-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| series | readonly KuiChartCartesianSeries[] | - | Required. { id?, name, color?, data }, with data aligned index for index with categories. null, NaN and Infinity are gaps. Without a non-gap value the empty composition renders. |
+| categories | readonly string[] | [] | Category labels aligned with each series data. The shorter side wins. |
+| area | boolean | false | Fills the area under each line. It is not a separate chart type. |
+| patterns | boolean | false | With area, fills each area with one of eight hatch patterns (colour independence). |
+
+## Accessibility
+
+- The `<svg>` is the graphic: `role="graphics-document"` with the name and the role description
+  (`aria-roledescription`). The wrapper has no role, and axis text, gridlines and decorative shapes
+  are `aria-hidden`.
+- Each point/bar/slice is `role="graphics-symbol img"` with its own `aria-label` (the same text as
+  the tooltip) -- an indivisible graphical unit, per the WAI-ARIA Graphics Module.
+- Roving tabindex across points/bars/slices (see Keyboard). The inline legend is a named group of
+  native `<button aria-pressed>` items at least 24px high.
+- The tooltip shown on hover is the same one shown on keyboard focus (one shared overlay, retargeted
+  between marks). It is dismissible and persistent. On pointer hover it appears at the pointer and follows
+  it; keyboard focus anchors it to the focused mark. On touch, a tap pins the tooltip open until an
+  outside tap, `Escape`, or a tap on a different mark; it also always renders below 768px, since it is
+  the primary way to read a chart's exact value.
+- Pointer hit targets: a line chart shows the tooltip while the pointer is on the point (its marker plus a
+  3px margin), a scatter chart on the point's hit circle (at least 12px in radius), a bar chart on the bar
+  itself and a donut on the slice.
+- Text is at least 12px on screen: axis text defaults to 13px and keeps its pixel size at any width.
+- `prefers-reduced-motion: reduce` disables the hover/dim transition and the donut sweep.
+- The alt-table is a real accessible alternative to the graphic, not a decorative duplicate.
+
+Automated checks (keyboard, accessibility tree, axe, forced-colours media emulation, reduced motion)
+are in `chart-contract.spec.ts` and `accessibility.spec.ts`. A session with a real screen reader has
+not been run and stays pending.
+
+## Playground
+
+Available at /components/line-chart/playground.
+
+---
+
 <!-- route: /components/loader -->
 <!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md -->
 <!-- source: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/loader.md -->
@@ -9254,6 +10210,263 @@ Rendered documentation, interactive examples, and the playground live at the HTM
 ## Playground
 
 Available at /components/radio/playground.
+
+---
+
+<!-- route: /components/scatter-chart -->
+<!-- markdown: https://kikita-labs.github.io/kikita-ui-docs/llms/components/scatter-chart.md -->
+<!-- source: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chart.md -->
+<!-- package: @kikita-labs/ui@2.0.0 -->
+
+# Scatter Chart
+
+> Scatter and bubble chart for two numeric measures.
+
+- Status: available
+- Route: /components/scatter-chart
+- Package: @kikita-labs/ui@2.0.0
+- Import: KuiScatterChart from @kikita-labs/ui
+- Source docs: https://github.com/kikita-labs/kikita-ui/blob/v2.0.0/docs/chart.md
+
+## Install
+
+```bash
+pnpm add @kikita-labs/ui
+ng add @kikita-labs/ui
+```
+
+## Usage
+
+```html
+<kui-line-chart ariaLabel="Sessions per day" [series]="series" [categories]="categories" />
+```
+
+```ts
+protected readonly series: readonly KuiChartCartesianSeries[] = [
+  { id: 'sessions', name: 'Sessions', data: [120, 180, 150, 220, 260, 210, 300] },
+];
+protected readonly categories = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+```
+
+`ariaLabel` has a chart-type fallback name and should describe what the chart shows. It is distinct
+from each point's own `aria-label` (its value).
+
+## Examples
+
+Rendered at /components/scatter-chart:
+
+### basic-scatter-chart-example
+
+#### basic-scatter-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-scatter-chart ariaLabel="Age vs. income" [series]="series" [axes]="axes" />
+</div>
+```
+
+#### basic-scatter-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import {
+  type KuiChartAxesOptions,
+  type KuiChartScatterSeries,
+  KuiScatterChart,
+} from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-basic-scatter-chart-example',
+  imports: [KuiScatterChart],
+  templateUrl: './basic-scatter-chart-example.html',
+  styleUrl: './basic-scatter-chart-example.scss',
+})
+export class BasicScatterChartExample {
+  protected readonly series: readonly KuiChartScatterSeries[] = [
+    {
+      id: 'free',
+      name: 'Free plan',
+      points: [
+        { x: 22, y: 32000 },
+        { x: 29, y: 41000 },
+        { x: 35, y: 52000 },
+        { x: 41, y: 61000 },
+      ],
+    },
+    {
+      id: 'pro',
+      name: 'Pro plan',
+      points: [
+        { x: 26, y: 48000 },
+        { x: 33, y: 67000 },
+        { x: 44, y: 82000 },
+        { x: 52, y: 95000 },
+      ],
+    },
+  ];
+  protected readonly axes: KuiChartAxesOptions = { xTitle: 'Age', yTitle: 'Income (USD)' };
+}
+```
+
+#### basic-scatter-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### scatter-bubble-chart-example
+
+#### scatter-bubble-chart-example.html
+
+```html
+<div class="chart-example">
+  <kui-scatter-chart
+    ariaLabel="Accounts by age, income and seats"
+    [series]="series"
+    [bubble]="true"
+  />
+</div>
+```
+
+#### scatter-bubble-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { type KuiChartScatterSeries,KuiScatterChart } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-scatter-bubble-chart-example',
+  imports: [KuiScatterChart],
+  templateUrl: './scatter-bubble-chart-example.html',
+  styleUrl: './scatter-bubble-chart-example.scss',
+})
+export class ScatterBubbleChartExample {
+  protected readonly series: readonly KuiChartScatterSeries[] = [
+    {
+      id: 'accounts',
+      name: 'Accounts',
+      points: [
+        { x: 22, y: 32000, r: 6 },
+        { x: 29, y: 41000, r: 9 },
+        { x: 35, y: 52000, r: 7 },
+        { x: 41, y: 61000, r: 14 },
+      ],
+    },
+  ];
+}
+```
+
+#### scatter-bubble-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+### scatter-states-chart-example
+
+#### scatter-states-chart-example.html
+
+```html
+<div class="chart-example chart-example--stack">
+  <kui-scatter-chart ariaLabel="Loading accounts" [series]="series" [loading]="true" size="sm" />
+  <kui-scatter-chart ariaLabel="Empty accounts" [series]="[]" size="sm" />
+</div>
+```
+
+#### scatter-states-chart-example.ts
+
+```ts
+import { Component } from '@angular/core';
+
+import { type KuiChartScatterSeries,KuiScatterChart } from '@kikita-labs/ui';
+
+@Component({
+  selector: 'app-scatter-states-chart-example',
+  imports: [KuiScatterChart],
+  templateUrl: './scatter-states-chart-example.html',
+  styleUrl: './scatter-states-chart-example.scss',
+})
+export class ScatterStatesChartExample {
+  protected readonly series: readonly KuiChartScatterSeries[] = [
+    {
+      id: 'accounts',
+      name: 'Accounts',
+      points: [
+        { x: 22, y: 32000 },
+        { x: 41, y: 61000 },
+      ],
+    },
+  ];
+}
+```
+
+#### scatter-states-chart-example.scss
+
+```scss
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}
+```
+
+## API
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| series | readonly KuiChartScatterSeries[] | - | Required. { id?, name, color?, points: { x, y, r? }[] }. A point with a non-finite x, y or r is dropped. Without a point the empty composition renders. |
+| bubble | boolean | false | Reads r from each point as the radius in CSS pixels. It is not clamped; the consumer owns a radius that fits the plot. |
+
+## Accessibility
+
+- The `<svg>` is the graphic: `role="graphics-document"` with the name and the role description
+  (`aria-roledescription`). The wrapper has no role, and axis text, gridlines and decorative shapes
+  are `aria-hidden`.
+- Each point/bar/slice is `role="graphics-symbol img"` with its own `aria-label` (the same text as
+  the tooltip) -- an indivisible graphical unit, per the WAI-ARIA Graphics Module.
+- Roving tabindex across points/bars/slices (see Keyboard). The inline legend is a named group of
+  native `<button aria-pressed>` items at least 24px high.
+- The tooltip shown on hover is the same one shown on keyboard focus (one shared overlay, retargeted
+  between marks). It is dismissible and persistent. On pointer hover it appears at the pointer and follows
+  it; keyboard focus anchors it to the focused mark. On touch, a tap pins the tooltip open until an
+  outside tap, `Escape`, or a tap on a different mark; it also always renders below 768px, since it is
+  the primary way to read a chart's exact value.
+- Pointer hit targets: a line chart shows the tooltip while the pointer is on the point (its marker plus a
+  3px margin), a scatter chart on the point's hit circle (at least 12px in radius), a bar chart on the bar
+  itself and a donut on the slice.
+- Text is at least 12px on screen: axis text defaults to 13px and keeps its pixel size at any width.
+- `prefers-reduced-motion: reduce` disables the hover/dim transition and the donut sweep.
+- The alt-table is a real accessible alternative to the graphic, not a decorative duplicate.
+
+Automated checks (keyboard, accessibility tree, axe, forced-colours media emulation, reduced motion)
+are in `chart-contract.spec.ts` and `accessibility.spec.ts`. A session with a real screen reader has
+not been run and stays pending.
+
+## Playground
+
+Available at /components/scatter-chart/playground.
 
 ---
 

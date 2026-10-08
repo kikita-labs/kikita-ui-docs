@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.donut-chart-page {
+  @include doc-page-layout;
+}
+
+.donut-chart-page__notes {
+  @include doc-page-notes;
+}
+
+.donut-chart-page__note {
+  @include doc-page-note;
+}

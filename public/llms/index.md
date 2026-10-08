@@ -21,6 +21,7 @@
 - [Alert](https://kikita-labs.github.io/kikita-ui-docs/llms/components/alert.md): Inline notification embedded in the page content flow.
 - [Avatar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/avatar.md): User or entity identity with image, initials, and status.
 - [Badge](https://kikita-labs.github.io/kikita-ui-docs/llms/components/badge.md): Compact status or metadata marker.
+- [Bar Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/bar-chart.md): Vertical or horizontal, grouped or stacked bar chart.
 - [Breadcrumbs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/breadcrumbs.md): Hierarchy trail.
 - [Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/button.md): Primary command primitive for buttons and links.
 - [Calendar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md): Date grid.
@@ -34,6 +35,7 @@
 - [Command Palette](https://kikita-labs.github.io/kikita-ui-docs/llms/components/command-palette.md): Searchable command overlay for application actions.
 - [Date Picker](https://kikita-labs.github.io/kikita-ui-docs/llms/components/date-picker.md): Calendar date input.
 - [Dialog](https://kikita-labs.github.io/kikita-ui-docs/llms/components/dialog.md): Typed modal overlay service and host contract.
+- [Donut Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/donut-chart.md): Donut chart for shares of a whole.
 - [Drawer](https://kikita-labs.github.io/kikita-ui-docs/llms/components/drawer.md): Side and edge overlay surface for focused workflows.
 - [Dropdown](https://kikita-labs.github.io/kikita-ui-docs/llms/components/dropdown.md): Projected option overlay used by select-like controls.
 - [Empty State](https://kikita-labs.github.io/kikita-ui-docs/llms/components/empty-state.md): Known empty, error, no-access, and success content states.
@@ -43,12 +45,14 @@
 - [Icon](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon.md): SVG icon renderer.
 - [Icon Button](https://kikita-labs.github.io/kikita-ui-docs/llms/components/icon-button.md): Compact icon-only action control.
 - [Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/input.md): Native text input styling with field integration.
+- [Line Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/line-chart.md): Line and area chart for trends over categories.
 - [Loader](https://kikita-labs.github.io/kikita-ui-docs/llms/components/loader.md): Inline loading indicator for buttons and status areas.
 - [Menu](https://kikita-labs.github.io/kikita-ui-docs/llms/components/menu.md): Anchored command menu with keyboard focus behavior.
 - [Number Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/number-input.md): Number input states with compact variant options.
 - [Popover](https://kikita-labs.github.io/kikita-ui-docs/llms/components/popover.md): Anchored content surface for contextual UI.
 - [Progress](https://kikita-labs.github.io/kikita-ui-docs/llms/components/progress.md): Progress status primitive for determinate and indeterminate work.
 - [Radio](https://kikita-labs.github.io/kikita-ui-docs/llms/components/radio.md): Native radio control styling for exclusive choices.
+- [Scatter Chart](https://kikita-labs.github.io/kikita-ui-docs/llms/components/scatter-chart.md): Scatter and bubble chart for two numeric measures.
 - [Scrollbar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/scrollbar.md): Tokenized native scroll container utility.
 - [Segmented](https://kikita-labs.github.io/kikita-ui-docs/llms/components/segmented.md): Compact single-choice control rendered as adjacent segment buttons.
 - [Select](https://kikita-labs.github.io/kikita-ui-docs/llms/components/select.md): Dropdown-backed selection control for single and multiple values.

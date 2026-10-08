@@ -10,6 +10,7 @@ import { ACCORDION_DOCS_MANIFEST } from '@pages/components/accordion/accordion.d
 import { ALERT_DOCS_MANIFEST } from '@pages/components/alert/alert.docs-manifest';
 import { AVATAR_DOCS_MANIFEST } from '@pages/components/avatar/avatar.docs-manifest';
 import { BADGE_DOCS_MANIFEST } from '@pages/components/badge/badge.docs-manifest';
+import { BAR_CHART_DOCS_MANIFEST } from '@pages/components/bar-chart/bar-chart.docs-manifest';
 import { BREADCRUMBS_DOCS_MANIFEST } from '@pages/components/breadcrumbs/breadcrumbs.docs-manifest';
 import { BUTTON_DOCS_MANIFEST } from '@pages/components/button/button.docs-manifest';
 import { CALENDAR_DOCS_MANIFEST } from '@pages/components/calendar/calendar.docs-manifest';
@@ -24,6 +25,7 @@ import { COMMAND_PALETTE_DOCS_MANIFEST } from '@pages/components/command-palette
 import { COMPONENTS_OVERVIEW_DOCS_MANIFEST } from '@pages/components/components-overview.docs-manifest';
 import { DATE_PICKER_DOCS_MANIFEST } from '@pages/components/date-picker/date-picker.docs-manifest';
 import { DIALOG_DOCS_MANIFEST } from '@pages/components/dialog/dialog.docs-manifest';
+import { DONUT_CHART_DOCS_MANIFEST } from '@pages/components/donut-chart/donut-chart.docs-manifest';
 import { DRAWER_DOCS_MANIFEST } from '@pages/components/drawer/drawer.docs-manifest';
 import { DROPDOWN_DOCS_MANIFEST } from '@pages/components/dropdown/dropdown.docs-manifest';
 import { EMPTY_STATE_DOCS_MANIFEST } from '@pages/components/empty-state/empty-state.docs-manifest';
@@ -33,12 +35,14 @@ import { GROUP_DOCS_MANIFEST } from '@pages/components/group/group.docs-manifest
 import { ICON_DOCS_MANIFEST } from '@pages/components/icon/icon.docs-manifest';
 import { ICON_BUTTON_DOCS_MANIFEST } from '@pages/components/icon-button/icon-button.docs-manifest';
 import { INPUT_DOCS_MANIFEST } from '@pages/components/input/input.docs-manifest';
+import { LINE_CHART_DOCS_MANIFEST } from '@pages/components/line-chart/line-chart.docs-manifest';
 import { LOADER_DOCS_MANIFEST } from '@pages/components/loader/loader.docs-manifest';
 import { MENU_DOCS_MANIFEST } from '@pages/components/menu/menu.docs-manifest';
 import { NUMBER_INPUT_DOCS_MANIFEST } from '@pages/components/number-input/number-input.docs-manifest';
 import { POPOVER_DOCS_MANIFEST } from '@pages/components/popover/popover.docs-manifest';
 import { PROGRESS_DOCS_MANIFEST } from '@pages/components/progress/progress.docs-manifest';
 import { RADIO_DOCS_MANIFEST } from '@pages/components/radio/radio.docs-manifest';
+import { SCATTER_CHART_DOCS_MANIFEST } from '@pages/components/scatter-chart/scatter-chart.docs-manifest';
 import { SCROLLBAR_DOCS_MANIFEST } from '@pages/components/scrollbar/scrollbar.docs-manifest';
 import { SEGMENTED_DOCS_MANIFEST } from '@pages/components/segmented/segmented.docs-manifest';
 import { SELECT_DOCS_MANIFEST } from '@pages/components/select/select.docs-manifest';
@@ -172,6 +176,10 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     ICON_DOCS_MANIFEST,
     AVATAR_DOCS_MANIFEST,
     TABLE_DOCS_MANIFEST,
+    LINE_CHART_DOCS_MANIFEST,
+    BAR_CHART_DOCS_MANIFEST,
+    SCATTER_CHART_DOCS_MANIFEST,
+    DONUT_CHART_DOCS_MANIFEST,
     CAROUSEL_DOCS_MANIFEST,
     CHIP_DOCS_MANIFEST,
     SCROLLBAR_DOCS_MANIFEST,
