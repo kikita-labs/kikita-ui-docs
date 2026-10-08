@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.bar-chart-page {
+  @include doc-page-layout;
+}
+
+.bar-chart-page__notes {
+  @include doc-page-notes;
+}
+
+.bar-chart-page__note {
+  @include doc-page-note;
+}

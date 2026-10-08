@@ -1,0 +1,89 @@
+<article class="bar-chart-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Bar Chart"
+    description="Vertical or horizontal, grouped or stacked bar chart."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="The chart is a standalone component. Import the styles once for the whole family."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Pass series aligned with categories. The bars share the series, categories, axes, formatting and keyboard mechanics of the line chart."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic bar chart">
+      <app-basic-bar-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="stacked"
+    heading="Grouped and stacked"
+    description="stacked stacks the series within each category instead of placing them side by side. Positive and negative values stack separately, so a category with gains and losses shows two stacks growing in opposite directions."
+  >
+    <app-live-preview previewLabel="Grouped and stacked bar charts">
+      <app-bar-stacked-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="stackedTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="orientation"
+    heading="Horizontal orientation"
+    description="orientation horizontal flips the on-screen bars only. axes.x and axes.y stay semantic (x is the categories, y the values), whichever edge shows them."
+  >
+    <app-live-preview previewLabel="Horizontal bar chart">
+      <app-bar-horizontal-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="orientationTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="patterns"
+    heading="Patterns"
+    description="patterns fills each series with one of eight hatch patterns instead of plain colour, so series differ without relying on colour."
+  >
+    <app-live-preview previewLabel="Bar chart with patterns">
+      <app-bar-patterns-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="patternsTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="states"
+    heading="State examples"
+    description="loading shows a silhouette of bars with varying heights that shrinks with its container; an empty series shows the empty composition."
+  >
+    <app-live-preview previewLabel="Loading and empty bar charts">
+      <app-bar-states-chart-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="statesTabs" />
+  </app-doc-section>
+
+  <app-chart-behavior-sections type="bar" />
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Bar Chart"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Bar Chart API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-chart-accessibility-sections type="bar" />
+</article>

@@ -1,0 +1,9 @@
+.chart-example {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.chart-example--stack {
+  display: grid;
+  gap: var(--kui-space-6, 24px);
+}

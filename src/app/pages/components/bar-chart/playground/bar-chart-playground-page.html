@@ -1,0 +1,31 @@
+<article class="bar-chart-playground-page">
+  <div class="bar-chart-playground-page__header">
+    <h1>Bar Chart &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Bar Chart playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-bar-chart
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [series]="dataOf(playground.values())"
+      [categories]="categories"
+      [orientation]="orientationOf(playground.values())"
+      [stacked]="stackedOf(playground.values())"
+      [patterns]="patternsOf(playground.values())"
+      [axes]="axesOf(playground.values())"
+      [size]="sizeOf(playground.values())"
+      [loading]="loadingOf(playground.values())"
+      [legend]="legendOf(playground.values())"
+      [valueFormat]="valueFormatOf(playground.values())"
+      [tooltip]="tooltipOf(playground.values())"
+      [messages]="messagesOf(playground.values())"
+    />
+  </app-api-playground>
+
+  <app-api-table label="Bar Chart API" [rows]="apiRows" />
+  <p class="bar-chart-playground-page__note">{{ apiDescription }}</p>
+</article>
