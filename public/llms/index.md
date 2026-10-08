@@ -11,6 +11,7 @@
 - [Accessibility](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/accessibility.md): Keyboard, semantics, focus, and WCAG expectations.
 - [Density](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/density.md): Spacing and control density expectations for product UIs.
 - [Installation](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/installation.md): Package installation and global stylesheet setup.
+- [Migrating to 2.0](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/migration.md): Every breaking change of @kikita-labs/ui 2.0: renamed exports, provider defaults, locale and messages, icons, tokens, component behaviour and the charts.
 - [Theming](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/theming.md): Theme provider setup and theme customization basics.
 - [Tokens](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/tokens.md): Design token categories exposed through Kikita CSS variables.
 - [Typography](https://kikita-labs.github.io/kikita-ui-docs/llms/foundations/typography.md): Semantic type-role classes, text tones, and the kuiText directive.

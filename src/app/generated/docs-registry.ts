@@ -67,6 +67,7 @@ import { DRAFT_DOCS_MANIFEST } from '@pages/draft/draft.docs-manifest';
 import { ACCESSIBILITY_DOCS_MANIFEST } from '@pages/foundations/accessibility/accessibility.docs-manifest';
 import { DENSITY_DOCS_MANIFEST } from '@pages/foundations/density/density.docs-manifest';
 import { INSTALLATION_DOCS_MANIFEST } from '@pages/foundations/installation/installation.docs-manifest';
+import { MIGRATION_DOCS_MANIFEST } from '@pages/foundations/migration/migration.docs-manifest';
 import { THEMING_DOCS_MANIFEST } from '@pages/foundations/theming/theming.docs-manifest';
 import { TOKENS_DOCS_MANIFEST } from '@pages/foundations/tokens/tokens.docs-manifest';
 import { TYPOGRAPHY_DOCS_MANIFEST } from '@pages/foundations/typography/typography.docs-manifest';
@@ -138,6 +139,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     TYPOGRAPHY_DOCS_MANIFEST,
     DENSITY_DOCS_MANIFEST,
     ACCESSIBILITY_DOCS_MANIFEST,
+    MIGRATION_DOCS_MANIFEST,
   ],
   components: [
     BUTTON_DOCS_MANIFEST,

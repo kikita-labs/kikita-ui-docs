@@ -1,0 +1,14 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.migration-page {
+  display: grid;
+  gap: clamp(28px, 5vw, 48px);
+}
+
+.migration-page__notes {
+  @include doc-page-notes;
+}
+
+.migration-page__note {
+  @include doc-page-note;
+}

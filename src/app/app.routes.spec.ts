@@ -66,6 +66,7 @@ const FOUNDATION_SLUGS = [
   'accessibility',
   'density',
   'installation',
+  'migration',
   'theming',
   'tokens',
   'typography',

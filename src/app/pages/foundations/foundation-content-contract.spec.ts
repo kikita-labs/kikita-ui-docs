@@ -19,6 +19,7 @@ import {
   INSTALLATION_OPTION_ROWS,
   INSTALLATION_REGISTRY_TABS,
 } from './installation/installation.docs-content';
+import { MIGRATION_AUTOMATIC_TABS } from './migration/migration.docs-content';
 import {
   THEMING_CONTRACT_TABS,
   THEMING_PROVIDER_TABS,
@@ -32,6 +33,7 @@ import {
 } from './tokens/tokens.docs-content';
 
 const ALL_FOUNDATION_CODE_TABS: readonly CodeTab[] = [
+  ...MIGRATION_AUTOMATIC_TABS,
   ...ACCESSIBILITY_FORM_TABS,
   ...ACCESSIBILITY_STATUS_TABS,
   ...DENSITY_PROVIDER_TABS,

@@ -1,0 +1,430 @@
+<article class="migration-page">
+  <app-page-header
+    eyebrow="Foundation"
+    heading="Migrating to 2.0"
+    description="Every breaking change of @kikita-labs/ui 2.0: renamed exports, provider defaults, locale and messages, icons, tokens, component behaviour and the charts."
+  />
+
+  <app-doc-section
+    heading="Automatic migration"
+    description="Update the package and run the migration that ships with it. It renames identifiers only and never touches strings, comments or templates."
+  >
+    <app-code-tabs [tabs]="automaticTabs" />
+
+    <ul class="migration-page__notes">
+      <li>
+        <code>ng update</code> runs <code>rename-symbols-v2</code> for every workspace that moves
+        from 1.x to 2.x. It reads every TypeScript file that imports from
+        <code>@kikita-labs/ui</code>.
+      </li>
+      <li>
+        It renames named imports (including <code>import type</code> and
+        <code>import {{ '{' }} Old as Local {{ '}' }}</code
+        >), every use of the renamed binding, <code>export {{ '{' }} Old {{ '}' }}</code> of such a
+        binding, re-exports, namespace members and <code>import(...)</code> types.
+      </li>
+      <li>
+        It skips <code>node_modules</code>, <code>dist</code> and <code>.angular</code>, and a
+        second run changes nothing. When the new name is already declared in the same file the
+        symbol is left alone and a warning names the file; rename it by hand.
+      </li>
+      <li>
+        Names used through a dynamic import (<code
+          >const {{ '{' }} KuiButtonDirective {{ '}' }} = await import(...)</code
+        >) are not seen; search for them with the <code>git grep</code> command above.
+      </li>
+      <li>
+        Selectors, inputs, outputs, <code>exportAs</code> names, CSS custom properties and CSS class
+        names do not change, so templates and styles need no edit.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Naming rule and renamed exports"
+    description="An Angular class is named for what it is, not for the construct that declares it. There are no compatibility aliases: the old names no longer exist in 2.0."
+  >
+    <ul class="migration-page__notes">
+      <li>
+        <code>KuiSeparatorDirective</code> is now <code>KuiSeparator</code>,
+        <code>KuiTabsComponent</code> is <code>KuiTabs</code> and <code>KuiToastService</code> is
+        <code>KuiToast</code>, as in Angular 20+, Angular Material and the CDK.
+      </li>
+      <li>
+        A class name is the PascalCase of its selector: <code>button[kuiButton]</code> is
+        <code>KuiButton</code> and <code>kui-tabs</code> is <code>KuiTabs</code>. A pipe keeps its
+        suffix (<code>KuiComboboxHighlightPipe</code>).
+      </li>
+      <li>
+        Providers follow the <code>provideX</code> convention: <code>kuiProvideLocale</code> is
+        <code>provideKuiLocale</code>. <code>kuiToast()</code>, <code>kuiDialog()</code>,
+        <code>kuiDrawer()</code>, <code>kuiConfirm()</code> and <code>kuiMediaViewer()</code> are
+        unchanged.
+      </li>
+      <li>
+        The migration also maps names that only existed in 2.0 prereleases. The chart legend data
+        type <code>KuiChartLegendItem</code> became <code>KuiChartLegendEntry</code>, and the
+        template directive <code>KuiChartLegendItemDirective</code> took the plain name
+        <code>KuiChartLegendItem</code>.
+      </li>
+    </ul>
+
+    <app-api-table label="Examples of renamed exports" [rows]="renamedRows" />
+
+    <p class="migration-page__note">
+      <a [href]="docUrlMigrationV2" target="_blank" rel="noopener noreferrer"
+        >The full table of the 74 renamed names in the library migration guide</a
+      >
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Provider defaults"
+    description="Component defaults moved from six injection tokens to one mechanism, KuiDefaults. A nested provider now merges with its parent per property."
+  >
+    <app-api-table label="Provider defaults changes" [rows]="providerRows" />
+
+    <ul class="migration-page__notes">
+      <li>
+        In 1.x the field, select, combobox and button helpers replaced the whole parent object, so a
+        subtree that set one property dropped the rest. In 2.0 each property resolves on its own.
+      </li>
+      <li>
+        The global control size is reactive: changing <code>defaults.size</code> updates components
+        that are already rendered. Providing <code>KIKITA_UI_OPTIONS</code> directly no longer sets
+        the default size; use <code>provideKuiDefaults({{ '{' }} size {{ '}' }})</code> for a
+        subtree.
+      </li>
+      <li>
+        Inputs that now resolve through the defaults (Popover, Menu, Dropdown, Calendar, Carousel,
+        Pagination and others) are <code>undefined</code> when omitted. Their rendered default is
+        unchanged, but code that reads such an input back must read the resolved value.
+      </li>
+      <li>
+        <code>KuiStepperContext.linear</code> is <code>effectiveLinear</code>,
+        <code>KuiTreeContext.mode</code> is <code>effectiveMode</code> and
+        <code>KuiSplitterContext.orientation</code> is <code>effectiveOrientation</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Locale and messages"
+    description="All text the library owns is a typed message with an English default."
+  >
+    <ul class="migration-page__notes">
+      <li>
+        <code>provideKuiLocale</code> returns <code>Provider[]</code> (it returned one
+        <code>Provider</code>), so spread it where you used it as a single entry. It accepts a
+        <code>Signal</code> and works for a subtree.
+      </li>
+      <li>
+        A requested locale is checked against the runtime <code>Intl</code> and falls back to
+        <code>en-US</code>. <code>LOCALE_ID</code> is not read implicitly; use
+        <code>provideKikitaUi({{ '{' }} locale: () => inject(LOCALE_ID) {{ '}' }})</code>.
+      </li>
+      <li>
+        On the server <code>KUI_LOCALE</code> follows the request <code>Accept-Language</code> and
+        the browser reuses it through <code>TransferState</code>. A cache in front of the server
+        must send <code>Vary: Accept-Language</code>, or the application can pin a locale with
+        <code>provideKuiLocale</code>.
+      </li>
+      <li>
+        The library ships English only. Translate with
+        <code>provideKikitaUi({{ '{' }} messages {{ '}' }})</code>,
+        <code>provideKuiMessages</code> or the <code>messages</code> input of the components that
+        have one. Inputs that carried an English default (<code>ariaLabel</code> of Pagination,
+        Carousel, Menu, Popover, Tree and OTP Input, <code>closeLabel</code> of Alert,
+        <code>label</code> of Avatar Group and Loader, <code>placeholder</code> of Command Palette
+        and Date Picker, <code>errorLabel</code> of Tab) are <code>undefined</code> when omitted;
+        the rendered text is unchanged.
+      </li>
+      <li>
+        Date Picker formats and parses the numeric layout of the locale (<code>10/03/2026</code> in
+        <code>en-US</code>, <code>03.10.2026</code> in <code>ru-RU</code>). Set
+        <code>format="dd.MM.yyyy"</code> or <code>defaults.datePicker.format</code> to keep the old
+        layout.
+      </li>
+      <li>
+        Time Picker defaults to the hour cycle of the locale (<code>12h</code> in
+        <code>en-US</code>). Set <code>format="24h"</code> or
+        <code>defaults.timePicker.format</code> to keep the old default.
+      </li>
+      <li>
+        Calendar and Calendar Range name each day button with its full localized date and take the
+        first day and the weekend from the locale. Tests that look up a day button by its bare
+        number must use the full date as the accessible name.
+      </li>
+      <li>
+        The default chart <code>valueFormat</code> is the compact notation of the locale, File
+        Upload sizes use <code>Intl</code> units (<code>2.5 MB</code>) and Pagination, Carousel,
+        Media Viewer and OTP positions are formatted with the locale.
+      </li>
+      <li>
+        Removed internals: <code>KUI_CALENDAR_NAVIGATION_LABELS</code> and the Date Picker
+        <code>formatDisplayDate</code> and <code>parseDisplayDate</code> helpers.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Icons"
+    description="Structural icons are replaceable data, and the Lucide set is read at a pinned version."
+  >
+    <ul class="migration-page__notes">
+      <li>
+        Structural icons (close, clear, chevrons, status marks and similar) are drawn by one
+        renderer and can be replaced through <code>defaults.icons</code> and per-component slots.
+        Default shapes, sizes and weights are unchanged.
+      </li>
+      <li>
+        The default Lucide set is read at a pinned <code>lucide-static</code> version
+        (<code>1.51.0</code>, it was the floating <code>@1</code>) and converted to glyph data
+        instead of being inserted as trusted HTML. Allow
+        <code>connect-src https://cdn.jsdelivr.net</code> in a Content Security Policy, or serve the
+        files yourself with <code>createKuiLucideResolver({{ '{' }} baseUrl {{ '}' }})</code>.
+      </li>
+      <li>
+        A name that is not a Lucide kebab-case name resolves to nothing without a request.
+        <code>KuiIconSource</code> is still the markup string type; resolvers and registries may
+        also return <code>KuiIconGlyph</code>.
+      </li>
+      <li>The internal <code>kui-chrome-icon-paths.util</code> module is removed.</li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Component behaviour"
+    description="Behaviour that differs from 1.x. Each item names the component, so search this list for the ones you use."
+  >
+    <ul class="migration-page__notes">
+      <li>
+        <strong>OTP Input:</strong> the <code>readOnly</code> input is <code>readonly</code>, the
+        name the Signal Forms contract binds. Rename it in templates; there is no alias.
+      </li>
+      <li>
+        <strong>Toast:</strong> the region is a manual popover in the browser top layer and sits
+        above open dialogs and drawers. <code>defaults.toast.position</code> and
+        <code>maxVisible</code> follow runtime changes, and a <code>persistent</code> signal that
+        turns <code>false</code> resumes the time left.
+      </li>
+      <li>
+        <strong>Select:</strong> an <code>input[kuiSelect]</code> bound with
+        <code>[formField]</code> shows <code>aria-invalid</code> only after the field is touched,
+        and a multiple Select keeps its panel open when an option is chosen with Enter or Space.
+      </li>
+      <li>
+        <strong>Required state:</strong> <code>kui-field</code> exposes its required state as
+        <code>aria-required</code> on the controls that support it, so snapshot tests of the
+        rendered markup change.
+      </li>
+      <li>
+        <strong>Calendar and Calendar Range:</strong> the markup is a full ARIA grid with
+        <code>role="gridcell"</code> elements inside <code>role="row"</code> weeks, and
+        <code>aria-selected</code> is on the gridcell. CSS that targets
+        <code>.kui-calendar-grid &gt; .kui-calendar-day</code> must target
+        <code>.kui-calendar-day</code> or the new <code>.kui-calendar-week</code> and
+        <code>.kui-calendar-cell</code> wrappers.
+      </li>
+      <li>
+        <strong>Splitter:</strong> the <code>role="separator"</code> is an inner element of
+        <code>kui-splitter-gutter</code> and the collapse button is its sibling. The gutter host
+        carries no role, <code>aria-*</code> or <code>tabindex</code>; style it through
+        <code>data-kui-orientation</code>, <code>data-kui-disabled</code> and
+        <code>data-kui-dragging</code>. Each pane renders its generated <code>id</code>.
+      </li>
+      <li>
+        <strong>File Upload:</strong> the "Choose file" label and the native file input are
+        <code>aria-hidden</code>; the dropzone is the only interactive element.
+        <strong>Carousel:</strong> the slide track is a tab stop while <code>draggable</code> is
+        <code>true</code>.
+      </li>
+      <li>
+        <strong>Focus and disabled:</strong> every focusable part draws a solid 2px
+        <code>outline</code> in <code>--kui-color-focus</code>, a ring drawn only with
+        <code>box-shadow</code> is gone and <code>--kui-input-focus-ring</code> defaults to
+        <code>none</code>. Every disabled control dims to
+        <code>--kui-opacity-disabled</code> (<code>0.5</code>).
+      </li>
+      <li>
+        <strong>Dropdown:</strong> closing a panel after a selection returns focus to the control,
+        and Escape returns it to the field control. <code>KuiDropdown.setAnchor</code> takes an
+        optional third argument naming the focus-return element.
+      </li>
+      <li>
+        <strong>Coercion:</strong> static numeric attributes of Progress, Avatar, Avatar Group, Time
+        Picker, Pagination, OTP Input, Splitter Pane, Carousel, Dropdown, Menu and Popover are
+        coerced, and an invalid value falls back to a safe default instead of reaching ARIA or CSS.
+      </li>
+      <li>
+        <strong>Inputs:</strong> <code>type="number"</code> fields built with
+        <code>kuiInput</code> no longer show the browser arrows (use <code>kuiNumberInput</code> for
+        step buttons) and <code>type="search"</code> fields no longer show the browser clear cross.
+      </li>
+      <li>
+        <strong>Command Palette:</strong> command ids must be stable, unique and non-empty;
+        development builds report empty, whitespace-containing and duplicate ids. It focuses its
+        search input after render instead of in a microtask. <code>kuiAutoFocus</code> is new, and
+        OTP Input <code>autoFocus</code> focuses the first cell that can take focus.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Packaging and styles"
+    description="Style delivery changed, and field and icon now need the shared stylesheet like every other component."
+  >
+    <ul class="migration-page__notes">
+      <li>
+        Each primitive stylesheet lives beside its component.
+        <code>@kikita-labs/ui/styles</code> and <code>kikita-ui.css</code> are still the only public
+        style paths.
+      </li>
+      <li>
+        <code>kui-field</code> and <code>kui-icon</code> styles moved from component-scoped files
+        into the <code>kui.components</code> layer, so both need <code>kikita-ui.css</code> (<code
+          >ng add</code
+        >
+        installs it). An unlayered application rule overrides them without raising specificity.
+      </li>
+      <li>
+        Controls no longer import <code>kui-field</code>; they inject the internal
+        <code>KUI_FIELD</code> token. <code>KuiField.getDropdown()</code>,
+        <code>getCalendar()</code> and <code>getTimePickerPanel()</code> now find the part anywhere
+        inside the field.
+      </li>
+      <li>
+        <code>theme-default.css</code> is part of <code>@kikita-labs/ui/styles</code>, so the
+        default theme works from CSS alone. The generated theme sheet sits in the
+        <code>kui.tokens</code> layer, declared before <code>kui.base</code> and
+        <code>kui.components</code>, so a variable you write outside any layer wins regardless of
+        source order.
+      </li>
+      <li>
+        <code>provideKikitaUi()</code> sets <code>data-kui-density</code> on
+        <code>&lt;html&gt;</code> from <code>seeds.density</code>, on the server too, unless the
+        page already set it. Right-to-left layouts are not supported in 2.0.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Token and style changes"
+    description="Token names are kept with the exceptions below. Colour tokens have their own table on the Theming page."
+  >
+    <ul class="migration-page__notes">
+      <li>
+        322 component tokens that only mapped a role onto a semantic or base token (for example
+        <code>--kui-card-bg</code>, <code>--kui-btn-solid-bg</code>,
+        <code>--kui-input-height</code>) are no longer defined by the generated stylesheet or
+        returned in <code>createKuiTheme().component</code>. Each component states the default as a
+        fallback chain in its own CSS, so an override on any ancestor reaches it. Reading one with
+        <code>getComputedStyle</code> now returns an empty string unless it is set.
+      </li>
+      <li>
+        Components no longer declare 123 of their public tokens on their element (such as
+        <code>--kui-alert-radius</code>, <code>--kui-badge-height</code>,
+        <code>--kui-carousel-dot-bg</code>); per-variant defaults live in private
+        <code>--_kui-*</code> variables and the public token wins at any level.
+      </li>
+      <li>
+        The Button aliases <code>--kui-btn-bg</code>, <code>--kui-btn-color</code>,
+        <code>--kui-btn-focus-ring</code> and related, and the legacy Select tokens
+        <code>--kui-select-bg</code>, <code>--kui-select-border</code> and related, are removed.
+        Button and Icon Button read the canonical <code>--kui-btn-solid-*</code> and
+        <code>--kui-btn-soft-*</code> tokens, so a token set on an ancestor restyles Button in that
+        scope.
+      </li>
+      <li>
+        Hooks that used to be defined on <code>:root</code> as literals
+        (<code>--kui-btn-focus-ring-w</code>, <code>--kui-btn-disabled-opacity</code>,
+        <code>--kui-dialog-backdrop</code> and others) are not generated any more. Set the shared
+        token instead: <code>--kui-focus-ring-width</code>, <code>--kui-focus-ring-offset</code>,
+        <code>--kui-opacity-disabled</code>, <code>--kui-color-scrim</code>,
+        <code>--kui-font-weight-semibold</code>.
+      </li>
+      <li>
+        <code>seeds.neutral</code> now drives the surface, border, text, skeleton and scrollbar
+        roles; <code>--kui-neutral-1</code> to <code>-12</code> are two scales, one per mode, and
+        <code>theme.palettes.neutral</code> is the light scale. The default
+        <code>warning</code> seed is <code>oklch(0.56 0.15 65)</code> and the default
+        <code>info</code> seed is <code>oklch(0.53 0.14 215)</code>; pass your own seeds to keep
+        other colours.
+      </li>
+      <li>
+        Text on solid fills is white on every default accent in both modes and interactive control
+        borders are stronger at rest. Use <code>--kui-color-&lt;role&gt;-on-fill</code>,
+        <code>-text</code> and <code>-indicator</code> in your own CSS.
+        <code>--kui-color-on-fill</code> and <code>--kui-color-primary-focus-ring</code> still exist
+        but are deprecated and removed in 3.0.
+      </li>
+      <li>
+        Hover and pressed fills of list options, menu items, calendar days, tabs and ghost buttons
+        read <code>--kui-color-state-hover</code> and <code>--kui-color-state-active</code>. Line
+        heights follow the type roles and <code>--kui-line-height-control</code>.
+      </li>
+      <li>
+        Windows High Contrast: <code>forced-colors.css</code>, imported last by
+        <code>kikita-ui.css</code>, states checked controls, Slider, Progress, selected cells, Tabs,
+        Segmented, pressed Chip and Stepper with system colours.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Chart behaviour"
+    description="The four charts changed their keyboard model, tooltip data and sizing."
+  >
+    <ul class="migration-page__notes">
+      <li>
+        Arrow keys move DOM focus, and Up and Down move between series while Left and Right move
+        along a series; before, every arrow moved along one flat list.
+      </li>
+      <li>
+        <code>KuiChartPoint.x</code> and <code>y</code> passed to a <code>tooltip</code> formatter
+        are data units (they were SVG pixels), and <code>r</code> is passed. The default scatter
+        text is <code>{{ '{' }}series{{ '}' }}: ({{ '{' }}x{{ '}' }}, {{ '{' }}y{{ '}' }})</code>.
+        Bubble <code>r</code> is in CSS pixels and the consumer owns clamping.
+      </li>
+      <li>
+        Line and bar charts measure their container, so axis text keeps a fixed pixel size (13px by
+        default, it was 11px scaled with the viewBox). Set
+        <code>--kui-chart-axis-text-font-size</code> to change it.
+      </li>
+      <li>
+        Every tooltip closes on <code>Escape</code>; <code>[kuiTooltip]</code> tooltips also stay
+        open while the pointer is on them. <code>--kui-chart-legend-swatch-radius</code> is gone
+        (the swatch is a marker shape); use <code>--kui-chart-legend-swatch-size</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Verify the upgrade"
+    description="Work through these checks in order after the automatic migration."
+  >
+    <ul class="migration-page__notes">
+      <li>
+        Run <code>ng update @kikita-labs/ui</code>, then the <code>git grep</code> command from the
+        first section; it must return nothing.
+      </li>
+      <li>
+        Replace every <code>KUI_*_OPTIONS</code> token and <code>kuiProvide*Options</code> call with
+        <code>provideKuiDefaults</code>.
+      </li>
+      <li>Rename <code>readOnly</code> to <code>readonly</code> on <code>kui-otp-input</code>.</li>
+      <li>
+        Search your styles for removed tokens and for selectors that depend on the old Calendar or
+        Splitter markup.
+      </li>
+      <li>
+        If you render on the server, check that your cache sends <code>Vary: Accept-Language</code>.
+      </li>
+      <li>
+        Rebuild, run your unit and browser tests and review screenshot diffs before accepting new
+        baselines: disabled opacity, focus outlines, warning and info colours, line heights and
+        tooltip timing changed on purpose.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>
