@@ -44,6 +44,7 @@ const COMPONENT_SLUGS = [
   'stepper',
   'switch',
   'table',
+  'carousel',
   'tabs',
   'textarea',
   'toast',

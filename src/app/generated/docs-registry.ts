@@ -15,6 +15,7 @@ import { BUTTON_DOCS_MANIFEST } from '@pages/components/button/button.docs-manif
 import { CALENDAR_DOCS_MANIFEST } from '@pages/components/calendar/calendar.docs-manifest';
 import { CALENDAR_RANGE_DOCS_MANIFEST } from '@pages/components/calendar-range/calendar-range.docs-manifest';
 import { CARD_DOCS_MANIFEST } from '@pages/components/card/card.docs-manifest';
+import { CAROUSEL_DOCS_MANIFEST } from '@pages/components/carousel/carousel.docs-manifest';
 import { CHECKBOX_DOCS_MANIFEST } from '@pages/components/checkbox/checkbox.docs-manifest';
 import { CHIP_DOCS_MANIFEST } from '@pages/components/chip/chip.docs-manifest';
 import { COLOR_INPUT_DOCS_MANIFEST } from '@pages/components/color-input/color-input.docs-manifest';
@@ -171,6 +172,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     ICON_DOCS_MANIFEST,
     AVATAR_DOCS_MANIFEST,
     TABLE_DOCS_MANIFEST,
+    CAROUSEL_DOCS_MANIFEST,
     CHIP_DOCS_MANIFEST,
     SCROLLBAR_DOCS_MANIFEST,
     TREE_DOCS_MANIFEST,

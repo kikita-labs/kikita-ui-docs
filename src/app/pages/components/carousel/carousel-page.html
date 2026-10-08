@@ -1,0 +1,159 @@
+<article class="carousel-page">
+  <app-page-header
+    eyebrow="Data and Identity"
+    heading="Carousel"
+    description="Horizontal strip of slides with arrows, a dot picker and optional autoplay."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="Carousel is a standalone component with a slide marker directive."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Project one element with kuiCarouselSlide per slide and bind index with a signal. The track is native scroll with scroll-snap, so trackpad and touch swipe come from the browser."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic carousel">
+      <app-basic-carousel-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+    <p class="carousel-page__note">
+      <code>ariaLabel</code> defaults to the <code>carousel.label</code> message
+      (<code>Slides</code>) and should name the content. It must not contain the word carousel: the
+      region's <code>aria-roledescription="carousel"</code> already announces it. The height comes
+      from the slide content, so set a <code>block-size</code> on the carousel root with ordinary
+      CSS if you need a fixed one.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="items-per-view"
+    heading="Items per view and loop"
+    description="itemsPerView sets how many slides are visible. The highest reachable index is slideCount - itemsPerView, so the dot picker has exactly that many dots. loop wraps at the edges instead of disabling Prev and Next."
+  >
+    <app-live-preview previewLabel="Two slides per view with loop">
+      <app-carousel-items-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="itemsTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="autoplay"
+    heading="Autoplay"
+    description="autoplay advances on autoplayInterval and always shows a Play/Pause control. It pauses while the pointer, focus or a touch is inside the region."
+  >
+    <app-live-preview previewLabel="Autoplay carousel">
+      <app-carousel-autoplay-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="autoplayTabs" />
+    <p class="carousel-page__note">
+      The track's <code>aria-live</code> is <code>off</code> while autoplay is advancing and
+      <code>polite</code> whenever it is paused, so manual navigation is still announced.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="controls"
+    heading="Controls and dragging"
+    description="showArrows and showDots hide the matching control. draggable (default true) adds mouse drag-to-scroll; false also switches the track to overflow-x hidden."
+  >
+    <app-live-preview previewLabel="Dots only without dragging">
+      <app-carousel-controls-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="controlsTabs" />
+    <ul class="carousel-page__notes">
+      <li>
+        Touch swipe and trackpad scroll always work through the native
+        <code>overflow-x: auto</code>; a debounced scroll listener snaps <code>index</code> to the
+        nearest slide once scrolling settles.
+      </li>
+      <li>
+        <code>showArrows="false"</code> with <code>showDots="false"</code> (swipe only) is reachable
+        but not self-sufficient under WCAG 2.5.7 (Dragging Movements).
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="messages-example"
+    heading="Message overrides"
+    description="messages overrides the label, role descriptions, controls and slide names for one instance. It wins over scoped and root messages."
+  >
+    <app-live-preview previewLabel="Carousel with custom messages">
+      <app-carousel-messages-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="messagesTabs" />
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Carousel"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Carousel API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="Carousel follows the tabbed carousel pattern with roving focus on the dots."
+  >
+    <ul class="carousel-page__notes">
+      <li>
+        The outer element is <code>role="region"</code> with
+        <code>aria-roledescription="carousel"</code> and the <code>ariaLabel</code>; each slide is
+        <code>role="group"</code> with <code>aria-roledescription="slide"</code> and an
+        <code>N of total</code> name.
+      </li>
+      <li>
+        The dot picker is a <code>tablist</code> of <code>tab</code>s with
+        <code>aria-selected</code>, <code>aria-controls</code> pointing at the slide id and a roving
+        tabindex; arrow keys, <code>Home</code> and <code>End</code> move focus and selection.
+      </li>
+      <li>
+        The region also responds to <code>ArrowLeft</code>, <code>ArrowRight</code>,
+        <code>Home</code> and <code>End</code> to change slide, independent of dot focus.
+      </li>
+      <li>
+        While <code>draggable</code> is true the scrollable track is a keyboard tab stop
+        (<code>tabindex="0"</code>) with a visible focus ring; with <code>draggable="false"</code>
+        it is not.
+      </li>
+      <li>
+        Prev, Next, Play and Pause are <code>kuiIconButton</code>s with a required
+        <code>aria-label</code>. At the range boundary (without <code>loop</code>) Prev or Next gets
+        the native <code>disabled</code> attribute and leaves the tab order.
+      </li>
+      <li>
+        Play/Pause order and pausing on hover and focus follow the W3C APG auto-rotating carousel.
+        <code>autoplay</code> with arrows, dots and dragging all disabled leaves no way to pause by
+        hand, which conflicts with WCAG 2.2.2; use it only for purely decorative rotation.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section heading="Known gaps" description="Documented limits of the installed package.">
+    <ul class="carousel-page__notes">
+      <li>There is no per-breakpoint <code>itemsPerView</code>; it is a plain number.</li>
+      <li>
+        The carousel has no size prop: it always sizes to its container, and the controls inherit
+        their size from the kit's size and density context.
+      </li>
+      <li>
+        A formal assistive-technology review with a real screen reader has not been run, and a
+        narrow mobile viewport was not verified by the library review.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

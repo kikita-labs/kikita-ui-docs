@@ -1,0 +1,35 @@
+<article class="carousel-playground-page">
+  <div class="carousel-playground-page__header">
+    <h1>Carousel &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Carousel playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <kui-carousel
+      [index]="index()"
+      (indexChange)="onIndexChange($event)"
+      [ariaLabel]="ariaLabelOf(playground.values())"
+      [messages]="messagesOf(playground.values())"
+      [itemsPerView]="itemsPerViewOf(playground.values())"
+      [autoplayInterval]="autoplayIntervalOf(playground.values())"
+      [loop]="loopOf(playground.values())"
+      [autoplay]="autoplayOf(playground.values())"
+      [showArrows]="showArrowsOf(playground.values())"
+      [showDots]="showDotsOf(playground.values())"
+      [draggable]="draggableOf(playground.values())"
+    >
+      @for (number of slideNumbers(playground.values()); track number) {
+        <div kuiCarouselSlide class="carousel-playground-page__slide">Slide {{ number }}</div>
+      }
+    </kui-carousel>
+  </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Carousel events" />
+
+  <app-api-table label="Carousel API" [rows]="apiRows" />
+  <p class="carousel-playground-page__note">{{ apiDescription }}</p>
+</article>

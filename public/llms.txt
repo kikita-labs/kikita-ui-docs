@@ -32,6 +32,7 @@ Important notes:
 - [Calendar](https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar.md): Date grid.
 - [Calendar Range](https://kikita-labs.github.io/kikita-ui-docs/llms/components/calendar-range.md): Inline month grid for selecting a start and end date.
 - [Card](https://kikita-labs.github.io/kikita-ui-docs/llms/components/card.md): Surface, elevated, and sunken content container.
+- [Carousel](https://kikita-labs.github.io/kikita-ui-docs/llms/components/carousel.md): Horizontal strip of slides with arrows, a dot picker and optional autoplay.
 - [Checkbox](https://kikita-labs.github.io/kikita-ui-docs/llms/components/checkbox.md): Native checkbox styling with field state integration.
 - [Chip](https://kikita-labs.github.io/kikita-ui-docs/llms/components/chip.md): Compact token for selected values, filters, and entity references.
 - [Color Input](https://kikita-labs.github.io/kikita-ui-docs/llms/components/color-input.md): Color value input.

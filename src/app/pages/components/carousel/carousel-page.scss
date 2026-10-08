@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.carousel-page {
+  @include doc-page-layout;
+}
+
+.carousel-page__notes {
+  @include doc-page-notes;
+}
+
+.carousel-page__note {
+  @include doc-page-note;
+}

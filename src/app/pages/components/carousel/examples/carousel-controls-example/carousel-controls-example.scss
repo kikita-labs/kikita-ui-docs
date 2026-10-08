@@ -1,0 +1,11 @@
+.carousel-example {
+  inline-size: min(100%, 520px);
+}
+
+.carousel-slide {
+  display: grid;
+  place-items: center;
+  min-block-size: 120px;
+  font-weight: var(--kui-font-weight-semibold, 600);
+  color: var(--kui-color-text);
+}

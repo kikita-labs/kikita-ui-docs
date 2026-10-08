@@ -1,0 +1,21 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.carousel-playground-page {
+  @include playground-page-layout;
+}
+
+.carousel-playground-page__header {
+  @include playground-page-header;
+}
+
+.carousel-playground-page__note {
+  @include playground-page-note;
+}
+
+.carousel-playground-page__slide {
+  display: grid;
+  place-items: center;
+  min-block-size: 120px;
+  font-weight: var(--kui-font-weight-semibold, 600);
+  color: var(--kui-color-text);
+}
