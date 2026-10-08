@@ -51,8 +51,11 @@ describe('SliderPage', () => {
       'min-max-step',
       'disabled-and-invalid',
       'signal-forms',
+      'provider-defaults',
+      'theming-tokens',
       'api',
       'accessibility',
+      'migration',
     ]);
     expect(sliders).toHaveLength(7);
     expect(sliders.every((slider) => slider.type === 'range')).toBe(true);

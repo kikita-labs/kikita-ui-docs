@@ -9,14 +9,14 @@ export const SLIDER_API_ROWS: readonly ApiTableRow[] = [
   },
   {
     name: 'color',
-    type: `'primary' | 'success' | 'danger' | 'neutral'`,
-    defaultValue: `'primary'`,
+    type: `'primary' | 'success' | 'danger' | 'neutral' | undefined`,
+    defaultValue: 'undefined',
     description: 'Semantic color applied to the generated slider fill and thumb.',
   },
   {
     name: 'size',
-    type: `'sm' | 'md' | 'lg'`,
-    defaultValue: `'md'`,
+    type: `'sm' | 'md' | 'lg' | undefined`,
+    defaultValue: 'undefined',
     description: 'Visual size of the generated slider control.',
   },
   {
@@ -65,5 +65,11 @@ export const SLIDER_API_ROWS: readonly ApiTableRow[] = [
     type: 'FieldTree<number> (from @angular/forms/signals)',
     description:
       'Angular Signal Forms binding. Owns native value, disabled, and validation state; kuiSlider keeps the generated track and thumb visuals in sync. Do not add native min/max alongside formField; use the min(...) and max(...) schema validators instead.',
+  },
+  {
+    name: 'KuiSliderOptions',
+    type: 'interface',
+    defaultValue: '-',
+    description: 'Shape of defaults.slider: size and color.',
   },
 ];

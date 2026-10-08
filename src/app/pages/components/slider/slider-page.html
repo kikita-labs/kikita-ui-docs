@@ -56,6 +56,14 @@
     <app-code-tabs [tabs]="fieldTabs" />
   </app-doc-section>
 
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Slider"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
   <app-doc-section heading="API" [description]="apiDescription">
     <app-api-table label="Slider API" [rows]="apiRows" />
   </app-doc-section>
@@ -76,8 +84,44 @@
       </li>
       <li>Use <code>invalid</code> only when the slider is outside field error wiring.</li>
       <li>
-        The default hover tooltip shows the current numeric value; a non-empty
-        <code>kuiTooltip</code> on the same host overrides it with static text.
+        The default tooltip shows the current numeric value on hover, and also on keyboard focus and
+        while adjusting with the keyboard, so arrow-key users see what they set. It is hoverable and
+        <code>Escape</code> dismisses it (WCAG 1.4.13). A non-empty <code>kuiTooltip</code> on the
+        same host overrides it with static text.
+      </li>
+      <li>
+        Disabled sliders get native disabled semantics, and the track, fill and thumb stay visible
+        under <code>forced-colors: active</code>.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="migration"
+    heading="Migrating to 2.0"
+    description="Consumer-visible changes of @kikita-labs/ui 2.0 for Slider."
+  >
+    <ul class="slider-page__notes">
+      <li>
+        The directive class is <code>KuiSlider</code>; the <code>Directive</code> suffix is gone.
+      </li>
+      <li>
+        Size and colour defaults moved to
+        <code>provideKuiDefaults({{ '{' }} slider: {{ '{' }} size, color {{ '}' }} {{ '}' }})</code
+        >; the inputs are now <code>undefined</code> until set.
+      </li>
+      <li>
+        The value tooltip also shows on keyboard focus and while adjusting with the keyboard, and
+        <code>Escape</code> dismisses it.
+      </li>
+      <li>
+        Every colour part has a token, and the thumb and track have size tokens
+        (<code>--kui-slider-thumb-size</code>, <code>--kui-slider-track-size</code>) and shadow
+        tokens.
+      </li>
+      <li>
+        A required <code>kui-field</code> sets <code>aria-required</code>, and the slider is covered
+        by forced-colors.
       </li>
     </ul>
   </app-doc-section>

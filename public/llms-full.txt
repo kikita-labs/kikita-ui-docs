@@ -9466,8 +9466,8 @@ export class SliderRangeExample {}
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | kuiSlider | directive | - | Selector input[type=range][kuiSlider]. Applies Kikita UI slider styling and behavior to a native range input. |
-| color | 'primary' \| 'success' \| 'danger' \| 'neutral' | 'primary' | Semantic color applied to the generated slider fill and thumb. |
-| size | 'sm' \| 'md' \| 'lg' | 'md' | Visual size of the generated slider control. |
+| color | 'primary' \| 'success' \| 'danger' \| 'neutral' \| undefined | undefined | Semantic color applied to the generated slider fill and thumb. |
+| size | 'sm' \| 'md' \| 'lg' \| undefined | undefined | Visual size of the generated slider control. |
 | minLabel | string | '' | Optional label rendered below the minimum side of the track. |
 | maxLabel | string | '' | Optional label rendered below the maximum side of the track. |
 | disabled | boolean | false | Mirrors disabled styling on the generated slider wrapper. |
@@ -9476,6 +9476,7 @@ export class SliderRangeExample {}
 | min / max / step / value | native attributes | - | Native range input attributes. kuiSlider reads them directly; use them (or Signal Forms min/max validators) instead of a directive input. |
 | kuiTooltip | string | - | When set to a non-empty string on the same host, the static tooltip text wins over the default value tooltip. Otherwise kuiSlider shows the current numeric value in a tooltip on hover. |
 | [formField] | FieldTree<number> (from @angular/forms/signals) | - | Angular Signal Forms binding. Owns native value, disabled, and validation state; kuiSlider keeps the generated track and thumb visuals in sync. Do not add native min/max alongside formField; use the min(...) and max(...) schema validators instead. |
+| KuiSliderOptions | interface | - | Shape of defaults.slider: size and color. |
 
 ## Accessibility
 
