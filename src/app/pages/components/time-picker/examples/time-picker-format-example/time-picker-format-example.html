@@ -1,0 +1,15 @@
+<div class="time-picker-example">
+  <kui-field label="Slot" hint="12-hour clock with seconds in 15-minute and 15-second steps.">
+    <input
+      kuiTimePicker
+      [(value)]="time"
+      format="12h"
+      [showSeconds]="true"
+      [minuteStep]="15"
+      [secondStep]="15"
+    />
+    <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="300px">
+      <kui-time-picker-panel />
+    </kui-dropdown>
+  </kui-field>
+</div>

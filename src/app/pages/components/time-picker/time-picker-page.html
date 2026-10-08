@@ -1,0 +1,162 @@
+<article class="time-picker-page">
+  <app-page-header
+    eyebrow="Forms"
+    heading="Time Picker"
+    description="Time-of-day input with a scrollable hour, minute and second panel."
+    [status]="status"
+  />
+
+  <app-doc-section
+    heading="Import"
+    description="input[kuiTimePicker] is the trigger. Pair it with kui-time-picker-panel inside a sibling kui-dropdown, the same composition input[kuiDatePicker] uses with kui-calendar."
+  >
+    <app-code-tabs [tabs]="importTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Usage"
+    description="Bind value with a signal of Date | null. The panel needs no bindings: inside the same kui-field the directive finds it and wires value both ways and pushes the format, steps, seconds, limits and disabled functions into it."
+  >
+    <app-playground-route-button docSectionActions />
+
+    <app-live-preview previewLabel="Basic time picker">
+      <app-basic-time-picker-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="basicTabs" />
+    <p class="time-picker-page__note">
+      Every column centers on its selected cell when the panel opens and after each selection.
+      Selecting a cell does not close the panel, so hours, minutes and seconds can all be picked;
+      close with <kbd>Enter</kbd>, <kbd>Escape</kbd>, an outside click or the panel's Done button.
+      Now sets the current time without closing.
+    </p>
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="format"
+    heading="12-hour format, seconds and steps"
+    description="format 12h renders a 1 to 12 hours column and an AM/PM toggle. showSeconds adds a third column, and the step inputs thin the columns to every Nth value."
+  >
+    <app-live-preview previewLabel="Twelve-hour time picker with seconds">
+      <app-time-picker-format-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="formatTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="limits"
+    heading="Limits and disabled times"
+    description="minTime and maxTime bound the day; disabledHours, disabledMinutes and disabledSeconds return the values to disable. Typing is never rejected, only flagged with aria-invalid."
+  >
+    <app-live-preview previewLabel="Time picker with limits">
+      <app-time-picker-limits-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="limitsTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="inline"
+    heading="Inline panel"
+    description="kui-time-picker-panel also works on its own. Without a kui-dropdown ancestor it draws its own background and border, and Now and Done still work (Done has nothing to close)."
+  >
+    <app-live-preview previewLabel="Standalone time picker panel">
+      <app-time-picker-inline-example />
+    </app-live-preview>
+    <app-code-tabs [tabs]="inlineTabs" />
+  </app-doc-section>
+
+  <app-doc-section
+    anchor="typing"
+    heading="Typing and validation"
+    description="The input masks typing to the locale and keeps the last valid value."
+  >
+    <ul class="time-picker-page__notes">
+      <li>
+        Typing digits inserts the locale separator (<code>2214</code> becomes <code>22:14</code>, or
+        <code>22.14</code> in da-DK); characters that could never be part of a value are stripped,
+        and the input length is capped per format.
+      </li>
+      <li>
+        Each group clamps to its valid maximum once both digits are typed (<code>99:99</code>
+        becomes <code>23:59</code>) and snaps to the nearest step.
+      </li>
+      <li>
+        For <code>12h</code> the AM/PM suffix is optional: a fully typed <code>hh:mm</code> commits
+        at once and keeps the previous period.
+      </li>
+      <li>
+        <code>aria-invalid</code> is set for an incomplete group such as <code>12:3</code> and for a
+        value in an excluded range or on a disabled slot, without discarding the last valid value.
+      </li>
+      <li>
+        The caret always lands at the end of the field after typing, and digits are Latin in every
+        locale.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-provider-defaults-section [groups]="defaults" />
+
+  <app-token-tables-section
+    name="Time Picker"
+    [colorRows]="colorTokenRows"
+    [geometryRows]="geometryTokenRows"
+  />
+
+  <app-messages-section [groups]="messageGroups" />
+
+  <app-doc-section heading="API" [description]="apiDescription">
+    <app-api-table label="Time Picker API" [rows]="apiRows" />
+  </app-doc-section>
+
+  <app-doc-section
+    heading="Accessibility"
+    description="The input is a combobox that opens a non-modal dialog, the same pattern as the date picker."
+  >
+    <ul class="time-picker-page__notes">
+      <li>
+        The input has <code>role="combobox"</code>, <code>aria-haspopup="dialog"</code>,
+        <code>aria-expanded</code> and <code>aria-controls</code> for the popover panel.
+      </li>
+      <li>
+        Each column is a focusable <code>role="listbox"</code> named Hours, Minutes or Seconds with
+        <code>role="option"</code> cells and <code>aria-selected</code>; the selected cell is also
+        distinct by fill and weight, not colour alone, and the focus ring is styled explicitly.
+      </li>
+      <li>
+        AM/PM is a <code>kui-segmented</code> radio group, keyboard accessible as part of the kit.
+      </li>
+      <li>
+        <kbd>ArrowDown</kbd> on the closed input opens the popover and focuses the first column;
+        <kbd>Enter</kbd> toggles it; <kbd>Escape</kbd> closes it and keeps focus in the field;
+        <kbd>Tab</kbd> closes it and moves on.
+      </li>
+      <li>
+        In a column <kbd>ArrowUp</kbd> and <kbd>ArrowDown</kbd> move cyclically and apply at once,
+        <kbd>Home</kbd> and <kbd>End</kbd> jump to the first and last value, and <kbd>Enter</kbd>
+        closes the popover keeping the selection.
+      </li>
+      <li>
+        Disabled uses the native attribute on the input and the chevron. Pair an invalid value with
+        the <code>error</code> of <code>kui-field</code> for an announced alert.
+      </li>
+    </ul>
+  </app-doc-section>
+
+  <app-doc-section heading="Known gaps" description="Documented limits of the installed package.">
+    <ul class="time-picker-page__notes">
+      <li>Range picking (from and to) is not implemented.</li>
+      <li>
+        Now only clamps into <code>minTime</code> and <code>maxTime</code>, not around the disabled
+        function results, so it can land on a disabled slot and is then marked invalid.
+      </li>
+      <li>
+        <code>aria-controls</code> does not point at the real dropdown panel id before the first
+        open, the same gap as the date picker.
+      </li>
+      <li>
+        The leading clock icon is a structural glyph with no override slot yet; the clear and
+        chevron icons have one.
+      </li>
+    </ul>
+  </app-doc-section>
+</article>

@@ -1,0 +1,44 @@
+<article class="time-picker-playground-page">
+  <div class="time-picker-playground-page__header">
+    <h1>Time Picker &mdash; Playground</h1>
+  </div>
+
+  <app-api-playground
+    #playground="appApiPlayground"
+    previewLabel="Time picker playground"
+    [controls]="playgroundControls"
+    [snippet]="buildPlaygroundSnippet"
+  >
+    <div class="time-picker-playground-page__preview">
+      <kui-field [label]="labelOf(playground.values())">
+        <input
+          kuiTimePicker
+          [value]="time()"
+          (valueChange)="onValueChange($event)"
+          [placeholder]="placeholderOf(playground.values())"
+          [format]="formatOf(playground.values())"
+          [hourStep]="hourStepOf(playground.values())"
+          [minuteStep]="minuteStepOf(playground.values())"
+          [secondStep]="secondStepOf(playground.values())"
+          [showSeconds]="showSecondsOf(playground.values())"
+          [messages]="messagesOf(playground.values())"
+          [clearable]="clearableOf(playground.values())"
+          [disabled]="disabledOf(playground.values())"
+          [readonly]="readonlyOf(playground.values())"
+          [invalid]="invalidOf(playground.values())"
+          [minTime]="minTimeOf(playground.values())"
+          [maxTime]="maxTimeOf(playground.values())"
+          [disabledHours]="disabledHoursOf(playground.values())"
+        />
+        <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="300px">
+          <kui-time-picker-panel />
+        </kui-dropdown>
+      </kui-field>
+    </div>
+  </app-api-playground>
+
+  <app-playground-event-log [log]="eventLog" label="Time picker events" />
+
+  <app-api-table label="Time Picker API" [rows]="apiRows" />
+  <p class="time-picker-playground-page__note">{{ apiDescription }}</p>
+</article>

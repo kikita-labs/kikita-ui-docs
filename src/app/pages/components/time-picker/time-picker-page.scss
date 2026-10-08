@@ -1,0 +1,13 @@
+@use '../../../shared/styles/mixins/doc-page' as *;
+
+.time-picker-page {
+  @include doc-page-layout;
+}
+
+.time-picker-page__notes {
+  @include doc-page-notes;
+}
+
+.time-picker-page__note {
+  @include doc-page-note;
+}

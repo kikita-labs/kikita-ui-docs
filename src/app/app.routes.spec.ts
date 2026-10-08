@@ -20,6 +20,7 @@ const COMPONENT_SLUGS = [
   'combobox',
   'command-palette',
   'date-picker',
+  'time-picker',
   'dialog',
   'media-viewer',
   'drawer',

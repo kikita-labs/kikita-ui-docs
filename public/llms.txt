@@ -75,6 +75,7 @@ Important notes:
 - [Table](https://kikita-labs.github.io/kikita-ui-docs/llms/components/table.md): Native table styling, sorting context, and selection cells.
 - [Tabs](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tabs.md): Line and pill tab navigation with optional panel wiring.
 - [Textarea](https://kikita-labs.github.io/kikita-ui-docs/llms/components/textarea.md): Native multiline input styling with field integration.
+- [Time Picker](https://kikita-labs.github.io/kikita-ui-docs/llms/components/time-picker.md): Time-of-day input with a scrollable hour, minute and second panel.
 - [Toast](https://kikita-labs.github.io/kikita-ui-docs/llms/components/toast.md): Global notifications with actions and live-region semantics.
 - [Tooltip](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tooltip.md): Hover and focus hint.
 - [Tree](https://kikita-labs.github.io/kikita-ui-docs/llms/components/tree.md): Hierarchical list.

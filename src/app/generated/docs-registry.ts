@@ -59,6 +59,7 @@ import { SWITCH_DOCS_MANIFEST } from '@pages/components/switch/switch.docs-manif
 import { TABLE_DOCS_MANIFEST } from '@pages/components/table/table.docs-manifest';
 import { TABS_DOCS_MANIFEST } from '@pages/components/tabs/tabs.docs-manifest';
 import { TEXTAREA_DOCS_MANIFEST } from '@pages/components/textarea/textarea.docs-manifest';
+import { TIME_PICKER_DOCS_MANIFEST } from '@pages/components/time-picker/time-picker.docs-manifest';
 import { TOAST_DOCS_MANIFEST } from '@pages/components/toast/toast.docs-manifest';
 import { TOOLTIP_DOCS_MANIFEST } from '@pages/components/tooltip/tooltip.docs-manifest';
 import { TREE_DOCS_MANIFEST } from '@pages/components/tree/tree.docs-manifest';
@@ -150,6 +151,7 @@ export const DOCS_REGISTRY = defineDocsRegistry({
     SELECT_DOCS_MANIFEST,
     COMBOBOX_DOCS_MANIFEST,
     DATE_PICKER_DOCS_MANIFEST,
+    TIME_PICKER_DOCS_MANIFEST,
     CALENDAR_DOCS_MANIFEST,
     CALENDAR_RANGE_DOCS_MANIFEST,
     FILE_UPLOAD_DOCS_MANIFEST,

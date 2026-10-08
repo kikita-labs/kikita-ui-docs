@@ -1,0 +1,17 @@
+@use '../../../../shared/styles/mixins/doc-page' as *;
+
+.time-picker-playground-page {
+  @include playground-page-layout;
+}
+
+.time-picker-playground-page__header {
+  @include playground-page-header;
+}
+
+.time-picker-playground-page__note {
+  @include playground-page-note;
+}
+
+.time-picker-playground-page__preview {
+  inline-size: min(100%, 320px);
+}

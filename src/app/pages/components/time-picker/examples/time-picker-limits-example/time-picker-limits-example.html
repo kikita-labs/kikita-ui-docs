@@ -1,0 +1,18 @@
+<div class="time-picker-example">
+  <kui-field
+    label="Office hours"
+    hint="09:00 to 18:00, lunch hours and 17:30 to 17:59 are not available."
+  >
+    <input
+      kuiTimePicker
+      [(value)]="time"
+      [minTime]="minTime"
+      [maxTime]="maxTime"
+      [disabledHours]="disabledHours"
+      [disabledMinutes]="disabledMinutes"
+    />
+    <kui-dropdown panelRole="dialog" panelWidth="auto" maxHeight="280px">
+      <kui-time-picker-panel />
+    </kui-dropdown>
+  </kui-field>
+</div>

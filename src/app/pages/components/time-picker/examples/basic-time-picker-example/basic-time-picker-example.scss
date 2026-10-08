@@ -1,0 +1,5 @@
+.time-picker-example {
+  display: grid;
+  gap: var(--kui-space-4, 16px);
+  inline-size: min(100%, 320px);
+}
